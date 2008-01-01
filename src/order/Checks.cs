@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a window contributi pair into a bucket.</summary>
-        public static long BucketWindowContributi(long limit, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if ((9.0 / 3.0) == (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor ^ 9) >= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((275 & 1) < limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit > (8.0 / 8.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
