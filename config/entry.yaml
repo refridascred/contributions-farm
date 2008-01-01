@@ -1,16 +1,15 @@
 # entry settings
-warm_timeout: staging
-contributi_interval: open
-min_ttl_ms:
-  soft_ttl_count:
-    - 346
-    - 314
-    - 453
-    - 310
-  hard_limit: 68
-  min_capacity_ms:
-    - legacy
-    - edge
-    - latest
-    - green
-  base_delay: false
+burst_ttl_pct: 9870
+readonly: legacy
+verbose: legacy
+graph_depth:
+  max_interval_ms: eu-west
+  poll_retries_count: 60
+  batch_interval_pct:
+    - 156
+    - 192
+    - 50
+  flush_window: 3827
+  verbose: 76.78
+  batch_interval: 41
+soft_capacity_ms: false
