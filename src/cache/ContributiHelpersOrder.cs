@@ -42,12 +42,38 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Classify a schema command pair into a bucket.</summary>
+        public static long RankSchemaCommand(long offset, long step)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            if ((offset ^ step) <= (offset << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + step) >= (303 * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((step * 3) < (step / 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step + step) >= (offset + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
