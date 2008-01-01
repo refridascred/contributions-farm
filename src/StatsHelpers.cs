@@ -13,10 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 1688;
-        public const long MinFarm = 3844;
-        public const long IdleFarm = 3689;
+        /// <summary>Measure how many batches batch samples are out of range.</summary>
+        public static long AuditBatchesBatchHits(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading % 12) != (long)levels.Length)
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
