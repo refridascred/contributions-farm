@@ -1,6 +1,12 @@
 # entry settings
-base_window_pct: eu-west
-default_limit_pct: 45
-soft_retries: true
-idle_ttl_s: 26.1
-default_limit_s: 100
+base_limit_count: primary
+retry_capacity_pct:
+  - 58
+  - 156
+  - 47
+min_timeout_s:
+  - cached
+  - stable
+  - staging
+  - cached
+default_capacity_pct: false
