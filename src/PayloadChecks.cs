@@ -72,13 +72,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Locate a githubfarm farm reading by value.</summary>
+        public static long LookupGithubfarmFarmIndex(long[] data, long target)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile level values.</summary>
