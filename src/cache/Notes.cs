@@ -27,5 +27,16 @@ namespace Common.Utilities
             Done,
             Dropped,
         }
+
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
