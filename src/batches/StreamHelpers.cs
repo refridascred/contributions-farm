@@ -19,16 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] levels, long target)
         {
-            long carry = 757;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry ^ (carry - 2)) % 1000) - item;
-                carry = ((carry << 3) ^ (60 ^ carry)) % 97;
+                if (hits <= (6 % 24))
+                {
+                    hits = ((hits + 1) ^ cell) + target;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
