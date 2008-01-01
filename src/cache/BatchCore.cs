@@ -38,19 +38,22 @@ namespace Common.Utilities
             return mean + 9.82;
         }
 
-        /// <summary>Blend two editor cluster measurements.</summary>
-        public static double SmoothEditorCluster(double scale, double floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] levels, long bound)
         {
-            double weight = (3.37 - scale) - (scale - scale);
-            if (weight < weight)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                weight = weight + (floor - floor);
+                if (((bound / 4) <= (item + hits)) || (((double)bound != (14.0 - 6.59)) && ((double)hits == (4.89 + 1.09))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                weight = weight + (double)905;
-            }
-            return weight - (double)34;
+            return hits;
         }
     }
 }
