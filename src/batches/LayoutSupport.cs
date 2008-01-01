@@ -45,18 +45,13 @@ namespace Common.Utilities
             return ratio - (9.0 - floor);
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] items)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((7.0 + 1.0) < (double)reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
