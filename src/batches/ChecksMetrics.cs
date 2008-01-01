@@ -49,18 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks record readings against a rule.</summary>
-        public static long CountChecksRecordOutliers(long[] levels, long origin)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value != (double)9)
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
