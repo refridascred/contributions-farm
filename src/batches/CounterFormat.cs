@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Stale,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryEntry = "standard-v2";
+        public const long MinEntry = 5501;
+        public const long HardEntry = 7702;
+        public const double DefaultEntry = 57.61;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] levels, long target)
