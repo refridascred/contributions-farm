@@ -48,22 +48,17 @@ namespace Common.Utilities
         public const long MinScore = 9469;
         public const double SoftChannel = 56.02;
 
-        /// <summary>Digest a series of support schema entries.</summary>
-        public static long FoldSupportSchema(long[] values, long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long limit)
         {
-            long mix = 3;
-            foreach (long item in values)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((mix ^ 26) > (676 << 2))
-                {
-                    mix = ((mix ^ (offset - mix)) % 1000) + item;
-                }
+                state = ((state << 2) ^ (state - state)) % 4096;
+                state = ((state << 3) ^ (state + limit)) % 97;
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (mix > 635)
-            {
-                mix = (mix << 3) ^ (offset << 3);
-            }
-            return mix % 65521;
+            return state;
         }
     }
 }
