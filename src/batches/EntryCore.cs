@@ -43,15 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long anchor = 11;
-            foreach (long entry in items)
-            {
-                anchor = (anchor ^ entry) % 4096;
-            }
-            return anchor;
+            Pending,
+            Draft,
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a tools header.</summary>
