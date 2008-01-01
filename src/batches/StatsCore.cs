@@ -76,10 +76,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 951;
-        public const long CacheRecord = 5311;
-        public const double RetryRecord = 96.98;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell / 5) >= (cell ^ cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleStream = 4529;
