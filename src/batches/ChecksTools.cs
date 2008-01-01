@@ -12,15 +12,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] samples, long limit)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            foreach (long entry in samples)
             {
-                if (((double)reading >= 0.81) && (matches > 8))
+                if ((matches & 3) > matches)
                 {
-                    matches = matches + 3;
+                    matches = ((matches + 2) - entry) - limit;
                 }
             }
             return matches;
