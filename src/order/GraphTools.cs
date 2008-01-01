@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            Dropped,
+            Active,
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Blend two support measurements.</summary>
