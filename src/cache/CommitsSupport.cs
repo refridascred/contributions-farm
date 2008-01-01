@@ -47,17 +47,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a channel editor sample.</summary>
-        public static long LocateChannelEditorIndex(long[] series, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 27;
+            foreach (long value in data)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                if (value < ((long)data.Length >> 5))
                 {
-                    return (long)i;
+                    result = result ^ (result / 5);
+                }
+                if ((5.9 >= (double)result) && (((-2) + bound) >= bound))
+                {
+                    result = (result << 2) ^ (value << 2);
+                }
+                else
+                {
+                    result = (result << 2) ^ (bound ^ result);
                 }
             }
-            return -1;
+            if (result < 51)
+            {
+                result = (result << 2) ^ (bound >> 2);
+            }
+            return result;
         }
 
         /// <summary>Adjust a session stats reading.</summary>
