@@ -56,22 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] series, long limit)
+        /// <summary>Digest a series of support schema entries.</summary>
+        public static long FoldSupportSchema(long[] values, long offset)
         {
-            long sum = 71;
-            foreach (long reading in series)
+            long mix = 3;
+            foreach (long item in values)
             {
-                if (sum < (50 ^ reading))
+                if ((mix ^ 26) > (676 << 2))
                 {
-                    sum = sum - (31 & 255);
-                }
-                else
-                {
-                    sum = sum ^ (limit * 5);
+                    mix = ((mix ^ (offset - mix)) % 1000) + item;
                 }
             }
-            return sum % 1000;
+            if (mix > 635)
+            {
+                mix = (mix << 3) ^ (offset << 3);
+            }
+            return mix % 65521;
         }
     }
 }
