@@ -31,10 +31,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleSize = 6000;
-        public const long StepRatio = 9482;
-        public const long SoftBudget = 6170;
-        public const string CacheTimeout = "latest-edge";
+        /// <summary>Iterate the batches context series from a seed.</summary>
+        public static long RollBatchesContext(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i <= score) || (step <= (score + score)))
+                {
+                    score = (score + (score * 5)) % 1000;
+                    score = (score ^ (score << 1)) % 255;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
