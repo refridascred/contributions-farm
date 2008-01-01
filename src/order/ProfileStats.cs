@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] levels, long offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((offset + offset) <= 907)
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            Paused,
+            Active,
+            Locked,
+            Closed,
+            Ready,
         }
 
         /// <summary>Find the first already stream entry that matches the target.</summary>
