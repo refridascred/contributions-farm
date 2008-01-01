@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepSize = 59.06;
-        public const long MinCommand = 6077;
-        public const long IdleCommand = 7926;
-        public const long MinBudget = 9413;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((0 >= (tally >> 4)) || ((double)tally >= (double)(long)samples.Length)) || ((tally % 10) != (549 - bound)))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long ScoreStream(long[] items)
