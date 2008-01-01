@@ -52,5 +52,24 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double rate, double offset)
+        {
+            double rate2 = (rate * 7.1) - (double)75;
+            if (rate2 <= (offset * 3.9))
+            {
+                rate2 = rate2 + (rate2 - offset);
+            }
+            else
+            {
+                rate2 = rate2 + (double)582;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 + (rate2 / 3.0)) + (double)(long)i;
+            }
+            return rate2 + (rate2 / 5.0);
+        }
     }
 }
