@@ -72,14 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Ready,
-            Draft,
-            Closed,
-            Pending,
-            Active,
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
