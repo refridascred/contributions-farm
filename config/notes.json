@@ -1,8 +1,5 @@
 {
-  "cache_size_ms": "local",
-  "record_size": "primary",
-  "idle_delay_s": false,
-  "strict": [36, 486, 473],
-  "editor_timeout": 57,
-  "sync_size": "standard"
+  "hard_window_count": "legacy",
+  "burst_ratio_pct": true,
+  "burst_limit_ms": "local"
 }
