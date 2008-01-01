@@ -25,11 +25,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long offset, long origin)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            long bound = offset - origin;
+            if (((origin % 100) > (origin + 0)) && (offset > (6 + offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound ^ bound) <= (bound / 9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the stats kind values.</summary>
