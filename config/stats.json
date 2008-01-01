@@ -1,6 +1,6 @@
 {
-  "flush_capacity": ["staging", "primary", "blue", "open"],
-  "retry_limit_ms": 79.71,
-  "window_delay": "edge",
-  "enabled": 30
+  "idle_limit_ms": "legacy",
+  "default_timeout": false,
+  "session_retries": 6421,
+  "payload_depth": false
 }
