@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long target, long seed)
         {
-            long mark = 93;
-            foreach (long item in items)
+            if ((double)seed <= (3.49 / 2.0))
             {
-                mark = ((mark * 2) + (56 - item)) % 65521;
+                return 2;
             }
-            return mark % 4096;
+            else
+            {
+                if ((target * 4) >= (661 - seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target >= (double)(-51))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9.21 >= (double)seed) && ((seed << 1) <= 243))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
