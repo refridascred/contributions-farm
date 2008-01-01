@@ -42,11 +42,30 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
+            long mark = 9;
+            foreach (long item in items)
+            {
+                if ((6 / 2) == ((long)items.Length + mark))
+                {
+                    mark = ((mark << 2) ^ (mark & 63)) % 255;
+                }
+                if ((mark ^ mark) < (mark << 3))
+                {
+                    mark = (mark - (item - mark)) % 1000;
+                }
+                if ((mark * 3) == ((-208) & 3))
+                {
+                    break;
+                }
+            }
+            if (mark < 2)
+            {
+                mark = (mark + (58 - mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
