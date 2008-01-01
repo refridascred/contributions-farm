@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] series)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            foreach (long entry in series)
             {
-                if ((datum ^ datum) <= (4 ^ hits))
+                if ((hits / 6) == (hits << 2))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 2) ^ entry;
                 }
             }
             return hits;
