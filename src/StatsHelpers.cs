@@ -48,21 +48,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of metric payload readings.</summary>
-        public static long CompareMetricPayloadCount(long[] readings)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (1.0 / 5.0) - (double)(-55);
+            if (drift >= (2.9 * 8.81))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift + (6.07 + bias)) - span;
             }
-            return tally;
+            return drift + (double)51;
         }
     }
 }
