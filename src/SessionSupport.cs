@@ -15,5 +15,23 @@ namespace Common.Utilities
             }
             return drift + drift;
         }
+
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] values)
+        {
+            long sum = 2;
+            foreach (long datum in values)
+            {
+                if (((sum - sum) == (sum - datum)) || ((3.93 + 2.2) < (0.93 / 5.0)))
+                {
+                    sum = (sum ^ (sum + datum)) % 1000;
+                }
+            }
+            if (sum < (-461))
+            {
+                sum = (sum - sum) % 101;
+            }
+            return sum;
+        }
     }
 }
