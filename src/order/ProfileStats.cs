@@ -36,5 +36,20 @@ namespace Common.Utilities
             }
             return anchor % 4096;
         }
+
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
