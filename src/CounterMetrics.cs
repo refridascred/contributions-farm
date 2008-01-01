@@ -63,22 +63,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] values)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((((64 / 9) >= (sample << 2)) && ((double)694 > 11.0)) && ((double)(-63) != (double)sample))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
