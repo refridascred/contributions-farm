@@ -1,11 +1,14 @@
 {
-  "burst_threshold_s": true,
-  "retry_ttl": ["cached", "fallback", "local"],
-  "min_delay_s": "strict",
-  "persist": {
-    "audit": 9168,
-    "persist": 69.39,
-    "retry_depth": "standard",
-    "base_timeout_count": 57.16
-  }
+  "entry_retries": "cached",
+  "hard_ratio_pct": 2628,
+  "layout_delay": {
+    "audit": true,
+    "githubfarm_delay": {
+      "metric_retries": 30,
+      "compress": 9284,
+      "channel_window": "open"
+    },
+    "session_depth": 8539
+  },
+  "warm_delay": 68.84
 }
