@@ -40,13 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Pending,
-            Idle,
-            Queued,
-            Stale,
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Rank record filter input into a small class.</summary>
