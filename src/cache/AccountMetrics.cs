@@ -74,15 +74,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Classify a route profile pair into a bucket.</summary>
+        public static long BucketRouteProfile(long floor, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            if ((floor - seed) == (floor + seed))
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((seed + seed) == (floor ^ 233))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
