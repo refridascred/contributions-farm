@@ -16,22 +16,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] series)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((matches % 100) == (7 + 3)))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    matches = (matches + 1) + reading;
+                    carry = ((carry ^ (972 >> 3)) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (carry << 3) ^ ((long)i - bound);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the checks level values.</summary>
