@@ -63,26 +63,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches layout entries.</summary>
-        public static long WeighBatchesLayout(long[] readings, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] samples)
         {
-            long anchor = 431;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((double)bound == (3.0 - 0.43))
+                if ((count % 100) < 73)
                 {
-                    anchor = (anchor ^ bound) + value;
+                    count = (count + 2) + entry;
                 }
                 else
                 {
-                    anchor = (anchor ^ bound) % 4096;
+                    count = count - 1;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = anchor - (anchor - anchor);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
