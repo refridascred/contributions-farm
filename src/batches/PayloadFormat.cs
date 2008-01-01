@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count format order pairs that satisfy a relation.</summary>
-        public static long OverlapFormatOrderCount(long[] samples)
+        /// <summary>Validate report metric readings against a bound.</summary>
+        public static bool VerifyReportMetricLimits(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading >= bound)
                 {
-                    if ((samples[i] ^ samples[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
