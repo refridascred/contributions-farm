@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] items, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                mark = mark - (offset + offset);
-                mark = mark + offset;
-                mark = ((mark * 2) + (long)i) % 101;
+                if (5.9 >= (double)item)
+                {
+                    hits = (hits + 1) - step;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Adjust a payload reading.</summary>
