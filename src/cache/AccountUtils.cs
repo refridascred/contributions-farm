@@ -19,38 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long target, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] data, long limit)
         {
-            if (!((double)target <= (double)floor))
+            bool ok = true;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3 + floor) <= (-552))
+                if (item <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + floor) >= (target + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor / 8) <= target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
