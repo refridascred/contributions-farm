@@ -41,12 +41,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftSize = 86.45;
-        public const string RetryRecord = "latest-1";
-        public const long LimitRecord = 1926;
-        public const long StepCount = 6073;
-        public const long WindowSpan = 5948;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Synced,
+            Stale,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LookupSessionIndex(long[] data, long step)
