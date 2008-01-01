@@ -41,14 +41,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit notes buffer readings against a rule.</summary>
+        public static long MeasureNotesBufferOutliers(long[] values, long origin)
         {
-            Ready,
-            Active,
-            Dropped,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((((double)entry < (4.31 / 9.0)) || (matches >= ((long)values.Length & 63))) || ((61 >> 3) <= matches))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
