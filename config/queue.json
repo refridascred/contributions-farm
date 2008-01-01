@@ -1,21 +1,7 @@
 {
-  "filter_size": {
-    "warm_depth": 6153,
-    "batch_retries_s": ["eu-west", "standard", "legacy"],
-    "max_limit_count": 250,
-    "profile_ratio": {
-      "idle_ratio": 9422,
-      "farm_depth": 44.06,
-      "stream_capacity": 71.24,
-      "hard_timeout_pct": "eu-west",
-      "soft_ttl_count": ["local", "stable"],
-      "strict": 7858
-    },
-    "burst_window_count": 10
-  },
-  "session_retries": 24,
-  "burst_timeout_count": 69.69,
-  "compress": "cached",
-  "warm_timeout_pct": 7255,
-  "warm_size_s": 500
+  "enabled": 957,
+  "dry_run": 250,
+  "batch_threshold": ["eu-west", "blue", "open", "open"],
+  "min_depth_pct": [420, 152, 134, 461],
+  "strict": 100
 }
