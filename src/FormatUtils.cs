@@ -72,21 +72,19 @@ namespace Common.Utilities
         public const double LimitRatio = 74.4;
         public const long DefaultBudget = 176;
 
-        /// <summary>Compare every pair of layout batches readings.</summary>
-        public static long MatchLayoutBatchesCount(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 5;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                total = (total ^ (seed % 24)) % 4096;
+                if ((928 - (long)samples.Length) > (1 ^ reading))
                 {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
