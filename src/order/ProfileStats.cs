@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long floor, long bound)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long diff = floor - bound;
-            if ((diff + bound) <= (1 + (-712)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((diff / 4) >= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Idle,
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
