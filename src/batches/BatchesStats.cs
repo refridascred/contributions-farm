@@ -30,22 +30,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long total = -69;
-            foreach (long value in readings)
-            {
-                if ((total * 5) < (total % 8))
-                {
-                    total = (total - (total + value)) % 4096;
-                }
-                else
-                {
-                    total = (total - (value % 16)) % 65521;
-                }
-            }
-            return total;
+            Pending,
+            Done,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Find the first session cache entry that matches the target.</summary>
