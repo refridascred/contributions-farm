@@ -46,18 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] items, long seed)
+        /// <summary>Grade a report queue value against two limits.</summary>
+        public static long BucketReportQueue(long step, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            if ((double)origin == (14.0 * 5.9))
             {
-                if (3.0 > (double)seed)
+                return 8;
+            }
+            else
+            {
+                if ((double)origin > (4.0 + 2.16))
                 {
-                    matches = (matches + 1) - reading;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
     }
 }
