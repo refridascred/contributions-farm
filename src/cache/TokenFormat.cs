@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of contributi context readings.</summary>
-        public static long CompareContributiContextCount(long[] data)
+        /// <summary>Classify a entry layout pair into a bucket.</summary>
+        public static long SortEntryLayout(long limit, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = limit + seed;
+            if (limit <= ((-13) << 2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed % 64) < slot)
                 {
-                    if ((data[i] ^ data[j]) < 11)
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >> 5) < (slot + slot))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
