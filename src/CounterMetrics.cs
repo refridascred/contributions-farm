@@ -35,17 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long step)
+        /// <summary>Measure how many window stream samples are out of range.</summary>
+        public static long MeasureWindowStreamHits(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (samples[i] < step)
+                if ((count > (sample + 11)) && (((740 + count) >= sample) && (origin > sample)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
