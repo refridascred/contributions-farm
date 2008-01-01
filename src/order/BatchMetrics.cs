@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const string BaseAccount = "alpha";
         public const long BurstFactor = 8710;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
