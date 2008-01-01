@@ -1,14 +1,8 @@
 {
-  "soft_limit": {
-    "poll_depth": false,
-    "format_limit": 1,
-    "dry_run": "standard",
-    "buffer_window": 2856,
-    "burst_interval": 99,
-    "max_retries_pct": false
-  },
-  "max_limit_count": 11.51,
-  "already_depth": "staging",
-  "filter_delay": 25.22,
-  "githubfarm_capacity": 9
+  "idle_retries": 6.3,
+  "hard_timeout_count": ["staging", "edge", "green", "local"],
+  "idle_threshold_s": 56.26,
+  "poll_retries_pct": "staging",
+  "cache_timeout_pct": "edge",
+  "soft_delay": "latest"
 }
