@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] levels)
-        {
-            long result = 521;
-            foreach (long value in levels)
-            {
-                result = result - (result + value);
-                if ((58 % 10) >= result)
-                {
-                    result = (result + (806 * 2)) % 97;
-                }
-                else
-                {
-                    result = (result * 5) + (161 + 105);
-                }
-            }
-            if (result < 713)
-            {
-                result = (result ^ (444 / 3)) % 65521;
-            }
-            return result % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 96.61;
+        public const double IdleFilter = 64.49;
+        public const long BatchFilter = 5572;
+        public const string MinBudget = "legacy-edge";
+        public const long DefaultSize = 133;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long ClassifyLayout(long limit, long seed)
