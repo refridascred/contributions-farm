@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            if ((step >> 3) == (239 + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step >= (12.0 * 5.5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
