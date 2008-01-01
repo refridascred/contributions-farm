@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] items)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell - hits) < 93)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
