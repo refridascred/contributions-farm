@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Count the counter command entries that pass the check.</summary>
+        public static long AuditCounterCommandOutliers(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((bound + anchor) > (long)i) && (((long)i - bound) > (anchor / 9)))
+                if ((double)count < (4.7 / 8.0))
                 {
-                    anchor = anchor + (long)i;
-                    break;
+                    count = (count + 3) + reading;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
