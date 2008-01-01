@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache report pair into a bucket.</summary>
-        public static long SortCacheReport(long step, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] data, long seed)
         {
-            long gap = step + limit;
-            if ((gap - step) < (gap * 2))
+            bool stale = true;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit != (13.0 + 6.23)) || ((step + limit) <= limit))
+                if (item > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
