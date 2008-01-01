@@ -15,19 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((6 ^ 467) <= (floor - (long)i))
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a batch snapshot.</summary>
