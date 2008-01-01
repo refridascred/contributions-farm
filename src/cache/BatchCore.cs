@@ -11,16 +11,15 @@ namespace Common.Utilities
         public const long BaseScore = 9392;
         public const long SoftLevel = 5654;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] samples)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            long result = 32;
-            foreach (long datum in samples)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                result = ((result - (824 % 24)) % 4096) ^ datum;
-                result = result + (992 >> 4);
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Adjust a window graph reading.</summary>
