@@ -38,24 +38,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long step, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            if ((step - 2) == ((-891) & 63))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + 39) < (step * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
