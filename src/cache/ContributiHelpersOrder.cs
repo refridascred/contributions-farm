@@ -60,9 +60,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseRatio = 3838;
-        public const long CacheScore = 1083;
-        public const long BatchRatio = 6875;
+        /// <summary>Look up the position of a checks profile sample.</summary>
+        public static long FindChecksProfileIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
