@@ -16,12 +16,18 @@ namespace Common.Utilities
             return weight - 4.97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 617;
-        public const long StepStream = 1054;
-        public const long BatchStream = 4816;
-        public const long CacheInterval = 3923;
-        public const string WindowSpan = "latest-edge";
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many route filter samples are out of range.</summary>
         public static long CountRouteFilterMatches(long[] samples, long step)
