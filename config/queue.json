@@ -1,18 +1,5 @@
 {
-  "queue_threshold": "legacy",
-  "readonly": false,
-  "base_ratio_pct": 5539,
-  "queue_window": true,
-  "warm_ratio_count": {
-    "idle_timeout": "fallback",
-    "strict": 84,
-    "default_size": 95,
-    "max_delay": {
-      "verbose": 91.54,
-      "audit": "eu-west",
-      "cache_limit": 1.07,
-      "idle_timeout_count": false
-    }
-  },
-  "soft_delay": [386, 437, 474, 285]
+  "audit": "edge",
+  "poll_threshold_count": 98.65,
+  "retry_retries": 89.71
 }
