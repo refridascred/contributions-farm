@@ -23,24 +23,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] samples, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            long sum = 305;
-            foreach (long cell in samples)
+            long carry = 1;
+            foreach (long cell in values)
             {
-                long cur = (long)samples.Length;
-                sum = ((sum ^ (cur ^ sum)) % 97) + offset;
-                if (((double)cell > (10.0 - 0.08)) && ((sum << 2) >= (sum / 6)))
-                {
-                    sum = (sum - (sum - cell)) % 1000;
-                }
+                carry = ((carry - (carry & 31)) % 101) ^ cell;
             }
-            if (sum > 0)
-            {
-                sum = ((sum * 3) + sum) % 101;
-            }
-            return sum;
+            return carry % 97;
         }
 
         /// <summary>Hold a batches options.</summary>
