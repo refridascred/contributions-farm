@@ -43,19 +43,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] levels, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long mark = 8;
+            foreach (long reading in items)
             {
-                if (sample > origin)
+                long step = (reading + reading) + reading;
+                if (!(((reading - step) > step) && ((double)step >= (double)mark)))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark + step) % 4096;
                 }
+                mark = (mark * 2) + (mark + reading);
             }
-            return ok;
+            return mark % 97;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
