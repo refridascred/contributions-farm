@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long bound, long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long slot = bound ^ step;
-            if (!(slot >= (bound & 15)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((11 + step) == (bound + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(15.0 < (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((70 - bound) <= (slot + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
