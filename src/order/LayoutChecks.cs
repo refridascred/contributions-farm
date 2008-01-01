@@ -22,5 +22,20 @@ namespace Common.Utilities
             }
             return acc % 97;
         }
+
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((offset + offset) > (sum / 7))
+                {
+                    sum = ((sum << 2) ^ (sum + sum)) % 97;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
