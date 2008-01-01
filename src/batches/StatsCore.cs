@@ -29,13 +29,38 @@ namespace Common.Utilities
         public const long BurstCache = 3461;
         public const double MaxCache = 29.73;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long bound, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            if ((bound ^ bound) > (floor + 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor / 9) >= (188 << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - floor) > bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound - 5) >= (bound ^ bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
