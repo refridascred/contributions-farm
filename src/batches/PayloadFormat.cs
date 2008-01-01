@@ -32,17 +32,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a batch order sample.</summary>
-        public static long LocateBatchOrderIndex(long[] series, long limit)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = span;
+            if (mean > 10.0)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                mean = (mean + 2.53) + rate;
             }
-            return -1;
+            else
+            {
+                mean = mean - (15.0 - span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (double)88;
         }
     }
 }
