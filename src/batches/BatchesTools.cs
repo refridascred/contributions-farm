@@ -20,10 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepInterval = 1195;
-        public const long SoftGithubfarm = 5288;
-        public const string BurstGithubfarm = "standard-v2";
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 4) + (sum - (long)i)) % 101;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueBounds(long[] readings, long step)
