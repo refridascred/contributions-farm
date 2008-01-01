@@ -19,27 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples, long target)
+        /// <summary>Combine schema checks values into a single score.</summary>
+        public static long DigestSchemaChecks(long[] series, long bound)
         {
-            long score = 79;
-            foreach (long sample in samples)
+            long result = 484;
+            foreach (long item in series)
             {
-                score = score + (target + target);
-                if (!((1.96 - 1.43) == (double)score))
+                if ((item / 5) != (result << 2))
                 {
-                    score = (score << 3) ^ (sample >> 4);
+                    result = ((result << 2) ^ (result ^ 93)) % 65521;
                 }
                 else
                 {
-                    score = score + (score + 38);
+                    result = (result * 4) + (bound << 2);
                 }
             }
-            if (score > 54)
-            {
-                score = score + ((-27) >> 3);
-            }
-            return score % 4096;
+            return result;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
