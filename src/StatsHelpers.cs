@@ -23,13 +23,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double ratio, double offset)
         {
-            Ready,
-            Stale,
-            Closed,
-            Pending,
+            double gain = offset;
+            if (gain < offset)
+            {
+                gain = (gain + (gain * 7.4)) + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + 2.57) + (double)(long)i;
+            }
+            return gain - offset;
         }
 
         /// <summary>Describe the profile kind values.</summary>
