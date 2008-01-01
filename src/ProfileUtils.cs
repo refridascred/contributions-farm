@@ -43,5 +43,39 @@ namespace Common.Utilities
             New,
             Active,
         }
+
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long seed, long step)
+        {
+            if ((step >> 5) < 156)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step / 5) <= (step - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step > (seed / 6)) || ((step >> 5) == (step + seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed < step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
