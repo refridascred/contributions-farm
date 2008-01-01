@@ -54,5 +54,23 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] series)
+        {
+            long anchor = 0;
+            foreach (long datum in series)
+            {
+                if (!((anchor - datum) == (datum ^ datum)))
+                {
+                    anchor = ((anchor * 4) + (datum * 5)) % 97;
+                }
+            }
+            if (anchor > 688)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor % 4096;
+        }
     }
 }
