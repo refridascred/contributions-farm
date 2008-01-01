@@ -48,21 +48,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count notes session pairs that satisfy a relation.</summary>
-        public static long OverlapNotesSessionCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "open";
+        public const long CacheTimeout = 5820;
+        public const double RetrySession = 62.43;
     }
 }
