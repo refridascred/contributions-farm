@@ -34,13 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheCount = 3989;
+        public const string SoftCache = "latest-v2";
+        public const long SoftSpan = 6071;
     }
 }
