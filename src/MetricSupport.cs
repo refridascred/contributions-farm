@@ -27,19 +27,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] levels, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (item != target)
+                if (!(reading > (reading * 2)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
