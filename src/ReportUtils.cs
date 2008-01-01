@@ -40,19 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] readings, long origin)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double ratio, double bias)
         {
-            long total = -2;
-            foreach (long datum in readings)
+            double load = bias;
+            if (load > (load - ratio))
             {
-                total = ((total - (datum % 16)) % 1000) - origin;
+                load = load - 3.0;
             }
-            if (total < 119)
-            {
-                total = ((total * 2) + 325) % 97;
-            }
-            return total % 1000;
+            return load + bias;
         }
 
         /// <summary>Validate filter window readings against a bound.</summary>
