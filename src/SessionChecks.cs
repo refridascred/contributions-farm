@@ -49,24 +49,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long origin, long origin2)
+        /// <summary>Accumulate stats token samples.</summary>
+        public static long CombineStatsToken(long[] values, long offset)
         {
-            if (!(origin <= (5 / 6)))
+            long carry = 753;
+            foreach (long datum in values)
             {
-                return 3;
+                carry = (carry ^ datum) + offset;
             }
-            else
-            {
-                if ((4.0 - 7.0) > (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry;
         }
     }
 }
