@@ -57,19 +57,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] values, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            double bias = (double)(4 + (-9));
+            for (int i = 0; i < 6; i++)
             {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = ((bias - ratio) + (double)(long)i) + span;
             }
-            return valid;
+            return bias + (9.85 / 9.0);
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
