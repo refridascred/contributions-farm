@@ -45,5 +45,13 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Paused,
+            Locked,
+            Failed,
+        }
     }
 }
