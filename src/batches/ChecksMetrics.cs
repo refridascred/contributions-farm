@@ -26,25 +26,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank counter tools input into a small class.</summary>
-        public static long BucketCounterTools(long floor, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] data, long seed)
         {
-            long cur = floor ^ seed;
-            if ((floor + 89) < (cur >> 5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(1 >= floor))
+                if ((data[i] == seed) && ((data[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many stream githubfarm samples are out of range.</summary>
