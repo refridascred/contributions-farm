@@ -35,22 +35,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] data)
+        /// <summary>Look up the position of a context support sample.</summary>
+        public static long SeekContextSupportIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + hits) != (sample - 88))
+                if (readings[i] >= offset)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
