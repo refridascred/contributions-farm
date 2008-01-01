@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepFactor = 1939;
-        public const string RetryContext = "strict-v2";
-        public const string MinInterval = "fallback-1";
-        public const long CacheContext = 6184;
-        public const string MaxLevel = "local";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (((hits + 334) >= (bound + entry)) || ((hits ^ 78) == (11 + bound)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long SoftFactor = 6866;
