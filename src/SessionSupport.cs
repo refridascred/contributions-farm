@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Count the command farm entries that pass the check.</summary>
+        public static long MeasureCommandFarmOutliers(long[] levels, long target)
         {
-            Closed,
-            Paused,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((4.13 / 5.0) >= (double)cell) || ((double)target >= (0.09 / 2.0)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
