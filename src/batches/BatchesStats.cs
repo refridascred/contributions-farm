@@ -12,19 +12,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((seed + cell) < seed) || !((cell + cell) != (3 / 8)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxLevel = 9473;
+        public const long BaseProfile = 7919;
+        public const long SoftTimeout = 6200;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] samples, long origin)
