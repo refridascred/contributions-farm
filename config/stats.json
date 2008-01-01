@@ -1,13 +1,5 @@
 {
-  "retry_depth": 94.14,
-  "min_ttl_pct": 250,
-  "default_depth": {
-    "min_delay": {
-      "audit": 4854,
-      "max_window_ms": 100,
-      "account_window": [60, 495, 33, 99]
-    },
-    "window_window": 91.66,
-    "poll_timeout": 8422
-  }
+  "default_timeout": 47.13,
+  "counter_timeout": 6375,
+  "strict": "standard"
 }
