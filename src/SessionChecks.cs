@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long HardCluster = 9113;
         public const long RetryCluster = 7550;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double scale, double offset)
         {
-            Done,
-            Active,
-            Dropped,
+            double load = scale;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load - (double)6) - (double)(long)i) + offset;
+            }
+            return load + load;
         }
 
         /// <summary>Digest a series of counter contributi entries.</summary>
