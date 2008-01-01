@@ -16,15 +16,11 @@ namespace Common.Utilities
             return load - (double)(-45);
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Active,
-            Pending,
-            Retry,
-            Done,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "legacy-1";
+        public const long DefaultContext = 7734;
+        public const double BurstBudget = 24.06;
+        public const double IdleContext = 17.11;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double MinCount = 11.03;
