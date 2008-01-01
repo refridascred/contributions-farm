@@ -1,4 +1,19 @@
 # entry settings
-readonly: latest
-hard_limit_count: 8057
-min_size_pct: 77.38
+default_timeout_ms: false
+default_interval:
+  idle_delay:
+    cluster_depth: false
+    graph_depth: 44.32
+    soft_window_pct: 1024
+  session_timeout: false
+  verbose:
+    burst_ratio: 65
+    support_timeout: 500
+    hard_timeout: blue
+    enabled: 4581
+    persist: 93.09
+    context_capacity: 56.57
+  readonly: 60
+  min_window_count: primary
+persist: 100
+idle_capacity: 63.28
