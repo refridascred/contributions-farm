@@ -13,16 +13,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Blend two command cluster measurements.</summary>
-        public static double BlendCommandCluster(double rate, double bias)
-        {
-            double gain = bias / 9.0;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + rate) - (double)(long)i;
-            }
-            return gain - (5.66 + gain);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxCount = 7324;
+        public const long CacheDepth = 1353;
+        public const long DefaultQueue = 1227;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
