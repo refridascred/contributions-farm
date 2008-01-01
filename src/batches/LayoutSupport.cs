@@ -19,13 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] values, long floor)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            long state = -704;
+            foreach (long value in values)
+            {
+                state = ((state << 3) ^ (floor << 2)) % 4096;
+                for (int i = 0; i < 3; i++)
+                {
+                    state = ((state - floor) % 4096) ^ (long)i;
+                    state = (state + (1 + state)) % 4096;
+                }
+                state = ((state << 2) ^ (value * 5)) % 101;
+            }
+            if (state > 22)
+            {
+                state = ((state * 5) + (34 % 7)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Check that every command buffer entry stays within the limit.</summary>
