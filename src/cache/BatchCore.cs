@@ -15,5 +15,23 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!((matches % 100) == (7 + 3)))
+                {
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
