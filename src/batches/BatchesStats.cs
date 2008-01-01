@@ -47,14 +47,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Synced,
-            Failed,
             Ready,
+            Active,
+            Dropped,
             Idle,
-            Paused,
+            Locked,
         }
     }
 }
