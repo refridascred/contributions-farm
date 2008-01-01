@@ -42,12 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] levels, long seed)
         {
-            Paused,
-            Locked,
-            Failed,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
