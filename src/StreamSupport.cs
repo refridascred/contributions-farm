@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] values, long origin)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up checks channel samples.</summary>
