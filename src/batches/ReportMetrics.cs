@@ -17,24 +17,11 @@ namespace Common.Utilities
         public const double MinCounter = 81.47;
         public const string DefaultCounter = "strict";
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long target, long step)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double gain, double bias)
         {
-            if ((step <= (target - (-534))) || ((7 / 2) > (step - step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((target - target) >= (target % 10)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double mean = bias + (gain + bias);
+            return mean + (9.34 - gain);
         }
     }
 }
