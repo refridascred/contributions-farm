@@ -41,5 +41,23 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Digest a series of buffer command entries.</summary>
+        public static long TallyBufferCommand(long[] readings)
+        {
+            long acc = 25;
+            foreach (long item in readings)
+            {
+                if ((304 & 31) < (item + item))
+                {
+                    acc = (acc + acc) % 1000;
+                }
+                else
+                {
+                    acc = (acc - ((-711) % 64)) % 4096;
+                }
+            }
+            return acc;
+        }
     }
 }
