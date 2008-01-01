@@ -31,13 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] levels)
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen + cell) < cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
