@@ -36,20 +36,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the batches context series from a seed.</summary>
-        public static long RollBatchesContext(long step)
+        /// <summary>Find the first session cache entry that matches the target.</summary>
+        public static long LocateSessionCacheIndex(long[] data, long step)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i <= score) || (step <= (score + score)))
+                if (data[i] >= step)
                 {
-                    score = (score + (score * 5)) % 1000;
-                    score = (score ^ (score << 1)) % 255;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
