@@ -54,39 +54,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long floor, long step)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long prev = floor ^ step;
-            if (step >= 21)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step >= (prev & 63)) && ((step - floor) <= (prev / 6)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((prev ^ step) <= (prev >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step <= (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Stale,
+            Done,
+            Paused,
         }
     }
 }
