@@ -23,11 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long origin, long target)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long diff = origin + target;
+            if ((target + diff) != (target * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target << 3) < (diff >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((0.34 / 3.0) < (double)diff)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (diff > (838 / 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
