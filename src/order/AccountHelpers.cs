@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the batches githubfarm series from a seed.</summary>
-        public static long SeriesBatchesGithubfarm(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "primary-1";
+        public const string CacheCounter = "fallback-edge";
+        public const string LimitCounter = "alpha-1";
+        public const long SoftFactor = 8039;
+        public const double MaxCounter = 76.61;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] items, long step)
