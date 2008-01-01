@@ -1,6 +1,17 @@
 {
-  "min_window_s": 36.49,
-  "min_limit": 712,
-  "retry_interval": true,
-  "token_window": true
+  "batch_interval": "green",
+  "soft_interval_ms": {
+    "min_ttl": 6.97,
+    "profile_ttl": true,
+    "persist": [105, 163, 434],
+    "context_capacity": "green",
+    "dry_run": {
+      "cluster_capacity": "strict",
+      "soft_limit": "green",
+      "strict": "cached",
+      "idle_ttl": "strict"
+    },
+    "command_retries": true
+  },
+  "base_limit_pct": 8488
 }
