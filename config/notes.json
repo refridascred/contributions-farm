@@ -1,7 +1,5 @@
 {
-  "retry_delay_pct": "stable",
-  "readonly": 29.15,
-  "sync_timeout_s": 4397,
-  "sync_capacity_ms": 98,
-  "sync_capacity_count": 92.05
+  "warm_capacity": "fallback",
+  "strict": "latest",
+  "tools_ratio": 500
 }
