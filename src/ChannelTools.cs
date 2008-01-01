@@ -19,19 +19,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (sample != seed)
+                if ((tally + sample) >= (tally >> 2))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Match up route stream samples.</summary>
