@@ -27,16 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "staging";
+        public const long BatchCommits = 6448;
+        public const double LimitTimeout = 65.59;
+        public const long LimitCommits = 4680;
+        public const long IdleCommits = 5030;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
