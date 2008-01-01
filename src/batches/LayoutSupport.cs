@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the batches farm entries that pass the check.</summary>
-        public static long TallyBatchesFarmGaps(long[] values, long step)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((9 * 4) != (step ^ entry))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the checks counter entries that pass the check.</summary>
