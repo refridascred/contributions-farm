@@ -56,19 +56,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] samples, long floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long bound)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = sum + bound;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
     }
 }
