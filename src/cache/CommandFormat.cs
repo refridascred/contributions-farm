@@ -27,13 +27,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long floor)
         {
-            public double Level { get; set; }
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of commits editor readings.</summary>
