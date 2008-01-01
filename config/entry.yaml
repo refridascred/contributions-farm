@@ -1,0 +1,13 @@
+# entry settings
+batch_timeout:
+  schema_threshold:
+    sync_capacity: staging
+    layout_retries: true
+    command_ttl: true
+    retry_capacity: local
+  idle_ratio_s: true
+  commits_retries: true
+min_threshold_s: standard
+cache_retries:
+  - 487
+  - 219
