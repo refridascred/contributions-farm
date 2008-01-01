@@ -18,5 +18,19 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (step <= (sample + step))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
