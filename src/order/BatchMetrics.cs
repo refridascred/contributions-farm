@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] data)
+        /// <summary>Check that every order githubfarm entry stays within the limit.</summary>
+        public static bool GuardOrderGithubfarmBounds(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((double)sample < (8.07 - 4.85))
+                if (item >= limit)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Roll a batch graph counter forward.</summary>
