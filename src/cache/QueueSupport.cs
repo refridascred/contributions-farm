@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long limit)
         {
-            Dropped,
-            Synced,
-            Paused,
-            Retry,
+            if ((limit + floor) == (floor ^ limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(((-849) - floor) >= (limit % 16)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
