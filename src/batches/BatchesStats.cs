@@ -27,12 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Stale,
-            New,
-            Paused,
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first session cache entry that matches the target.</summary>
