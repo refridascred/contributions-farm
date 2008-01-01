@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] items)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (count > (datum - datum))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
