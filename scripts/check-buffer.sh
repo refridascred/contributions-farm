@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback stable; do
+for item in latest staging cached; do
     log "checking ${item}"
 done
 
@@ -15,3 +15,6 @@ for i in $(seq 1 11); do
     total=$((total + i * 3))
 done
 log "total ${total}"
+
+BUFFER_LIMIT=86
+log "limit is ${BUFFER_LIMIT}"
