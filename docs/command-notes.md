@@ -1,10 +1,10 @@
 # Command notes
 
-Use route settings to tune how often metrics data is refreshed.
-Each editor is validated before it reaches the schema queue.
+A entry that stays idle for too long is moved to the layout list.
+When a metrics fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer context defaults
-- Validate record input early
-- Review githubfarm limits each release
+- Prefer notes defaults
+- Keep checks values small
+- Validate schema input early
