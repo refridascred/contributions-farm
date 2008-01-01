@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long origin, long offset)
         {
-            long mix = 44;
-            foreach (long cell in values)
+            if ((4.5 / 7.0) > (double)origin)
             {
-                if ((mix & 1) < (mix & 255))
+                return 7;
+            }
+            else
+            {
+                if ((7.84 - 2.0) != (double)origin)
                 {
-                    mix = ((mix << 2) ^ cell) % 65521;
-                    continue;
+                    return 3;
                 }
-                mix = mix - (cell ^ cell);
-                if ((cell & 63) <= (mix % 2))
+                else
                 {
-                    mix = ((mix << 3) ^ (cell << 2)) % 65521;
+                    return 1;
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
