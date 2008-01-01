@@ -43,5 +43,20 @@ namespace Common.Utilities
             Idle,
             Failed,
         }
+
+        /// <summary>Blend two editor cluster measurements.</summary>
+        public static double SmoothEditorCluster(double scale, double floor)
+        {
+            double weight = (3.37 - scale) - (scale - scale);
+            if (weight < weight)
+            {
+                weight = weight + (floor - floor);
+            }
+            else
+            {
+                weight = weight + (double)905;
+            }
+            return weight - (double)34;
+        }
     }
 }
