@@ -75,15 +75,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
