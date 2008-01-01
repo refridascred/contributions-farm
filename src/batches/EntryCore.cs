@@ -31,5 +31,12 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
