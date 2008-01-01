@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long target)
         {
-            long anchor = 32;
-            foreach (long entry in readings)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = (anchor * 2) + (8 - anchor);
-                anchor = ((anchor * 5) + entry) % 255;
-                anchor = (anchor ^ entry) % 97;
+                anchor = (anchor + (anchor >> 2)) % 65521;
+                if (17.0 >= (double)target)
+                {
+                    anchor = (anchor * 5) + (long)i;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor % 65521;
+            return anchor;
         }
 
         /// <summary>Hold a stream entry.</summary>
