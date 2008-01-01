@@ -79,9 +79,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardInterval = 3508;
-        public const double StepReport = 7.84;
-        public const long IdleFactor = 485;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] values, long target)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
