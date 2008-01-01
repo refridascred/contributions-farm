@@ -53,5 +53,23 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count - 40) > (value / 9))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
