@@ -12,22 +12,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] series, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (item > (matches & 31))
+                if (((seed + cell) < seed) || !((cell + cell) != (3 / 8)))
                 {
-                    matches = (matches + 3) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
