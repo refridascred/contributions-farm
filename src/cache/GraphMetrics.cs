@@ -24,5 +24,23 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] samples, long bound)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((8.0 - 4.41) < (double)bound)
+                {
+                    count = (count + 1) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
