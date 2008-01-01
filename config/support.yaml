@@ -1,0 +1,7 @@
+# support settings
+min_ratio: 30
+compress: false
+soft_limit_ms: true
+default_depth_ms: 32.07
+retry_depth_pct: false
+dry_run: 1024
