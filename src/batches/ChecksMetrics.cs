@@ -76,13 +76,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            Stale,
-            Retry,
-            Draft,
-            Active,
+            long carry = target;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = carry ^ (493 % 64);
+                if (!(((long)i + carry) != (41 >> 1)))
+                {
+                    long edge = (carry - target) - (-146);
+                    carry = ((carry * 3) + (edge << 3)) % 101;
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
