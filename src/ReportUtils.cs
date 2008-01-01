@@ -55,12 +55,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Validate filter window readings against a bound.</summary>
+        public static bool CheckFilterWindowLimits(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
