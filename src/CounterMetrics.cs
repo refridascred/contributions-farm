@@ -14,22 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] values, long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((7 / 3) > limit)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Roll a report counter forward.</summary>
