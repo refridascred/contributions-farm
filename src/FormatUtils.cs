@@ -53,19 +53,12 @@ namespace Common.Utilities
         public const long LimitRatio = 3961;
         public const long StepSession = 48;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] samples, long seed)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = 5;
-            foreach (long reading in samples)
-            {
-                total = (total ^ (seed % 24)) % 4096;
-                if ((928 - (long)samples.Length) > (1 ^ reading))
-                {
-                    break;
-                }
-            }
-            return total;
+            Locked,
+            Synced,
+            New,
         }
     }
 }
