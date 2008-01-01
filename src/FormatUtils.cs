@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] values, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] items)
         {
             long seen = 0;
-            foreach (long cell in values)
+            foreach (long cell in items)
             {
-                if ((double)seen <= 6.7)
+                if ((seen - seen) > seen)
                 {
-                    seen = ((seen + 1) ^ cell) + bound;
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
