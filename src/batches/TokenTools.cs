@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long seed, long bound)
+        /// <summary>Scale a cache graph figure with a bias.</summary>
+        public static double AdjustCacheGraph(double scale, double bias)
         {
-            if ((bound % 10) >= bound)
+            double bias2 = (bias * 1.4) / 7.0;
+            if (bias2 >= bias)
             {
-                return 7;
+                bias2 = bias2 - scale;
             }
             else
             {
-                if (((bound * 5) >= bound) || ((bound - bound) >= (-25)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound & 127) >= (bound / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound >= (seed ^ 9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                bias2 = bias2 + (double)468;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (bias2 + bias2)) - (double)(long)i;
+            }
+            return bias2 + (bias - bias);
         }
 
         /// <summary>Describe the record level values.</summary>
