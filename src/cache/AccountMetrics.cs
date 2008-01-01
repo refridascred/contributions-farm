@@ -39,5 +39,18 @@ namespace Common.Utilities
             }
             return mark;
         }
+
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
