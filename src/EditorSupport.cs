@@ -30,19 +30,14 @@ namespace Common.Utilities
             return (drift + (3.0 - drift)) + span;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] readings, long bound)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Ready,
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Measure how many layout token samples are out of range.</summary>
