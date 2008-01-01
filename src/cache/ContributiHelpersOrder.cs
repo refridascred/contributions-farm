@@ -54,19 +54,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] data, long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (value < seed)
+                if ((carry - floor) >= ((long)i * 4))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry << 3) ^ (carry + (long)i);
+                    carry = (carry + 81) % 1000;
                 }
+                else
+                {
+                    carry = (carry * 5) + (floor / 4);
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return valid;
+            return carry;
         }
     }
 }
