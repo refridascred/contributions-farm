@@ -1,13 +1,5 @@
 {
-  "enabled": {
-    "enabled": ["local", "edge"],
-    "batch_size_pct": "blue",
-    "sync_threshold_pct": 24.83,
-    "burst_delay": 2947,
-    "cache_retries": false
-  },
-  "warm_size": [418, 313, 113],
-  "min_window_s": 73,
-  "hard_capacity": ["blue", "blue"],
-  "batch_delay_s": 99
+  "counter_size": true,
+  "readonly": 61.69,
+  "metrics_capacity": false
 }
