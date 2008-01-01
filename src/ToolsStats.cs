@@ -26,5 +26,21 @@ namespace Common.Utilities
         public const string CacheSupport = "stable-edge";
         public const long HardTimeout = 1818;
         public const double SoftSupport = 79.82;
+
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((limit < (total >> 5)) || ((long)i <= (total << 3)))
+                {
+                    total = total - total;
+                }
+                total = (total - (limit * 3)) % 97;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
