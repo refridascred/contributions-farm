@@ -1,6 +1,6 @@
 {
-  "cache_ratio_count": "legacy",
-  "persist": 60,
-  "schema_delay": 60,
-  "sync_interval_pct": "primary"
+  "enabled": true,
+  "batch_capacity": ["blue", "primary", "blue"],
+  "persist": "local",
+  "layout_size": "fallback"
 }
