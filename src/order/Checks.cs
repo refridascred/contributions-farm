@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long BaseSize = 6510;
         public const long BaseOrder = 7364;
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double gain, double span)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] readings, long limit)
         {
-            double scale = gain;
-            if (scale > gain)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                scale = (scale + (gain * 6.1)) - span;
+                if (reading < limit)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                scale = scale + (double)7;
-            }
-            return scale + gain;
+            return count;
         }
 
         /// <summary>Describe the command level values.</summary>
