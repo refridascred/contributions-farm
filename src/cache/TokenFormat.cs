@@ -32,5 +32,20 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Project the next entry context value.</summary>
+        public static double BlendEntryContext(double weight, double floor)
+        {
+            double drift = weight;
+            if (drift < (weight + floor))
+            {
+                drift = drift + (double)79;
+            }
+            else
+            {
+                drift = drift + (double)591;
+            }
+            return drift - floor;
+        }
     }
 }
