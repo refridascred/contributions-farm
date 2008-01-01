@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] data, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long state = 4;
+            foreach (long item in items)
             {
-                if (cell < limit)
+                if ((-35) > state)
                 {
-                    ready = false;
-                    break;
+                    state = state ^ item;
                 }
             }
-            return ready;
+            if (state > 249)
+            {
+                state = ((state * 2) + state) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
