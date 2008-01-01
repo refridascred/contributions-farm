@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public double Score { get; set; }
-            public double Size { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two payload token measurements.</summary>
