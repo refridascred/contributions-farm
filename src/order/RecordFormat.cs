@@ -27,15 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count tools account pairs that satisfy a relation.</summary>
-        public static long MatchToolsAccountCount(long[] samples)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] samples)
         {
             long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 16)
+                    if ((samples[i] - samples[j]) != 2)
                     {
                         matches = matches + 1;
                     }
