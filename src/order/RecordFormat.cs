@@ -19,32 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long step, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            long bound = step ^ target;
-            if ((double)target >= (4.68 * 13.0))
+            long mix = 29;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 7) <= (bound + 388))
+                mix = (mix ^ (mix ^ mix)) % 255;
+                if (((7.0 * 5.08) != (double)mix) || (cell < (cell + cell)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step % 64) <= 855)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = ((mix * 5) + (cell << 3)) % 255;
                 }
             }
+            return mix;
         }
 
         /// <summary>Blend two queue measurements.</summary>
