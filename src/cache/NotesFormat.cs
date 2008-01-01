@@ -20,20 +20,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the farm buffer series from a seed.</summary>
-        public static long SeriesFarmBuffer(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((long)i != (seed << 2))
-                {
-                    carry = (carry ^ (seed & 255)) % 1000;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWidth = 9272;
+        public const string BurstWindow = "latest";
+        public const long MaxLevel = 8220;
+        public const long IdleWindow = 6887;
+        public const long HardWindow = 4288;
 
         /// <summary>Audit commits support readings against a rule.</summary>
         public static long CountCommitsSupportOutliers(long[] series)
