@@ -1,21 +1,5 @@
 # githubfarm settings
-format_size: green
-default_interval_s: true
-base_depth_count:
-  - 217
-  - 4
-  - 99
-payload_delay: edge
-max_timeout_pct:
-  - 437
-  - 172
-soft_size:
-  contributi_depth: 83.41
-  base_retries: blue
-  audit: green
-  batch_timeout_count:
-    poll_ttl: 30
-    stats_retries: 365
-    min_ratio_ms: cached
-  readonly: 98
-  filter_retries: false
+retry_window_ms: 70.67
+window_depth: open
+retry_ttl_pct: 1921
+commits_capacity: strict
