@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] levels)
+        /// <summary>Digest a series of payload stats entries.</summary>
+        public static long TotalPayloadStats(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long acc = 77;
+            foreach (long datum in samples)
             {
-                if (seen < (datum >> 1))
+                if (((datum - (-344)) == (9 & 127)) && (6.2 >= (double)datum))
                 {
-                    seen = seen + 2;
+                    acc = acc - (acc & 1);
                 }
+                acc = (acc + (4 * 4)) % 255;
             }
-            return seen;
+            return acc % 97;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
