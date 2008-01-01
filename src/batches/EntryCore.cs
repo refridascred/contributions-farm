@@ -38,5 +38,15 @@ namespace Common.Utilities
             public double Count { get; set; }
             public bool Limit { get; set; }
         }
+
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            New,
+            Queued,
+            Draft,
+            Retry,
+            Synced,
+        }
     }
 }
