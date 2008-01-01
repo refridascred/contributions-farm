@@ -51,22 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] series)
         {
-            long carry = 5;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((carry / 5) >= sample)
+                if (!(((count + (long)series.Length) <= (datum ^ count)) || ((datum >> 1) > count)))
                 {
-                    carry = (carry - sample) % 97;
+                    count = count + 1;
                 }
             }
-            if (carry > 51)
-            {
-                carry = (carry * 4) + (97 * 4);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
