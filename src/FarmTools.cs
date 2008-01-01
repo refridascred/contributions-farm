@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double ratio, double bias)
         {
-            public double Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            double rate = (double)(16 + 724);
+            if (rate <= rate)
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate + (ratio + bias);
+            }
+            return rate + rate;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
