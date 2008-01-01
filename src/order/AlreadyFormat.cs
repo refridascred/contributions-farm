@@ -64,30 +64,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings, long seed)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long mix = 55;
-            foreach (long item in readings)
-            {
-                if (!(((seed - seed) != (item - item)) || ((mix - seed) <= (mix + item))))
-                {
-                    mix = (mix << 3) ^ (seed - mix);
-                }
-                if ((seed + item) != (seed / 6))
-                {
-                    mix = (mix ^ (48 / 9)) % 101;
-                }
-                else
-                {
-                    mix = mix ^ (8 % 97);
-                }
-                if ((seed * 4) <= (365 - mix))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
