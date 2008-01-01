@@ -71,5 +71,12 @@ namespace Common.Utilities
             }
             return ready;
         }
+
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public bool Region { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
