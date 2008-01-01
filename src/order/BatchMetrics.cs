@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] series)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long state = 63;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state << 2) ^ (state * 2)) % 65521;
-                if ((state * 5) <= datum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state * 5) + state;
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 86)
-            {
-                state = ((state * 5) + state) % 101;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a stream options.</summary>
