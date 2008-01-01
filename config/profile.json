@@ -1,5 +1,6 @@
 {
-  "counter_size": true,
-  "readonly": 61.69,
-  "metrics_capacity": false
+  "enabled": "cached",
+  "default_interval_s": true,
+  "hard_threshold_ms": true,
+  "base_window_pct": 21
 }
