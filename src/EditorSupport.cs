@@ -14,13 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Synced,
-            Queued,
-            New,
-            Dropped,
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a context format reading.</summary>
