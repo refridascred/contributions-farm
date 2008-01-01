@@ -1,13 +1,9 @@
 # support settings
-base_limit_s: standard
-min_timeout_ms: 100
-audit:
-  - 351
-  - 23
-strict:
-  - fallback
-  - strict
-  - blue
-  - strict
-enabled: 58
-readonly: 46
+warm_ratio_count:
+  - eu-west
+  - standard
+  - eu-west
+context_depth: 49
+cache_depth: 65
+soft_capacity_ms: 4902
+poll_timeout: 44.64
