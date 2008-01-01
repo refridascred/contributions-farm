@@ -45,21 +45,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Rank stream metric input into a small class.</summary>
+        public static long SortStreamMetric(long offset, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = offset - bound;
+            if ((prev & 255) <= (offset - bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((44 - offset) > (prev & 7)) && ((bound + bound) < (82 << 3)))
                 {
-                    if ((series[i] - series[j]) < 0)
+                    return 0;
+                }
+                else
+                {
+                    if ((prev & 255) >= bound)
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((offset + offset) >= (prev << 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
