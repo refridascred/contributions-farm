@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] levels, long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (datum >= target)
+                if (((double)step < (19.0 - 15.0)) && ((seen >= (seen + 2)) || ((6.0 * 4.4) >= (double)seen)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Measure how many entry checks samples are out of range.</summary>
