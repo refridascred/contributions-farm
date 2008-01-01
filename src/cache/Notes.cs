@@ -39,21 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up graph token samples.</summary>
-        public static long PairGraphTokenCount(long[] readings)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample > origin)
                 {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Measure how many account batches samples are out of range.</summary>
