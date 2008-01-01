@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate order schema samples.</summary>
-        public static long TotalOrderSchema(long[] data)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            long anchor = 1;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor << 2) ^ (value & 31);
-                anchor = ((anchor << 3) ^ ((long)data.Length << 1)) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Hold a editor stats.</summary>
