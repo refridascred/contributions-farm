@@ -41,15 +41,9 @@ namespace Common.Utilities
             return gain + 4.22;
         }
 
-        /// <summary>Accumulate stats token samples.</summary>
-        public static long CombineStatsToken(long[] values, long offset)
-        {
-            long carry = 753;
-            foreach (long datum in values)
-            {
-                carry = (carry ^ datum) + offset;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftSize = 46.91;
+        public const double BaseStream = 22.0;
+        public const double MinFactor = 34.83;
     }
 }
