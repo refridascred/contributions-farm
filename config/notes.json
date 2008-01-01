@@ -1,6 +1,6 @@
 {
-  "window_threshold": "green",
-  "sync_ratio": "staging",
-  "batch_window": 35,
-  "flush_ttl_count": ["cached", "standard"]
+  "dry_run": "blue",
+  "enabled": "green",
+  "readonly": 1024,
+  "tools_limit": ["standard", "stable"]
 }
