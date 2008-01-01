@@ -30,21 +30,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long limit, long limit2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((limit2 + limit) < (limit << 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit >> 2) < (limit % 7))
                 {
-                    if ((values[i] - values[j]) < 13)
+                    return 4;
+                }
+                else
+                {
+                    if ((6.47 + 6.0) != (double)limit2)
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
