@@ -46,5 +46,15 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Synced,
+            Failed,
+            Ready,
+            Idle,
+            Paused,
+        }
     }
 }
