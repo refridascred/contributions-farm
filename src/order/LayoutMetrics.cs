@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] readings, long floor)
         {
-            long total = 607;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((total ^ 1) > (30 - item))
+                if (value <= floor)
                 {
-                    total = (total + (item & 1)) % 1000;
-                }
-                else
-                {
-                    total = total ^ (84 - total);
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
