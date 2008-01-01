@@ -82,18 +82,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] series, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] samples)
         {
-            long carry = 28;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (((double)seed > 6.9) || ((double)datum != (9.04 + 2.0)))
+                if ((sample >> 2) > seen)
                 {
-                    carry = carry ^ (carry * 3);
+                    seen = seen + 3;
                 }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
