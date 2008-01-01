@@ -34,5 +34,14 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Draft,
+            Dropped,
+            New,
+            Active,
+        }
     }
 }
