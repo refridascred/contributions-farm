@@ -27,13 +27,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
