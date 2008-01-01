@@ -1,11 +1,4 @@
 # support settings
-persist: 88.86
-editor_ttl: 30
-soft_window: true
-poll_retries: 32.98
-poll_delay:
-  - eu-west
-  - fallback
-  - fallback
-  - eu-west
-compress: standard
+verbose: 64.8
+window_retries: 38.91
+cache_size_count: 5116
