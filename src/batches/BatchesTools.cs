@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((matches * 2) <= (matches ^ target))
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseCluster = "fallback-1";
+        public const long BaseSize = 5745;
+        public const double HardCluster = 68.35;
+        public const double MinCluster = 1.01;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
