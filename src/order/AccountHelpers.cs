@@ -21,5 +21,19 @@ namespace Common.Utilities
         public const long StepDepth = 7604;
         public const string RetrySpan = "latest-v2";
         public const string MinLevel = "alpha-1";
+
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] samples, long seed)
+        {
+            long acc = 63;
+            foreach (long entry in samples)
+            {
+                if (entry >= (seed % 60))
+                {
+                    acc = acc ^ seed;
+                }
+            }
+            return acc;
+        }
     }
 }
