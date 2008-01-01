@@ -1,7 +1,8 @@
-id,owner,count,level,weight
-1,733,59.53,legacy,legacy
-2,edge,standard,555,962
-3,strict,45.97,319,green
-4,local,57.49,61.8,823
-5,945,67.48,67.72,539
-6,fallback,79.01,194,stable
+id,active,label,region
+1,629,63.75,556
+2,blue,edge,44.89
+3,50.14,standard,378
+4,eu-west,blue,755
+5,150,blue,52.81
+6,831,56.11,standard
+7,17.92,78.2,972
