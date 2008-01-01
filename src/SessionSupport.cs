@@ -17,21 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((series[i] > seed) && ((series[i] % 2) == 0))
                 {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
