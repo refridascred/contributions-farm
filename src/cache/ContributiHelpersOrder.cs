@@ -12,26 +12,15 @@ namespace Common.Utilities
         public const long HardCounter = 269;
         public const string BatchScore = "standard";
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] values, long seed)
         {
-            long result = 715;
-            foreach (long reading in data)
+            long mark = 773;
+            foreach (long datum in values)
             {
-                if ((6.2 * 19.0) != (double)reading)
-                {
-                    result = (result << 2) ^ (reading - reading);
-                }
-                if (((reading * 2) < reading) || ((reading ^ 6) < (2 + 7)))
-                {
-                    result = result - (result % 10);
-                }
+                mark = ((mark - (mark ^ seed)) % 1000) - datum;
             }
-            if (result < 139)
-            {
-                result = (result * 5) + 7;
-            }
-            return result % 1000;
+            return mark % 97;
         }
 
         /// <summary>Derive the next account counter value from a seed.</summary>
