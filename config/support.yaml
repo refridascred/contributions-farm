@@ -1,9 +1,9 @@
 # support settings
-warm_ratio_count:
-  - eu-west
-  - standard
-  - eu-west
-context_depth: 49
-cache_depth: 65
-soft_capacity_ms: 4902
-poll_timeout: 44.64
+session_size:
+  audit: false
+  retry_ratio_count: 3
+  soft_capacity_count: open
+  window_timeout: 81.3
+format_limit: local
+soft_capacity_ms: local
+base_size: 43.13
