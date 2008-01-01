@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((((-850) << 1) != (bound * 3)) && (((double)bound != (double)hits) && ((hits % 16) > (hits % 100))))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 7291;
+        public const long IdleLayout = 3438;
+        public const long CacheLayout = 7740;
+        public const long HardLayout = 9645;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string BaseCluster = "fallback-1";
