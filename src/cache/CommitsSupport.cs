@@ -30,26 +30,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of filter farm entries.</summary>
-        public static long FoldFilterFarm(long[] levels)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            long total = 26;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total + total) <= (428 + total))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total * 3) + (item / 3);
-                }
-                else
-                {
-                    total = (total - (7 & 15)) % 65521;
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > (-694))
-            {
-                total = ((total << 2) ^ (total + total)) % 97;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
