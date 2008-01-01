@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long bound, long floor)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            if ((1.9 - 3.0) >= (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + bound) != (bound ^ 937))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor - bound) <= bound) || (7.0 < (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
