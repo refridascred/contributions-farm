@@ -1,14 +1,13 @@
 # githubfarm settings
-audit: cached
-account_limit:
-  - 454
-  - 418
-  - 125
-  - 355
-verbose:
+dry_run: primary
+sync_limit_s: edge
+batch_timeout: green
+batch_ttl: 500
+hard_timeout_ms:
   - legacy
   - latest
-  - stable
-min_capacity_ms: legacy
-metric_window: 50.64
-default_capacity: eu-west
+  - cached
+  - edge
+flush_depth:
+  - 45
+  - 118
