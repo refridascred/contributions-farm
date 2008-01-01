@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double rate, double bias)
         {
-            Queued,
-            Synced,
-            Closed,
-            Idle,
+            double load = bias;
+            if (load > rate)
+            {
+                load = load + bias;
+            }
+            return load - (double)(-45);
         }
 
         /// <summary>Describe the already state values.</summary>
