@@ -33,5 +33,39 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long bound, long step)
+        {
+            if (!(step > (step % 97)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (7.0 < (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound / 5) < bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((0.8 - 2.58) != (double)step) || ((11.0 / 2.0) == (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
