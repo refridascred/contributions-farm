@@ -36,9 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitBudget = 1048;
-        public const long CacheCount = 7986;
-        public const long LimitTools = 7690;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+        }
     }
 }
