@@ -27,13 +27,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            New,
-            Active,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 6616;
+        public const long BurstInterval = 850;
+        public const long BatchWidth = 415;
     }
 }
