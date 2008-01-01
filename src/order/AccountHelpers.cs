@@ -15,5 +15,11 @@ namespace Common.Utilities
             }
             return acc;
         }
+
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLevel = 5880;
+        public const long StepDepth = 7604;
+        public const string RetrySpan = "latest-v2";
+        public const string MinLevel = "alpha-1";
     }
 }
