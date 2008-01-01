@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBufferBounds(long[] levels, long bound)
         {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Count { get; set; }
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the filter mode values.</summary>
