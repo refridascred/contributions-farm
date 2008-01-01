@@ -27,9 +27,31 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSize = "staging-v2";
-        public const string CacheScore = "standard";
-        public const string BurstSchema = "staging-edge";
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long limit)
+        {
+            if (limit <= (limit & 127))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit & 3) <= ((-929) / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
