@@ -48,16 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long step)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double rate, double span)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            double drift = 1.1;
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total * 4) + (step ^ step)) % 97;
-                total = ((total * 3) + (long)i) % 101;
+                drift = ((drift + rate) + (double)(long)i) - span;
             }
-            return total;
+            return drift - rate;
         }
     }
 }
