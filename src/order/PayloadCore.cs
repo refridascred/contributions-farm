@@ -19,5 +19,12 @@ namespace Common.Utilities
             }
             return state;
         }
+
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
