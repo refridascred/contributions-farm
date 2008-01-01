@@ -34,12 +34,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] series, long origin)
         {
-            New,
-            Closed,
-            Locked,
+            long acc = -60;
+            foreach (long datum in series)
+            {
+                acc = (acc - 77) - datum;
+            }
+            if (acc > 103)
+            {
+                acc = (acc ^ origin) % 4096;
+            }
+            return acc;
         }
     }
 }
