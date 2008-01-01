@@ -17,13 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 269;
+        public const long LimitWidth = 3719;
+        public const long IdleLevel = 3399;
+        public const long SoftRatio = 2815;
+        public const string HardCounter = "strict";
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
