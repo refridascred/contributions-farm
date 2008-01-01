@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinFactor = 5995;
-        public const long MaxSize = 6429;
-        public const double CacheScore = 39.95;
-        public const long RetryEntry = 3817;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleCount = 6648;
+        public const string StepReport = "alpha-1";
+        public const long LimitReport = 7318;
+        public const double BaseWidth = 40.6;
+        public const long RetryDepth = 6301;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
