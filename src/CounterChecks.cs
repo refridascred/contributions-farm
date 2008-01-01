@@ -60,10 +60,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "open-v2";
-        public const string SoftFactor = "open";
-        public const long BaseScore = 9272;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] data, long bound)
