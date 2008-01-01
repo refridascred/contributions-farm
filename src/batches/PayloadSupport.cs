@@ -28,15 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Locked,
+            New,
+            Stale,
+            Idle,
         }
     }
 }
