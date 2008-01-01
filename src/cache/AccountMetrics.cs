@@ -48,12 +48,21 @@ namespace Common.Utilities
             return drift + 3.56;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
