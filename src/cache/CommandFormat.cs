@@ -31,14 +31,19 @@ namespace Common.Utilities
         public const string HardBatch = "cached-edge";
         public const long WindowScore = 9458;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] values, long target)
         {
-            Dropped,
-            Done,
-            Pending,
-            Paused,
-            Stale,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit stats entry readings against a rule.</summary>
