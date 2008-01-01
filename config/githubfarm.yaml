@@ -1,24 +1,20 @@
 # githubfarm settings
-sync_limit: true
-max_retries_pct: false
-idle_timeout_s: false
-farm_retries:
-  poll_size: 1024
-  dry_run: 59
-  enabled:
-    - primary
-    - primary
-    - blue
-  schema_capacity: strict
-  strict: staging
-  base_size:
-    retry_ratio: 7
-    max_interval_pct: true
-    readonly: 30
-    warm_delay_count: latest
-    burst_interval_ms:
-      - 192
-      - 351
-      - 30
-      - 201
-    warm_capacity_pct: green
+schema_window: standard
+enabled: primary
+soft_size_pct: open
+dry_run:
+  payload_size: 61.66
+  batch_size: stable
+  poll_delay_count:
+    dry_run: 2
+    hard_ratio_ms: 74
+    hard_delay_ms: 500
+    checks_limit: true
+    sync_retries_ms: eu-west
+    warm_threshold_s:
+      - 397
+      - 442
+      - 11
+      - 267
+strict: 52
+warm_window_count: edge
