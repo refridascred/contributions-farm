@@ -46,15 +46,11 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Pending,
-            Done,
-            Paused,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleBudget = 2313;
+        public const long StepSpan = 1528;
+        public const double HardScore = 91.56;
+        public const double StepContext = 94.99;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MinWindow = 8712;
