@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            long result = 60;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((result - value) == (value * 5))
+                {
+                    result = ((result + (value ^ 70)) % 255) - step;
+                }
+                if ((double)value < 18.0)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return result % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
