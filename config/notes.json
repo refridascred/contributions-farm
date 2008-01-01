@@ -1,6 +1,12 @@
 {
-  "order_capacity": 916,
-  "enabled": "fallback",
-  "support_depth": "primary",
-  "soft_ttl_ms": true
+  "warm_timeout": true,
+  "retry_delay_count": 88.8,
+  "poll_threshold_count": 54,
+  "min_ttl_s": {
+    "burst_delay": 78.43,
+    "min_capacity_count": 8987,
+    "audit": 75
+  },
+  "idle_ttl": false,
+  "notes_capacity": "green"
 }
