@@ -36,21 +36,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
