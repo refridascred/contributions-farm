@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every order githubfarm entry stays within the limit.</summary>
-        public static bool GuardOrderGithubfarmBounds(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 3.92;
+        public const double LimitFactor = 88.66;
+        public const string MinWindow = "alpha-1";
+        public const long IdleFactor = 6687;
+        public const long BurstScore = 3908;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long CompareLayoutCount(long[] series)
