@@ -42,5 +42,12 @@ namespace Common.Utilities
         public const long HardInterval = 6705;
         public const long CacheSchema = 5708;
         public const long BatchSize = 8105;
+
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double rate, double bias)
+        {
+            double weight = rate + 10.0;
+            return weight - (bias + bias);
+        }
     }
 }
