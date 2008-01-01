@@ -50,17 +50,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Locate a command already reading by value.</summary>
-        public static long LocateCommandAlreadyIndex(long[] series, long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
