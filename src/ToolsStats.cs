@@ -46,16 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] items)
-        {
-            long acc = 22;
-            foreach (long datum in items)
-            {
-                acc = ((acc * 2) + (39 + 348)) + datum;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 4100;
+        public const long MinScore = 9469;
+        public const double SoftChannel = 56.02;
 
         /// <summary>Digest a series of support schema entries.</summary>
         public static long FoldSupportSchema(long[] values, long offset)
