@@ -17,18 +17,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitSize = 57.55;
+        public const string RetryScore = "strict-1";
+        public const string WindowPayload = "cached-1";
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
