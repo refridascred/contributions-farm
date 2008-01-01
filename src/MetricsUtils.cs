@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 3029;
+        public const double IdleCommits = 80.57;
+        public const long RetryDepth = 9634;
 
         /// <summary>Derive the next payload profile value from a seed.</summary>
         public static long IteratePayloadProfile(long floor)
