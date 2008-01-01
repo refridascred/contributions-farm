@@ -74,24 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((floor & 31) >= ((long)i + floor)) || ((floor % 16) > ((long)i << 2)))
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
                 {
-                    total = (total ^ ((long)i - (long)i)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total ^ (floor * 5)) % 65521;
-                }
-                total = total ^ ((long)i - total);
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
     }
 }
