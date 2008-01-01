@@ -30,5 +30,23 @@ namespace Common.Utilities
         public const long MaxInterval = 4894;
         public const long StepSpan = 5735;
         public const long LimitTimeout = 1786;
+
+        /// <summary>Roll a payload support counter forward.</summary>
+        public static long IteratePayloadSupport(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total + 73) % 97;
+                long lane = (seed + seed) + (seed + seed);
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    long seen = (lane + total) ^ lane;
+                    lane = (lane ^ (seen * 2)) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
