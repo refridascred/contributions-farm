@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long step)
         {
-            Idle,
-            New,
-            Synced,
-            Retry,
-            Closed,
+            if ((step >> 3) == (239 + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step >= (12.0 * 5.5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a cache stats.</summary>
