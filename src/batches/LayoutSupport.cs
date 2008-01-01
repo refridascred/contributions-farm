@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Synced,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowSize = 400;
+        public const long HardTimeout = 8190;
+        public const long DefaultMetrics = 5855;
+        public const string CacheMetrics = "standard-edge";
 
         /// <summary>Count the checks counter entries that pass the check.</summary>
         public static long MeasureChecksCounterOutliers(long[] values, long limit)
