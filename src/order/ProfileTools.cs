@@ -21,22 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] levels, long offset)
         {
-            long carry = 121;
-            foreach (long datum in items)
+            long sum = 1;
+            foreach (long datum in levels)
             {
-                if ((datum - datum) > (1 >> 2))
+                if (datum >= (datum - sum))
                 {
-                    carry = (carry ^ (carry + 7)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ 714) % 4096;
+                    sum = ((sum - (sum << 1)) % 1000) + offset;
                 }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Accumulate order samples.</summary>
