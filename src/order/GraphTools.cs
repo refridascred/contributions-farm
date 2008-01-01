@@ -52,14 +52,19 @@ namespace Common.Utilities
             return drift - (scale - drift);
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long bound)
         {
-            Ready,
-            Active,
-            Stale,
-            Done,
-            Paused,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
