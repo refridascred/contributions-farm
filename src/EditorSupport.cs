@@ -58,15 +58,17 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double weight, double span)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] readings, long seed)
         {
-            double weight2 = span;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = ((weight2 + (5.0 / 2.0)) + (double)(long)i) + weight;
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + span;
+            return -1;
         }
 
         /// <summary>Describe the report state values.</summary>
