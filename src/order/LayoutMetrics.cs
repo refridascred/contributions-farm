@@ -22,5 +22,12 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Total { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
