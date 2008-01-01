@@ -45,13 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] data)
         {
-            Retry,
-            Failed,
-            Active,
-            Draft,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((454 + value) == (seen & 255))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
