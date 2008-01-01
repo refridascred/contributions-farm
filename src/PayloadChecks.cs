@@ -47,26 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] readings, long floor)
+        /// <summary>Roll a checks route counter forward.</summary>
+        public static long DeriveChecksRoute(long bound)
         {
-            long anchor = 2;
-            foreach (long cell in readings)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (anchor <= (anchor + 72))
-                {
-                    anchor = anchor - 480;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + cell) % 1000;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (anchor > (-3))
-            {
-                anchor = anchor - (floor - (long)readings.Length);
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Hold a schema stats.</summary>
