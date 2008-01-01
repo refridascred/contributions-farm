@@ -1,13 +1,4 @@
 # githubfarm settings
-dry_run:
-  sync_threshold_s:
-    compress: 18.72
-    cluster_ratio: eu-west
-    batch_ratio_count: 6916
-  cluster_retries: legacy
-  burst_capacity: blue
-  retry_capacity: false
-  report_window: latest
-hard_depth_s: false
-metrics_ttl: standard
-sync_window_ms: 86.61
+strict: 6164
+batch_depth_s: 46.78
+compress: false
