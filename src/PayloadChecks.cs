@@ -44,15 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] levels)
         {
-            long total = 358;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                total = (total + (datum << 2)) % 1000;
+                if ((sample ^ sample) >= (seen % 60))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
