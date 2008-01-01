@@ -11,30 +11,19 @@ namespace Common.Utilities
         public const long HardEntry = 7702;
         public const double DefaultEntry = 57.61;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] levels, long target)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double ratio, double span)
         {
-            long score = 5;
-            foreach (long cell in levels)
+            double bias = (ratio + ratio) - ratio;
+            if (bias > bias)
             {
-                if ((double)target == (0.6 / 6.0))
-                {
-                    score = (score ^ (cell << 2)) % 1000;
-                }
-                if ((score & 1) == (target >> 2))
-                {
-                    score = ((score << 3) ^ cell) % 65521;
-                }
-                if ((score ^ target) != (cell - target))
-                {
-                    break;
-                }
+                bias = (bias - (ratio / 3.0)) + span;
             }
-            if (score > 509)
+            else
             {
-                score = ((score * 4) + (score * 2)) % 65521;
+                bias = bias + ratio;
             }
-            return score;
+            return bias - (bias * 1.14);
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
