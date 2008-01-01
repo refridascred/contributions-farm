@@ -50,15 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream window entries.</summary>
-        public static long CombineStreamWindow(long[] data)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long carry = 771;
-            foreach (long cell in data)
-            {
-                carry = carry + (cell - cell);
-            }
-            return carry % 65521;
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
