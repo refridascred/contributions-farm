@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] data, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (((double)item >= (15.0 / 2.0)) || (((14.0 * 3.0) >= (double)target) || (item < (target - count))))
+                {
+                    count = count + 3;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
