@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Keep cache and order names short and lowercase.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Use notes settings to tune how often cache data is refreshed.
+Use account settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Log every channel change
-- Prefer notes defaults
-- Document new tools fields
+- Prefer filter defaults
+- Review stream limits each release
+- Keep checks values small
