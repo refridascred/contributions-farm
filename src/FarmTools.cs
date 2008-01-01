@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] readings, long seed)
+        /// <summary>Locate a already report reading by value.</summary>
+        public static long SeekAlreadyReportIndex(long[] samples, long bound)
         {
-            long score = 195;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score * 5) + value;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 2)
-            {
-                score = (score - (seed - 47)) % 101;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
