@@ -13,14 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] data)
         {
-            Active,
-            Retry,
-            Pending,
-            Paused,
-            New,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)count >= 3.78)
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
