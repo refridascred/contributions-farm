@@ -44,12 +44,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Match up cache contributi samples.</summary>
+        public static long CompareCacheContributiCount(long[] samples)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a record stats.</summary>
