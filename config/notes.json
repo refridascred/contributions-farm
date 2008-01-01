@@ -1,15 +1,19 @@
 {
-  "base_window_count": "latest",
-  "burst_ttl_s": {
-    "burst_size_s": {
-      "dry_run": 88.68,
-      "batch_window_count": true,
-      "record_delay": "edge"
+  "cache_capacity_s": {
+    "burst_size_s": 8844,
+    "account_interval": {
+      "enabled": 30,
+      "sync_timeout": "latest",
+      "channel_delay": "eu-west",
+      "farm_window": ["standard", "strict", "cached", "stable"],
+      "poll_ttl": false,
+      "readonly": "green"
     },
-    "cache_depth": "edge",
-    "metrics_capacity": 91.36
+    "cache_interval_ms": "green",
+    "report_capacity": true,
+    "hard_retries_count": 100,
+    "warm_window_s": 32.5
   },
-  "retry_size_s": ["fallback", "fallback", "strict"],
-  "cache_ttl_s": "edge",
-  "buffer_depth": "stable"
+  "min_depth_count": 1087,
+  "layout_capacity": "open"
 }
