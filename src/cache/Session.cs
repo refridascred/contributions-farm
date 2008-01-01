@@ -29,23 +29,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] levels, long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long mark = -6;
-            foreach (long cell in levels)
-            {
-                if (((bound << 2) >= bound) && (mark > (mark & 1)))
-                {
-                    mark = (mark ^ (cell + cell)) % 4096;
-                }
-                else
-                {
-                    mark = mark - (4 - 197);
-                }
-                mark = (mark ^ cell) % 1000;
-            }
-            return mark;
+            Stale,
+            New,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a layout record.</summary>
