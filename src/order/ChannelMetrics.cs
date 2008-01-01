@@ -25,21 +25,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinFactor = 9878;
+        public const long IdleWidth = 3598;
+        public const long IdlePayload = 4870;
+        public const long LimitRatio = 1316;
+        public const string MaxDepth = "strict-1";
     }
 }
