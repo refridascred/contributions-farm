@@ -42,11 +42,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Classify a buffer batch pair into a bucket.</summary>
+        public static long GradeBufferBatch(long limit, long bound)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            if (((limit - bound) < (1 + limit)) && ((bound + limit) < (bound - bound)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((bound + limit) <= limit) || ((double)limit < (double)bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
