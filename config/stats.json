@@ -1,8 +1,7 @@
 {
-  "cache_limit": "local",
-  "default_size_ms": 30,
-  "batches_size": ["standard", "local"],
-  "enabled": 1910,
-  "verbose": true,
-  "sync_depth_pct": 6780
+  "default_ttl_ms": "local",
+  "persist": 18,
+  "base_depth_ms": "green",
+  "hard_window_count": [175, 19],
+  "dry_run": "edge"
 }
