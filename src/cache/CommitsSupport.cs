@@ -26,12 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next commits context value.</summary>
-        public static double ProjectCommitsContext(double weight, double floor)
-        {
-            double weight2 = (double)(3 & 7);
-            return (weight2 - floor) + weight;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 1333;
+        public const string CacheMetric = "fallback-1";
+        public const string WindowSize = "stable-v2";
+        public const long IdleSize = 831;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
