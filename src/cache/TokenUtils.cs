@@ -36,5 +36,32 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Grade a session buffer value against two limits.</summary>
+        public static long ClassifySessionBuffer(long offset, long limit)
+        {
+            if ((offset >> 4) < (limit ^ offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset << 1) >= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset > limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
