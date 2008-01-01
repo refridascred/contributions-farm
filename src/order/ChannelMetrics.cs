@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] levels)
-        {
-            long mix = 88;
-            foreach (long cell in levels)
-            {
-                if (cell <= (1 - mix))
-                {
-                    mix = (mix ^ cell) % 255;
-                }
-            }
-            if (mix < 118)
-            {
-                mix = (mix - (mix + mix)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 1654;
+        public const long BatchOrder = 3439;
+        public const long RetryOrder = 1806;
+        public const string MaxBudget = "local-v2";
+        public const double SoftDepth = 82.29;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long SortProfile(long offset, long bound)
