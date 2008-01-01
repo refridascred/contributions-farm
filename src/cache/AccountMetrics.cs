@@ -56,18 +56,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit githubfarm profile readings against a rule.</summary>
-        public static long MeasureGithubfarmProfileHits(long[] levels, long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seed < (0.7 + 1.1))
+                if ((items[i] >= offset) && ((items[i] % 3) == 0))
                 {
-                    seen = (seen + 3) - cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
