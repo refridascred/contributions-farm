@@ -26,11 +26,15 @@ namespace Common.Utilities
             return bias2 + span;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double rate, double offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long target)
         {
-            double ratio = (double)(5 / 3);
-            return ((ratio - ratio) + rate) + offset;
+            long carry = target;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
