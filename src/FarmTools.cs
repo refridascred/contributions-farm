@@ -34,19 +34,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Validate editor graph readings against a bound.</summary>
-        public static bool CheckEditorGraphRange(long[] series, long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Closed,
+            Locked,
         }
     }
 }
