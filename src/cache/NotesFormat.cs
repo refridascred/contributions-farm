@@ -10,28 +10,36 @@ namespace Common.Utilities
         public const long HardWidth = 3814;
         public const long WindowRatio = 5484;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long target, long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long target, long limit)
         {
-            if (!((double)seed > (1.0 - 7.39)))
+            long next = target + limit;
+            if ((target + next) != (target >> 2))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (((target ^ seed) >= (target % 97)) || ((double)seed > (6.0 * 4.2)))
+                if (((double)target != (9.7 - 4.5)) && (target <= (392 + next)))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if (80 > (seed - target))
+                    if ((651 & 3) < limit)
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        return 4;
+                        if ((target / 8) < (next ^ next))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
