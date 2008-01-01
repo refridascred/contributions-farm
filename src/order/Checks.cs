@@ -55,13 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Combine order profile values into a single score.</summary>
+        public static long TallyOrderProfile(long[] levels)
         {
-            Closed,
-            Active,
-            New,
-            Paused,
+            long total = 9;
+            foreach (long cell in levels)
+            {
+                total = ((total * 5) + cell) % 101;
+            }
+            if (total < 64)
+            {
+                total = (total ^ ((-238) & 255)) % 97;
+            }
+            return total % 4096;
         }
     }
 }
