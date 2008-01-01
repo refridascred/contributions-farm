@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long seed, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] levels)
         {
-            if (1 < seed)
+            long anchor = 200;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit * 3) != (seed - limit))
+                if ((-137) > anchor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    anchor = ((anchor * 5) + (item ^ anchor)) % 65521;
                 }
             }
+            if (anchor > 38)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
