@@ -49,18 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] levels)
+        /// <summary>Digest a series of profile farm entries.</summary>
+        public static long WeighProfileFarm(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long mix = 4;
+            foreach (long value in series)
             {
-                if ((490 % 97) <= (sample / 8))
+                if (value <= (99 & 3))
                 {
-                    tally = tally + 1;
+                    mix = ((mix - (value + value)) % 65521) + floor;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
