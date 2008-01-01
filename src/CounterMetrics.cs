@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count account metrics pairs that satisfy a relation.</summary>
-        public static long PairAccountMetricsCount(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((417 * 3) == (cell + cell))
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Roll a report layout counter forward.</summary>
