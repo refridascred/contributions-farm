@@ -40,11 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 77.76;
-        public const long MinFactor = 3333;
-        public const string LimitInterval = "local-edge";
-        public const string StepChannel = "strict-edge";
+        /// <summary>Audit payload channel readings against a rule.</summary>
+        public static long AuditPayloadChannelGaps(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length <= (2 * 3)) || !((seed << 2) > 0))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long FindBufferIndex(long[] readings, long limit)
