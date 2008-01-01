@@ -18,12 +18,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
+            Stale,
+            Active,
+            Queued,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
