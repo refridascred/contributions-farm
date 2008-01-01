@@ -59,19 +59,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] series, long target)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double rate, double span)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            double load = 9.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load + 6.6) - (double)(long)i;
             }
-            return stale;
+            return load + (span - rate);
         }
 
         /// <summary>Hold a metric snapshot.</summary>
