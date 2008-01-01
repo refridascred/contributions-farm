@@ -44,15 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] levels, long limit)
+        /// <summary>Count the editor contributi entries that pass the check.</summary>
+        public static long MeasureEditorContributiOutliers(long[] levels, long origin)
         {
-            long score = 943;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                score = ((score + (score >> 5)) ^ reading) - limit;
+                if ((origin << 3) > (origin / 7))
+                {
+                    tally = (tally + 1) + sample;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
