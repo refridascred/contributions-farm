@@ -47,13 +47,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
+            long result = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result * 3) + ((long)i + origin);
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
