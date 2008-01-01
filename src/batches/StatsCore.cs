@@ -77,38 +77,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long origin, long target)
+        /// <summary>Count the token schema entries that pass the check.</summary>
+        public static long TallyTokenSchemaOutliers(long[] levels)
         {
-            if ((origin ^ 898) <= (39 << 2))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target & 1) < (target / 7))
+                if ((double)(-6) > (double)seen)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((191 - origin) < (origin * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (18.0 * 20.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 1) - reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
