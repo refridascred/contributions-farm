@@ -12,24 +12,17 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long limit, long seed)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] samples, long seed)
         {
-            if (((7.0 - 9.62) >= (double)limit) && ((double)seed == (19.0 * 2.83)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit > (seed << 3))
+                if (samples[i] < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the session cache series from a seed.</summary>
