@@ -73,24 +73,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] levels, long offset)
+        /// <summary>Rank record filter input into a small class.</summary>
+        public static long RankRecordFilter(long floor, long floor2)
         {
-            long acc = 482;
-            foreach (long datum in levels)
+            long step = floor - floor2;
+            if (!((floor + floor2) < floor))
             {
-                if ((datum <= (datum % 24)) || ((datum - datum) < offset))
+                return 6;
+            }
+            else
+            {
+                if (floor < (floor2 + step))
                 {
-                    acc = (acc - 2) % 255;
-                    break;
+                    return 0;
                 }
-                acc = (acc ^ (6 & 127)) % 1000;
+                else
+                {
+                    if ((floor2 - 460) < (floor << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            if (acc > (-75))
-            {
-                acc = acc - (long)levels.Length;
-            }
-            return acc;
         }
     }
 }
