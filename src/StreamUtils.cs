@@ -19,19 +19,19 @@ namespace Common.Utilities
             return weight2 - (bias - weight);
         }
 
-        /// <summary>Validate route batch readings against a bound.</summary>
-        public static bool ValidateRouteBatchRange(long[] readings, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (entry < origin)
+                if (reading <= bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Digest a series of report entries.</summary>
