@@ -36,18 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] levels)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen + cell) < cell)
+                if (samples[i] >= limit)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
