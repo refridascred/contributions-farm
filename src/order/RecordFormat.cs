@@ -27,11 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count tools account pairs that satisfy a relation.</summary>
+        public static long MatchToolsAccountCount(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate profile session samples.</summary>
