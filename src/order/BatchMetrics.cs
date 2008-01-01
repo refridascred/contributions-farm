@@ -84,5 +84,14 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Done,
+            Queued,
+            Failed,
+            Idle,
+        }
     }
 }
