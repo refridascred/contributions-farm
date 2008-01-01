@@ -13,12 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitSpan = "stable";
-        public const double CacheReport = 94.39;
-        public const double IdleCount = 54.85;
-        public const long BaseFactor = 4539;
-        public const long BatchRatio = 6016;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsMatches(long[] items, long seed)
