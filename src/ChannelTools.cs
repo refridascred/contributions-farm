@@ -19,21 +19,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count farm batches pairs that satisfy a relation.</summary>
-        public static long MatchFarmBatchesCount(long[] data)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 887;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading - limit) <= result)
                 {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result * 3) + (result * 2);
+                }
+                if ((reading % 2) < (-42))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (result < 4)
+            {
+                result = ((result << 2) ^ (690 - 71)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
