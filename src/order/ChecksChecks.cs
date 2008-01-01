@@ -19,5 +19,23 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Audit command commits readings against a rule.</summary>
+        public static long CountCommandCommitsMatches(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!((double)413 > (double)floor) || ((double)floor <= (9.5 / 2.0)))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
