@@ -42,13 +42,9 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Locked,
-            New,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 5699;
+        public const long SoftEntry = 9265;
+        public const long MaxLevel = 2310;
     }
 }
