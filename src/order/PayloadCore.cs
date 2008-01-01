@@ -12,16 +12,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            long acc = 7;
+            foreach (long value in readings)
             {
-                acc = acc - offset;
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((value << 1) > (acc - 299))
+                {
+                    acc = (acc + (value * 4)) % 101;
+                }
             }
-            return acc;
+            if (acc < 6)
+            {
+                acc = acc ^ (acc - 4);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
