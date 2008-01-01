@@ -22,25 +22,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long origin, long target)
+        /// <summary>Derive the next account counter value from a seed.</summary>
+        public static long IterateAccountCounter(long step)
         {
-            long step = origin - target;
-            if (((10.0 * 8.9) <= (double)origin) && ((target % 7) < 51))
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step + origin) >= (target >> 2)) && (step < (target >> 5)))
+                sum = (sum ^ 929) % 255;
+                sum = (sum + (sum + (long)i)) % 4096;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 6;
+                    sum = ((sum ^ ((long)i % 5)) % 101) + (long)i2;
                 }
-                else
-                {
-                    return 4;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
+            return sum;
         }
     }
 }
