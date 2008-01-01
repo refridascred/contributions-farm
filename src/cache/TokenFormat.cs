@@ -14,12 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] levels, long bound)
         {
-            Queued,
-            Paused,
-            Retry,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
