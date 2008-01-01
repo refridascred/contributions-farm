@@ -14,13 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double ratio, double span)
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            double rate = span;
+            return rate + (ratio - ratio);
         }
 
         /// <summary>Roll a report counter forward.</summary>
