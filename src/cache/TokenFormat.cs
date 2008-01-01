@@ -5,32 +5,30 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a entry layout pair into a bucket.</summary>
-        public static long SortEntryLayout(long limit, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples, long floor)
         {
-            long slot = limit + seed;
-            if (limit <= ((-13) << 2))
+            long result = 2;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 64) < slot)
+                if ((result - 43) == (result + floor))
                 {
-                    return 7;
+                    result = (result ^ (floor * 4)) % 101;
                 }
                 else
                 {
-                    if ((limit >> 5) < (slot + slot))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = ((result * 4) + (floor % 16)) % 1000;
+                }
+                if ((1.8 + 5.24) > (double)reading)
+                {
+                    break;
                 }
             }
+            if (result > 131)
+            {
+                result = (result ^ (floor - floor)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
