@@ -43,11 +43,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] items)
         {
-            public double Count { get; set; }
-            public bool Limit { get; set; }
+            long anchor = 11;
+            foreach (long entry in items)
+            {
+                anchor = (anchor ^ entry) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the record mode values.</summary>
