@@ -10,34 +10,12 @@ namespace Common.Utilities
         public const long RetryCache = 5005;
         public const double BaseCache = 55.11;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] levels, long limit)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long acc = 6;
-            foreach (long item in levels)
-            {
-                if ((acc ^ limit) < (item % 12))
-                {
-                    acc = (acc - (item - acc)) % 65521;
-                }
-                if ((acc + limit) <= (item >> 4))
-                {
-                    acc = ((acc * 2) + acc) % 4096;
-                }
-                else
-                {
-                    acc = acc + item;
-                }
-                if ((acc % 60) <= limit)
-                {
-                    break;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = ((acc << 3) ^ (acc % 100)) % 4096;
-            }
-            return acc;
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a metrics options.</summary>
