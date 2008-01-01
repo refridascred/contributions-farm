@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] samples, long floor)
+        /// <summary>Audit notes token readings against a rule.</summary>
+        public static long CountNotesTokenOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (!((floor * 3) < (seen + floor)))
+                if (((4.5 + 8.49) >= (3.1 + 12.0)) || ((entry - matches) > 7))
                 {
-                    seen = (seen + 2) + reading;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine schema checks values into a single score.</summary>
