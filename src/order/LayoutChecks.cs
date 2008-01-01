@@ -65,11 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 8263;
-        public const long LimitWindow = 4230;
-        public const long MinWindow = 5344;
-        public const long StepSize = 6681;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((68 & 3) < ((long)series.Length + matches))
+                {
+                    matches = ((matches + 2) + reading) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
