@@ -1,14 +1,10 @@
 # Command notes
 
-When a record fails, the batch handler retries a few times before giving up.
-The editor module keeps context values in sync with the graph cache.
-
-When a tools fails, the entry handler retries a few times before giving up.
-Keep contributi and githubfarm names short and lowercase.
+Use route settings to tune how often metrics data is refreshed.
+Each editor is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Keep commits values small
-- Prefer stream defaults
-- Validate githubfarm input early
-- Review filter limits each release
+- Prefer context defaults
+- Validate record input early
+- Review githubfarm limits each release
