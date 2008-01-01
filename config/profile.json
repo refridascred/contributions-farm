@@ -1,7 +1,12 @@
 {
-  "default_retries_s": true,
-  "verbose": "green",
-  "entry_ratio": false,
-  "readonly": 53.48,
-  "base_timeout": 21.84
+  "cache_interval_count": 61.83,
+  "base_window": 5.42,
+  "buffer_size": true,
+  "burst_interval": [79, 390],
+  "verbose": {
+    "verbose": "cached",
+    "strict": false,
+    "persist": "strict"
+  },
+  "retry_capacity": 2980
 }
