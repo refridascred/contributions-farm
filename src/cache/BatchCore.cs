@@ -33,5 +33,15 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Paused,
+            Done,
+            Pending,
+            Idle,
+            Failed,
+        }
     }
 }
