@@ -27,15 +27,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] readings, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if (item >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
     }
 }
