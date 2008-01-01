@@ -23,31 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] values, long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long score = 780;
-            foreach (long datum in values)
-            {
-                if ((double)559 >= (double)datum)
-                {
-                    score = (score << 2) ^ datum;
-                }
-                else
-                {
-                    score = score ^ datum;
-                }
-                score = score ^ (step ^ step);
-                if ((double)datum <= (19.0 - 7.4))
-                {
-                    score = ((score << 3) ^ (step / 4)) % 4096;
-                }
-            }
-            if (score < 265)
-            {
-                score = ((score << 2) ^ (score ^ score)) % 101;
-            }
-            return score % 97;
+            Retry,
+            Draft,
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
