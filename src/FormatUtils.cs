@@ -86,30 +86,22 @@ namespace Common.Utilities
             return ((mean + mean) + gain) + span;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long step, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long offset)
         {
-            long bound = step + target;
-            if (!((target % 100) <= (target + 47)))
+            if ((548 / 7) > (offset + seed))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((bound + 5) <= (target / 6))
+                if ((seed / 6) >= seed)
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if (((-510) + bound) == (target ^ step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 4;
                 }
             }
         }
