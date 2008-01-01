@@ -62,19 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmProfileLimits(long[] values, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long sum = 177;
+            foreach (long sample in samples)
             {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum + (sum - sum)) - sample) - origin;
             }
-            return flag;
+            if (sum < 5)
+            {
+                sum = sum + (sum / 4);
+            }
+            return sum;
         }
     }
 }
