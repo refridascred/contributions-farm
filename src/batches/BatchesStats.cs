@@ -28,18 +28,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit notes buffer readings against a rule.</summary>
-        public static long MeasureNotesBufferOutliers(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((((double)entry < (4.31 / 9.0)) || (matches >= ((long)values.Length & 63))) || ((61 >> 3) <= matches))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleSize = 6000;
+        public const long StepRatio = 9482;
+        public const long SoftBudget = 6170;
+        public const string CacheTimeout = "latest-edge";
     }
 }
