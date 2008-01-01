@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] values, long origin)
+        /// <summary>Accumulate commits tools samples.</summary>
+        public static long TotalCommitsTools(long[] values)
         {
-            long anchor = -406;
-            foreach (long sample in values)
+            long anchor = 2;
+            foreach (long value in values)
             {
-                if ((7.0 * 7.41) == (double)sample)
-                {
-                    anchor = (anchor - (anchor & 255)) % 255;
-                }
-                if (((double)sample > (19.0 - 8.3)) || ((origin + origin) == (anchor + 67)))
-                {
-                    break;
-                }
+                anchor = anchor - (value * 3);
             }
-            return anchor % 97;
+            if (anchor > 318)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
