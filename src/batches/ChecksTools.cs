@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] data, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (item > seed)
+                if (((double)reading >= 0.81) && (matches > 8))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
