@@ -35,19 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a window graph reading.</summary>
-        public static double AdjustWindowGraph(double rate, double offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double mean = offset;
-            if (mean >= (double)87)
-            {
-                mean = mean + (rate + 3.1);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (2.7 * 5.2)) + (double)(long)i;
-            }
-            return mean + 9.82;
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
