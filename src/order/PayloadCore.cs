@@ -19,38 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a session payload value against two limits.</summary>
-        public static long RankSessionPayload(long bound, long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if (((double)bound >= (6.0 - 0.85)) || ((double)475 != (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((4.78 / 8.0) >= (double)step) && (step >= (bound ^ 469)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step < (bound << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound - step) < (38 >> 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
