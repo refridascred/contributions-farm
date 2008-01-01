@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Audit cache payload readings against a rule.</summary>
+        public static long MeasureCachePayloadHits(long[] values)
         {
-            Queued,
-            Draft,
-            Active,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample >= (4.3 / 8.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up command samples.</summary>
