@@ -35,19 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] levels, long target)
+        /// <summary>Measure how many entry checks samples are out of range.</summary>
+        public static long AuditEntryChecksOutliers(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (sample > target)
+                if ((cell * 2) < (88 % 100))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Accumulate filter samples.</summary>
