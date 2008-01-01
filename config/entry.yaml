@@ -1,21 +1,15 @@
 # entry settings
-already_ttl: 7897
-audit: 17
-poll_ttl: 9.81
-hard_depth_s:
-  soft_limit_pct: false
-  base_ratio_pct:
-    persist:
-      - 186
-      - 3
-      - 265
-      - 207
-    readonly: 4570
-    format_ratio: false
-    compress: false
-    stats_limit:
-      - strict
-      - blue
-      - blue
-    strict: 93
-  soft_limit_s: 70.3
+flush_limit_s:
+  - 216
+  - 313
+  - 374
+soft_interval_s:
+  base_ttl_count: cached
+  default_timeout_s:
+    - 51
+    - 65
+  filter_interval: 250
+  soft_interval_ms: cached
+  hard_delay: 51.02
+cache_depth: eu-west
+enabled: fallback
