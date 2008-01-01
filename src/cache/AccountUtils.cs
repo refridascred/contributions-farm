@@ -26,16 +26,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state - 53) % 101;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchInterval = "local-v2";
+        public const long SoftCluster = 7466;
+        public const long MaxCount = 7907;
+        public const long DefaultFactor = 5410;
+        public const long LimitInterval = 1764;
     }
 }
