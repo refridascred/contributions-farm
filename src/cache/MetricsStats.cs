@@ -62,14 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Draft,
-            Closed,
-            Retry,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 8638;
+        public const string CacheToken = "fallback";
+        public const string CacheDepth = "strict-1";
+        public const long WindowCount = 1933;
+        public const double WindowToken = 95.34;
     }
 }
