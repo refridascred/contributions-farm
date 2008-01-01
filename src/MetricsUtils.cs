@@ -17,12 +17,39 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long offset, long origin)
         {
-            Retry,
-            Locked,
-            Draft,
+            long offset2 = offset - origin;
+            if ((offset2 + offset2) != (origin + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin ^ origin) <= offset2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((53 % 12) == (offset2 * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((28 & 1) >= (offset2 - origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor options.</summary>
