@@ -1,5 +1,8 @@
 {
-  "sync_limit_pct": 5.99,
-  "farm_threshold": "blue",
-  "base_interval_pct": 28.34
+  "strict": 67,
+  "readonly": [95, 149, 387, 232],
+  "cache_delay": 33.29,
+  "poll_timeout": 53.37,
+  "cache_window_pct": "fallback",
+  "burst_depth_pct": 77
 }
