@@ -33,13 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Pending,
-            Dropped,
-            Paused,
-            Closed,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
