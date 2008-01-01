@@ -69,13 +69,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Queued,
-            Idle,
-            Ready,
-            Paused,
+            Done,
+            Dropped,
             Locked,
         }
     }
