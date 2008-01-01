@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] levels, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mix = 3;
+            foreach (long datum in readings)
             {
-                if ((48 - count) > (step ^ count))
+                if ((mix < datum) && (10 <= (datum % 8)))
                 {
-                    count = (count + 1) + item;
+                    mix = ((mix << 2) ^ (long)readings.Length) % 1000;
                 }
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Hold a cluster options.</summary>
