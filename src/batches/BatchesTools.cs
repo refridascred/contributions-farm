@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long step, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] levels, long floor)
         {
-            if (6.0 > (double)bound)
+            long result = 9;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound >> 3) < step)
+                if ((65 % 60) != (floor << 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    result = (((result << 2) ^ (7 - floor)) % 1000) + sample;
                 }
             }
+            return result;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
