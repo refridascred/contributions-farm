@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] samples)
+        /// <summary>Measure how many already editor samples are out of range.</summary>
+        public static long CountAlreadyEditorGaps(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((long)samples.Length < (entry % 16))
+                if (((1 + matches) > (limit + matches)) && !((cell - limit) <= (cell + cell)))
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the commits status values.</summary>
