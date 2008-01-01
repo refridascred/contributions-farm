@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest eu-west cached; do
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in open staging edge; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+mode="${1:-staging}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
