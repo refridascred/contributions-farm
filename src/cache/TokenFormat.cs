@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long WindowSize = 8724;
         public const string CacheTimeout = "standard-edge";
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
             Queued,
-            Active,
-            Stale,
-            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
