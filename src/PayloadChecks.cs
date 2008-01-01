@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] data, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (reading <= (136 + reading))
+                if (cell != offset)
                 {
-                    matches = (matches + 2) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a graph header.</summary>
