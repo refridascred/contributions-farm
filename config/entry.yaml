@@ -1,4 +1,8 @@
 # entry settings
-readonly: 13
-max_delay_count: true
-audit: 4649
+soft_size: primary
+base_size_count: 74
+compress: 100
+support_timeout: 22.33
+sync_size_pct:
+  - open
+  - standard
