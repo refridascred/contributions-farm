@@ -25,17 +25,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] samples, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 41;
+            foreach (long datum in levels)
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) == 0))
+                if (!((double)datum == (5.0 + 3.9)))
                 {
-                    return (long)i;
+                    mix = mix - mix;
+                }
+                if ((7.99 < (double)datum) && ((7 - mix) > mix))
+                {
+                    mix = (mix << 3) ^ (datum << 2);
+                    mix = mix ^ (mix % 12);
+                }
+                if ((datum + datum) > mix)
+                {
+                    mix = (mix * 3) + (94 * 5);
+                }
+                else
+                {
+                    mix = (mix - (datum - datum)) % 255;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
