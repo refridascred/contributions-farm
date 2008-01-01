@@ -57,22 +57,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mix = 80;
+            foreach (long value in series)
             {
-                if ((count - 40) > (value / 9))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = (mix - (seed + value)) % 255;
+                mix = (mix ^ (seed + seed)) % 255;
             }
-            return count;
+            if (mix > 36)
+            {
+                mix = mix ^ (8 - mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a channel summary.</summary>
