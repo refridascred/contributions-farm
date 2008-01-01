@@ -86,19 +86,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order profile values into a single score.</summary>
-        public static long TallyOrderProfile(long[] levels)
+        /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmProfileLimits(long[] values, long step)
         {
-            long total = 9;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                total = ((total * 5) + cell) % 101;
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total < 64)
-            {
-                total = (total ^ ((-238) & 255)) % 97;
-            }
-            return total % 4096;
+            return flag;
         }
     }
 }
