@@ -24,5 +24,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
             public double Total { get; set; }
         }
+
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 93;
+        public const long BurstFarm = 5107;
+        public const long MaxFarm = 384;
+        public const long BatchWidth = 7684;
     }
 }
