@@ -27,32 +27,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long target, long bound)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double weight, double span)
         {
-            long bound2 = target + bound;
-            if ((99 - target) > (bound + bound2))
+            double scale = weight;
+            if (scale < 1.12)
             {
-                return 7;
+                scale = scale + span;
             }
-            else
-            {
-                if ((target >> 5) >= (bound << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target % 97) <= (bound2 ^ 887))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return scale + weight;
         }
 
         /// <summary>Fold a list of notes editor readings.</summary>
