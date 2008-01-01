@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double weight, double offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double load = (double)(50 ^ 1);
-            if (load <= (double)2)
-            {
-                load = load - (weight - weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load + offset;
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the filter mode values.</summary>
