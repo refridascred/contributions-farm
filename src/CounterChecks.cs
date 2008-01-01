@@ -76,11 +76,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 7218;
-        public const long HardInterval = 6242;
-        public const long BurstDepth = 8054;
-        public const long DefaultStats = 3019;
-        public const long LimitDepth = 9223;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
