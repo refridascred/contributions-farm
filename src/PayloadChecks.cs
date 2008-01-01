@@ -67,18 +67,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] samples)
+        /// <summary>Combine already queue values into a single score.</summary>
+        public static long CombineAlreadyQueue(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long sum = 250;
+            foreach (long item in readings)
             {
-                if ((sample >> 2) > seen)
+                if (((6.0 - 2.8) == (double)item) && (target > (item - item)))
                 {
-                    seen = seen + 3;
+                    sum = (sum << 3) ^ sum;
+                }
+                if (((item << 1) > (item * 4)) || ((sum << 3) > 3))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
