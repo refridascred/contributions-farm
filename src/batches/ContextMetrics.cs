@@ -19,27 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)(long)i >= (5.1 / 8.0))
-                {
-                    anchor = ((anchor << 2) ^ offset) % 101;
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (55 - anchor)) % 101;
-                    anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
-                }
-                anchor = (anchor * 2) + ((long)i - 485);
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "strict";
+        public const long HardWidth = 2529;
+        public const long HardDepth = 6125;
 
         /// <summary>Accumulate window samples.</summary>
         public static long TotalWindow(long[] items, long seed)
