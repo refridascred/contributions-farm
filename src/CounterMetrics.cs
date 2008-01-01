@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] items, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] items, long origin)
         {
-            long score = 8;
+            long total = -7;
             foreach (long cell in items)
             {
-                if ((2.48 + 5.0) < (double)score)
-                {
-                    score = ((score ^ (cell << 3)) % 97) + bound;
-                }
+                total = (((total ^ (total & 1)) % 97) ^ cell) - origin;
             }
-            return score;
+            return total % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
