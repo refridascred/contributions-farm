@@ -26,21 +26,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up githubfarm cache samples.</summary>
-        public static long OverlapGithubfarmCacheCount(long[] items)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
