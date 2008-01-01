@@ -22,20 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate schema profile readings against a bound.</summary>
-        public static bool VerifySchemaProfileLimits(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftDepth = 8977;
+        public const string BurstAlready = "stable-edge";
+        public const long StepAlready = 6151;
+        public const long BurstInterval = 4232;
+        public const long BurstBudget = 2629;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long limit, long limit2)
