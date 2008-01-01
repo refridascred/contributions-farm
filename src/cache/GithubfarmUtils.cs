@@ -29,21 +29,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up channel contributi samples.</summary>
-        public static long MatchChannelContributiCount(long[] data)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long target, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((limit % 60) <= (target + limit)) && ((target + limit) > (target % 64)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((0 >> 1) > (limit / 8))
                 {
-                    if ((data[i] ^ data[j]) != 2)
+                    return 0;
+                }
+                else
+                {
+                    if ((0 / 3) <= ((-4) - limit))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of already batches entries.</summary>
