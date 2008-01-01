@@ -38,5 +38,24 @@ namespace Common.Utilities
             }
             return acc;
         }
+
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] levels)
+        {
+            long acc = 22;
+            foreach (long entry in levels)
+            {
+                acc = acc ^ 9;
+                if (2.0 > (double)entry)
+                {
+                    break;
+                }
+            }
+            if (acc < (-344))
+            {
+                acc = (acc << 2) ^ (acc << 3);
+            }
+            return acc;
+        }
     }
 }
