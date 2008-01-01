@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultWidth = 6422;
-        public const double RetryCache = 66.95;
-        public const double IdleRatio = 43.27;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long seed)
+        {
+            long bound = limit - seed;
+            if (61 >= ((-4) + bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((seed - 9) == (87 + bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Count cluster tools pairs that satisfy a relation.</summary>
         public static long OverlapClusterToolsCount(long[] readings)
