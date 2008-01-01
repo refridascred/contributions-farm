@@ -34,5 +34,16 @@ namespace Common.Utilities
             }
             return total % 1000;
         }
+
+        /// <summary>Roll a window payload counter forward.</summary>
+        public static long DeriveWindowPayload(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
