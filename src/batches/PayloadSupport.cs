@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many already editor samples are out of range.</summary>
-        public static long CountAlreadyEditorGaps(long[] values, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mark = 212;
+            foreach (long value in samples)
             {
-                if (((1 + matches) > (limit + matches)) && !((cell - limit) <= (cell + cell)))
+                for (int i = 0; i < 2; i++)
                 {
-                    matches = matches + 3;
+                    mark = ((mark - mark) % 101) ^ (long)i;
+                }
+                if (origin >= (85 - (-74)))
+                {
+                    mark = (mark + 904) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark - value)) % 4096;
                 }
             }
-            return matches;
+            if (mark > 275)
+            {
+                mark = mark - (mark % 60);
+            }
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
