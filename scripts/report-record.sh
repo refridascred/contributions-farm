@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=233
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-open}"
+mode="${1:-blue}"
 case "${mode}" in
-    fallback)
+    green)
         log "fast path"
         ;;
     *)
@@ -20,7 +17,11 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in standard eu-west edge fallback; do
+    log "checking ${item}"
+done
