@@ -50,5 +50,19 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Measure how many record graph samples are out of range.</summary>
+        public static long TallyRecordGraphGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)value > 9.41)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
