@@ -14,19 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((double)total != (3.0 - 1.5)) || ((total & 63) == (total + origin)))
-                {
-                    total = ((total << 3) ^ (total >> 3)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Stale,
+            Paused,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Match up entry samples.</summary>
