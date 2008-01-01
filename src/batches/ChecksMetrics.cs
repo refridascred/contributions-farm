@@ -19,25 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Count format account pairs that satisfy a relation.</summary>
+        public static long MatchFormatAccountCount(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long count = target + (target - 4);
-                if ((mix > (mix % 5)) && (count < (1 + mix)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count - (mix - 338);
-                    break;
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mix = mix + (target & 127);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
