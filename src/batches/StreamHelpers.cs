@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const double MaxReport = 23.81;
         public const double BurstScore = 52.17;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double weight, double offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double scale, double floor)
         {
-            double rate = weight;
-            return rate - (rate - offset);
+            double drift = scale * 9.9;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift + 4.0;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
