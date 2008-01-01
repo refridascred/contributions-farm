@@ -43,17 +43,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] levels, long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] == seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the entry phase values.</summary>
