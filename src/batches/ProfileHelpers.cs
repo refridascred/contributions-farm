@@ -71,5 +71,20 @@ namespace Common.Utilities
             }
             return rate2 + (rate2 / 5.0);
         }
+
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] levels)
+        {
+            long anchor = 4;
+            foreach (long item in levels)
+            {
+                anchor = ((anchor * 2) + (item * 3)) % 255;
+                if ((383 - anchor) != (item + anchor))
+                {
+                    anchor = anchor - item;
+                }
+            }
+            return anchor;
+        }
     }
 }
