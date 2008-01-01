@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                long next = (limit * 5) + ((long)i - anchor);
-                if ((next / 5) > (anchor / 2))
+                if ((sample % 8) > (sample ^ (long)data.Length))
                 {
-                    anchor = (anchor + (13 >> 5)) % 1000;
+                    hits = hits + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
