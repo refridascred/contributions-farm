@@ -11,5 +11,21 @@ namespace Common.Utilities
         public const string MinScore = "staging-edge";
         public const long MinLayout = 5973;
         public const long MaxLayout = 5453;
+
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples, long target)
+        {
+            long carry = 587;
+            foreach (long entry in samples)
+            {
+                carry = carry ^ (target - entry);
+                if (!(((long)samples.Length % 2) == (13 ^ entry)))
+                {
+                    break;
+                }
+                carry = ((carry * 5) + (target & 63)) % 101;
+            }
+            return carry;
+        }
     }
 }
