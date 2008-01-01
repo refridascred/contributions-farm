@@ -58,23 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics cluster readings.</summary>
-        public static long CombineMetricsCluster(long[] levels, long origin)
+        /// <summary>Find the first route filter entry that matches the target.</summary>
+        public static long LocateRouteFilterIndex(long[] data, long target)
         {
-            long mix = 974;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix - 54) % 97;
-                if ((mix + sample) >= sample)
+                if ((data[i] >= target) && ((data[i] % 2) != 0))
                 {
-                    mix = mix + (mix >> 4);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ origin) % 255;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
     }
 }
