@@ -19,24 +19,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long origin, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            if ((floor + 2) <= floor)
+            long carry = 12;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - origin) >= (origin / 4))
+                if (((double)sample < 0.08) && ((sample - sample) <= (carry * 2)))
                 {
-                    return 7;
+                    carry = ((carry * 2) + ((long)levels.Length % 16)) % 4096;
                 }
                 else
                 {
-                    return 2;
+                    carry = carry ^ (sample + carry);
                 }
             }
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
