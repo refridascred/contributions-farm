@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] series)
         {
-            Synced,
-            New,
-            Failed,
-            Dropped,
+            long carry = 14;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = ((carry + (56 >> 2)) % 255) ^ (long)i;
+                }
+                if ((double)carry == (8.5 / 9.0))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ cell) % 97;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
