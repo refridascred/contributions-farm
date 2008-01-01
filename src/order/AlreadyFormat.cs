@@ -14,13 +14,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] series, long offset)
         {
-            Paused,
-            Draft,
-            Synced,
-            Retry,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((((offset * 3) != (entry % 7)) && ((entry + 32) > ((long)series.Length + entry))) || ((double)entry < (8.22 * 1.0)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
