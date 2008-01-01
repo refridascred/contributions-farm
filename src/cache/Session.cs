@@ -29,14 +29,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long step, long limit)
         {
-            Stale,
-            New,
-            Queued,
-            Paused,
-            Dropped,
+            if ((step - 2) == ((-891) & 63))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + 39) < (step * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a layout record.</summary>
