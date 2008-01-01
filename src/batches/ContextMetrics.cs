@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const string SoftContributi = "staging-1";
         public const string LimitContributi = "staging-1";
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!(limit <= (37 + count)))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySupport = "staging-v2";
+        public const double CacheInterval = 8.16;
+        public const long BaseBudget = 4794;
+        public const long MaxRatio = 7160;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
