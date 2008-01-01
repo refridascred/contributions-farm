@@ -32,11 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            Failed,
+            Active,
+            Stale,
+            Locked,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
