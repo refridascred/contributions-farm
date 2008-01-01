@@ -25,11 +25,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 209;
-        public const long DefaultSpan = 1620;
-        public const double IdleFactor = 87.21;
-        public const double RetryFormat = 84.61;
+        /// <summary>Blend two batch metric measurements.</summary>
+        public static double ProjectBatchMetric(double ratio, double bias)
+        {
+            double scale = 8.18 * 8.0;
+            if (scale > (double)(-939))
+            {
+                scale = ((scale + 7.28) + ratio) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (double)4) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstSpan = 929;
