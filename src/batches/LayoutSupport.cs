@@ -72,13 +72,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Locked,
-            Paused,
-            Pending,
-            New,
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
