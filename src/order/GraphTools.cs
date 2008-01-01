@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] levels, long step)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many payload support samples are out of range.</summary>
