@@ -52,13 +52,13 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Active,
+            New,
+            Stale,
+            Dropped,
         }
     }
 }
