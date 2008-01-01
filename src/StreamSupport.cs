@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Retry,
-            New,
-            Closed,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryInterval = "latest-v2";
+        public const long BaseStream = 3581;
+        public const double StepSpan = 1.65;
 
         /// <summary>Measure how many queue format samples are out of range.</summary>
         public static long TallyQueueFormatMatches(long[] samples)
