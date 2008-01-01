@@ -64,17 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long limit)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = bias;
+            if (bias2 < bias2)
             {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (bias + bias);
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 - (bias * 7.58);
+            }
+            return bias2 + rate;
         }
 
         /// <summary>Count the token schema entries that pass the check.</summary>
