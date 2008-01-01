@@ -52,11 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the counter mode values.</summary>
