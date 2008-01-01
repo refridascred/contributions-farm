@@ -1,8 +1,22 @@
 # entry settings
-readonly: 6114
-max_depth_s:
-  - 152
-  - 244
-strict: 21
-sync_interval: true
-retry_depth_s: primary
+hard_threshold_pct:
+  - fallback
+  - cached
+  - staging
+  - edge
+hard_ttl: stable
+layout_delay:
+  max_retries_s: primary
+  retry_capacity_s: false
+  max_threshold_s: legacy
+  poll_size: open
+  sync_limit_s:
+    - blue
+    - staging
+    - standard
+    - cached
+  hard_size:
+    idle_interval_count: false
+    warm_size: 1910
+    persist: true
+poll_ratio_ms: false
