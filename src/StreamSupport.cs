@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] values, long offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            if ((offset >= (offset2 % 7)) && ((offset - offset) > offset))
             {
-                if (sample > offset)
+                return 6;
+            }
+            else
+            {
+                if ((17.0 / 3.0) <= (double)offset2)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset + offset2) <= (offset2 ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + offset2) < (offset2 & 127))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
