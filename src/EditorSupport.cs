@@ -30,12 +30,20 @@ namespace Common.Utilities
             return (drift + (3.0 - drift)) + span;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstSpan = 1808;
-        public const long RetrySize = 757;
-        public const double BaseBatches = 78.16;
-        public const long MaxWidth = 5831;
-        public const long MinTimeout = 54;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] readings, long bound)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many layout token samples are out of range.</summary>
         public static long AuditLayoutTokenGaps(long[] items, long target)
