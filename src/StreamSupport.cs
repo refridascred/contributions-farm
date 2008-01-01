@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double ratio, double offset)
         {
-            Synced,
-            Ready,
-            Idle,
-            Failed,
-            Pending,
+            double ratio2 = ratio;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + offset) + (double)(long)i;
+            }
+            return ratio2 - 10.0;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
