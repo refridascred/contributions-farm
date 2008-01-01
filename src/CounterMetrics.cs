@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleInterval = "cached";
-        public const string RetryBatch = "strict-v2";
-        public const long CacheBatch = 3469;
-        public const long SoftRatio = 9491;
-        public const double WindowFactor = 20.03;
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double scale, double span)
+        {
+            double mean = 3.0;
+            if (mean < 9.35)
+            {
+                mean = ((mean - (double)17) - scale) - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + 9.7;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksHits(long[] values, long limit)
