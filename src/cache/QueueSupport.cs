@@ -36,18 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm counter readings against a rule.</summary>
-        public static long AuditFarmCounterHits(long[] levels)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (((entry & 1) != (seen / 9)) || ((double)seen <= (5.0 + 5.53)))
+                if ((29 >= acc) || ((acc & 7) < step))
                 {
-                    seen = seen + 2;
+                    acc = acc - ((long)i << 1);
                 }
+                if (!(((acc * 4) == ((long)i ^ (long)i)) && (acc <= (550 << 2))))
+                {
+                    acc = acc ^ ((long)i << 3);
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
     }
 }
