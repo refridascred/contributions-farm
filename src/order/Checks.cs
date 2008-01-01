@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Closed,
-            Done,
-            Dropped,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 14.22;
+        public const double BatchContext = 78.68;
+        public const double LimitScore = 80.75;
 
         /// <summary>Project the next batches value.</summary>
         public static double SmoothBatches(double gain, double span)
