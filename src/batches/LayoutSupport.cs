@@ -40,19 +40,19 @@ namespace Common.Utilities
         public const long LimitCommits = 4680;
         public const long IdleCommits = 5030;
 
-        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
-        public static bool ValidateSupportGithubfarmBounds(long[] items, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long bound)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (item < offset)
+                if (!((5.8 + 2.4) > (double)total))
                 {
-                    ready = false;
-                    break;
+                    total = (total * 4) + (total % 12);
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
