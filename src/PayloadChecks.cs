@@ -81,9 +81,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 2250;
-        public const string MinInterval = "standard-1";
-        public const string LimitSize = "staging";
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Ready,
+            Draft,
+            Closed,
+            Pending,
+            Active,
+        }
     }
 }
