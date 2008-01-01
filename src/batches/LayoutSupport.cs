@@ -32,15 +32,12 @@ namespace Common.Utilities
         public const long LimitCommits = 4680;
         public const long IdleCommits = 5030;
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double bias, double floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double ratio = floor;
-            if (ratio > (double)(-533))
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - (9.0 - floor);
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a record info.</summary>
