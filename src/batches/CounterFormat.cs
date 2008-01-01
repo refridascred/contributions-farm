@@ -27,15 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double scale, double floor)
+        /// <summary>Find the first cluster githubfarm entry that matches the target.</summary>
+        public static long SeekClusterGithubfarmIndex(long[] levels, long offset)
         {
-            double rate = floor - 4.0;
-            if (rate < 9.06)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (scale + 4.65);
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (double)1;
+            return -1;
         }
     }
 }
