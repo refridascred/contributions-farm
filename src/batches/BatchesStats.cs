@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstDepth = "latest-edge";
-        public const long BurstSize = 620;
-        public const long WindowBudget = 9114;
-        public const double StepAccount = 11.73;
-        public const long BurstBudget = 1752;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (cell < 59)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
