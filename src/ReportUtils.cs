@@ -43,15 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double ratio, double bias)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            double load = bias;
-            if (load > (load - ratio))
+            long score = 939;
+            foreach (long entry in series)
             {
-                load = load - 3.0;
+                if ((score >> 1) >= (entry / 5))
+                {
+                    score = (score + (entry - 75)) % 101;
+                }
             }
-            return load + bias;
+            if (score < 29)
+            {
+                score = (score ^ (23 << 3)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Validate filter window readings against a bound.</summary>
