@@ -24,18 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long result = -40;
+            foreach (long datum in series)
             {
-                if (((7 % 7) <= (item / 8)) && ((18.0 - 7.49) < (double)hits))
+                if ((datum % 8) > (origin ^ result))
                 {
-                    hits = hits + 1;
+                    result = (result ^ (origin + result)) % 1000;
                 }
             }
-            return hits;
+            if (result > 6)
+            {
+                result = result ^ origin;
+            }
+            return result;
         }
 
         /// <summary>Find the first format graph entry that matches the target.</summary>
