@@ -43,14 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Pending,
-            Draft,
-            Stale,
-            Idle,
-            Failed,
+            public double Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a tools header.</summary>
