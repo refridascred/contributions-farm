@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] items, long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (5.9 >= (double)item)
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            Stale,
+            Closed,
+            Idle,
+            New,
         }
 
         /// <summary>Adjust a payload reading.</summary>
