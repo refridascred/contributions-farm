@@ -1,5 +1,6 @@
 {
-  "max_size": "local",
-  "cache_ratio": "eu-west",
-  "flush_capacity_ms": "staging"
+  "audit": "local",
+  "max_depth_count": [425, 172, 417, 457],
+  "max_retries_s": 72.13,
+  "poll_ratio_ms": 61.24
 }
