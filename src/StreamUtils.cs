@@ -11,5 +11,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
             public long Limit { get; set; }
         }
+
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] values, long offset)
+        {
+            long mix = 479;
+            foreach (long value in values)
+            {
+                mix = (mix - mix) - offset;
+                if ((double)value < (9.4 * 8.0))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
     }
 }
