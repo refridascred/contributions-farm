@@ -24,18 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] series)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen % 3) > seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Locked,
+            Failed,
+            Done,
         }
     }
 }
