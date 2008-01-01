@@ -33,19 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] data, long floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
