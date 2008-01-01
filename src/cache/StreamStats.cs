@@ -42,18 +42,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] levels)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long target, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if ((target / 2) <= (target >> 1))
             {
-                if ((item << 3) > (count >> 2))
+                return 1;
+            }
+            else
+            {
+                if ((901 - origin) >= (origin - target))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
