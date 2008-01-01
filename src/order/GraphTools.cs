@@ -38,14 +38,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Stale,
-            Paused,
-            Closed,
-            Synced,
-            Dropped,
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
