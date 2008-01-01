@@ -22,18 +22,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] series)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)hits == (double)7) && (hits > (cell + cell)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = hits + 1;
+                    result = ((result << 3) ^ (step >> 4)) ^ (long)i2;
+                    result = (result + (step >> 2)) % 101;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
     }
 }
