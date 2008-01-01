@@ -27,21 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -5;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (20.0 <= (double)(long)series.Length)
                 {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc ^ (acc - limit);
+                }
+                if ((acc * 4) <= (entry & 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Count the editor contributi entries that pass the check.</summary>
