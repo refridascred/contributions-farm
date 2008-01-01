@@ -38,11 +38,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Accumulate editor entry samples.</summary>
+        public static long FoldEditorEntry(long[] series, long origin)
         {
-            public double Token { get; set; }
-            public double Owner { get; set; }
+            long sum = 99;
+            foreach (long item in series)
+            {
+                sum = ((sum ^ (item - item)) % 4096) - origin;
+                if (((double)sum < 3.5) || ((double)item >= (1.1 * 2.11)))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
