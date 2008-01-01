@@ -19,26 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] readings, long bound)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long sum = 27;
-            foreach (long item in readings)
-            {
-                if (!(bound >= ((long)readings.Length + bound)))
-                {
-                    sum = (sum << 2) ^ (bound & 63);
-                }
-                if (item >= 86)
-                {
-                    sum = (sum ^ bound) % 101;
-                }
-            }
-            if (sum > 713)
-            {
-                sum = ((sum << 3) ^ 40) % 255;
-            }
-            return sum % 97;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Rank counter tools input into a small class.</summary>
