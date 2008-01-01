@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value + matches) < (matches - value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "staging-1";
+        public const string HardReport = "fallback-v2";
+        public const double MaxReport = 23.81;
+        public const double BurstScore = 52.17;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorGaps(long[] levels, long target)
