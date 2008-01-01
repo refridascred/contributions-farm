@@ -36,19 +36,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster metric readings against a rule.</summary>
-        public static long CountClusterMetricHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((double)tally <= (13.0 - 6.0))
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 8550;
+        public const long MaxScore = 2002;
+        public const long RetryScore = 7353;
 
         /// <summary>Rank stream metric input into a small class.</summary>
         public static long SortStreamMetric(long offset, long bound)
