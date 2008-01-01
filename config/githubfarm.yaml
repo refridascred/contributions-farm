@@ -1,21 +1,15 @@
 # githubfarm settings
-account_timeout: false
-warm_threshold_count:
-  verbose: 46
-  payload_ttl:
-    - 325
-    - 139
-    - 251
-  flush_interval_s:
-    persist: 35
-    verbose: edge
-    batch_capacity_pct: true
-    warm_interval_pct: false
-    warm_depth_s: eu-west
-  token_threshold: edge
-  idle_timeout_s: 76
-contributi_limit: staging
-report_capacity:
-  - blue
-  - primary
-batch_size: 77
+audit:
+  - 331
+  - 86
+  - 248
+  - 493
+batch_size_ms: 5951
+idle_ttl_count: true
+poll_delay_count:
+  - standard
+  - cached
+  - staging
+  - staging
+compress: 1024
+editor_interval: blue
