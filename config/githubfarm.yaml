@@ -1,16 +1,6 @@
 # githubfarm settings
-audit: false
-hard_depth_count: cached
-payload_retries:
-  support_retries:
-    min_capacity: open
-    commits_limit: primary
-    cache_retries: latest
-  farm_ttl: 250
-  strict: eu-west
-  cache_delay_count:
-    - 284
-    - 119
-  readonly: 7348
-sync_limit_pct: 92.17
-min_delay: true
+strict: 40
+warm_size_count: 30
+soft_interval_pct: 41
+max_ratio_s: 48.2
+poll_size: 21.77
