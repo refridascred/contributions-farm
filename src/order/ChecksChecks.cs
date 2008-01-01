@@ -15,16 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Look up the position of a report payload sample.</summary>
+        public static long LocateReportPayloadIndex(long[] levels, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum - target;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
