@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] values, long limit)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Synced,
+            Pending,
+            Failed,
+            Locked,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
