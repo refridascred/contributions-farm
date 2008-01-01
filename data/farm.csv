@@ -1,6 +1,11 @@
-id,weight,ratio,state
-1,edge,324,84.84
-2,standard,656,43.83
-3,485,202,3.2
-4,23.32,35.76,79.13
-5,edge,96.28,45
+id,count,level
+1,blue,79.03
+2,eu-west,756
+3,408,strict
+4,local,green
+5,356,946
+6,blue,555
+7,717,967
+8,stable,blue
+9,open,18.17
+10,26.09,53
