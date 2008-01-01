@@ -29,19 +29,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the filter farm series from a seed.</summary>
-        public static long RollFilterFarm(long floor)
+        /// <summary>Derive the next token record value from a seed.</summary>
+        public static long DeriveTokenRecord(long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((result >= floor) && ((result * 5) > (floor - 335)))
-                {
-                    result = result - (result + 727);
-                }
-                result = ((result * 5) + (long)i) % 97;
+                state = (state - state) % 255;
+                state = state ^ ((long)i - seed);
+                state = ((state * 2) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
     }
 }
