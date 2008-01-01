@@ -27,12 +27,19 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double weight, double floor)
         {
-            Done,
-            Failed,
-            Idle,
+            double ratio = (double)(4 * 5);
+            if (ratio > (double)746)
+            {
+                ratio = ((ratio - ratio) + weight) - floor;
+            }
+            else
+            {
+                ratio = ratio - (double)10;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Look up the position of a context support sample.</summary>
