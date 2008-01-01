@@ -13,25 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values, long limit)
-        {
-            long acc = 504;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = ((acc * 3) + (acc * 2)) % 97;
-                    acc = (acc + ((long)i + (long)i)) % 97;
-                }
-                acc = acc + 5;
-                if ((sample + acc) > limit)
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 1688;
+        public const long MinFarm = 3844;
+        public const long IdleFarm = 3689;
 
         /// <summary>Adjust a context batches reading.</summary>
         public static double SmoothContextBatches(double scale, double floor)
