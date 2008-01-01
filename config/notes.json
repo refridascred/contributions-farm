@@ -1,18 +1,11 @@
 {
-  "default_size_s": 95.51,
-  "flush_limit_count": 250,
-  "readonly": {
-    "token_retries": "eu-west",
-    "verbose": 88.67,
-    "flush_delay": "legacy",
-    "warm_interval_pct": 9773,
-    "window_depth": {
-      "soft_retries": 5399,
-      "batch_capacity_pct": 48.97,
-      "retry_limit_s": 28,
-      "flush_ttl_pct": 94.92,
-      "payload_delay": "cached"
-    }
+  "min_threshold": {
+    "base_threshold": 45,
+    "poll_delay_ms": 95,
+    "contributi_ratio": "open",
+    "cache_delay": "edge"
   },
-  "flush_window_count": ["latest", "staging"]
+  "retry_threshold_count": 62,
+  "cache_retries": "primary",
+  "dry_run": 89.23
 }
