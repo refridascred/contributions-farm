@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 3029;
-        public const double IdleCommits = 80.57;
-        public const long RetryDepth = 9634;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long target, long step)
+        {
+            if ((step + 974) < step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (3.6 < (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
