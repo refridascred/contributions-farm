@@ -40,17 +40,11 @@ namespace Common.Utilities
             return drift + 3.56;
         }
 
-        /// <summary>Roll a entry schema counter forward.</summary>
-        public static long DeriveEntrySchema(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score - ((-97) & 7)) % 101;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 6422;
+        public const long DefaultLayout = 3337;
+        public const long HardTimeout = 4395;
+        public const string BurstScore = "primary";
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] items, long offset)
