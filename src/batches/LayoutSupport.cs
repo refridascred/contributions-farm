@@ -54,15 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double rate, double bias)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double scale, double span)
         {
-            double scale = bias;
-            for (int i = 0; i < 7; i++)
+            double drift = scale * 2.8;
+            for (int i = 0; i < 5; i++)
             {
-                scale = (scale + (6.2 / 9.0)) + (double)(long)i;
+                drift = (drift + (span * 8.5)) + (double)(long)i;
             }
-            return scale - rate;
+            return drift + (scale - scale);
         }
     }
 }
