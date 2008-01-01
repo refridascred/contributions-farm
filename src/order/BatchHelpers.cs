@@ -32,21 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window metrics samples.</summary>
-        public static long MatchWindowMetricsCount(long[] data)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Idle,
+            Stale,
+            Dropped,
+            Locked,
         }
     }
 }
