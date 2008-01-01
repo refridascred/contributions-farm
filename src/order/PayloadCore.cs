@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items, long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long state = 28;
-            foreach (long cell in items)
-            {
-                if ((limit > 11) && ((double)limit < (16.0 / 4.0)))
-                {
-                    continue;
-                }
-                state = (state * 2) + (cell + limit);
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a graph entry sample.</summary>
