@@ -32,14 +32,17 @@ namespace Common.Utilities
         public const double RetryFactor = 14.18;
         public const double BatchCount = 38.41;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Derive the next metric route value from a seed.</summary>
+        public static long RollMetricRoute(long bound)
         {
-            Queued,
-            Ready,
-            Idle,
-            Draft,
-            Dropped,
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor << 3) ^ (long)i) % 255;
+                anchor = (anchor ^ (long)i) % 97;
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
