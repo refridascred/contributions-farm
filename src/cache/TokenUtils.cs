@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            Idle,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
