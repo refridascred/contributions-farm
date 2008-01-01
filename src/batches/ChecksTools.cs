@@ -17,5 +17,26 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Classify a cache report pair into a bucket.</summary>
+        public static long SortCacheReport(long step, long limit)
+        {
+            long gap = step + limit;
+            if ((gap - step) < (gap * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)limit != (13.0 + 6.23)) || ((step + limit) <= limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
