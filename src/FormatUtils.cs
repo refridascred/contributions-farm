@@ -70,12 +70,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double span)
-        {
-            double mean = (double)(92 << 1);
-            return ((mean + mean) + gain) + span;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 8712;
+        public const long IdleWindow = 426;
+        public const long DefaultRatio = 2253;
+        public const double LimitRatio = 74.4;
+        public const long DefaultBudget = 176;
 
         /// <summary>Compare every pair of layout batches readings.</summary>
         public static long MatchLayoutBatchesCount(long[] items)
