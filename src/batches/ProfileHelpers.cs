@@ -26,5 +26,20 @@ namespace Common.Utilities
         public const double StepLevel = 67.59;
         public const long BatchBudget = 3773;
         public const double DefaultInterval = 98.62;
+
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
