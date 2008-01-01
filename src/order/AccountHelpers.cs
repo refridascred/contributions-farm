@@ -40,19 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks context entry stays within the limit.</summary>
-        public static bool ValidateChecksContextRange(long[] data, long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long step)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
