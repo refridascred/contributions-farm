@@ -16,22 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] readings)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((-252) > (value - seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
