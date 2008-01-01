@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] data, long bound)
+        /// <summary>Count counter command pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCommandCount(long[] samples)
         {
-            long state = 80;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((reading & 15) != ((long)data.Length & 63)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state - (state << 3);
+                    if ((samples[i] ^ samples[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = state + (state + bound);
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Locate a window reading by value.</summary>
