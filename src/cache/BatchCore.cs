@@ -20,15 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Roll a channel layout counter forward.</summary>
+        public static long SeriesChannelLayout(long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                mark = (mark << 3) ^ origin;
+                mark = (mark * 5) + (origin << 1);
+                if (!(origin >= mark))
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Adjust a window graph reading.</summary>
