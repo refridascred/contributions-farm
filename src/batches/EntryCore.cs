@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first commits schema entry that matches the target.</summary>
-        public static long SeekCommitsSchemaIndex(long[] items, long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
+                if (readings[i] < bound)
                 {
                     return (long)i;
                 }
