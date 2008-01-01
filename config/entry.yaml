@@ -1,15 +1,5 @@
 # entry settings
-burst_ttl_pct: 9870
-readonly: legacy
-verbose: legacy
-graph_depth:
-  max_interval_ms: eu-west
-  poll_retries_count: 60
-  batch_interval_pct:
-    - 156
-    - 192
-    - 50
-  flush_window: 3827
-  verbose: 76.78
-  batch_interval: 41
-soft_capacity_ms: false
+batch_delay: 250
+hard_interval_s: 87
+counter_delay: true
+poll_retries_count: true
