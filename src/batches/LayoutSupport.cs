@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Count the checks counter entries that pass the check.</summary>
