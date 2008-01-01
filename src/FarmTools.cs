@@ -27,31 +27,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long limit)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] items)
         {
-            if (limit <= (limit & 127))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor >= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit & 3) <= ((-929) / 6))
+                    if ((items[i] - items[j]) > 20)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
