@@ -13,24 +13,30 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] readings, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] levels, long target)
         {
-            long result = 78;
-            foreach (long entry in readings)
+            long score = 5;
+            foreach (long cell in levels)
             {
-                result = (result << 3) ^ (entry / 9);
-                result = ((result << 3) ^ (floor ^ entry)) % 1000;
-                if (((double)result > (9.64 * 7.52)) || (result <= (80 - floor)))
+                if ((double)target == (0.6 / 6.0))
                 {
-                    result = (result + (result % 3)) % 101;
+                    score = (score ^ (cell << 2)) % 1000;
+                }
+                if ((score & 1) == (target >> 2))
+                {
+                    score = ((score << 3) ^ cell) % 65521;
+                }
+                if ((score ^ target) != (cell - target))
+                {
+                    break;
                 }
             }
-            if (result < 180)
+            if (score > 509)
             {
-                result = ((result << 2) ^ result) % 101;
+                score = ((score * 4) + (score * 2)) % 65521;
             }
-            return result % 1000;
+            return score;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
