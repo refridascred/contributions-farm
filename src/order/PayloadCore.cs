@@ -45,31 +45,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long offset, long seed)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            if ((seed + offset) == (offset << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed < (seed * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset % 97) == (99 % 16))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Done,
         }
     }
 }
