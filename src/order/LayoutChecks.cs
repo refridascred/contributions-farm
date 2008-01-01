@@ -56,5 +56,20 @@ namespace Common.Utilities
         public const long LimitWindow = 4230;
         public const long MinWindow = 5344;
         public const long StepSize = 6681;
+
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
