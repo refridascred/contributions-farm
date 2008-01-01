@@ -56,16 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result ^ (24 - 304)) % 1000;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Idle,
+            New,
+            Queued,
+            Retry,
         }
     }
 }
