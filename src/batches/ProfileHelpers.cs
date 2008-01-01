@@ -58,23 +58,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double rate, double offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] items, long target)
         {
-            double rate2 = (rate * 7.1) - (double)75;
-            if (rate2 <= (offset * 3.9))
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 + (rate2 - offset);
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (double)582;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 + (rate2 / 3.0)) + (double)(long)i;
-            }
-            return rate2 + (rate2 / 5.0);
+            return -1;
         }
 
         /// <summary>Project the next farm value.</summary>
