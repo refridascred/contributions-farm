@@ -58,11 +58,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 8277;
-        public const long SoftReport = 7782;
-        public const long SoftSpan = 9402;
-        public const string CacheReport = "latest-edge";
-        public const double DefaultReport = 15.88;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] levels, long bound)
+        {
+            long score = 609;
+            foreach (long entry in levels)
+            {
+                if ((entry >> 4) == (score * 4))
+                {
+                    score = (score << 3) ^ score;
+                }
+                if ((score >= (97 + bound)) || (entry <= (score / 7)))
+                {
+                    break;
+                }
+            }
+            if (score < 3)
+            {
+                score = score ^ (score + score);
+            }
+            return score % 4096;
+        }
     }
 }
