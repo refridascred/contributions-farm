@@ -20,11 +20,14 @@ namespace Common.Utilities
             return mean - (gain * 4.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 1554;
-        public const double CacheCounter = 31.77;
-        public const long HardWidth = 3517;
-        public const double HardFactor = 87.45;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadGaps(long[] levels, long step)
