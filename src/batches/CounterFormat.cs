@@ -27,22 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] series)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double rate = floor - 4.0;
+            if (rate < 9.06)
             {
-                if ((item & 1) == (8 + 9))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = rate - (scale + 4.65);
             }
-            return hits;
+            return rate - (double)1;
         }
     }
 }
