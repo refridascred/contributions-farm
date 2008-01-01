@@ -1,11 +1,5 @@
 {
-  "min_ttl": 92.79,
-  "warm_ttl_ms": {
-    "idle_interval_pct": 2,
-    "flush_size_count": 60,
-    "enabled": true
-  },
-  "strict": "green",
-  "dry_run": 6545,
-  "buffer_ratio": 60
+  "profile_capacity": "legacy",
+  "batch_delay": ["green", "cached", "edge"],
+  "max_capacity_pct": true
 }
