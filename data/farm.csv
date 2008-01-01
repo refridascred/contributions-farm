@@ -1,6 +1,11 @@
-id,active,ratio,label
-1,fallback,983,latest
-2,995,green,30.9
-3,38.02,757,cached
-4,legacy,latest,latest
-5,178,standard,eu-west
+id,count,owner
+1,blue,785
+2,legacy,538
+3,green,primary
+4,stable,open
+5,56.18,670
+6,598,blue
+7,legacy,edge
+8,fallback,staging
+9,420,179
+10,702,67
