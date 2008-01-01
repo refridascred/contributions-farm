@@ -13,31 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long limit, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] samples, long step)
         {
-            if (((3.0 * 8.0) <= (double)target) && ((target - limit) < (limit * 4)))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((14 % 60) <= (limit ^ limit)) && ((target >> 1) < (limit & 63)))
+                if (value <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)limit == (2.0 - 0.38)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
