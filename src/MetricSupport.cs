@@ -45,19 +45,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] readings, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] data)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long mix = 5;
+            foreach (long entry in data)
             {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (mix * 5) + (mix - mix);
+                mix = mix + entry;
             }
-            return ready;
+            if (mix > 14)
+            {
+                mix = ((mix << 3) ^ (6 - 48)) % 4096;
+            }
+            return mix % 97;
         }
     }
 }
