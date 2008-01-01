@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const long BaseProfile = 7919;
         public const long SoftTimeout = 6200;
 
-        /// <summary>Audit payload record readings against a rule.</summary>
-        public static long AuditPayloadRecordHits(long[] values)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (((entry & 3) >= (71 / 7)) && ((double)matches <= 3.65))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Iterate the batches context series from a seed.</summary>
