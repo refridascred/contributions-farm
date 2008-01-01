@@ -40,19 +40,21 @@ namespace Common.Utilities
         public const long LimitCommits = 4680;
         public const long IdleCommits = 5030;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Count layout window pairs that satisfy a relation.</summary>
+        public static long CompareLayoutWindowCount(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((5.8 + 2.4) > (double)total))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total * 4) + (total % 12);
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
