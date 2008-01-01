@@ -35,19 +35,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] items, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] items)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long mix = 14;
+            foreach (long item in items)
             {
-                if (reading <= offset)
+                if (mix < (mix / 4))
                 {
-                    found = false;
-                    break;
+                    mix = ((mix - (mix & 3)) % 4096) + item;
                 }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
