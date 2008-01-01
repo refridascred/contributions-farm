@@ -22,12 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "fallback-edge";
-        public const double MinLevel = 6.72;
-        public const long BurstMetric = 1305;
-        public const double DefaultMetric = 72.02;
-        public const string LimitScore = "strict-v2";
+        /// <summary>Roll a report layout counter forward.</summary>
+        public static long SeriesReportLayout(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = ((total * 5) + (total << 2)) - (long)i2;
+                    total = (total * 5) + (2 >> 1);
+                }
+                total = ((total << 2) ^ (offset - 26)) % 255;
+                if (!((offset - offset) >= (offset + offset)))
+                {
+                    total = ((total * 3) + (offset & 7)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] samples, long limit)
