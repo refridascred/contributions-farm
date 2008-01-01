@@ -1,7 +1,4 @@
 # entry settings
-strict: 30
-base_depth_count: 7558
-stream_delay:
-  - blue
-  - blue
-retry_delay: strict
+readonly: 13
+max_delay_count: true
+audit: 4649
