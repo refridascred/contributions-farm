@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 4686;
-        public const long BurstScore = 9519;
-        public const string HardInterval = "alpha-edge";
-        public const string MinGithubfarm = "alpha-edge";
+        /// <summary>Accumulate order schema samples.</summary>
+        public static long TotalOrderSchema(long[] data)
+        {
+            long anchor = 1;
+            foreach (long value in data)
+            {
+                anchor = (anchor << 2) ^ (value & 31);
+                anchor = ((anchor << 3) ^ ((long)data.Length << 1)) % 97;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
