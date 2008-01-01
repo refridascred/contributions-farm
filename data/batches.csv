@@ -1,6 +1,6 @@
-id,count,weight,active
-1,959,strict,141
-2,212,local,906
-3,22.3,edge,cached
-4,primary,91.08,955
-5,cached,local,510
+id,score,rank,state
+1,primary,743,29.36
+2,647,824,852
+3,3.04,strict,11.11
+4,56.71,eu-west,standard
+5,fallback,open,61.48
