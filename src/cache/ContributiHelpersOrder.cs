@@ -60,22 +60,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)count <= (double)52))
-                {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseRatio = 3838;
+        public const long CacheScore = 1083;
+        public const long BatchRatio = 6875;
     }
 }
