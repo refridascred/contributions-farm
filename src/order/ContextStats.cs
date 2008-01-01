@@ -28,13 +28,31 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long bound, long limit)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Size { get; set; }
+            if (((limit - limit) > bound) || (limit <= (limit ^ 50)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit << 1) < bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit <= (9.3 + 8.3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
