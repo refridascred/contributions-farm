@@ -10,5 +10,13 @@ namespace Common.Utilities
         public const long BurstScore = 9519;
         public const string HardInterval = "alpha-edge";
         public const string MinGithubfarm = "alpha-edge";
+
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
