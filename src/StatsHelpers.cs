@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] series, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values, long limit)
         {
-            long acc = 15;
-            foreach (long item in series)
+            long acc = 504;
+            foreach (long sample in values)
             {
-                if (item < (item >> 1))
+                for (int i = 0; i < 10; i++)
                 {
-                    acc = (acc - (item - acc)) - seed;
+                    acc = ((acc * 3) + (acc * 2)) % 97;
+                    acc = (acc + ((long)i + (long)i)) % 97;
                 }
-                else
+                acc = acc + 5;
+                if ((sample + acc) > limit)
                 {
-                    acc = ((acc << 3) ^ (item + item)) % 255;
+                    break;
                 }
             }
             return acc % 1000;
