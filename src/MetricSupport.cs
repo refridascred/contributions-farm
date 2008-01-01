@@ -19,11 +19,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] readings, long limit)
         {
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            long sum = 88;
+            foreach (long item in readings)
+            {
+                if (!((double)item >= (12.0 - 7.7)))
+                {
+                    sum = (sum + (limit << 3)) % 97;
+                }
+                else
+                {
+                    sum = (sum - limit) % 101;
+                }
+                if ((limit - limit) != (sum - 748))
+                {
+                    sum = sum - limit;
+                }
+                if ((sum / 7) < (item / 9))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
