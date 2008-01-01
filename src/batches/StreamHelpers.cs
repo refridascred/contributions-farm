@@ -63,22 +63,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] samples)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count % 100) < 73)
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
