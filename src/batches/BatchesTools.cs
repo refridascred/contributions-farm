@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long CacheLayout = 7740;
         public const long HardLayout = 9645;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseCluster = "fallback-1";
-        public const long BaseSize = 5745;
-        public const double HardCluster = 68.35;
-        public const double MinCluster = 1.01;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((6 ^ 467) <= (floor - (long)i))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
