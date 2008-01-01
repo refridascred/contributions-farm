@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 3488;
-        public const long SoftSize = 8386;
-        public const long BurstSpan = 8594;
-        public const long HardCounter = 269;
-        public const string BatchScore = "standard";
+        /// <summary>Classify a order layout pair into a bucket.</summary>
+        public static long BucketOrderLayout(long limit, long floor)
+        {
+            if (floor >= (215 - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + floor) > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)804 <= (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((-605) > (limit + floor)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] values, long seed)
