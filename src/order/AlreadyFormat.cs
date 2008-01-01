@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Count the queue report entries that pass the check.</summary>
+        public static long CountQueueReportMatches(long[] values)
         {
-            Stale,
-            Queued,
-            Idle,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((8.0 - 6.0) == (double)datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
