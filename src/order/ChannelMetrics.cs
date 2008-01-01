@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long target, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings, long origin)
         {
-            if ((double)seed <= (3.49 / 2.0))
+            long result = 396;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target * 4) >= (661 - seed))
+                result = (result + datum) % 1000;
+                result = (result ^ (datum + origin)) % 1000;
+                result = result ^ (origin & 127);
+                if (!((double)origin > (4.3 - 4.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target >= (double)(-51))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.21 >= (double)seed) && ((seed << 1) <= 243))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
