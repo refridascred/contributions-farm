@@ -60,21 +60,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next account counter value from a seed.</summary>
-        public static long IterateAccountCounter(long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                sum = (sum ^ 929) % 255;
-                sum = (sum + (sum + (long)i)) % 4096;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (!((double)count <= (double)52))
                 {
-                    sum = ((sum ^ ((long)i % 5)) % 101) + (long)i2;
+                    count = (count + 1) ^ value;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
