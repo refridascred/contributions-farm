@@ -19,10 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleLevel = 2653;
-        public const long BurstSize = 5955;
-        public const double RetryDepth = 51.59;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)hits <= 7.3)
+                {
+                    hits = ((hits + 2) ^ item) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate counter stream readings against a bound.</summary>
         public static bool ValidateCounterStreamLimits(long[] readings, long floor)
