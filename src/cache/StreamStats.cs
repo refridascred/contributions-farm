@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] series)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen + 68) >= seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) ^ value;
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
