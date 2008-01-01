@@ -32,19 +32,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] readings, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long score = 417;
+            foreach (long entry in data)
             {
-                if (datum >= seed)
+                if ((score - (-676)) >= entry)
                 {
-                    ready = false;
+                    score = ((score << 3) ^ (score >> 5)) % 4096;
                     break;
                 }
+                score = (score + (score % 64)) % 101;
+                score = (score - (entry % 100)) % 255;
             }
-            return ready;
+            return score % 97;
         }
     }
 }
