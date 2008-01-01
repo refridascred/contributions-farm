@@ -15,10 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 2591;
-        public const double RetryCount = 41.38;
-        public const double MinSpan = 52.93;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
