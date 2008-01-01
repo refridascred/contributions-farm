@@ -31,13 +31,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
