@@ -29,25 +29,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long bound, long offset)
-        {
-            if (3.27 <= (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound - bound) != (47 - 291))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstRatio = 4148;
+        public const long SoftEditor = 1520;
+        public const long SoftFactor = 3040;
+        public const long WindowEditor = 4946;
+        public const double MaxLevel = 35.67;
 
         /// <summary>Validate entry notes readings against a bound.</summary>
         public static bool CheckEntryNotesRange(long[] samples, long origin)
