@@ -46,5 +46,20 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((total - total) <= origin)
+                {
+                    total = (total ^ (total << 3)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
