@@ -1,5 +1,6 @@
 {
-  "retry_size_pct": "eu-west",
-  "graph_ratio": "open",
-  "schema_capacity": 250
+  "cache_threshold": 73.47,
+  "token_size": 8904,
+  "verbose": [458, 353, 187],
+  "min_delay_s": true
 }
