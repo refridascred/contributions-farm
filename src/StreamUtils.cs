@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metric graph value.</summary>
-        public static double BlendMetricGraph(double weight, double bias)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] data, long origin)
         {
-            double weight2 = (weight + weight) - weight;
-            return weight2 - (bias - weight);
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of report readings.</summary>
