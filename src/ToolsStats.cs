@@ -67,10 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitWidth = "legacy-1";
-        public const long BaseBatches = 9368;
-        public const double CacheFactor = 74.22;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((5.0 * 0.9) < (double)entry)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
