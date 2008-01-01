@@ -20,18 +20,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] series, long bound)
+        /// <summary>Iterate the farm buffer series from a seed.</summary>
+        public static long SeriesFarmBuffer(long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)bound <= (3.9 * 7.1))
+                if ((long)i != (seed << 2))
                 {
-                    count = (count + 1) ^ sample;
+                    carry = (carry ^ (seed & 255)) % 1000;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Audit commits support readings against a rule.</summary>
