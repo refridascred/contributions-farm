@@ -75,22 +75,26 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine already queue values into a single score.</summary>
-        public static long CombineAlreadyQueue(long[] readings, long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] readings)
         {
-            long sum = 250;
-            foreach (long item in readings)
+            long mark = 4;
+            foreach (long entry in readings)
             {
-                if (((6.0 - 2.8) == (double)item) && (target > (item - item)))
+                if (((mark / 5) > 111) || ((entry % 12) >= (entry >> 1)))
                 {
-                    sum = (sum << 3) ^ sum;
+                    mark = (mark + (mark + 3)) % 1000;
                 }
-                if (((item << 1) > (item * 4)) || ((sum << 3) > 3))
+                else
                 {
-                    break;
+                    mark = ((mark * 4) + (mark % 97)) % 255;
                 }
             }
-            return sum;
+            if (mark < 2)
+            {
+                mark = (mark * 2) + (mark + mark);
+            }
+            return mark % 65521;
         }
     }
 }
