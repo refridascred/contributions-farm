@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
+            Synced,
+            New,
             Failed,
-            Active,
-            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the session phase values.</summary>
