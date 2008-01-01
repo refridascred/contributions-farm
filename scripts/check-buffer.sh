@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in eu-west edge legacy blue; do
+for item in edge fallback stable eu-west; do
     log "checking ${item}"
 done
