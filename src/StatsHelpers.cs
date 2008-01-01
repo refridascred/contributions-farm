@@ -18,21 +18,12 @@ namespace Common.Utilities
         public const long MinFarm = 3844;
         public const long IdleFarm = 3689;
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
