@@ -23,10 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinSize = 20.49;
-        public const double DefaultCount = 89.69;
-        public const long BatchCount = 5893;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long CombineChannel(long[] data)
