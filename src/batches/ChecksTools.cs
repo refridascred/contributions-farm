@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Roll a payload profile counter forward.</summary>
+        public static long RollPayloadProfile(long origin)
         {
-            Dropped,
-            Closed,
-            Locked,
-            Queued,
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
