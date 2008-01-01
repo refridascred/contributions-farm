@@ -29,20 +29,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] series, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] samples, long seed)
         {
-            long anchor = 6;
-            foreach (long cell in series)
+            long anchor = 78;
+            foreach (long value in samples)
             {
-                if (52 > target)
+                if ((value + anchor) >= seed)
                 {
-                    anchor = (anchor - (anchor - 6)) ^ cell;
-                    anchor = ((anchor * 2) + (target - target)) % 1000;
+                    anchor = ((anchor << 3) ^ (51 >> 4)) % 4096;
                 }
-                anchor = ((anchor * 4) + (anchor & 63)) % 97;
+                else
+                {
+                    anchor = (anchor * 4) + (value >> 4);
+                }
             }
-            return anchor % 4096;
+            return anchor % 97;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
