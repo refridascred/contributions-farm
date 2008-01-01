@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] readings, long origin)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
