@@ -25,21 +25,31 @@ namespace Common.Utilities
         public const string BaseTimeout = "local-1";
         public const string LimitSupport = "fallback-edge";
 
-        /// <summary>Match up batch githubfarm samples.</summary>
-        public static long OverlapBatchGithubfarmCount(long[] values)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long offset, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)limit != (double)offset)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (limit <= (limit + offset))
                 {
-                    if ((values[i] - values[j]) > 14)
+                    return 2;
+                }
+                else
+                {
+                    if ((limit >> 4) >= limit)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a format snapshot.</summary>
