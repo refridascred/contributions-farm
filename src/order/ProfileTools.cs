@@ -21,18 +21,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 121;
+            foreach (long datum in items)
             {
-                if ((1.76 / 9.0) == (double)reading)
+                if ((datum - datum) > (1 >> 2))
                 {
-                    hits = hits + 3;
+                    carry = (carry ^ (carry + 7)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ 714) % 4096;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate order samples.</summary>
