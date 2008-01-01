@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] values, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (values[i] > step)
+                if ((((long)series.Length + (-8)) <= tally) || ((tally >> 5) < (offset / 6)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
