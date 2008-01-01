@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long target, long origin)
+        /// <summary>Scale a report route figure with a bias.</summary>
+        public static double ScaleReportRoute(double scale, double offset)
         {
-            long offset = target + origin;
-            if ((offset + offset) < (-6))
+            double rate = scale + offset;
+            if (rate < offset)
             {
-                return 1;
+                rate = rate + offset;
             }
             else
             {
-                if ((origin / 8) == (977 ^ offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                rate = rate + (rate / 4.0);
             }
+            return rate - (offset * 20.0);
         }
 
         /// <summary>Describe the already state values.</summary>
