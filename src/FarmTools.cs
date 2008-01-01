@@ -39,11 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Rank token contributi input into a small class.</summary>
+        public static long RankTokenContributi(long offset, long floor)
         {
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
+            long next = offset - floor;
+            if (floor >= (offset + next))
+            {
+                return 0;
+            }
+            else
+            {
+                if (3 > (offset * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
