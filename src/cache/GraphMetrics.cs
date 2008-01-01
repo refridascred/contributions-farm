@@ -56,16 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload record counter forward.</summary>
-        public static long DerivePayloadRecord(long offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double rate, double bias)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            double gain = bias / 4.0;
+            if (gain >= (bias - rate))
             {
-                anchor = anchor - offset;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                gain = gain + (gain * 8.4);
             }
-            return anchor;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + 7.0) + (double)(long)i;
+            }
+            return gain + 7.6;
         }
     }
 }
