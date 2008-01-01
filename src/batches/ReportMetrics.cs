@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinInterval = "strict";
-        public const long HardWidth = 2217;
-        public const double DefaultContext = 51.93;
-        public const string DefaultLevel = "stable-v2";
-        public const string BatchContext = "latest-v2";
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Paused,
+            Stale,
+            Closed,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long DigestGithubfarm(long[] series, long limit)
