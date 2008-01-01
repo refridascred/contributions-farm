@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Fold a list of githubfarm payload readings.</summary>
+        public static long TallyGithubfarmPayload(long[] readings)
         {
-            Done,
-            Dropped,
-            Paused,
-            Closed,
-            New,
+            long result = 78;
+            foreach (long item in readings)
+            {
+                if (((4.0 + 3.6) >= (double)result) && ((1.2 - 13.0) < (double)item))
+                {
+                    result = (result - result) % 1000;
+                }
+            }
+            if (result > 61)
+            {
+                result = (result << 2) ^ (result + result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a report payload sample.</summary>
