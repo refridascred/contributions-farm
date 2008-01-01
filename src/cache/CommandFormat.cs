@@ -30,19 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] values, long target)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Region { get; set; }
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
