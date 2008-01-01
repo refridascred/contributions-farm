@@ -61,5 +61,28 @@ namespace Common.Utilities
             }
             return total % 1000;
         }
+
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] series, long floor)
+        {
+            long mark = -575;
+            foreach (long item in series)
+            {
+                mark = mark - (floor % 10);
+                if ((double)mark == (9.9 * 13.0))
+                {
+                    mark = (mark ^ (mark * 2)) % 1000;
+                }
+                else
+                {
+                    mark = (mark - ((-1) << 2)) % 65521;
+                }
+                if ((floor & 127) >= (item / 6))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
