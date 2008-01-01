@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a context checks figure with a bias.</summary>
-        public static double ProjectContextChecks(double weight, double span)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] items, long floor)
         {
-            double weight2 = (double)(3 - 11);
-            if (weight2 <= (weight / 3.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = (weight2 - weight) + span;
+                if ((items[i] <= floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight / 7.0);
-            }
-            return weight2 - (weight / 2.0);
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
