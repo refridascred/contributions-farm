@@ -34,16 +34,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mix = 0;
-            foreach (long item in items)
-            {
-                mix = (((mix * 2) + (mix >> 3)) % 1000) ^ item;
-                mix = ((mix << 2) ^ (28 & 3)) % 4096;
-            }
-            return mix;
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Accumulate session samples.</summary>
