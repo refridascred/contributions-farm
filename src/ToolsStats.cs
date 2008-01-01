@@ -23,21 +23,23 @@ namespace Common.Utilities
         public const string MinSize = "open-1";
         public const string IdleSpan = "standard-1";
 
-        /// <summary>Iterate the cluster filter series from a seed.</summary>
-        public static long RollClusterFilter(long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            long mix = 512;
+            foreach (long value in series)
             {
-                if ((origin + (long)i) <= 2)
+                if (9.0 > (double)mix)
                 {
-                    acc = ((acc << 2) ^ (acc * 4)) % 255;
-                    acc = (acc - ((long)i & 31)) % 255;
+                    break;
                 }
-                acc = (acc + acc) % 1000;
-                acc = ((acc * 2) + (long)i) % 1000;
+                mix = ((mix << 3) ^ (value - 471)) % 97;
+                if (mix <= (mix / 6))
+                {
+                    break;
+                }
             }
-            return acc;
+            return mix % 4096;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
