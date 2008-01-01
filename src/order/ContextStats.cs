@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long anchor = 32;
+            foreach (long entry in readings)
             {
-                if (!(9.38 > (double)tally))
-                {
-                    tally = (tally + 1) ^ value;
-                }
+                anchor = (anchor * 2) + (8 - anchor);
+                anchor = ((anchor * 5) + entry) % 255;
+                anchor = (anchor ^ entry) % 97;
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a stream entry.</summary>
