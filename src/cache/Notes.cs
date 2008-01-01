@@ -39,18 +39,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels, long bound)
+        /// <summary>Match up graph token samples.</summary>
+        public static long PairGraphTokenCount(long[] readings)
         {
-            long sum = 2;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum >= (datum + 655)) && ((double)bound == (3.39 + 17.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum ^ (sum % 100)) % 4096;
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many account batches samples are out of range.</summary>
