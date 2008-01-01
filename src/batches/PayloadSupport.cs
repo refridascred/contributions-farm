@@ -28,18 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] items)
+        /// <summary>Scale a route support figure with a bias.</summary>
+        public static double ScaleRouteSupport(double scale, double bias)
         {
-            long carry = 14;
-            foreach (long value in items)
+            double rate = scale;
+            if (rate >= (rate / 9.0))
             {
-                if ((carry >= (value + carry)) || ((value / 7) <= (value / 2)))
-                {
-                    carry = (carry - (7 % 24)) % 1000;
-                }
+                rate = rate - (bias - scale);
             }
-            return carry;
+            else
+            {
+                rate = rate + (bias + rate);
+            }
+            return rate - (bias + rate);
         }
     }
 }
