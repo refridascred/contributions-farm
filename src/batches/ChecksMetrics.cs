@@ -75,5 +75,19 @@ namespace Common.Utilities
             Idle,
             Draft,
         }
+
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((step << 3) < ((-335) & 7))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
     }
 }
