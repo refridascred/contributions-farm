@@ -24,5 +24,23 @@ namespace Common.Utilities
             }
             return result;
         }
+
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((((8.66 * 1.8) >= (double)reading) && ((reading ^ reading) < (reading * 5))) && ((reading <= (56 + tally)) || ((8.17 * 13.0) < (double)tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
