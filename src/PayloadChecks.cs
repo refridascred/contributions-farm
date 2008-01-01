@@ -20,10 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstCache = "cached-v2";
-        public const double BaseRatio = 94.11;
-        public const long BatchCache = 530;
+        /// <summary>Find the first tools command entry that matches the target.</summary>
+        public static long SeekToolsCommandIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up entry channel samples.</summary>
         public static long OverlapEntryChannelCount(long[] data)
