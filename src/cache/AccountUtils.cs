@@ -20,29 +20,18 @@ namespace Common.Utilities
         public const long BaseFactor = 4539;
         public const long BatchRatio = 6016;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] items, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (((seed % 5) > (848 - tally)) || (((tally + 29) == ((-534) - seed)) && ((seed + 945) < tally)))
                 {
-                    score = (score - ((long)i >> 5)) - (long)i2;
+                    tally = (tally + 2) + item;
                 }
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    score = (((score * 4) + (limit / 4)) % 255) ^ (long)i3;
-                    score = (score << 3) ^ (limit + score);
-                }
-                if ((limit - (-28)) <= limit)
-                {
-                    score = ((score * 5) + (51 & 1)) % 65521;
-                    score = (score - (score + limit)) % 101;
-                }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
     }
 }
