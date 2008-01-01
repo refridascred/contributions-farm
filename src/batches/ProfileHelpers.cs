@@ -12,17 +12,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long step)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the filter mode values.</summary>
