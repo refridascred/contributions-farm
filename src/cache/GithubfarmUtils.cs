@@ -51,9 +51,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardSize = 3844;
-        public const string WindowFilter = "staging-v2";
-        public const long IdleFilter = 9385;
+        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
+        public static long RankGithubfarmReport(long step, long floor)
+        {
+            if ((floor + floor) > floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((19.0 / 9.0) == (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor >= (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + 56) != (floor / 6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
