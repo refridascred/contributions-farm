@@ -35,13 +35,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long floor, long seed)
         {
-            Draft,
-            Dropped,
-            New,
-            Active,
+            long bound = floor ^ seed;
+            if ((bound + bound) > (bound / 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor ^ 9) > (bound & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((0.71 * 7.41) >= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
