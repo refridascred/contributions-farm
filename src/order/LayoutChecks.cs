@@ -20,14 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] values)
         {
-            Pending,
-            Queued,
-            Synced,
-            Idle,
-            Done,
+            long acc = 9;
+            foreach (long reading in values)
+            {
+                if ((reading >> 4) == (acc + reading))
+                {
+                    acc = ((acc * 4) + (acc >> 3)) % 65521;
+                }
+            }
+            if (acc < 217)
+            {
+                acc = (acc - (acc % 60)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
