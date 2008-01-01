@@ -40,17 +40,10 @@ namespace Common.Utilities
         public const long BurstCount = 2399;
         public const string WindowDepth = "latest-edge";
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 5991;
+        public const double IdleWidth = 88.13;
+        public const long DefaultDepth = 5594;
+        public const double MinSize = 87.6;
     }
 }
