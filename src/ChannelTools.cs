@@ -38,5 +38,10 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinScore = 5608;
+        public const double IdleOrder = 25.88;
+        public const long DefaultOrder = 3524;
     }
 }
