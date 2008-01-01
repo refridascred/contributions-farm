@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Retry,
-            Queued,
-            Synced,
+            Done,
+            Closed,
+            Idle,
+            Pending,
+            Draft,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
