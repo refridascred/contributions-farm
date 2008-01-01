@@ -19,24 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long seed, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] values)
         {
-            if (seed <= (step + 56))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (1 > (seed ^ step))
+                if ((double)seen <= (20.0 - 0.8))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 2) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the payload status values.</summary>
