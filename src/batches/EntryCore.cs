@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] data, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long diff = bound + offset;
+            if ((offset - 33) > (diff % 12))
             {
-                if ((((-763) - seen) < ((long)data.Length >> 2)) || (((3.73 + 5.0) != (double)step) || ((double)step >= (double)entry)))
+                return 6;
+            }
+            else
+            {
+                if (((double)diff >= (6.0 + 6.0)) && ((78 << 2) > (bound << 3)))
                 {
-                    seen = seen + 2;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
