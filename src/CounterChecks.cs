@@ -26,18 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a token schema sample.</summary>
-        public static long LocateTokenSchemaIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheCount = 68.86;
+        public const long RetryLevel = 6618;
+        public const long MinLevel = 2747;
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long GradeNotes(long target, long seed)
