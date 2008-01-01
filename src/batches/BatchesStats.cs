@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const long BaseProfile = 7919;
         public const long SoftTimeout = 6200;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples, long origin)
+        /// <summary>Audit payload record readings against a rule.</summary>
+        public static long AuditPayloadRecordHits(long[] values)
         {
-            long score = 35;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                score = (((score * 2) + (score * 5)) ^ datum) - origin;
+                if (((entry & 3) >= (71 / 7)) && ((double)matches <= 3.65))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
