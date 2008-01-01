@@ -1,15 +1,11 @@
 # Command notes
 
-Run the schema check before changing any schema limits.
-Use record settings to tune how often editor data is refreshed.
-When a payload fails, the farm handler retries a few times before giving up.
-
-When a metric fails, the tools handler retries a few times before giving up.
-Keep report and layout names short and lowercase.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Run the buffer check before changing any counter limits.
 
 ## Guidelines
 
-- Validate metric input early
-- Prefer stream defaults
-- Log every entry change
-- Document new support fields
+- Prefer session defaults
+- Document new commits fields
+- Review commits limits each release
+- Keep notes values small
