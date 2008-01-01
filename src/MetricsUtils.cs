@@ -40,21 +40,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)i << 3) <= (offset & 31))
                 {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix * 5) + (long)i) % 97;
+                    continue;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Rank record filter input into a small class.</summary>
