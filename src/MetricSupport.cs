@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next graph order value from a seed.</summary>
-        public static long IterateGraphOrder(long bound)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Done,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count checks filter pairs that satisfy a relation.</summary>
