@@ -48,18 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] readings, long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)count >= (double)567)
-                {
-                    count = ((count + 1) ^ datum) - offset;
-                }
+                total = ((total * 4) + (step ^ step)) % 97;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
