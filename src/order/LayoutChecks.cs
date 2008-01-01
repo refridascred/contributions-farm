@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] data, long seed)
         {
-            long mix = -1;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                mix = (mix * 4) + (sample >> 2);
+                if (entry <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mix < 5)
-            {
-                mix = ((mix * 5) + (mix + mix)) % 255;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
