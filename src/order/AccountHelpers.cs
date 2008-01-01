@@ -31,18 +31,38 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] samples, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long target, long target2)
         {
-            long acc = 63;
-            foreach (long entry in samples)
+            if (!((target2 + target2) == (target2 >> 2)))
             {
-                if (entry >= (seed % 60))
+                return 5;
+            }
+            else
+            {
+                if ((target >> 4) >= (target - 9))
                 {
-                    acc = acc ^ seed;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target == (double)target2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((target << 2) > (65 & 7)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
