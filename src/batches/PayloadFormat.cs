@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] data, long step)
+        /// <summary>Count format order pairs that satisfy a relation.</summary>
+        public static long OverlapFormatOrderCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-335) >> 3) >= (value ^ step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((samples[i] ^ samples[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
