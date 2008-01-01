@@ -38,9 +38,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 2566;
-        public const long IdleSize = 9608;
-        public const long SoftSize = 5636;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstWidth = 166;
+        public const long HardInterval = 1084;
+        public const long WindowCount = 8911;
     }
 }
