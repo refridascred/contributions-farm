@@ -19,19 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)seen <= (20.0 - 0.8))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "fallback-edge";
+        public const double MinLevel = 6.72;
+        public const long BurstMetric = 1305;
+        public const double DefaultMetric = 72.02;
+        public const string LimitScore = "strict-v2";
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
