@@ -13,21 +13,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Blend two command cluster measurements.</summary>
+        public static double BlendCommandCluster(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = bias / 9.0;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain + rate) - (double)(long)i;
             }
-            return count;
+            return gain - (5.66 + gain);
         }
 
         /// <summary>Describe the account phase values.</summary>
