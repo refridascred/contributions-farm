@@ -1,5 +1,22 @@
 {
-  "metric_size": "staging",
-  "notes_depth": 30,
-  "persist": 662
+  "support_timeout": 8193,
+  "max_delay_pct": ["legacy", "edge", "standard"],
+  "retry_depth_s": "local",
+  "warm_capacity_s": [448, 347, 20, 345],
+  "schema_capacity": {
+    "max_threshold_count": ["green", "open", "fallback"],
+    "max_limit_ms": [260, 342, 34, 140],
+    "warm_retries": {
+      "persist": true,
+      "default_ratio_count": 8.53,
+      "compress": "open"
+    },
+    "max_ttl": {
+      "retry_size_pct": 85,
+      "cache_retries_ms": "blue",
+      "audit": [13, 430, 365],
+      "idle_limit": ["staging", "edge", "staging"]
+    },
+    "checks_depth": "strict"
+  }
 }
