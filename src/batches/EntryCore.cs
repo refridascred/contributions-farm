@@ -43,11 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Check that every session channel entry stays within the limit.</summary>
+        public static bool ValidateSessionChannelRange(long[] readings, long target)
         {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a tools header.</summary>
