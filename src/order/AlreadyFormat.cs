@@ -64,38 +64,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings, long seed)
         {
-            if ((3.0 >= (double)origin) || (origin > (seed ^ (-93))))
+            long mix = 55;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - origin) >= origin)
+                if (!(((seed - seed) != (item - item)) || ((mix - seed) <= (mix + item))))
                 {
-                    return 8;
+                    mix = (mix << 3) ^ (seed - mix);
+                }
+                if ((seed + item) != (seed / 6))
+                {
+                    mix = (mix ^ (48 / 9)) % 101;
                 }
                 else
                 {
-                    if ((double)origin <= 1.5)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed + seed) > ((-4) ^ seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = mix ^ (8 % 97);
+                }
+                if ((seed * 4) <= (365 - mix))
+                {
+                    break;
                 }
             }
+            return mix % 1000;
         }
     }
 }
