@@ -29,11 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinFactor = 9878;
-        public const long IdleWidth = 3598;
-        public const long IdlePayload = 4870;
-        public const long LimitRatio = 1316;
-        public const string MaxDepth = "strict-1";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchFactor = 297;
+        public const long WindowContributi = 6796;
+        public const double BatchSize = 20.68;
     }
 }
