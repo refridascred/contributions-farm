@@ -20,11 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxScore = 5659;
-        public const long MaxStats = 9858;
-        public const long StepStats = 4373;
-        public const long MaxCount = 622;
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double weight, double offset)
+        {
+            double load = (double)(407 & 63);
+            if (load >= offset)
+            {
+                load = (load + load) - weight;
+            }
+            else
+            {
+                load = load + offset;
+            }
+            return load - offset;
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double AdjustCluster(double ratio, double offset)
