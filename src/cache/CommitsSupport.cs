@@ -55,10 +55,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "standard";
-        public const long WindowChannel = 5493;
-        public const string CacheChannel = "staging-1";
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long WeighCache(long[] readings)
