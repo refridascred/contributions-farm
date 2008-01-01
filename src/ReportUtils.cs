@@ -51,19 +51,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate filter window readings against a bound.</summary>
-        public static bool CheckFilterWindowLimits(long[] levels, long origin)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Draft,
+            Idle,
         }
     }
 }
