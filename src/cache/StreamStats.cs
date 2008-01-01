@@ -50,11 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 6718;
-        public const string DefaultPayload = "standard-v2";
-        public const string WindowPayload = "legacy-1";
-        public const long LimitPayload = 2133;
-        public const long WindowWidth = 9336;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item << 3) > (count >> 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
