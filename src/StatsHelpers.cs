@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] samples, long limit)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Combine context values into a single score.</summary>
