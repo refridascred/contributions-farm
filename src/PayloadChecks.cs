@@ -23,29 +23,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long origin, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long origin)
         {
-            long slot = origin ^ seed;
-            if ((seed - slot) == (seed << 1))
+            long prev = limit ^ origin;
+            if ((double)origin < (double)limit)
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((39 >> 2) > (slot / 6))
+                if ((prev & 127) > (limit >> 5))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if (!((seed * 2) != (origin ^ slot)))
+                    if ((origin << 2) >= prev)
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        return 4;
+                        if ((origin - 0) == (limit >> 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
