@@ -1,0 +1,15 @@
+{
+  "base_window_count": "latest",
+  "burst_ttl_s": {
+    "burst_size_s": {
+      "dry_run": 88.68,
+      "batch_window_count": true,
+      "record_delay": "edge"
+    },
+    "cache_depth": "edge",
+    "metrics_capacity": 91.36
+  },
+  "retry_size_s": ["fallback", "fallback", "strict"],
+  "cache_ttl_s": "edge",
+  "buffer_depth": "stable"
+}
