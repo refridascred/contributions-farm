@@ -1,7 +1,9 @@
-id,count,state,score
-1,primary,blue,930
-2,40.24,40.35,375
-3,395,eu-west,81.37
-4,629,44.83,open
-5,769,cached,461
-6,65.04,eu-west,174
+id,score,count,weight,ratio
+1,cached,926,162,48.77
+2,11.35,6.45,162,11.28
+3,353,774,stable,standard
+4,616,stable,48.2,61.87
+5,2.21,75.35,7.86,84.36
+6,969,edge,22.49,35
+7,680,873,499,strict
+8,stable,legacy,stable,green
