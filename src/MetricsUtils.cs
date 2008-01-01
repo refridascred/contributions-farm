@@ -17,11 +17,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double ratio, double offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double drift = ratio / 4.0;
-            return drift + offset;
+            Retry,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a editor options.</summary>
