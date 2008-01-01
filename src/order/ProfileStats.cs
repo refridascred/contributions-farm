@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] levels, long offset)
         {
-            Retry,
-            Idle,
-            Ready,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((offset + offset) <= 907)
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the checks level values.</summary>
