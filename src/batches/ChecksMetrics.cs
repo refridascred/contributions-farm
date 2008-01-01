@@ -53,5 +53,19 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Combine cache account values into a single score.</summary>
+        public static long TotalCacheAccount(long[] samples)
+        {
+            long acc = 631;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= (double)0)
+                {
+                    acc = ((acc * 3) + (acc + sample)) % 1000;
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
