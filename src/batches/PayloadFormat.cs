@@ -26,5 +26,13 @@ namespace Common.Utilities
             }
             return scale2 - scale;
         }
+
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Done,
+            Failed,
+            Idle,
+        }
     }
 }
