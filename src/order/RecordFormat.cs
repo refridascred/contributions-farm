@@ -36,14 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Paused,
-            Closed,
-            Queued,
-            Pending,
-            Ready,
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate profile session samples.</summary>
