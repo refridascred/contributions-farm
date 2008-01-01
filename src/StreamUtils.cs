@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Project the next metric graph value.</summary>
