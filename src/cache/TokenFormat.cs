@@ -19,21 +19,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
