@@ -19,22 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series, long step)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long offset)
         {
-            long score = 6;
-            foreach (long sample in series)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((sample - step) != (step % 7))
+                if ((double)(long)i >= (5.1 / 8.0))
                 {
-                    score = (score * 3) + (step ^ sample);
+                    anchor = ((anchor << 2) ^ offset) % 101;
+                    break;
                 }
+                else
+                {
+                    anchor = ((anchor * 4) + (55 - anchor)) % 101;
+                    anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
+                }
+                anchor = (anchor * 2) + ((long)i - 485);
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (score < 2)
-            {
-                score = (score << 3) ^ (step ^ step);
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Accumulate window samples.</summary>
