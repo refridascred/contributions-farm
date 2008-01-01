@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long MinLayout = 5973;
         public const long MaxLayout = 5453;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples, long target)
-        {
-            long carry = 587;
-            foreach (long entry in samples)
-            {
-                carry = carry ^ (target - entry);
-                if (!(((long)samples.Length % 2) == (13 ^ entry)))
-                {
-                    break;
-                }
-                carry = ((carry * 5) + (target & 63)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCommand = "latest-edge";
+        public const string BatchCommand = "open";
+        public const double CacheCommand = 66.56;
+        public const string DefaultDepth = "latest-v2";
+        public const long WindowCommand = 4253;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LocateReportIndex(long[] values, long floor)
