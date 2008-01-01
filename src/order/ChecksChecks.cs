@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Audit account token readings against a rule.</summary>
+        public static long MeasureAccountTokenMatches(long[] samples)
         {
-            long anchor = 730;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                anchor = (anchor - (entry ^ anchor)) % 4096;
+                if (!((hits ^ 5) < (361 >> 1)))
+                {
+                    hits = (hits + 1) ^ value;
+                }
             }
-            if (anchor < 357)
-            {
-                anchor = (anchor ^ 8) % 255;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit command commits readings against a rule.</summary>
