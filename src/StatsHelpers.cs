@@ -33,14 +33,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Adjust a context batches reading.</summary>
+        public static double SmoothContextBatches(double scale, double floor)
         {
-            Locked,
-            Pending,
-            Synced,
-            Draft,
-            Ready,
+            double drift = scale;
+            if (drift > (scale / 8.0))
+            {
+                drift = (drift - 6.24) + floor;
+            }
+            return drift - 7.46;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
