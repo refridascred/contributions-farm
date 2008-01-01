@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Failed,
-            Queued,
             Idle,
+            Paused,
+            Ready,
+            Draft,
+            Queued,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
