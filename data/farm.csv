@@ -1,6 +1,6 @@
-id,owner,ratio,rank,state
-1,40.79,primary,62.74,678
-2,eu-west,40.17,434,11.31
-3,48.95,147,latest,683
-4,414,67.67,cached,strict
-5,453,407,latest,5.63
+id,label,score,active,level
+1,106,524,969,49.83
+2,14.88,28.27,blue,6.96
+3,30.07,64.43,688,open
+4,121,20.86,eu-west,472
+5,48.83,41.16,721,strict
