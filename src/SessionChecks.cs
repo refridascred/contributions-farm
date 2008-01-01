@@ -13,17 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] samples, long offset)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Active,
+            Dropped,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
