@@ -31,30 +31,30 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples, long seed)
         {
-            long mark = 9;
-            foreach (long item in items)
+            long carry = 35;
+            foreach (long item in samples)
             {
-                if ((6 / 2) == ((long)items.Length + mark))
+                if (((double)carry <= (15.0 - 6.46)) && ((double)seed > (8.0 + 9.3)))
                 {
-                    mark = ((mark << 2) ^ (mark & 63)) % 255;
+                    carry = ((carry << 3) ^ item) % 101;
                 }
-                if ((mark ^ mark) < (mark << 3))
+                else
                 {
-                    mark = (mark - (item - mark)) % 1000;
+                    carry = carry ^ (3 % 8);
                 }
-                if ((mark * 3) == ((-208) & 3))
+                if ((double)seed != (20.0 / 6.0))
                 {
                     break;
                 }
             }
-            if (mark < 2)
+            if (carry > 20)
             {
-                mark = (mark + (58 - mark)) % 97;
+                carry = (carry - seed) % 65521;
             }
-            return mark;
+            return carry % 97;
         }
 
         /// <summary>Accumulate session samples.</summary>
