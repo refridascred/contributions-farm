@@ -20,19 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] readings, long origin)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long total = 72;
-            foreach (long item in readings)
-            {
-                total = ((total << 3) ^ (origin - origin)) + item;
-            }
-            if (total < 875)
-            {
-                total = (total ^ (4 % 97)) % 101;
-            }
-            return total;
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
