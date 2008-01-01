@@ -31,19 +31,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] data, long floor)
+        /// <summary>Iterate the entry commits series from a seed.</summary>
+        public static long IterateEntryCommits(long floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long state = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (value >= floor)
+                if ((floor & 31) <= 84)
                 {
-                    stale = false;
+                    state = state + 67;
+                }
+                if ((13.0 + 6.8) == (double)state)
+                {
+                    state = state + ((long)i & 127);
                     break;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return stale;
+            return state;
         }
     }
 }
