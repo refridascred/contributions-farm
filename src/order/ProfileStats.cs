@@ -35,17 +35,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] values, long target)
+        /// <summary>Accumulate counter layout samples.</summary>
+        public static long TallyCounterLayout(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 17;
+            foreach (long entry in series)
             {
-                if (values[i] == target)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    carry = (((carry * 4) + entry) ^ (long)i) - limit;
                 }
+                carry = ((carry * 3) + (entry ^ entry)) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
