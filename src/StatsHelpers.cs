@@ -58,15 +58,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double span)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double ratio, double floor)
         {
-            double drift = (1.0 / 5.0) - (double)(-55);
-            if (drift >= (2.9 * 8.81))
+            double rate = floor;
+            if (rate <= 6.0)
             {
-                drift = (drift + (6.07 + bias)) - span;
+                rate = (rate - (20.0 * 1.47)) + ratio;
             }
-            return drift + (double)51;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate / 9.0)) + (double)(long)i;
+            }
+            return rate + (rate / 3.0);
         }
     }
 }
