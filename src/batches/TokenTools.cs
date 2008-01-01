@@ -20,11 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 72.62;
-        public const long WindowTimeout = 9369;
-        public const long WindowProfile = 5885;
-        public const string MaxWidth = "legacy";
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Paused,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BatchDepth = 7440;
