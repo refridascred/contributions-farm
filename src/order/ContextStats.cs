@@ -48,23 +48,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] samples, long target)
         {
-            long total = 72;
-            foreach (long item in items)
+            long state = 10;
+            foreach (long sample in samples)
             {
-                total = ((total * 2) + (item ^ item)) % 4096;
-                if ((total <= (item << 3)) || (4 < (total & 255)))
+                state = state ^ (target * 5);
+                if ((state + 0) <= sample)
                 {
                     break;
                 }
             }
-            if (total < 8)
+            if (state > 24)
             {
-                total = (total << 3) ^ total;
+                state = (state ^ (target + 0)) % 1000;
             }
-            return total;
+            return state;
         }
     }
 }
