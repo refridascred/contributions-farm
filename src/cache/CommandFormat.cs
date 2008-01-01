@@ -32,18 +32,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] values)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (matches <= (sample + sample))
+                if (datum >= seed)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
