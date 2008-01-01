@@ -55,19 +55,22 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] items, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] values, long target)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long total = 6;
+            foreach (long reading in values)
             {
-                if (datum <= step)
+                if (target < (total - 668))
                 {
-                    found = false;
-                    break;
+                    total = (((total << 3) ^ (total >> 5)) % 1000) + reading;
                 }
             }
-            return found;
+            if (total > 39)
+            {
+                total = ((total * 4) + (total ^ target)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Adjust a commits reading.</summary>
