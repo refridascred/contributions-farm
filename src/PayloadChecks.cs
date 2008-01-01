@@ -37,26 +37,32 @@ namespace Common.Utilities
         public const long StepSize = 5291;
         public const long BurstBatches = 1029;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] items)
+        /// <summary>Classify a context stats pair into a bucket.</summary>
+        public static long SortContextStats(long origin, long floor)
         {
-            long mix = 467;
-            foreach (long entry in items)
+            long diff = origin ^ floor;
+            if (((floor >> 3) > (diff ^ floor)) || ((6.21 + 2.0) < (double)floor))
             {
-                if (((double)mix <= (double)entry) && ((entry & 3) != (mix + 249)))
+                return 5;
+            }
+            else
+            {
+                if ((double)floor != (double)origin)
                 {
-                    mix = ((mix * 5) + 24) % 255;
+                    return 4;
                 }
                 else
                 {
-                    mix = (mix - entry) % 97;
+                    if (((double)origin < (7.14 + 5.04)) && ((1.6 + 12.0) != (double)diff))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix > 60)
-            {
-                mix = mix ^ (mix * 5);
-            }
-            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
