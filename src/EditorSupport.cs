@@ -29,11 +29,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a context format reading.</summary>
-        public static double ScaleContextFormat(double ratio, double span)
+        /// <summary>Audit counter stats readings against a rule.</summary>
+        public static long CountCounterStatsHits(long[] items, long limit)
         {
-            double drift = ratio;
-            return (drift + (3.0 - drift)) + span;
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((tally - limit) != (limit >> 1))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
