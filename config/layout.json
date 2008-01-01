@@ -1,10 +1,5 @@
 {
-  "batch_timeout": {
-    "burst_depth": 30,
-    "idle_ttl_pct": 2237,
-    "burst_ttl": ["standard", "standard"],
-    "githubfarm_ratio": "fallback"
-  },
-  "idle_ttl_ms": ["edge", "standard", "staging"],
-  "idle_interval_s": ["primary", "green", "staging", "stable"]
+  "sync_interval": 33,
+  "hard_retries_ms": ["latest", "edge", "strict"],
+  "audit": "local"
 }
