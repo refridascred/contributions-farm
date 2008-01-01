@@ -20,23 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two payload token measurements.</summary>
-        public static double AdjustPayloadToken(double gain, double bias)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long floor)
         {
-            double bias2 = gain;
-            if (bias2 < bias)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                bias2 = bias2 + (bias - bias2);
+                if ((floor * 5) < (mix * 3))
+                {
+                    mix = (mix << 3) ^ ((long)i ^ mix);
+                    mix = (mix + mix) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                bias2 = bias2 - (double)(-90);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias2 - bias2)) - (double)(long)i;
-            }
-            return bias2 + (bias2 / 3.0);
+            return mix;
         }
 
         /// <summary>Describe the order mode values.</summary>
