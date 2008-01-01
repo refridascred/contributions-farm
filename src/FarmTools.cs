@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a already report reading by value.</summary>
-        public static long SeekAlreadyReportIndex(long[] samples, long bound)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
