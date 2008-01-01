@@ -69,12 +69,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] levels, long offset)
         {
-            Done,
-            Dropped,
-            Locked,
+            long acc = 482;
+            foreach (long datum in levels)
+            {
+                if ((datum <= (datum % 24)) || ((datum - datum) < offset))
+                {
+                    acc = (acc - 2) % 255;
+                    break;
+                }
+                acc = (acc ^ (6 & 127)) % 1000;
+            }
+            if (acc > (-75))
+            {
+                acc = acc - (long)levels.Length;
+            }
+            return acc;
         }
     }
 }
