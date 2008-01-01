@@ -29,5 +29,19 @@ namespace Common.Utilities
             public long Total { get; set; }
             public long Offset { get; set; }
         }
+
+        /// <summary>Count the report layout entries that pass the check.</summary>
+        public static long TallyReportLayoutHits(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (!((double)hits <= (double)origin))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
+        }
     }
 }
