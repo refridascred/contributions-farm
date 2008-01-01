@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] levels, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (datum >= floor)
+                if (20.0 < (double)hits)
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 1) - cell) - origin;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a already record.</summary>
