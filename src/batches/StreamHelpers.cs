@@ -42,21 +42,38 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset >= (offset2 / 2)) && (offset < (offset2 >> 4)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (75 > offset2)
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
+                    return 8;
+                }
+                else
+                {
+                    if (offset2 > (63 - offset))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset <= (offset2 - offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the contributi class values.</summary>
