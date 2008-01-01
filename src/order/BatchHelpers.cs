@@ -33,25 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long origin, long offset)
+        /// <summary>Match up window metrics samples.</summary>
+        public static long MatchWindowMetricsCount(long[] data)
         {
-            long prev = origin + offset;
-            if (((origin << 3) >= (53 + offset)) && ((0.6 - 6.6) >= (double)prev))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= (double)prev)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
