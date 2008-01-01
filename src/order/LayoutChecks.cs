@@ -56,18 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support batches readings against a rule.</summary>
-        public static long CountSupportBatchesHits(long[] series, long origin)
+        /// <summary>Fold a list of commits batches readings.</summary>
+        public static long FoldCommitsBatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long score = 326;
+            foreach (long datum in levels)
             {
-                if ((((-46) % 5) > seen) && ((319 + datum) != (seen & 15)))
-                {
-                    seen = (seen + 2) - origin;
-                }
+                score = (((score * 2) + (score % 2)) % 1000) + datum;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the format phase values.</summary>
