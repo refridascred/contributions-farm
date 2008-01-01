@@ -61,22 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches checks samples are out of range.</summary>
-        public static long MeasureBatchesChecksHits(long[] series, long step)
+        /// <summary>Audit cluster batches readings against a rule.</summary>
+        public static long CountClusterBatchesGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (!(item > step) || (hits <= (2 + 569)))
+                if (!(((datum - (long)readings.Length) == (12 - 4)) || ((count + datum) < (541 + datum))))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a window record.</summary>
