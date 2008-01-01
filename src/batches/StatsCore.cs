@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double ratio, double bias)
-        {
-            double gain = ratio;
-            if (gain >= (bias + bias))
-            {
-                gain = gain - (gain + gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain + (ratio / 2.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 7072;
+        public const string WindowFactor = "alpha";
+        public const long BurstWindow = 8100;
+        public const double BatchScore = 66.18;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long origin, long target)
