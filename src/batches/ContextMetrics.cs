@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank order farm input into a small class.</summary>
-        public static long BucketOrderFarm(long offset, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] items)
         {
-            long edge = offset + floor;
-            if (!((double)floor == (double)49))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)edge <= (0.3 + 13.0))
+                if ((double)16 <= (double)value)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of order readings.</summary>
