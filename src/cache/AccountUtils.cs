@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowDepth = 72.81;
-        public const string IdleCount = "open-edge";
-        public const long MaxWindow = 309;
-        public const long MinTimeout = 3382;
-        public const long StepSize = 5529;
+        /// <summary>Measure how many account editor samples are out of range.</summary>
+        public static long AuditAccountEditorMatches(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - hits) <= 78)
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long RankWindow(long target, long floor)
