@@ -22,9 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxSize = 8853;
-        public const double DefaultCache = 45.96;
-        public const long MinCache = 9167;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (item <= (item >> 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
