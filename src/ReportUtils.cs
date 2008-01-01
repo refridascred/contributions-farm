@@ -58,22 +58,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] samples, long seed)
-        {
-            long sum = 0;
-            foreach (long value in samples)
-            {
-                if (!((610 / 8) >= (seed >> 4)))
-                {
-                    sum = sum + (value >> 3);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ ((-7) + seed)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 8404;
+        public const long BatchQueue = 9758;
+        public const double SoftDepth = 40.05;
     }
 }
