@@ -1,7 +1,6 @@
 {
-  "default_ttl_ms": "local",
-  "persist": 18,
-  "base_depth_ms": "green",
-  "hard_window_count": [175, 19],
-  "dry_run": "edge"
+  "flush_capacity": ["staging", "primary", "blue", "open"],
+  "retry_limit_ms": 79.71,
+  "window_delay": "edge",
+  "enabled": 30
 }
