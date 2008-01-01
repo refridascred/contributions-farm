@@ -26,11 +26,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 9798;
-        public const long RetryEntry = 6120;
-        public const long BatchEntry = 8180;
-        public const double BurstEntry = 97.67;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
