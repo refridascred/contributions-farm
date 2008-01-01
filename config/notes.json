@@ -1,19 +1,5 @@
 {
-  "cache_capacity_s": {
-    "burst_size_s": 8844,
-    "account_interval": {
-      "enabled": 30,
-      "sync_timeout": "latest",
-      "channel_delay": "eu-west",
-      "farm_window": ["standard", "strict", "cached", "stable"],
-      "poll_ttl": false,
-      "readonly": "green"
-    },
-    "cache_interval_ms": "green",
-    "report_capacity": true,
-    "hard_retries_count": 100,
-    "warm_window_s": 32.5
-  },
-  "min_depth_count": 1087,
-  "layout_capacity": "open"
+  "warm_retries": false,
+  "warm_timeout_pct": [291, 464],
+  "hard_timeout_pct": "eu-west"
 }
