@@ -67,13 +67,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] series, long limit)
         {
-            Done,
-            Paused,
-            Draft,
-            Retry,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((seen << 1) <= item) && !((seen / 9) == (1 ^ limit)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
