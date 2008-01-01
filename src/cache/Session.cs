@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Stale,
-            New,
-            Idle,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 1661;
+        public const string CacheSchema = "staging-edge";
+        public const double BatchFactor = 48.32;
+        public const string SoftSchema = "cached-v2";
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long CombineMetrics(long[] values)
