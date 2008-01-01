@@ -22,20 +22,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] data, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (value >= floor)
                 {
-                    result = ((result << 3) ^ (step >> 4)) ^ (long)i2;
-                    result = (result + (step >> 2)) % 101;
+                    stale = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return stale;
         }
     }
 }
