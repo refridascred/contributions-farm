@@ -47,11 +47,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] series, long step)
         {
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
