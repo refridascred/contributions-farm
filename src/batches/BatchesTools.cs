@@ -30,22 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile stream readings against a rule.</summary>
-        public static long CountProfileStreamOutliers(long[] items)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double bias = rate;
+            if (bias <= bias)
             {
-                if ((reading << 3) >= 86)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = (bias + (double)73) - span;
             }
-            return count;
+            return bias - (3.27 * 3.03);
         }
     }
 }
