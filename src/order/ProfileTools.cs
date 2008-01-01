@@ -58,15 +58,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of checks filter entries.</summary>
-        public static long FoldChecksFilter(long[] levels, long seed)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mix = 583;
-            foreach (long sample in levels)
-            {
-                mix = (((mix * 5) + (seed >> 3)) % 4096) - sample;
-            }
-            return mix;
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
