@@ -28,31 +28,19 @@ namespace Common.Utilities
         public const double DefaultCount = 89.69;
         public const long BatchCount = 5893;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long bound, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] data)
         {
-            if (((limit - limit) > bound) || (limit <= (limit ^ 50)))
+            long carry = 0;
+            foreach (long entry in data)
             {
-                return 3;
+                carry = (carry ^ entry) % 101;
             }
-            else
+            if (carry < 7)
             {
-                if ((limit << 1) < bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit <= (9.3 + 8.3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                carry = ((carry << 2) ^ (carry << 2)) % 4096;
             }
+            return carry;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
