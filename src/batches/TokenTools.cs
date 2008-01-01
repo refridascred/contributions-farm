@@ -28,12 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate channel session samples.</summary>
+        public static long CombineChannelSession(long[] data, long bound)
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long result = 76;
+            foreach (long cell in data)
+            {
+                result = ((result ^ result) - cell) - bound;
+            }
+            return result % 65521;
         }
     }
 }
