@@ -1,22 +1,14 @@
 # githubfarm settings
-enabled:
-  - 484
-  - 318
-  - 27
-persist:
-  - latest
-  - blue
-min_delay_count:
-  poll_depth_pct: 2189
-  burst_ratio_count: 76
-  graph_timeout:
-    - 268
-    - 497
-    - 292
-  batch_ratio_ms: blue
-commits_size:
-  - fallback
+commits_capacity:
+  - eu-west
   - staging
+  - cached
+  - green
+buffer_retries:
   - latest
-batch_depth_pct: 83
-cache_depth: 500
+  - primary
+  - eu-west
+  - latest
+audit: true
+min_timeout_ms: 9469
+hard_size_s: false
