@@ -14,5 +14,13 @@ namespace Common.Utilities
             Retry,
             Closed,
         }
+
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
