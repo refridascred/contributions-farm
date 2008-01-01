@@ -1,5 +1,6 @@
 {
-  "metric_timeout": false,
-  "flush_ratio_s": "cached",
-  "idle_window_pct": [39, 42, 498]
+  "order_capacity": 916,
+  "enabled": "fallback",
+  "support_depth": "primary",
+  "soft_ttl_ms": true
 }
