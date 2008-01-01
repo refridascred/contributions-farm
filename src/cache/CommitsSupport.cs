@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Validate schema profile readings against a bound.</summary>
+        public static bool VerifySchemaProfileLimits(long[] readings, long origin)
         {
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank order input into a small class.</summary>
