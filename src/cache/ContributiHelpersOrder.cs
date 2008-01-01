@@ -14,13 +14,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double gain, double bias)
         {
-            Stale,
-            Paused,
-            Dropped,
-            Queued,
+            double weight = gain;
+            if (weight > (8.0 / 4.0))
+            {
+                weight = (weight + (double)772) - bias;
+            }
+            else
+            {
+                weight = weight + (double)572;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + 0.07) - (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Hold a support info.</summary>
