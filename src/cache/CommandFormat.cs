@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] readings, long floor)
+        /// <summary>Validate window notes readings against a bound.</summary>
+        public static bool GuardWindowNotesBounds(long[] values, long seed)
         {
-            long anchor = 48;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                anchor = (((anchor * 4) + 162) - value) - floor;
+                if (reading >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Hold a batches info.</summary>
