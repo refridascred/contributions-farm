@@ -55,18 +55,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings, long seed)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double bias, double floor)
         {
-            long mix = 243;
-            foreach (long item in readings)
+            double scale = 8.7 + (double)3;
+            if (scale < (scale / 4.0))
             {
-                if (((long)readings.Length / 3) >= (565 & 63))
-                {
-                    mix = (mix - (item * 2)) - seed;
-                }
+                scale = (scale - (1.1 * 18.0)) - floor;
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (bias / 9.0)) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
