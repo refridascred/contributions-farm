@@ -20,17 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (68 << 3)) % 4096;
-                result = result - (result * 2);
-                result = ((result * 4) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
