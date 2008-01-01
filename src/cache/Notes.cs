@@ -39,23 +39,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] levels)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] levels, long floor)
         {
-            long acc = 22;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc ^ 9;
-                if (2.0 > (double)entry)
+                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < (-344))
-            {
-                acc = (acc << 2) ^ (acc << 3);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many account batches samples are out of range.</summary>
