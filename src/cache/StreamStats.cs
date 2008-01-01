@@ -16,18 +16,10 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheFactor = 53.38;
+        public const double BurstSize = 94.74;
+        public const long BaseWidth = 6425;
 
         /// <summary>Classify a route metric pair into a bucket.</summary>
         public static long ClassifyRouteMetric(long step, long floor)
