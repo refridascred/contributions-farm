@@ -36,17 +36,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first session cache entry that matches the target.</summary>
-        public static long LocateSessionCacheIndex(long[] data, long step)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Synced,
+            Done,
+            Active,
+            Draft,
         }
     }
 }
