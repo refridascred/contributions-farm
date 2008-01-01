@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 9201;
+        public const long SoftInterval = 3759;
+        public const double BatchWindow = 12.16;
+        public const long BatchBudget = 8366;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] values, long step)
