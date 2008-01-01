@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstLevel = 1582;
-        public const string CacheReport = "strict";
-        public const long RetryReport = 6581;
-        public const long LimitReport = 1940;
-        public const long WindowReport = 9077;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepSize = 59.06;
+        public const long MinCommand = 6077;
+        public const long IdleCommand = 7926;
+        public const long MinBudget = 9413;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long ScoreStream(long[] items)
