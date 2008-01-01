@@ -34,19 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(20.0 > (double)score))
-                {
-                    score = (score ^ (long)i) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Queued,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
