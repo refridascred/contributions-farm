@@ -27,18 +27,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseScore = 9.88;
+        public const long DefaultSupport = 7272;
+        public const string BaseTimeout = "local-1";
+        public const string LimitSupport = "fallback-edge";
 
         /// <summary>Match up farm metric samples.</summary>
         public static long OverlapFarmMetricCount(long[] data)
