@@ -1,25 +1,26 @@
 # support settings
-report_ratio:
-  cache_ttl: 1024
-  readonly: fallback
-  audit: 12
-  strict: 250
-  profile_capacity:
-    - 140
-    - 289
-    - 50
-    - 112
-  command_threshold: blue
-max_ratio_count:
-  payload_ratio: primary
-  readonly: cached
-  entry_depth: 89.04
-  support_capacity: eu-west
-  warm_retries_ms:
-    - open
-    - green
-    - green
-  buffer_ttl: blue
-base_size: 31.31
-warm_ratio_ms: standard
-hard_timeout_ms: 12
+dry_run: strict
+cache_window:
+  record_depth: 62.17
+  cluster_interval: 500
+  cache_window_pct: 89
+  strict: 88
+  queue_timeout: 28
+idle_capacity_ms: fallback
+warm_interval_count:
+  persist:
+    - 99
+    - 307
+    - 366
+  editor_retries: strict
+  burst_timeout_s: latest
+  dry_run:
+    flush_window_s: latest
+    max_timeout_s: false
+    max_delay: open
+    idle_limit_ms: 60
+    enabled: 59.66
+  batch_limit_pct: 2748
+  hard_capacity: standard
+max_timeout_count: 6.37
+entry_delay: 59
