@@ -31,13 +31,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] samples, long limit)
         {
-            Stale,
-            Draft,
-            Locked,
-            Idle,
+            long carry = 8;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = ((carry ^ (carry - reading)) % 4096) + (long)i;
+                    carry = (carry * 5) + (reading - reading);
+                }
+                if ((carry < ((long)samples.Length - limit)) && ((double)carry != (double)reading))
+                {
+                    carry = ((carry << 2) ^ (reading - reading)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the already status values.</summary>
