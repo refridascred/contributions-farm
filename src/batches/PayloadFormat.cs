@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 1.28;
+        public const long WindowFactor = 847;
+        public const double MinSchema = 33.0;
 
         /// <summary>Match up cache payload samples.</summary>
         public static long PairCachePayloadCount(long[] readings)
