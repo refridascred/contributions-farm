@@ -20,5 +20,10 @@ namespace Common.Utilities
             }
             return mark % 1000;
         }
+
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 1674;
+        public const string HardBatch = "cached-edge";
+        public const long WindowScore = 9458;
     }
 }
