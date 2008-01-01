@@ -55,12 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double scale, double offset)
         {
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            double mean = offset;
+            if (mean > (double)14)
+            {
+                mean = (mean - 5.0) - scale;
+            }
+            return mean + (mean * 5.0);
         }
     }
 }
