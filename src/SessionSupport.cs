@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first account contributi entry that matches the target.</summary>
-        public static long FindAccountContributiIndex(long[] levels, long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] <= seed)
+                if ((values[i] > target) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
