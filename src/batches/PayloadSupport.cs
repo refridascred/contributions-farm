@@ -19,27 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long mark = 8;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = ((mark + sample) % 4096) - (long)i;
-                }
-                mark = ((mark * 2) + (mark % 16)) % 65521;
-                if ((4.0 / 2.0) < (double)sample)
-                {
-                    break;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = (mark ^ (mark + 68)) % 4096;
-            }
-            return mark % 4096;
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
