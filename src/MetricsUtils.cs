@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long target, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] data, long target)
         {
-            if ((step + 974) < step)
+            long sum = 455;
+            foreach (long reading in data)
             {
-                return 1;
+                sum = (sum - target) + reading;
             }
-            else
+            if (sum > 55)
             {
-                if (3.6 < (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
+                sum = sum + ((long)data.Length >> 2);
             }
+            return sum;
         }
 
         /// <summary>Hold a payload summary.</summary>
