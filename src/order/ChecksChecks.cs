@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a report route figure with a bias.</summary>
-        public static double ScaleReportRoute(double scale, double offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double rate = scale + offset;
-            if (rate < offset)
-            {
-                rate = rate + offset;
-            }
-            else
-            {
-                rate = rate + (rate / 4.0);
-            }
-            return rate - (offset * 20.0);
+            Queued,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the already state values.</summary>
