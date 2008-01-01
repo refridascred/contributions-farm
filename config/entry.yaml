@@ -1,8 +1,13 @@
 # entry settings
-soft_size: primary
-base_size_count: 74
-compress: 100
-support_timeout: 22.33
-sync_size_pct:
-  - open
-  - standard
+strict:
+  - 420
+  - 76
+  - 250
+retry_depth_pct:
+  - staging
+  - cached
+  - latest
+max_ttl_count:
+  - 237
+  - 229
+burst_depth: false
