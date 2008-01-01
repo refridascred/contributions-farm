@@ -23,19 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command counter value from a seed.</summary>
-        public static long StepCommandCounter(long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] values, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((7 / 3) > limit)
                 {
-                    mix = (mix + (mix + mix)) + (long)i2;
+                    tally = (tally + 3) ^ reading;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
