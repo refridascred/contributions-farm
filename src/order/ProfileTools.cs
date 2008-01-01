@@ -31,20 +31,13 @@ namespace Common.Utilities
         public const long StepSpan = 5735;
         public const long LimitTimeout = 1786;
 
-        /// <summary>Roll a payload support counter forward.</summary>
-        public static long IteratePayloadSupport(long seed)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                total = (total + 73) % 97;
-                long lane = (seed + seed) + (seed + seed);
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    long seen = (lane + total) ^ lane;
-                    lane = (lane ^ (seen * 2)) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                total = ((total * 2) + (long)i) % 65521;
             }
             return total;
         }
