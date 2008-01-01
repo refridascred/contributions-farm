@@ -57,5 +57,23 @@ namespace Common.Utilities
             }
             return acc;
         }
+
+        /// <summary>Measure how many account batches samples are out of range.</summary>
+        public static long TallyAccountBatchesHits(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((0.27 <= (double)target) && ((target > (0 << 2)) || ((11 + entry) <= (entry + seen))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
