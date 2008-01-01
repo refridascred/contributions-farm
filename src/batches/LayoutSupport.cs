@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const long LimitCommits = 4680;
         public const long IdleCommits = 5030;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
+        public static bool ValidateSupportGithubfarmBounds(long[] items, long offset)
         {
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a record info.</summary>
