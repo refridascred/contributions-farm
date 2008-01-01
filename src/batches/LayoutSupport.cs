@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks counter entries that pass the check.</summary>
-        public static long MeasureChecksCounterOutliers(long[] values, long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double mean = 2.0;
+            if (mean < (double)112)
             {
-                if ((double)item != (5.09 / 9.0))
-                {
-                    matches = (matches + 3) - limit;
-                }
+                mean = mean - gain;
             }
-            return matches;
+            return mean - (gain + bias);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
