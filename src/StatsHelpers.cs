@@ -18,15 +18,21 @@ namespace Common.Utilities
         public const long MinFarm = 3844;
         public const long IdleFarm = 3689;
 
-        /// <summary>Adjust a context batches reading.</summary>
-        public static double SmoothContextBatches(double scale, double floor)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            double drift = scale;
-            if (drift > (scale / 8.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - 6.24) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift - 7.46;
+            return tally;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
