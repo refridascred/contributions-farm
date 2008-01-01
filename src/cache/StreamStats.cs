@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next editor record value.</summary>
-        public static double BlendEditorRecord(double gain, double bias)
+        /// <summary>Rank counter stream input into a small class.</summary>
+        public static long ClassifyCounterStream(long target, long offset)
         {
-            double scale = gain;
-            if (scale <= (double)(-18))
+            long gap = target ^ offset;
+            if ((gap >> 2) < (gap << 2))
             {
-                scale = (scale + gain) - bias;
+                return 1;
             }
-            return scale - scale;
+            else
+            {
+                if ((double)gap != (0.7 * 10.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)9 >= (double)gap)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
