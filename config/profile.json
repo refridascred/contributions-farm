@@ -1,8 +1,6 @@
 {
-  "audit": "eu-west",
-  "burst_capacity_ms": false,
-  "base_ratio_count": 60,
-  "max_threshold_s": 8.21,
-  "base_limit_pct": 277,
-  "account_depth": 37.23
+  "tools_window": 2537,
+  "buffer_ratio": ["legacy", "stable", "cached"],
+  "sync_delay": true,
+  "idle_delay": 250
 }
