@@ -13,5 +13,14 @@ namespace Common.Utilities
             Failed,
             Pending,
         }
+
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Synced,
+            Queued,
+            New,
+            Dropped,
+        }
     }
 }
