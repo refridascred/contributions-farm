@@ -32,26 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] items, long limit)
+        /// <summary>Count the context channel entries that pass the check.</summary>
+        public static long AuditContextChannelMatches(long[] levels)
         {
-            long anchor = 7;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (((double)83 > (double)(long)items.Length) || ((limit + anchor) >= anchor))
+                if (!((sample - sample) == (266 + 629)))
                 {
-                    anchor = ((anchor * 2) + (513 + datum)) % 1000;
+                    count = count + 1;
                 }
                 else
                 {
-                    anchor = (anchor + (limit - 4)) % 1000;
+                    count = count - 1;
                 }
             }
-            if (anchor > (-5))
-            {
-                anchor = (anchor * 3) + anchor;
-            }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
