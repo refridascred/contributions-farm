@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Measure how many cache tools samples are out of range.</summary>
+        public static long TallyCacheToolsHits(long[] samples, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!!((reading / 8) > reading))
+                {
+                    hits = (hits + 1) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the filter farm series from a seed.</summary>
