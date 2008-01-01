@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many batches schema samples are out of range.</summary>
-        public static long AuditBatchesSchemaMatches(long[] data)
+        /// <summary>Locate a metric already reading by value.</summary>
+        public static long FindMetricAlreadyIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading ^ (long)data.Length) >= reading)
+                if (levels[i] > origin)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
