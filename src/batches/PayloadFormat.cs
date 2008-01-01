@@ -34,5 +34,23 @@ namespace Common.Utilities
             Failed,
             Idle,
         }
+
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + hits) != (sample - 88))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
