@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] levels)
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum ^ datum) <= (4 ^ hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
