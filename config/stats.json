@@ -1,6 +1,12 @@
 {
-  "stats_ttl": "eu-west",
-  "sync_retries": "latest",
-  "max_interval_count": 51,
-  "audit": 41.12
+  "strict": 250,
+  "min_ratio": 45.2,
+  "farm_window": "fallback",
+  "burst_ttl_ms": 3472,
+  "audit": {
+    "max_size_pct": 9140,
+    "strict": "fallback",
+    "dry_run": "legacy",
+    "retry_interval_pct": 500
+  }
 }
