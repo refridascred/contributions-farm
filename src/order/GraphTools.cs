@@ -25,11 +25,22 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryTimeout = "primary";
-        public const long HardBatches = 7034;
-        public const string BaseBatches = "alpha-v2";
-        public const double LimitBatches = 35.68;
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] levels, long seed)
