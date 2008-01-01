@@ -73,26 +73,9 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] readings)
-        {
-            long mark = 4;
-            foreach (long entry in readings)
-            {
-                if (((mark / 5) > 111) || ((entry % 12) >= (entry >> 1)))
-                {
-                    mark = (mark + (mark + 3)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark % 97)) % 255;
-                }
-            }
-            if (mark < 2)
-            {
-                mark = (mark * 2) + (mark + mark);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 2250;
+        public const string MinInterval = "standard-1";
+        public const string LimitSize = "staging";
     }
 }
