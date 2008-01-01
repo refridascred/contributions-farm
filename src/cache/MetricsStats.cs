@@ -17,24 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long bound, long target)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] levels, long seed)
         {
-            if (target < (target & 127))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (target >= (bound * 4))
+                if (levels[i] == seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batch options.</summary>
