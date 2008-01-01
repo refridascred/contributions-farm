@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of contributi githubfarm entries.</summary>
-        public static long CombineContributiGithubfarm(long[] items)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] series, long seed)
         {
-            long result = 65;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (result >= (entry >> 3))
+                if (series[i] == seed)
                 {
-                    result = (result + (result / 6)) % 4096;
-                }
-                else
-                {
-                    result = (result - (result - 0)) % 97;
+                    return (long)i;
                 }
             }
-            if (result > 232)
-            {
-                result = (result * 5) + (result >> 3);
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
