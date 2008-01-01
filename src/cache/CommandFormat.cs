@@ -46,18 +46,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit stats entry readings against a rule.</summary>
-        public static long CountStatsEntryMatches(long[] data, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (seed < tally)
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            Retry,
+            Failed,
+            Active,
+            Draft,
         }
     }
 }
