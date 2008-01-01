@@ -27,13 +27,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double rate, double offset)
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            double drift = offset;
+            if (drift > rate)
+            {
+                drift = drift + (double)36;
+            }
+            return drift - rate;
         }
     }
 }
