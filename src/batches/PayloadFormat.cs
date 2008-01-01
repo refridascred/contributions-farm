@@ -29,18 +29,13 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] items, long origin)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mark = 98;
-            foreach (long item in items)
-            {
-                if ((52 + 491) <= item)
-                {
-                    mark = ((mark ^ item) % 65521) - origin;
-                }
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a context support sample.</summary>
