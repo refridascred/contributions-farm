@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 8776;
+        public const long BatchStats = 9908;
+        public const long MinSpan = 4873;
+        public const long CacheStats = 8705;
+        public const long WindowSize = 7704;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
