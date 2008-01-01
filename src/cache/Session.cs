@@ -62,13 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Fold a list of metrics cluster readings.</summary>
+        public static long CombineMetricsCluster(long[] levels, long origin)
         {
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            long mix = 974;
+            foreach (long sample in levels)
+            {
+                mix = (mix - 54) % 97;
+                if ((mix + sample) >= sample)
+                {
+                    mix = mix + (mix >> 4);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ origin) % 255;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
