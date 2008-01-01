@@ -21,5 +21,20 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
