@@ -23,12 +23,23 @@ namespace Common.Utilities
         public const double DefaultMetric = 72.02;
         public const string LimitScore = "strict-v2";
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples, long limit)
         {
-            Active,
-            Failed,
-            Stale,
+            long result = 4;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = (result + result) ^ (long)i;
+                    result = (result << 2) ^ (limit - 5);
+                }
+                if ((result + cell) >= (limit - cell))
+                {
+                    result = ((result * 4) + (result >> 4)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
