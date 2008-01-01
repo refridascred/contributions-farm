@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftDepth = 8984;
-        public const long IdleWidth = 9305;
-        public const long BurstChecks = 6540;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!(seen > reading) || ((seen + reading) < (seen * 2)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long offset, long target)
