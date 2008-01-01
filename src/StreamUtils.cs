@@ -86,17 +86,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] items, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long bound2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((double)13 < (double)bound2))
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((5.69 - 1.19) == (double)bound2)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound2 > 5.5)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
