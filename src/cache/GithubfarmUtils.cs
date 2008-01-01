@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long MinLayout = 5973;
         public const long MaxLayout = 5453;
 
-        /// <summary>Compare every pair of farm batches readings.</summary>
-        public static long OverlapFarmBatchesCount(long[] readings)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen - seen) > (seen << 3))
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 1) ^ value) - offset;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
