@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long bound, long floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            if ((1.9 - 3.0) >= (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor + bound) != (bound ^ 937))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor - bound) <= bound) || (7.0 < (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define report limits and defaults.</summary>
