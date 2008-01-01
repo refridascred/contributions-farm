@@ -52,12 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] levels, long bound)
         {
-            New,
-            Dropped,
-            Idle,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (8.0 - 1.66))
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two record measurements.</summary>
