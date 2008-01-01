@@ -49,11 +49,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 18.03;
-        public const string CacheToken = "standard-v2";
-        public const string BurstDepth = "stable-edge";
-        public const string BaseToken = "alpha-1";
-        public const long MaxToken = 5144;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((((item + 4) > matches) || (item > (59 + matches))) && ((8 >= item) && (matches <= (item & 3))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
