@@ -43,10 +43,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 7504;
-        public const long WindowEntry = 7482;
-        public const double BurstSpan = 12.3;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples, long floor)
+        {
+            long state = -2;
+            foreach (long datum in samples)
+            {
+                state = state - floor;
+                if ((551 + datum) == (datum & 127))
+                {
+                    state = ((state << 2) ^ datum) % 65521;
+                }
+                if ((double)state > (19.0 * 9.24))
+                {
+                    state = state ^ 899;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphOutliers(long[] data)
