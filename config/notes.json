@@ -1,8 +1,5 @@
 {
-  "hard_delay_pct": "primary",
-  "verbose": false,
-  "base_ratio_pct": 8035,
-  "batches_delay": 95,
-  "min_delay_ms": 18,
-  "max_threshold_pct": 57.06
+  "metric_timeout": false,
+  "flush_ratio_s": "cached",
+  "idle_window_pct": [39, 42, 498]
 }
