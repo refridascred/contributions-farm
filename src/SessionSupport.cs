@@ -17,22 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command farm entries that pass the check.</summary>
-        public static long MeasureCommandFarmOutliers(long[] levels, long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((4.13 / 5.0) >= (double)cell) || ((double)target >= (0.09 / 2.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the token state values.</summary>
