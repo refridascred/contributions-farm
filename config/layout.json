@@ -1,5 +1,7 @@
 {
-  "default_delay": 3.12,
-  "dry_run": 4917,
-  "min_delay_pct": true
+  "hard_depth": 21.06,
+  "burst_threshold_s": false,
+  "graph_depth": true,
+  "retry_threshold_pct": 1024,
+  "already_ratio": "blue"
 }
