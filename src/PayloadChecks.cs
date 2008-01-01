@@ -101,12 +101,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long offset)
+        /// <summary>Find the first profile session entry that matches the target.</summary>
+        public static long FindProfileSessionIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] == offset) && ((data[i] % 2) == 0))
+                if (samples[i] >= offset)
                 {
                     return (long)i;
                 }
