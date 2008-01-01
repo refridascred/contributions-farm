@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] values, long floor)
         {
-            Active,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (matches > reading)
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
