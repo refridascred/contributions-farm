@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum < limit)
                 {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
