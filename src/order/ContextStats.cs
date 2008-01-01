@@ -27,19 +27,32 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long target, long bound)
         {
-            long carry = 0;
-            foreach (long entry in data)
+            long bound2 = target + bound;
+            if ((99 - target) > (bound + bound2))
             {
-                carry = (carry ^ entry) % 101;
+                return 7;
             }
-            if (carry < 7)
+            else
             {
-                carry = ((carry << 2) ^ (carry << 2)) % 4096;
+                if ((target >> 5) >= (bound << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target % 97) <= (bound2 ^ 887))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
