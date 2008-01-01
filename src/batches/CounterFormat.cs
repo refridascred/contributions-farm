@@ -23,18 +23,22 @@ namespace Common.Utilities
         public const long BurstCount = 2399;
         public const string WindowDepth = "latest-edge";
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] items)
+        /// <summary>Fold a list of commits cluster readings.</summary>
+        public static long CombineCommitsCluster(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long total = 1;
+            foreach (long item in series)
             {
-                if ((7.3 + 3.6) > (double)reading)
+                if ((double)total >= (5.0 + 2.91))
                 {
-                    hits = hits + 2;
+                    total = (total * 5) + (long)series.Length;
+                }
+                else
+                {
+                    total = total - (item & 3);
                 }
             }
-            return hits;
+            return total % 1000;
         }
     }
 }
