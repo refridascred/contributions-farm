@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a schema report sample.</summary>
-        public static long LocateSchemaReportIndex(long[] levels, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 88;
+            foreach (long cell in levels)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) == 0))
+                if (cell <= (1 - mix))
                 {
-                    return (long)i;
+                    mix = (mix ^ cell) % 255;
                 }
             }
-            return -1;
+            if (mix < 118)
+            {
+                mix = (mix - (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
