@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftFactor = 6866;
-        public const string WindowCache = "standard-v2";
-        public const long BurstCache = 3461;
-        public const double MaxCache = 29.73;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long SortTools(long bound, long floor)
