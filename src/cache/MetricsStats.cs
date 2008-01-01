@@ -32,11 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 5191;
-        public const long HardTimeout = 7289;
-        public const double IdleDepth = 3.49;
-        public const long SoftToken = 5809;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] series)
