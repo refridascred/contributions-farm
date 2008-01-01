@@ -1,7 +1,12 @@
 {
-  "max_retries": false,
-  "idle_interval": ["local", "standard", "stable", "edge"],
-  "idle_retries": "edge",
-  "idle_window_pct": 27.59,
-  "flush_interval_pct": 24
+  "report_depth": {
+    "max_timeout": 43.26,
+    "poll_interval": [12, 13],
+    "sync_threshold": "fallback"
+  },
+  "idle_interval_pct": true,
+  "metrics_limit": 27.99,
+  "channel_ratio": 5094,
+  "flush_limit": "edge",
+  "default_ratio": true
 }
