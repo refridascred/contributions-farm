@@ -42,21 +42,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 5)
+                    if ((items[i] + items[j]) > 20)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
