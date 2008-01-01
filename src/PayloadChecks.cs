@@ -59,18 +59,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a githubfarm farm reading by value.</summary>
-        public static long LookupGithubfarmFarmIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSize = 2733;
+        public const double StepBudget = 76.65;
+        public const double StepSupport = 56.09;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
