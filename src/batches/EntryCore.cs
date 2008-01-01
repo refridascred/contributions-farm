@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Scale a context checks figure with a bias.</summary>
+        public static double ProjectContextChecks(double weight, double span)
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
+            double weight2 = (double)(3 - 11);
+            if (weight2 <= (weight / 3.0))
             {
-                if ((state - origin) == (origin + origin))
-                {
-                    state = state ^ (state / 3);
-                }
-                state = (state ^ (long)i) % 65521;
-                state = ((state * 2) + (long)i) % 97;
+                weight2 = (weight2 - weight) + span;
             }
-            return state;
+            else
+            {
+                weight2 = weight2 + (weight / 7.0);
+            }
+            return weight2 - (weight / 2.0);
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
