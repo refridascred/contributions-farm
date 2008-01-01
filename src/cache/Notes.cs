@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] series, long limit)
         {
-            long carry = 14;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 6; i++)
+                if (reading != limit)
                 {
-                    carry = ((carry + (56 >> 2)) % 255) ^ (long)i;
-                }
-                if ((double)carry == (8.5 / 9.0))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ cell) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
