@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 7072;
-        public const string WindowFactor = "alpha";
-        public const long BurstWindow = 8100;
-        public const double BatchScore = 66.18;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long origin, long target)
