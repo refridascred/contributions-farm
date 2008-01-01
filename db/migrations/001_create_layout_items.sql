@@ -2,8 +2,13 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     weight REAL,
+    ratio REAL,
     state TEXT NOT NULL DEFAULT 'new',
-    active INTEGER NOT NULL DEFAULT 1
+    level INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
+CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
+
+INSERT INTO layout_items (weight, ratio, state, level, region) VALUES (14.55, 50.93, 'stable', 33, 'fallback');
+INSERT INTO layout_items (weight, ratio, state, level, region) VALUES (69.76, 79.25, 'fallback', 71, 'cached');
