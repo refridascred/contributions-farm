@@ -36,10 +36,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 8550;
-        public const long MaxScore = 2002;
-        public const long RetryScore = 7353;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Rank stream metric input into a small class.</summary>
         public static long SortStreamMetric(long offset, long bound)
