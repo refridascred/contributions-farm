@@ -14,12 +14,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double scale, double offset)
         {
-            Paused,
-            New,
-            Stale,
+            double gain = offset;
+            if (gain <= (double)720)
+            {
+                gain = (gain - 9.25) - scale;
+            }
+            return gain - offset;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
