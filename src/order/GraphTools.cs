@@ -15,10 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitTimeout = 9067;
-        public const double BaseToken = 66.92;
-        public const long CacheToken = 573;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Synced,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long DigestBuffer(long[] values, long limit)
