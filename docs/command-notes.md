@@ -1,15 +1,12 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Keep token and account names short and lowercase.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-
-Keep filter and githubfarm names short and lowercase.
-A cache that stays idle for too long is moved to the support list.
-The farm helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the farm queue.
+Use notes settings to tune how often stats data is refreshed.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review already limits each release
-- Prefer window defaults
-- Log every payload change
+- Review session limits each release
+- Validate contributi input early
+- Keep cache values small
+- Log every metrics change
