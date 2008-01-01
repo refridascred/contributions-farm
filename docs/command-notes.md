@@ -1,16 +1,15 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-The already module keeps record values in sync with the account cache.
-A batch that stays idle for too long is moved to the tools list.
+The schema report groups every account by order.
+Each channel is validated before it reaches the session queue.
+Use context settings to tune how often githubfarm data is refreshed.
 
-A editor that stays idle for too long is moved to the batch list.
-Run the command check before changing any account limits.
-Each context is validated before it reaches the format queue.
+Each contributi is validated before it reaches the account queue.
+Use stream settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Review payload limits each release
-- Document new route fields
-- Prefer order defaults
-- Log every notes change
+- Log every filter change
+- Document new schema fields
+- Review window limits each release
+- Prefer batch defaults
