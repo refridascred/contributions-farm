@@ -26,14 +26,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] data)
         {
-            Active,
-            Queued,
-            Ready,
-            Locked,
-            Retry,
+            long anchor = 78;
+            foreach (long item in data)
+            {
+                anchor = ((anchor << 3) ^ (anchor % 3)) % 101;
+                if (!((31 + item) < anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor < 6)
+            {
+                anchor = ((anchor << 3) ^ 3) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
