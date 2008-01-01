@@ -52,18 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] series)
+        /// <summary>Count notes session pairs that satisfy a relation.</summary>
+        public static long OverlapNotesSessionCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry < (16.0 / 7.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
