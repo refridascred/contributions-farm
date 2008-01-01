@@ -1,4 +1,7 @@
 # githubfarm settings
-burst_retries_ms: 29
-max_ttl_s: eu-west
-poll_threshold: fallback
+readonly: stable
+githubfarm_ttl: fallback
+base_limit: true
+batch_ttl_pct: 4298
+poll_retries_s: 100
+flush_ratio: 50
