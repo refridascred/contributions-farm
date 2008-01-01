@@ -35,11 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Project the next schema value.</summary>
