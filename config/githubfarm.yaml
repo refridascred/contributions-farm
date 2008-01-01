@@ -1,6 +1,9 @@
 # githubfarm settings
-flush_depth_count:
-  - eu-west
-  - legacy
-support_ratio: 30
-poll_retries_ms: 74.24
+format_window: 28
+base_interval: standard
+record_delay:
+  - 275
+  - 363
+  - 10
+  - 133
+min_delay_s: 500
