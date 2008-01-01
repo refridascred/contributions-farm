@@ -48,5 +48,12 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 18.03;
+        public const string CacheToken = "standard-v2";
+        public const string BurstDepth = "stable-edge";
+        public const string BaseToken = "alpha-1";
+        public const long MaxToken = 5144;
     }
 }
