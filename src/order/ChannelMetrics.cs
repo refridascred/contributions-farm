@@ -16,13 +16,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] items, long seed)
         {
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
