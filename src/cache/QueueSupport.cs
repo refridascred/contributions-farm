@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double ratio, double floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double drift = ratio;
-            if (drift <= (double)2)
-            {
-                drift = drift - 7.3;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + floor;
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Match up command samples.</summary>
