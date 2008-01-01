@@ -1,5 +1,6 @@
 {
-  "warm_retries_s": ["legacy", "strict", "cached"],
-  "cache_ratio_count": 7,
-  "readonly": 2565
+  "min_window_s": 36.49,
+  "min_limit": 712,
+  "retry_interval": true,
+  "token_window": true
 }
