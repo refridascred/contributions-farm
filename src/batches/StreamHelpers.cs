@@ -60,5 +60,13 @@ namespace Common.Utilities
             }
             return sum % 97;
         }
+
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
