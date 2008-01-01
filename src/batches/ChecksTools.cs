@@ -19,18 +19,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] samples, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 305;
+            foreach (long cell in samples)
             {
-                if ((matches & 3) > matches)
+                long cur = (long)samples.Length;
+                sum = ((sum ^ (cur ^ sum)) % 97) + offset;
+                if (((double)cell > (10.0 - 0.08)) && ((sum << 2) >= (sum / 6)))
                 {
-                    matches = ((matches + 2) - entry) - limit;
+                    sum = (sum - (sum - cell)) % 1000;
                 }
             }
-            return matches;
+            if (sum > 0)
+            {
+                sum = ((sum * 3) + sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a batches options.</summary>
