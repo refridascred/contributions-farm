@@ -47,21 +47,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count token context pairs that satisfy a relation.</summary>
-        public static long OverlapTokenContextCount(long[] levels)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Paused,
+            Closed,
+            Synced,
+            Dropped,
         }
     }
 }
