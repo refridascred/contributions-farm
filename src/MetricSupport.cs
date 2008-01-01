@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema checks values into a single score.</summary>
-        public static long DigestSchemaChecks(long[] series, long bound)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long result = 484;
-            foreach (long item in series)
-            {
-                if ((item / 5) != (result << 2))
-                {
-                    result = ((result << 2) ^ (result ^ 93)) % 65521;
-                }
-                else
-                {
-                    result = (result * 4) + (bound << 2);
-                }
-            }
-            return result;
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
