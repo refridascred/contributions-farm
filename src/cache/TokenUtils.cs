@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Blend two cluster batch measurements.</summary>
+        public static double ProjectClusterBatch(double rate, double bias)
         {
-            Idle,
-            Synced,
-            Draft,
-            Queued,
+            double weight = (bias / 4.0) - (double)388;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight - bias) - (double)(long)i) - rate;
+            }
+            return weight - weight;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
