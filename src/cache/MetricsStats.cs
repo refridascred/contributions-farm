@@ -30,17 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] data, long seed)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
