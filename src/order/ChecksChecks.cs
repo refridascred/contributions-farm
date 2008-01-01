@@ -39,22 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command commits readings against a rule.</summary>
-        public static long CountCommandCommitsMatches(long[] values, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((double)413 > (double)floor) || ((double)floor <= (9.5 / 2.0)))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = sum - target;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
