@@ -30,13 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long seed)
         {
-            public double Region { get; set; }
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
+            long score = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!(20.0 > (double)score))
+                {
+                    score = (score ^ (long)i) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the stream class values.</summary>
