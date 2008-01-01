@@ -34,9 +34,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinScore = 5608;
-        public const double IdleOrder = 25.88;
-        public const long DefaultOrder = 3524;
+        /// <summary>Match up route stream samples.</summary>
+        public static long PairRouteStreamCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
