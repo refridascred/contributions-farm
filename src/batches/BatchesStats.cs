@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (cell < 59)
+                if (entry < seed)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
