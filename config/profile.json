@@ -1,5 +1,5 @@
 {
-  "soft_retries_pct": 500,
-  "profile_window": 500,
-  "channel_size": 11.12
+  "metric_size": "staging",
+  "notes_depth": 30,
+  "persist": 662
 }
