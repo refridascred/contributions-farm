@@ -20,11 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Look up the position of a graph entry sample.</summary>
+        public static long LookupGraphEntryIndex(long[] samples, long target)
         {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
