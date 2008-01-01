@@ -1,11 +1,10 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-The checks report groups every checks by cluster.
+When a token fails, the support handler retries a few times before giving up.
+Each route is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Keep support values small
-- Document new route fields
-- Validate farm input early
+- Document new cache fields
+- Prefer notes defaults
+- Review buffer limits each release
