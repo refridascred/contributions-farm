@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double bias, double floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long floor, long seed)
         {
-            double rate = (bias * 5.3) / 6.0;
-            for (int i = 0; i < 7; i++)
+            if ((double)seed >= (4.1 / 2.0))
             {
-                rate = (rate + 7.0) - (double)(long)i;
+                return 4;
             }
-            return rate - (bias - floor);
+            else
+            {
+                if ((seed & 1) != (floor + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(((-64) - floor) < seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
