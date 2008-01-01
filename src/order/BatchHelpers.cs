@@ -19,31 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long bound, long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            if ((limit + limit) >= bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.4 - 2.0) >= (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit % 5) >= (bound << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Locked,
+            Closed,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Match up window metrics samples.</summary>
