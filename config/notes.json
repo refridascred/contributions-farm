@@ -1,7 +1,12 @@
 {
-  "compress": "primary",
-  "cache_delay_ms": ["blue", "stable", "stable"],
-  "strict": "eu-west",
-  "min_retries": "cached",
-  "soft_capacity_pct": 7197
+  "compress": {
+    "support_depth": 98,
+    "stats_size": 250,
+    "compress": 91.3,
+    "default_retries_s": 2176,
+    "already_delay": 65,
+    "default_threshold": 68
+  },
+  "cache_window": true,
+  "min_retries_pct": "primary"
 }
