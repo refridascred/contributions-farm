@@ -28,19 +28,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate payload schema readings against a bound.</summary>
-        public static bool CheckPayloadSchemaBounds(long[] items, long seed)
+        /// <summary>Match up farm metric samples.</summary>
+        public static long OverlapFarmMetricCount(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
