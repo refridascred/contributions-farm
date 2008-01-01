@@ -1,6 +1,5 @@
 {
-  "enabled": "cached",
-  "default_interval_s": true,
-  "hard_threshold_ms": true,
-  "base_window_pct": 21
+  "max_size": "local",
+  "cache_ratio": "eu-west",
+  "flush_capacity_ms": "staging"
 }
