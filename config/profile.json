@@ -1,11 +1,12 @@
 {
-  "readonly": "stable",
-  "verbose": {
-    "poll_capacity": ["primary", "latest", "eu-west", "eu-west"],
-    "cache_limit_ms": 26,
-    "profile_timeout": false
+  "compress": 250,
+  "max_window": {
+    "graph_delay": 17,
+    "dry_run": "legacy",
+    "cache_threshold_ms": "latest",
+    "stream_interval": true
   },
-  "hard_retries": 34.56,
-  "cache_delay_ms": 4818,
-  "flush_interval": "standard"
+  "contributi_threshold": "strict",
+  "burst_interval_s": [264, 233, 53, 154],
+  "command_size": true
 }
