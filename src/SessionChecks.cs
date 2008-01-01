@@ -17,17 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] samples, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 382;
+            foreach (long cell in readings)
             {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (carry + cell)) % 4096;
             }
-            return -1;
+            if (carry > 76)
+            {
+                carry = (carry - offset) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of counter contributi entries.</summary>
