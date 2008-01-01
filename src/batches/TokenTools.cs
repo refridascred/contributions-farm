@@ -27,5 +27,13 @@ namespace Common.Utilities
             }
             return flag;
         }
+
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public double Level { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
