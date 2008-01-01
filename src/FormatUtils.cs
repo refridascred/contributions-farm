@@ -78,5 +78,12 @@ namespace Common.Utilities
             }
             return carry % 4096;
         }
+
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double span)
+        {
+            double mean = (double)(92 << 1);
+            return ((mean + mean) + gain) + span;
+        }
     }
 }
