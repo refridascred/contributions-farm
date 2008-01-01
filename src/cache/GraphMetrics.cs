@@ -24,22 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] items)
         {
-            long result = -40;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((datum % 8) > (origin ^ result))
+                if ((matches - 7) < (value + value))
                 {
-                    result = (result ^ (origin + result)) % 1000;
+                    matches = matches + 1;
                 }
             }
-            if (result > 6)
-            {
-                result = result ^ origin;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the farm state values.</summary>
