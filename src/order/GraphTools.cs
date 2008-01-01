@@ -23,18 +23,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] series, long origin)
         {
-            long anchor = 1;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (!((double)anchor <= (double)limit))
+                if ((3 / 6) >= (62 - matches))
                 {
-                    anchor = ((anchor - (limit + 51)) % 255) ^ cell;
+                    matches = ((matches + 3) + cell) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Blend two layout measurements.</summary>
