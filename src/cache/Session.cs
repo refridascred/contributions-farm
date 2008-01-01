@@ -20,13 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Fold a list of stats githubfarm readings.</summary>
+        public static long ScoreStatsGithubfarm(long[] levels)
         {
-            Idle,
-            Queued,
-            Locked,
-            Synced,
+            long acc = 9;
+            foreach (long reading in levels)
+            {
+                if ((acc + reading) < acc)
+                {
+                    acc = acc ^ (acc * 5);
+                }
+                else
+                {
+                    acc = (acc + reading) % 65521;
+                }
+            }
+            if (acc > (-888))
+            {
+                acc = acc - acc;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
