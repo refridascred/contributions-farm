@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a counter stream pair into a bucket.</summary>
-        public static long RankCounterStream(long seed, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] items, long origin)
         {
-            if ((145 / 6) != (seed / 5))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed & 255) != (offset & 3))
+                if (origin >= (reading >> 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed % 10) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.0 + 9.0) >= (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
