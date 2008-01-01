@@ -43,18 +43,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] data)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((454 + value) == (seen & 255))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
