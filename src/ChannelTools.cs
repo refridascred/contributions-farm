@@ -19,26 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long seed)
         {
-            long result = 887;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((reading - limit) <= result)
+                if (sample != seed)
                 {
-                    result = (result * 3) + (result * 2);
-                }
-                if ((reading % 2) < (-42))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (result < 4)
-            {
-                result = ((result << 2) ^ (690 - 71)) % 255;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
