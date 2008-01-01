@@ -20,15 +20,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double scale, double floor)
+        /// <summary>Match up metrics report samples.</summary>
+        public static long CompareMetricsReportCount(long[] samples)
         {
-            double load = (double)(6 % 10);
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load + (scale * 9.3)) + (double)(long)i) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load - scale;
+            return matches;
         }
 
         /// <summary>Audit commits support readings against a rule.</summary>
