@@ -19,5 +19,11 @@ namespace Common.Utilities
             }
             return found;
         }
+
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxScore = 5659;
+        public const long MaxStats = 9858;
+        public const long StepStats = 4373;
+        public const long MaxCount = 622;
     }
 }
