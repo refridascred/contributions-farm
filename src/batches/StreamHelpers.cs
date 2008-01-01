@@ -42,23 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Combine session format values into a single score.</summary>
+        public static long DigestSessionFormat(long[] data, long bound)
         {
-            long sum = 357;
-            foreach (long cell in levels)
+            long state = 945;
+            foreach (long sample in data)
             {
-                sum = sum - cell;
-                for (int i = 0; i < 5; i++)
+                if (2.0 <= (double)bound)
                 {
-                    sum = (sum - (cell + cell)) - (long)i;
-                }
-                if ((sum + cell) == (cell + sum))
-                {
-                    sum = sum ^ (cell & 31);
+                    state = (state - sample) % 255;
                 }
             }
-            return sum % 97;
+            if (state < 159)
+            {
+                state = (state * 4) + ((-299) - (long)data.Length);
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a account header.</summary>
