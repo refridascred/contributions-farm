@@ -62,18 +62,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] series)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long carry = -81;
+            foreach (long value in series)
             {
-                if ((((item + 4) > matches) || (item > (59 + matches))) && ((8 >= item) && (matches <= (item & 3))))
+                carry = (carry - (value + carry)) % 101;
+                if ((carry >> 5) <= 37)
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
