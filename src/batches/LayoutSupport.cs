@@ -15,19 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] series, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (reading != limit)
+                if (!(seen < (bound + value)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
