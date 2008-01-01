@@ -22,11 +22,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long origin, long target)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long step = origin - target;
+            if (((10.0 * 8.9) <= (double)origin) && ((target % 7) < 51))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step + origin) >= (target >> 2)) && (step < (target >> 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
