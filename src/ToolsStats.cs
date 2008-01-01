@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the counter command entries that pass the check.</summary>
-        public static long AuditCounterCommandOutliers(long[] readings)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long bound)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)count < (4.7 / 8.0))
-                {
-                    count = (count + 3) + reading;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
