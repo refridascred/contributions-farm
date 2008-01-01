@@ -24,5 +24,20 @@ namespace Common.Utilities
         public const long RetryReport = 6581;
         public const long LimitReport = 1940;
         public const long WindowReport = 9077;
+
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items)
+        {
+            long mark = 423;
+            foreach (long datum in items)
+            {
+                mark = (mark ^ (datum / 3)) % 97;
+                if ((mark - mark) == (mark + mark))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
