@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 2510;
+        public const string SoftCache = "staging-v2";
+        public const long MinCache = 1342;
+        public const string BatchCache = "fallback";
+        public const double CacheScore = 71.2;
 
         /// <summary>Roll a layout metrics counter forward.</summary>
         public static long StepLayoutMetrics(long offset)
