@@ -27,19 +27,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] values, long step)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= step)
+                if (items[i] > origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a stream info.</summary>
