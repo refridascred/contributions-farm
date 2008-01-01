@@ -45,20 +45,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] series, long seed)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            long mix = 80;
-            foreach (long value in series)
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                mix = (mix - (seed + value)) % 255;
-                mix = (mix ^ (seed + seed)) % 255;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = ((result * 2) + (offset >> 2)) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            if (mix > 36)
-            {
-                mix = mix ^ (8 - mix);
-            }
-            return mix % 4096;
+            return result;
         }
 
         /// <summary>Hold a channel summary.</summary>
