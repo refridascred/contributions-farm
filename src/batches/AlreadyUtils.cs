@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const double RetryCache = 66.95;
         public const double IdleRatio = 43.27;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count cluster tools pairs that satisfy a relation.</summary>
+        public static long OverlapClusterToolsCount(long[] readings)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next cache value.</summary>
