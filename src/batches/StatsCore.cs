@@ -17,5 +17,14 @@ namespace Common.Utilities
         public const string WindowCache = "standard-v2";
         public const long BurstCache = 3461;
         public const double MaxCache = 29.73;
+
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
