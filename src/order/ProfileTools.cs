@@ -35,12 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a session info.</summary>
