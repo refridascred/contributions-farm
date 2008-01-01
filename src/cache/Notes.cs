@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchRatio = 7275;
-        public const double MaxScore = 58.34;
-        public const double StepScore = 14.61;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Draft,
+            Stale,
+            New,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BaseScore = 9.88;
