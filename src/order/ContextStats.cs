@@ -21,12 +21,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinSize = 20.49;
+        public const double DefaultCount = 89.69;
+        public const long BatchCount = 5893;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long bound, long limit)
