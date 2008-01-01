@@ -31,18 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter session entries that pass the check.</summary>
-        public static long CountFilterSessionHits(long[] levels, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((value >= (bound & 15)) || (count >= (bound * 5)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
