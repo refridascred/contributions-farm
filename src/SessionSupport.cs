@@ -32,12 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public double Offset { get; set; }
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
