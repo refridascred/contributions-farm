@@ -47,19 +47,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] data, long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a stream info.</summary>
