@@ -20,20 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor * 5) < (mix * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix << 3) ^ ((long)i ^ mix);
-                    mix = (mix + mix) % 65521;
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the order mode values.</summary>
