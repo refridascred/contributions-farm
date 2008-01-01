@@ -65,23 +65,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings, long origin)
-        {
-            long state = 3;
-            foreach (long datum in readings)
-            {
-                if (((state * 2) > ((-162) & 31)) && (origin > (datum + origin)))
-                {
-                    state = ((state << 3) ^ state) % 1000;
-                }
-                else
-                {
-                    state = ((state * 3) + (origin / 5)) % 97;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "standard";
+        public const long WindowChannel = 5493;
+        public const string CacheChannel = "staging-1";
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long WeighCache(long[] readings)
