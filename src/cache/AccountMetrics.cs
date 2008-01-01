@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchSize = 1098;
+        public const long BaseRatio = 9134;
+        public const string HardWidth = "fallback-v2";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long DefaultBuffer = 9999;
