@@ -47,11 +47,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheDepth = 57.94;
-        public const long StepSize = 6878;
-        public const string CacheBatch = "cached-1";
-        public const long WindowInterval = 1782;
-        public const long HardDepth = 8283;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((step - anchor) > (anchor * 3))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 4096;
+                }
+                if ((double)(long)i <= (14.0 + 0.7))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
