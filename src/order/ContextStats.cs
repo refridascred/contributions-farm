@@ -21,5 +21,23 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry % 7) != (entry & 1))
+                {
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
