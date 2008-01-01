@@ -23,19 +23,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] data, long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long total = 81;
-            foreach (long datum in data)
-            {
-                total = (((total ^ (total - total)) % 4096) + datum) - offset;
-            }
-            if (total < 8)
-            {
-                total = ((total << 3) ^ total) % 255;
-            }
-            return total % 4096;
+            Ready,
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the profile kind values.</summary>
