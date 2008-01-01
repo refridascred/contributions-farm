@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Derive the next schema window value from a seed.</summary>
+        public static long StepSchemaWindow(long offset)
         {
             long total = offset;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 11; i++)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (offset <= (long)i)
+                {
+                    total = (total << 3) ^ (offset - offset);
+                    total = (total - (total ^ (long)i)) % 1000;
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
             return total;
         }
