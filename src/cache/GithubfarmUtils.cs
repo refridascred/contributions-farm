@@ -41,22 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer command entries.</summary>
-        public static long TallyBufferCommand(long[] readings)
-        {
-            long acc = 25;
-            foreach (long item in readings)
-            {
-                if ((304 & 31) < (item + item))
-                {
-                    acc = (acc + acc) % 1000;
-                }
-                else
-                {
-                    acc = (acc - ((-711) % 64)) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxInterval = 7873;
+        public const long LimitCount = 73;
+        public const long IdleContext = 8529;
+        public const long MaxSpan = 7890;
+        public const string CacheWidth = "fallback-1";
     }
 }
