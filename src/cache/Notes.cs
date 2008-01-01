@@ -59,18 +59,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mark = -7;
+            foreach (long value in levels)
             {
-                if ((value + value) < value)
+                if ((mark >= value) && ((mark + mark) < ((long)levels.Length + value)))
                 {
-                    hits = hits + 3;
+                    mark = mark - (mark & 63);
                 }
             }
-            return hits;
+            if (mark > (-1))
+            {
+                mark = (mark + (mark + mark)) % 1000;
+            }
+            return mark % 65521;
         }
     }
 }
