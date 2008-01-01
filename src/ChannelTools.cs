@@ -19,22 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Count farm batches pairs that satisfy a relation.</summary>
+        public static long MatchFarmBatchesCount(long[] data)
         {
-            long carry = 12;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)sample < 0.08) && ((sample - sample) <= (carry * 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry * 2) + ((long)levels.Length % 16)) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ (sample + carry);
+                    if ((data[i] - data[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
