@@ -35,22 +35,38 @@ namespace Common.Utilities
             return scale + (double)6;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] data, long floor)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if ((step >> 3) == (seed - 0))
             {
-                if (10 <= (floor + item))
+                return 0;
+            }
+            else
+            {
+                if ((seed + 944) < seed)
                 {
-                    matches = matches + 1;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((13.0 / 9.0) <= (7.28 - 13.0)) || ((seed + step) <= seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((seed + step) == (step % 64)) && ((seed % 16) == (89 ^ seed)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the commits phase values.</summary>
