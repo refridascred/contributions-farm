@@ -58,15 +58,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double gain, double floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long step, long floor)
         {
-            double mean = floor;
-            if (mean >= (mean / 6.0))
+            if ((floor >> 5) == (137 >> 3))
             {
-                mean = mean - 6.4;
+                return 3;
             }
-            return mean + gain;
+            else
+            {
+                if ((double)step == (3.16 - 1.8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor * 5) < (step << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
