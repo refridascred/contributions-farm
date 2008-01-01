@@ -27,15 +27,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double weight, double floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double load = weight;
-            if (load >= (double)39)
-            {
-                load = (load - (double)7) + floor;
-            }
-            return load + load;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Match up stream samples.</summary>
