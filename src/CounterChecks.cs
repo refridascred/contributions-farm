@@ -20,17 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] series, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 1;
+            foreach (long item in samples)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + (mark % 5)) + item;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
