@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxBudget = 1449;
-        public const long MaxDepth = 5746;
-        public const string SoftContributi = "staging-1";
-        public const string LimitContributi = "staging-1";
+        /// <summary>Rank order farm input into a small class.</summary>
+        public static long BucketOrderFarm(long offset, long floor)
+        {
+            long edge = offset + floor;
+            if (!((double)floor == (double)49))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)edge <= (0.3 + 13.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelOutliers(long[] items, long floor)
