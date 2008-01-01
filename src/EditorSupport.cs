@@ -52,18 +52,13 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] readings)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((5.71 + 1.6) != (double)(long)readings.Length)
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
