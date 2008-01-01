@@ -74,14 +74,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long bound, long target)
         {
-            Stale,
-            Pending,
-            Locked,
-            Dropped,
-            Synced,
+            long prev = bound - target;
+            if (((target + target) > (bound ^ 45)) && ((prev + bound) > (target + prev)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9 % 100) <= (bound / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
