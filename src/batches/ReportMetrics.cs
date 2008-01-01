@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] samples, long seed)
+        /// <summary>Count the report editor entries that pass the check.</summary>
+        public static long MeasureReportEditorGaps(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((((entry ^ seed) <= entry) && ((double)seen == (8.2 - 9.9))) && (entry < (5 * 2)))
+                if ((matches + offset) < (offset << 2))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 1) ^ reading;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
