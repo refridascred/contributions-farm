@@ -1,5 +1,22 @@
 {
-  "warm_capacity": "fallback",
-  "strict": "latest",
-  "tools_ratio": 500
+  "buffer_interval": 91.09,
+  "hard_timeout_count": {
+    "soft_capacity_pct": 21.27,
+    "soft_threshold": {
+      "stream_window": 30,
+      "max_threshold": "strict",
+      "counter_size": 44.42,
+      "entry_ttl": 1024,
+      "base_ratio_pct": "fallback"
+    },
+    "dry_run": {
+      "strict": 95.02,
+      "poll_timeout_s": [405, 180],
+      "githubfarm_timeout": "standard",
+      "readonly": 41.44,
+      "payload_depth": 20.4,
+      "hard_delay_count": "green"
+    }
+  },
+  "default_threshold_count": false
 }
