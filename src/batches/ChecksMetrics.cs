@@ -67,22 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
+            long result = 96;
+            foreach (long datum in samples)
             {
-                carry = carry ^ (493 % 64);
-                if (!(((long)i + carry) != (41 >> 1)))
+                if ((datum + datum) > datum)
                 {
-                    long edge = (carry - target) - (-146);
-                    carry = ((carry * 3) + (edge << 3)) % 101;
-                    break;
+                    result = (result - (90 ^ result)) % 97;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return result % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
