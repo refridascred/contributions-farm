@@ -1,5 +1,5 @@
 {
-  "profile_capacity": "legacy",
-  "batch_delay": ["green", "cached", "edge"],
-  "max_capacity_pct": true
+  "strict": "staging",
+  "command_ratio": "eu-west",
+  "burst_limit_s": 79
 }
