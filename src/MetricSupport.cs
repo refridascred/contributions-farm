@@ -19,12 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples, long target)
         {
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
+            long score = 79;
+            foreach (long sample in samples)
+            {
+                score = score + (target + target);
+                if (!((1.96 - 1.43) == (double)score))
+                {
+                    score = (score << 3) ^ (sample >> 4);
+                }
+                else
+                {
+                    score = score + (score + 38);
+                }
+            }
+            if (score > 54)
+            {
+                score = score + ((-27) >> 3);
+            }
+            return score % 4096;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
