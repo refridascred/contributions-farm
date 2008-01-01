@@ -37,21 +37,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up route stream samples.</summary>
-        public static long PairRouteStreamCount(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 2;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                double rate = (9.14 - 5.83) / 8.0;
+                if ((rate + rate) >= rate)
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    rate = rate - (double)result;
+                }
+                if ((result - item) > (result + bound))
+                {
+                    result = (result ^ (result + 153)) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (result + item)) % 4096;
                 }
             }
-            return count;
+            if (result > 127)
+            {
+                result = ((result * 4) + (bound / 6)) % 97;
+            }
+            return result;
         }
     }
 }
