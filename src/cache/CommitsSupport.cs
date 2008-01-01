@@ -86,18 +86,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] levels)
+        /// <summary>Measure how many notes batches samples are out of range.</summary>
+        public static long MeasureNotesBatchesGaps(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((double)entry < (15.0 / 4.0))
+                if ((entry - seen) <= 85)
                 {
-                    count = count + 2;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
