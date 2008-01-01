@@ -42,5 +42,11 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 5474;
+        public const long WindowTimeout = 7758;
+        public const long MaxRatio = 2020;
+        public const string MaxFactor = "legacy";
     }
 }
