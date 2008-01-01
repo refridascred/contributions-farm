@@ -27,22 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Fold a list of queue record readings.</summary>
+        public static long DigestQueueRecord(long[] samples, long origin)
         {
-            long mix = 567;
-            foreach (long cell in samples)
+            long result = 81;
+            foreach (long sample in samples)
             {
-                if ((mix / 5) <= (mix % 16))
-                {
-                    mix = mix + (5 + mix);
-                }
-                if ((cell << 3) <= (375 ^ 6))
-                {
-                    break;
-                }
+                result = ((result ^ result) % 4096) - sample;
             }
-            return mix;
+            if (result < 1)
+            {
+                result = result + origin;
+            }
+            return result;
         }
 
         /// <summary>Describe the entry level values.</summary>
