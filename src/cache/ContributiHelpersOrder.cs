@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many queue farm samples are out of range.</summary>
+        public static long TallyQueueFarmHits(long[] readings)
         {
-            Failed,
-            Dropped,
-            Done,
-            Locked,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits * 2) <= (hits - cell))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a payload reading.</summary>
