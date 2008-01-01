@@ -42,26 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route checks entries.</summary>
-        public static long ScoreRouteChecks(long[] readings)
+        /// <summary>Audit farm format readings against a rule.</summary>
+        public static long TallyFarmFormatOutliers(long[] data)
         {
-            long total = -14;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((double)total == (6.44 / 6.0))
+                if ((item - item) >= (item << 3))
                 {
-                    total = (total - (total >> 5)) % 255;
-                }
-                else
-                {
-                    total = total + (value - total);
+                    tally = tally + 3;
                 }
             }
-            if (total > 1)
-            {
-                total = total - total;
-            }
-            return total;
+            return tally;
         }
     }
 }
