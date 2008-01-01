@@ -54,9 +54,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepInterval = "stable-v2";
-        public const long RetryWindow = 899;
-        public const string BatchWindow = "staging";
+        /// <summary>Roll a batch route counter forward.</summary>
+        public static long RollBatchRoute(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor << 3) ^ 4;
+                anchor = (anchor << 2) ^ (anchor * 5);
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
