@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
 
-for item in stable fallback green open; do
+BUFFER_LIMIT=103
+log "limit is ${BUFFER_LIMIT}"
+
+for item in standard edge primary; do
     log "checking ${item}"
 done
