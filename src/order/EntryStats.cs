@@ -64,18 +64,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] data, long floor)
         {
-            long score = 63;
-            foreach (long entry in data)
+            long result = 945;
+            foreach (long value in data)
             {
-                if ((double)score >= (2.28 - 7.59))
+                if ((value - floor) == (0 - value))
                 {
-                    score = (score - (entry ^ entry)) - step;
+                    result = (result - (result ^ result)) % 97;
+                }
+                else
+                {
+                    result = (result - floor) % 255;
                 }
             }
-            return score;
+            return result;
         }
     }
 }
