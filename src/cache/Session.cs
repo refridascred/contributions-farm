@@ -20,26 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of stats githubfarm readings.</summary>
-        public static long ScoreStatsGithubfarm(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] values)
         {
-            long acc = 9;
-            foreach (long reading in levels)
+            long total = 2;
+            foreach (long sample in values)
             {
-                if ((acc + reading) < acc)
+                if ((sample + 499) == (sample + sample))
                 {
-                    acc = acc ^ (acc * 5);
+                    total = ((total * 3) + (sample - total)) % 101;
                 }
                 else
                 {
-                    acc = (acc + reading) % 65521;
+                    total = (total - (sample + total)) % 65521;
                 }
             }
-            if (acc > (-888))
-            {
-                acc = acc - acc;
-            }
-            return acc % 4096;
+            return total % 1000;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
