@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryLevel = "legacy";
-        public const string DefaultDepth = "latest-1";
-        public const long WindowNotes = 6213;
-        public const long IdleFactor = 4281;
-        public const double MaxWidth = 88.25;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
