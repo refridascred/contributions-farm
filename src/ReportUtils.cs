@@ -43,9 +43,32 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 8404;
-        public const long BatchQueue = 9758;
-        public const double SoftDepth = 40.05;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long floor, long limit)
+        {
+            long prev = floor - limit;
+            if ((floor - floor) < (prev & 15))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((23 + limit) > 66)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor >= (floor * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
