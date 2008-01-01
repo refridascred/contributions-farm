@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const double BatchFactor = 48.32;
         public const string SoftSchema = "cached-v2";
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Count the record layout entries that pass the check.</summary>
+        public static long TallyRecordLayoutHits(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry >> 4) <= entry)
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
