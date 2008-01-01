@@ -26,12 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            Active,
+            Pending,
+            Retry,
+            Done,
+            Draft,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
