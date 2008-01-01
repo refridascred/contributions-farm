@@ -50,22 +50,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Match up graph entry samples.</summary>
+        public static long OverlapGraphEntryCount(long[] samples)
         {
-            long acc = 628;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample - acc) == (acc + sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc << 3) ^ (sample - sample);
-                }
-                if (!((sample + acc) >= 3))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
