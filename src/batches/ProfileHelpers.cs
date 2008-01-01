@@ -32,16 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total * 5) + total;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
