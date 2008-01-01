@@ -48,12 +48,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] data, long offset)
         {
-            Locked,
-            Dropped,
-            Ready,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((((cell & 255) < (offset & 3)) || (offset > (offset + offset))) || ((offset << 3) == (offset * 2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
