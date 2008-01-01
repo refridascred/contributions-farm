@@ -23,14 +23,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] data, long bound)
         {
-            Retry,
-            Draft,
-            Done,
-            Failed,
-            Idle,
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
