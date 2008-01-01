@@ -35,17 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] levels, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 2;
+            foreach (long datum in levels)
             {
-                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
+                if ((datum >= (datum + 655)) && ((double)bound == (3.39 + 17.0)))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum % 100)) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many account batches samples are out of range.</summary>
