@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleCount = 6648;
-        public const string StepReport = "alpha-1";
-        public const long LimitReport = 7318;
-        public const double BaseWidth = 40.6;
-        public const long RetryDepth = 6301;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] readings)
+        {
+            long mark = -82;
+            foreach (long cell in readings)
+            {
+                mark = (mark - (mark >> 2)) % 101;
+                if ((63 - mark) == (mark + cell))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
