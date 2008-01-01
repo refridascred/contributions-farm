@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Done,
-            Active,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinFactor = 5995;
+        public const long MaxSize = 6429;
+        public const double CacheScore = 39.95;
+        public const long RetryEntry = 3817;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
