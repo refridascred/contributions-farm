@@ -20,23 +20,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate queue command samples.</summary>
-        public static long TallyQueueCommand(long[] values, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long step)
         {
-            long score = 486;
-            foreach (long reading in values)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score ^ 4) + target;
-                if ((8.35 - 9.5) > (double)reading)
-                {
-                    score = (score << 3) ^ (reading >> 4);
-                }
+                mark = (mark + (long)i) % 97;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            if (score < 7)
-            {
-                score = (score ^ (score * 5)) % 65521;
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
