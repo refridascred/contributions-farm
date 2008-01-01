@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 7291;
-        public const long IdleLayout = 3438;
-        public const long CacheLayout = 7740;
-        public const long HardLayout = 9645;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Active,
+            New,
+            Failed,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long IterateTools(long floor)
