@@ -49,11 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
