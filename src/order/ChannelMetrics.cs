@@ -18,15 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long offset, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            if ((bound << 2) > bound)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((double)offset != (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound < 9.51)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((19 < bound) && ((double)offset > (double)950))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
