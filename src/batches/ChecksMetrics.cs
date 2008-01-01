@@ -76,12 +76,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Locked,
-            Idle,
+            Stale,
+            Retry,
             Draft,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
