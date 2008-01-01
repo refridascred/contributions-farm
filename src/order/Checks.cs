@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window command entry stays within the limit.</summary>
-        public static bool VerifyWindowCommandBounds(long[] items, long floor)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double gain, double span)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            double scale = gain;
+            if (scale > gain)
             {
-                if (entry >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale + (gain * 6.1)) - span;
             }
-            return valid;
+            else
+            {
+                scale = scale + (double)7;
+            }
+            return scale + gain;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
