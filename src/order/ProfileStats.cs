@@ -15,39 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long step)
-        {
-            if ((step & 1) <= (-8))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed + step) <= (seed - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step < 62) && ((double)seed > (9.0 + 19.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step != (3.43 / 8.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "staging-v2";
+        public const long BatchFactor = 4748;
+        public const long HardWindow = 9166;
+        public const string BatchWindow = "local-1";
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
