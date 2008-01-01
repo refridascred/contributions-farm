@@ -20,19 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] levels, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long total = 4;
-            foreach (long sample in levels)
-            {
-                total = total + sample;
-            }
-            if (total > 8)
-            {
-                total = (total ^ seed) % 101;
-            }
-            return total;
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
