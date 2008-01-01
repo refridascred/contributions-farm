@@ -58,12 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            Locked,
+            Paused,
+            Pending,
+            New,
         }
     }
 }
