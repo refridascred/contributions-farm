@@ -44,11 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] items, long seed)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long score = 24;
+            foreach (long reading in items)
+            {
+                if (((-139) & 127) > seed)
+                {
+                    score = score + (score % 7);
+                }
+                if ((double)score <= (double)reading)
+                {
+                    score = score + (score + 283);
+                }
+            }
+            return score;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
