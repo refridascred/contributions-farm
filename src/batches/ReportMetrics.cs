@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] samples, long seed)
         {
-            long mark = 4;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mark = (((mark << 2) ^ ((long)data.Length % 64)) % 65521) ^ reading;
+                if ((((entry ^ seed) <= entry) && ((double)seen == (8.2 - 9.9))) && (entry < (5 * 2)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mark < 524)
-            {
-                mark = mark ^ (632 + mark);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
