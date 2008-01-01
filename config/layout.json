@@ -1,7 +1,18 @@
 {
-  "hard_depth": 21.06,
-  "burst_threshold_s": false,
-  "graph_depth": true,
-  "retry_threshold_pct": 1024,
-  "already_ratio": "blue"
+  "strict": "local",
+  "dry_run": true,
+  "hard_size_ms": 8581,
+  "audit": {
+    "idle_window_pct": ["local", "edge"],
+    "dry_run": 49,
+    "flush_retries_ms": {
+      "burst_timeout_count": ["latest", "edge"],
+      "soft_ttl": 60,
+      "compress": ["standard", "strict", "legacy"],
+      "burst_window_count": "latest",
+      "support_delay": ["cached", "standard"],
+      "profile_ratio": false
+    }
+  },
+  "persist": ["open", "fallback"]
 }
