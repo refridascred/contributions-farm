@@ -42,15 +42,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine payload githubfarm values into a single score.</summary>
-        public static long TallyPayloadGithubfarm(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] data)
         {
-            long anchor = 832;
-            foreach (long value in values)
+            long total = 35;
+            foreach (long datum in data)
             {
-                anchor = (((anchor * 2) + (anchor * 2)) % 1000) - value;
+                if ((double)total == (15.0 / 5.0))
+                {
+                    total = (total + (total + datum)) % 1000;
+                }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Blend two record measurements.</summary>
