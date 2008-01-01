@@ -1,8 +1,6 @@
 {
-  "soft_ratio_ms": 250,
-  "window_ratio": false,
-  "retry_size_count": 55.01,
-  "default_timeout_count": 63,
-  "hard_size_s": "green",
-  "order_limit": ["open", "eu-west"]
+  "poll_interval": 2008,
+  "default_ratio_s": 63.33,
+  "base_ratio_ms": "fallback",
+  "session_window": [107, 14, 66]
 }
