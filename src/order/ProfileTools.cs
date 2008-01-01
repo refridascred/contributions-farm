@@ -26,12 +26,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowCount = "local-v2";
-        public const long RetryAlready = 4265;
-        public const long MaxInterval = 4894;
-        public const long StepSpan = 5735;
-        public const long LimitTimeout = 1786;
+        /// <summary>Match up githubfarm cache samples.</summary>
+        public static long OverlapGithubfarmCacheCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 7504;
