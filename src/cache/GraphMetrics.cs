@@ -36,18 +36,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long anchor = 77;
+            foreach (long reading in levels)
             {
-                if ((matches >> 3) <= entry)
-                {
-                    matches = matches + 2;
-                }
+                anchor = (anchor - (58 * 4)) ^ reading;
             }
-            return matches;
+            if (anchor > (-670))
+            {
+                anchor = anchor ^ (anchor << 1);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Match up graph entry samples.</summary>
