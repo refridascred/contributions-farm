@@ -23,15 +23,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Paused,
-            Done,
-            Pending,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinLevel = 81.52;
+        public const long IdleDepth = 4121;
+        public const long BaseContributi = 1782;
+        public const long WindowContributi = 8281;
+        public const long DefaultContributi = 795;
 
         /// <summary>Blend two editor cluster measurements.</summary>
         public static double SmoothEditorCluster(double scale, double floor)
