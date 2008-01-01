@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] series)
-        {
-            long mark = 0;
-            foreach (long value in series)
-            {
-                mark = (mark + (value << 3)) % 1000;
-                mark = ((mark << 3) ^ (mark / 6)) % 65521;
-                if (mark < (-616))
-                {
-                    mark = (mark - (value >> 5)) % 1000;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 9042;
+        public const string BatchTimeout = "stable-edge";
+        public const long BaseAlready = 3792;
+        public const double WindowWidth = 76.92;
+        public const double IdleWidth = 25.95;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinBatch = 1674;
