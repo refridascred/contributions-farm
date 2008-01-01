@@ -46,11 +46,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxInterval = 7873;
-        public const long LimitCount = 73;
-        public const long IdleContext = 8529;
-        public const long MaxSpan = 7890;
-        public const string CacheWidth = "fallback-1";
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] series)
+        {
+            long result = 8;
+            foreach (long reading in series)
+            {
+                result = (result + (reading / 4)) % 65521;
+                result = (result + 634) % 101;
+            }
+            if (result < 5)
+            {
+                result = (result * 5) + result;
+            }
+            return result;
+        }
     }
 }
