@@ -1,11 +1,5 @@
 {
-  "burst_retries": 60,
-  "flush_size_pct": 36.08,
-  "stats_delay": 9766,
-  "hard_ratio_ms": {
-    "sync_capacity_s": ["green", "fallback", "standard", "strict"],
-    "entry_delay": "edge",
-    "token_threshold": true
-  },
-  "persist": 500
+  "retry_size_pct": "eu-west",
+  "graph_ratio": "open",
+  "schema_capacity": 250
 }
