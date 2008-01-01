@@ -48,12 +48,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] items, long origin)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine token values into a single score.</summary>
