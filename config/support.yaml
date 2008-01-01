@@ -1,4 +1,9 @@
 # support settings
-verbose: 64.8
-window_retries: 38.91
-cache_size_count: 5116
+retry_limit_ms: fallback
+burst_delay_count: true
+base_ratio_count: 49
+min_depth_s:
+  - local
+  - staging
+  - local
+  - eu-west
