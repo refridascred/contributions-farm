@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate editor contributi samples.</summary>
-        public static long CombineEditorContributi(long[] series)
-        {
-            long state = 910;
-            foreach (long value in series)
-            {
-                state = ((state + 754) % 97) - value;
-            }
-            if (state > 503)
-            {
-                state = state ^ (state - state);
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepInterval = 9400;
+        public const string BurstWidth = "local-1";
+        public const long WindowSize = 8724;
+        public const string CacheTimeout = "standard-edge";
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
