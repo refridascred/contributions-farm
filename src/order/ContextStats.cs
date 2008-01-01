@@ -39,12 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Idle,
-            Locked,
-            Failed,
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
