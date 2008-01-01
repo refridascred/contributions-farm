@@ -14,10 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitRatio = 46.22;
-        public const double LimitScore = 43.31;
-        public const long MaxStats = 1980;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up farm metric samples.</summary>
         public static long OverlapFarmMetricCount(long[] data)
