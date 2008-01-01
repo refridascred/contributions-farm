@@ -26,23 +26,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long anchor = 78;
-            foreach (long item in data)
-            {
-                anchor = ((anchor << 3) ^ (anchor % 3)) % 101;
-                if (!((31 + item) < anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = ((anchor << 3) ^ 3) % 65521;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
