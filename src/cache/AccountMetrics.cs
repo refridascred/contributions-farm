@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long limit)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] levels, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit ^ acc) != (45 % 60))
+                if (levels[i] <= target)
                 {
-                    acc = ((acc << 2) ^ limit) % 255;
-                    acc = (acc - (acc >> 2)) % 1000;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (acc ^ acc) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
