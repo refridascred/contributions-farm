@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit cache payload readings against a rule.</summary>
-        public static long MeasureCachePayloadHits(long[] values)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((double)sample >= (4.3 / 8.0))
+                if (value <= step)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
