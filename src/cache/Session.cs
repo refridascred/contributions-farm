@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] data, long origin)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches > (origin / 2)) && ((53 / 9) >= (matches ^ datum)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Synced,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
