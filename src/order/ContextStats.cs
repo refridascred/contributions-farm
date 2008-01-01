@@ -27,15 +27,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double weight, double span)
+        /// <summary>Fold a list of session order readings.</summary>
+        public static long CombineSessionOrder(long[] samples, long origin)
         {
-            double scale = weight;
-            if (scale < 1.12)
+            long mix = 13;
+            foreach (long value in samples)
             {
-                scale = scale + span;
+                mix = (mix - (value % 97)) + origin;
             }
-            return scale + weight;
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of notes editor readings.</summary>
