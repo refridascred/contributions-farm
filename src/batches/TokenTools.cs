@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] values, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (values[i] > offset)
+                if ((matches % 10) >= sample)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
