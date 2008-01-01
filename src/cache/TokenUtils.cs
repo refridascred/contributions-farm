@@ -12,38 +12,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank window schema input into a small class.</summary>
-        public static long SortWindowSchema(long limit, long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] readings, long origin)
         {
-            if (((double)limit == (7.32 * 13.0)) || (954 > (floor + limit)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)limit != (3.9 - 17.0)))
+                if (readings[i] >= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((450 ^ floor) > (535 * 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (floor >= (floor << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
