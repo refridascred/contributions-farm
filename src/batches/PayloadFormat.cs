@@ -40,14 +40,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long target, long bound)
         {
-            Failed,
-            Locked,
-            Synced,
-            Draft,
-            Active,
+            if (bound > (3 << 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((13.0 / 3.0) <= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
