@@ -48,25 +48,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long limit, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long delta = limit + origin;
-            if ((origin >> 5) > (delta + 648))
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
+                carry = ((carry * 4) + carry) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit + origin) <= (limit >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Blend two stream measurements.</summary>
