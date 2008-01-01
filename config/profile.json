@@ -1,8 +1,15 @@
 {
-  "githubfarm_depth": "open",
-  "burst_threshold": "blue",
-  "githubfarm_retries": 250,
-  "base_capacity": "local",
-  "warm_limit_pct": 88,
-  "sync_retries": 9256
+  "layout_retries": false,
+  "warm_threshold": 100,
+  "filter_retries": 34.67,
+  "buffer_capacity": "eu-west",
+  "enabled": {
+    "sync_retries_pct": "stable",
+    "base_interval_ms": true,
+    "base_timeout_count": false,
+    "min_retries_pct": "edge",
+    "sync_timeout": 6.71,
+    "default_threshold_s": 39
+  },
+  "burst_size_count": 65
 }
