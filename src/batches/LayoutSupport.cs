@@ -34,12 +34,15 @@ namespace Common.Utilities
         public const long LimitCommits = 4680;
         public const long IdleCommits = 5030;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double bias, double floor)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            double ratio = floor;
+            if (ratio > (double)(-533))
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - (9.0 - floor);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
