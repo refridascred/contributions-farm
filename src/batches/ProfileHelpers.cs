@@ -38,18 +38,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry checks samples are out of range.</summary>
-        public static long AuditEntryChecksOutliers(long[] levels)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell * 2) < (88 % 100))
-                {
-                    matches = matches + 1;
-                }
+                total = (total * 5) + total;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
