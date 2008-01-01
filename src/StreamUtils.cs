@@ -42,21 +42,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] items)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
