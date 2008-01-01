@@ -1,12 +1,21 @@
 # support settings
-retry_ttl_ms: 59
-persist: false
-order_retries: 610
-flush_capacity_ms:
+default_delay: edge
+profile_retries:
+  - 354
+  - 337
+  - 85
+account_limit: staging
+burst_delay:
+  audit: 51.31
+  order_size:
+    poll_timeout_pct: eu-west
+    batch_limit_s: 98
+    poll_ratio: local
+  readonly: true
+  max_limit: true
+cache_limit:
+  - primary
   - legacy
-  - cached
-readonly: cached
-hard_interval_s:
-  - 14
-  - 129
-  - 416
+  - stable
+  - primary
+readonly: 7175
