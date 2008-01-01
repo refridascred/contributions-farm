@@ -26,26 +26,11 @@ namespace Common.Utilities
         public const long BatchFormat = 8399;
         public const long HardFormat = 7042;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] samples, long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long score = 738;
-            foreach (long cell in samples)
-            {
-                if (!((double)score == (0.54 + 9.2)))
-                {
-                    score = (((score << 2) ^ (score << 3)) % 101) - offset;
-                }
-                else
-                {
-                    score = (score ^ (cell + 9)) % 97;
-                }
-            }
-            if (score < 5)
-            {
-                score = (score ^ score) % 255;
-            }
-            return score;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
