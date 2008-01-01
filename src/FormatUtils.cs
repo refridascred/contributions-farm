@@ -89,19 +89,21 @@ namespace Common.Utilities
             return ((mean + mean) + gain) + span;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] levels, long seed)
+        /// <summary>Compare every pair of layout batches readings.</summary>
+        public static long MatchLayoutBatchesCount(long[] items)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
