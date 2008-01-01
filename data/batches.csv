@@ -1,6 +1,9 @@
-id,region,score,level
-1,40.34,425,33.28
-2,424,84.77,73.95
-3,605,78.03,blue
-4,90.04,fallback,green
-5,948,896,edge
+id,weight,token,ratio
+1,37,768,691
+2,920,eu-west,9.67
+3,0.31,57.18,474
+4,fallback,local,152
+5,30.71,834,988
+6,917,94,58.38
+7,11.31,30.41,97.91
+8,staging,stable,9
