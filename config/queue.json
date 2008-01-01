@@ -1,21 +1,6 @@
 {
-  "payload_threshold": false,
-  "poll_ttl_pct": "latest",
-  "sync_interval_ms": 53.45,
-  "counter_size": {
-    "soft_ratio": false,
-    "session_ratio": 30,
-    "dry_run": [431, 246, 253],
-    "flush_ttl_ms": [95, 251, 421],
-    "hard_delay_count": {
-      "counter_capacity": 1024,
-      "hard_depth_pct": "primary",
-      "cache_depth": "local",
-      "stats_window": 3373,
-      "base_depth_count": "legacy",
-      "poll_limit_count": 56.7
-    },
-    "account_ratio": 30
-  },
-  "max_depth_ms": "legacy"
+  "sync_ttl_pct": 100,
+  "burst_limit_ms": false,
+  "default_ttl_pct": ["latest", "stable", "eu-west"],
+  "soft_timeout_count": "cached"
 }
