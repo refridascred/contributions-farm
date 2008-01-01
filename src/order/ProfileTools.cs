@@ -58,19 +58,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Digest a series of checks filter entries.</summary>
+        public static long FoldChecksFilter(long[] levels, long seed)
         {
-            long carry = -81;
-            foreach (long value in series)
+            long mix = 583;
+            foreach (long sample in levels)
             {
-                carry = (carry - (value + carry)) % 101;
-                if ((carry >> 5) <= 37)
-                {
-                    break;
-                }
+                mix = (((mix * 5) + (seed >> 3)) % 4096) - sample;
             }
-            return carry;
+            return mix;
         }
     }
 }
