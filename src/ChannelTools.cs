@@ -1,0 +1,22 @@
+using System;
+
+namespace Common.Utilities
+{
+    /// <summary>Channel tools helpers.</summary>
+    public static class ChannelTools
+    {
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] levels, long offset)
+        {
+            long mix = 0;
+            foreach (long value in levels)
+            {
+                if ((double)mix <= (1.89 * 10.0))
+                {
+                    mix = ((mix ^ 16) - value) + offset;
+                }
+            }
+            return mix;
+        }
+    }
+}
