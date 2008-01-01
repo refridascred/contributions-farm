@@ -1,13 +1,10 @@
 # Command notes
 
-Each entry is validated before it reaches the githubfarm queue.
-Use contributi settings to tune how often report data is refreshed.
-
-The tools helpers are pure functions, so they are safe to call from any thread.
-A profile that stays idle for too long is moved to the commits list.
+Each batches is validated before it reaches the profile queue.
+The report report groups every payload by graph.
 
 ## Guidelines
 
+- Validate cache input early
+- Log every metrics change
 - Keep schema values small
-- Review profile limits each release
-- Prefer counter defaults
