@@ -1,9 +1,6 @@
 # githubfarm settings
-format_window: 28
-base_interval: standard
-record_delay:
-  - 275
-  - 363
-  - 10
-  - 133
-min_delay_s: 500
+max_timeout_ms: 48.93
+max_capacity_count:
+  - open
+  - latest
+sync_window_count: 97
