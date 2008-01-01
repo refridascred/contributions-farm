@@ -1,4 +1,31 @@
 # githubfarm settings
-format_capacity: 9524
-queue_threshold: cached
-burst_ttl_count: fallback
+buffer_depth:
+  - 215
+  - 312
+  - 122
+audit: true
+poll_depth:
+  layout_retries:
+    flush_capacity: 13.38
+    max_depth: 1024
+    retry_timeout: 1024
+    audit: 4229
+  default_interval_pct:
+    verbose: 100
+    min_size_pct:
+      - 466
+      - 304
+    base_limit_ms:
+      - 301
+      - 216
+      - 317
+      - 120
+    metrics_window: 56
+    burst_ttl_pct: 76.96
+    min_window_pct: edge
+  session_interval: true
+  soft_depth_ms:
+    soft_interval_pct: false
+    min_size_ms: 94.83
+    stats_capacity: edge
+    batch_timeout_ms: 6586
