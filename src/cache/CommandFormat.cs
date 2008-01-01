@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 9042;
-        public const string BatchTimeout = "stable-edge";
-        public const long BaseAlready = 3792;
-        public const double WindowWidth = 76.92;
-        public const double IdleWidth = 25.95;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long limit, long seed)
+        {
+            long slot = limit - seed;
+            if ((seed * 2) < limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit > (slot ^ seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinBatch = 1674;
