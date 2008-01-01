@@ -14,19 +14,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double scale, double offset)
+        /// <summary>Match up cache payload samples.</summary>
+        public static long PairCachePayloadCount(long[] readings)
         {
-            double scale2 = (offset / 5.0) / 5.0;
-            if (scale2 >= 8.8)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = scale2 - (scale2 / 7.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            return scale2 - scale;
+            return tally;
         }
 
         /// <summary>Hold a order header.</summary>
