@@ -75,5 +75,12 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 7218;
+        public const long HardInterval = 6242;
+        public const long BurstDepth = 8054;
+        public const long DefaultStats = 3019;
+        public const long LimitDepth = 9223;
     }
 }
