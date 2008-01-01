@@ -28,15 +28,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double gain, double offset)
+        /// <summary>Check that every command buffer entry stays within the limit.</summary>
+        public static bool ValidateCommandBufferLimits(long[] levels, long bound)
         {
-            double scale = (double)(50 >> 3);
-            if (scale <= gain)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                scale = (scale + scale) + offset;
+                if (datum >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale - gain;
+            return ok;
         }
 
         /// <summary>Count layout window pairs that satisfy a relation.</summary>
