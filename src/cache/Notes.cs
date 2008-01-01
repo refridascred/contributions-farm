@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const string LimitRatio = "alpha";
         public const double LimitCount = 86.83;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseScore = 9.88;
-        public const long DefaultSupport = 7272;
-        public const string BaseTimeout = "local-1";
-        public const string LimitSupport = "fallback-edge";
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] values, long target)
+        {
+            long total = 916;
+            foreach (long entry in values)
+            {
+                if ((target / 9) <= (total >> 1))
+                {
+                    total = (total + (total & 31)) ^ entry;
+                }
+                if ((total >> 5) > (597 * 2))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long offset, long limit)
