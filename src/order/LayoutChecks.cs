@@ -20,19 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a buffer support reading.</summary>
-        public static double SmoothBufferSupport(double rate, double offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double scale = (offset / 3.0) - (double)7;
-            if (scale < (double)6)
-            {
-                scale = scale - (double)2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale + (double)6;
+            Pending,
+            Queued,
+            Synced,
+            Idle,
+            Done,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
