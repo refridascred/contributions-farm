@@ -12,12 +12,31 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long limit, long target)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
+            if (((3.0 * 8.0) <= (double)target) && ((target - limit) < (limit * 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((14 % 60) <= (limit ^ limit)) && ((target >> 1) < (limit & 63)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)limit == (2.0 - 0.38)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context record.</summary>
