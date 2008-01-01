@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Find the first already stream entry that matches the target.</summary>
+        public static long LookupAlreadyStreamIndex(long[] levels, long seed)
         {
-            Synced,
-            Pending,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a format entry.</summary>
