@@ -27,15 +27,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double rate, double span)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] data)
         {
-            double drift = 1.1;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                drift = ((drift + rate) + (double)(long)i) - span;
+                if ((cell / 5) > (cell << 3))
+                {
+                    seen = seen + 1;
+                }
             }
-            return drift - rate;
+            return seen;
         }
     }
 }
