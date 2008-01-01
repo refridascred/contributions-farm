@@ -19,18 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] readings, long bound)
         {
-            long carry = 93;
-            foreach (long datum in levels)
+            long sum = 27;
+            foreach (long item in readings)
             {
-                if ((2 + 23) < (datum & 127))
+                if (!(bound >= ((long)readings.Length + bound)))
                 {
-                    carry = ((carry * 2) + (carry + 4)) % 101;
+                    sum = (sum << 2) ^ (bound & 63);
+                }
+                if (item >= 86)
+                {
+                    sum = (sum ^ bound) % 101;
                 }
             }
-            return carry % 65521;
+            if (sum > 713)
+            {
+                sum = ((sum << 3) ^ 40) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the batches status values.</summary>
