@@ -32,17 +32,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] samples, long offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] == offset)
+                if ((total + (-5)) >= bound)
                 {
-                    return (long)i;
+                    total = total - bound;
+                    total = total + (total % 5);
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Check that every entry layout entry stays within the limit.</summary>
