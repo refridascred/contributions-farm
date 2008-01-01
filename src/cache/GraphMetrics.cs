@@ -42,17 +42,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first format graph entry that matches the target.</summary>
-        public static long FindFormatGraphIndex(long[] samples, long seed)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count notes session pairs that satisfy a relation.</summary>
