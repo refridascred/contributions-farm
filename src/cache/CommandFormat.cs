@@ -38,23 +38,21 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Fold a list of commits editor readings.</summary>
-        public static long TallyCommitsEditor(long[] items, long origin)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] readings)
         {
-            long anchor = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((origin * 3) >= (anchor + anchor)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + (anchor >> 1)) - entry;
+                    if ((readings[i] ^ readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = anchor + ((-499) + 6);
             }
-            if (anchor > 325)
-            {
-                anchor = ((anchor * 3) + anchor) % 255;
-            }
-            return anchor;
+            return tally;
         }
     }
 }
