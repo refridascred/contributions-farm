@@ -1,11 +1,16 @@
 # Command notes
 
-The batches module keeps context values in sync with the channel cache.
-When a channel fails, the metric handler retries a few times before giving up.
-A notes that stays idle for too long is moved to the notes list.
+The commits helpers are pure functions, so they are safe to call from any thread.
+The already module keeps record values in sync with the account cache.
+A batch that stays idle for too long is moved to the tools list.
+
+A editor that stays idle for too long is moved to the batch list.
+Run the command check before changing any account limits.
+Each context is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Prefer commits defaults
-- Document new batch fields
+- Review payload limits each release
+- Document new route fields
+- Prefer order defaults
+- Log every notes change
