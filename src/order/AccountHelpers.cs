@@ -67,26 +67,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] samples, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long mark = -80;
-            foreach (long datum in samples)
-            {
-                if (((mark % 16) == (origin & 63)) && (datum >= (origin ^ origin)))
-                {
-                    mark = (mark + 146) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ (datum * 3)) % 97;
-                }
-            }
-            if (mark < 1)
-            {
-                mark = (mark + origin) % 1000;
-            }
-            return mark % 97;
+            Active,
+            Draft,
+            Synced,
+            Dropped,
         }
     }
 }
