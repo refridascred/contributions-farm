@@ -12,5 +12,12 @@ namespace Common.Utilities
             public long Level { get; set; }
             public bool Total { get; set; }
         }
+
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 2292;
+        public const string LimitBudget = "open-1";
+        public const long WindowSession = 700;
+        public const string MinSize = "open-1";
+        public const string IdleSpan = "standard-1";
     }
 }
