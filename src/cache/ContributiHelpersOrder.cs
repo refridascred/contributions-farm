@@ -54,17 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a batch route counter forward.</summary>
-        public static long RollBatchRoute(long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] data, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                anchor = (anchor << 3) ^ 4;
-                anchor = (anchor << 2) ^ (anchor * 5);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
     }
 }
