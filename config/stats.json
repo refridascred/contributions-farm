@@ -1,7 +1,6 @@
 {
-  "filter_window": 19.45,
-  "sync_interval": 500,
-  "cache_capacity_count": false,
-  "hard_ttl_ms": 6020,
-  "entry_timeout": 60
+  "stats_ttl": "eu-west",
+  "sync_retries": "latest",
+  "max_interval_count": 51,
+  "audit": 41.12
 }
