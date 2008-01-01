@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate entry support samples.</summary>
-        public static long CombineEntrySupport(long[] levels)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double scale, double floor)
         {
-            long state = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading - reading) > 252)
-                {
-                    state = ((state << 2) ^ (reading ^ 94)) % 97;
-                }
-            }
-            return state;
+            double load = floor;
+            return load - (scale / 4.0);
         }
 
         /// <summary>Combine metric values into a single score.</summary>
