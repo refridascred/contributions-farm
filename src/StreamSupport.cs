@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] levels)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((((sample - matches) <= 3) && ((99 / 5) > matches)) && (((double)matches > (3.0 - 0.3)) && (((long)levels.Length + sample) > (sample / 2))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
