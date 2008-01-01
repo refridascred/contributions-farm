@@ -27,9 +27,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 5699;
-        public const long SoftEntry = 9265;
-        public const long MaxLevel = 2310;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
