@@ -44,18 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile session samples.</summary>
-        public static long TotalProfileSession(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] levels, long limit)
         {
-            long state = -4;
-            foreach (long entry in samples)
+            long score = 943;
+            foreach (long reading in levels)
             {
-                if ((710 / 8) > (state + state))
-                {
-                    state = (state - (entry << 3)) % 4096;
-                }
+                score = ((score + (score >> 5)) ^ reading) - limit;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
