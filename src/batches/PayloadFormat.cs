@@ -23,14 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Closed,
-            Retry,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchSize = "standard";
+        public const double BaseLevel = 93.75;
+        public const double StepTimeout = 24.1;
 
         /// <summary>Blend two stats measurements.</summary>
         public static double SmoothStats(double rate, double span)
