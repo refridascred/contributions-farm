@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache tools samples are out of range.</summary>
-        public static long TallyCacheToolsHits(long[] samples, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!!((reading / 8) > reading))
-                {
-                    hits = (hits + 1) + seed;
-                }
-            }
-            return hits;
+            Ready,
+            Pending,
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Iterate the filter farm series from a seed.</summary>
