@@ -65,12 +65,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long target)
         {
-            Ready,
-            Closed,
-            Active,
+            long mix = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)(long)i != (12.0 + 1.98))
+                {
+                    mix = (mix ^ 737) % 97;
+                }
+                mix = mix ^ target;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
