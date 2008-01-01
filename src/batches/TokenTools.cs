@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long mix = 908;
-            foreach (long datum in series)
-            {
-                mix = (((mix * 3) + mix) % 4096) ^ datum;
-            }
-            if (mix < 31)
-            {
-                mix = (mix * 3) + (mix - 6);
-            }
-            return mix;
+            Locked,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the checks level values.</summary>
