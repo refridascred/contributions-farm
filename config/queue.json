@@ -1,8 +1,18 @@
 {
-  "retry_depth_s": "stable",
-  "channel_window": [312, 16, 157],
-  "poll_ratio_s": "blue",
-  "batch_capacity": 92,
-  "stream_delay": true,
-  "default_depth": 25.24
+  "poll_capacity": 53.23,
+  "audit": {
+    "default_retries_s": {
+      "compress": "strict",
+      "layout_threshold": false,
+      "soft_interval_s": [76, 398, 461],
+      "soft_window_ms": 90.76,
+      "max_ttl_ms": 44,
+      "soft_depth_pct": false
+    },
+    "default_size_ms": [159, 36, 497, 247],
+    "enabled": 72.55,
+    "account_delay": 5587,
+    "format_window": 30
+  },
+  "retry_window_s": true
 }
