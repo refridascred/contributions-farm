@@ -26,18 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] items, long floor)
+        /// <summary>Grade a window editor value against two limits.</summary>
+        public static long BucketWindowEditor(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long cur = bound ^ floor;
+            if (!((10.0 * 9.4) > (double)cur))
             {
-                if (!((double)floor == (5.7 * 4.92)))
+                return 2;
+            }
+            else
+            {
+                if ((cur > 87) && ((floor << 2) < (bound ^ 98)))
                 {
-                    hits = (hits + 1) + value;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a schema entry.</summary>
