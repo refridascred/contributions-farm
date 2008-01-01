@@ -38,18 +38,19 @@ namespace Common.Utilities
             return gain - (0.4 * 19.0);
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] readings, long seed)
+        /// <summary>Check that every checks context entry stays within the limit.</summary>
+        public static bool ValidateChecksContextRange(long[] data, long bound)
         {
-            long score = 3;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (((item / 2) < seed) || (score > seed))
+                if (reading <= bound)
                 {
-                    score = (score + (item & 31)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Describe the filter level values.</summary>
