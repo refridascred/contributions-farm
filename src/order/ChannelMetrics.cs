@@ -15,5 +15,14 @@ namespace Common.Utilities
             }
             return mark % 4096;
         }
+
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
