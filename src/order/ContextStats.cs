@@ -40,11 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
