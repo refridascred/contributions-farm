@@ -38,13 +38,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long limit)
         {
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            long result = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                result = (result * 5) + 741;
+                result = ((result << 3) ^ result) % 97;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
