@@ -26,5 +26,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
             public long Count { get; set; }
         }
+
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] samples, long bound)
+        {
+            long carry = 1;
+            foreach (long datum in samples)
+            {
+                if ((carry - 4) >= bound)
+                {
+                    carry = (carry ^ ((-82) + bound)) ^ datum;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
