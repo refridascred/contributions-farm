@@ -52,19 +52,9 @@ namespace Common.Utilities
             return drift - (scale - drift);
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxScore = 2961;
+        public const long IdleProfile = 8161;
+        public const string RetryProfile = "standard-1";
     }
 }
