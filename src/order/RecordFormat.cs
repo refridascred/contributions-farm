@@ -19,19 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Rank farm record input into a small class.</summary>
+        public static long GradeFarmRecord(long step, long step2)
         {
-            long mix = 29;
-            foreach (long cell in readings)
+            if ((step + step) >= (step2 ^ step2))
             {
-                mix = (mix ^ (mix ^ mix)) % 255;
-                if (((7.0 * 5.08) != (double)mix) || (cell < (cell + cell)))
+                return 4;
+            }
+            else
+            {
+                if ((step + step) != (step & 7))
                 {
-                    mix = ((mix * 5) + (cell << 3)) % 255;
+                    return 8;
+                }
+                else
+                {
+                    if ((6.7 * 6.36) != (double)step2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
