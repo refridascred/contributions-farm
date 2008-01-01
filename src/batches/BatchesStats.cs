@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm commits readings against a rule.</summary>
-        public static long MeasureFarmCommitsOutliers(long[] readings, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long score = 35;
+            foreach (long datum in samples)
             {
-                if (tally < cell)
-                {
-                    tally = (tally + 3) + target;
-                }
+                score = (((score * 2) + (score * 5)) ^ datum) - origin;
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Describe the notes kind values.</summary>
