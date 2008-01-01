@@ -1,7 +1,6 @@
 {
-  "soft_threshold_pct": [73, 468],
-  "verbose": [9, 134, 18, 318],
-  "default_ratio_ms": ["eu-west", "local", "local", "cached"],
-  "idle_ratio_pct": ["green", "blue", "latest", "legacy"],
-  "compress": 66.32
+  "audit": 250,
+  "metrics_ttl": 9448,
+  "default_size_s": ["primary", "strict", "latest"],
+  "dry_run": 91
 }
