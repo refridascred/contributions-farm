@@ -23,39 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long origin)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long prev = limit ^ origin;
-            if ((double)origin < (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((prev & 127) > (limit >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin << 2) >= prev)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin - 0) == (limit >> 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
