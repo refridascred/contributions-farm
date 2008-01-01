@@ -1,7 +1,7 @@
 {
-  "enabled": 85,
-  "soft_limit_ms": 8930,
-  "warm_retries_ms": ["latest", "staging", "fallback"],
-  "warm_window": 7016,
-  "sync_window_s": 36.65
+  "soft_threshold_pct": [73, 468],
+  "verbose": [9, 134, 18, 318],
+  "default_ratio_ms": ["eu-west", "local", "local", "cached"],
+  "idle_ratio_pct": ["green", "blue", "latest", "legacy"],
+  "compress": 66.32
 }
