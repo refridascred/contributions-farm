@@ -27,19 +27,18 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double weight, double floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] items, long origin)
         {
-            double ratio = (double)(4 * 5);
-            if (ratio > (double)746)
+            long mark = 98;
+            foreach (long item in items)
             {
-                ratio = ((ratio - ratio) + weight) - floor;
+                if ((52 + 491) <= item)
+                {
+                    mark = ((mark ^ item) % 65521) - origin;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)10;
-            }
-            return ratio - ratio;
+            return mark;
         }
 
         /// <summary>Look up the position of a context support sample.</summary>
