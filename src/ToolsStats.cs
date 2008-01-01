@@ -81,13 +81,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
