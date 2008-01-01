@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a order layout pair into a bucket.</summary>
-        public static long BucketOrderLayout(long limit, long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            if (floor >= (215 - limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + floor) > limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)804 <= (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((-605) > (limit + floor)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
