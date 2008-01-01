@@ -52,18 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile farm entries.</summary>
-        public static long WeighProfileFarm(long[] series, long floor)
+        /// <summary>Audit commits stream readings against a rule.</summary>
+        public static long MeasureCommitsStreamMatches(long[] levels, long origin)
         {
-            long mix = 4;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (value <= (99 & 3))
+                if ((3.5 + 9.0) != (double)origin)
                 {
-                    mix = ((mix - (value + value)) % 65521) + floor;
+                    matches = (matches + 2) - entry;
                 }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
