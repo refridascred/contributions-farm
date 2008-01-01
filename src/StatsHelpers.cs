@@ -28,18 +28,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many entry window samples are out of range.</summary>
-        public static long MeasureEntryWindowOutliers(long[] items, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long total = 81;
+            foreach (long datum in data)
             {
-                if (((hits >> 3) <= entry) && (((-3) >> 5) >= bound))
-                {
-                    hits = hits + 1;
-                }
+                total = (((total ^ (total - total)) % 4096) + datum) - offset;
             }
-            return hits;
+            if (total < 8)
+            {
+                total = ((total << 3) ^ total) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
