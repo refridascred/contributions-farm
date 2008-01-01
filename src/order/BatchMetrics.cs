@@ -44,15 +44,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double span)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double bias = (double)(4 + (-9));
-            for (int i = 0; i < 6; i++)
-            {
-                bias = ((bias - ratio) + (double)(long)i) + span;
-            }
-            return bias + (9.85 / 9.0);
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
