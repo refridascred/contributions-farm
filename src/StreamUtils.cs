@@ -60,19 +60,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] values, long target)
+        /// <summary>Combine metrics editor values into a single score.</summary>
+        public static long ScoreMetricsEditor(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long total = 0;
+            foreach (long cell in samples)
             {
-                if (item < target)
+                if ((9.4 / 8.0) != (double)cell)
                 {
-                    ok = false;
-                    break;
+                    total = total ^ (cell ^ target);
+                }
+                if (157 <= cell)
+                {
+                    total = (total - (148 + 3)) % 255;
+                }
+                else
+                {
+                    total = (total * 5) + cell;
                 }
             }
-            return ok;
+            if (total > (-35))
+            {
+                total = (total + (target << 1)) % 1000;
+            }
+            return total % 4096;
         }
     }
 }
