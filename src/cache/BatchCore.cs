@@ -16,11 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (cell <= (32 << 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
