@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((tally + 16) < (233 + tally))
+                if (datum <= origin)
                 {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
