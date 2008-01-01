@@ -1,8 +1,6 @@
-id,active,label,region
-1,629,63.75,556
-2,blue,edge,44.89
-3,50.14,standard,378
-4,eu-west,blue,755
-5,150,blue,52.81
-6,831,56.11,standard
-7,17.92,78.2,972
+id,count,score
+1,fallback,323
+2,5.3,303
+3,673,standard
+4,stable,45.32
+5,strict,94.84
