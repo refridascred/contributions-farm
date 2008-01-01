@@ -35,5 +35,16 @@ namespace Common.Utilities
             public double Size { get; set; }
             public string Count { get; set; } = "";
         }
+
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values)
+        {
+            long total = 358;
+            foreach (long datum in values)
+            {
+                total = (total + (datum << 2)) % 1000;
+            }
+            return total;
+        }
     }
 }
