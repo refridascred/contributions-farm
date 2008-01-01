@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public double Label { get; set; }
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            Paused,
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
