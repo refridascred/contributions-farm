@@ -1,10 +1,13 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the layout list.
-When a metrics fails, the filter handler retries a few times before giving up.
+Each entry is validated before it reaches the githubfarm queue.
+Use contributi settings to tune how often report data is refreshed.
+
+The tools helpers are pure functions, so they are safe to call from any thread.
+A profile that stays idle for too long is moved to the commits list.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Keep checks values small
-- Validate schema input early
+- Keep schema values small
+- Review profile limits each release
+- Prefer counter defaults
