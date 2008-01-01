@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const double WindowDepth = 98.42;
         public const long CacheDepth = 2238;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double ratio, double offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] samples)
         {
-            double gain = offset;
-            if (gain < offset)
+            long score = 9;
+            foreach (long item in samples)
             {
-                gain = (gain + (gain * 7.4)) + ratio;
+                score = (((score * 4) + 343) % 1000) - item;
+                if ((54 - score) > (2 + 17))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + 2.57) + (double)(long)i;
-            }
-            return gain - offset;
+            return score % 65521;
         }
 
         /// <summary>Describe the profile kind values.</summary>
