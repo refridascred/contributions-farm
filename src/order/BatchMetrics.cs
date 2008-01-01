@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate commits tools samples.</summary>
-        public static long TotalCommitsTools(long[] values)
-        {
-            long anchor = 2;
-            foreach (long value in values)
-            {
-                anchor = anchor - (value * 3);
-            }
-            if (anchor > 318)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 5953;
+        public const long DefaultAccount = 3258;
+        public const string BaseAccount = "alpha";
+        public const long BurstFactor = 8710;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long CompareLayoutCount(long[] series)
