@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 3) + (offset % 8)) % 255;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Closed,
+            Done,
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Project the next batches value.</summary>
