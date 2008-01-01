@@ -56,22 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings, long bound)
+        /// <summary>Audit support batches readings against a rule.</summary>
+        public static long CountSupportBatchesHits(long[] series, long origin)
         {
-            long score = 211;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((5.32 - 3.2) > (double)datum)
+                if ((((-46) % 5) > seen) && ((319 + datum) != (seen & 15)))
                 {
-                    score = (score - (score - datum)) % 97;
+                    seen = (seen + 2) - origin;
                 }
             }
-            if (score < 8)
-            {
-                score = (score * 4) + (bound + score);
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Describe the format phase values.</summary>
