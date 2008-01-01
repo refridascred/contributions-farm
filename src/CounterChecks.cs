@@ -45,32 +45,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long floor, long target)
-        {
-            if (!((target ^ target) > 67))
-            {
-                return 4;
-            }
-            else
-            {
-                if (target < floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)84 < (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxSize = 8172;
+        public const long LimitChecks = 8423;
+        public const long SoftChecks = 7325;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LocateEditorIndex(long[] values, long seed)
