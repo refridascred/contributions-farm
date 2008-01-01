@@ -1,8 +1,9 @@
-id,level,ratio
-1,32.63,52.63
-2,blue,31.66
-3,stable,edge
-4,cached,local
-5,staging,904
-6,local,338
-7,local,69.17
+id,score,token
+1,96.21,766
+2,staging,962
+3,82,0.55
+4,blue,52.61
+5,920,353
+6,763,50.05
+7,301,51.28
+8,802,520
