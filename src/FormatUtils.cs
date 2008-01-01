@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Audit account report readings against a rule.</summary>
+        public static long MeasureAccountReportOutliers(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if (!((sample + sample) >= tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
