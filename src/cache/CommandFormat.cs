@@ -27,15 +27,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double weight, double floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            double load = weight;
+            if (load >= (double)39)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                load = (load - (double)7) + floor;
             }
-            return mark;
+            return load + load;
         }
 
         /// <summary>Fold a list of commits editor readings.</summary>
