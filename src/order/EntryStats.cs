@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] items, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (items[i] <= target)
+                if ((((target % 3) >= (4 + target)) && ((target / 8) < hits)) || ((cell + cell) == (822 ^ 344)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up command samples.</summary>
