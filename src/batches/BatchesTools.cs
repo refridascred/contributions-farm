@@ -39,18 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] samples, long offset)
+        /// <summary>Locate a command already reading by value.</summary>
+        public static long LocateCommandAlreadyIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)offset > (2.4 + 4.3))
+                if (series[i] == bound)
                 {
-                    hits = (hits + 2) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
