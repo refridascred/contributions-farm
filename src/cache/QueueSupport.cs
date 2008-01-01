@@ -20,18 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] levels)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long step, long step2)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long slot = step + step2;
+            if ((5.0 / 3.0) >= (double)slot)
             {
-                if (((double)count == (7.5 - 5.4)) || ((count - sample) < (long)levels.Length))
+                return 6;
+            }
+            else
+            {
+                if (step >= step2)
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (((slot * 5) >= step) && ((double)step2 <= 9.55))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
