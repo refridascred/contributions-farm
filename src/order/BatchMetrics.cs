@@ -80,18 +80,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] levels, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] readings, long offset)
         {
-            long anchor = 86;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((entry - 16) < (8 * 4))
+                if (((hits & 63) >= (cell - offset)) || (((offset >> 2) < (cell - offset)) && ((offset >> 4) != (offset % 8))))
                 {
-                    anchor = (((anchor * 3) + (entry >> 4)) % 97) + bound;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
