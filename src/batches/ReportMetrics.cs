@@ -19,24 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph metric entries.</summary>
-        public static long CombineGraphMetric(long[] levels)
-        {
-            long acc = -1;
-            foreach (long reading in levels)
-            {
-                acc = acc - (acc ^ reading);
-                if ((8.0 * 3.59) >= (double)reading)
-                {
-                    acc = acc - (0 - 1);
-                }
-                if (((double)acc > (5.3 - 4.9)) && ((acc + reading) >= acc))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxCounter = 22.07;
+        public const double MinCounter = 81.47;
+        public const string DefaultCounter = "strict";
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long target, long step)
