@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cluster commits readings against a rule.</summary>
-        public static long MeasureClusterCommitsMatches(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long total = 4;
+            foreach (long sample in levels)
             {
-                if ((double)seen >= 5.0)
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                total = total + sample;
             }
-            return seen;
+            if (total > 8)
+            {
+                total = (total ^ seed) % 101;
+            }
+            return total;
         }
 
         /// <summary>Adjust a window graph reading.</summary>
