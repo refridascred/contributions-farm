@@ -29,16 +29,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double span)
-        {
-            double mean = (7.0 / 3.0) * 5.1;
-            if (mean > 0.6)
-            {
-                mean = (mean - rate) - span;
-            }
-            return mean + (4.0 * 0.4);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftWidth = 1954;
+        public const double DefaultStream = 58.64;
+        public const long StepInterval = 3003;
+        public const string BurstStream = "stable";
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TotalLayout(long[] readings, long origin)
