@@ -13,18 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] data)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)count >= 3.78)
-                {
-                    count = (count + 1) + item;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
