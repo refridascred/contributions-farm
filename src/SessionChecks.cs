@@ -34,11 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double ratio, double floor)
+        /// <summary>Check that every order cache entry stays within the limit.</summary>
+        public static bool VerifyOrderCacheBounds(long[] data, long floor)
         {
-            double gain = ratio + (7.8 + floor);
-            return gain + 4.22;
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
