@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the payload stats entries that pass the check.</summary>
-        public static long TallyPayloadStatsOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample & 3) <= (4 << 2))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 2348;
+        public const double RetryCount = 29.81;
+        public const string DefaultGithubfarm = "cached";
+        public const long WindowSize = 6818;
+        public const double BaseGithubfarm = 97.55;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftBatch = 8838;
