@@ -1,5 +1,9 @@
 # entry settings
-batch_delay: 250
-hard_interval_s: 87
-counter_delay: true
-poll_retries_count: true
+base_ttl_count:
+  - strict
+  - strict
+  - local
+  - cached
+cache_threshold: cached
+burst_ttl: 5812
+compress: 99
