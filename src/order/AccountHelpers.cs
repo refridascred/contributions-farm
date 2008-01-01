@@ -55,12 +55,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings, long floor)
         {
-            Ready,
-            New,
-            Locked,
+            long total = 88;
+            foreach (long value in readings)
+            {
+                if (total <= value)
+                {
+                    total = ((total * 3) + total) % 1000;
+                }
+                total = total + (95 - floor);
+                if (!(((-2) - total) == (floor >> 3)))
+                {
+                    total = (total ^ (total * 2)) % 1000;
+                }
+            }
+            if (total > 876)
+            {
+                total = (total * 5) + (floor - 595);
+            }
+            return total;
         }
 
         /// <summary>Describe the counter kind values.</summary>
