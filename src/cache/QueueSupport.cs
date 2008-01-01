@@ -28,22 +28,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] series, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long step, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            if (step < (target + target))
             {
-                if ((count & 127) == (172 - 956))
+                return 8;
+            }
+            else
+            {
+                if ((1 * 2) <= (target % 8))
                 {
-                    count = ((count + 3) + item) - offset;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((target + 916) > (36 + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step / 8) > 4) && ((double)step != (18.0 - 20.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
