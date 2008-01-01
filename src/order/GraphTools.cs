@@ -44,11 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Match up stats editor samples.</summary>
+        public static long CompareStatsEditorCount(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
