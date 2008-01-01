@@ -36,10 +36,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 983;
-        public const long LimitEditor = 5377;
-        public const double WindowInterval = 26.07;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsHits(long[] data, long step)
