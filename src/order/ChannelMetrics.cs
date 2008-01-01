@@ -35,14 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] items, long limit)
         {
-            Done,
-            Idle,
-            Ready,
-            Stale,
-            New,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
