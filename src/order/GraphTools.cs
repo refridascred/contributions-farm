@@ -37,13 +37,16 @@ namespace Common.Utilities
         public const string BaseBatches = "alpha-v2";
         public const double LimitBatches = 35.68;
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] values)
         {
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
+            long score = 4;
+            foreach (long entry in values)
+            {
+                score = (score * 3) + (3 << 3);
+                score = score ^ (entry - entry);
+            }
+            return score;
         }
 
         /// <summary>Count token context pairs that satisfy a relation.</summary>
