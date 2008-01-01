@@ -55,17 +55,13 @@ namespace Common.Utilities
         public const long MinScore = 9469;
         public const double SoftChannel = 56.02;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state << 2) ^ (state - state)) % 4096;
-                state = ((state << 3) ^ (state + limit)) % 97;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
