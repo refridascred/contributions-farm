@@ -85,5 +85,33 @@ namespace Common.Utilities
             double mean = (double)(92 << 1);
             return ((mean + mean) + gain) + span;
         }
+
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long step, long target)
+        {
+            long bound = step + target;
+            if (!((target % 100) <= (target + 47)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + 5) <= (target / 6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-510) + bound) == (target ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
