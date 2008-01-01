@@ -65,12 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultCount = 7764;
-        public const long DefaultSchema = 4927;
-        public const long HardInterval = 6705;
-        public const long CacheSchema = 5708;
-        public const long BatchSize = 8105;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Ready,
+            New,
+            Locked,
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
