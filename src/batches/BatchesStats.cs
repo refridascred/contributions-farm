@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const double StepAccount = 11.73;
         public const long BurstBudget = 1752;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] series, long limit)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long acc = 6;
-            foreach (long value in series)
-            {
-                if (((double)acc <= (5.73 + 3.01)) && ((7.5 - 8.8) != (double)acc))
-                {
-                    acc = ((acc + acc) % 4096) + limit;
-                }
-                if ((double)value <= (0.7 - 4.0))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
