@@ -29,9 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchFactor = 297;
-        public const long WindowContributi = 6796;
-        public const double BatchSize = 20.68;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Done,
+            Idle,
+            Ready,
+            Stale,
+            New,
+        }
     }
 }
