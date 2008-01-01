@@ -37,5 +37,25 @@ namespace Common.Utilities
         public const string MinTools = "fallback-v2";
         public const long DefaultCount = 4167;
         public const string DefaultTimeout = "stable-1";
+
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                long cur = (830 + sum) << 2;
+                if ((sum + 0) > ((long)i + 23))
+                {
+                    cur = (cur << 2) ^ ((long)i & 63);
+                }
+                else
+                {
+                    sum = sum ^ (cur - sum);
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
