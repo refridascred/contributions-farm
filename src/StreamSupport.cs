@@ -35,15 +35,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            if (!(limit > (limit ^ 796)))
             {
-                state = ((state * 3) + (long)i) % 4093;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (((limit ^ limit) < 5) || ((70 + limit) < (361 & 255)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5.53 - 18.0) != (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
