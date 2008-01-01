@@ -88,11 +88,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] levels, long target)
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
+            long total = 9;
+            foreach (long cell in levels)
+            {
+                if ((total * 4) <= (-832))
+                {
+                    total = (total ^ (total % 60)) + cell;
+                }
+                else
+                {
+                    total = (total + (target ^ target)) % 4096;
+                }
+            }
+            return total;
         }
     }
 }
