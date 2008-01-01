@@ -1,10 +1,7 @@
 # entry settings
-default_ratio: 1193
-layout_retries:
-  - primary
-  - eu-west
-  - primary
-  - cached
-dry_run: 15
-idle_ratio_pct: false
-format_delay: 3861
+soft_timeout_pct: false
+base_delay_pct: true
+readonly:
+  base_capacity_ms: 43.25
+  flush_ratio: stable
+  retry_limit_count: 100
