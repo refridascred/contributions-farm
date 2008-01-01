@@ -72,30 +72,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine metrics editor values into a single score.</summary>
-        public static long ScoreMetricsEditor(long[] samples, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long total = 0;
-            foreach (long cell in samples)
-            {
-                if ((9.4 / 8.0) != (double)cell)
-                {
-                    total = total ^ (cell ^ target);
-                }
-                if (157 <= cell)
-                {
-                    total = (total - (148 + 3)) % 255;
-                }
-                else
-                {
-                    total = (total * 5) + cell;
-                }
-            }
-            if (total > (-35))
-            {
-                total = (total + (target << 1)) % 1000;
-            }
-            return total % 4096;
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
