@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] series, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] data, long limit)
         {
-            long anchor = -114;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (((2.34 * 9.1) < (double)origin) && ((anchor >> 5) > (datum - datum)))
+                if (((double)43 > (double)reading) && !((limit / 3) >= (4 - tally)))
                 {
-                    anchor = (anchor * 2) + (origin + origin);
-                }
-                else
-                {
-                    anchor = (anchor + (41 % 10)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
