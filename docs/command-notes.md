@@ -1,15 +1,11 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Run the buffer check before changing any githubfarm limits.
-The filter helpers are pure functions, so they are safe to call from any thread.
-
-Run the tools check before changing any token limits.
-Run the graph check before changing any token limits.
+Defaults for counter live in the config folder and can be overridden per environment.
+Keep cache and order names short and lowercase.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate profile input early
-- Prefer farm defaults
-- Review filter limits each release
-- Keep metric values small
+- Log every channel change
+- Prefer notes defaults
+- Document new tools fields
