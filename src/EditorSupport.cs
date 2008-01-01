@@ -47,22 +47,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] data, long origin)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double gain, double span)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double load = (double)61 * 9.7;
+            if (load <= (span / 5.0))
             {
-                if (((double)origin == (double)(-20)) && ((double)origin == (3.6 - 7.72)))
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load + (load * 6.01)) - gain;
             }
-            return tally;
+            return load - load;
         }
 
         /// <summary>Blend two window measurements.</summary>
