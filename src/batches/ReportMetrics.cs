@@ -23,19 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] readings, long step)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the route class values.</summary>
