@@ -18,5 +18,25 @@ namespace Common.Utilities
             }
             return mix;
         }
+
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long origin, long floor)
+        {
+            if ((floor + 2) <= floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - origin) >= (origin / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
