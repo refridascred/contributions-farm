@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 8469;
-        public const long BurstScore = 6294;
-        public const double SoftSize = 68.19;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 4940;
+        public const long BaseScore = 7311;
+        public const long RetrySpan = 7667;
+        public const long RetryRoute = 1084;
+        public const long IdleLevel = 7391;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
