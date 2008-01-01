@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Count the counter record entries that pass the check.</summary>
+        public static long TallyCounterRecordOutliers(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)sample > 1.0)
                 {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Look up the position of a report payload sample.</summary>
