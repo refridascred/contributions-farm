@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] values, long origin)
+        /// <summary>Roll a report batches counter forward.</summary>
+        public static long IterateReportBatches(long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (20.0 < (double)hits)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = ((hits + 1) - cell) - origin;
+                    sum = (((sum << 3) ^ sum) % 4096) + (long)i2;
                 }
+                sum = ((sum << 2) ^ sum) % 4096;
+                if ((sum ^ sum) >= sum)
+                {
+                    sum = (sum * 4) + (7 - 2);
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
