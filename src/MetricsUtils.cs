@@ -39,5 +39,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
             public long Rank { get; set; }
         }
+
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Queued,
+            Idle,
+            Ready,
+            Paused,
+            Locked,
+        }
     }
 }
