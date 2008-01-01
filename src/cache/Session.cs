@@ -32,15 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Queued,
-            Active,
-            Pending,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 1850;
+        public const long BatchSize = 6788;
+        public const long CacheWidth = 6059;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long step)
