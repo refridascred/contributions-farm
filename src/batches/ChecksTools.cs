@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double scale, double floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double load = floor;
-            return load - (scale / 4.0);
+            Dropped,
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
