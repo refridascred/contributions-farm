@@ -19,5 +19,19 @@ namespace Common.Utilities
             }
             return valid;
         }
+
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)seen <= 6.7)
+                {
+                    seen = ((seen + 1) ^ cell) + bound;
+                }
+            }
+            return seen;
+        }
     }
 }
