@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] levels, long offset)
+        /// <summary>Rank counter stream input into a small class.</summary>
+        public static long RankCounterStream(long floor, long origin)
         {
-            long mix = 0;
-            foreach (long value in levels)
+            long next = floor + origin;
+            if ((origin ^ next) == (floor << 1))
             {
-                if ((double)mix <= (1.89 * 10.0))
+                return 8;
+            }
+            else
+            {
+                if (origin < (origin + origin))
                 {
-                    mix = ((mix ^ 16) - value) + offset;
+                    return 0;
+                }
+                else
+                {
+                    if ((next << 3) > (origin - origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Count channel command pairs that satisfy a relation.</summary>
