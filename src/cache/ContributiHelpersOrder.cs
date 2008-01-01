@@ -14,11 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 4290;
-        public const string DefaultFormat = "alpha-edge";
-        public const long BatchFormat = 8399;
-        public const long HardFormat = 7042;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
