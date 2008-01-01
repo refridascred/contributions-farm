@@ -37,19 +37,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next entry context value.</summary>
-        public static double BlendEntryContext(double weight, double floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double drift = weight;
-            if (drift < (weight + floor))
-            {
-                drift = drift + (double)79;
-            }
-            else
-            {
-                drift = drift + (double)591;
-            }
-            return drift - floor;
+            Locked,
+            Dropped,
+            Ready,
         }
     }
 }
