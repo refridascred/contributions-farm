@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long seed)
+        /// <summary>Fold a list of graph entry readings.</summary>
+        public static long WeighGraphEntry(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 50;
+            foreach (long value in samples)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (result / 5)) % 255) ^ value;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the command farm entries that pass the check.</summary>
