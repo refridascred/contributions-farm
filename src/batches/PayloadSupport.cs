@@ -27,15 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Roll a layout metrics counter forward.</summary>
