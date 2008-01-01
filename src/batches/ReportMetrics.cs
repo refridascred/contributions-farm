@@ -15,16 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] series, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long state = 637;
-            foreach (long item in series)
-            {
-                state = ((state - (65 & 63)) % 65521) + item;
-                state = ((state << 2) ^ limit) % 1000;
-            }
-            return state;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
