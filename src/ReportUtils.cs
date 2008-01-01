@@ -59,27 +59,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] series, long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] samples, long seed)
         {
-            long mark = -575;
-            foreach (long item in series)
+            long sum = 0;
+            foreach (long value in samples)
             {
-                mark = mark - (floor % 10);
-                if ((double)mark == (9.9 * 13.0))
+                if (!((610 / 8) >= (seed >> 4)))
                 {
-                    mark = (mark ^ (mark * 2)) % 1000;
+                    sum = sum + (value >> 3);
                 }
                 else
                 {
-                    mark = (mark - ((-1) << 2)) % 65521;
-                }
-                if ((floor & 127) >= (item / 6))
-                {
-                    break;
+                    sum = ((sum << 3) ^ ((-7) + seed)) % 4096;
                 }
             }
-            return mark % 65521;
+            return sum;
         }
     }
 }
