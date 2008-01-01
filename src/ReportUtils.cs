@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double bias)
         {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            double mean = bias;
+            if (mean >= mean)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - (gain * 7.4);
+            }
+            return mean - (gain * 4.0);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
