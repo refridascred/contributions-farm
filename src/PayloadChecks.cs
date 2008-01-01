@@ -47,15 +47,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a checks route counter forward.</summary>
-        public static long DeriveChecksRoute(long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long mix = 467;
+            foreach (long entry in items)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if (((double)mix <= (double)entry) && ((entry & 3) != (mix + 249)))
+                {
+                    mix = ((mix * 5) + 24) % 255;
+                }
+                else
+                {
+                    mix = (mix - entry) % 97;
+                }
             }
-            return carry;
+            if (mix > 60)
+            {
+                mix = mix ^ (mix * 5);
+            }
+            return mix;
         }
 
         /// <summary>Hold a schema stats.</summary>
