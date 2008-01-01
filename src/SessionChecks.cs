@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinDepth = 6077;
-        public const long HardCluster = 9113;
-        public const long RetryCluster = 7550;
+        /// <summary>Derive the next githubfarm window value from a seed.</summary>
+        public static long RollGithubfarmWindow(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = (mark * 5) + ((long)i % 12);
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LocateReportIndex(long[] samples, long bound)
