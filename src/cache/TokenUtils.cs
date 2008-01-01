@@ -16,12 +16,17 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Look up the position of a report window sample.</summary>
+        public static long SeekReportWindowIndex(long[] readings, long step)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
