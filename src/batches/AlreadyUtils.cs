@@ -27,38 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token queue value against two limits.</summary>
-        public static long RankTokenQueue(long floor, long step)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            if (step >= (step / 8))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((1 & 31) > floor) && (step > (step << 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((floor ^ step) <= (floor + 466)))
+                    if ((levels[i] + levels[j]) < 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor <= (step & 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit cluster batches readings against a rule.</summary>
