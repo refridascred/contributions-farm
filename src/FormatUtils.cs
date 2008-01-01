@@ -67,22 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] samples, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] values)
         {
-            long carry = 4;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (value > (carry - carry))
+                if (!(((double)count >= (double)datum) || ((56 - 294) == (datum & 31))))
                 {
-                    carry = carry + (value + carry);
-                }
-                if (value > step)
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Adjust a commits reading.</summary>
