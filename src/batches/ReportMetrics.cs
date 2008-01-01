@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double bias, double floor)
         {
-            Paused,
-            Stale,
-            Closed,
-            Failed,
-            Retry,
+            double mean = floor;
+            if (mean > (floor - 7.2))
+            {
+                mean = (mean - (floor / 8.0)) + bias;
+            }
+            else
+            {
+                mean = mean - floor;
+            }
+            return mean - (3.3 + mean);
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
