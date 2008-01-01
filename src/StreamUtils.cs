@@ -75,31 +75,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long bound, long bound2)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            if (!((double)13 < (double)bound2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((5.69 - 1.19) == (double)bound2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound2 > 5.5)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
