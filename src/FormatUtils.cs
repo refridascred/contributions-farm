@@ -33,5 +33,32 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long step, long origin)
+        {
+            if ((step * 4) <= (step - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((0.5 * 14.0) > (double)origin) || ((origin * 5) == (step + step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((809 >> 2) <= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
