@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const long HardWidth = 3517;
         public const double HardFactor = 87.45;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
             public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
