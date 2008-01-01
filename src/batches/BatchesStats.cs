@@ -19,5 +19,18 @@ namespace Common.Utilities
             }
             return mix;
         }
+
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
