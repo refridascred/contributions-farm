@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] levels, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] levels)
         {
-            long mark = 5;
+            long tally = 0;
             foreach (long sample in levels)
             {
-                mark = ((((mark << 3) ^ (mark - 86)) % 4096) ^ sample) + target;
-                if ((4.3 / 3.0) != (double)mark)
+                if ((490 % 97) <= (sample / 8))
                 {
-                    mark = ((mark * 4) + (607 ^ mark)) % 255;
+                    tally = tally + 1;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
