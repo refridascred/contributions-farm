@@ -1,7 +1,7 @@
 {
-  "idle_window_ms": 5597,
-  "githubfarm_retries": 79,
-  "idle_limit": 8064,
-  "verbose": [417, 396, 216, 494],
-  "base_size": 30.81
+  "base_ttl_ms": false,
+  "soft_capacity_pct": "strict",
+  "token_window": [404, 441],
+  "farm_ratio": [394, 399],
+  "checks_timeout": 2884
 }
