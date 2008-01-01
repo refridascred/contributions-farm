@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long HardCluster = 9113;
         public const long RetryCluster = 7550;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double scale, double offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] samples, long bound)
         {
-            double load = scale;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load - (double)6) - (double)(long)i) + offset;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Digest a series of counter contributi entries.</summary>
