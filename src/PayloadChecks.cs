@@ -26,5 +26,14 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
