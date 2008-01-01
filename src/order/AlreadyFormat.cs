@@ -41,22 +41,18 @@ namespace Common.Utilities
         public const long LimitEditor = 5377;
         public const double WindowInterval = 26.07;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] data)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((value ^ tally) <= 80)
+                if ((step - 5) < (seen + 864))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
