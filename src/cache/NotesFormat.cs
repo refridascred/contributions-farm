@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] values)
         {
-            Synced,
-            Draft,
-            Dropped,
+            long acc = 6;
+            foreach (long datum in values)
+            {
+                acc = ((acc ^ (acc * 2)) % 255) - datum;
+            }
+            if (acc < 216)
+            {
+                acc = (acc << 3) ^ (acc % 100);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit account metric readings against a rule.</summary>
