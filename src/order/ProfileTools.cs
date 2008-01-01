@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long offset)
         {
-            long mix = 3;
-            foreach (long datum in readings)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((mix < datum) && (10 <= (datum % 8)))
+                sum = sum + (offset - offset);
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    mix = ((mix << 2) ^ (long)readings.Length) % 1000;
+                    sum = ((sum ^ offset) % 65521) + (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
