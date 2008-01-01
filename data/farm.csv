@@ -1,9 +1,7 @@
-id,state,region
-1,604,74.61
-2,96.45,23.44
-3,176,open
-4,70.59,378
-5,77.88,16.95
-6,fallback,233
-7,63.07,0.34
-8,40.91,standard
+id,level,weight,token,state
+1,0.45,751,999,330
+2,367,local,418,strict
+3,eu-west,12.33,cached,12
+4,514,857,edge,stable
+5,66.15,96.87,3.07,legacy
+6,279,9.88,550,latest
