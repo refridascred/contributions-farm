@@ -42,16 +42,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the route stream series from a seed.</summary>
-        public static long StepRouteStream(long bound)
+        /// <summary>Count window tools pairs that satisfy a relation.</summary>
+        public static long CompareWindowToolsCount(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor - 84) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
