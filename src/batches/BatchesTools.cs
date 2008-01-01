@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] data)
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            long state = 837;
+            foreach (long datum in data)
+            {
+                state = (state + (state % 100)) - datum;
+            }
+            return state;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
