@@ -42,24 +42,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long target, long origin)
+        /// <summary>Digest a series of route checks entries.</summary>
+        public static long ScoreRouteChecks(long[] readings)
         {
-            if ((target / 2) <= (target >> 1))
+            long total = -14;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((901 - origin) >= (origin - target))
+                if ((double)total == (6.44 / 6.0))
                 {
-                    return 7;
+                    total = (total - (total >> 5)) % 255;
                 }
                 else
                 {
-                    return 6;
+                    total = total + (value - total);
                 }
             }
+            if (total > 1)
+            {
+                total = total - total;
+            }
+            return total;
         }
     }
 }
