@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many account editor samples are out of range.</summary>
-        public static long AuditAccountEditorMatches(long[] items, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((datum - hits) <= 78)
-                {
-                    hits = (hits + 3) - limit;
-                }
+                mix = ((mix << 2) ^ mix) % 4096;
+                mix = (mix + (floor + floor)) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a record header.</summary>
