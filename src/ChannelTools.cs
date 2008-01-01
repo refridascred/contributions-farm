@@ -33,21 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count channel command pairs that satisfy a relation.</summary>
-        public static long PairChannelCommandCount(long[] levels)
+        /// <summary>Accumulate queue command samples.</summary>
+        public static long TallyQueueCommand(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 486;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = (score ^ 4) + target;
+                if ((8.35 - 9.5) > (double)reading)
                 {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score << 3) ^ (reading >> 4);
                 }
             }
-            return matches;
+            if (score < 7)
+            {
+                score = (score ^ (score * 5)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a report options.</summary>
