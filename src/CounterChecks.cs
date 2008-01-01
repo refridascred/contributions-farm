@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long origin, long target)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long offset = origin ^ target;
-            if ((2.35 - 9.3) > (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset / 9) != (target % 12))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            Locked,
+            Failed,
+            Retry,
+            Active,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
