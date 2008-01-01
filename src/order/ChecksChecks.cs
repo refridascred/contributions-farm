@@ -22,10 +22,21 @@ namespace Common.Utilities
         public const double BurstBudget = 24.06;
         public const double IdleContext = 17.11;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinCount = 11.03;
-        public const long BaseAlready = 6920;
-        public const long IdleAlready = 6834;
-        public const long SoftAlready = 3005;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
