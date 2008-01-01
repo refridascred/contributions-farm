@@ -1,12 +1,11 @@
 {
-  "burst_size_ms": 49.17,
-  "readonly": ["primary", "staging", "latest", "green"],
-  "verbose": {
-    "burst_delay_s": 38.97,
-    "poll_limit_ms": ["edge", "cached"],
-    "sync_capacity": 68,
-    "max_retries_count": ["local", "latest", "local", "stable"],
-    "strict": [479, 484, 413, 352]
-  },
-  "cache_timeout": false
+  "audit": 36.17,
+  "cache_capacity_pct": 60,
+  "max_interval_pct": "green",
+  "readonly": {
+    "dry_run": "eu-west",
+    "batch_delay_count": false,
+    "default_delay": 6.72,
+    "persist": "staging"
+  }
 }
