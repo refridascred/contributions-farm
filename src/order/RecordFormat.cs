@@ -36,33 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((sum + sum) > (offset + sum)))
-                {
-                    sum = sum - (long)i;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum ^ (-70)) % 101;
-                    sum = ((sum * 5) + ((-33) + sum)) % 65521;
-                }
-                if (offset >= (612 - offset))
-                {
-                    sum = ((sum * 4) + (sum & 1)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (offset - sum)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Paused,
+            Closed,
+            Queued,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
