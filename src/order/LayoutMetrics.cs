@@ -37,15 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double rate, double offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double drift = offset;
-            if (drift > rate)
-            {
-                drift = drift + (double)36;
-            }
-            return drift - rate;
+            Done,
+            Draft,
+            Ready,
+            Idle,
         }
     }
 }
