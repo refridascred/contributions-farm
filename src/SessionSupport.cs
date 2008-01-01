@@ -16,22 +16,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double ratio, double bias)
         {
-            long sum = 2;
-            foreach (long datum in values)
+            double mean = (double)(9 - 943);
+            for (int i = 0; i < 4; i++)
             {
-                if (((sum - sum) == (sum - datum)) || ((3.93 + 2.2) < (0.93 / 5.0)))
-                {
-                    sum = (sum ^ (sum + datum)) % 1000;
-                }
+                mean = (((mean - (mean * 1.85)) + (double)(long)i) - ratio) - bias;
             }
-            if (sum < (-461))
-            {
-                sum = (sum - sum) % 101;
-            }
-            return sum;
+            return mean + (mean - mean);
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
