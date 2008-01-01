@@ -15,18 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] items, long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long sum = -348;
-            foreach (long entry in items)
-            {
-                if (((3.0 * 7.0) == (double)sum) || ((bound ^ bound) >= (entry << 2)))
-                {
-                    sum = ((sum * 3) + entry) % 101;
-                }
-            }
-            return sum % 97;
+            Synced,
+            Pending,
+            Retry,
         }
 
         /// <summary>Count the context order entries that pass the check.</summary>
