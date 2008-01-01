@@ -20,25 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long seed, long seed2)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long span = seed ^ seed2;
-            if ((seed2 - 70) < seed2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((span - span) < (seed * 5)) || ((double)span > 2.4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
