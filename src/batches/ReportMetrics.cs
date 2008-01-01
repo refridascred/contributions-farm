@@ -37,5 +37,25 @@ namespace Common.Utilities
             }
             return acc % 65521;
         }
+
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long target, long step)
+        {
+            if ((step <= (target - (-534))) || ((7 / 2) > (step - step)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((target - target) >= (target % 10)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
