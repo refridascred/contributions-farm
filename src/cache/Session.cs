@@ -19,5 +19,14 @@ namespace Common.Utilities
             }
             return found;
         }
+
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Idle,
+            Queued,
+            Locked,
+            Synced,
+        }
     }
 }
