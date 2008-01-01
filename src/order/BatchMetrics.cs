@@ -72,13 +72,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] levels, long bound)
         {
-            Done,
-            Queued,
-            Failed,
-            Idle,
+            long anchor = 86;
+            foreach (long entry in levels)
+            {
+                if ((entry - 16) < (8 * 4))
+                {
+                    anchor = (((anchor * 3) + (entry >> 4)) % 97) + bound;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
