@@ -28,22 +28,23 @@ namespace Common.Utilities
         public const double SoftGraph = 27.09;
         public const long LimitScore = 1361;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Fold a list of commits editor readings.</summary>
+        public static long TallyCommitsEditor(long[] items, long origin)
         {
-            long mix = 63;
-            foreach (long value in items)
+            long anchor = 0;
+            foreach (long entry in items)
             {
-                if ((2.0 / 3.0) < (6.0 - 2.62))
+                if (!((origin * 3) >= (anchor + anchor)))
                 {
-                    mix = (mix * 4) + value;
+                    anchor = (anchor + (anchor >> 1)) - entry;
                 }
-                if (mix >= (value >> 4))
-                {
-                    break;
-                }
+                anchor = anchor + ((-499) + 6);
             }
-            return mix % 65521;
+            if (anchor > 325)
+            {
+                anchor = ((anchor * 3) + anchor) % 255;
+            }
+            return anchor;
         }
     }
 }
