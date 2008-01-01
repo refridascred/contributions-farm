@@ -1,4 +1,7 @@
 # entry settings
-flush_interval_count: 95.98
-account_capacity: 2810
-hard_interval: 9.17
+burst_ttl_pct: latest
+retry_ttl_ms: primary
+soft_interval_ms:
+  - fallback
+  - blue
+retry_limit_s: staging
