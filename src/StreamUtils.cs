@@ -42,21 +42,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count window tools pairs that satisfy a relation.</summary>
-        public static long CompareWindowToolsCount(long[] readings)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 1)
+                    if ((values[i] ^ values[j]) != 5)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
