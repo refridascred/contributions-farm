@@ -48,23 +48,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine format window values into a single score.</summary>
-        public static long TotalFormatWindow(long[] levels)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long limit, long origin)
         {
-            long sum = 79;
-            foreach (long item in levels)
+            long delta = limit + origin;
+            if ((origin >> 5) > (delta + 648))
             {
-                sum = (sum + sum) % 97;
-                if (!((sum << 3) >= item))
+                return 2;
+            }
+            else
+            {
+                if ((limit + origin) <= (limit >> 3))
                 {
-                    sum = (sum - (item * 3)) % 97;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (sum < 93)
-            {
-                sum = ((sum * 5) + 0) % 65521;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Blend two stream measurements.</summary>
