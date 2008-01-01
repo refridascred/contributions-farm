@@ -39,39 +39,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank stream metric input into a small class.</summary>
-        public static long SortStreamMetric(long offset, long bound)
+        /// <summary>Compare every pair of notes payload readings.</summary>
+        public static long PairNotesPayloadCount(long[] items)
         {
-            long prev = offset - bound;
-            if ((prev & 255) <= (offset - bound))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((44 - offset) > (prev & 7)) && ((bound + bound) < (82 << 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((prev & 255) >= bound)
+                    if ((items[i] + items[j]) == 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((offset + offset) >= (prev << 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
