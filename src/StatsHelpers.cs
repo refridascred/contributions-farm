@@ -38,15 +38,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Retry,
-            Locked,
-            Idle,
-            Active,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetrySpan = 74.58;
+        public const long IdleSpan = 5029;
+        public const long BatchContributi = 509;
+        public const long MinFactor = 1292;
 
         /// <summary>Adjust a entry reading.</summary>
         public static double BlendEntry(double bias, double span)
