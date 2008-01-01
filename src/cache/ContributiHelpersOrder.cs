@@ -14,12 +14,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
+            long result = 715;
+            foreach (long reading in data)
+            {
+                if ((6.2 * 19.0) != (double)reading)
+                {
+                    result = (result << 2) ^ (reading - reading);
+                }
+                if (((reading * 2) < reading) || ((reading ^ 6) < (2 + 7)))
+                {
+                    result = result - (result % 10);
+                }
+            }
+            if (result < 139)
+            {
+                result = (result * 5) + 7;
+            }
+            return result % 1000;
         }
 
         /// <summary>Derive the next account counter value from a seed.</summary>
