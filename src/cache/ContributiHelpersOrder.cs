@@ -54,17 +54,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a checks profile sample.</summary>
-        public static long FindChecksProfileIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepInterval = "stable-v2";
+        public const long RetryWindow = 899;
+        public const string BatchWindow = "staging";
     }
 }
