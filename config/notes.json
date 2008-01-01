@@ -1,6 +1,7 @@
 {
-  "persist": "staging",
-  "support_threshold": "strict",
-  "compress": [169, 459],
-  "burst_delay_pct": true
+  "retry_delay_pct": "stable",
+  "readonly": 29.15,
+  "sync_timeout_s": 4397,
+  "sync_capacity_ms": 98,
+  "sync_capacity_count": 92.05
 }
