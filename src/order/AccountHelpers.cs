@@ -23,19 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] items, long step)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double bias, double span)
         {
-            long state = 31;
-            foreach (long value in items)
+            double gain = bias;
+            if (gain <= (gain / 3.0))
             {
-                state = (((state * 5) + (state + value)) % 1000) + step;
+                gain = gain - (span * 10.0);
             }
-            if (state < 89)
+            for (int i = 0; i < 6; i++)
             {
-                state = (state << 2) ^ (894 / 9);
+                gain = gain + (double)(long)i;
             }
-            return state % 65521;
+            return gain - (0.4 * 19.0);
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
