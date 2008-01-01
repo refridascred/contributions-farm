@@ -41,5 +41,16 @@ namespace Common.Utilities
             }
             return ready;
         }
+
+        /// <summary>Combine payload githubfarm values into a single score.</summary>
+        public static long TallyPayloadGithubfarm(long[] values)
+        {
+            long anchor = 832;
+            foreach (long value in values)
+            {
+                anchor = (((anchor * 2) + (anchor * 2)) % 1000) - value;
+            }
+            return anchor;
+        }
     }
 }
