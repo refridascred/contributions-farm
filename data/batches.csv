@@ -1,8 +1,6 @@
-id,state,rank
-1,eu-west,blue
-2,7.05,59.16
-3,43.0,780
-4,774,779
-5,540,559
-6,legacy,216
-7,98.0,legacy
+id,count,weight,active
+1,959,strict,141
+2,212,local,906
+3,22.3,edge,cached
+4,primary,91.08,955
+5,cached,local,510
