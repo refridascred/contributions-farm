@@ -13,18 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batches batch samples are out of range.</summary>
-        public static long AuditBatchesBatchHits(long[] levels, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((reading % 12) != (long)levels.Length)
-                {
-                    seen = (seen + 1) + seed;
-                }
+                anchor = ((anchor * 2) + (long)i) % 255;
+                anchor = (anchor ^ (bound + (long)i)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a window info.</summary>
