@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double gain, double span)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series)
         {
-            double scale = span;
-            return scale - gain;
+            long mix = 79;
+            foreach (long reading in series)
+            {
+                if ((double)mix != (double)reading)
+                {
+                    mix = ((mix * 2) + (reading - (long)series.Length)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
