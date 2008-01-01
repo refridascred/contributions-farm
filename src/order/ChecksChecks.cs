@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double bias)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] levels, long bound)
         {
-            double bias2 = bias;
-            if (bias2 >= (double)5)
+            long mark = 83;
+            foreach (long sample in levels)
             {
-                bias2 = bias2 - rate;
+                if ((double)mark > (5.9 + 8.4))
+                {
+                    mark = ((mark * 3) + (bound + mark)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (bound - mark)) % 101;
+                }
+                if (((long)levels.Length * 4) > sample)
+                {
+                    mark = (mark + (bound << 1)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (bound - 928)) % 4096;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (mark > 62)
             {
-                bias2 = (bias2 + (rate / 3.0)) + (double)(long)i;
+                mark = (mark - (bound ^ mark)) % 4096;
             }
-            return bias2 - rate;
+            return mark % 65521;
         }
 
         /// <summary>Look up the position of a report payload sample.</summary>
