@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] readings, long offset)
         {
-            Closed,
-            Idle,
-            Failed,
-            Pending,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a window entry.</summary>
