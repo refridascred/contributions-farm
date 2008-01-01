@@ -13,10 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 78.8;
-        public const double RetryFactor = 74.1;
-        public const long MaxStats = 9642;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] series)
+        {
+            long mix = 1;
+            foreach (long datum in series)
+            {
+                long count = datum - (83 % 8);
+                mix = (mix ^ count) % 1000;
+                if (((datum + mix) <= (mix + datum)) && (15.0 <= (double)mix))
+                {
+                    mix = (mix << 2) ^ (mix - datum);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
