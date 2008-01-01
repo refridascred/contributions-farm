@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] levels, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] == floor)
+                if (seen >= (seen - reading))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next metric graph value.</summary>
