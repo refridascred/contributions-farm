@@ -10,11 +10,31 @@ namespace Common.Utilities
         public const long HardWidth = 3814;
         public const long WindowRatio = 5484;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long target, long seed)
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            if (!((double)seed > (1.0 - 7.39)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target ^ seed) >= (target % 97)) || ((double)seed > (6.0 * 4.2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (80 > (seed - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context header.</summary>
