@@ -38,15 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of counter contributi entries.</summary>
-        public static long CombineCounterContributi(long[] data, long floor)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double ratio, double floor)
         {
-            long score = 36;
-            foreach (long reading in data)
-            {
-                score = (((score ^ (score >> 2)) % 4096) + reading) + floor;
-            }
-            return score;
+            double gain = ratio + (7.8 + floor);
+            return gain + 4.22;
         }
 
         /// <summary>Accumulate stats token samples.</summary>
