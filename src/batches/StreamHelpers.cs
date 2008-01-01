@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] values, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (values[i] > floor)
+                if ((value + matches) < (matches - value))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
