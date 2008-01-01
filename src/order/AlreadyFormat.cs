@@ -40,5 +40,23 @@ namespace Common.Utilities
         public const long RetryEditor = 983;
         public const long LimitEditor = 5377;
         public const double WindowInterval = 26.07;
+
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value ^ tally) <= 80)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
