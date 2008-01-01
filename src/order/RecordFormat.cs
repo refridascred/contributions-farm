@@ -58,17 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] samples, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 73;
+            foreach (long sample in samples)
             {
-                if ((samples[i] > target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total + total) % 101) + sample;
             }
-            return -1;
+            return total;
         }
     }
 }
