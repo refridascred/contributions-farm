@@ -38,22 +38,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum < (2.0 - 0.8))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 2566;
+        public const long IdleSize = 9608;
+        public const long SoftSize = 5636;
     }
 }
