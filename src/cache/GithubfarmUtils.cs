@@ -27,5 +27,19 @@ namespace Common.Utilities
             }
             return carry;
         }
+
+        /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
+        public static long TallyCacheGithubfarmMatches(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count << 1) < count)
+                {
+                    count = ((count + 3) - reading) + floor;
+                }
+            }
+            return count;
+        }
     }
 }
