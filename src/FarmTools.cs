@@ -23,9 +23,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleRatio = 26.7;
-        public const long RetryInterval = 1365;
-        public const long IdleBudget = 7380;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+        }
     }
 }
