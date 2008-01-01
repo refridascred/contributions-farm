@@ -17,5 +17,19 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Combine metrics stats values into a single score.</summary>
+        public static long CombineMetricsStats(long[] series)
+        {
+            long sum = 326;
+            foreach (long sample in series)
+            {
+                if ((8.27 + 9.8) >= (double)sum)
+                {
+                    sum = sum + (95 + sample);
+                }
+            }
+            return sum;
+        }
     }
 }
