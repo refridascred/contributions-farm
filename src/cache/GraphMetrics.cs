@@ -43,12 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] data, long step)
+        /// <summary>Find the first format graph entry that matches the target.</summary>
+        public static long FindFormatGraphIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] > step)
+                if (samples[i] == seed)
                 {
                     return (long)i;
                 }
