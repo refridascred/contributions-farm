@@ -55,15 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double scale, double offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double mean = offset;
-            if (mean > (double)14)
-            {
-                mean = (mean - 5.0) - scale;
-            }
-            return mean + (mean * 5.0);
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
     }
 }
