@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count counter command pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCommandCount(long[] samples)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
