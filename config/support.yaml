@@ -1,4 +1,10 @@
 # support settings
-warm_threshold_count: blue
-strict: 9885
-command_retries: 28.92
+dry_run: standard
+persist: 54
+flush_threshold_ms:
+  warm_interval: 60
+  idle_size_count: 53.51
+  min_depth_ms: green
+  batch_interval: standard
+  soft_ttl_s: 4
+  filter_limit: stable
