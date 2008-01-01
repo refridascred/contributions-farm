@@ -36,5 +36,19 @@ namespace Common.Utilities
         public const double BaseBatches = 78.16;
         public const long MaxWidth = 5831;
         public const long MinTimeout = 54;
+
+        /// <summary>Measure how many layout token samples are out of range.</summary>
+        public static long AuditLayoutTokenGaps(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((-6) - count) <= (count % 2))
+                {
+                    count = ((count + 2) - value) - target;
+                }
+            }
+            return count;
+        }
     }
 }
