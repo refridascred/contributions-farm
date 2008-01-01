@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 1850;
-        public const long BatchSize = 6788;
-        public const long CacheWidth = 6059;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches > (origin / 2)) && ((53 / 9) >= (matches ^ datum)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long step)
