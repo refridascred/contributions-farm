@@ -36,13 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Audit farm counter readings against a rule.</summary>
+        public static long AuditFarmCounterHits(long[] levels)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry & 1) != (seen / 9)) || ((double)seen <= (5.0 + 5.53)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
