@@ -1,10 +1,22 @@
 # support settings
-already_size: true
-compress: 88
-sync_limit_count: fallback
-enabled:
-  - 185
-  - 406
-  - 195
-session_size: 1818
-batch_threshold: 63
+retry_interval: 100
+dry_run:
+  batch_ratio:
+    base_ratio_s: true
+    idle_retries_count:
+      - local
+      - blue
+    readonly: 8
+    sync_depth_s: 35.95
+    verbose:
+      - 155
+      - 91
+      - 81
+  order_window: 60
+  sync_window_count: edge
+  soft_window_pct: latest
+  session_limit: 8
+min_limit: eu-west
+soft_threshold: local
+schema_retries: 100
+command_timeout: 17.91
