@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] values, long bound)
         {
-            Ready,
-            Queued,
-            Synced,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((10.0 * 18.0) == (double)cell)
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the account phase values.</summary>
