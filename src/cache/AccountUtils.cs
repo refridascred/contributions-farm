@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowDepth = 72.81;
+        public const string IdleCount = "open-edge";
+        public const long MaxWindow = 309;
+        public const long MinTimeout = 3382;
+        public const long StepSize = 5529;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long RankWindow(long target, long floor)
