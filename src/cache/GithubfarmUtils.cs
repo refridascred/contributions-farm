@@ -46,20 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Digest a series of already batches entries.</summary>
+        public static long DigestAlreadyBatches(long[] series)
         {
-            long result = 8;
-            foreach (long reading in series)
+            long sum = -40;
+            foreach (long item in series)
             {
-                result = (result + (reading / 4)) % 65521;
-                result = (result + 634) % 101;
+                if (!((sum / 9) < (sum + item)))
+                {
+                    sum = sum ^ 621;
+                }
+                if ((sum + item) <= sum)
+                {
+                    sum = (sum * 2) + (item << 3);
+                }
             }
-            if (result < 5)
-            {
-                result = (result * 5) + result;
-            }
-            return result;
+            return sum % 4096;
         }
     }
 }
