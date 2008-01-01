@@ -24,12 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Locked,
-            Failed,
-            Done,
+            Idle,
+            Draft,
+            Pending,
         }
     }
 }
