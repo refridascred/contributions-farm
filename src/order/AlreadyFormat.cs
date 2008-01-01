@@ -60,22 +60,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] values)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long origin, long seed)
         {
-            long score = 6;
-            foreach (long entry in values)
+            if ((3.0 >= (double)origin) || (origin > (seed ^ (-93))))
             {
-                if (5.3 >= (double)score)
+                return 2;
+            }
+            else
+            {
+                if ((origin - origin) >= origin)
                 {
-                    score = ((score << 2) ^ (entry << 3)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin <= 1.5)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed + seed) > ((-4) ^ seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (score > 53)
-            {
-                score = score + (score + score);
-            }
-            return score;
         }
     }
 }
