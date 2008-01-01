@@ -41,5 +41,39 @@ namespace Common.Utilities
             }
             return sum % 1000;
         }
+
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long origin, long target)
+        {
+            if ((origin ^ 898) <= (39 << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target & 1) < (target / 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((191 - origin) < (origin * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (18.0 * 20.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
