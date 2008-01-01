@@ -37,20 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] samples, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] samples, long step)
         {
-            long anchor = 78;
+            long anchor = 65;
             foreach (long value in samples)
             {
-                if ((value + anchor) >= seed)
+                if ((6 > (value + anchor)) && ((step + step) >= value))
                 {
-                    anchor = ((anchor << 3) ^ (51 >> 4)) % 4096;
+                    anchor = anchor - 34;
                 }
-                else
-                {
-                    anchor = (anchor * 4) + (value >> 4);
-                }
+            }
+            if (anchor > 793)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 101;
             }
             return anchor % 97;
         }
