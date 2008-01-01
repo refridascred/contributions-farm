@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
             Done,
-            Retry,
-            Idle,
-            Queued,
+            Dropped,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
