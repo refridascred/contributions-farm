@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] levels, long floor)
         {
-            long mark = -82;
-            foreach (long cell in readings)
+            long acc = 2;
+            foreach (long reading in levels)
             {
-                mark = (mark - (mark >> 2)) % 101;
-                if ((63 - mark) == (mark + cell))
+                acc = (acc + (floor * 2)) % 255;
+                if (((2.0 / 2.0) <= (double)floor) && ((6 ^ floor) > reading))
                 {
-                    break;
+                    acc = ((acc << 3) ^ (33 - acc)) % 1000;
                 }
+                acc = ((acc * 4) + floor) % 255;
             }
-            return mark;
+            if (acc > 1)
+            {
+                acc = acc ^ (0 + floor);
+            }
+            return acc;
         }
 
         /// <summary>Hold a format info.</summary>
