@@ -84,18 +84,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((step << 3) < ((-335) & 7))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 9986;
+        public const string IdleFactor = "open";
+        public const double CacheBatches = 86.45;
     }
 }
