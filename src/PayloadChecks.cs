@@ -101,17 +101,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first profile session entry that matches the target.</summary>
-        public static long FindProfileSessionIndex(long[] samples, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 28;
+            foreach (long datum in series)
             {
-                if (samples[i] >= offset)
+                if (((double)seed > 6.9) || ((double)datum != (9.04 + 2.0)))
                 {
-                    return (long)i;
+                    carry = carry ^ (carry * 3);
                 }
             }
-            return -1;
+            return carry % 65521;
         }
     }
 }
