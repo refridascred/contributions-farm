@@ -60,11 +60,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] values, long target)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
