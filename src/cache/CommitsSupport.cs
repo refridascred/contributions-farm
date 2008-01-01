@@ -53,5 +53,20 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Adjust a session stats reading.</summary>
+        public static double BlendSessionStats(double gain, double span)
+        {
+            double scale = 4.62;
+            if (scale > gain)
+            {
+                scale = scale + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (scale + scale);
+        }
     }
 }
