@@ -22,10 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "legacy-v2";
-        public const string CacheEntry = "primary";
-        public const string LimitInterval = "latest-v2";
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] values, long origin)
