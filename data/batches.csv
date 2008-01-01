@@ -1,10 +1,7 @@
-id,score,owner,label
-1,411,cached,57.12
-2,637,14.95,174
-3,76.33,50.4,open
-4,standard,899,43.57
-5,open,62.96,cached
-6,231,624,64.99
-7,standard,42.23,local
-8,36.3,open,966
-9,411,44.32,95.89
+id,ratio,active
+1,local,stable
+2,stable,primary
+3,cached,fallback
+4,36.65,31.44
+5,open,37.85
+6,441,229
