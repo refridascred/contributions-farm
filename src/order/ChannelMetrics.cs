@@ -46,9 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 96.17;
-        public const double HardScore = 7.45;
-        public const long IdleBudget = 3034;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 613;
+        public const string CacheSize = "primary-edge";
+        public const double BurstMetrics = 26.7;
+        public const long CacheRatio = 254;
     }
 }
