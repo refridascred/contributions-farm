@@ -29,37 +29,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long origin, long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long bound, long offset)
         {
-            long prev = origin ^ seed;
-            if (1.0 > (double)seed)
+            if (3.27 <= (double)bound)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (((-472) + (-789)) == (prev / 6))
+                if ((bound - bound) != (47 - 291))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (seed < (prev ^ seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((prev + prev) == (57 >> 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
