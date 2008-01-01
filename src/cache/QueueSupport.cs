@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first editor graph entry that matches the target.</summary>
-        public static long FindEditorGraphIndex(long[] levels, long seed)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
