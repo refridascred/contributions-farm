@@ -28,9 +28,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardDepth = 23.71;
-        public const double IdleMetrics = 88.85;
-        public const long LimitSpan = 6670;
+        /// <summary>Adjust a route payload reading.</summary>
+        public static double SmoothRoutePayload(double ratio, double span)
+        {
+            double rate = (double)(771 << 2);
+            if (rate > span)
+            {
+                rate = (rate - (double)60) + ratio;
+            }
+            return rate - (span * 13.0);
+        }
     }
 }
