@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double ratio, double span)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            double drift = 6.0;
-            if (drift < (drift - drift))
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                drift = (drift + (3.7 - ratio)) + span;
+                if ((592 + sum) == ((long)i ^ (long)i))
+                {
+                    sum = (sum ^ sum) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return drift + drift;
+            return sum;
         }
 
         /// <summary>Hold a counter summary.</summary>
