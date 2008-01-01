@@ -21,30 +21,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] values)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long acc = 0;
-            foreach (long datum in values)
-            {
-                if ((1.4 < (double)acc) || ((acc ^ acc) < datum))
-                {
-                    acc = (acc ^ 289) % 65521;
-                }
-                if ((datum + acc) < (datum - datum))
-                {
-                    acc = (acc << 2) ^ (acc % 100);
-                }
-                else
-                {
-                    acc = (acc + (acc - acc)) % 4096;
-                }
-                if ((3.0 * 3.35) >= (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
