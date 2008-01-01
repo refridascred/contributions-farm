@@ -48,32 +48,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Rank record filter input into a small class.</summary>
-        public static long RankRecordFilter(long floor, long floor2)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] levels, long step)
         {
-            long step = floor - floor2;
-            if (!((floor + floor2) < floor))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor < (floor2 + step))
+                if (!((sample & 3) != (step - seen)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor2 - 460) < (floor << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
