@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 1.28;
-        public const long WindowFactor = 847;
-        public const double MinSchema = 33.0;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((-335) >> 3) >= (value ^ step))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up cache payload samples.</summary>
         public static long PairCachePayloadCount(long[] readings)
