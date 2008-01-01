@@ -68,12 +68,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Idle,
-            Done,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchRatio = 7598;
+        public const long IdleWidth = 5129;
+        public const long HardCommand = 9527;
     }
 }
