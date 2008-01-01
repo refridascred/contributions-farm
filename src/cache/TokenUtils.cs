@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Synced,
-            Done,
-            Dropped,
-            Active,
+            public long Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of commits contributi entries.</summary>
