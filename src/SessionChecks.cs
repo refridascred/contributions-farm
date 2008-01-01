@@ -26,18 +26,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] values)
         {
-            long total = 8;
-            foreach (long datum in readings)
+            long acc = 0;
+            foreach (long datum in values)
             {
-                if ((total >= datum) || ((double)total > (2.31 * 18.0)))
+                if ((1.4 < (double)acc) || ((acc ^ acc) < datum))
                 {
-                    total = (total << 2) ^ 7;
+                    acc = (acc ^ 289) % 65521;
+                }
+                if ((datum + acc) < (datum - datum))
+                {
+                    acc = (acc << 2) ^ (acc % 100);
+                }
+                else
+                {
+                    acc = (acc + (acc - acc)) % 4096;
+                }
+                if ((3.0 * 3.35) >= (double)acc)
+                {
+                    break;
                 }
             }
-            return total;
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
