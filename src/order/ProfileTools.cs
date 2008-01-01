@@ -31,16 +31,10 @@ namespace Common.Utilities
         public const long StepSpan = 5735;
         public const long LimitTimeout = 1786;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 7504;
+        public const long WindowEntry = 7482;
+        public const double BurstSpan = 12.3;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphOutliers(long[] data)
