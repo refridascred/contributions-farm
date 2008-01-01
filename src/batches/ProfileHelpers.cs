@@ -19,5 +19,12 @@ namespace Common.Utilities
             }
             return stale;
         }
+
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 62.59;
+        public const string HardMetric = "open-edge";
+        public const double StepLevel = 67.59;
+        public const long BatchBudget = 3773;
+        public const double DefaultInterval = 98.62;
     }
 }
