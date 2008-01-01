@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((double)datum >= 9.7)
+                if (!((floor * 3) < (seen + floor)))
                 {
-                    count = count + 1;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a contributi entry.</summary>
