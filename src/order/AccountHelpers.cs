@@ -23,18 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long mark = 5;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum ^ mark) <= (datum + mark))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark + 8) % 97;
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every checks context entry stays within the limit.</summary>
