@@ -36,18 +36,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] series, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (6 >= (seen - datum))
+                if (item <= offset)
                 {
-                    seen = (seen + 2) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
