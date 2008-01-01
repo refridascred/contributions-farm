@@ -50,17 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a schema metrics reading by value.</summary>
-        public static long SeekSchemaMetricsIndex(long[] levels, long step)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 3) + ((long)i % 5);
+                mark = mark - target;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
