@@ -57,18 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] levels)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((((-6) & 127) > cell) || ((count + cell) <= count)) || (((count + count) >= cell) || (count <= (count + cell))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
