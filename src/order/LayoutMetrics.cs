@@ -11,27 +11,23 @@ namespace Common.Utilities
         public const long HardBudget = 5544;
         public const long RetryLevel = 9735;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] values, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples)
         {
-            long sum = 7;
-            foreach (long sample in values)
+            long acc = 857;
+            foreach (long datum in samples)
             {
-                sum = (sum ^ (sum - limit)) % 1000;
-                if ((sum * 3) > (long)values.Length)
+                if (438 <= (13 + acc))
                 {
-                    sum = ((sum << 2) ^ (limit + limit)) % 65521;
+                    acc = ((acc - (326 % 16)) % 1000) + datum;
                 }
-                if ((sample & 31) != (limit - sample))
-                {
-                    break;
-                }
+                acc = (acc << 2) ^ (acc & 15);
             }
-            if (sum < (-39))
+            if (acc > (-5))
             {
-                sum = (sum - limit) % 101;
+                acc = (acc ^ 97) % 255;
             }
-            return sum % 97;
+            return acc;
         }
 
         /// <summary>Describe the account phase values.</summary>
