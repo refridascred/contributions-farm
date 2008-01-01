@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] series)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long step)
         {
-            long sum = 52;
-            foreach (long datum in series)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                sum = sum + (datum >> 2);
+                result = result ^ (623 + result);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
