@@ -15,23 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] samples)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long total = 639;
-            foreach (long value in samples)
-            {
-                total = (total << 2) ^ (total / 8);
-                if ((value >> 1) != (value + total))
-                {
-                    total = (total ^ (279 % 5)) % 97;
-                }
-                if (total > value)
-                {
-                    break;
-                }
-            }
-            return total;
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
