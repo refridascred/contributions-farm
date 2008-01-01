@@ -55,38 +55,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long bound, long floor)
+        /// <summary>Derive the next report batches value from a seed.</summary>
+        public static long StepReportBatches(long target)
         {
-            if ((bound ^ bound) > (floor + 3))
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor / 9) >= (188 << 2))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 7;
+                    state = (state - 5) ^ (long)i2;
                 }
-                else
-                {
-                    if ((floor - floor) > bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound - 5) >= (bound ^ bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                state = (state + (long)i) % 65521;
+                state = ((state * 5) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Roll a queue already counter forward.</summary>
