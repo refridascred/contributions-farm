@@ -27,12 +27,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double scale, double floor)
-        {
-            double rate = scale;
-            return rate - floor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinBudget = 1179;
+        public const long LimitSize = 9584;
+        public const long StepWidth = 9337;
+        public const double DefaultMetrics = 71.16;
+        public const long RetrySpan = 2426;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long offset, long seed)
