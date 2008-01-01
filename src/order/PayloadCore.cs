@@ -51,9 +51,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstWidth = 166;
-        public const long HardInterval = 1084;
-        public const long WindowCount = 8911;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long offset, long seed)
+        {
+            if ((seed + offset) == (offset << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (seed < (seed * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset % 97) == (99 % 16))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
