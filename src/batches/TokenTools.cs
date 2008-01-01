@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long seed, long bound)
         {
-            New,
-            Synced,
-            Failed,
+            if ((bound % 10) >= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound * 5) >= bound) || ((bound - bound) >= (-25)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound & 127) >= (bound / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound >= (seed ^ 9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel info.</summary>
