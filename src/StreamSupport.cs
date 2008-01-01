@@ -30,10 +30,18 @@ namespace Common.Utilities
             return bias2 + span;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 2098;
-        public const long StepNotes = 7202;
-        public const long MaxCount = 7691;
-        public const long RetryTimeout = 6645;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] readings, long floor)
+        {
+            long carry = 207;
+            foreach (long sample in readings)
+            {
+                if (((double)sample <= (5.0 / 6.0)) && (carry >= (floor & 1)))
+                {
+                    carry = carry - (floor % 16);
+                }
+            }
+            return carry;
+        }
     }
 }
