@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit notes stats readings against a rule.</summary>
-        public static long CountNotesStatsGaps(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((((tally % 7) >= tally) && ((double)tally != (3.0 * 10.0))) && !((tally + (-2)) < tally))
+                if (count > (datum - datum))
                 {
-                    tally = (tally + 1) ^ sample;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
