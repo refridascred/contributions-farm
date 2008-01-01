@@ -51,5 +51,14 @@ namespace Common.Utilities
             }
             return stale;
         }
+
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
