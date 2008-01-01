@@ -12,21 +12,20 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 1;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                long hits = step ^ (step - reading);
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state + (reading - hits)) % 97) + (long)i;
                 }
+                state = ((state * 2) + (reading >> 2)) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the stats state values.</summary>
