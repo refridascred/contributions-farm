@@ -29,24 +29,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] items, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long mix = 584;
+            foreach (long datum in items)
             {
-                if ((carry - floor) >= ((long)i * 4))
+                mix = (mix - (0 & 255)) - floor;
+                if (!((datum - datum) == (mix + datum)))
                 {
-                    carry = (carry << 3) ^ (carry + (long)i);
-                    carry = (carry + 81) % 1000;
+                    break;
                 }
-                else
-                {
-                    carry = (carry * 5) + (floor / 4);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
     }
 }
