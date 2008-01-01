@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double scale, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] items, long floor)
         {
-            double ratio = (scale * 1.28) + (double)53;
-            if (ratio < (ratio / 6.0))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                ratio = (ratio - 9.17) + bias;
+                if (50 <= (45 + reading))
+                {
+                    tally = (tally + 2) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return ratio - (scale * 13.0);
+            return tally;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
