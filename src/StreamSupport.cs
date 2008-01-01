@@ -33,15 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 4209;
+        public const long StepTimeout = 3820;
+        public const double DefaultChecks = 1.01;
     }
 }
