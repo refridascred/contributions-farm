@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 1654;
-        public const long BatchOrder = 3439;
-        public const long RetryOrder = 1806;
-        public const string MaxBudget = "local-v2";
-        public const double SoftDepth = 82.29;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long SortProfile(long offset, long bound)
