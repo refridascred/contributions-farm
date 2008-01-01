@@ -12,5 +12,13 @@ namespace Common.Utilities
             public double Score { get; set; }
             public double Size { get; set; }
         }
+
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Active,
+            Idle,
+            Locked,
+        }
     }
 }
