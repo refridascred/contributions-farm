@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+RECORD_LIMIT=233
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-open}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,12 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-for item in latest local; do
-    log "checking ${item}"
-done
+log "ran ${count} rounds"
