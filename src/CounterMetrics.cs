@@ -14,15 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] levels, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (datum < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Roll a report counter forward.</summary>
