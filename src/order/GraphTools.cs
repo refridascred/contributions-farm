@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Dropped,
-            Active,
-            Ready,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryLevel = "legacy";
+        public const string DefaultDepth = "latest-1";
+        public const long WindowNotes = 6213;
+        public const long IdleFactor = 4281;
+        public const double MaxWidth = 88.25;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
