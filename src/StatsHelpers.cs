@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 2853;
-        public const double WindowDepth = 98.42;
-        public const long CacheDepth = 2238;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] series, long seed)
+        {
+            long acc = 15;
+            foreach (long item in series)
+            {
+                if (item < (item >> 1))
+                {
+                    acc = (acc - (item - acc)) - seed;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (item + item)) % 255;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long ScoreCluster(long[] samples)
