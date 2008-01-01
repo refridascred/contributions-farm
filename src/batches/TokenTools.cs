@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
