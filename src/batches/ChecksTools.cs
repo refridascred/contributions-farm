@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a payload profile counter forward.</summary>
-        public static long RollPayloadProfile(long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long offset, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            if ((double)9 < (double)limit)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((offset <= (offset + offset)) && (limit < (937 - offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)limit >= (double)offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((limit - limit) <= (offset + offset)) && ((limit - limit) < offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
