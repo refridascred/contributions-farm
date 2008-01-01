@@ -33,24 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long bound, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
+            if ((5 % 97) < (limit + limit))
             {
-                if ((carry * 5) != ((long)i / 9))
-                {
-                    carry = ((carry << 2) ^ origin) % 255;
-                    carry = carry + (long)i;
-                }
-                if ((double)(long)i > (1.29 + 5.45))
-                {
-                    carry = ((carry * 5) + (origin * 5)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (!((limit + (-888)) >= (774 + limit)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound <= limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
