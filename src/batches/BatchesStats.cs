@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi farm entries.</summary>
-        public static long TallyContributiFarm(long[] items)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long anchor = 573;
-            foreach (long entry in items)
-            {
-                anchor = anchor - entry;
-                if ((6.06 + 1.26) == (double)entry)
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-            }
-            if (anchor > 10)
-            {
-                anchor = ((anchor << 2) ^ (anchor << 3)) % 65521;
-            }
-            return anchor % 1000;
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
