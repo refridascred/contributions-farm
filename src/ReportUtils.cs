@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] items)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long state = 4;
-            foreach (long item in items)
-            {
-                if ((-35) > state)
-                {
-                    state = state ^ item;
-                }
-            }
-            if (state > 249)
-            {
-                state = ((state * 2) + state) % 101;
-            }
-            return state % 65521;
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many stream profile samples are out of range.</summary>
