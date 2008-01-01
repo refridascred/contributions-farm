@@ -36,12 +36,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] series, long seed)
         {
-            Retry,
-            Pending,
-            New,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (6 >= (seen - datum))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
