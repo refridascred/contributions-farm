@@ -1,8 +1,8 @@
 # entry settings
-verbose:
-  - staging
-  - edge
-burst_window: 7096
-flush_capacity: 7616
-compress: 97.28
-idle_window_count: fallback
+readonly: 6114
+max_depth_s:
+  - 152
+  - 244
+strict: 21
+sync_interval: true
+retry_depth_s: primary
