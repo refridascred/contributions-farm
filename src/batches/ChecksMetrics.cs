@@ -33,15 +33,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Dropped,
-            Queued,
-            Locked,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxLevel = "fallback-v2";
+        public const double LimitWidth = 37.0;
+        public const long WindowEditor = 3225;
+        public const long CacheFactor = 1691;
 
         /// <summary>Combine cache account values into a single score.</summary>
         public static long TotalCacheAccount(long[] samples)
