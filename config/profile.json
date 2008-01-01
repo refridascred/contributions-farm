@@ -1,6 +1,12 @@
 {
-  "warm_delay_count": false,
-  "burst_depth_ms": 6894,
-  "layout_depth": "edge",
-  "min_limit_ms": "open"
+  "batch_threshold": {
+    "readonly": 85.12,
+    "audit": ["standard", "blue", "staging", "green"],
+    "persist": 9118
+  },
+  "warm_ttl_pct": "edge",
+  "burst_timeout": "blue",
+  "warm_interval": "strict",
+  "compress": 8489,
+  "warm_window_count": 22.97
 }
