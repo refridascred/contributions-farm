@@ -1,6 +1,8 @@
 {
-  "poll_interval": 2008,
-  "default_ratio_s": 63.33,
-  "base_ratio_ms": "fallback",
-  "session_window": [107, 14, 66]
+  "githubfarm_depth": "open",
+  "burst_threshold": "blue",
+  "githubfarm_retries": 250,
+  "base_capacity": "local",
+  "warm_limit_pct": 88,
+  "sync_retries": 9256
 }
