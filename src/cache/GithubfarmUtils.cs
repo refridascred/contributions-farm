@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long MinLayout = 5973;
         public const long MaxLayout = 5453;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "latest-edge";
-        public const string BatchCommand = "open";
-        public const double CacheCommand = 66.56;
-        public const string DefaultDepth = "latest-v2";
-        public const long WindowCommand = 4253;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LocateReportIndex(long[] values, long floor)
