@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const long MinLayout = 5973;
         public const long MaxLayout = 5453;
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Compare every pair of farm batches readings.</summary>
+        public static long OverlapFarmBatchesCount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 15)
+                    if ((readings[i] - readings[j]) != 8)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Match up channel contributi samples.</summary>
