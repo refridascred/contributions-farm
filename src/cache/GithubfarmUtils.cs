@@ -45,24 +45,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long step, long seed)
-        {
-            if (((step * 2) < (seed + step)) || ((step + seed) == (step + step)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed > (step + seed)) && (seed >= (seed & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardSize = 3844;
+        public const string WindowFilter = "staging-v2";
+        public const long IdleFilter = 9385;
     }
 }
