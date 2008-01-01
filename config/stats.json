@@ -1,12 +1,13 @@
 {
-  "strict": 250,
-  "min_ratio": 45.2,
-  "farm_window": "fallback",
-  "burst_ttl_ms": 3472,
-  "audit": {
-    "max_size_pct": 9140,
-    "strict": "fallback",
-    "dry_run": "legacy",
-    "retry_interval_pct": 500
-  }
+  "token_threshold": {
+    "dry_run": "green",
+    "hard_delay": "standard",
+    "min_limit": 16,
+    "base_interval_ms": 62.43,
+    "default_window_count": ["fallback", "primary", "open", "strict"],
+    "retry_window_ms": "primary"
+  },
+  "cache_threshold": [6, 497],
+  "hard_size_pct": "strict",
+  "poll_retries_pct": 321
 }
