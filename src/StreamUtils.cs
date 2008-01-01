@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] levels, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Project the next metric graph value.</summary>
