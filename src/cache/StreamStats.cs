@@ -48,13 +48,17 @@ namespace Common.Utilities
         public const long StepCount = 6073;
         public const long WindowSpan = 5948;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] data, long step)
         {
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
