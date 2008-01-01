@@ -40,5 +40,18 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Look up the position of a channel editor sample.</summary>
+        public static long LocateChannelEditorIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
