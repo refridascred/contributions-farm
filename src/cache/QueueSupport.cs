@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long floor, long limit)
+        /// <summary>Find the first editor graph entry that matches the target.</summary>
+        public static long FindEditorGraphIndex(long[] levels, long seed)
         {
-            if ((limit + floor) == (floor ^ limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(((-849) - floor) >= (limit % 16)))
+                if (levels[i] == seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
