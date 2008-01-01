@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate window notes readings against a bound.</summary>
-        public static bool GuardWindowNotesBounds(long[] values, long seed)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Size { get; set; }
+            public double Mode { get; set; }
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the batch mode values.</summary>
