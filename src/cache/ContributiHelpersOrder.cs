@@ -29,19 +29,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] items, long floor)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mix = 584;
-            foreach (long datum in items)
-            {
-                mix = (mix - (0 & 255)) - floor;
-                if (!((datum - datum) == (mix + datum)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public bool Region { get; set; }
+            public double Token { get; set; }
         }
     }
 }
