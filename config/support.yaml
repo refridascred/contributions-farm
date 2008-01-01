@@ -1,26 +1,13 @@
 # support settings
-dry_run: strict
-cache_window:
-  record_depth: 62.17
-  cluster_interval: 500
-  cache_window_pct: 89
-  strict: 88
-  queue_timeout: 28
-idle_capacity_ms: fallback
-warm_interval_count:
-  persist:
-    - 99
-    - 307
-    - 366
-  editor_retries: strict
-  burst_timeout_s: latest
-  dry_run:
-    flush_window_s: latest
-    max_timeout_s: false
-    max_delay: open
-    idle_limit_ms: 60
-    enabled: 59.66
-  batch_limit_pct: 2748
-  hard_capacity: standard
-max_timeout_count: 6.37
-entry_delay: 59
+base_limit_s: standard
+min_timeout_ms: 100
+audit:
+  - 351
+  - 23
+strict:
+  - fallback
+  - strict
+  - blue
+  - strict
+enabled: 58
+readonly: 46
