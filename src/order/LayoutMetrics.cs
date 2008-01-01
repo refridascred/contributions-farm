@@ -31,18 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] data, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)tally < 11.0) || (((tally ^ 764) != (4 + limit)) && ((long)data.Length <= (limit + reading))))
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
