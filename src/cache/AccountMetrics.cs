@@ -70,24 +70,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a route profile pair into a bucket.</summary>
-        public static long BucketRouteProfile(long floor, long seed)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if ((floor - seed) == (floor + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + seed) == (floor ^ 233))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Closed,
+            Active,
         }
     }
 }
