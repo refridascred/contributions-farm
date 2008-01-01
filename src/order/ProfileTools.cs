@@ -18,5 +18,10 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "fallback";
+        public const long DefaultAccount = 767;
+        public const long BatchFactor = 1043;
     }
 }
