@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] items, long origin)
+        /// <summary>Count account metrics pairs that satisfy a relation.</summary>
+        public static long PairAccountMetricsCount(long[] levels)
         {
-            long total = -7;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (((total ^ (total & 1)) % 97) ^ cell) - origin;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
