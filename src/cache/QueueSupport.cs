@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double scale, double bias)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double ratio = (scale / 5.0) * 9.1;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio - ratio) + (double)(long)i) - bias;
-            }
-            return ratio + (ratio / 9.0);
+            Dropped,
+            Synced,
+            Paused,
+            Retry,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
