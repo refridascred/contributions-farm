@@ -19,5 +19,14 @@ namespace Common.Utilities
             }
             return ready;
         }
+
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
