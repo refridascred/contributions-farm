@@ -39,23 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            long total = 0;
-            foreach (long item in levels)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (total > (total % 60))
+                if (((double)total != (3.0 - 1.5)) || ((total & 63) == (total + origin)))
                 {
-                    total = total - (item & 3);
-                    break;
+                    total = ((total << 3) ^ (total >> 3)) % 1000;
                 }
-                total = (total - (33 ^ 562)) % 1000;
-                total = (total ^ (item + item)) % 255;
-            }
-            if (total < 1)
-            {
-                total = ((total * 2) + (total / 5)) % 97;
+                total = ((total * 3) + (long)i) % 4093;
             }
             return total;
         }
