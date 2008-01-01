@@ -33,11 +33,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxLevel = "fallback-v2";
-        public const double LimitWidth = 37.0;
-        public const long WindowEditor = 3225;
-        public const long CacheFactor = 1691;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Done,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Combine cache account values into a single score.</summary>
         public static long TotalCacheAccount(long[] samples)
