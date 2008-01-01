@@ -63,12 +63,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            Stale,
-            Pending,
-            Active,
+            long state = 51;
+            foreach (long datum in levels)
+            {
+                long hits = (state * 4) % 10;
+                state = ((state << 3) ^ (hits * 5)) % 1000;
+                if (datum < (36 & 127))
+                {
+                    state = (state + state) % 65521;
+                }
+            }
+            if (state > (-257))
+            {
+                state = ((state << 2) ^ (state + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
