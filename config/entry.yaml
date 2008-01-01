@@ -1,4 +1,4 @@
 # entry settings
-soft_ratio: 9240
-githubfarm_ttl: 23.97
-flush_timeout_pct: false
+flush_interval_count: 95.98
+account_capacity: 2810
+hard_interval: 9.17
