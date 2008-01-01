@@ -16,18 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] readings)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (cell <= (32 << 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
