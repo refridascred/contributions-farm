@@ -26,21 +26,18 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 1;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)anchor <= (double)limit))
                 {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor - (limit + 51)) % 255) ^ cell;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
