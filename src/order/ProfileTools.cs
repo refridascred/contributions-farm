@@ -35,11 +35,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstSpan = 85.35;
-        public const long IdleLevel = 2957;
-        public const long WindowGithubfarm = 9854;
-        public const long DefaultLevel = 4837;
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] levels, long bound)
+        {
+            long acc = 261;
+            foreach (long value in levels)
+            {
+                acc = ((acc ^ (5 & 7)) % 4096) - value;
+            }
+            if (acc < 96)
+            {
+                acc = (acc + bound) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
