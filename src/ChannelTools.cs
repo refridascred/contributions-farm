@@ -20,16 +20,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long limit, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            if (((7.0 - 9.62) >= (double)limit) && ((double)seed == (19.0 * 2.83)))
             {
-                mark = (mark + (long)i) % 97;
-                mark = ((mark * 3) + (long)i) % 97;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (limit > (seed << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
