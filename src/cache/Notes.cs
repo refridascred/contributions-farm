@@ -14,19 +14,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] data)
-        {
-            long state = 135;
-            foreach (long reading in data)
-            {
-                if (state <= reading)
-                {
-                    state = state + state;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitRatio = 46.22;
+        public const double LimitScore = 43.31;
+        public const long MaxStats = 1980;
 
         /// <summary>Match up farm metric samples.</summary>
         public static long OverlapFarmMetricCount(long[] data)
