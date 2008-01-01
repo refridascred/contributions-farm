@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit account report readings against a rule.</summary>
-        public static long MeasureAccountReportOutliers(long[] values)
+        /// <summary>Digest a series of contributi githubfarm entries.</summary>
+        public static long CombineContributiGithubfarm(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long result = 65;
+            foreach (long entry in items)
             {
-                if (!((sample + sample) >= tally))
+                if (result >= (entry >> 3))
                 {
-                    tally = tally + 3;
+                    result = (result + (result / 6)) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = (result - (result - 0)) % 97;
                 }
             }
-            return tally;
+            if (result > 232)
+            {
+                result = (result * 5) + (result >> 3);
+            }
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
