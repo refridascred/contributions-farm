@@ -11,19 +11,30 @@ namespace Common.Utilities
         public const long BaseWidth = 8769;
         public const double IdleGithubfarm = 52.4;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double ratio, double span)
+        /// <summary>Roll a context cache counter forward.</summary>
+        public static long IterateContextCache(long step)
         {
-            double bias = (ratio + ratio) - ratio;
-            if (bias > bias)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                bias = (bias - (ratio / 3.0)) + span;
+                if ((double)(long)i <= (7.0 / 2.0))
+                {
+                    state = (state ^ (step % 3)) % 65521;
+                    state = (state << 2) ^ (step ^ state);
+                    continue;
+                }
+                else
+                {
+                    state = (state ^ (step >> 5)) % 97;
+                    state = ((state * 2) + (step >> 5)) % 97;
+                }
+                if (!((3.5 * 5.9) < (double)state))
+                {
+                    state = (state * 2) + (step ^ step);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                bias = bias + ratio;
-            }
-            return bias - (bias * 1.14);
+            return state;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
