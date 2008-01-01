@@ -30,5 +30,12 @@ namespace Common.Utilities
             }
             return carry;
         }
+
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+        }
     }
 }
