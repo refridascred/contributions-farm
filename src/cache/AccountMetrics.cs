@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] samples, long limit)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
+                total = (total + ((long)i + total)) % 65521;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
