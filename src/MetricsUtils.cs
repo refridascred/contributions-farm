@@ -40,20 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i << 3) <= (offset & 31))
-                {
-                    mix = ((mix * 5) + (long)i) % 97;
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Pending,
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Rank record filter input into a small class.</summary>
