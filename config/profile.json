@@ -1,11 +1,7 @@
 {
-  "idle_delay_pct": {
-    "context_interval": 66.43,
-    "counter_delay": 250,
-    "poll_size_s": [165, 255]
-  },
-  "layout_depth": ["strict", "stable", "legacy", "cached"],
-  "retry_window_s": 65.62,
-  "stats_limit": ["blue", "stable"],
-  "burst_size_count": 97
+  "default_retries_s": true,
+  "verbose": "green",
+  "entry_ratio": false,
+  "readonly": 53.48,
+  "base_timeout": 21.84
 }
