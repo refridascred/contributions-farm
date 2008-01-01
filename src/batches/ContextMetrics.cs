@@ -60,24 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] series, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                long cur = (830 + sum) << 2;
-                if ((sum + 0) > ((long)i + 23))
+                if (datum <= target)
                 {
-                    cur = (cur << 2) ^ ((long)i & 63);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    sum = sum ^ (cur - sum);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
