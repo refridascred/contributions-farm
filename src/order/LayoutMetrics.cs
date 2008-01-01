@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchGithubfarm = "local-1";
+        public const long StepGithubfarm = 324;
+        public const long HardBudget = 5544;
+        public const long RetryLevel = 9735;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxCount = 7324;
