@@ -34,5 +34,13 @@ namespace Common.Utilities
             }
             return mark;
         }
+
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
