@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] series, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)bound > (5.1 / 4.0))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowLevel = 4708;
+        public const long RetryCache = 5005;
+        public const double BaseCache = 55.11;
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
