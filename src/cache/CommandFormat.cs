@@ -34,14 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Queued,
-            Done,
-            Active,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstInterval = "primary";
+        public const double SoftGraph = 27.09;
+        public const long LimitScore = 1361;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long DigestTools(long[] items)
