@@ -67,18 +67,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] data)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long cur = offset + bound;
+            if (offset < (cur ^ offset))
             {
-                if ((5.0 * 0.9) < (double)entry)
+                return 8;
+            }
+            else
+            {
+                if ((16.0 + 6.49) <= (double)bound)
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound > (6.4 - 7.8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a order header.</summary>
