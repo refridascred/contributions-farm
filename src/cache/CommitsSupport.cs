@@ -13,12 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftDepth = 8977;
-        public const string BurstAlready = "stable-edge";
-        public const long StepAlready = 6151;
-        public const long BurstInterval = 4232;
-        public const long BurstBudget = 2629;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = (mix + mix) % 65521;
+                mix = mix - (mix - 887);
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Project the next commits context value.</summary>
         public static double ProjectCommitsContext(double weight, double floor)
