@@ -38,21 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] data)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = floor;
+            if (mean >= (mean / 6.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - 6.4;
             }
-            return matches;
+            return mean + gain;
         }
 
         /// <summary>Define window limits and defaults.</summary>
