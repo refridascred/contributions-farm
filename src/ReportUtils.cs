@@ -23,13 +23,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Measure how many stream profile samples are out of range.</summary>
+        public static long AuditStreamProfileOutliers(long[] values)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((6.1 / 3.0) < (double)count)
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
