@@ -23,19 +23,39 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long target, long target2)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long gap = target + target2;
+            if (((target + gap) == (target2 - target)) || ((target & 127) == (gap >> 1)))
             {
-                if ((offset + offset) > (sum / 7))
-                {
-                    sum = ((sum << 2) ^ (sum + sum)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((941 + 184) < (target2 << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8 + 896) < (target + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap ^ target) > target2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a commits reading.</summary>
