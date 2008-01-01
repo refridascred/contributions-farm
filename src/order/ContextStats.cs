@@ -40,32 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long bound, long bound2)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long next = bound + bound2;
-            if (!((14.0 * 3.0) < (double)next))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((31 >> 4) < next)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((9.9 * 6.26) <= (double)bound) || (next > (bound2 - next)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
