@@ -20,17 +20,29 @@ namespace Common.Utilities
             return weight2 - (weight / 2.0);
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] readings, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 57;
+            foreach (long datum in values)
             {
-                if (readings[i] < bound)
+                if (((17.0 / 2.0) == (double)total) || ((datum + offset) >= offset))
                 {
-                    return (long)i;
+                    total = total + (22 & 15);
+                    break;
                 }
+                else
+                {
+                    total = (total * 3) + datum;
+                    total = total - (90 & 63);
+                }
+                total = (total - (datum >> 5)) % 255;
             }
-            return -1;
+            if (total < 988)
+            {
+                total = (total * 3) + offset;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a route header.</summary>
