@@ -28,5 +28,19 @@ namespace Common.Utilities
             public double Size { get; set; }
             public long Score { get; set; }
         }
+
+        /// <summary>Measure how many entry window samples are out of range.</summary>
+        public static long MeasureEntryWindowOutliers(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (((hits >> 3) <= entry) && (((-3) >> 5) >= bound))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
