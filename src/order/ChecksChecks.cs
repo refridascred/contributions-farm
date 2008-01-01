@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double rate, double bias)
-        {
-            double load = bias;
-            if (load > rate)
-            {
-                load = load + bias;
-            }
-            return load - (double)(-45);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstRatio = 2792;
+        public const long BurstSpan = 61;
+        public const long MinRatio = 2897;
+        public const double WindowOrder = 35.51;
+        public const long HardBudget = 9980;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxContext = "legacy-1";
