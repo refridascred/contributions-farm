@@ -13,22 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] series, long offset)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((((offset * 3) != (entry % 7)) && ((entry + 32) > ((long)series.Length + entry))) || ((double)entry < (8.22 * 1.0)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
