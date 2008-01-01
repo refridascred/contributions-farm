@@ -36,18 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings, long target)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            long sum = -8;
-            foreach (long value in readings)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value + 1) <= (810 << 3))
+                if ((carry * 5) != ((long)i / 9))
                 {
-                    sum = ((sum * 2) + (sum >> 3)) - target;
+                    carry = ((carry << 2) ^ origin) % 255;
+                    carry = carry + (long)i;
                 }
+                if ((double)(long)i > (1.29 + 5.45))
+                {
+                    carry = ((carry * 5) + (origin * 5)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return sum % 65521;
+            return carry;
         }
     }
 }
