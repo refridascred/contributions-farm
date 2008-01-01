@@ -1,8 +1,7 @@
 {
-  "idle_retries": 6.3,
-  "hard_timeout_count": ["staging", "edge", "green", "local"],
-  "idle_threshold_s": 56.26,
-  "poll_retries_pct": "staging",
-  "cache_timeout_pct": "edge",
-  "soft_delay": "latest"
+  "counter_window": 32,
+  "batch_retries_pct": true,
+  "readonly": [17, 447, 498],
+  "idle_window": 16.82,
+  "strict": ["primary", "local", "fallback", "blue"]
 }
