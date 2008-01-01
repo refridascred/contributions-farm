@@ -36,22 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] series, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long sum = 742;
+            foreach (long value in levels)
             {
-                if ((3 / 6) >= (62 - matches))
+                if (value <= (value % 16))
                 {
-                    matches = ((matches + 3) + cell) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = ((sum << 2) ^ (4 * 4)) % 4096;
                 }
             }
-            return matches;
+            if (sum < (-8))
+            {
+                sum = (sum ^ (sum + sum)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of already readings.</summary>
