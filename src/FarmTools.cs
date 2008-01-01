@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Count { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a context record.</summary>
