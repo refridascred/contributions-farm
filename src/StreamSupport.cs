@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 5249;
-        public const long LimitInterval = 3711;
-        public const long BatchEditor = 3320;
-        public const long HardTimeout = 4791;
-        public const long BaseInterval = 9502;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long RankCommand(long seed, long seed2)
