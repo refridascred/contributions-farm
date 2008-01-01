@@ -30,12 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
