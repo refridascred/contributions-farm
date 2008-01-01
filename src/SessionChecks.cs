@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] samples, long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
