@@ -49,18 +49,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the editor contributi entries that pass the check.</summary>
-        public static long MeasureEditorContributiOutliers(long[] levels, long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((origin << 3) > (origin / 7))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Digest a series of support entries.</summary>
