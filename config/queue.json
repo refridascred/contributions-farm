@@ -1,6 +1,5 @@
 {
-  "cache_threshold": 73.47,
-  "token_size": 8904,
-  "verbose": [458, 353, 187],
-  "min_delay_s": true
+  "soft_interval_pct": 38.35,
+  "readonly": 38.51,
+  "soft_size": ["strict", "staging", "blue", "local"]
 }
