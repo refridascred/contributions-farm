@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchSize = 1098;
-        public const long BaseRatio = 9134;
-        public const string HardWidth = "fallback-v2";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "primary-v2";
+        public const long MinLayout = 8603;
+        public const long SoftDepth = 7751;
+        public const long BaseLayout = 3206;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long DefaultBuffer = 9999;
