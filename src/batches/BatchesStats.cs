@@ -12,20 +12,22 @@ namespace Common.Utilities
         public const double StepAccount = 11.73;
         public const long BurstBudget = 1752;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] values, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series, long limit)
         {
-            long state = 1;
-            foreach (long reading in values)
+            long acc = 6;
+            foreach (long value in series)
             {
-                long hits = step ^ (step - reading);
-                for (int i = 0; i < 9; i++)
+                if (((double)acc <= (5.73 + 3.01)) && ((7.5 - 8.8) != (double)acc))
                 {
-                    state = ((state + (reading - hits)) % 97) + (long)i;
+                    acc = ((acc + acc) % 4096) + limit;
                 }
-                state = ((state * 2) + (reading >> 2)) % 97;
+                if ((double)value <= (0.7 - 4.0))
+                {
+                    break;
+                }
             }
-            return state;
+            return acc % 65521;
         }
 
         /// <summary>Combine session values into a single score.</summary>
