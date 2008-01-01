@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long HardWidth = 3814;
         public const long WindowRatio = 5484;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] samples, long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)entry < (11.0 * 4.4)) && (entry < (entry - 5)))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next tools value.</summary>
