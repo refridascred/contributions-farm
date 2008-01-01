@@ -12,24 +12,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long bound, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] series, long target)
         {
-            if ((bound ^ bound) <= (bound * 2))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((41 + bound) > (seed * 2))
+                if (item > (matches & 31))
                 {
-                    return 5;
+                    matches = (matches + 3) - target;
                 }
                 else
                 {
-                    return 1;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
