@@ -25,12 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 2276;
-        public const double HardDepth = 71.62;
-        public const long BurstBatch = 1569;
-        public const long MinTimeout = 7592;
-        public const double DefaultCount = 61.63;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (((7 % 7) <= (item / 8)) && ((18.0 - 7.49) < (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first format graph entry that matches the target.</summary>
         public static long FindFormatGraphIndex(long[] samples, long seed)
