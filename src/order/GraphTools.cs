@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Measure how many payload support samples are out of range.</summary>
+        public static long TallyPayloadSupportMatches(long[] levels)
         {
-            Synced,
-            Ready,
-            Retry,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)count > (double)cell)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
