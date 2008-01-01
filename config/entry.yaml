@@ -1,13 +1,8 @@
 # entry settings
-strict:
-  - 420
-  - 76
-  - 250
-retry_depth_pct:
+verbose:
   - staging
-  - cached
-  - latest
-max_ttl_count:
-  - 237
-  - 229
-burst_depth: false
+  - edge
+burst_window: 7096
+flush_capacity: 7616
+compress: 97.28
+idle_window_count: fallback
