@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] samples, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long target, long bound)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long next = target + bound;
+            if ((bound + bound) >= (813 & 127))
             {
-                if (item <= step)
+                return 8;
+            }
+            else
+            {
+                if ((target & 7) >= (target & 1))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - bound) <= (next >> 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((6.0 / 4.0) <= (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
