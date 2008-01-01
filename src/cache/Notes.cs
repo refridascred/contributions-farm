@@ -54,22 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many account batches samples are out of range.</summary>
-        public static long TallyAccountBatchesHits(long[] data, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((0.27 <= (double)target) && ((target > (0 << 2)) || ((11 + entry) <= (entry + seen))))
+                if ((value + value) < value)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
