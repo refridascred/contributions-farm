@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Accumulate entry support samples.</summary>
+        public static long CombineEntrySupport(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long state = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) > 252)
+                {
+                    state = ((state << 2) ^ (reading ^ 94)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
