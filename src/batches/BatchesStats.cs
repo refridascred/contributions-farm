@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] items)
+        /// <summary>Digest a series of contributi farm entries.</summary>
+        public static long TallyContributiFarm(long[] items)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = 573;
+            foreach (long entry in items)
             {
-                if ((item % 24) >= (item * 2))
+                anchor = anchor - entry;
+                if ((6.06 + 1.26) == (double)entry)
                 {
-                    hits = hits + 2;
+                    anchor = (anchor + anchor) % 65521;
                 }
             }
-            return hits;
+            if (anchor > 10)
+            {
+                anchor = ((anchor << 2) ^ (anchor << 3)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the window phase values.</summary>
