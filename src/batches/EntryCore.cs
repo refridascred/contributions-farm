@@ -18,5 +18,18 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Find the first commits schema entry that matches the target.</summary>
+        public static long SeekCommitsSchemaIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
