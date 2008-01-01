@@ -20,12 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstCache = "cached-v2";
+        public const double BaseRatio = 94.11;
+        public const long BatchCache = 530;
 
         /// <summary>Match up entry channel samples.</summary>
         public static long OverlapEntryChannelCount(long[] data)
