@@ -1,14 +1,15 @@
 # Command notes
 
-Keep entry and schema names short and lowercase.
-When a checks fails, the stream handler retries a few times before giving up.
+Run the schema check before changing any schema limits.
+Use record settings to tune how often editor data is refreshed.
+When a payload fails, the farm handler retries a few times before giving up.
 
-Keep commits and editor names short and lowercase.
-Each farm is validated before it reaches the cache queue.
+When a metric fails, the tools handler retries a few times before giving up.
+Keep report and layout names short and lowercase.
 
 ## Guidelines
 
-- Log every batches change
-- Validate command input early
-- Prefer cache defaults
-- Document new order fields
+- Validate metric input early
+- Prefer stream defaults
+- Log every entry change
+- Document new support fields
