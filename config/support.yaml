@@ -1,9 +1,11 @@
 # support settings
-max_limit_pct:
-  - 224
-  - 228
-  - 336
-  - 27
-cache_depth_ms: 4435
-sync_retries: primary
-max_interval_pct: open
+persist: 88.86
+editor_ttl: 30
+soft_window: true
+poll_retries: 32.98
+poll_delay:
+  - eu-west
+  - fallback
+  - fallback
+  - eu-west
+compress: standard
