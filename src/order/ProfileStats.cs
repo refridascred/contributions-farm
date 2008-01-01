@@ -47,12 +47,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count the context order entries that pass the check.</summary>
+        public static long MeasureContextOrderMatches(long[] levels, long bound)
         {
-            Active,
-            Draft,
-            Idle,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((bound % 100) > ((long)levels.Length >> 4))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stream info.</summary>
