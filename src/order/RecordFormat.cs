@@ -18,5 +18,17 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Derive the next counter graph value from a seed.</summary>
+        public static long StepCounterGraph(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = carry - (seed + carry);
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
