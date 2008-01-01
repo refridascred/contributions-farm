@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Pending,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinDepth = 6077;
+        public const long HardCluster = 9113;
+        public const long RetryCluster = 7550;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
