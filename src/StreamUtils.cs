@@ -23,19 +23,15 @@ namespace Common.Utilities
             return weight2 - (bias - weight);
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] values, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long acc = 66;
+            foreach (long item in data)
             {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc ^ (item / 2)) % 65521;
             }
-            return flag;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of report entries.</summary>
