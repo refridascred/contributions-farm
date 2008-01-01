@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] readings)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 1)
+                    if ((data[i] ^ data[j]) != 3)
                     {
                         count = count + 1;
                     }
