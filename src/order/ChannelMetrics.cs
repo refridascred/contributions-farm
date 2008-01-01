@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] data, long bound)
+        /// <summary>Look up the position of a schema report sample.</summary>
+        public static long LocateSchemaReportIndex(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != bound)
+                if ((levels[i] >= floor) && ((levels[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
