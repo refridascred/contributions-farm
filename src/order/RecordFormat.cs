@@ -37,5 +37,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
             public long Total { get; set; }
         }
+
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public double Token { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
