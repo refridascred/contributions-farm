@@ -11,25 +11,21 @@ namespace Common.Utilities
         public const double BatchFactor = 48.32;
         public const string SoftSchema = "cached-v2";
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long offset, long floor)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            long diff = offset - floor;
-            if (!((92 - offset) > diff))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((9.91 + 8.4) < (double)offset) || (offset >= (offset + diff)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the command kind values.</summary>
