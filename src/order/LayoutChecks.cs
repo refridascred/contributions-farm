@@ -38,17 +38,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of payload account readings.</summary>
-        public static long ScorePayloadAccount(long[] series, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] data)
         {
-            long total = 4;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total + (total & 7)) % 97) + entry;
-                total = total - (seed & 31);
-                total = total ^ (total % 24);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
