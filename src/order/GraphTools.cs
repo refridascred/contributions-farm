@@ -44,15 +44,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double scale, double span)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] values, long origin)
         {
-            double drift = (double)(96 - 61);
-            for (int i = 0; i < 6; i++)
+            long mix = 27;
+            foreach (long datum in values)
             {
-                drift = ((drift + drift) + (double)(long)i) + span;
+                if ((double)datum == (5.0 + 8.0))
+                {
+                    mix = (((mix << 3) ^ (datum - datum)) % 4096) + origin;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ datum;
+                }
             }
-            return drift - (scale - drift);
+            if (mix > 4)
+            {
+                mix = ((mix * 5) + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
