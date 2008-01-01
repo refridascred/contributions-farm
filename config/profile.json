@@ -1,12 +1,7 @@
 {
-  "cache_interval_count": 61.83,
-  "base_window": 5.42,
-  "buffer_size": true,
-  "burst_interval": [79, 390],
-  "verbose": {
-    "verbose": "cached",
-    "strict": false,
-    "persist": "strict"
-  },
-  "retry_capacity": 2980
+  "soft_limit_s": 96.41,
+  "record_depth": 6755,
+  "hard_retries_s": "blue",
+  "strict": true,
+  "base_delay_count": "stable"
 }
