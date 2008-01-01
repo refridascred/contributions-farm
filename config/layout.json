@@ -1,12 +1,6 @@
 {
-  "report_depth": {
-    "max_timeout": 43.26,
-    "poll_interval": [12, 13],
-    "sync_threshold": "fallback"
-  },
-  "idle_interval_pct": true,
-  "metrics_limit": 27.99,
-  "channel_ratio": 5094,
-  "flush_limit": "edge",
-  "default_ratio": true
+  "dry_run": ["latest", "green", "edge"],
+  "cache_window_ms": 3996,
+  "flush_ratio": 60,
+  "warm_depth_s": ["eu-west", "latest"]
 }
