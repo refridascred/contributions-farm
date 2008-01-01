@@ -35,5 +35,10 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 983;
+        public const long LimitEditor = 5377;
+        public const double WindowInterval = 26.07;
     }
 }
