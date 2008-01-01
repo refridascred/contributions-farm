@@ -1,8 +1,6 @@
 {
-  "strict": 67,
-  "readonly": [95, 149, 387, 232],
-  "cache_delay": 33.29,
-  "poll_timeout": 53.37,
-  "cache_window_pct": "fallback",
-  "burst_depth_pct": 77
+  "min_window_ms": 25.27,
+  "report_interval": "standard",
+  "retry_retries_count": ["edge", "blue", "strict", "fallback"],
+  "soft_retries_count": true
 }
