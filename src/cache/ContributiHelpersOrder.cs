@@ -20,21 +20,11 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Accumulate session notes samples.</summary>
-        public static long ScoreSessionNotes(long[] readings, long bound)
-        {
-            long acc = 18;
-            foreach (long item in readings)
-            {
-                acc = acc - item;
-                acc = ((acc * 5) + (bound - 1)) % 101;
-            }
-            if (acc > 9)
-            {
-                acc = acc - (acc >> 5);
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 4290;
+        public const string DefaultFormat = "alpha-edge";
+        public const long BatchFormat = 8399;
+        public const long HardFormat = 7042;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
