@@ -11,31 +11,12 @@ namespace Common.Utilities
         public const long BaseWidth = 8769;
         public const double IdleGithubfarm = 52.4;
 
-        /// <summary>Roll a context cache counter forward.</summary>
-        public static long IterateContextCache(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)(long)i <= (7.0 / 2.0))
-                {
-                    state = (state ^ (step % 3)) % 65521;
-                    state = (state << 2) ^ (step ^ state);
-                    continue;
-                }
-                else
-                {
-                    state = (state ^ (step >> 5)) % 97;
-                    state = ((state * 2) + (step >> 5)) % 97;
-                }
-                if (!((3.5 * 5.9) < (double)state))
-                {
-                    state = (state * 2) + (step ^ step);
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseInterval = 8378;
+        public const double SoftRatio = 25.78;
+        public const double LimitDepth = 49.89;
+        public const long BurstCount = 2399;
+        public const string WindowDepth = "latest-edge";
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandOutliers(long[] items)
