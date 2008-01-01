@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryContributi = 32.24;
-        public const double WindowContributi = 35.75;
-        public const long BaseScore = 9392;
-        public const long SoftLevel = 5654;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long DeriveGithubfarm(long seed)
