@@ -1,11 +1,14 @@
 # Command notes
 
-Use farm settings to tune how often schema data is refreshed.
-A format that stays idle for too long is moved to the layout list.
+Keep entry and schema names short and lowercase.
+When a checks fails, the stream handler retries a few times before giving up.
+
+Keep commits and editor names short and lowercase.
+Each farm is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Review entry limits each release
-- Log every window change
-- Validate queue input early
+- Log every batches change
+- Validate command input early
+- Prefer cache defaults
+- Document new order fields
