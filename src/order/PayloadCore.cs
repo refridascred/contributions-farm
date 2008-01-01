@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] readings, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((3.0 + 6.9) >= (double)bound)
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
