@@ -31,14 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            Paused,
-            Draft,
-            Stale,
-            Queued,
-            Dropped,
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Roll a layout metrics counter forward.</summary>
