@@ -39,11 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] samples, long offset)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)offset > (2.4 + 4.3))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
