@@ -31,5 +31,11 @@ namespace Common.Utilities
             }
             return sum;
         }
+
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 5191;
+        public const long HardTimeout = 7289;
+        public const double IdleDepth = 3.49;
+        public const long SoftToken = 5809;
     }
 }
