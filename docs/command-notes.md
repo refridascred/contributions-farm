@@ -1,12 +1,11 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Use tools settings to tune how often githubfarm data is refreshed.
-Keep session and support names short and lowercase.
+A metrics that stays idle for too long is moved to the batch list.
+When a route fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep commits values small
-- Log every farm change
+- Log every contributi change
+- Validate tools input early
+- Prefer cluster defaults
 - Document new batches fields
-- Validate command input early
