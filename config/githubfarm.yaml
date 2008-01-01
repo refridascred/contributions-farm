@@ -1,7 +1,16 @@
 # githubfarm settings
-readonly: stable
-githubfarm_ttl: fallback
-base_limit: true
-batch_ttl_pct: 4298
-poll_retries_s: 100
-flush_ratio: 50
+buffer_interval: blue
+idle_threshold_pct:
+  min_ttl_ms: true
+  retry_size_pct: true
+  flush_size_s:
+    warm_size_pct: false
+    poll_threshold_ms:
+      - fallback
+      - open
+      - standard
+      - local
+    verbose: 73.08
+    cache_window_s: 26.29
+  poll_ratio_s: false
+burst_window: 62.89
