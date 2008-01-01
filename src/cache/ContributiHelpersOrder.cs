@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Draft,
-            Retry,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 3488;
+        public const long SoftSize = 8386;
+        public const long BurstSpan = 8594;
+        public const long HardCounter = 269;
+        public const string BatchScore = "standard";
 
         /// <summary>Combine command values into a single score.</summary>
         public static long ScoreCommand(long[] data)
