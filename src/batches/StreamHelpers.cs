@@ -68,5 +68,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
             public long Size { get; set; }
         }
+
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen & 15) >= (cell - cell))
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
+        }
     }
 }
