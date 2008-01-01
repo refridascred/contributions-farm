@@ -63,15 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue already counter forward.</summary>
-        public static long RollQueueAlready(long step)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
