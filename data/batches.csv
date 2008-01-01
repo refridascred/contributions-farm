@@ -1,6 +1,7 @@
-id,label,rank
-1,72,standard
-2,950,latest
-3,989,59.53
-4,545,344
-5,795,edge
+id,level,weight,token,owner
+1,primary,stable,466,local
+2,468,232,269,41.59
+3,fallback,61,fallback,standard
+4,58.88,edge,184,121
+5,61.09,154,edge,41.69
+6,550,10,670,769
