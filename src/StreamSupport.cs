@@ -29,9 +29,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 4209;
-        public const long StepTimeout = 3820;
-        public const double DefaultChecks = 1.01;
+        /// <summary>Match up checks channel samples.</summary>
+        public static long MatchChecksChannelCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
