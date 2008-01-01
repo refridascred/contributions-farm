@@ -79,19 +79,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] values, long target)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
