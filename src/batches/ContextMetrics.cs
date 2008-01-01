@@ -32,5 +32,10 @@ namespace Common.Utilities
             }
             return mix;
         }
+
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinTools = "fallback-v2";
+        public const long DefaultCount = 4167;
+        public const string DefaultTimeout = "stable-1";
     }
 }
