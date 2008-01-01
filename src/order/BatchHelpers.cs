@@ -25,19 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] series, long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
