@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] values, long offset)
+        /// <summary>Project the next metric graph value.</summary>
+        public static double BlendMetricGraph(double weight, double bias)
         {
-            long mix = 479;
-            foreach (long value in values)
-            {
-                mix = (mix - mix) - offset;
-                if ((double)value < (9.4 * 8.0))
-                {
-                    break;
-                }
-            }
-            return mix;
+            double weight2 = (weight + weight) - weight;
+            return weight2 - (bias - weight);
         }
 
         /// <summary>Validate route batch readings against a bound.</summary>
