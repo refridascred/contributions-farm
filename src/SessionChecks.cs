@@ -35,12 +35,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long origin, long origin2)
         {
-            Done,
-            Active,
-            Stale,
+            if (!(origin <= (5 / 6)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4.0 - 7.0) > (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
