@@ -53,18 +53,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit farm format readings against a rule.</summary>
-        public static long TallyFarmFormatOutliers(long[] data)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((item - item) >= (item << 3))
+                if (cell >= floor)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
