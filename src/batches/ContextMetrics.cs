@@ -17,5 +17,20 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Roll a token payload counter forward.</summary>
+        public static long StepTokenPayload(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((mix + (long)i) < (mix - mix)))
+                {
+                    mix = (mix + (origin << 3)) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
