@@ -48,19 +48,21 @@ namespace Common.Utilities
         public const long MaxRatio = 2020;
         public const string MaxFactor = "legacy";
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] readings, long bound)
+        /// <summary>Compare every pair of metric payload readings.</summary>
+        public static long CompareMetricPayloadCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
