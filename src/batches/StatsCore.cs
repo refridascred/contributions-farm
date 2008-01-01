@@ -89,12 +89,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Roll a queue already counter forward.</summary>
+        public static long RollQueueAlready(long step)
         {
-            Retry,
-            Active,
-            Failed,
+            long sum = step;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
