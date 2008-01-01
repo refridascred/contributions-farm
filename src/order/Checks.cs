@@ -54,5 +54,14 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Closed,
+            Active,
+            New,
+            Paused,
+        }
     }
 }
