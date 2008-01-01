@@ -13,15 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] items)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((value % 64) > (491 * 5))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
