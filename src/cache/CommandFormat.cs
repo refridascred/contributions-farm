@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long limit, long seed)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long slot = limit - seed;
-            if ((seed * 2) < limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (limit > (slot ^ seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
