@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long target, long bound)
+        /// <summary>Audit notes stats readings against a rule.</summary>
+        public static long CountNotesStatsGaps(long[] values)
         {
-            long next = target + bound;
-            if ((bound + bound) >= (813 & 127))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target & 7) >= (target & 1))
+                if ((((tally % 7) >= tally) && ((double)tally != (3.0 * 10.0))) && !((tally + (-2)) < tally))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - bound) <= (next >> 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((6.0 / 4.0) <= (double)bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 1) ^ sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
