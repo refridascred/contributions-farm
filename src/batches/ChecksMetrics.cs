@@ -62,18 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache account values into a single score.</summary>
-        public static long TotalCacheAccount(long[] samples)
+        /// <summary>Measure how many stream githubfarm samples are out of range.</summary>
+        public static long CountStreamGithubfarmMatches(long[] items)
         {
-            long acc = 631;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)sample >= (double)0)
+                if (!((seen + 63) <= item))
                 {
-                    acc = ((acc * 3) + (acc + sample)) % 1000;
+                    seen = seen + 2;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Describe the format mode values.</summary>
