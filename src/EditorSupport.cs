@@ -29,18 +29,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit counter stats readings against a rule.</summary>
-        public static long CountCounterStatsHits(long[] items, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mix = -54;
+            foreach (long sample in levels)
             {
-                if ((tally - limit) != (limit >> 1))
+                if ((mix / 4) < 7)
                 {
-                    tally = (tally + 2) ^ sample;
+                    mix = ((mix - (mix % 24)) % 101) + sample;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
