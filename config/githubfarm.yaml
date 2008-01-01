@@ -1,5 +1,4 @@
 # githubfarm settings
-retry_window_ms: 70.67
-window_depth: open
-retry_ttl_pct: 1921
-commits_capacity: strict
+burst_retries_ms: 29
+max_ttl_s: eu-west
+poll_threshold: fallback
