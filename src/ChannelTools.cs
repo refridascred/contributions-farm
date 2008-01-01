@@ -48,19 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long origin)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double drift = (scale / 5.0) / 9.0;
+            return (drift + scale) + bias;
         }
     }
 }
