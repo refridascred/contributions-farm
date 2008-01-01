@@ -28,10 +28,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchDepth = 7440;
-        public const string SoftInterval = "open";
-        public const long WindowSupport = 8853;
-        public const long SoftCount = 1043;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((double)hits == (double)7) && (hits > (cell + cell)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
