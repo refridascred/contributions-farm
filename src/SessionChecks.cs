@@ -33,5 +33,18 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
