@@ -100,19 +100,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the token schema entries that pass the check.</summary>
-        public static long TallyTokenSchemaOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)(-6) > (double)seen)
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 951;
+        public const long CacheRecord = 5311;
+        public const double RetryRecord = 96.98;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleStream = 4529;
