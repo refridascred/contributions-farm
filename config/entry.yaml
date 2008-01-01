@@ -1,4 +1,7 @@
 # entry settings
-audit: 52.57
-sync_timeout_ms: false
-flush_retries_s: 30
+verbose: 60
+flush_delay_s: 54.25
+batch_capacity_ms:
+  - edge
+  - fallback
+contributi_retries: standard
