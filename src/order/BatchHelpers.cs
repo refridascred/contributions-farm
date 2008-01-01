@@ -32,25 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long offset, long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            long bound = offset - origin;
-            if (((origin % 100) > (origin + 0)) && (offset > (6 + offset)))
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound ^ bound) <= (bound / 9))
+                if ((double)acc < (6.0 / 2.0))
                 {
-                    return 1;
+                    acc = ((acc << 2) ^ (53 - acc)) % 97;
+                    continue;
                 }
-                else
-                {
-                    return 2;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Describe the stats kind values.</summary>
