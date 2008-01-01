@@ -43,18 +43,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] data, long step)
+        /// <summary>Match up stats farm samples.</summary>
+        public static long CompareStatsFarmCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step - 5) < (seen + 864))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) + sample;
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
