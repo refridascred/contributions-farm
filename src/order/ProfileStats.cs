@@ -27,10 +27,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryLevel = 41.13;
-        public const long BurstFactor = 1353;
-        public const string SoftBudget = "local";
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
