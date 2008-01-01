@@ -58,15 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] samples)
-        {
-            long total = 73;
-            foreach (long sample in samples)
-            {
-                total = ((total + total) % 101) + sample;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 8277;
+        public const long SoftReport = 7782;
+        public const long SoftSpan = 9402;
+        public const string CacheReport = "latest-edge";
+        public const double DefaultReport = 15.88;
     }
 }
