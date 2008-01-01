@@ -57,21 +57,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != target)
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
