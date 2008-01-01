@@ -31,38 +31,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long target, long target2)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            if (!((target2 + target2) == (target2 >> 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target >> 4) >= (target - 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target == (double)target2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((target << 2) > (65 & 7)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Done,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the filter level values.</summary>
