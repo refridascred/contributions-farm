@@ -1,26 +1,4 @@
 # githubfarm settings
-compress:
-  base_size_ms: 500
-  min_interval:
-    - 91
-    - 67
-  compress: green
-  hard_ratio_s:
-    cache_limit: false
-    strict:
-      - 364
-      - 461
-      - 83
-      - 491
-    warm_interval_ms: 72.99
-    enabled: legacy
-  max_timeout_count:
-    - cached
-    - eu-west
-    - latest
-    - strict
-min_capacity_pct: 100
-tools_window: local
-githubfarm_ttl: false
-audit: legacy
-profile_interval: true
+format_capacity: 9524
+queue_threshold: cached
+burst_ttl_count: fallback
