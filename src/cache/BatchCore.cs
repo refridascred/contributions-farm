@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 11.47;
+        public const long MinSpan = 831;
+        public const long MinCount = 4994;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
