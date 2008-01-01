@@ -16,13 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Adjust a window graph reading.</summary>
