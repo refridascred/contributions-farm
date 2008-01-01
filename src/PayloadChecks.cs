@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] levels, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 870;
+            foreach (long cell in items)
             {
-                if (levels[i] > bound)
+                if ((4 >= (cell + 23)) || ((16.0 * 6.7) > (double)sum))
                 {
-                    return (long)i;
+                    sum = ((sum + sum) % 4096) + seed;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Find the first tools command entry that matches the target.</summary>
