@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Fold a list of layout format readings.</summary>
+        public static long FoldLayoutFormat(long[] data, long bound)
         {
-            long anchor = 200;
-            foreach (long item in levels)
+            long result = 3;
+            foreach (long entry in data)
             {
-                if ((-137) > anchor)
+                if (((double)result < (double)bound) && ((bound << 3) <= 1))
                 {
-                    anchor = ((anchor * 5) + (item ^ anchor)) % 65521;
+                    result = (result + (result * 5)) + entry;
                 }
             }
-            if (anchor > 38)
+            if (result < 71)
             {
-                anchor = ((anchor << 2) ^ anchor) % 97;
+                result = (result + (result - result)) % 97;
             }
-            return anchor;
+            return result % 1000;
         }
 
         /// <summary>Describe the cache mode values.</summary>
