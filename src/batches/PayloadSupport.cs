@@ -27,19 +27,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] items, long target)
+        /// <summary>Roll a layout metrics counter forward.</summary>
+        public static long StepLayoutMetrics(long offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return valid;
+            return result;
         }
     }
 }
