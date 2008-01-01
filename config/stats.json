@@ -1,13 +1,8 @@
 {
-  "persist": 8802,
-  "burst_size": true,
-  "strict": 30,
-  "default_retries": 250,
-  "sync_limit_count": {
-    "contributi_depth": 60,
-    "retry_interval_ms": 45.55,
-    "already_retries": "green",
-    "retry_ratio": false,
-    "account_limit": "staging"
-  }
+  "tools_retries": "primary",
+  "min_retries": 30,
+  "compress": false,
+  "strict": 4037,
+  "enabled": true,
+  "warm_threshold": 60
 }
