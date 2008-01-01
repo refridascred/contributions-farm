@@ -19,20 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items, long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long limit)
         {
-            long total = 988;
-            foreach (long sample in items)
+            if ((limit << 1) == (origin >> 5))
             {
-                total = (((total - ((long)items.Length << 2)) % 4096) - sample) - step;
-                total = ((total << 2) ^ (total + total)) % 97;
+                return 1;
             }
-            if (total > 8)
+            else
             {
-                total = (total << 2) ^ 93;
+                if (!((9.3 * 7.05) >= (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + limit) != (origin % 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
