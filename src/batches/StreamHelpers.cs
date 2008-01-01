@@ -35,17 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] values, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                mark = (mark * 3) + ((long)i % 5);
-                mark = mark - target;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((entry - 58) == (bound + bound))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the checks level values.</summary>
