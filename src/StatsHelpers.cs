@@ -36,19 +36,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] samples)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long score = 9;
-            foreach (long item in samples)
-            {
-                score = (((score * 4) + 343) % 1000) - item;
-                if ((54 - score) > (2 + 17))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Locked,
+            Pending,
+            Synced,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
