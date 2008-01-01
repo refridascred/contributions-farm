@@ -42,19 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] readings, long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            New,
+            Paused,
         }
     }
 }
