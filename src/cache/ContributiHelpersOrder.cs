@@ -39,15 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] values, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            long mark = 773;
-            foreach (long datum in values)
+            long total = 0;
+            foreach (long item in levels)
             {
-                mark = ((mark - (mark ^ seed)) % 1000) - datum;
+                if (total > (total % 60))
+                {
+                    total = total - (item & 3);
+                    break;
+                }
+                total = (total - (33 ^ 562)) % 1000;
+                total = (total ^ (item + item)) % 255;
             }
-            return mark % 97;
+            if (total < 1)
+            {
+                total = ((total * 2) + (total / 5)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Derive the next account counter value from a seed.</summary>
