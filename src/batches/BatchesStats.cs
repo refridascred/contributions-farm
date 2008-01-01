@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 9201;
-        public const long SoftInterval = 3759;
-        public const double BatchWindow = 12.16;
-        public const long BatchBudget = 8366;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstDepth = "latest-edge";
+        public const long BurstSize = 620;
+        public const long WindowBudget = 9114;
+        public const double StepAccount = 11.73;
+        public const long BurstBudget = 1752;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] values, long step)
