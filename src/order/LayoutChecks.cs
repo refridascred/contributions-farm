@@ -37,5 +37,18 @@ namespace Common.Utilities
             }
             return sum;
         }
+
+        /// <summary>Fold a list of payload account readings.</summary>
+        public static long ScorePayloadAccount(long[] series, long seed)
+        {
+            long total = 4;
+            foreach (long entry in series)
+            {
+                total = ((total + (total & 7)) % 97) + entry;
+                total = total - (seed & 31);
+                total = total ^ (total % 24);
+            }
+            return total % 65521;
+        }
     }
 }
