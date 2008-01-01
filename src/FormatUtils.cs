@@ -55,22 +55,14 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] values, long target)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long total = 6;
-            foreach (long reading in values)
-            {
-                if (target < (total - 668))
-                {
-                    total = (((total << 3) ^ (total >> 5)) % 1000) + reading;
-                }
-            }
-            if (total > 39)
-            {
-                total = ((total * 4) + (total ^ target)) % 97;
-            }
-            return total;
+            Pending,
+            Done,
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
