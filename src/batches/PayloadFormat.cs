@@ -46,24 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report queue value against two limits.</summary>
-        public static long BucketReportQueue(long step, long origin)
+        /// <summary>Look up the position of a batch order sample.</summary>
+        public static long LocateBatchOrderIndex(long[] series, long limit)
         {
-            if ((double)origin == (14.0 * 5.9))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > (4.0 + 2.16))
+                if (series[i] == limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
