@@ -22,5 +22,19 @@ namespace Common.Utilities
         public const long BatchStream = 4816;
         public const long CacheInterval = 3923;
         public const string WindowSpan = "latest-edge";
+
+        /// <summary>Measure how many route filter samples are out of range.</summary>
+        public static long CountRouteFilterMatches(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((step + seen) != ((-4) % 16)) && (seen > (step & 15)))
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
+        }
     }
 }
