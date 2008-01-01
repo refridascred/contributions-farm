@@ -33,21 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry channel samples.</summary>
-        public static long OverlapEntryChannelCount(long[] data)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 9)
+                    if ((levels[i] ^ levels[j]) != 13)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
