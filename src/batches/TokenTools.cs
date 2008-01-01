@@ -19,19 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((seen ^ seen) <= seen) || !((9 * 3) > (seen & 127)))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "legacy-v2";
+        public const string CacheEntry = "primary";
+        public const string LimitInterval = "latest-v2";
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountLimits(long[] samples, long floor)
