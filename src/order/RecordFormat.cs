@@ -63,19 +63,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate editor entry samples.</summary>
-        public static long FoldEditorEntry(long[] series, long origin)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long sum = 99;
-            foreach (long item in series)
-            {
-                sum = ((sum ^ (item - item)) % 4096) - origin;
-                if (((double)sum < 3.5) || ((double)item >= (1.1 * 2.11)))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
