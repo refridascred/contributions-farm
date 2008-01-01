@@ -22,14 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitFactor = 49.91;
+        public const long DefaultCounter = 6406;
+        public const string WindowDepth = "primary-v2";
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
