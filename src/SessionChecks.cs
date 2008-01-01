@@ -21,13 +21,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] items, long step)
         {
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (datum < (datum << 1))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format level values.</summary>
