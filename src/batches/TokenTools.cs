@@ -37,17 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] values, long origin)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Failed,
+            Active,
         }
     }
 }
