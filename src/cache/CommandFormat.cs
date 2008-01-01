@@ -27,10 +27,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstInterval = "primary";
-        public const double SoftGraph = 27.09;
-        public const long LimitScore = 1361;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public double Level { get; set; }
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Fold a list of commits editor readings.</summary>
         public static long TallyCommitsEditor(long[] items, long origin)
