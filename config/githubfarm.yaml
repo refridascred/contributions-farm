@@ -1,13 +1,4 @@
 # githubfarm settings
-account_ttl: 68.85
-poll_delay:
-  - legacy
-  - legacy
-  - strict
-  - eu-west
-sync_size_count: 250
-warm_window:
-  - 21
-  - 319
-  - 481
-  - 421
+context_capacity: legacy
+hard_ratio: 85
+soft_interval_ms: 9925
