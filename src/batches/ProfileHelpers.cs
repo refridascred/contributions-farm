@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 62.59;
-        public const string HardMetric = "open-edge";
-        public const double StepLevel = 67.59;
-        public const long BatchBudget = 3773;
-        public const double DefaultInterval = 98.62;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutLimits(long[] levels, long target)
