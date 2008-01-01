@@ -77,17 +77,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] items, long offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = state + bound;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
