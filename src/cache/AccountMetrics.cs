@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long limit)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((limit ^ acc) != (45 % 60))
+                {
+                    acc = ((acc << 2) ^ limit) % 255;
+                    acc = (acc - (acc >> 2)) % 1000;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (acc ^ acc) ^ (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
