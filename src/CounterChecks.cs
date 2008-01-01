@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long origin, long target)
         {
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            long offset = origin ^ target;
+            if ((2.35 - 9.3) > (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset / 9) != (target % 12))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a token schema sample.</summary>
