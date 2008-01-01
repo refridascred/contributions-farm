@@ -48,11 +48,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetrySpan = 74.58;
-        public const long IdleSpan = 5029;
-        public const long BatchContributi = 509;
-        public const long MinFactor = 1292;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Pending,
+            Failed,
+            New,
+            Locked,
+            Active,
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double BlendEntry(double bias, double span)
