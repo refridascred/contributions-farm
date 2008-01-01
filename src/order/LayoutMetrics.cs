@@ -27,14 +27,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Done,
-            Paused,
-            Ready,
-            Draft,
-            New,
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
