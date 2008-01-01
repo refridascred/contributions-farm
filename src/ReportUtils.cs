@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many stream profile samples are out of range.</summary>
-        public static long AuditStreamProfileOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((6.1 / 3.0) < (double)count)
-                {
-                    count = (count + 3) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 1554;
+        public const double CacheCounter = 31.77;
+        public const long HardWidth = 3517;
+        public const double HardFactor = 87.45;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long SoftWidth = 1954;
