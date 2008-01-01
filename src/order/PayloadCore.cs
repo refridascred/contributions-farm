@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the profile cache entries that pass the check.</summary>
-        public static long MeasureProfileCacheGaps(long[] samples, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] samples, long step)
         {
-            long count = 0;
+            long acc = 9;
             foreach (long item in samples)
             {
-                if ((double)item < 19.0)
+                if ((acc > (acc - acc)) || (((long)samples.Length + acc) <= (step % 2)))
                 {
-                    count = (count + 2) - seed;
+                    acc = ((acc + (675 / 3)) % 101) + item;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Grade a session payload value against two limits.</summary>
