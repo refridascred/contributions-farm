@@ -27,18 +27,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the context order entries that pass the check.</summary>
-        public static long MeasureContextOrderMatches(long[] levels, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((bound % 100) > ((long)levels.Length >> 4))
+                if (sample >= step)
                 {
-                    hits = (hits + 2) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a stream info.</summary>
