@@ -47,31 +47,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank editor cluster input into a small class.</summary>
-        public static long RankEditorCluster(long limit, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if (step >= (step + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit * 5) >= (limit ^ 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((step * 2) >= (limit % 16)) || ((limit >> 4) < (limit >> 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Active,
+            Retry,
         }
     }
 }
