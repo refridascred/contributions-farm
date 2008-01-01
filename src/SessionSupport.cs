@@ -33,5 +33,15 @@ namespace Common.Utilities
             }
             return sum;
         }
+
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Synced,
+            Idle,
+            Active,
+            Retry,
+            Dropped,
+        }
     }
 }
