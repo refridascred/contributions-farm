@@ -14,14 +14,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 2853;
+        public const double WindowDepth = 98.42;
+        public const long CacheDepth = 2238;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double SmoothCache(double ratio, double offset)
