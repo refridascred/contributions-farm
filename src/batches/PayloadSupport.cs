@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double bias, double floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            double weight = (double)(7 & 15);
-            if (weight < (weight - weight))
-            {
-                weight = (weight - weight) - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + weight;
+            Paused,
+            Ready,
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the tools state values.</summary>
