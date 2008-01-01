@@ -17,10 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitSize = 57.55;
-        public const string RetryScore = "strict-1";
-        public const string WindowPayload = "cached-1";
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
