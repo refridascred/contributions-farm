@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string SoftContributi = "staging-1";
         public const string LimitContributi = "staging-1";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "staging-v2";
-        public const double CacheInterval = 8.16;
-        public const long BaseBudget = 4794;
-        public const long MaxRatio = 7160;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!((double)floor == (5.7 * 4.92)))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
