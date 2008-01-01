@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowSize = 400;
-        public const long HardTimeout = 8190;
-        public const long DefaultMetrics = 5855;
-        public const string CacheMetrics = "standard-edge";
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the checks counter entries that pass the check.</summary>
         public static long MeasureChecksCounterOutliers(long[] values, long limit)
