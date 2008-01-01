@@ -59,13 +59,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Rank editor cluster input into a small class.</summary>
+        public static long RankEditorCluster(long limit, long step)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            if (step >= (step + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit * 5) >= (limit ^ 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step * 2) >= (limit % 16)) || ((limit >> 4) < (limit >> 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
