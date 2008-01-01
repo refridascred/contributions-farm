@@ -24,15 +24,39 @@ namespace Common.Utilities
         public const long DefaultRatio = 8507;
         public const double BatchBuffer = 92.89;
 
-        /// <summary>Project the next already order value.</summary>
-        public static double AdjustAlreadyOrder(double rate, double bias)
+        /// <summary>Rank contributi token input into a small class.</summary>
+        public static long BucketContributiToken(long seed, long floor)
         {
-            double drift = bias;
-            for (int i = 0; i < 8; i++)
+            long cur = seed ^ floor;
+            if ((floor + seed) > (floor & 31))
             {
-                drift = ((drift - (4.7 - drift)) - (double)(long)i) - rate;
+                return 0;
             }
-            return drift + 3.56;
+            else
+            {
+                if (cur < seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((cur + floor) >= (floor & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor * 5) > floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate order samples.</summary>
