@@ -48,16 +48,13 @@ namespace Common.Utilities
         public const long StepCount = 6073;
         public const long WindowSpan = 5948;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = sum + bound;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
     }
 }
