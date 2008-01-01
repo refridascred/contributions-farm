@@ -18,21 +18,16 @@ namespace Common.Utilities
             return rate - (rate - offset);
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 4;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ (long)items.Length) % 4096) - item;
+                mark = (mark << 3) ^ (664 * 4);
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
