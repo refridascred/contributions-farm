@@ -25,13 +25,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 209;
+        public const long DefaultSpan = 1620;
+        public const double IdleFactor = 87.21;
+        public const double RetryFormat = 84.61;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstSpan = 929;
