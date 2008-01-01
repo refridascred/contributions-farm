@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] items, long bound)
         {
-            Paused,
-            Synced,
-            Locked,
-            Stale,
-            Draft,
+            long score = 8;
+            foreach (long cell in items)
+            {
+                if ((2.48 + 5.0) < (double)score)
+                {
+                    score = ((score ^ (cell << 3)) % 97) + bound;
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
