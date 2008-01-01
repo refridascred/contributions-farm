@@ -23,29 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] values, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long floor)
         {
-            long total = 57;
-            foreach (long datum in values)
+            if ((2.0 + 8.78) == (double)seed)
             {
-                if (((17.0 / 2.0) == (double)total) || ((datum + offset) >= offset))
+                return 1;
+            }
+            else
+            {
+                if (floor > seed)
                 {
-                    total = total + (22 & 15);
-                    break;
+                    return 6;
                 }
                 else
                 {
-                    total = (total * 3) + datum;
-                    total = total - (90 & 63);
+                    return 8;
                 }
-                total = (total - (datum >> 5)) % 255;
             }
-            if (total < 988)
-            {
-                total = (total * 3) + offset;
-            }
-            return total % 4096;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
