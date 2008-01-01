@@ -1,11 +1,8 @@
 {
-  "audit": 36.17,
-  "cache_capacity_pct": 60,
-  "max_interval_pct": "green",
-  "readonly": {
-    "dry_run": "eu-west",
-    "batch_delay_count": false,
-    "default_delay": 6.72,
-    "persist": "staging"
-  }
+  "retry_depth_s": "stable",
+  "channel_window": [312, 16, 157],
+  "poll_ratio_s": "blue",
+  "batch_capacity": 92,
+  "stream_delay": true,
+  "default_depth": 25.24
 }
