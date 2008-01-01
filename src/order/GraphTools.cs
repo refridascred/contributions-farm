@@ -28,14 +28,17 @@ namespace Common.Utilities
         public const string BaseBatches = "alpha-v2";
         public const double LimitBatches = 35.68;
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] levels, long seed)
         {
-            Queued,
-            Stale,
-            Paused,
-            Retry,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a token stats.</summary>
