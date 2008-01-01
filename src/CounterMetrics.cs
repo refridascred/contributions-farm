@@ -14,19 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] levels, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
