@@ -83,13 +83,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Active,
-            Draft,
-            Synced,
-            Dropped,
+            Paused,
+            Locked,
+            Idle,
+            New,
+            Failed,
         }
     }
 }
