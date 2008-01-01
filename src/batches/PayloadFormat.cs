@@ -40,24 +40,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long target, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] items, long seed)
         {
-            if (bound > (3 << 3))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((13.0 / 3.0) <= (double)target)
+                if (3.0 > (double)seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 1) - reading;
                 }
             }
+            return matches;
         }
     }
 }
