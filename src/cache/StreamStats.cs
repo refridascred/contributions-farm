@@ -38,25 +38,19 @@ namespace Common.Utilities
         public const long BurstSize = 5955;
         public const double RetryDepth = 51.59;
 
-        /// <summary>Classify a route metric pair into a bucket.</summary>
-        public static long ClassifyRouteMetric(long step, long floor)
+        /// <summary>Validate counter stream readings against a bound.</summary>
+        public static bool ValidateCounterStreamLimits(long[] readings, long floor)
         {
-            long gap = step - floor;
-            if ((9 & 15) == (gap ^ floor))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)gap <= (5.3 * 14.0))
+                if (datum < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit farm format readings against a rule.</summary>
