@@ -1,12 +1,8 @@
 {
-  "compress": 250,
-  "max_window": {
-    "graph_delay": 17,
-    "dry_run": "legacy",
-    "cache_threshold_ms": "latest",
-    "stream_interval": true
-  },
-  "contributi_threshold": "strict",
-  "burst_interval_s": [264, 233, 53, 154],
-  "command_size": true
+  "soft_ratio_ms": 250,
+  "window_ratio": false,
+  "retry_size_count": 55.01,
+  "default_timeout_count": 63,
+  "hard_size_s": "green",
+  "order_limit": ["open", "eu-west"]
 }
