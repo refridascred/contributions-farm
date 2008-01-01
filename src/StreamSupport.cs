@@ -30,18 +30,11 @@ namespace Common.Utilities
             return bias2 + span;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] readings, long floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double rate, double offset)
         {
-            long carry = 207;
-            foreach (long sample in readings)
-            {
-                if (((double)sample <= (5.0 / 6.0)) && (carry >= (floor & 1)))
-                {
-                    carry = carry - (floor % 16);
-                }
-            }
-            return carry;
+            double ratio = (double)(5 / 3);
+            return ((ratio - ratio) + rate) + offset;
         }
     }
 }
