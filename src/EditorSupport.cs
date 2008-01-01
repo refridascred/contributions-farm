@@ -29,18 +29,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] series, long target)
         {
-            long mix = -54;
-            foreach (long sample in levels)
+            long anchor = 6;
+            foreach (long cell in series)
             {
-                if ((mix / 4) < 7)
+                if (52 > target)
                 {
-                    mix = ((mix - (mix % 24)) % 101) + sample;
+                    anchor = (anchor - (anchor - 6)) ^ cell;
+                    anchor = ((anchor * 2) + (target - target)) % 1000;
                 }
+                anchor = ((anchor * 4) + (anchor & 63)) % 97;
             }
-            return mix;
+            return anchor % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
