@@ -30,5 +30,23 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] samples, long seed)
+        {
+            long score = -72;
+            foreach (long value in samples)
+            {
+                if ((score % 10) == (score >> 3))
+                {
+                    score = ((score * 5) + score) + seed;
+                }
+                if (value >= (4 - score))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
+        }
     }
 }
