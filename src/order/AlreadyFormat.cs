@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Retry,
-            Failed,
-            Paused,
             Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
