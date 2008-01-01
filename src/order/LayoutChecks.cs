@@ -38,31 +38,22 @@ namespace Common.Utilities
             return scale + (double)6;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long step, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] data, long floor)
         {
-            if ((floor >> 5) == (137 >> 3))
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step == (3.16 - 1.8))
+                if (10 <= (floor + item))
                 {
-                    return 5;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if (!((floor * 5) < (step << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate already samples.</summary>
