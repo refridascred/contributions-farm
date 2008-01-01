@@ -74,31 +74,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long limit, long limit2)
-        {
-            if ((limit2 <= (limit2 - limit)) && (73 <= limit2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(limit2 < (7 & 63)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit2 > (limit2 - limit2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheRatio = 832;
+        public const long BatchMetrics = 1779;
+        public const long IdleWidth = 3701;
     }
 }
