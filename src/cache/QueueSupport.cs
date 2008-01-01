@@ -26,12 +26,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] series, long offset)
         {
-            Done,
-            Pending,
-            Failed,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count & 127) == (172 - 956))
+                {
+                    count = ((count + 3) + item) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
