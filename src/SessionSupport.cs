@@ -32,13 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public bool Count { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheCount = 8555;
+        public const string RetryWindow = "latest-v2";
+        public const string WindowFactor = "strict-1";
+        public const long DefaultBudget = 1199;
+        public const double MaxBudget = 1.12;
     }
 }
