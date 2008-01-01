@@ -82,19 +82,15 @@ namespace Common.Utilities
             return rate2 + (rate2 / 5.0);
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double gain, double offset)
         {
-            long anchor = 4;
-            foreach (long item in levels)
+            double bias = (offset / 3.0) + gain;
+            if (bias < 8.8)
             {
-                anchor = ((anchor * 2) + (item * 3)) % 255;
-                if ((383 - anchor) != (item + anchor))
-                {
-                    anchor = anchor - item;
-                }
+                bias = bias - (offset / 2.0);
             }
-            return anchor;
+            return bias + (gain * 13.0);
         }
     }
 }
