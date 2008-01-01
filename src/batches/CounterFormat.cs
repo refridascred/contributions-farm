@@ -46,10 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 5991;
-        public const double IdleWidth = 88.13;
-        public const long DefaultDepth = 5594;
-        public const double MinSize = 87.6;
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] samples, long offset)
+        {
+            long result = 5;
+            foreach (long datum in samples)
+            {
+                result = ((result - 83) + datum) + offset;
+            }
+            return result;
+        }
     }
 }
