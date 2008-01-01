@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const double IdleDepth = 3.6;
         public const string CacheScore = "staging-edge";
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Measure how many notes session samples are out of range.</summary>
+        public static long MeasureNotesSessionMatches(long[] values, long floor)
         {
-            long acc = 9;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((reading >> 4) == (acc + reading))
+                if ((floor - floor) < (floor >> 3))
                 {
-                    acc = ((acc * 4) + (acc >> 3)) % 65521;
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (acc < 217)
-            {
-                acc = (acc - (acc % 60)) % 65521;
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
