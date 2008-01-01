@@ -33,5 +33,13 @@ namespace Common.Utilities
             }
             return weight + weight;
         }
+
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Synced,
+            New,
+            Failed,
+        }
     }
 }
