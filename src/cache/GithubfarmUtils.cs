@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long offset)
         {
-            Draft,
-            Dropped,
-            Ready,
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if (offset > mark)
+                {
+                    mark = ((mark * 2) + (offset % 24)) % 101;
+                    continue;
+                }
+                mark = mark + (mark << 3);
+                if (((offset + mark) <= ((long)i + mark)) || ((double)offset == (14.0 / 7.0)))
+                {
+                    mark = mark ^ (27 - offset);
+                    mark = mark - mark;
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
