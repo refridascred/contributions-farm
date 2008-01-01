@@ -28,18 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
-        public static long TallyCacheGithubfarmMatches(long[] items, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count << 1) < count)
+                if ((values[i] == floor) && ((values[i] % 2) != 0))
                 {
-                    count = ((count + 3) - reading) + floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer command entries.</summary>
