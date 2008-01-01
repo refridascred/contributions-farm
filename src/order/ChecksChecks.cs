@@ -26,31 +26,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long bound, long limit)
-        {
-            if ((5 % 97) < (limit + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit + (-888)) >= (774 + limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound <= limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinCount = 11.03;
+        public const long BaseAlready = 6920;
+        public const long IdleAlready = 6834;
+        public const long SoftAlready = 3005;
     }
 }
