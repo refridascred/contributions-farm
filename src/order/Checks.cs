@@ -26,12 +26,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long origin, long origin2)
         {
-            Queued,
-            Synced,
-            New,
+            if (!((origin2 / 2) != (origin & 15)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ 2) != (origin - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin2 / 7) >= (origin / 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
