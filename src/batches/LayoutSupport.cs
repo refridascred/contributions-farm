@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the graph queue entries that pass the check.</summary>
-        public static long MeasureGraphQueueOutliers(long[] readings, long bound)
+        /// <summary>Audit token metric readings against a rule.</summary>
+        public static long CountTokenMetricGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((item * 3) != (item >> 5))
+                if ((matches + matches) >= (matches / 9))
                 {
-                    seen = (seen + 3) - bound;
+                    matches = (matches + 1) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a context record.</summary>
