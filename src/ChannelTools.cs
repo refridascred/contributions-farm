@@ -48,11 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double scale, double bias)
+        /// <summary>Iterate the session cache series from a seed.</summary>
+        public static long SeriesSessionCache(long step)
         {
-            double drift = (scale / 5.0) / 9.0;
-            return (drift + scale) + bias;
+            long total = step;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total * 3) + (step / 9);
+                total = (total + (step & 31)) % 65521;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
