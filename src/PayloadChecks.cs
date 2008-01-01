@@ -23,13 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up entry channel samples.</summary>
