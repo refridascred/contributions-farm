@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] values)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell / 3) >= (cell << 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
