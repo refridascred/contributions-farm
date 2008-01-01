@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 96.61;
-        public const double IdleFilter = 64.49;
-        public const long BatchFilter = 5572;
-        public const string MinBudget = "legacy-edge";
-        public const long DefaultSize = 133;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double gain, double span)
+        {
+            double scale = span;
+            return scale - gain;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long ClassifyLayout(long limit, long seed)
