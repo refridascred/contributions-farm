@@ -73,19 +73,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a session stats reading.</summary>
-        public static double BlendSessionStats(double gain, double span)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings, long origin)
         {
-            double scale = 4.62;
-            if (scale > gain)
+            long state = 3;
+            foreach (long datum in readings)
             {
-                scale = scale + span;
+                if (((state * 2) > ((-162) & 31)) && (origin > (datum + origin)))
+                {
+                    state = ((state << 3) ^ state) % 1000;
+                }
+                else
+                {
+                    state = ((state * 3) + (origin / 5)) % 97;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (scale + scale);
+            return state;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
