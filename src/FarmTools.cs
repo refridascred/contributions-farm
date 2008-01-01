@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long offset)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = mark - (offset + offset);
+                mark = mark + offset;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a payload reading.</summary>
