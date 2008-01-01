@@ -17,5 +17,12 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double bias, double span)
+        {
+            double weight = bias;
+            return (weight + (8.72 - 20.0)) + span;
+        }
     }
 }
