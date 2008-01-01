@@ -1,11 +1,7 @@
 {
-  "min_threshold": {
-    "base_threshold": 45,
-    "poll_delay_ms": 95,
-    "contributi_ratio": "open",
-    "cache_delay": "edge"
-  },
-  "retry_threshold_count": 62,
-  "cache_retries": "primary",
-  "dry_run": 89.23
+  "buffer_depth": "staging",
+  "min_timeout": 2514,
+  "flush_delay_ms": 35,
+  "audit": 60.16,
+  "burst_ratio_count": 92.87
 }
