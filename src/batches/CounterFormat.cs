@@ -39,15 +39,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] items)
         {
-            long total = 42;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                total = (total - (cell + cell)) % 1000;
+                if ((7.3 + 3.6) > (double)reading)
+                {
+                    hits = hits + 2;
+                }
             }
-            return total % 4096;
+            return hits;
         }
     }
 }
