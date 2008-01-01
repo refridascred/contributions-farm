@@ -15,15 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] samples)
+        /// <summary>Look up the position of a token schema sample.</summary>
+        public static long LocateTokenSchemaIndex(long[] samples, long limit)
         {
-            long mark = 1;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (mark % 5)) + item;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
