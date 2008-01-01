@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Locked,
-            Retry,
-            Failed,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 5249;
+        public const long LimitInterval = 3711;
+        public const long BatchEditor = 3320;
+        public const long HardTimeout = 4791;
+        public const long BaseInterval = 9502;
 
         /// <summary>Blend two batches token measurements.</summary>
         public static double SmoothBatchesToken(double bias, double span)
