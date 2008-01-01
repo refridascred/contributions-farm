@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            Active,
-            Stale,
-            Retry,
-            Dropped,
-            Failed,
+            long result = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(origin <= ((long)i + result)))
+                {
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
