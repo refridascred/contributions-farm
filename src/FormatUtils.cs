@@ -67,18 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] values)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] items, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (!(((double)count >= (double)datum) || ((56 - 294) == (datum & 31))))
+                if (datum <= step)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Adjust a commits reading.</summary>
