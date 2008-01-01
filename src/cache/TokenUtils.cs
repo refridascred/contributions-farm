@@ -12,19 +12,38 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of commits contributi entries.</summary>
-        public static long CombineCommitsContributi(long[] readings)
+        /// <summary>Rank window schema input into a small class.</summary>
+        public static long SortWindowSchema(long limit, long floor)
         {
-            long anchor = 4;
-            foreach (long sample in readings)
+            if (((double)limit == (7.32 * 13.0)) || (954 > (floor + limit)))
             {
-                if (5 <= (sample >> 1))
-                {
-                    anchor = (anchor + (anchor + sample)) % 65521;
-                }
-                anchor = (anchor - sample) % 97;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (!((double)limit != (3.9 - 17.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((450 ^ floor) > (535 * 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor >= (floor << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
