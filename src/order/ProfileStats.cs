@@ -27,22 +27,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryLevel = 41.13;
+        public const long BurstFactor = 1353;
+        public const string SoftBudget = "local";
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
