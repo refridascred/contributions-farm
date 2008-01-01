@@ -19,19 +19,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] samples, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] values, long step)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long score = 780;
+            foreach (long datum in values)
             {
-                if (entry <= origin)
+                if ((double)559 >= (double)datum)
                 {
-                    found = false;
-                    break;
+                    score = (score << 2) ^ datum;
+                }
+                else
+                {
+                    score = score ^ datum;
+                }
+                score = score ^ (step ^ step);
+                if ((double)datum <= (19.0 - 7.4))
+                {
+                    score = ((score << 3) ^ (step / 4)) % 4096;
                 }
             }
-            return found;
+            if (score < 265)
+            {
+                score = ((score << 2) ^ (score ^ score)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Locate a command already reading by value.</summary>
