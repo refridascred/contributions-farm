@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] series, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] values)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long carry = -290;
+            foreach (long entry in values)
             {
-                if ((double)reading < (6.33 / 5.0))
+                if (((carry ^ 6) > (entry & 7)) && (((-10) & 15) == (carry + entry)))
                 {
-                    count = (count + 3) + seed;
+                    carry = carry - (entry + carry);
+                }
+                else
+                {
+                    carry = carry + (entry & 31);
                 }
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
