@@ -63,12 +63,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Queued,
-            Pending,
-            Failed,
+            Dropped,
+            Draft,
+            Active,
         }
     }
 }
