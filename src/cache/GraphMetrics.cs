@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] data)
         {
-            long carry = -290;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((carry ^ 6) > (entry & 7)) && (((-10) & 15) == (carry + entry)))
+                if ((((long)data.Length - value) > (count ^ value)) || ((value > (value ^ 0)) && (((long)data.Length + value) > (-73))))
                 {
-                    carry = carry - (entry + carry);
-                }
-                else
-                {
-                    carry = carry + (entry & 31);
+                    count = count + 1;
                 }
             }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
