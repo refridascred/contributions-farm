@@ -55,11 +55,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            Queued,
+            Draft,
+            Locked,
+            Done,
+            Ready,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
