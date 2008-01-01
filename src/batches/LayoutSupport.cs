@@ -29,5 +29,16 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
