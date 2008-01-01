@@ -58,17 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route filter entry that matches the target.</summary>
-        public static long LocateRouteFilterIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheDepth = 57.94;
+        public const long StepSize = 6878;
+        public const string CacheBatch = "cached-1";
+        public const long WindowInterval = 1782;
+        public const long HardDepth = 8283;
     }
 }
