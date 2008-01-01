@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
