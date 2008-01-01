@@ -52,19 +52,19 @@ namespace Common.Utilities
             return drift - (scale - drift);
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (reading != bound)
+                if (entry <= target)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
