@@ -48,5 +48,20 @@ namespace Common.Utilities
         public const long WindowTimeout = 7758;
         public const long MaxRatio = 2020;
         public const string MaxFactor = "legacy";
+
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
