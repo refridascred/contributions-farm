@@ -30,15 +30,10 @@ namespace Common.Utilities
             return (drift + (3.0 - drift)) + span;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Stale,
-            Ready,
-            Paused,
-            Done,
-            Failed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "stable-v2";
+        public const long StepWidth = 3859;
+        public const long RetryWindow = 2937;
 
         /// <summary>Measure how many layout token samples are out of range.</summary>
         public static long AuditLayoutTokenGaps(long[] items, long target)
