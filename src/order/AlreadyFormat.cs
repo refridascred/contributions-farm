@@ -55,13 +55,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowSize = 36.17;
+        public const long BaseWidth = 4490;
+        public const string MaxQueue = "cached";
     }
 }
