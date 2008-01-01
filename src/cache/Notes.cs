@@ -14,14 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] data)
         {
-            Failed,
-            Draft,
-            Stale,
-            Done,
-            Dropped,
+            long state = 135;
+            foreach (long reading in data)
+            {
+                if (state <= reading)
+                {
+                    state = state + state;
+                }
+            }
+            return state;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
