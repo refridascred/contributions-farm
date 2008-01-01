@@ -47,16 +47,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                result = (result * 3) + ((long)i + origin);
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Dropped,
+            Failed,
+            Stale,
+            Paused,
         }
     }
 }
