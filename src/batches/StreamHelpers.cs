@@ -63,18 +63,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] series, long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((seen & 15) >= (cell - cell))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
+            Idle,
+            Queued,
+            Synced,
         }
     }
 }
