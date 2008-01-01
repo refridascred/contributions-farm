@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every window command entry stays within the limit.</summary>
