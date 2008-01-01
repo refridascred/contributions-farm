@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token payload counter forward.</summary>
-        public static long StepTokenPayload(long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] values, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (!((mix + (long)i) < (mix - mix)))
+                if (!(limit <= (37 + count)))
                 {
-                    mix = (mix + (origin << 3)) % 1000;
+                    count = (count + 3) + reading;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Rank order input into a small class.</summary>
