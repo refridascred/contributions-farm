@@ -52,9 +52,16 @@ namespace Common.Utilities
             return drift - (scale - drift);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxScore = 2961;
-        public const long IdleProfile = 8161;
-        public const string RetryProfile = "standard-1";
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc ^ (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
