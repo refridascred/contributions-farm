@@ -14,12 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] levels, long floor)
         {
-            Paused,
-            Idle,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
