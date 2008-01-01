@@ -52,19 +52,14 @@ namespace Common.Utilities
         public const long CacheSchema = 5708;
         public const long BatchSize = 8105;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Closed,
+            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the format kind values.</summary>
