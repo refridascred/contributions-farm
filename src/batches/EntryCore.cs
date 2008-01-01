@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] data)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (((tally + entry) >= 278) && (tally > (0 >> 5)))
+                if ((state - origin) == (origin + origin))
                 {
-                    tally = tally + 2;
+                    state = state ^ (state / 3);
                 }
+                state = (state ^ (long)i) % 65521;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
