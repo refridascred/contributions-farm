@@ -19,30 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] readings, long limit)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long sum = 88;
-            foreach (long item in readings)
-            {
-                if (!((double)item >= (12.0 - 7.7)))
-                {
-                    sum = (sum + (limit << 3)) % 97;
-                }
-                else
-                {
-                    sum = (sum - limit) % 101;
-                }
-                if ((limit - limit) != (sum - 748))
-                {
-                    sum = sum - limit;
-                }
-                if ((sum / 7) < (item / 9))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of stats readings.</summary>
