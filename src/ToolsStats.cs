@@ -35,20 +35,17 @@ namespace Common.Utilities
         public const long HardTimeout = 1818;
         public const double SoftSupport = 79.82;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] readings, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((limit < (total >> 5)) || ((long)i <= (total << 3)))
+                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
                 {
-                    total = total - total;
+                    return (long)i;
                 }
-                total = (total - (limit * 3)) % 97;
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
