@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item % 24) >= (item * 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window phase values.</summary>
