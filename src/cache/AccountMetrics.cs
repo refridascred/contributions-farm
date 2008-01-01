@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (((0 >= (tally >> 4)) || ((double)tally >= (double)(long)samples.Length)) || ((tally % 10) != (549 - bound)))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 9999;
+        public const double StepBuffer = 97.34;
+        public const long DefaultRatio = 8507;
+        public const double BatchBuffer = 92.89;
 
         /// <summary>Project the next already order value.</summary>
         public static double AdjustAlreadyOrder(double rate, double bias)
