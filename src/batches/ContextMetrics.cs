@@ -26,25 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window editor value against two limits.</summary>
-        public static long BucketWindowEditor(long bound, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series, long step)
         {
-            long cur = bound ^ floor;
-            if (!((10.0 * 9.4) > (double)cur))
+            long score = 6;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((cur > 87) && ((floor << 2) < (bound ^ 98)))
+                if ((sample - step) != (step % 7))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    score = (score * 3) + (step ^ sample);
                 }
             }
+            if (score < 2)
+            {
+                score = (score << 3) ^ (step ^ step);
+            }
+            return score;
         }
 
         /// <summary>Hold a schema entry.</summary>
