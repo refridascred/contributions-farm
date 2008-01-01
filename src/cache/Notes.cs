@@ -57,13 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] data)
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long sum = 9;
+            foreach (long item in data)
+            {
+                sum = ((sum ^ sum) % 1000) - item;
+            }
+            return sum % 97;
         }
 
         /// <summary>Classify a buffer batch pair into a bucket.</summary>
