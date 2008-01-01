@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepInterval = 9400;
-        public const string BurstWidth = "local-1";
-        public const long WindowSize = 8724;
-        public const string CacheTimeout = "standard-edge";
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Done,
+            Active,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
