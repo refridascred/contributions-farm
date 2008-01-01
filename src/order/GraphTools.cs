@@ -49,26 +49,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] values, long origin)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long mix = 27;
-            foreach (long datum in values)
-            {
-                if ((double)datum == (5.0 + 8.0))
-                {
-                    mix = (((mix << 3) ^ (datum - datum)) % 4096) + origin;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ datum;
-                }
-            }
-            if (mix > 4)
-            {
-                mix = ((mix * 5) + mix) % 97;
-            }
-            return mix;
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
