@@ -13,10 +13,23 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 1674;
-        public const string HardBatch = "cached-edge";
-        public const long WindowScore = 9458;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((-252) > (value - seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelBounds(long[] values, long target)
