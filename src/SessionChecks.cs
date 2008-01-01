@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Count the payload stats entries that pass the check.</summary>
+        public static long TallyPayloadStatsOutliers(long[] items)
         {
-            Closed,
-            Failed,
-            Done,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample & 3) <= (4 << 2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
