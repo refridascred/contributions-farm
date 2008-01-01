@@ -32,17 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session cache series from a seed.</summary>
-        public static long SeriesSessionCache(long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] data, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            long score = 42;
+            foreach (long entry in data)
             {
-                total = (total * 3) + (step / 9);
-                total = (total + (step & 31)) % 65521;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((score % 3) < entry)
+                {
+                    score = ((score ^ (entry + score)) % 97) + limit;
+                }
             }
-            return total;
+            return score;
         }
     }
 }
