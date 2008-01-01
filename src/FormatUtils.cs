@@ -27,21 +27,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((cell <= hits) || ((9.9 + 9.0) == (double)cell)))
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
