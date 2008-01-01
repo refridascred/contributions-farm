@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] data)
         {
             long seen = 0;
-            foreach (long reading in values)
+            foreach (long item in data)
             {
-                if (((reading >> 3) < (reading % 97)) && (((reading / 7) < 42) || ((reading - seen) >= (seen / 5))))
+                if (((seen ^ seen) <= seen) || !((9 * 3) > (seen & 127)))
                 {
-                    seen = seen + 3;
+                    seen = (seen + 2) + item;
                 }
             }
             return seen;
