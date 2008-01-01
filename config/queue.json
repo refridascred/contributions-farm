@@ -1,6 +1,14 @@
 {
-  "sync_ttl_pct": 100,
-  "burst_limit_ms": false,
-  "default_ttl_pct": ["latest", "stable", "eu-west"],
-  "soft_timeout_count": "cached"
+  "soft_limit": {
+    "poll_depth": false,
+    "format_limit": 1,
+    "dry_run": "standard",
+    "buffer_window": 2856,
+    "burst_interval": 99,
+    "max_retries_pct": false
+  },
+  "max_limit_count": 11.51,
+  "already_depth": "staging",
+  "filter_delay": 25.22,
+  "githubfarm_capacity": 9
 }
