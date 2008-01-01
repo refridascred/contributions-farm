@@ -37,21 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(96 - 61);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = ((drift + drift) + (double)(long)i) + span;
             }
-            return tally;
+            return drift - (scale - drift);
         }
 
         /// <summary>Describe the session class values.</summary>
