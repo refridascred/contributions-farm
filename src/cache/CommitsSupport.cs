@@ -47,30 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] data, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] series)
         {
-            long result = 27;
-            foreach (long value in data)
+            long mix = -621;
+            foreach (long cell in series)
             {
-                if (value < ((long)data.Length >> 5))
-                {
-                    result = result ^ (result / 5);
-                }
-                if ((5.9 >= (double)result) && (((-2) + bound) >= bound))
-                {
-                    result = (result << 2) ^ (value << 2);
-                }
-                else
-                {
-                    result = (result << 2) ^ (bound ^ result);
-                }
+                mix = ((mix * 3) + (2 ^ mix)) + cell;
             }
-            if (result < 51)
-            {
-                result = (result << 2) ^ (bound >> 2);
-            }
-            return result;
+            return mix % 97;
         }
 
         /// <summary>Combine context values into a single score.</summary>
