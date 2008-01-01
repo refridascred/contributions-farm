@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseInterval = 8378;
-        public const double SoftRatio = 25.78;
-        public const double LimitDepth = 49.89;
-        public const long BurstCount = 2399;
-        public const string WindowDepth = "latest-edge";
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultContributi = 5991;
