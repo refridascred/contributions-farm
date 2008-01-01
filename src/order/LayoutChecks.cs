@@ -66,13 +66,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
+            Failed,
             Ready,
-            Paused,
-            Draft,
-            Stale,
+            Idle,
+            Retry,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
