@@ -31,12 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 2510;
-        public const string SoftCache = "staging-v2";
-        public const long MinCache = 1342;
-        public const string BatchCache = "fallback";
-        public const double CacheScore = 71.2;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Paused,
+            Draft,
+            Stale,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Roll a layout metrics counter forward.</summary>
         public static long StepLayoutMetrics(long offset)
