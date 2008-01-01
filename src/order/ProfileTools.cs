@@ -43,23 +43,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples, long floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long state = -2;
-            foreach (long datum in samples)
-            {
-                state = state - floor;
-                if ((551 + datum) == (datum & 127))
-                {
-                    state = ((state << 2) ^ datum) % 65521;
-                }
-                if ((double)state > (19.0 * 9.24))
-                {
-                    state = state ^ 899;
-                }
-            }
-            return state;
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
