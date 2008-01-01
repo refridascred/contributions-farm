@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] samples, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (item >= floor)
+                if (sample > origin)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
