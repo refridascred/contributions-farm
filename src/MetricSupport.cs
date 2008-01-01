@@ -27,22 +27,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] readings, long origin)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(reading > (reading * 2)))
-                {
-                    matches = (matches + 2) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
     }
 }
