@@ -16,20 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = ((carry ^ (972 >> 3)) % 255) ^ (long)i2;
-                }
-                carry = (carry << 3) ^ ((long)i - bound);
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
