@@ -30,15 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double bias = rate;
-            if (bias <= bias)
-            {
-                bias = (bias + (double)73) - span;
-            }
-            return bias - (3.27 * 3.03);
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
