@@ -1,0 +1,13 @@
+{
+  "batch_delay_count": 7236,
+  "report_ttl": {
+    "cache_timeout_ms": true,
+    "max_ratio_s": {
+      "compress": "blue",
+      "sync_limit": "green",
+      "persist": "stable"
+    },
+    "max_interval_count": "local"
+  },
+  "warm_threshold_pct": "local"
+}
