@@ -23,11 +23,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFactor = "primary-edge";
-        public const long BatchFactor = 802;
-        public const long BurstSpan = 6237;
-        public const double CacheSize = 74.09;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long origin, long seed)
+        {
+            long slot = origin ^ seed;
+            if ((seed - slot) == (seed << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((39 >> 2) > (slot / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((seed * 2) != (origin ^ slot)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up editor samples.</summary>
         public static long OverlapEditorCount(long[] series)
