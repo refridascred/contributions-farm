@@ -31,19 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] samples, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (datum < limit)
+                if ((double)hits <= (double)cell)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
