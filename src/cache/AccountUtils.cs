@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix << 2) ^ mix) % 4096;
-                mix = (mix + (floor + floor)) % 101;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
