@@ -1,6 +1,13 @@
 {
-  "audit": 250,
-  "metrics_ttl": 9448,
-  "default_size_s": ["primary", "strict", "latest"],
-  "dry_run": 91
+  "dry_run": 6790,
+  "audit": "local",
+  "flush_delay_s": "eu-west",
+  "verbose": {
+    "record_delay": 4232,
+    "warm_size_count": false,
+    "support_depth": [244, 69, 111],
+    "readonly": "fallback",
+    "min_capacity_count": "primary"
+  },
+  "base_ttl_ms": "eu-west"
 }
