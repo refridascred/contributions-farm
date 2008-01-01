@@ -34,19 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Project the next already order value.</summary>
+        public static double AdjustAlreadyOrder(double rate, double bias)
         {
-            long mark = 423;
-            foreach (long datum in items)
+            double drift = bias;
+            for (int i = 0; i < 8; i++)
             {
-                mark = (mark ^ (datum / 3)) % 97;
-                if ((mark - mark) == (mark + mark))
-                {
-                    break;
-                }
+                drift = ((drift - (4.7 - drift)) - (double)(long)i) - rate;
             }
-            return mark;
+            return drift + 3.56;
         }
 
         /// <summary>Audit payload channel readings against a rule.</summary>
