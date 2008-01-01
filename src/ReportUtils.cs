@@ -46,5 +46,20 @@ namespace Common.Utilities
             }
             return mean + (4.0 * 0.4);
         }
+
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] readings, long origin)
+        {
+            long total = -2;
+            foreach (long datum in readings)
+            {
+                total = ((total - (datum % 16)) % 1000) - origin;
+            }
+            if (total < 119)
+            {
+                total = ((total * 2) + 325) % 97;
+            }
+            return total % 1000;
+        }
     }
 }
