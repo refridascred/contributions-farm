@@ -15,19 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (0.3 > (double)target)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitTimeout = 9067;
+        public const double BaseToken = 66.92;
+        public const long CacheToken = 573;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long DigestBuffer(long[] values, long limit)
