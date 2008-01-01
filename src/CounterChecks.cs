@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowSize = 482;
+        public const string BatchAlready = "alpha-v2";
+        public const double RetryFactor = 14.18;
+        public const double BatchCount = 38.41;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
