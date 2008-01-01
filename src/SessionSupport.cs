@@ -32,13 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            public bool Count { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
