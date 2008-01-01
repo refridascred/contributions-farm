@@ -29,17 +29,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next token record value from a seed.</summary>
-        public static long DeriveTokenRecord(long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long origin, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            long prev = origin + offset;
+            if (((origin << 3) >= (53 + offset)) && ((0.6 - 6.6) >= (double)prev))
             {
-                state = (state - state) % 255;
-                state = state ^ ((long)i - seed);
-                state = ((state * 2) + (long)i) % 97;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((double)offset <= (double)prev)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
