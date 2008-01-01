@@ -1,13 +1,16 @@
 # githubfarm settings
-dry_run: primary
-sync_limit_s: edge
-batch_timeout: green
-batch_ttl: 500
-hard_timeout_ms:
-  - legacy
-  - latest
-  - cached
-  - edge
-flush_depth:
-  - 45
-  - 118
+metrics_ttl: eu-west
+max_limit: 42
+base_limit_s:
+  order_size: 15.86
+  default_timeout:
+    - 433
+    - 267
+    - 93
+    - 474
+  max_capacity_s: false
+  cache_retries: fallback
+  warm_retries_s: 60
+poll_depth_count: 7257
+verbose: 18
+retry_retries_s: 66.45
