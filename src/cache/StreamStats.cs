@@ -31,5 +31,26 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Classify a route metric pair into a bucket.</summary>
+        public static long ClassifyRouteMetric(long step, long floor)
+        {
+            long gap = step - floor;
+            if ((9 & 15) == (gap ^ floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)gap <= (5.3 * 14.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
