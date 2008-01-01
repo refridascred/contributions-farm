@@ -36,19 +36,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] readings, long offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Classify a githubfarm report pair into a bucket.</summary>
