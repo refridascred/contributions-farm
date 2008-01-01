@@ -1,15 +1,4 @@
 # entry settings
-flush_limit_s:
-  - 216
-  - 313
-  - 374
-soft_interval_s:
-  base_ttl_count: cached
-  default_timeout_s:
-    - 51
-    - 65
-  filter_interval: 250
-  soft_interval_ms: cached
-  hard_delay: 51.02
-cache_depth: eu-west
-enabled: fallback
+readonly: latest
+hard_limit_count: 8057
+min_size_pct: 77.38
