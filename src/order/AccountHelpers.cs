@@ -70,14 +70,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Paused,
-            Locked,
-            Idle,
-            New,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardSize = 50.08;
+        public const long LimitBatch = 6429;
+        public const long SoftDepth = 1220;
+        public const double HardTimeout = 82.45;
+        public const long DefaultBatch = 6520;
     }
 }
