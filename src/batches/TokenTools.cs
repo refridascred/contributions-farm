@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 908;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (((mix * 3) + mix) % 4096) ^ datum;
             }
-            return matches;
+            if (mix < 31)
+            {
+                mix = (mix * 3) + (mix - 6);
+            }
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
