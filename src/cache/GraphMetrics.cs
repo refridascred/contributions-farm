@@ -68,22 +68,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] data, long seed)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mix = -718;
-            foreach (long value in data)
-            {
-                if (618 <= seed)
-                {
-                    mix = ((mix - seed) % 97) - value;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-            }
-            return mix % 4096;
+            Idle,
+            Done,
+            Stale,
         }
     }
 }
