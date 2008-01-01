@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] values)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((2.65 + 5.4) < (double)reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Retry,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Blend two batches token measurements.</summary>
