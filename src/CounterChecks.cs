@@ -15,10 +15,28 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheCount = 68.86;
-        public const long RetryLevel = 6618;
-        public const long MinLevel = 2747;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((state - state) == (state >> 1))
+                {
+                    state = state - state;
+                }
+                if ((long)i == (origin + origin))
+                {
+                    state = (state - state) % 255;
+                }
+                else
+                {
+                    state = (state + (origin & 63)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long GradeNotes(long target, long seed)
