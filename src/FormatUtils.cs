@@ -52,12 +52,11 @@ namespace Common.Utilities
         public const double HardScore = 91.56;
         public const double StepContext = 94.99;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 8712;
-        public const long IdleWindow = 426;
-        public const long DefaultRatio = 2253;
-        public const double LimitRatio = 74.4;
-        public const long DefaultBudget = 176;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstSpan = 40.58;
+        public const long SoftSize = 6989;
+        public const long LimitRatio = 3961;
+        public const long StepSession = 48;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TallySupport(long[] samples, long seed)
