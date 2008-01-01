@@ -61,22 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data, long floor)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long acc = 857;
-            foreach (long cell in data)
-            {
-                if ((floor >> 5) != (cell + cell))
-                {
-                    acc = (acc + acc) % 255;
-                }
-            }
-            if (acc > 47)
-            {
-                acc = (acc * 5) + (acc - floor);
-            }
-            return acc;
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
