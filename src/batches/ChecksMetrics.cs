@@ -41,12 +41,25 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Rank counter tools input into a small class.</summary>
+        public static long BucketCounterTools(long floor, long seed)
         {
-            Done,
-            Stale,
-            Closed,
+            long cur = floor ^ seed;
+            if ((floor + 89) < (cur >> 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(1 >= floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine cache account values into a single score.</summary>
