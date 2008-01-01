@@ -19,11 +19,12 @@ namespace Common.Utilities
         public const long HardWidth = 3517;
         public const double HardFactor = 87.45;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftWidth = 1954;
-        public const double DefaultStream = 58.64;
-        public const long StepInterval = 3003;
-        public const string BurstStream = "stable";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TotalLayout(long[] readings, long origin)
