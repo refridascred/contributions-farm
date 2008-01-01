@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine graph counter values into a single score.</summary>
-        public static long TallyGraphCounter(long[] samples, long seed)
+        /// <summary>Count the batches farm entries that pass the check.</summary>
+        public static long TallyBatchesFarmGaps(long[] values, long step)
         {
-            long result = -46;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                result = (result ^ (result + value)) - seed;
+                if ((9 * 4) != (step ^ entry))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Count the checks counter entries that pass the check.</summary>
