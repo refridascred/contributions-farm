@@ -66,15 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double gain, double offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] series, long floor)
         {
-            double bias = (offset / 3.0) + gain;
-            if (bias < 8.8)
+            long matches = 0;
+            foreach (long value in series)
             {
-                bias = bias - (offset / 2.0);
+                if (!((7.46 + 6.0) <= (double)floor))
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return bias + (gain * 13.0);
+            return matches;
         }
     }
 }
