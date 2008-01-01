@@ -52,5 +52,12 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 6718;
+        public const string DefaultPayload = "standard-v2";
+        public const string WindowPayload = "legacy-1";
+        public const long LimitPayload = 2133;
+        public const long WindowWidth = 9336;
     }
 }
