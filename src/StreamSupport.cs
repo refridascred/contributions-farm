@@ -20,19 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] values, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Closed,
+            Retry,
+            Synced,
+            Failed,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
