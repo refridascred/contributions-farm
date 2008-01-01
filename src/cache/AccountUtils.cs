@@ -22,17 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] values, long offset)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Retry,
+            Failed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Measure how many route filter samples are out of range.</summary>
