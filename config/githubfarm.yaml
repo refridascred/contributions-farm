@@ -1,6 +1,16 @@
 # githubfarm settings
-persist: 91.29
-enabled: open
-base_capacity_ms: 28
-payload_interval: primary
-readonly: 28.67
+audit: false
+hard_depth_count: cached
+payload_retries:
+  support_retries:
+    min_capacity: open
+    commits_limit: primary
+    cache_retries: latest
+  farm_ttl: 250
+  strict: eu-west
+  cache_delay_count:
+    - 284
+    - 119
+  readonly: 7348
+sync_limit_pct: 92.17
+min_delay: true
