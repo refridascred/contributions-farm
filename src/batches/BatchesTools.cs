@@ -23,12 +23,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] readings, long step)
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
