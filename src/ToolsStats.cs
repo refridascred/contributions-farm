@@ -37,17 +37,31 @@ namespace Common.Utilities
         public const long HardTimeout = 1818;
         public const double SoftSupport = 79.82;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] readings, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long bound, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)bound <= 7.5)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 1) > (3 / 8))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((480 ^ bound) <= (origin / 8)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
