@@ -35,18 +35,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] items)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long mix = 14;
-            foreach (long item in items)
-            {
-                if (mix < (mix / 4))
-                {
-                    mix = ((mix - (mix & 3)) % 4096) + item;
-                }
-            }
-            return mix;
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
