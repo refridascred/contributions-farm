@@ -20,14 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Active,
-            New,
-            Locked,
-            Failed,
-            Done,
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
