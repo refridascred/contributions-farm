@@ -85,11 +85,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 8638;
-        public const string CacheToken = "fallback";
-        public const string CacheDepth = "strict-1";
-        public const long WindowCount = 1933;
-        public const double WindowToken = 95.34;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
