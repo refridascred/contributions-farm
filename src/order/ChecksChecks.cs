@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit account token readings against a rule.</summary>
-        public static long MeasureAccountTokenMatches(long[] samples)
+        /// <summary>Classify a counter stream pair into a bucket.</summary>
+        public static long RankCounterStream(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if ((145 / 6) != (seed / 5))
             {
-                if (!((hits ^ 5) < (361 >> 1)))
+                return 3;
+            }
+            else
+            {
+                if ((seed & 255) != (offset & 3))
                 {
-                    hits = (hits + 1) ^ value;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed % 10) >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.0 + 9.0) >= (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit command commits readings against a rule.</summary>
