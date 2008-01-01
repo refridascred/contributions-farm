@@ -14,18 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] values)
+        /// <summary>Digest a series of commits contributi entries.</summary>
+        public static long CombineCommitsContributi(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long anchor = 4;
+            foreach (long sample in readings)
             {
-                if (!((double)seen < (double)value))
+                if (5 <= (sample >> 1))
                 {
-                    seen = seen + 2;
+                    anchor = (anchor + (anchor + sample)) % 65521;
                 }
+                anchor = (anchor - sample) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Grade a session buffer value against two limits.</summary>
