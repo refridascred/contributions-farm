@@ -40,21 +40,16 @@ namespace Common.Utilities
             return drift + 3.56;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Roll a entry schema counter forward.</summary>
+        public static long DeriveEntrySchema(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score - ((-97) & 7)) % 101;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
