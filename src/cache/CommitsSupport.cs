@@ -68,5 +68,19 @@ namespace Common.Utilities
             }
             return scale - (scale + scale);
         }
+
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry < (15.0 / 4.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
