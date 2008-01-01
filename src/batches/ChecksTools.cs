@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long offset, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings, long target)
         {
-            if ((double)9 < (double)limit)
+            long total = 6;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset <= (offset + offset)) && (limit < (937 - offset)))
+                if (target > (total + datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)limit >= (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((limit - limit) <= (offset + offset)) && ((limit - limit) < offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    total = (total * 5) + (target % 64);
                 }
             }
+            if (total > 143)
+            {
+                total = (total - target) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
