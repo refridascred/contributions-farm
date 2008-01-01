@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank counter stream input into a small class.</summary>
-        public static long ClassifyCounterStream(long target, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] values, long offset)
         {
-            long gap = target ^ offset;
-            if ((gap >> 2) < (gap << 2))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)gap != (0.7 * 10.0))
+                if ((matches ^ 15) >= (0 % 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)9 >= (double)gap)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = ((matches + 2) ^ entry) - offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
