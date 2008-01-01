@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next githubfarm window value from a seed.</summary>
-        public static long RollGithubfarmWindow(long floor)
+        /// <summary>Rank farm commits input into a small class.</summary>
+        public static long SortFarmCommits(long bound, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            if ((offset >> 5) != (bound - offset))
             {
-                mark = (mark * 5) + ((long)i % 12);
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((505 - offset) <= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
