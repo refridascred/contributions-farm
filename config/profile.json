@@ -1,14 +1,11 @@
 {
-  "entry_retries": "cached",
-  "hard_ratio_pct": 2628,
-  "layout_delay": {
-    "audit": true,
-    "githubfarm_delay": {
-      "metric_retries": 30,
-      "compress": 9284,
-      "channel_window": "open"
-    },
-    "session_depth": 8539
+  "idle_delay_pct": {
+    "context_interval": 66.43,
+    "counter_delay": 250,
+    "poll_size_s": [165, 255]
   },
-  "warm_delay": 68.84
+  "layout_depth": ["strict", "stable", "legacy", "cached"],
+  "retry_window_s": 65.62,
+  "stats_limit": ["blue", "stable"],
+  "burst_size_count": 97
 }
