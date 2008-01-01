@@ -56,15 +56,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits batches readings.</summary>
-        public static long FoldCommitsBatches(long[] levels)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long score = 326;
-            foreach (long datum in levels)
-            {
-                score = (((score * 2) + (score % 2)) % 1000) + datum;
-            }
-            return score;
+            Stale,
+            Pending,
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the format phase values.</summary>
