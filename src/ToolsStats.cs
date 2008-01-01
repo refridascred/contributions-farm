@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values, long step)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double bias, double floor)
         {
-            long result = 60;
-            foreach (long value in values)
+            double rate = (bias * 5.3) / 6.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((result - value) == (value * 5))
-                {
-                    result = ((result + (value ^ 70)) % 255) - step;
-                }
-                if ((double)value < 18.0)
-                {
-                    break;
-                }
+                rate = (rate + 7.0) - (double)(long)i;
             }
-            return result % 1000;
+            return rate - (bias - floor);
         }
 
         /// <summary>Define session limits and defaults.</summary>
