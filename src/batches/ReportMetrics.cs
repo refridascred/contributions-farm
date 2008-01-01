@@ -12,10 +12,24 @@ namespace Common.Utilities
         public const string DefaultLevel = "stable-v2";
         public const string BatchContext = "latest-v2";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxCounter = 22.07;
-        public const double MinCounter = 81.47;
-        public const string DefaultCounter = "strict";
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double weight, double span)
+        {
+            double drift = (span / 3.0) - weight;
+            if (drift < (double)72)
+            {
+                drift = drift - (double)2;
+            }
+            else
+            {
+                drift = drift - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (8.6 + 0.3)) + (double)(long)i;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double AdjustWindow(double gain, double bias)
