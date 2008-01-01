@@ -21,21 +21,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count checks filter pairs that satisfy a relation.</summary>
-        public static long PairChecksFilterCount(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item != target)
                 {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
