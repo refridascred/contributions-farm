@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count queue cluster pairs that satisfy a relation.</summary>
-        public static long OverlapQueueClusterCount(long[] values)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
