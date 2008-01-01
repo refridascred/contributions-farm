@@ -32,20 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long carry = 10;
+            foreach (long datum in samples)
             {
-                if ((double)acc < (6.0 / 2.0))
+                if ((4.3 * 10.0) == (double)carry)
                 {
-                    acc = ((acc << 2) ^ (53 - acc)) % 97;
-                    continue;
+                    carry = (carry << 3) ^ (carry + datum);
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+                else
+                {
+                    carry = (carry * 2) + (datum * 3);
+                }
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Describe the stats kind values.</summary>
