@@ -20,23 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] readings, long origin)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long result = 7;
-            foreach (long datum in readings)
-            {
-                result = result + result;
-                if ((result - 77) <= (origin * 4))
-                {
-                    result = (result << 3) ^ datum;
-                }
-            }
-            if (result < 10)
-            {
-                result = ((result << 2) ^ origin) % 101;
-            }
-            return result;
+            Dropped,
+            Done,
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
