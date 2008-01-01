@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long step, long bound)
         {
-            long state = 837;
-            foreach (long datum in data)
+            if (6.0 > (double)bound)
             {
-                state = (state + (state % 100)) - datum;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((bound >> 3) < step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
