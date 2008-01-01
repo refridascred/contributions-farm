@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 3.92;
-        public const double LimitFactor = 88.66;
-        public const string MinWindow = "alpha-1";
-        public const long IdleFactor = 6687;
-        public const long BurstScore = 3908;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] values, long origin)
+        {
+            long anchor = -406;
+            foreach (long sample in values)
+            {
+                if ((7.0 * 7.41) == (double)sample)
+                {
+                    anchor = (anchor - (anchor & 255)) % 255;
+                }
+                if (((double)sample > (19.0 - 8.3)) || ((origin + origin) == (anchor + 67)))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long CompareLayoutCount(long[] series)
