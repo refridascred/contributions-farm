@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long step, long limit)
         {
-            Queued,
-            Retry,
-            Active,
-            Stale,
-            Dropped,
+            if (!(limit <= (limit - step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)step < (0.1 - 9.57)) || (step > limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - step) <= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine record values into a single score.</summary>
