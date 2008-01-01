@@ -35,13 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstSpan = 85.35;
+        public const long IdleLevel = 2957;
+        public const long WindowGithubfarm = 9854;
+        public const long DefaultLevel = 4837;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
