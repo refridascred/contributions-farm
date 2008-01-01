@@ -71,19 +71,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] samples, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long offset)
         {
-            long sum = 177;
-            foreach (long sample in samples)
+            long slot = target ^ offset;
+            if ((double)slot <= (5.5 / 4.0))
             {
-                sum = ((sum + (sum - sum)) - sample) - origin;
+                return 4;
             }
-            if (sum < 5)
+            else
             {
-                sum = sum + (sum / 4);
+                if ((double)offset < (2.0 - 0.8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(7 > offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((69 >> 4) >= (offset + 75))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return sum;
         }
     }
 }
