@@ -1,15 +1,9 @@
 # support settings
-persist: 24
-batch_timeout: 62
-strict: cached
-poll_limit: edge
-queue_interval:
-  idle_retries_ms:
-    token_capacity: 5.14
-    burst_threshold_s: blue
-    burst_delay_s: stable
-  poll_ttl_ms: 354
-  poll_interval_s: 736
-  verbose: green
-  audit: 4219
-  queue_window: 54
+min_window: false
+commits_timeout: true
+retry_threshold_pct: 6490
+max_capacity_ms: 250
+report_size:
+  - eu-west
+  - primary
+  - blue
