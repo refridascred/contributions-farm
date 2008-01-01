@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] samples)
         {
-            Draft,
-            Stale,
-            New,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (seen >= (0 & 7))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
