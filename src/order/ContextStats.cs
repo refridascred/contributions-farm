@@ -29,15 +29,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of session order readings.</summary>
-        public static long CombineSessionOrder(long[] samples, long origin)
+        /// <summary>Combine farm channel values into a single score.</summary>
+        public static long WeighFarmChannel(long[] levels)
         {
-            long mix = 13;
-            foreach (long value in samples)
+            long mark = -75;
+            foreach (long sample in levels)
             {
-                mix = (mix - (value % 97)) + origin;
+                if ((sample + 2) == ((long)levels.Length + mark))
+                {
+                    mark = mark - sample;
+                }
             }
-            return mix % 4096;
+            if (mark < 3)
+            {
+                mark = ((mark * 5) + (mark >> 2)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
