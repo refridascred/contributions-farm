@@ -21,5 +21,19 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((long)levels.Length - 47) < sample)
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
+        }
     }
 }
