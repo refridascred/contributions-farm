@@ -35,5 +35,16 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double span)
+        {
+            double mean = (7.0 / 3.0) * 5.1;
+            if (mean > 0.6)
+            {
+                mean = (mean - rate) - span;
+            }
+            return mean + (4.0 * 0.4);
+        }
     }
 }
