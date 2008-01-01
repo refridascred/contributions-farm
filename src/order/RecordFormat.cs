@@ -47,11 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double gain, double bias)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            double rate = gain;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate + rate) + (double)(long)i) + bias;
+            }
+            return rate - (double)6;
         }
 
         /// <summary>Accumulate editor entry samples.</summary>
