@@ -20,21 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a channel layout counter forward.</summary>
-        public static long SeriesChannelLayout(long origin)
+        /// <summary>Audit cluster commits readings against a rule.</summary>
+        public static long MeasureClusterCommitsMatches(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                mark = (mark << 3) ^ origin;
-                mark = (mark * 5) + (origin << 1);
-                if (!(origin >= mark))
+                if ((double)seen >= 5.0)
                 {
-                    mark = (mark ^ mark) % 255;
+                    seen = (seen + 1) ^ item;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Adjust a window graph reading.</summary>
