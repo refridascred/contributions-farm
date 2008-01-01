@@ -50,22 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session format values into a single score.</summary>
-        public static long DigestSessionFormat(long[] data, long bound)
+        /// <summary>Locate a schema metrics reading by value.</summary>
+        public static long SeekSchemaMetricsIndex(long[] levels, long step)
         {
-            long state = 945;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (2.0 <= (double)bound)
+                if (levels[i] > step)
                 {
-                    state = (state - sample) % 255;
+                    return (long)i;
                 }
             }
-            if (state < 159)
-            {
-                state = (state * 4) + ((-299) - (long)data.Length);
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of batches layout entries.</summary>
