@@ -25,5 +25,15 @@ namespace Common.Utilities
         public const long MinBatch = 1674;
         public const string HardBatch = "cached-edge";
         public const long WindowScore = 9458;
+
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Dropped,
+            Done,
+            Pending,
+            Paused,
+            Stale,
+        }
     }
 }
