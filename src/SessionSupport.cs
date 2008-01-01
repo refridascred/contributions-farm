@@ -17,17 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] series, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the token state values.</summary>
