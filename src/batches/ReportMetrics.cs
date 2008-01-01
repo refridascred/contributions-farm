@@ -40,12 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] levels)
         {
-            Idle,
-            Draft,
-            Pending,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (5.3 > (double)seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
