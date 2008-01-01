@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] data, long target)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long step, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            long delta = step ^ seed;
+            if (4.9 > (double)step)
             {
-                if (((double)item >= (15.0 / 2.0)) || (((14.0 * 3.0) >= (double)target) || (item < (target - count))))
+                return 5;
+            }
+            else
+            {
+                if (!((double)delta >= 7.7))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed >= delta) || ((step - delta) == (seed + delta)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
