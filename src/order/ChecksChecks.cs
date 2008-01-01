@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the counter record entries that pass the check.</summary>
-        public static long TallyCounterRecordOutliers(long[] data, long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double bias2 = bias;
+            if (bias2 >= (double)5)
             {
-                if ((double)sample > 1.0)
-                {
-                    seen = (seen + 1) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias2 = bias2 - rate;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (rate / 3.0)) + (double)(long)i;
+            }
+            return bias2 - rate;
         }
 
         /// <summary>Look up the position of a report payload sample.</summary>
