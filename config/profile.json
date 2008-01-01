@@ -1,6 +1,11 @@
 {
-  "tools_window": 2537,
-  "buffer_ratio": ["legacy", "stable", "cached"],
-  "sync_delay": true,
-  "idle_delay": 250
+  "readonly": "stable",
+  "verbose": {
+    "poll_capacity": ["primary", "latest", "eu-west", "eu-west"],
+    "cache_limit_ms": 26,
+    "profile_timeout": false
+  },
+  "hard_retries": 34.56,
+  "cache_delay_ms": 4818,
+  "flush_interval": "standard"
 }
