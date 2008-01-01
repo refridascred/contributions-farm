@@ -1,9 +1,6 @@
-id,weight,owner,ratio
-1,694,open,84.07
-2,strict,741,986
-3,637,289,308
-4,35.52,774,718
-5,staging,176,58.86
-6,89.14,201,standard
-7,legacy,latest,0.23
-8,841,latest,887
+id,weight,ratio,state
+1,edge,324,84.84
+2,standard,656,43.83
+3,485,202,3.2
+4,23.32,35.76,79.13
+5,edge,96.28,45
