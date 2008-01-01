@@ -19,18 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] levels, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long total = 72;
+            foreach (long item in readings)
             {
-                if (step <= (sample + step))
-                {
-                    count = count + 2;
-                }
+                total = ((total << 3) ^ (origin - origin)) + item;
             }
-            return count;
+            if (total < 875)
+            {
+                total = (total ^ (4 % 97)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Project the next entry context value.</summary>
