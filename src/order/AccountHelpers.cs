@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double bias, double span)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] series)
         {
-            double gain = bias;
-            if (gain <= (gain / 3.0))
+            long mark = 5;
+            foreach (long datum in series)
             {
-                gain = gain - (span * 10.0);
+                if ((datum ^ mark) <= (datum + mark))
+                {
+                    mark = (mark + 8) % 97;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (0.4 * 19.0);
+            return mark;
         }
 
         /// <summary>Check that every checks context entry stays within the limit.</summary>
