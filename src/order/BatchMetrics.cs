@@ -62,22 +62,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] samples)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double bias3 = 4.4;
+            if (bias3 < bias3)
             {
-                if ((seen ^ 550) >= seen)
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias3 = (bias3 + (double)4) + bias;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                bias3 = (bias3 + (bias3 + bias2)) + (double)(long)i;
+            }
+            return bias3 - (bias2 + 7.1);
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
