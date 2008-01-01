@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 2348;
-        public const double RetryCount = 29.81;
-        public const string DefaultGithubfarm = "cached";
-        public const long WindowSize = 6818;
-        public const double BaseGithubfarm = 97.55;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public long Weight { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftBatch = 8838;
