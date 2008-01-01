@@ -52,23 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((36 + item) < hits) || ((0.8 + 7.0) < (double)hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 8220;
+        public const string WindowCounter = "fallback";
+        public const long MaxWidth = 6750;
+        public const long LimitCounter = 3482;
+        public const string BatchScore = "open-1";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long target, long offset)
