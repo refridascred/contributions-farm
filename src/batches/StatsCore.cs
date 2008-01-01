@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double ratio, double bias)
         {
-            Active,
-            Synced,
-            Pending,
-            Closed,
+            double gain = ratio;
+            if (gain >= (bias + bias))
+            {
+                gain = gain - (gain + gain);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + (ratio / 2.0);
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
