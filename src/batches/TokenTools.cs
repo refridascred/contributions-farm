@@ -28,12 +28,17 @@ namespace Common.Utilities
         public const long WindowProfile = 5885;
         public const string MaxWidth = "legacy";
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] levels, long seed)
         {
-            Retry,
-            Failed,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
