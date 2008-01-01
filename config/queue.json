@@ -1,0 +1,12 @@
+{
+  "commits_limit": true,
+  "strict": {
+    "default_interval_pct": "fallback",
+    "window_limit": false,
+    "batches_capacity": 18.96
+  },
+  "compress": 60,
+  "hard_retries_s": 41,
+  "min_threshold_ms": 78,
+  "checks_retries": 6124
+}
