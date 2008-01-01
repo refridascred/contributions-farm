@@ -15,15 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double gain, double bias)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long limit)
         {
-            double mean = 2.0;
-            if (mean < (double)112)
+            bool found = true;
+            foreach (long reading in series)
             {
-                mean = mean - gain;
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean - (gain + bias);
+            return found;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
