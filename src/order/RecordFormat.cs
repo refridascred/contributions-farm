@@ -50,19 +50,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] values, long target)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Synced,
+            Stale,
+            Pending,
         }
     }
 }
