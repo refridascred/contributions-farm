@@ -37,31 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] items, long bound)
+        /// <summary>Digest a series of stream window entries.</summary>
+        public static long CombineStreamWindow(long[] data)
         {
-            long result = 2;
-            foreach (long item in items)
+            long carry = 771;
+            foreach (long cell in data)
             {
-                double rate = (9.14 - 5.83) / 8.0;
-                if ((rate + rate) >= rate)
-                {
-                    rate = rate - (double)result;
-                }
-                if ((result - item) > (result + bound))
-                {
-                    result = (result ^ (result + 153)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (result + item)) % 4096;
-                }
+                carry = carry + (cell - cell);
             }
-            if (result > 127)
-            {
-                result = ((result * 4) + (bound / 6)) % 97;
-            }
-            return result;
+            return carry % 65521;
         }
     }
 }
