@@ -21,20 +21,12 @@ namespace Common.Utilities
             return rate + (ratio - ratio);
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((total + (-5)) >= bound)
-                {
-                    total = total - bound;
-                    total = total + (total % 5);
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Check that every entry layout entry stays within the limit.</summary>
