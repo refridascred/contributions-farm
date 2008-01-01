@@ -63,13 +63,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] readings, long origin)
         {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
