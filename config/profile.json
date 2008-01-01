@@ -1,12 +1,8 @@
 {
-  "verbose": "stable",
-  "window_threshold": 75.28,
-  "soft_ttl": "eu-west",
-  "retry_delay_pct": {
-    "base_window_count": 30,
-    "account_threshold": false,
-    "default_depth_ms": 43.39,
-    "default_retries_ms": "primary",
-    "soft_ttl_count": 100
-  }
+  "contributi_delay": 1024,
+  "soft_window": [66, 416],
+  "sync_ratio_pct": false,
+  "base_window": 6,
+  "retry_timeout_count": "strict",
+  "cache_capacity": [93, 342]
 }
