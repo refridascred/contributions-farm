@@ -38,5 +38,11 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 9798;
+        public const long RetryEntry = 6120;
+        public const long BatchEntry = 8180;
+        public const double BurstEntry = 97.67;
     }
 }
