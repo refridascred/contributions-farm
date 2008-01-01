@@ -37,21 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of entry profile readings.</summary>
-        public static long CompareEntryProfileCount(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 28;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark ^ (0 / 5)) % 65521) + sample;
             }
-            return matches;
+            if (mark > 993)
+            {
+                mark = (mark - (449 - mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the layout mode values.</summary>
