@@ -1,6 +1,10 @@
-id,ratio,level,active
-1,17.7,31,446
-2,365,138,71.44
-3,13,green,91.84
-4,836,70.57,297
-5,44.77,standard,local
+id,owner,token,region,count
+1,stable,latest,154,green
+2,69.5,legacy,770,917
+3,386,fallback,green,89.3
+4,open,legacy,green,cached
+5,389,green,358,primary
+6,45.05,41.99,local,25.09
+7,primary,cached,green,fallback
+8,standard,239,green,648
+9,803,staging,98.07,latest
