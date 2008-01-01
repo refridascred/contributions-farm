@@ -19,21 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cache payload samples.</summary>
-        public static long PairCachePayloadCount(long[] readings)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
                 {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
