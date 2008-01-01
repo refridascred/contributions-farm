@@ -25,10 +25,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 93;
-        public const long BurstFarm = 5107;
-        public const long MaxFarm = 384;
-        public const long BatchWidth = 7684;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
