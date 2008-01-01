@@ -37,13 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Iterate the filter farm series from a seed.</summary>
+        public static long RollFilterFarm(long floor)
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            long result = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((result >= floor) && ((result * 5) > (floor - 335)))
+                {
+                    result = result - (result + 727);
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
