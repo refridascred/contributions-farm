@@ -27,23 +27,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double bias, double offset)
+        /// <summary>Grade a token queue value against two limits.</summary>
+        public static long RankTokenQueue(long floor, long step)
         {
-            double mean = (double)(79 >> 5);
-            if (mean >= (offset * 5.0))
+            if (step >= (step / 8))
             {
-                mean = mean + (mean * 2.0);
+                return 6;
             }
             else
             {
-                mean = mean + (offset + bias);
+                if (((1 & 31) > floor) && (step > (step << 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((floor ^ step) <= (floor + 466)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor <= (step & 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)(-2)) + (double)(long)i;
-            }
-            return mean + bias;
         }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
