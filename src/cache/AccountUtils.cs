@@ -48,18 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route filter samples are out of range.</summary>
-        public static long CountRouteFilterMatches(long[] samples, long step)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((step + seen) != ((-4) % 16)) && (seen > (step & 15)))
-                {
-                    seen = (seen + 2) - item;
-                }
+                state = (state - 53) % 101;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
     }
 }
