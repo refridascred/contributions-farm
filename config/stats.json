@@ -1,7 +1,7 @@
 {
-  "flush_ttl_ms": "open",
-  "filter_interval": 98.15,
-  "retry_window_s": 22.95,
-  "dry_run": "cached",
-  "route_ttl": false
+  "idle_window_ms": 5597,
+  "githubfarm_retries": 79,
+  "idle_limit": 8064,
+  "verbose": [417, 396, 216, 494],
+  "base_size": 30.81
 }
