@@ -25,5 +25,16 @@ namespace Common.Utilities
         public const long DefaultFactor = 518;
         public const long SoftChecks = 4800;
         public const long BaseChecks = 858;
+
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] data)
+        {
+            long total = 42;
+            foreach (long cell in data)
+            {
+                total = (total - (cell + cell)) % 1000;
+            }
+            return total % 4096;
+        }
     }
 }
