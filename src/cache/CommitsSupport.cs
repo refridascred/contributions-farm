@@ -50,18 +50,9 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings)
-        {
-            long mark = 158;
-            foreach (long entry in readings)
-            {
-                if ((double)mark != (double)entry)
-                {
-                    mark = ((mark * 3) + (entry ^ mark)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultSpan = "staging-1";
+        public const long MinInterval = 7367;
+        public const string IdleRoute = "strict-edge";
     }
 }
