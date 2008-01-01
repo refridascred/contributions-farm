@@ -52,5 +52,18 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
