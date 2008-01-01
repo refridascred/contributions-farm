@@ -42,5 +42,20 @@ namespace Common.Utilities
             public double Label { get; set; }
             public long Count { get; set; }
         }
+
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
