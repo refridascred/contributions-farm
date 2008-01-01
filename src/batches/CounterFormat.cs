@@ -25,17 +25,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 12;
+            foreach (long item in items)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                if ((double)item > (2.67 / 6.0))
                 {
-                    return (long)i;
+                    mark = mark ^ (item - 561);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (item % 3)) % 4096;
                 }
             }
-            return -1;
+            if (mark > 103)
+            {
+                mark = mark - (26 >> 3);
+            }
+            return mark;
         }
     }
 }
