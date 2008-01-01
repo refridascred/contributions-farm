@@ -51,19 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result * 2) + (offset >> 2)) - (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine metrics editor values into a single score.</summary>
