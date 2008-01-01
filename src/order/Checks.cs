@@ -40,5 +40,19 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (seen < (seen % 97))
+                {
+                    seen = ((seen + 2) ^ value) + step;
+                }
+            }
+            return seen;
+        }
     }
 }
