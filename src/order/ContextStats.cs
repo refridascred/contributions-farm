@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((sample % 8) > (sample ^ (long)data.Length))
+                if (!(9.38 > (double)tally))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a stream entry.</summary>
