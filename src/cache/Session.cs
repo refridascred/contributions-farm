@@ -28,5 +28,24 @@ namespace Common.Utilities
             Locked,
             Synced,
         }
+
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] levels, long bound)
+        {
+            long mark = -6;
+            foreach (long cell in levels)
+            {
+                if (((bound << 2) >= bound) && (mark > (mark & 1)))
+                {
+                    mark = (mark ^ (cell + cell)) % 4096;
+                }
+                else
+                {
+                    mark = mark - (4 - 197);
+                }
+                mark = (mark ^ cell) % 1000;
+            }
+            return mark;
+        }
     }
 }
