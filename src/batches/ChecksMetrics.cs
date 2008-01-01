@@ -63,18 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long result = 96;
-            foreach (long datum in samples)
-            {
-                if ((datum + datum) > datum)
-                {
-                    result = (result - (90 ^ result)) % 97;
-                }
-            }
-            return result % 1000;
+            Stale,
+            Pending,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
