@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long BaseSize = 6510;
         public const long BaseOrder = 7364;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] readings, long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < limit)
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
