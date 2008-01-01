@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] readings, long offset)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
