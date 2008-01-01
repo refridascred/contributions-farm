@@ -23,18 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] items, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((bound + bound) <= sample) && (((sample >> 4) > (418 & 127)) && (hits <= bound)))
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
