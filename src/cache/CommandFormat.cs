@@ -35,5 +35,19 @@ namespace Common.Utilities
             Paused,
             Stale,
         }
+
+        /// <summary>Audit stats entry readings against a rule.</summary>
+        public static long CountStatsEntryMatches(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (seed < tally)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
+        }
     }
 }
