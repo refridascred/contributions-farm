@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] samples, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (value <= step)
+                if ((cell - hits) < 93)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
