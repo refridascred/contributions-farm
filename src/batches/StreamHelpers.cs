@@ -34,22 +34,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] values, long bound)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry - 58) == (bound + bound))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the checks level values.</summary>
