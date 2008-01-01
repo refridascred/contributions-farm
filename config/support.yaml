@@ -1,7 +1,9 @@
 # support settings
-min_ratio: 30
-compress: false
-soft_limit_ms: true
-default_depth_ms: 32.07
-retry_depth_pct: false
-dry_run: 1024
+sync_size_s: standard
+record_retries: local
+verbose: true
+strict:
+  - green
+  - green
+farm_capacity: true
+soft_retries_count: 11.13
