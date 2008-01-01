@@ -27,9 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheCount = 3989;
-        public const string SoftCache = "latest-v2";
-        public const long SoftSpan = 6071;
+        /// <summary>Audit commits support readings against a rule.</summary>
+        public static long CountCommitsSupportOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((15.0 + 8.0) < (double)item)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
