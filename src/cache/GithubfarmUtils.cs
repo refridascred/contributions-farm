@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long MinLayout = 5973;
         public const long MaxLayout = 5453;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - (rate * 5.74)) + (double)(long)i;
             }
-            return count;
+            return drift + (floor * 18.0);
         }
 
         /// <summary>Match up channel contributi samples.</summary>
