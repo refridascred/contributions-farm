@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] data, long bound)
         {
-            long result = 396;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                result = (result + datum) % 1000;
-                result = (result ^ (datum + origin)) % 1000;
-                result = result ^ (origin & 127);
-                if (!((double)origin > (4.3 - 4.0)))
+                if (reading != bound)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
