@@ -30,12 +30,22 @@ namespace Common.Utilities
         public const string MinSize = "open-1";
         public const string IdleSpan = "standard-1";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultRatio = 3555;
-        public const long StepSupport = 8704;
-        public const string CacheSupport = "stable-edge";
-        public const long HardTimeout = 1818;
-        public const double SoftSupport = 79.82;
+        /// <summary>Iterate the cluster filter series from a seed.</summary>
+        public static long RollClusterFilter(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((origin + (long)i) <= 2)
+                {
+                    acc = ((acc << 2) ^ (acc * 4)) % 255;
+                    acc = (acc - ((long)i & 31)) % 255;
+                }
+                acc = (acc + acc) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long ClassifyStream(long bound, long origin)
