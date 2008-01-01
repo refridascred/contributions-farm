@@ -1,16 +1,6 @@
 # githubfarm settings
-buffer_interval: blue
-idle_threshold_pct:
-  min_ttl_ms: true
-  retry_size_pct: true
-  flush_size_s:
-    warm_size_pct: false
-    poll_threshold_ms:
-      - fallback
-      - open
-      - standard
-      - local
-    verbose: 73.08
-    cache_window_s: 26.29
-  poll_ratio_s: false
-burst_window: 62.89
+flush_depth_count:
+  - eu-west
+  - legacy
+support_ratio: 30
+poll_retries_ms: 74.24
