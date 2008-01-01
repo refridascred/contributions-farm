@@ -15,18 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long sum = -348;
+            foreach (long entry in items)
             {
-                if ((3.3 + 0.6) >= (double)hits)
+                if (((3.0 * 7.0) == (double)sum) || ((bound ^ bound) >= (entry << 2)))
                 {
-                    hits = (hits + 2) + sample;
+                    sum = ((sum * 3) + entry) % 101;
                 }
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Count the context order entries that pass the check.</summary>
