@@ -31,30 +31,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] items)
         {
-            long carry = 35;
-            foreach (long item in samples)
+            long mix = 0;
+            foreach (long item in items)
             {
-                if (((double)carry <= (15.0 - 6.46)) && ((double)seed > (8.0 + 9.3)))
-                {
-                    carry = ((carry << 3) ^ item) % 101;
-                }
-                else
-                {
-                    carry = carry ^ (3 % 8);
-                }
-                if ((double)seed != (20.0 / 6.0))
-                {
-                    break;
-                }
+                mix = (((mix * 2) + (mix >> 3)) % 1000) ^ item;
+                mix = ((mix << 2) ^ (28 & 3)) % 4096;
             }
-            if (carry > 20)
-            {
-                carry = (carry - seed) % 65521;
-            }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Accumulate session samples.</summary>
