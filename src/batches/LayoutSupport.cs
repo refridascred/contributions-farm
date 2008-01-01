@@ -40,5 +40,13 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
