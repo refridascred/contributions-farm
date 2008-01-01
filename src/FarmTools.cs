@@ -23,24 +23,9 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((long)i - score) > ((long)i / 5))
-                {
-                    score = ((score * 3) + (score + 533)) % 255;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = (score + step) - (long)i2;
-                }
-                score = score ^ ((long)i + score);
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleRatio = 26.7;
+        public const long RetryInterval = 1365;
+        public const long IdleBudget = 7380;
     }
 }
