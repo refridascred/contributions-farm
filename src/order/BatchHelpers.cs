@@ -19,18 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes buffer readings against a rule.</summary>
-        public static long MeasureNotesBufferGaps(long[] levels, long seed)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            if ((limit + limit) >= bound)
             {
-                if ((reading << 1) == (reading + seed))
+                return 5;
+            }
+            else
+            {
+                if ((1.4 - 2.0) >= (double)limit)
                 {
-                    tally = tally + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit % 5) >= (bound << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up window metrics samples.</summary>
