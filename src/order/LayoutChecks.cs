@@ -92,22 +92,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] levels, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] values)
         {
-            long total = 9;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((total * 4) <= (-832))
+                if ((item % 16) < (seen + item))
                 {
-                    total = (total ^ (total % 60)) + cell;
-                }
-                else
-                {
-                    total = (total + (target ^ target)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
