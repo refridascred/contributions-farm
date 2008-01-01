@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((417 * 3) == (cell + cell))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleInterval = "cached";
+        public const string RetryBatch = "strict-v2";
+        public const long CacheBatch = 3469;
+        public const long SoftRatio = 9491;
+        public const double WindowFactor = 20.03;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksHits(long[] values, long limit)
