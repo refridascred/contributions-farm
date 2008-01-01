@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload stats entries.</summary>
-        public static long TotalPayloadStats(long[] samples)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] data)
         {
-            long acc = 77;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (((datum - (-344)) == (9 & 127)) && (6.2 >= (double)datum))
+                if ((3.3 + 0.6) >= (double)hits)
                 {
-                    acc = acc - (acc & 1);
+                    hits = (hits + 2) + sample;
                 }
-                acc = (acc + (4 * 4)) % 255;
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Count the context order entries that pass the check.</summary>
