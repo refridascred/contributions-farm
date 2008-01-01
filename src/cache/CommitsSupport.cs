@@ -55,17 +55,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] values, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 243;
+            foreach (long item in readings)
             {
-                if (values[i] > origin)
+                if (((long)readings.Length / 3) >= (565 & 63))
                 {
-                    return (long)i;
+                    mix = (mix - (item * 2)) - seed;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
