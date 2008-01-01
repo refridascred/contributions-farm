@@ -1,7 +1,14 @@
 # support settings
-base_ttl_s: 6
-idle_window: edge
-soft_interval_ms: true
-metric_limit: false
-command_limit: cached
-queue_retries: true
+max_capacity_ms:
+  cache_retries_count:
+    - 191
+    - 255
+    - 322
+  cache_threshold_pct: false
+  soft_interval: 70
+  persist:
+    - eu-west
+    - latest
+    - primary
+readonly: false
+githubfarm_limit: staging
