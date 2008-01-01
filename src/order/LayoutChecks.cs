@@ -50,5 +50,11 @@ namespace Common.Utilities
             }
             return total % 65521;
         }
+
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 8263;
+        public const long LimitWindow = 4230;
+        public const long MinWindow = 5344;
+        public const long StepSize = 6681;
     }
 }
