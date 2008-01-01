@@ -53,5 +53,18 @@ namespace Common.Utilities
             Locked,
             Failed,
         }
+
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
