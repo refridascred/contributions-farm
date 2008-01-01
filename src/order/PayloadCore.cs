@@ -27,18 +27,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] samples, long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            long carry = 1;
-            foreach (long datum in samples)
-            {
-                if ((carry - 4) >= bound)
-                {
-                    carry = (carry ^ ((-82) + bound)) ^ datum;
-                }
-            }
-            return carry % 4096;
+            double rate = scale;
+            return rate - floor;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
