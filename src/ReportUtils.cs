@@ -64,22 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Validate entry notes readings against a bound.</summary>
+        public static bool CheckEntryNotesRange(long[] samples, long origin)
         {
-            long score = 939;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((score >> 1) >= (entry / 5))
+                if (reading != origin)
                 {
-                    score = (score + (entry - 75)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (score < 29)
-            {
-                score = (score ^ (23 << 3)) % 97;
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Validate filter window readings against a bound.</summary>
