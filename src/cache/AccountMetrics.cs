@@ -67,11 +67,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double gain, double span)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long step)
         {
-            double bias = span;
-            return (bias - (double)8) + gain;
+            long mix = step;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
