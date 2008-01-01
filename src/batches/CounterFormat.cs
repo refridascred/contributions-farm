@@ -25,17 +25,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first cluster githubfarm entry that matches the target.</summary>
-        public static long SeekClusterGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (levels[i] >= offset)
+                if ((cell + hits) > (cell << 1))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
