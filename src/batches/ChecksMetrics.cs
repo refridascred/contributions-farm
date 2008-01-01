@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] values, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long carry = 93;
+            foreach (long datum in levels)
             {
-                if (item > offset)
+                if ((2 + 23) < (datum & 127))
                 {
-                    stale = false;
-                    break;
+                    carry = ((carry * 2) + (carry + 4)) % 101;
                 }
             }
-            return stale;
+            return carry % 65521;
         }
 
         /// <summary>Describe the graph class values.</summary>
