@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long origin, long offset)
+        /// <summary>Count the profile cache entries that pass the check.</summary>
+        public static long MeasureProfileCacheGaps(long[] samples, long seed)
         {
-            if ((4.5 / 7.0) > (double)origin)
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7.84 - 2.0) != (double)origin)
+                if ((double)item < 19.0)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 2) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
