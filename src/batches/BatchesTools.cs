@@ -20,13 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepInterval = 1195;
+        public const long SoftGithubfarm = 5288;
+        public const string BurstGithubfarm = "standard-v2";
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueBounds(long[] readings, long step)
