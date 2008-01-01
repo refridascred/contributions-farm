@@ -30,23 +30,10 @@ namespace Common.Utilities
             return bias2 + span;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] readings, long target)
-        {
-            long result = 0;
-            foreach (long cell in readings)
-            {
-                result = result - 4;
-                if ((target ^ cell) > cell)
-                {
-                    result = ((result * 5) + (result - cell)) % 255;
-                }
-                else
-                {
-                    result = ((result << 3) ^ target) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 2098;
+        public const long StepNotes = 7202;
+        public const long MaxCount = 7691;
+        public const long RetryTimeout = 6645;
     }
 }
