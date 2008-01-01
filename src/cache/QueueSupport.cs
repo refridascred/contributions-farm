@@ -30,38 +30,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long step, long target)
-        {
-            if (step < (target + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1 * 2) <= (target % 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + 916) > (36 + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step / 8) > 4) && ((double)step != (18.0 - 20.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitBudget = 1048;
+        public const long CacheCount = 7986;
+        public const long LimitTools = 7690;
     }
 }
