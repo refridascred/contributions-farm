@@ -17,11 +17,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double weight, double span)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double drift = span;
-            return (drift + (double)641) + weight;
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
