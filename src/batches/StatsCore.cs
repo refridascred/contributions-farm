@@ -11,5 +11,11 @@ namespace Common.Utilities
         public const string MinInterval = "fallback-1";
         public const long CacheContext = 6184;
         public const string MaxLevel = "local";
+
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftFactor = 6866;
+        public const string WindowCache = "standard-v2";
+        public const long BurstCache = 3461;
+        public const double MaxCache = 29.73;
     }
 }
