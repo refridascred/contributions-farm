@@ -39,25 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token contributi input into a small class.</summary>
-        public static long RankTokenContributi(long offset, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] data, long bound)
         {
-            long next = offset - floor;
-            if (floor >= (offset + next))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (3 > (offset * 3))
+                if (bound >= 5)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    seen = (seen + 2) + entry;
                 }
             }
+            return seen;
         }
     }
 }
