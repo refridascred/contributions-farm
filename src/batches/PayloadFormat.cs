@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long BurstScore = 6294;
         public const double SoftSize = 68.19;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] samples, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
