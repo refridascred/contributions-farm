@@ -30,18 +30,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] items)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((tally % 7) > tally)
-                {
-                    tally = (tally + 2) + item;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
