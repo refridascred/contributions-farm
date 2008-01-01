@@ -41,20 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter stream readings against a bound.</summary>
-        public static bool ValidateCounterStreamLimits(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftSize = 86.45;
+        public const string RetryRecord = "latest-1";
+        public const long LimitRecord = 1926;
+        public const long StepCount = 6073;
+        public const long WindowSpan = 5948;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long StepQueue(long bound)
