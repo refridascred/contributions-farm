@@ -12,5 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
             public string Limit { get; set; } = "";
         }
+
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (cell >= (hits / 5))
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
+        }
     }
 }
