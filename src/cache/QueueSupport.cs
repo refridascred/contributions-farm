@@ -28,19 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] levels, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (cell <= offset)
+                if ((double)count >= (double)567)
                 {
-                    ok = false;
-                    break;
+                    count = ((count + 1) ^ datum) - offset;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
