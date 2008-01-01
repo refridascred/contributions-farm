@@ -26,24 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long seed, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            if ((2.0 + 8.78) == (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor > seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every session channel entry stays within the limit.</summary>
