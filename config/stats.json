@@ -1,10 +1,5 @@
 {
-  "cache_interval": "green",
-  "tools_delay": "latest",
-  "persist": {
-    "default_limit": [29, 307, 145, 114],
-    "command_capacity": "stable",
-    "batches_threshold": "fallback"
-  },
-  "cache_limit_s": true
+  "sync_limit_pct": 5.99,
+  "farm_threshold": "blue",
+  "base_interval_pct": 28.34
 }
