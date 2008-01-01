@@ -27,18 +27,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] data)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell / 5) > (cell << 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Active,
+            Dropped,
+            Idle,
         }
     }
 }
