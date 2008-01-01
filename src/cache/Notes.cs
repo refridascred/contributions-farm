@@ -59,22 +59,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long mark = -7;
-            foreach (long value in levels)
-            {
-                if ((mark >= value) && ((mark + mark) < ((long)levels.Length + value)))
-                {
-                    mark = mark - (mark & 63);
-                }
-            }
-            if (mark > (-1))
-            {
-                mark = (mark + (mark + mark)) % 1000;
-            }
-            return mark % 65521;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
