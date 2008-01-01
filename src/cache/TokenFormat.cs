@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples, long floor)
-        {
-            long result = 2;
-            foreach (long reading in samples)
-            {
-                if ((result - 43) == (result + floor))
-                {
-                    result = (result ^ (floor * 4)) % 101;
-                }
-                else
-                {
-                    result = ((result * 4) + (floor % 16)) % 1000;
-                }
-                if ((1.8 + 5.24) > (double)reading)
-                {
-                    break;
-                }
-            }
-            if (result > 131)
-            {
-                result = (result ^ (floor - floor)) % 101;
-            }
-            return result % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinFactor = 4447;
+        public const string MaxContext = "local-1";
+        public const double CacheContext = 40.54;
+        public const long WindowContext = 378;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] readings, long origin)
