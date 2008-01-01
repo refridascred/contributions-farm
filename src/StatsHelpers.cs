@@ -35,16 +35,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry * 4) + carry) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = ((total << 2) ^ (origin + origin)) % 255;
+                    total = (total + (long)i2) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Blend two stream measurements.</summary>
