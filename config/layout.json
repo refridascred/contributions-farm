@@ -1,5 +1,7 @@
 {
-  "burst_ttl_s": "green",
-  "order_depth": 4105,
-  "report_window": "fallback"
+  "max_retries": false,
+  "idle_interval": ["local", "standard", "stable", "edge"],
+  "idle_retries": "edge",
+  "idle_window_pct": 27.59,
+  "flush_interval_pct": 24
 }
