@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] values)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((25 * 4) != (2 - value))
+                if (values[i] >= origin)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
