@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of entry window readings.</summary>
-        public static long ScoreEntryWindow(long[] values)
+        /// <summary>Compare every pair of contributi context readings.</summary>
+        public static long CompareContributiContextCount(long[] data)
         {
-            long total = 992;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)total == (1.83 - 19.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total - (reading * 3)) % 65521;
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
