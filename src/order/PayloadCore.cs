@@ -27,12 +27,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinBudget = 1179;
-        public const long LimitSize = 9584;
-        public const long StepWidth = 9337;
-        public const double DefaultMetrics = 71.16;
-        public const long RetrySpan = 2426;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] samples)
+        {
+            long mix = 567;
+            foreach (long cell in samples)
+            {
+                if ((mix / 5) <= (mix % 16))
+                {
+                    mix = mix + (5 + mix);
+                }
+                if ((cell << 3) <= (375 ^ 6))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long offset, long seed)
