@@ -14,17 +14,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] levels, long floor)
+        /// <summary>Match up tools route samples.</summary>
+        public static long CompareToolsRouteCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] > floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
