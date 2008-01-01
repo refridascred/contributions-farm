@@ -49,18 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long total = 35;
-            foreach (long datum in data)
-            {
-                if ((double)total == (15.0 / 5.0))
-                {
-                    total = (total + (total + datum)) % 1000;
-                }
-            }
-            return total;
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Blend two record measurements.</summary>
