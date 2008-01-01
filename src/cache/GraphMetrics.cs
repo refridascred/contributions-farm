@@ -55,5 +55,17 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Roll a payload record counter forward.</summary>
+        public static long DerivePayloadRecord(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = anchor - offset;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
