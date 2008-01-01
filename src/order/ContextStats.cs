@@ -67,5 +67,23 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels, long offset)
+        {
+            long acc = 83;
+            foreach (long value in levels)
+            {
+                if ((double)acc >= (double)value)
+                {
+                    acc = (acc - value) - offset;
+                }
+            }
+            if (acc < 897)
+            {
+                acc = ((acc << 3) ^ (acc + 451)) % 1000;
+            }
+            return acc % 1000;
+        }
     }
 }
