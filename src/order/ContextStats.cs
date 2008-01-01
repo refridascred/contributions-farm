@@ -68,22 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] items)
         {
-            long acc = 83;
-            foreach (long value in levels)
+            long total = 72;
+            foreach (long item in items)
             {
-                if ((double)acc >= (double)value)
+                total = ((total * 2) + (item ^ item)) % 4096;
+                if ((total <= (item << 3)) || (4 < (total & 255)))
                 {
-                    acc = (acc - value) - offset;
+                    break;
                 }
             }
-            if (acc < 897)
+            if (total < 8)
             {
-                acc = ((acc << 3) ^ (acc + 451)) % 1000;
+                total = (total << 3) ^ total;
             }
-            return acc % 1000;
+            return total;
         }
     }
 }
