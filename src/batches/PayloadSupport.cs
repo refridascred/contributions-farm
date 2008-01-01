@@ -35,18 +35,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long state = 893;
+            foreach (long datum in samples)
             {
-                if ((item - 55) <= hits)
+                if (!((datum + 94) <= (9 + datum)))
                 {
-                    hits = hits + 2;
+                    state = (state + (state - datum)) % 65521;
+                }
+                if ((datum <= 29) && ((state + datum) <= (47 / 3)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return state % 1000;
         }
     }
 }
