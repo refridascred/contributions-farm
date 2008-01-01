@@ -1,0 +1,7 @@
+{
+  "already_timeout": 9.42,
+  "compress": ["fallback", "blue"],
+  "dry_run": true,
+  "graph_threshold": 1024,
+  "tools_window": "edge"
+}
