@@ -49,22 +49,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long anchor = 2;
+            foreach (long cell in readings)
             {
-                if ((sample ^ sample) >= (seen % 60))
+                if (anchor <= (anchor + 72))
                 {
-                    seen = seen + 2;
+                    anchor = anchor - 480;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = ((anchor * 3) + cell) % 1000;
                 }
             }
-            return seen;
+            if (anchor > (-3))
+            {
+                anchor = anchor - (floor - (long)readings.Length);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a schema stats.</summary>
