@@ -40,19 +40,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every command buffer entry stays within the limit.</summary>
-        public static bool ValidateCommandBufferLimits(long[] levels, long bound)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum >= bound)
+                acc = (acc + (acc << 2)) % 1000;
+                acc = ((acc * 2) + (offset % 8)) % 97;
+                if ((acc + acc) >= (acc - (long)i))
                 {
-                    ok = false;
                     break;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Count layout window pairs that satisfy a relation.</summary>
