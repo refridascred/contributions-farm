@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] readings, long target)
+        /// <summary>Check that every command graph entry stays within the limit.</summary>
+        public static bool GuardCommandGraphLimits(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((((target % 3) >= (4 + target)) && ((target / 8) < hits)) || ((cell + cell) == (822 ^ 344)))
+                if (item >= step)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Match up command samples.</summary>
