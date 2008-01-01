@@ -37,16 +37,14 @@ namespace Common.Utilities
         public const string BaseBatches = "alpha-v2";
         public const double LimitBatches = 35.68;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long score = 4;
-            foreach (long entry in values)
-            {
-                score = (score * 3) + (3 << 3);
-                score = score ^ (entry - entry);
-            }
-            return score;
+            Queued,
+            Stale,
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Count token context pairs that satisfy a relation.</summary>
