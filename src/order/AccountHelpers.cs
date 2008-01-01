@@ -31,13 +31,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] levels, long target)
         {
-            Done,
-            New,
-            Paused,
-            Ready,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((((double)target <= (double)seen) || (seen > (sample + seen))) || ((7.68 / 2.0) > (double)target))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the filter level values.</summary>
