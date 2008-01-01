@@ -25,22 +25,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] readings)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((8.66 * 1.8) >= (double)reading) && ((reading ^ reading) < (reading * 5))) && ((reading <= (56 + tally)) || ((8.17 * 13.0) < (double)tally)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
