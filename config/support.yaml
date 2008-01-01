@@ -1,9 +1,14 @@
 # support settings
-sync_size_s: standard
-record_retries: local
-verbose: true
-strict:
-  - green
-  - green
-farm_capacity: true
-soft_retries_count: 11.13
+base_size_pct:
+  - eu-west
+  - edge
+format_interval:
+  contributi_delay:
+    - fallback
+    - latest
+  strict: 42.89
+  min_threshold_ms: latest
+  order_capacity: 250
+  dry_run: fallback
+dry_run: local
+entry_ratio: fallback
