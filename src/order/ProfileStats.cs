@@ -28,19 +28,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate counter layout samples.</summary>
-        public static long TallyCounterLayout(long[] series, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long carry = 17;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = (((carry * 4) + entry) ^ (long)i) - limit;
-                }
-                carry = ((carry * 3) + (entry ^ entry)) % 1000;
-            }
-            return carry;
+            New,
+            Active,
+            Idle,
+            Locked,
         }
     }
 }
