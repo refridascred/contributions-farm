@@ -23,21 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Derive the next command counter value from a seed.</summary>
+        public static long StepCommandCounter(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (mix + mix)) + (long)i2;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
