@@ -1,11 +1,10 @@
 # support settings
-warm_window_ms: fallback
-support_timeout: 59
-cache_interval: 5181
+already_size: true
+compress: 88
+sync_limit_count: fallback
 enabled:
-  audit: 3649
-  max_ratio_pct: 500
-  strict: eu-west
-  base_ttl_pct: legacy
-  notes_limit: 5988
-  graph_timeout: true
+  - 185
+  - 406
+  - 195
+session_size: 1818
+batch_threshold: 63
