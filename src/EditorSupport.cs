@@ -45,10 +45,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "stable-v2";
-        public const long StepWidth = 3859;
-        public const long RetryWindow = 2937;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((double)origin == (double)(-20)) && ((double)origin == (3.6 - 7.72)))
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double weight, double span)
