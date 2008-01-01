@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = 48;
+            foreach (long value in readings)
+            {
+                anchor = (((anchor * 4) + 162) - value) - floor;
+            }
+            return anchor;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
