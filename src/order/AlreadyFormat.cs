@@ -38,21 +38,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up stats farm samples.</summary>
-        public static long CompareStatsFarmCount(long[] data)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (items[i] < seed)
                 {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a entry entry.</summary>
