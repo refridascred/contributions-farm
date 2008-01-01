@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] readings, long step)
         {
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
