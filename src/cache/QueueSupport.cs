@@ -27,9 +27,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 6616;
-        public const long BurstInterval = 850;
-        public const long BatchWidth = 415;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Done,
+            Pending,
+            Failed,
+        }
     }
 }
