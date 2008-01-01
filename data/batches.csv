@@ -1,7 +1,9 @@
-id,level,weight,token,owner
-1,primary,stable,466,local
-2,468,232,269,41.59
-3,fallback,61,fallback,standard
-4,58.88,edge,184,121
-5,61.09,154,edge,41.69
-6,550,10,670,769
+id,region
+1,41.13
+2,legacy
+3,stable
+4,707
+5,629
+6,68.94
+7,cached
+8,608
