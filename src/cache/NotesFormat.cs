@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(origin <= ((long)i + result)))
-                {
-                    continue;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Audit account metric readings against a rule.</summary>
