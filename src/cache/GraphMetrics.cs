@@ -42,15 +42,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            New,
+            Draft,
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count notes session pairs that satisfy a relation.</summary>
