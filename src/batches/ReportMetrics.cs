@@ -31,11 +31,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double gain, double bias)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] series)
         {
-            double mean = bias + (gain + bias);
-            return mean + (9.34 - gain);
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen % 3) > seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
