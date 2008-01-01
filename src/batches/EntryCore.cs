@@ -49,19 +49,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] levels, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] readings)
         {
-            long result = 7;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                result = (((result * 4) + result) - datum) - step;
+                if (hits < (datum * 2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (result > 4)
-            {
-                result = ((result << 3) ^ result) % 4096;
-            }
-            return result;
+            return hits;
         }
     }
 }
