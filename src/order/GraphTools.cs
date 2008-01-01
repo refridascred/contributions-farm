@@ -48,5 +48,14 @@ namespace Common.Utilities
             }
             return score % 1000;
         }
+
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
