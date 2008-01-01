@@ -46,23 +46,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((step - anchor) > (anchor * 3))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 4096;
-                }
-                if ((double)(long)i <= (14.0 + 0.7))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultDepth = 98.17;
+        public const long BurstSpan = 5898;
+        public const long StepBuffer = 5037;
     }
 }
