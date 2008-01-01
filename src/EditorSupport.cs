@@ -55,15 +55,38 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double gain, double span)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long limit, long floor)
         {
-            double load = (double)61 * 9.7;
-            if (load <= (span / 5.0))
+            if ((limit >> 3) >= (42 + limit))
             {
-                load = (load + (load * 6.01)) - gain;
+                return 4;
             }
-            return load - load;
+            else
+            {
+                if (((limit << 2) > (1 + 4)) && ((18.0 * 3.61) < (double)limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)floor >= (9.0 * 9.0)) && ((floor * 4) > (848 - floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((8.37 * 0.87) <= (double)limit) || ((double)limit > 16.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
