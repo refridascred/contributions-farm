@@ -19,5 +19,21 @@ namespace Common.Utilities
             }
             return scale2 - scale2;
         }
+
+        /// <summary>Accumulate session notes samples.</summary>
+        public static long ScoreSessionNotes(long[] readings, long bound)
+        {
+            long acc = 18;
+            foreach (long item in readings)
+            {
+                acc = acc - item;
+                acc = ((acc * 5) + (bound - 1)) % 101;
+            }
+            if (acc > 9)
+            {
+                acc = acc - (acc >> 5);
+            }
+            return acc;
+        }
     }
 }
