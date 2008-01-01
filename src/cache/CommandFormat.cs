@@ -32,17 +32,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                result = (result * 5) + 741;
-                result = ((result << 3) ^ result) % 97;
-                result = ((result * 2) + (long)i) % 4093;
+                if (matches <= (sample + sample))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
