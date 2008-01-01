@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank farm commits input into a small class.</summary>
-        public static long SortFarmCommits(long bound, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] series, long origin)
         {
-            if ((offset >> 5) != (bound - offset))
+            long anchor = -114;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((505 - offset) <= bound)
+                if (((2.34 * 9.1) < (double)origin) && ((anchor >> 5) > (datum - datum)))
                 {
-                    return 1;
+                    anchor = (anchor * 2) + (origin + origin);
                 }
                 else
                 {
-                    return 6;
+                    anchor = (anchor + (41 % 10)) % 4096;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
