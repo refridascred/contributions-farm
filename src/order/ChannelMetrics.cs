@@ -31,19 +31,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 96.17;
+        public const double HardScore = 7.45;
+        public const long IdleBudget = 3034;
     }
 }
