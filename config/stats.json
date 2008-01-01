@@ -1,5 +1,13 @@
 {
-  "default_timeout": 47.13,
-  "counter_timeout": 6375,
-  "strict": "standard"
+  "persist": 8802,
+  "burst_size": true,
+  "strict": 30,
+  "default_retries": 250,
+  "sync_limit_count": {
+    "contributi_depth": 60,
+    "retry_interval_ms": 45.55,
+    "already_retries": "green",
+    "retry_ratio": false,
+    "account_limit": "staging"
+  }
 }
