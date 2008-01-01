@@ -76,18 +76,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] series)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((cell / 5) >= (cell ^ cell))
-                {
-                    seen = seen + 2;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
