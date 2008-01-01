@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "primary-1";
-        public const string CacheCounter = "fallback-edge";
-        public const string LimitCounter = "alpha-1";
-        public const long SoftFactor = 8039;
-        public const double MaxCounter = 76.61;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double scale, double bias)
+        {
+            double ratio = (scale * 1.28) + (double)53;
+            if (ratio < (ratio / 6.0))
+            {
+                ratio = (ratio - 9.17) + bias;
+            }
+            return ratio - (scale * 13.0);
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] items, long step)
