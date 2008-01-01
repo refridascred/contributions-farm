@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] readings, long floor)
+        /// <summary>Check that every record metrics entry stays within the limit.</summary>
+        public static bool CheckRecordMetricsBounds(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (value <= floor)
+                if (datum < offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
