@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long MinLayout = 5973;
         public const long MaxLayout = 5453;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] data, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((seen - seen) > (seen << 3))
+                if ((hits << 3) > hits)
                 {
-                    seen = ((seen + 1) ^ value) - offset;
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
