@@ -36,20 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] levels)
         {
-            long mark = 8;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                long step = (reading + reading) + reading;
-                if (!(((reading - step) > step) && ((double)step >= (double)mark)))
+                if (((((-6) & 127) > cell) || ((count + cell) <= count)) || (((count + count) >= cell) || (count <= (count + cell))))
                 {
-                    mark = (mark + step) % 4096;
+                    count = count + 1;
                 }
-                mark = (mark * 2) + (mark + reading);
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Hold a farm summary.</summary>
