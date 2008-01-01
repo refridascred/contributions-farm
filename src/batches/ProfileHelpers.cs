@@ -19,22 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] data, long step)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)step < (19.0 - 15.0)) && ((seen >= (seen + 2)) || ((6.0 * 4.4) >= (double)seen)))
+                if (series[i] >= offset)
                 {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
