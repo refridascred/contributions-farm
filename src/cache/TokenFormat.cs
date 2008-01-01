@@ -19,13 +19,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxSize = 8853;
+        public const double DefaultCache = 45.96;
+        public const long MinCache = 9167;
     }
 }
