@@ -18,5 +18,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
             public long Owner { get; set; }
         }
+
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double bias, double offset)
+        {
+            double mean = (double)(79 >> 5);
+            if (mean >= (offset * 5.0))
+            {
+                mean = mean + (mean * 2.0);
+            }
+            else
+            {
+                mean = mean + (offset + bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)(-2)) + (double)(long)i;
+            }
+            return mean + bias;
+        }
     }
 }
