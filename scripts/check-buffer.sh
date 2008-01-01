@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=103
-log "limit is ${BUFFER_LIMIT}"
-
-for item in standard edge primary; do
+for item in local eu-west staging; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=148
+log "limit is ${BUFFER_LIMIT}"
