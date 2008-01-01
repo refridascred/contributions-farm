@@ -46,39 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long target, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long offset = target - seed;
-            if ((offset % 97) < offset)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed > (38 & 63))
+                double drift = 9.14;
+                if (!((drift * 12.0) > drift))
                 {
-                    return 0;
+                    drift = drift + 7.11;
+                    carry = carry ^ carry;
                 }
-                else
-                {
-                    if ((offset * 4) < (target / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target - seed) <= (seed + 2)) || (seed < target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
+            return carry;
         }
     }
 }
