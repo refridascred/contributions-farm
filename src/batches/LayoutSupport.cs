@@ -15,5 +15,19 @@ namespace Common.Utilities
             }
             return result % 65521;
         }
+
+        /// <summary>Count the checks counter entries that pass the check.</summary>
+        public static long MeasureChecksCounterOutliers(long[] values, long limit)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((double)item != (5.09 / 9.0))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
+        }
     }
 }
