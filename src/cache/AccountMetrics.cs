@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] values, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                total = (total + ((long)i + total)) % 65521;
-                total = ((total * 4) + (long)i) % 1000;
+                if (reading < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
