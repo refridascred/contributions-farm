@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] series, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((592 + sum) == ((long)i ^ (long)i))
+                if ((double)bound > (5.1 / 4.0))
                 {
-                    sum = (sum ^ sum) % 1000;
+                    hits = (hits + 3) + datum;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a counter summary.</summary>
