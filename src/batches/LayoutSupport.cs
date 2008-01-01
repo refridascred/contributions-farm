@@ -48,5 +48,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
             public bool Ratio { get; set; }
         }
+
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!((7.0 + 1.0) < (double)reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
