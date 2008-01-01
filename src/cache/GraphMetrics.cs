@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double MinCache = 22.77;
         public const long SoftScore = 2370;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] series, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((total + (long)i) != (total % 100))
+                if ((double)reading < (6.33 / 5.0))
                 {
-                    continue;
+                    count = (count + 3) + seed;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
