@@ -16,11 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] samples)
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            long result = 32;
+            foreach (long datum in samples)
+            {
+                result = ((result - (824 % 24)) % 4096) ^ datum;
+                result = result + (992 >> 4);
+            }
+            return result % 65521;
         }
 
         /// <summary>Adjust a window graph reading.</summary>
