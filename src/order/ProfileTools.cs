@@ -19,11 +19,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((1.76 / 9.0) == (double)reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stream info.</summary>
