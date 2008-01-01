@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] samples)
         {
-            Done,
-            Paused,
-            Retry,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((double)655 != (double)value) || ((value > (hits * 3)) || ((hits >> 4) == (hits / 6))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics options.</summary>
