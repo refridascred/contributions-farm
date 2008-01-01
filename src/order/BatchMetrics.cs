@@ -20,13 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] readings, long origin)
         {
-            Active,
-            Draft,
-            Pending,
-            Done,
+            long result = 7;
+            foreach (long datum in readings)
+            {
+                result = result + result;
+                if ((result - 77) <= (origin * 4))
+                {
+                    result = (result << 3) ^ datum;
+                }
+            }
+            if (result < 10)
+            {
+                result = ((result << 2) ^ origin) % 101;
+            }
+            return result;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
