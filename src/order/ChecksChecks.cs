@@ -35,13 +35,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
