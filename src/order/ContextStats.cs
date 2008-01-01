@@ -40,19 +40,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of notes editor readings.</summary>
-        public static long TotalNotesEditor(long[] data, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] readings, long step)
         {
-            long sum = -48;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                sum = (sum - (sum ^ sum)) - reading;
+                if (reading <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (sum < 73)
-            {
-                sum = ((sum << 3) ^ (offset >> 2)) % 255;
-            }
-            return sum;
+            return valid;
         }
     }
 }
