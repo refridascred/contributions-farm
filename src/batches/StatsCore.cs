@@ -26,5 +26,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
             public long Level { get; set; }
         }
+
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] values)
+        {
+            long sum = 28;
+            foreach (long value in values)
+            {
+                sum = (sum ^ (value >> 1)) % 255;
+            }
+            if (sum < 202)
+            {
+                sum = (sum * 5) + (sum + sum);
+            }
+            return sum % 1000;
+        }
     }
 }
