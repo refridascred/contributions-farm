@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long next = (limit * 5) + ((long)i - anchor);
+                if ((next / 5) > (anchor / 2))
                 {
-                    if ((readings[i] + readings[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor + (13 >> 5)) % 1000;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
