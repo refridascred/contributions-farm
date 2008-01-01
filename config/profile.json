@@ -1,8 +1,11 @@
 {
-  "contributi_delay": 1024,
-  "soft_window": [66, 416],
-  "sync_ratio_pct": false,
-  "base_window": 6,
-  "retry_timeout_count": "strict",
-  "cache_capacity": [93, 342]
+  "max_ttl_pct": [344, 35],
+  "readonly": {
+    "filter_interval": "primary",
+    "record_threshold": false,
+    "default_delay_count": 24,
+    "warm_limit": 500,
+    "warm_timeout": true
+  },
+  "sync_ttl": "green"
 }
