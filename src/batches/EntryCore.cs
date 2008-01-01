@@ -48,5 +48,20 @@ namespace Common.Utilities
             Retry,
             Synced,
         }
+
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] levels, long step)
+        {
+            long result = 7;
+            foreach (long datum in levels)
+            {
+                result = (((result * 4) + result) - datum) - step;
+            }
+            if (result > 4)
+            {
+                result = ((result << 3) ^ result) % 4096;
+            }
+            return result;
+        }
     }
 }
