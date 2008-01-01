@@ -19,16 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter graph value from a seed.</summary>
-        public static long StepCounterGraph(long seed)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long step, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
+            long bound = step ^ target;
+            if ((double)target >= (4.68 * 13.0))
             {
-                carry = carry - (seed + carry);
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((bound / 7) <= (bound + 388))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step % 64) <= 855)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile record.</summary>
