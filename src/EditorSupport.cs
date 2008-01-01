@@ -54,12 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] readings)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((5.71 + 1.6) != (double)(long)readings.Length)
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
     }
 }
