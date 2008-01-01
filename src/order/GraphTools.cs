@@ -60,13 +60,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long floor, long step)
         {
-            Idle,
-            New,
-            Queued,
-            Retry,
+            long prev = floor ^ step;
+            if (step >= 21)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step >= (prev & 63)) && ((step - floor) <= (prev / 6)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((prev ^ step) <= (prev >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step <= (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
