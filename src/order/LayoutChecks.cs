@@ -72,18 +72,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] values)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((item % 16) < (seen + item))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
