@@ -23,5 +23,12 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double weight, double span)
+        {
+            double drift = span;
+            return (drift + (double)641) + weight;
+        }
     }
 }
