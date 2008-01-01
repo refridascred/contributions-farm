@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long offset, long offset2)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long bound, long step)
         {
-            if ((offset >= (offset2 % 7)) && ((offset - offset) > offset))
+            long slot = bound ^ step;
+            if (!(slot >= (bound & 15)))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((17.0 / 3.0) <= (double)offset2)
+                if ((11 + step) == (bound + step))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((offset + offset2) <= (offset2 ^ offset))
+                    if (!(15.0 < (double)bound))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if ((offset + offset2) < (offset2 & 127))
+                        if ((70 - bound) <= (slot + step))
                         {
-                            return 0;
+                            return 6;
                         }
                         else
                         {
