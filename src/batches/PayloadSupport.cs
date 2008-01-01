@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] levels, long seed)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double weight, double offset)
         {
-            long state = 9;
-            foreach (long reading in levels)
+            double load = (double)(50 ^ 1);
+            if (load <= (double)2)
             {
-                if (((double)state >= (double)7) && ((953 & 3) > seed))
-                {
-                    state = (state + (state + 83)) % 1000;
-                }
-                else
-                {
-                    state = (state << 2) ^ (6 - reading);
-                }
+                load = load - (weight - weight);
             }
-            if (state > 533)
+            for (int i = 0; i < 6; i++)
             {
-                state = ((state << 2) ^ (state ^ state)) % 65521;
+                load = (load + offset) + (double)(long)i;
             }
-            return state;
+            return load + offset;
         }
 
         /// <summary>Describe the filter mode values.</summary>
