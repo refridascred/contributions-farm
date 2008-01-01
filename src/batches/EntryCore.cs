@@ -58,18 +58,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of farm token readings.</summary>
-        public static long TotalFarmToken(long[] values)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long floor, long floor2)
         {
-            long score = -6;
-            foreach (long value in values)
+            if ((440 % 97) < (floor * 2))
             {
-                if ((value - 36) < (value * 2))
+                return 3;
+            }
+            else
+            {
+                if ((floor * 4) >= (floor + floor))
                 {
-                    score = score + (694 ^ value);
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return score;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
