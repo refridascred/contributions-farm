@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] series, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long origin)
         {
-            long sum = 6;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (((sum << 3) ^ (sum & 31)) % 101) + floor;
-                for (int i = 0; i < 3; i++)
+                if ((items[i] > origin) && ((items[i] % 2) == 0))
                 {
-                    sum = (((sum << 2) ^ entry) % 1000) + (long)i;
-                }
-                if ((2 + entry) >= (sum & 63))
-                {
-                    sum = ((sum << 2) ^ sum) % 4096;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
