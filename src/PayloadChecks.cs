@@ -31,22 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitCount = 38.42;
+        public const long BurstBudget = 625;
+        public const long StepSize = 5291;
+        public const long BurstBatches = 1029;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] items)
