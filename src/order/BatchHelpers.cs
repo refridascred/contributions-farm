@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] levels, long floor)
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
