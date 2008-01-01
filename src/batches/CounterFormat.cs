@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleLevel = 30.13;
-        public const long HardDepth = 5322;
-        public const long BaseWidth = 8769;
-        public const double IdleGithubfarm = 52.4;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BaseInterval = 8378;
