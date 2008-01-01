@@ -1,14 +1,8 @@
 # support settings
-max_capacity_ms:
-  cache_retries_count:
-    - 191
-    - 255
-    - 322
-  cache_threshold_pct: false
-  soft_interval: 70
-  persist:
-    - eu-west
-    - latest
-    - primary
-readonly: false
-githubfarm_limit: staging
+persist: 30
+idle_ratio:
+  - 48
+  - 93
+  - 198
+  - 178
+soft_ratio_count: green
