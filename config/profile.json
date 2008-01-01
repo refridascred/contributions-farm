@@ -1,23 +1,7 @@
 {
-  "batch_timeout": 84.32,
-  "checks_limit": "cached",
-  "editor_interval": true,
-  "metrics_ttl": {
-    "hard_capacity": {
-      "retry_delay": 48,
-      "cluster_ttl": 44,
-      "buffer_interval": "fallback"
-    },
-    "idle_depth": {
-      "burst_size": ["green", "local"],
-      "report_timeout": false,
-      "base_ttl_ms": "legacy",
-      "stream_retries": 23,
-      "cluster_ttl": true,
-      "batch_capacity_pct": "edge"
-    },
-    "max_capacity_ms": 6511,
-    "min_ratio_ms": ["standard", "open", "stable", "standard"]
-  },
-  "cache_retries_pct": "blue"
+  "farm_limit": "primary",
+  "base_retries": 0.42,
+  "readonly": "eu-west",
+  "idle_ttl_count": 1024,
+  "metric_interval": 73.86
 }
