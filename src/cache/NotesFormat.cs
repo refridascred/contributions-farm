@@ -20,39 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long target, long limit)
+        /// <summary>Audit account metric readings against a rule.</summary>
+        public static long MeasureAccountMetricMatches(long[] data, long origin)
         {
-            long next = target + limit;
-            if ((target + next) != (target >> 2))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)target != (9.7 - 4.5)) && (target <= (392 + next)))
+                if (hits >= (entry ^ origin))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((651 & 3) < limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target / 8) < (next ^ next))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a context header.</summary>
