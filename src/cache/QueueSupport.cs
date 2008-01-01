@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] data, long floor)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
