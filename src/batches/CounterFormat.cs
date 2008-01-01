@@ -18,5 +18,12 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 4272;
+        public const string IdleFactor = "open-edge";
+        public const long DefaultFactor = 518;
+        public const long SoftChecks = 4800;
+        public const long BaseChecks = 858;
     }
 }
