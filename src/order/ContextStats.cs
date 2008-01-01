@@ -48,23 +48,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] samples, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] items, long origin)
         {
-            long state = 10;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                state = state ^ (target * 5);
-                if ((state + 0) <= sample)
+                if (87 <= sample)
                 {
-                    break;
+                    count = (count + 3) - origin;
                 }
             }
-            if (state > 24)
-            {
-                state = (state ^ (target + 0)) % 1000;
-            }
-            return state;
+            return count;
         }
     }
 }
