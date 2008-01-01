@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)tally > (6.0 - 19.0))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinInterval = "strict";
+        public const long HardWidth = 2217;
+        public const double DefaultContext = 51.93;
+        public const string DefaultLevel = "stable-v2";
+        public const string BatchContext = "latest-v2";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double MaxCounter = 22.07;
