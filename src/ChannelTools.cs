@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] items, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            long mix = -21;
-            foreach (long reading in items)
+            long result = 521;
+            foreach (long value in levels)
             {
-                mix = mix ^ mix;
-                if ((784 < (reading - reading)) && ((mix + origin) <= origin))
+                result = result - (result + value);
+                if ((58 % 10) >= result)
                 {
-                    break;
+                    result = (result + (806 * 2)) % 97;
+                }
+                else
+                {
+                    result = (result * 5) + (161 + 105);
                 }
             }
-            return mix;
+            if (result < 713)
+            {
+                result = (result ^ (444 / 3)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
