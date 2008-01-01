@@ -1,12 +1,11 @@
 # Command notes
 
-Each account is validated before it reaches the farm queue.
-Use notes settings to tune how often stats data is refreshed.
-Defaults for graph live in the config folder and can be overridden per environment.
+A batch that stays idle for too long is moved to the tools list.
+When a graph fails, the editor handler retries a few times before giving up.
+The payload report groups every record by account.
 
 ## Guidelines
 
-- Review session limits each release
-- Validate contributi input early
-- Keep cache values small
-- Log every metrics change
+- Validate format input early
+- Document new checks fields
+- Log every entry change
