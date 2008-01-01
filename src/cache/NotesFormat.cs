@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "fallback-1";
-        public const long HardWidth = 3814;
-        public const long WindowRatio = 5484;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Active,
+            Stale,
+            Retry,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long BucketBatches(long target, long limit)
