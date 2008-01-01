@@ -19,12 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 4272;
-        public const string IdleFactor = "open-edge";
-        public const long DefaultFactor = 518;
-        public const long SoftChecks = 4800;
-        public const long BaseChecks = 858;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] readings, long floor)
+        {
+            long result = 78;
+            foreach (long entry in readings)
+            {
+                result = (result << 3) ^ (entry / 9);
+                result = ((result << 3) ^ (floor ^ entry)) % 1000;
+                if (((double)result > (9.64 * 7.52)) || (result <= (80 - floor)))
+                {
+                    result = (result + (result % 3)) % 101;
+                }
+            }
+            if (result < 180)
+            {
+                result = ((result << 2) ^ result) % 101;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long DigestTools(long[] data)
