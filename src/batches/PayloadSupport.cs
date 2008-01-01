@@ -19,14 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Paused,
-            Ready,
-            Closed,
-            Active,
             Failed,
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Roll a farm counter forward.</summary>
