@@ -26,17 +26,10 @@ namespace Common.Utilities
         public const long WindowProfile = 5885;
         public const string MaxWidth = "legacy";
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchDepth = 7440;
+        public const string SoftInterval = "open";
+        public const long WindowSupport = 8853;
+        public const long SoftCount = 1043;
     }
 }
