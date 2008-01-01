@@ -43,21 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Compare every pair of entry profile readings.</summary>
+        public static long CompareEntryProfileCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) < 18)
+                    if ((data[i] - data[j]) == 9)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the layout mode values.</summary>
