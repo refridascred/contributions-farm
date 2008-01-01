@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 8838;
-        public const double RetryBatch = 9.86;
-        public const long StepSize = 7011;
-        public const double BaseBatch = 91.91;
-        public const double BatchBudget = 24.41;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] readings)
