@@ -48,12 +48,12 @@ namespace Common.Utilities
             return drift + 3.56;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Paused,
-            Draft,
-            Idle,
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit githubfarm profile readings against a rule.</summary>
