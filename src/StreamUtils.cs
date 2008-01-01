@@ -37,18 +37,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] values)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!((168 + 711) < cell) || ((12.0 - 3.52) > (double)seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a filter record.</summary>
