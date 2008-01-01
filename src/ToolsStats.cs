@@ -43,17 +43,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] samples, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 22;
+            foreach (long datum in items)
             {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (39 + 348)) + datum;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of support schema entries.</summary>
