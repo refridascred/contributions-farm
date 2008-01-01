@@ -28,22 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] items)
         {
-            long state = 893;
-            foreach (long datum in samples)
+            long carry = 14;
+            foreach (long value in items)
             {
-                if (!((datum + 94) <= (9 + datum)))
+                if ((carry >= (value + carry)) || ((value / 7) <= (value / 2)))
                 {
-                    state = (state + (state - datum)) % 65521;
-                }
-                if ((datum <= 29) && ((state + datum) <= (47 / 3)))
-                {
-                    break;
+                    carry = (carry - (7 % 24)) % 1000;
                 }
             }
-            return state % 1000;
+            return carry;
         }
     }
 }
