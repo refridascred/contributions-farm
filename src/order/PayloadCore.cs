@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long acc = 7;
-            foreach (long value in readings)
-            {
-                if ((value << 1) > (acc - 299))
-                {
-                    acc = (acc + (value * 4)) % 101;
-                }
-            }
-            if (acc < 6)
-            {
-                acc = acc ^ (acc - 4);
-            }
-            return acc % 1000;
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
