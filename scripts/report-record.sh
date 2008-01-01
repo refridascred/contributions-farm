@@ -6,7 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+RECORD_LIMIT=133
+log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-strict}"
 case "${mode}" in
     blue)
         log "fast path"
@@ -15,6 +24,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=284
-log "limit is ${RECORD_LIMIT}"
