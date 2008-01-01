@@ -21,18 +21,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] items, long step)
+        /// <summary>Digest a series of counter contributi entries.</summary>
+        public static long CombineCounterContributi(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long score = 36;
+            foreach (long reading in data)
             {
-                if (datum < (datum << 1))
-                {
-                    hits = (hits + 3) + step;
-                }
+                score = (((score ^ (score >> 2)) % 4096) + reading) + floor;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
