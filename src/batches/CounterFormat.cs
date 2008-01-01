@@ -40,22 +40,17 @@ namespace Common.Utilities
         public const long BurstCount = 2399;
         public const string WindowDepth = "latest-edge";
 
-        /// <summary>Fold a list of commits cluster readings.</summary>
-        public static long CombineCommitsCluster(long[] series)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] series, long limit)
         {
-            long total = 1;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)total >= (5.0 + 2.91))
+                if (series[i] < limit)
                 {
-                    total = (total * 5) + (long)series.Length;
-                }
-                else
-                {
-                    total = total - (item & 3);
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
