@@ -20,12 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            Queued,
+            Active,
+            Stale,
+            Ready,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
