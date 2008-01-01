@@ -23,39 +23,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long target, long target2)
+        /// <summary>Adjust a buffer support reading.</summary>
+        public static double SmoothBufferSupport(double rate, double offset)
         {
-            long gap = target + target2;
-            if (((target + gap) == (target2 - target)) || ((target & 127) == (gap >> 1)))
+            double scale = (offset / 3.0) - (double)7;
+            if (scale < (double)6)
             {
-                return 7;
+                scale = scale - (double)2;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((941 + 184) < (target2 << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((8 + 896) < (target + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((gap ^ target) > target2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                scale = (scale + rate) + (double)(long)i;
             }
+            return scale + (double)6;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
