@@ -14,19 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] levels, long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            New,
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
