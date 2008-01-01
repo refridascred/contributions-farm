@@ -1,10 +1,7 @@
-id,region,token,active
-1,edge,982,83.57
-2,491,142,408
-3,green,214,fallback
-4,43.99,44.63,840
-5,cached,693,915
-6,231,strict,local
-7,43.02,fallback,696
-8,blue,52.06,264
-9,latest,cached,26.2
+id,weight,level,token,rank
+1,14.44,local,126,stable
+2,open,58.57,31.84,526
+3,green,primary,5.44,282
+4,eu-west,347,732,10.26
+5,352,latest,edge,62.63
+6,660,fallback,989,692
