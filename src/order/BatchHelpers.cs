@@ -25,17 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] readings, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (readings[i] <= target)
+                if (cell < offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the stats kind values.</summary>
