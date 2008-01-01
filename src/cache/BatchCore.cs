@@ -42,12 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double bias)
         {
-            Failed,
-            New,
-            Paused,
+            double ratio = (double)(78 + 82);
+            if (ratio < (double)238)
+            {
+                ratio = ratio - (bias - scale);
+            }
+            else
+            {
+                ratio = ratio - (double)9;
+            }
+            return ratio + 3.6;
         }
     }
 }
