@@ -75,5 +75,10 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 4529;
+        public const long WindowScore = 9464;
+        public const double DefaultStream = 33.19;
     }
 }
