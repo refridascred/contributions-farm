@@ -30,15 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double scale, double bias)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double bias2 = (scale / 4.0) + bias;
-            if (bias2 >= bias2)
-            {
-                bias2 = bias2 + (bias2 * 9.4);
-            }
-            return bias2 + bias;
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
