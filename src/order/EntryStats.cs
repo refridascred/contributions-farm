@@ -43,19 +43,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] data, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long score = 768;
+            foreach (long entry in samples)
             {
-                if (cell != step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score - (step & 127)) % 4096) ^ entry;
             }
-            return flag;
+            return score % 65521;
         }
     }
 }
