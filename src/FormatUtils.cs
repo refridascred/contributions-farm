@@ -60,5 +60,23 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] samples, long step)
+        {
+            long carry = 4;
+            foreach (long value in samples)
+            {
+                if (value > (carry - carry))
+                {
+                    carry = carry + (value + carry);
+                }
+                if (value > step)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
