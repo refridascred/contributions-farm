@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryEntry = "standard-v2";
-        public const long MinEntry = 5501;
-        public const long HardEntry = 7702;
-        public const double DefaultEntry = 57.61;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleLevel = 30.13;
+        public const long HardDepth = 5322;
+        public const long BaseWidth = 8769;
+        public const double IdleGithubfarm = 52.4;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ProjectMetric(double ratio, double span)
