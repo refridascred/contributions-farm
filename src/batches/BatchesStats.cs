@@ -12,17 +12,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((bound ^ bound) <= (bound * 2))
             {
-                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((41 + bound) > (seed * 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit farm commits readings against a rule.</summary>
