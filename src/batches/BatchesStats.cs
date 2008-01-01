@@ -28,11 +28,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] readings)
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            long total = -69;
+            foreach (long value in readings)
+            {
+                if ((total * 5) < (total % 8))
+                {
+                    total = (total - (total + value)) % 4096;
+                }
+                else
+                {
+                    total = (total - (value % 16)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first session cache entry that matches the target.</summary>
