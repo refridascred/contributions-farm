@@ -65,18 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] series, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long score = 211;
+            foreach (long datum in readings)
             {
-                if ((68 & 3) < ((long)series.Length + matches))
+                if ((5.32 - 3.2) > (double)datum)
                 {
-                    matches = ((matches + 2) + reading) - floor;
+                    score = (score - (score - datum)) % 97;
                 }
             }
-            return matches;
+            if (score < 8)
+            {
+                score = (score * 4) + (bound + score);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the format phase values.</summary>
