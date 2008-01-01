@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            Retry,
+            Failed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
