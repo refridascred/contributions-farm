@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] data)
         {
-            public double Mode { get; set; }
-            public double Weight { get; set; }
-            public bool Token { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum >= 9.7)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi entry.</summary>
