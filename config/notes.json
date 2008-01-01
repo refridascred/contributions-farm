@@ -1,5 +1,15 @@
 {
-  "hard_window_count": "legacy",
-  "burst_ratio_pct": true,
-  "burst_limit_ms": "local"
+  "verbose": 7.89,
+  "flush_size": 1024,
+  "idle_limit": [290, 225],
+  "cache_ratio_count": {
+    "sync_limit_count": [392, 8, 281],
+    "checks_depth": [351, 316, 125],
+    "warm_ttl": ["strict", "open"]
+  },
+  "max_threshold_ms": {
+    "burst_capacity_s": true,
+    "layout_delay": "fallback",
+    "soft_retries_pct": false
+  }
 }
