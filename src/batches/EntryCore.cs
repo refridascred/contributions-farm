@@ -58,11 +58,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Fold a list of farm token readings.</summary>
+        public static long TotalFarmToken(long[] values)
         {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
+            long score = -6;
+            foreach (long value in values)
+            {
+                if ((value - 36) < (value * 2))
+                {
+                    score = score + (694 ^ value);
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
