@@ -39,21 +39,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            Locked,
+            Closed,
+            Queued,
         }
     }
 }
