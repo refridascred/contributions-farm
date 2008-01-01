@@ -35,12 +35,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] readings)
         {
-            Paused,
-            Retry,
-            Synced,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 127) >= tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next schema value.</summary>
