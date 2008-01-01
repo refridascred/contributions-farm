@@ -23,20 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] series, long offset)
-        {
-            long anchor = 864;
-            foreach (long sample in series)
-            {
-                anchor = (anchor ^ sample) % 101;
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor + (offset + offset)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFactor = "primary-edge";
+        public const long BatchFactor = 802;
+        public const long BurstSpan = 6237;
+        public const double CacheSize = 74.09;
 
         /// <summary>Match up editor samples.</summary>
         public static long OverlapEditorCount(long[] series)
