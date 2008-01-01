@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings, long target)
         {
-            Paused,
-            Stale,
-            Closed,
+            long sum = -8;
+            foreach (long value in readings)
+            {
+                if ((value + 1) <= (810 << 3))
+                {
+                    sum = ((sum * 2) + (sum >> 3)) - target;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
