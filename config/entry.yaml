@@ -1,11 +1,16 @@
 # entry settings
-soft_capacity: 78.48
-default_depth_ms: 85.13
-soft_ttl_s: 35.13
-min_limit: 60
-commits_capacity:
-  - 235
-  - 206
-  - 65
-  - 453
-profile_limit: false
+warm_timeout: staging
+contributi_interval: open
+min_ttl_ms:
+  soft_ttl_count:
+    - 346
+    - 314
+    - 453
+    - 310
+  hard_limit: 68
+  min_capacity_ms:
+    - legacy
+    - edge
+    - latest
+    - green
+  base_delay: false
