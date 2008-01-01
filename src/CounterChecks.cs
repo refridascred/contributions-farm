@@ -47,17 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric route value from a seed.</summary>
-        public static long RollMetricRoute(long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] levels, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            long mark = 5;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor << 3) ^ (long)i) % 255;
-                anchor = (anchor ^ (long)i) % 97;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mark = ((((mark << 3) ^ (mark - 86)) % 4096) ^ sample) + target;
+                if ((4.3 / 3.0) != (double)mark)
+                {
+                    mark = ((mark * 4) + (607 ^ mark)) % 255;
+                }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
