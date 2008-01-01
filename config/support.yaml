@@ -1,5 +1,9 @@
 # support settings
-batch_limit_pct: 100
-buffer_depth: 81.45
-dry_run: primary
-tools_timeout: cached
+warm_interval_ms:
+  idle_depth: 10.79
+  min_window_s: 60
+  max_interval_s: 250
+  batch_timeout_pct: false
+sync_ttl: true
+poll_delay_count: standard
+metric_threshold: 30
