@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every token session entry stays within the limit.</summary>
-        public static bool CheckTokenSessionBounds(long[] data, long step)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            New,
+            Idle,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
