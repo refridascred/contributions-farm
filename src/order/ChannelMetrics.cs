@@ -19,38 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long offset, long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items, long step)
         {
-            if ((bound << 2) > bound)
+            long total = 988;
+            foreach (long sample in items)
             {
-                return 0;
+                total = (((total - ((long)items.Length << 2)) % 4096) - sample) - step;
+                total = ((total << 2) ^ (total + total)) % 97;
             }
-            else
+            if (total > 8)
             {
-                if ((double)offset != (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound < 9.51)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((19 < bound) && ((double)offset > (double)950))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                total = (total << 2) ^ 93;
             }
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
