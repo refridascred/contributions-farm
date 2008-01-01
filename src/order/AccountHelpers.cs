@@ -52,11 +52,19 @@ namespace Common.Utilities
         public const long CacheSchema = 5708;
         public const long BatchSize = 8105;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double rate, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] items, long limit)
         {
-            double weight = rate + 10.0;
-            return weight - (bias + bias);
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
