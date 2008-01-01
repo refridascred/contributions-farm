@@ -39,14 +39,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] values)
         {
-            Draft,
-            Pending,
-            Locked,
-            Closed,
-            Queued,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum < (2.0 - 0.8))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
