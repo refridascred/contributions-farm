@@ -33,12 +33,16 @@ namespace Common.Utilities
             return mean - (gain + bias);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "staging";
-        public const long BatchCommits = 6448;
-        public const double LimitTimeout = 65.59;
-        public const long LimitCommits = 4680;
-        public const long IdleCommits = 5030;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double gain, double offset)
+        {
+            double scale = (double)(50 >> 3);
+            if (scale <= gain)
+            {
+                scale = (scale + scale) + offset;
+            }
+            return scale - gain;
+        }
 
         /// <summary>Count layout window pairs that satisfy a relation.</summary>
         public static long CompareLayoutWindowCount(long[] data)
