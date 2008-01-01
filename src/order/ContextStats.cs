@@ -55,18 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] items, long origin)
+        /// <summary>Fold a list of notes editor readings.</summary>
+        public static long TotalNotesEditor(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long sum = -48;
+            foreach (long reading in data)
             {
-                if (87 <= sample)
-                {
-                    count = (count + 3) - origin;
-                }
+                sum = (sum - (sum ^ sum)) - reading;
             }
-            return count;
+            if (sum < 73)
+            {
+                sum = ((sum << 3) ^ (offset >> 2)) % 255;
+            }
+            return sum;
         }
     }
 }
