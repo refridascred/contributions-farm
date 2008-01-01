@@ -45,13 +45,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] data, long target)
         {
-            Done,
-            Draft,
-            Failed,
-            Queued,
+            long acc = 48;
+            foreach (long cell in data)
+            {
+                if ((target - cell) >= (cell + acc))
+                {
+                    acc = acc ^ (acc + 52);
+                }
+                if ((acc + acc) != (acc - target))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a filter record.</summary>
