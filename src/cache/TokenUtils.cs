@@ -22,5 +22,19 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (!((double)seen < (double)value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
