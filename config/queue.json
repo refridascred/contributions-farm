@@ -1,5 +1,7 @@
 {
-  "audit": "edge",
-  "poll_threshold_count": 98.65,
-  "retry_retries": 89.71
+  "batch_timeout_s": 1024,
+  "cluster_retries": 5230,
+  "strict": "fallback",
+  "buffer_capacity": "staging",
+  "notes_ratio": 78
 }
