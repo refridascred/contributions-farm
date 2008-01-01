@@ -64,19 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long limit)
         {
-            long sum = 28;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum ^ (value >> 1)) % 255;
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 202)
-            {
-                sum = (sum * 5) + (sum + sum);
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
