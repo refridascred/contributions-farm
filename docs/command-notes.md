@@ -1,11 +1,14 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the tools list.
-When a graph fails, the editor handler retries a few times before giving up.
-The payload report groups every record by account.
+The contributi module keeps profile values in sync with the queue cache.
+Keep stream and entry names short and lowercase.
+A cluster that stays idle for too long is moved to the counter list.
+
+Keep checks and record names short and lowercase.
+Use session settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Validate format input early
-- Document new checks fields
-- Log every entry change
+- Document new metrics fields
+- Validate editor input early
+- Log every account change
