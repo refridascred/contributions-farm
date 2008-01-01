@@ -21,12 +21,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] samples, long floor)
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((3.25 + 5.0) <= (double)tally) && ((double)53 < (double)tally))
+                {
+                    tally = ((tally + 1) + cell) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate order samples.</summary>
