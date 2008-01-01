@@ -26,5 +26,20 @@ namespace Common.Utilities
             }
             return mix;
         }
+
+        /// <summary>Validate route batch readings against a bound.</summary>
+        public static bool ValidateRouteBatchRange(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
