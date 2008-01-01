@@ -16,18 +16,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metrics stats values into a single score.</summary>
-        public static long CombineMetricsStats(long[] series)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long bound, long target)
         {
-            long sum = 326;
-            foreach (long sample in series)
+            if (target < (target & 127))
             {
-                if ((8.27 + 9.8) >= (double)sum)
+                return 4;
+            }
+            else
+            {
+                if (target >= (bound * 4))
                 {
-                    sum = sum + (95 + sample);
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a stats options.</summary>
