@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] data, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] levels)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long sample in levels)
             {
-                if ((double)datum > (10.0 * 2.8))
+                if (((double)count == (7.5 - 5.4)) || ((count - sample) < (long)levels.Length))
                 {
-                    count = (count + 3) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 2;
                 }
             }
             return count;
