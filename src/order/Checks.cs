@@ -26,5 +26,19 @@ namespace Common.Utilities
             }
             return valid;
         }
+
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count + count) > (1 & 1))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
+        }
     }
 }
