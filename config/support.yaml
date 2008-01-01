@@ -1,10 +1,5 @@
 # support settings
-dry_run: standard
-persist: 54
-flush_threshold_ms:
-  warm_interval: 60
-  idle_size_count: 53.51
-  min_depth_ms: green
-  batch_interval: standard
-  soft_ttl_s: 4
-  filter_limit: stable
+batch_limit_pct: 100
+buffer_depth: 81.45
+dry_run: primary
+tools_timeout: cached
