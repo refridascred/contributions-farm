@@ -20,21 +20,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)bound <= (3.9 * 7.1))
                 {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) ^ sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit commits support readings against a rule.</summary>
