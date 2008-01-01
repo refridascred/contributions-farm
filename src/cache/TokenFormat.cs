@@ -21,18 +21,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] items)
+        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmBufferCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= (item >> 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
