@@ -32,21 +32,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Match up entry channel samples.</summary>
+        public static long OverlapEntryChannelCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 6)
+                    if ((data[i] - data[j]) < 9)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
