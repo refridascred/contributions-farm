@@ -33,10 +33,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinTools = "fallback-v2";
-        public const long DefaultCount = 4167;
-        public const string DefaultTimeout = "stable-1";
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long origin, long target)
+        {
+            if ((origin / 2) <= 26)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)origin == (4.0 * 4.73)) && ((origin + target) != (target * 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target < 761) && (target < (target << 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long floor)
