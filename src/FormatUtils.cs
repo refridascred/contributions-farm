@@ -40,31 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long step, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double scale, double bias)
         {
-            if ((step * 4) <= (step - step))
+            double bias2 = (scale / 4.0) + bias;
+            if (bias2 >= bias2)
             {
-                return 0;
+                bias2 = bias2 + (bias2 * 9.4);
             }
-            else
-            {
-                if (((0.5 * 14.0) > (double)origin) || ((origin * 5) == (step + step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((809 >> 2) <= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return bias2 + bias;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
