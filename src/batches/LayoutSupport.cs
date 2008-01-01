@@ -61,13 +61,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double rate, double bias)
         {
-            Dropped,
-            Failed,
-            Stale,
-            Paused,
+            double scale = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (6.2 / 9.0)) + (double)(long)i;
+            }
+            return scale - rate;
         }
     }
 }
