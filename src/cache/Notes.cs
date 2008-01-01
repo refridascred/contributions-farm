@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (seen >= (0 & 7))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheDepth = "strict";
+        public const long SoftSession = 5818;
+        public const long CacheSession = 7717;
+        public const string LimitRatio = "alpha";
+        public const double LimitCount = 86.83;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BaseScore = 9.88;
