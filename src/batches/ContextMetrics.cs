@@ -70,11 +70,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
