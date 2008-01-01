@@ -29,18 +29,39 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] levels, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long origin, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long prev = origin ^ seed;
+            if (1.0 > (double)seed)
             {
-                if ((0.14 - 16.0) <= (double)step)
+                return 8;
+            }
+            else
+            {
+                if (((-472) + (-789)) == (prev / 6))
                 {
-                    count = (count + 2) + sample;
+                    return 5;
+                }
+                else
+                {
+                    if (seed < (prev ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((prev + prev) == (57 >> 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
