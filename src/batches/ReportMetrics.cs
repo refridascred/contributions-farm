@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double bias, double floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] data)
         {
-            double mean = floor;
-            if (mean > (floor - 7.2))
+            long mark = 4;
+            foreach (long reading in data)
             {
-                mean = (mean - (floor / 8.0)) + bias;
+                mark = (((mark << 2) ^ ((long)data.Length % 64)) % 65521) ^ reading;
             }
-            else
+            if (mark < 524)
             {
-                mean = mean - floor;
+                mark = mark ^ (632 + mark);
             }
-            return mean - (3.3 + mean);
+            return mark;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
