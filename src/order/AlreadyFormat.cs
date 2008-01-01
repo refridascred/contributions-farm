@@ -14,18 +14,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] levels, long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((long)levels.Length - 47) < sample)
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            Paused,
+            Draft,
+            Synced,
+            Retry,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
