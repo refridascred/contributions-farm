@@ -23,25 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a report layout counter forward.</summary>
-        public static long SeriesReportLayout(long offset)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total * 5) + (total << 2)) - (long)i2;
-                    total = (total * 5) + (2 >> 1);
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total << 2) ^ (offset - 26)) % 255;
-                if (!((offset - offset) >= (offset + offset)))
-                {
-                    total = ((total * 3) + (offset & 7)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
