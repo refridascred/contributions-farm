@@ -24,15 +24,10 @@ namespace Common.Utilities
             return bias2 + (bias - bias);
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Done,
-            Closed,
-            Idle,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 8623;
+        public const long IdleBudget = 4564;
+        public const long BaseTimeout = 5473;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountLimits(long[] samples, long floor)
