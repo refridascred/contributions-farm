@@ -43,21 +43,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 63;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((2.0 / 3.0) < (6.0 - 2.62))
                 {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix * 4) + value;
+                }
+                if (mix >= (value >> 4))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix % 65521;
         }
     }
 }
