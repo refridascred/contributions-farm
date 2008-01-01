@@ -10,21 +10,25 @@ namespace Common.Utilities
         public const long IdleWidth = 9305;
         public const long BurstChecks = 6540;
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long offset, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound = offset ^ target;
+            if ((target + bound) >= (bound - offset))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (bound <= (offset * 4))
                 {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
