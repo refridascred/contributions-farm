@@ -16,15 +16,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double ratio, double bias)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double mean = (double)(9 - 943);
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (((mean - (mean * 1.85)) + (double)(long)i) - ratio) - bias;
-            }
-            return mean + (mean - mean);
+            Dropped,
+            Stale,
+            Synced,
+            Idle,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
