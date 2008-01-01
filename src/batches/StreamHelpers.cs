@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double MaxReport = 23.81;
         public const double BurstScore = 52.17;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] levels, long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (hits <= (6 % 24))
-                {
-                    hits = ((hits + 1) ^ cell) + target;
-                }
-            }
-            return hits;
+            double rate = weight;
+            return rate - (rate - offset);
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
