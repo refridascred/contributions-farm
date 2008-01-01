@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
             Queued,
-            Failed,
-            New,
+            Active,
+            Pending,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
