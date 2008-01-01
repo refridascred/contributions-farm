@@ -1,14 +1,4 @@
 # githubfarm settings
-commits_capacity:
-  - eu-west
-  - staging
-  - cached
-  - green
-buffer_retries:
-  - latest
-  - primary
-  - eu-west
-  - latest
-audit: true
-min_timeout_ms: 9469
-hard_size_s: false
+stream_depth: primary
+order_delay: 10
+cache_size: eu-west
