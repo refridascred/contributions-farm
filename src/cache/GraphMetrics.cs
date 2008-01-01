@@ -45,19 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double rate, double bias)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] series)
         {
-            double gain = bias / 4.0;
-            if (gain >= (bias - rate))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                gain = gain + (gain * 8.4);
+                if ((double)entry < (16.0 / 7.0))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + 7.0) + (double)(long)i;
-            }
-            return gain + 7.6;
+            return hits;
         }
     }
 }
