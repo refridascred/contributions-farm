@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] data, long target)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long sum = 455;
-            foreach (long reading in data)
-            {
-                sum = (sum - target) + reading;
-            }
-            if (sum > 55)
-            {
-                sum = sum + ((long)data.Length >> 2);
-            }
-            return sum;
+            Stale,
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a payload summary.</summary>
