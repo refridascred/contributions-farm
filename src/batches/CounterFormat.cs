@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Retry,
-            Queued,
-            Closed,
-            Done,
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
