@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Idle,
-            Locked,
-            New,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a metrics options.</summary>
