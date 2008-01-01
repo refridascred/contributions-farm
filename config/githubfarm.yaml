@@ -1,19 +1,13 @@
 # githubfarm settings
-hard_timeout: 1024
-warm_depth_ms:
-  persist:
-    - 48
-    - 32
-  verbose: 9.06
-  burst_retries_ms:
-    - stable
-    - stable
-    - latest
-sync_limit_s:
-  soft_delay_s:
-    - 206
-    - 56
-    - 325
-  audit: 100
-  batch_window_ms: blue
-  cache_limit: fallback
+account_ttl: 68.85
+poll_delay:
+  - legacy
+  - legacy
+  - strict
+  - eu-west
+sync_size_count: 250
+warm_window:
+  - 21
+  - 319
+  - 481
+  - 421
