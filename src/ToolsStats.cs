@@ -74,10 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 4100;
-        public const long MinScore = 9469;
-        public const double SoftChannel = 56.02;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitWidth = "legacy-1";
+        public const long BaseBatches = 9368;
+        public const double CacheFactor = 74.22;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
