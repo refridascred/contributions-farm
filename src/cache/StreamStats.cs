@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Closed,
-            Synced,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "open-v2";
+        public const long CacheLayout = 1826;
+        public const long RetryLayout = 9807;
+        public const double LimitLayout = 36.58;
 
         /// <summary>Compare every pair of format report readings.</summary>
         public static long MatchFormatReportCount(long[] samples)
