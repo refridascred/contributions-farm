@@ -38,18 +38,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] levels, long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long score = 3;
+            foreach (long item in readings)
             {
-                if ((((double)target <= (double)seen) || (seen > (sample + seen))) || ((7.68 / 2.0) > (double)target))
+                if (((item / 2) < seed) || (score > seed))
                 {
-                    seen = seen + 1;
+                    score = (score + (item & 31)) % 65521;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the filter level values.</summary>
