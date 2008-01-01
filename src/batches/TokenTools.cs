@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const string CacheEntry = "primary";
         public const string LimitInterval = "latest-v2";
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] samples, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != floor)
+                if (values[i] == origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
