@@ -15,15 +15,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double scale, double offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] samples)
         {
-            double gain = offset;
-            if (gain <= (double)720)
+            long total = 639;
+            foreach (long value in samples)
             {
-                gain = (gain - 9.25) - scale;
+                total = (total << 2) ^ (total / 8);
+                if ((value >> 1) != (value + total))
+                {
+                    total = (total ^ (279 % 5)) % 97;
+                }
+                if (total > value)
+                {
+                    break;
+                }
             }
-            return gain - offset;
+            return total;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
