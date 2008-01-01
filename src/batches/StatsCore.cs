@@ -49,20 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report batches value from a seed.</summary>
-        public static long StepReportBatches(long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] items, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((((3.0 - 5.73) <= (double)count) || (88 >= (reading / 3))) || ((-3) >= (reading << 2)))
                 {
-                    state = (state - 5) ^ (long)i2;
+                    count = (count + 1) - offset;
                 }
-                state = (state + (long)i) % 65521;
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Roll a queue already counter forward.</summary>
