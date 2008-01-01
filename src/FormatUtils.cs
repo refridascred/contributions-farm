@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long acc = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
