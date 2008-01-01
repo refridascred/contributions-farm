@@ -89,24 +89,19 @@ namespace Common.Utilities
             return ((mean + mean) + gain) + span;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] levels, long seed)
         {
-            if ((548 / 7) > (offset + seed))
+            bool stale = true;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed / 6) >= seed)
+                if (value != seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
