@@ -13,19 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] levels, long limit)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
