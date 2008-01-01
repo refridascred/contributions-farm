@@ -1,6 +1,6 @@
 {
-  "audit": "local",
-  "max_depth_count": [425, 172, 417, 457],
-  "max_retries_s": 72.13,
-  "poll_ratio_ms": 61.24
+  "batch_ttl": "open",
+  "batch_timeout_count": "primary",
+  "farm_window": 500,
+  "notes_delay": [461, 4, 122, 191]
 }
