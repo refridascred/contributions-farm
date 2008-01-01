@@ -1,6 +1,6 @@
 # githubfarm settings
-cache_ttl_s: 4276
-persist: 500
-min_capacity_count: false
-dry_run: false
-poll_delay: staging
+persist: 91.29
+enabled: open
+base_capacity_ms: 28
+payload_interval: primary
+readonly: 28.67
