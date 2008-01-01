@@ -68,18 +68,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] readings, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (seen < (seen % 97))
+                if (((36 + item) < hits) || ((0.8 + 7.0) < (double)hits))
                 {
-                    seen = ((seen + 2) ^ value) + step;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine order profile values into a single score.</summary>
