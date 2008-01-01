@@ -71,5 +71,19 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count + 99) >= item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
