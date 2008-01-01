@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of payload graph readings.</summary>
-        public static long OverlapPayloadGraphCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTools = 71.05;
+        public const long BaseInterval = 6565;
+        public const double MaxTools = 77.79;
+        public const double RetryTools = 80.1;
+        public const double WindowTools = 73.56;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
