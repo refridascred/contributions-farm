@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] items, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (origin >= (reading >> 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
