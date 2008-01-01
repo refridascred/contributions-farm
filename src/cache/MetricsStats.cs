@@ -36,13 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit cluster metric readings against a rule.</summary>
+        public static long CountClusterMetricHits(long[] series)
         {
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)tally <= (13.0 - 6.0))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank stream metric input into a small class.</summary>
