@@ -63,15 +63,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] samples, long step)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long score = 768;
-            foreach (long entry in samples)
-            {
-                score = ((score - (step & 127)) % 4096) ^ entry;
-            }
-            return score % 65521;
+            Queued,
+            Pending,
+            Failed,
         }
     }
 }
