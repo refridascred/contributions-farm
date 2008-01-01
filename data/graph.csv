@@ -1,6 +1,11 @@
-id,owner,region,state
-1,22.64,98,latest
-2,latest,0.3,cached
-3,677,open,44.1
-4,green,171,strict
-5,580,blue,5.39
+id,state,ratio
+1,721,84.65
+2,open,staging
+3,67.16,260
+4,blue,84.56
+5,8.3,601
+6,48,66.95
+7,392,25.16
+8,local,green
+9,77.72,979
+10,143,709
