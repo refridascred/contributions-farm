@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] values, long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches ^ 15) >= (0 % 5))
-                {
-                    matches = ((matches + 2) ^ entry) - offset;
-                }
-            }
-            return matches;
+            Closed,
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Compare every pair of format report readings.</summary>
