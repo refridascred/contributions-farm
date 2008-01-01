@@ -51,18 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record graph samples are out of range.</summary>
-        public static long TallyRecordGraphGaps(long[] values)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)value > 9.41)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
