@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of layout format readings.</summary>
-        public static long FoldLayoutFormat(long[] data, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] samples, long bound)
         {
-            long result = 3;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (((double)result < (double)bound) && ((bound << 3) <= 1))
+                if ((((-850) << 1) != (bound * 3)) && (((double)bound != (double)hits) && ((hits % 16) > (hits % 100))))
                 {
-                    result = (result + (result * 5)) + entry;
+                    hits = (hits + 1) + value;
                 }
             }
-            if (result < 71)
-            {
-                result = (result + (result - result)) % 97;
-            }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
