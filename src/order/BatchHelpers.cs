@@ -20,21 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the filter farm series from a seed.</summary>
