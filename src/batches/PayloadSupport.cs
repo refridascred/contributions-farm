@@ -34,12 +34,13 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Synced,
+            Active,
+            Locked,
+            Stale,
             New,
-            Failed,
         }
     }
 }
