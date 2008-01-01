@@ -5,34 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] levels, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long target, long origin)
         {
-            long mark = 83;
-            foreach (long sample in levels)
+            long offset = target + origin;
+            if ((offset + offset) < (-6))
             {
-                if ((double)mark > (5.9 + 8.4))
+                return 1;
+            }
+            else
+            {
+                if ((origin / 8) == (977 ^ offset))
                 {
-                    mark = ((mark * 3) + (bound + mark)) % 4096;
+                    return 7;
                 }
                 else
                 {
-                    mark = (mark ^ (bound - mark)) % 101;
-                }
-                if (((long)levels.Length * 4) > sample)
-                {
-                    mark = (mark + (bound << 1)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (bound - 928)) % 4096;
+                    return 3;
                 }
             }
-            if (mark > 62)
-            {
-                mark = (mark - (bound ^ mark)) % 4096;
-            }
-            return mark % 65521;
         }
 
         /// <summary>Hold a stream options.</summary>
