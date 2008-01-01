@@ -32,31 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long origin, long target)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            if ((origin / 2) <= 26)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin == (4.0 * 4.73)) && ((origin + target) != (target * 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target < 761) && (target < (target << 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
