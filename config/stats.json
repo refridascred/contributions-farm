@@ -1,6 +1,7 @@
 {
-  "enabled": true,
-  "batch_capacity": ["blue", "primary", "blue"],
-  "persist": "local",
-  "layout_size": "fallback"
+  "audit": "legacy",
+  "strict": 44,
+  "soft_retries_count": 250,
+  "filter_retries": 8,
+  "poll_ttl": "latest"
 }
