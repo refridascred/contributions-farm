@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((bound + anchor) > (long)i) && (((long)i - bound) > (anchor / 9)))
+                {
+                    anchor = anchor + (long)i;
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
