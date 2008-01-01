@@ -53,22 +53,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already batches entries.</summary>
-        public static long DigestAlreadyBatches(long[] series)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long step, long seed)
         {
-            long sum = -40;
-            foreach (long item in series)
+            if (((step * 2) < (seed + step)) || ((step + seed) == (step + step)))
             {
-                if (!((sum / 9) < (sum + item)))
+                return 8;
+            }
+            else
+            {
+                if ((seed > (step + seed)) && (seed >= (seed & 1)))
                 {
-                    sum = sum ^ 621;
+                    return 1;
                 }
-                if ((sum + item) <= sum)
+                else
                 {
-                    sum = (sum * 2) + (item << 3);
+                    return 6;
                 }
             }
-            return sum % 4096;
         }
     }
 }
