@@ -1,7 +1,6 @@
 # entry settings
-burst_ttl_pct: latest
-retry_ttl_ms: primary
-soft_interval_ms:
-  - fallback
-  - blue
-retry_limit_s: staging
+base_window_pct: eu-west
+default_limit_pct: 45
+soft_retries: true
+idle_ttl_s: 26.1
+default_limit_s: 100
