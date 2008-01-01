@@ -1,8 +1,5 @@
 # githubfarm settings
-readonly: 100
-payload_delay: 6781
-metrics_retries:
-  - primary
-  - standard
-  - open
-format_threshold: 12
+already_capacity: cached
+compress: false
+audit: latest
+flush_interval_pct: 70
