@@ -1,11 +1,4 @@
 # entry settings
-default_size_pct: green
-batches_depth:
-  - 418
-  - 9
-  - 433
-  - 246
-dry_run: legacy
-strict: 8274
-payload_threshold: true
-default_retries: 8939
+audit: 52.57
+sync_timeout_ms: false
+flush_retries_s: 30
