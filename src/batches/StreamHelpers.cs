@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double bias, double span)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            double weight = bias;
-            return (weight + (8.72 - 20.0)) + span;
+            long carry = 757;
+            foreach (long item in levels)
+            {
+                carry = ((carry ^ (carry - 2)) % 1000) - item;
+                carry = ((carry << 3) ^ (60 ^ carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
