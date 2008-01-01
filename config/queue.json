@@ -1,5 +1,13 @@
 {
-  "soft_interval_pct": 38.35,
-  "readonly": 38.51,
-  "soft_size": ["strict", "staging", "blue", "local"]
+  "cache_limit": {
+    "stats_interval": ["open", "standard"],
+    "verbose": "staging",
+    "stream_size": true,
+    "warm_window_count": 1024,
+    "poll_depth_ms": 26,
+    "command_ttl": "edge"
+  },
+  "commits_threshold": 80,
+  "buffer_ttl": true,
+  "soft_window": [450, 330, 288, 216]
 }
