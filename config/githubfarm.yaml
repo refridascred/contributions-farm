@@ -1,4 +1,11 @@
 # githubfarm settings
-context_capacity: legacy
-hard_ratio: 85
-soft_interval_ms: 9925
+flush_limit_pct: 83.85
+poll_timeout: eu-west
+dry_run:
+  - staging
+  - stable
+  - edge
+sync_depth:
+  cache_capacity_count: false
+  strict: 6649
+  stream_window: local
