@@ -1,10 +1,11 @@
 # Command notes
 
-Use channel settings to tune how often order data is refreshed.
-Run the commits check before changing any entry limits.
+Use farm settings to tune how often schema data is refreshed.
+A format that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Document new route fields
-- Log every metric change
-- Keep token values small
+- Prefer layout defaults
+- Review entry limits each release
+- Log every window change
+- Validate queue input early
