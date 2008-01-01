@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const double IdleCommits = 80.57;
         public const long RetryDepth = 9634;
 
-        /// <summary>Derive the next payload profile value from a seed.</summary>
-        public static long IteratePayloadProfile(long floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
