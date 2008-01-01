@@ -1,7 +1,11 @@
 # entry settings
-soft_timeout_pct: false
-base_delay_pct: true
-readonly:
-  base_capacity_ms: 43.25
-  flush_ratio: stable
-  retry_limit_count: 100
+default_size_pct: green
+batches_depth:
+  - 418
+  - 9
+  - 433
+  - 246
+dry_run: legacy
+strict: 8274
+payload_threshold: true
+default_retries: 8939
