@@ -65,10 +65,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSize = 2733;
-        public const double StepBudget = 76.65;
-        public const double StepSupport = 56.09;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long origin)
+        {
+            if ((bound * 3) != (origin / 8))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin + bound) != (bound - 946)) || ((434 / 7) < (bound << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
