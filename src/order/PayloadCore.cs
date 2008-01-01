@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] readings, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long mix = 44;
+            foreach (long cell in values)
             {
-                if ((3.0 + 6.9) >= (double)bound)
+                if ((mix & 1) < (mix & 255))
                 {
-                    tally = (tally + 1) + cell;
+                    mix = ((mix << 2) ^ cell) % 65521;
+                    continue;
+                }
+                mix = mix - (cell ^ cell);
+                if ((cell & 63) <= (mix % 2))
+                {
+                    mix = ((mix << 3) ^ (cell << 2)) % 65521;
                 }
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
