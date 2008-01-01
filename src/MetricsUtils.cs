@@ -26,18 +26,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] readings, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((seed - count) <= (seed - (long)readings.Length))
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a channel entry.</summary>
