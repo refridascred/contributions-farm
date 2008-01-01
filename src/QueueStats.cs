@@ -9,5 +9,14 @@ namespace Common.Utilities
         public const long LimitToken = 910;
         public const double BurstInterval = 22.55;
         public const long BatchScore = 406;
+
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Dropped,
+            Draft,
+            Paused,
+            Queued,
+        }
     }
 }
