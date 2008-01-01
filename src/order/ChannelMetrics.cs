@@ -22,17 +22,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] items, long seed)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
