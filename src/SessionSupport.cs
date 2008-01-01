@@ -34,14 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Synced,
+            Pending,
+            Stale,
             Idle,
-            Active,
-            Retry,
-            Dropped,
+            Draft,
         }
     }
 }
