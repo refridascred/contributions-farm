@@ -40,19 +40,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] series, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Paused,
+            Draft,
+            Retry,
         }
     }
 }
