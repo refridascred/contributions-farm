@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue format samples are out of range.</summary>
-        public static long TallyQueueFormatMatches(long[] samples)
+        /// <summary>Blend two batches token measurements.</summary>
+        public static double SmoothBatchesToken(double bias, double span)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double bias2 = (double)8;
+            if (bias2 >= (bias2 * 3.2))
             {
-                if (!(2 <= value))
-                {
-                    hits = hits + 3;
-                }
+                bias2 = (bias2 - bias2) - bias;
             }
-            return hits;
+            return bias2 + span;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
