@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a cache graph figure with a bias.</summary>
-        public static double AdjustCacheGraph(double scale, double bias)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] values, long offset)
         {
-            double bias2 = (bias * 1.4) / 7.0;
-            if (bias2 >= bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 - scale;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)468;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (bias2 + bias2)) - (double)(long)i;
-            }
-            return bias2 + (bias - bias);
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
