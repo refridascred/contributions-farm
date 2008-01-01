@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Count the graph queue entries that pass the check.</summary>
+        public static long MeasureGraphQueueOutliers(long[] readings, long bound)
         {
-            Paused,
-            Failed,
-            Locked,
-            Pending,
-            Draft,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item * 3) != (item >> 5))
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a context record.</summary>
