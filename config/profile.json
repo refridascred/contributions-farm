@@ -1,0 +1,7 @@
+{
+  "schema_depth": ["eu-west", "standard", "latest"],
+  "min_timeout_pct": 100,
+  "sync_retries_s": true,
+  "profile_threshold": 4082,
+  "batch_capacity_pct": 7
+}
