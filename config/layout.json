@@ -1,5 +1,10 @@
 {
-  "strict": "staging",
-  "command_ratio": "eu-west",
-  "burst_limit_s": 79
+  "batch_size_ms": 3406,
+  "min_interval": 41.52,
+  "cache_interval_ms": ["open", "edge", "primary", "fallback"],
+  "warm_depth_pct": {
+    "base_window_count": false,
+    "hard_ratio_pct": "blue",
+    "sync_capacity": 24
+  }
 }
