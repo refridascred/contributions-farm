@@ -13,18 +13,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] values, long floor)
+        /// <summary>Blend two payload token measurements.</summary>
+        public static double AdjustPayloadToken(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double bias2 = gain;
+            if (bias2 < bias)
             {
-                if (matches > reading)
-                {
-                    matches = (matches + 1) - floor;
-                }
+                bias2 = bias2 + (bias - bias2);
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - (double)(-90);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (bias2 - bias2)) - (double)(long)i;
+            }
+            return bias2 + (bias2 / 3.0);
         }
 
         /// <summary>Combine tools values into a single score.</summary>
