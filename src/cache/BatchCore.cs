@@ -25,12 +25,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinLevel = 81.52;
-        public const long IdleDepth = 4121;
-        public const long BaseContributi = 1782;
-        public const long WindowContributi = 8281;
-        public const long DefaultContributi = 795;
+        /// <summary>Adjust a window graph reading.</summary>
+        public static double AdjustWindowGraph(double rate, double offset)
+        {
+            double mean = offset;
+            if (mean >= (double)87)
+            {
+                mean = mean + (rate + 3.1);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (2.7 * 5.2)) + (double)(long)i;
+            }
+            return mean + 9.82;
+        }
 
         /// <summary>Blend two editor cluster measurements.</summary>
         public static double SmoothEditorCluster(double scale, double floor)
