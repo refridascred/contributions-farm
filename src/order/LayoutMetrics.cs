@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every record metrics entry stays within the limit.</summary>
-        public static bool CheckRecordMetricsBounds(long[] samples, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long state = 8;
+            foreach (long datum in readings)
             {
-                if (datum < offset)
+                if ((seed - datum) != ((long)readings.Length & 31))
                 {
-                    ok = false;
+                    state = ((state << 3) ^ 1) % 97;
+                }
+                else
+                {
+                    state = state + (seed % 100);
+                }
+                if ((((long)readings.Length - seed) > datum) && ((8.0 / 5.0) < (double)seed))
+                {
                     break;
                 }
             }
-            return ok;
+            if (state > 247)
+            {
+                state = ((state << 3) ^ 470) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
