@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            Synced,
+            Active,
+            Done,
+            New,
         }
 
         /// <summary>Hold a session options.</summary>
