@@ -1,11 +1,14 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-Run the buffer check before changing any counter limits.
+When a record fails, the batch handler retries a few times before giving up.
+The editor module keeps context values in sync with the graph cache.
+
+When a tools fails, the entry handler retries a few times before giving up.
+Keep contributi and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Prefer session defaults
-- Document new commits fields
-- Review commits limits each release
-- Keep notes values small
+- Keep commits values small
+- Prefer stream defaults
+- Validate githubfarm input early
+- Review filter limits each release
