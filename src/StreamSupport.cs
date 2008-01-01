@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] values, long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (value <= limit)
+                if (datum >= offset)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
