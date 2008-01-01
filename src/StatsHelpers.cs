@@ -43,11 +43,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 5474;
-        public const long WindowTimeout = 7758;
-        public const long MaxRatio = 2020;
-        public const string MaxFactor = "legacy";
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Retry,
+            Locked,
+            Idle,
+            Active,
+            Closed,
+        }
 
         /// <summary>Compare every pair of metric payload readings.</summary>
         public static long CompareMetricPayloadCount(long[] readings)
