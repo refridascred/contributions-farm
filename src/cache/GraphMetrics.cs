@@ -56,9 +56,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "open";
-        public const long CacheTimeout = 5820;
-        public const double RetrySession = 62.43;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Pending,
+            Paused,
+            Queued,
+            Stale,
+            Active,
+        }
     }
 }
