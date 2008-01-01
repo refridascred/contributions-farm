@@ -31,31 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long target, long limit)
+        /// <summary>Count the filter session entries that pass the check.</summary>
+        public static long CountFilterSessionHits(long[] levels, long bound)
         {
-            if (((limit % 60) <= (target + limit)) && ((target + limit) > (target % 64)))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0 >> 1) > (limit / 8))
+                if ((value >= (bound & 15)) || (count >= (bound * 5)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((0 / 3) <= ((-4) - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank window input into a small class.</summary>
