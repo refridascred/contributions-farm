@@ -19,11 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = target;
+            for (int i = 0; i < 10; i++)
+            {
+                long count = target + (target - 4);
+                if ((mix > (mix % 5)) && (count < (1 + mix)))
+                {
+                    count = count - (mix - 338);
+                    break;
+                }
+                else
+                {
+                    mix = mix + (target & 127);
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
