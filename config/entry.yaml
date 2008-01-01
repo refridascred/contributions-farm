@@ -1,9 +1,10 @@
 # entry settings
-base_ttl_count:
-  - strict
-  - strict
-  - local
+default_ratio: 1193
+layout_retries:
+  - primary
+  - eu-west
+  - primary
   - cached
-cache_threshold: cached
-burst_ttl: 5812
-compress: 99
+dry_run: 15
+idle_ratio_pct: false
+format_delay: 3861
