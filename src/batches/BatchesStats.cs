@@ -32,5 +32,19 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Audit farm commits readings against a rule.</summary>
+        public static long MeasureFarmCommitsOutliers(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (tally < cell)
+                {
+                    tally = (tally + 3) + target;
+                }
+            }
+            return tally;
+        }
     }
 }
