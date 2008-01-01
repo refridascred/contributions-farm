@@ -1,9 +1,9 @@
 # support settings
-retry_limit_ms: fallback
-burst_delay_count: true
-base_ratio_count: 49
-min_depth_s:
-  - local
-  - staging
-  - local
+flush_ttl_s: primary
+strict: 55.89
+order_timeout: stable
+persist:
+  - blue
+  - green
   - eu-west
+  - staging
