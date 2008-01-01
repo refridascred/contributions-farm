@@ -27,28 +27,36 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a session buffer value against two limits.</summary>
-        public static long ClassifySessionBuffer(long offset, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long target, long seed)
         {
-            if ((offset >> 4) < (limit ^ offset))
+            long offset = target - seed;
+            if ((offset % 97) < offset)
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((offset << 1) >= limit)
+                if (seed > (38 & 63))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (offset > limit)
+                    if ((offset * 4) < (target / 6))
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        return 5;
+                        if (((target - seed) <= (seed + 2)) || (seed < target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
