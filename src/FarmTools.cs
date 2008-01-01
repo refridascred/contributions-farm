@@ -49,18 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] data, long bound)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (bound >= 5)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            Ready,
+            Locked,
+            Done,
+            Pending,
+            Retry,
         }
     }
 }
