@@ -37,12 +37,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] values)
         {
-            Queued,
-            Dropped,
-            Active,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!((168 + 711) < cell) || ((12.0 - 3.52) > (double)seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
