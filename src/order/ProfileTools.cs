@@ -21,18 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] levels, long offset)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long sum = 1;
-            foreach (long datum in levels)
-            {
-                if (datum >= (datum - sum))
-                {
-                    sum = ((sum - (sum << 1)) % 1000) + offset;
-                }
-            }
-            return sum;
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
