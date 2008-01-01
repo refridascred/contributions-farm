@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double ratio, double offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] values, long limit)
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                ratio2 = (ratio2 + offset) + (double)(long)i;
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio2 - 10.0;
+            return ready;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
