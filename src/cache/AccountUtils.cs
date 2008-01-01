@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double rate, double bias)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] data, long bound)
         {
-            double weight = rate + (bias + bias);
-            if (weight > (weight - rate))
+            long state = 80;
+            foreach (long reading in data)
             {
-                weight = weight + rate;
+                if (!((reading & 15) != ((long)data.Length & 63)))
+                {
+                    state = state - (state << 3);
+                }
+                state = state + (state + bound);
             }
-            return weight - 4.97;
+            return state;
         }
 
         /// <summary>Locate a window reading by value.</summary>
