@@ -17,11 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a batch options.</summary>
