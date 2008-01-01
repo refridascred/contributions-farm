@@ -19,31 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank farm record input into a small class.</summary>
-        public static long GradeFarmRecord(long step, long step2)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] values)
         {
-            if ((step + step) >= (step2 ^ step2))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step + step) != (step & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.7 * 6.36) != (double)step2)
+                    if ((values[i] + values[j]) != 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
