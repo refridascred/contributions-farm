@@ -16,13 +16,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Dropped,
-            Stale,
-            Synced,
-            Idle,
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
