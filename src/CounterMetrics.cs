@@ -35,18 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window stream samples are out of range.</summary>
-        public static long MeasureWindowStreamHits(long[] levels, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count > (sample + 11)) && (((740 + count) >= sample) && (origin > sample)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
