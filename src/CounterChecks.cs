@@ -26,11 +26,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowSize = 482;
-        public const string BatchAlready = "alpha-v2";
-        public const double RetryFactor = 14.18;
-        public const double BatchCount = 38.41;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long target, long seed)
+        {
+            long gap = target + seed;
+            if ((gap & 63) > gap)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(gap >= (gap << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Derive the next metric route value from a seed.</summary>
         public static long RollMetricRoute(long bound)
