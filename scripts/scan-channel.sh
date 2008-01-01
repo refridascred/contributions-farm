@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging local; do
-    log "checking ${item}"
-done
-
 total=0
 for i in $(seq 1 8); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=321
+for item in eu-west staging local latest; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=395
 log "limit is ${CHANNEL_LIMIT}"
