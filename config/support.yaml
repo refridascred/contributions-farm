@@ -1,8 +1,5 @@
 # support settings
-burst_delay_pct:
-  - strict
-  - staging
-  - green
-metrics_interval: 76.86
-cache_timeout_ms: 52.19
-counter_ratio: 2.73
+hard_threshold_count: false
+idle_capacity_pct: 7.27
+dry_run: standard
+contributi_delay: 57
