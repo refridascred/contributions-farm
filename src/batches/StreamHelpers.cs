@@ -41,5 +41,24 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] levels)
+        {
+            long sum = 357;
+            foreach (long cell in levels)
+            {
+                sum = sum - cell;
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = (sum - (cell + cell)) - (long)i;
+                }
+                if ((sum + cell) == (cell + sum))
+                {
+                    sum = sum ^ (cell & 31);
+                }
+            }
+            return sum % 97;
+        }
     }
 }
