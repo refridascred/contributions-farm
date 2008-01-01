@@ -39,18 +39,13 @@ namespace Common.Utilities
             return bias2 + (bias2 / 3.0);
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] readings, long offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long mark = 483;
-            foreach (long sample in readings)
-            {
-                if ((offset & 255) >= (60 / 2))
-                {
-                    mark = ((mark - (offset / 7)) % 1000) ^ sample;
-                }
-            }
-            return mark;
+            Synced,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Hold a commits info.</summary>
