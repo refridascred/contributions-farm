@@ -19,13 +19,18 @@ namespace Common.Utilities
         public const long HardWidth = 3517;
         public const double HardFactor = 87.45;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] levels, long step)
         {
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((0.14 - 16.0) <= (double)step)
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
