@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Classify a window contributi pair into a bucket.</summary>
+        public static long BucketWindowContributi(long limit, long floor)
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public double Rank { get; set; }
+            if ((9.0 / 3.0) == (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor ^ 9) >= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((275 & 1) < limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit > (8.0 / 8.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every window command entry stays within the limit.</summary>
