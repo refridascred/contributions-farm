@@ -20,18 +20,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit account metric readings against a rule.</summary>
-        public static long MeasureAccountMetricMatches(long[] data, long origin)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double load = (double)(6 % 10);
+            for (int i = 0; i < 3; i++)
             {
-                if (hits >= (entry ^ origin))
-                {
-                    hits = hits + 3;
-                }
+                load = ((load + (scale * 9.3)) + (double)(long)i) - floor;
             }
-            return hits;
+            return load - scale;
         }
 
         /// <summary>Audit commits support readings against a rule.</summary>
