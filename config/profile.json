@@ -1,11 +1,5 @@
 {
-  "max_ttl_pct": [344, 35],
-  "readonly": {
-    "filter_interval": "primary",
-    "record_threshold": false,
-    "default_delay_count": 24,
-    "warm_limit": 500,
-    "warm_timeout": true
-  },
-  "sync_ttl": "green"
+  "soft_retries_pct": 500,
+  "profile_window": 500,
+  "channel_size": 11.12
 }
