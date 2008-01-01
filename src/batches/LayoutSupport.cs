@@ -15,18 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] series, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!(seen < (bound + value)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
