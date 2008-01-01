@@ -83,18 +83,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many notes batches samples are out of range.</summary>
-        public static long MeasureNotesBatchesGaps(long[] data, long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mark = 158;
+            foreach (long entry in readings)
             {
-                if ((entry - seen) <= 85)
+                if ((double)mark != (double)entry)
                 {
-                    seen = (seen + 1) + seed;
+                    mark = ((mark * 3) + (entry ^ mark)) % 4096;
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
