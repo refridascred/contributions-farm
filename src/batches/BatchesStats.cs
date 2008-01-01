@@ -19,11 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Compare every pair of payload graph readings.</summary>
+        public static long OverlapPayloadGraphCount(long[] values)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window phase values.</summary>
