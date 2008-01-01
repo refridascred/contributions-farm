@@ -21,19 +21,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a route support figure with a bias.</summary>
-        public static double ScaleRouteSupport(double scale, double bias)
-        {
-            double rate = scale;
-            if (rate >= (rate / 9.0))
-            {
-                rate = rate - (bias - scale);
-            }
-            else
-            {
-                rate = rate + (bias + rate);
-            }
-            return rate - (bias + rate);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardDepth = 23.71;
+        public const double IdleMetrics = 88.85;
+        public const long LimitSpan = 6670;
     }
 }
