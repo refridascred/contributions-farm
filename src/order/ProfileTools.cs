@@ -1,0 +1,22 @@
+using System;
+
+namespace Common.Utilities
+{
+    /// <summary>Profile tools helpers.</summary>
+    public static class ProfileTools
+    {
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((48 - count) > (step ^ count))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
+    }
+}
