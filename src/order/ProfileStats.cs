@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long step, long limit)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long floor, long bound)
         {
-            if (!(limit <= (limit - step)))
+            long diff = floor - bound;
+            if ((diff + bound) <= (1 + (-712)))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (((double)step < (0.1 - 9.57)) || (step > limit))
+                if ((diff / 4) >= bound)
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((limit - step) <= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 0;
                 }
             }
         }
