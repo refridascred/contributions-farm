@@ -54,19 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long score = 685;
-            foreach (long reading in items)
-            {
-                score = score + ((long)items.Length & 3);
-                if (((score / 2) >= 8) || ((reading % 2) > (reading - reading)))
-                {
-                    score = (score - (score / 3)) % 65521;
-                }
-            }
-            return score;
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
