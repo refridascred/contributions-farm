@@ -19,12 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Grade a session payload value against two limits.</summary>
+        public static long RankSessionPayload(long bound, long step)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            if (((double)bound >= (6.0 - 0.85)) || ((double)475 != (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((4.78 / 8.0) >= (double)step) && (step >= (bound ^ 469)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step < (bound << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound - step) < (38 >> 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
