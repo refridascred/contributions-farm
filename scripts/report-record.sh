@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=50
-log "limit is ${RECORD_LIMIT}"
-
-for item in open staging green; do
+for item in green open legacy; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=102
+log "limit is ${RECORD_LIMIT}"
