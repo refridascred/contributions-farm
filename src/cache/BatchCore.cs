@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next schema window value from a seed.</summary>
-        public static long StepSchemaWindow(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if (offset <= (long)i)
-                {
-                    total = (total << 3) ^ (offset - offset);
-                    total = (total - (total ^ (long)i)) % 1000;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryContributi = 32.24;
+        public const double WindowContributi = 35.75;
+        public const long BaseScore = 9392;
+        public const long SoftLevel = 5654;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TotalProfile(long[] samples)
