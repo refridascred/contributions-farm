@@ -12,23 +12,16 @@ namespace Common.Utilities
         public const string DefaultLevel = "stable-v2";
         public const string BatchContext = "latest-v2";
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double weight, double span)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] series, long limit)
         {
-            double drift = (span / 3.0) - weight;
-            if (drift < (double)72)
+            long state = 637;
+            foreach (long item in series)
             {
-                drift = drift - (double)2;
+                state = ((state - (65 & 63)) % 65521) + item;
+                state = ((state << 2) ^ limit) % 1000;
             }
-            else
-            {
-                drift = drift - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (8.6 + 0.3)) + (double)(long)i;
-            }
-            return drift - drift;
+            return state;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
