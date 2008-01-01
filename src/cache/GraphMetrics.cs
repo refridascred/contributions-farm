@@ -38,14 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] data)
         {
-            New,
-            Draft,
-            Queued,
-            Retry,
-            Paused,
+            long acc = 628;
+            foreach (long sample in data)
+            {
+                if ((sample - acc) == (acc + sample))
+                {
+                    acc = (acc << 3) ^ (sample - sample);
+                }
+                if (!((sample + acc) >= 3))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
