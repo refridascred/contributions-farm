@@ -25,11 +25,12 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
