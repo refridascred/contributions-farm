@@ -11,5 +11,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
             public long Size { get; set; }
         }
+
+        /// <summary>Check that every window command entry stays within the limit.</summary>
+        public static bool VerifyWindowCommandBounds(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
