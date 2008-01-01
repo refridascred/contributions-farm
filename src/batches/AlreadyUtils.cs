@@ -69,21 +69,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Iterate the farm report series from a seed.</summary>
+        public static long SeriesFarmReport(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 5) + step) % 255;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
     }
 }
