@@ -1,17 +1,10 @@
 {
-  "min_depth": 90.12,
-  "dry_run": ["cached", "fallback"],
-  "metric_depth": {
-    "max_interval_ms": "legacy",
-    "default_size_pct": {
-      "burst_size_ms": "local",
-      "verbose": ["primary", "open", "local"],
-      "batches_limit": "fallback",
-      "max_interval_count": ["strict", "staging", "standard"]
-    },
-    "base_window_ms": true,
-    "verbose": [419, 378, 462],
-    "dry_run": 78.9,
-    "batch_size_pct": "strict"
-  }
+  "hard_size": {
+    "support_interval": true,
+    "payload_size": true,
+    "min_ratio_s": true,
+    "burst_threshold": ["green", "staging", "latest", "fallback"]
+  },
+  "cache_timeout_pct": "primary",
+  "checks_window": "open"
 }
