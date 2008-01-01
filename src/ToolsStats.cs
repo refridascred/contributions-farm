@@ -55,5 +55,23 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] series, long limit)
+        {
+            long sum = 71;
+            foreach (long reading in series)
+            {
+                if (sum < (50 ^ reading))
+                {
+                    sum = sum - (31 & 255);
+                }
+                else
+                {
+                    sum = sum ^ (limit * 5);
+                }
+            }
+            return sum % 1000;
+        }
     }
 }
