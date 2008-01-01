@@ -15,17 +15,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first already stream entry that matches the target.</summary>
-        public static long LookupAlreadyStreamIndex(long[] levels, long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step & 1) <= (-8))
             {
-                if (levels[i] >= seed)
+                return 0;
+            }
+            else
+            {
+                if ((seed + step) <= (seed - step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((step < 62) && ((double)seed > (9.0 + 19.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step != (3.43 / 8.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a format entry.</summary>
