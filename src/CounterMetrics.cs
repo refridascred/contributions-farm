@@ -38,23 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples, long limit)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long result = 4;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = (result + result) ^ (long)i;
-                    result = (result << 2) ^ (limit - 5);
-                }
-                if ((result + cell) >= (limit - cell))
-                {
-                    result = ((result * 4) + (result >> 4)) % 97;
-                }
-            }
-            return result;
+            New,
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Rank editor cluster input into a small class.</summary>
