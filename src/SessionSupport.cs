@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowLevel = 4708;
-        public const long RetryCache = 5005;
-        public const double BaseCache = 55.11;
+        /// <summary>Find the first account contributi entry that matches the target.</summary>
+        public static long FindAccountContributiIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
