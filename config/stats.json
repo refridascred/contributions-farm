@@ -1,8 +1,6 @@
 {
-  "burst_retries_ms": ["open", "stable", "stable"],
-  "retry_depth_pct": "fallback",
-  "persist": "open",
-  "default_limit_ms": "fallback",
-  "burst_size": [130, 113, 262],
-  "min_window_s": [208, 489, 417, 329]
+  "cache_ratio_count": "legacy",
+  "persist": 60,
+  "schema_delay": 60,
+  "sync_interval_pct": "primary"
 }
