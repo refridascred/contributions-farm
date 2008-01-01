@@ -63,18 +63,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "open-v2";
+        public const string SoftFactor = "open";
+        public const long BaseScore = 9272;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LocateEditorIndex(long[] values, long seed)
