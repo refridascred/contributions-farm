@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] samples)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((double)655 != (double)value) || ((value > (hits * 3)) || ((hits >> 4) == (hits / 6))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Closed,
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Define window limits and defaults.</summary>
