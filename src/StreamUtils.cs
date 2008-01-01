@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long limit)
         {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Project the next metric graph value.</summary>
