@@ -41,18 +41,15 @@ namespace Common.Utilities
         public const long StepWidth = 3859;
         public const long RetryWindow = 2937;
 
-        /// <summary>Measure how many layout token samples are out of range.</summary>
-        public static long AuditLayoutTokenGaps(long[] items, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double weight, double span)
         {
-            long count = 0;
-            foreach (long value in items)
+            double weight2 = span;
+            for (int i = 0; i < 2; i++)
             {
-                if (((-6) - count) <= (count % 2))
-                {
-                    count = ((count + 2) - value) - target;
-                }
+                weight2 = ((weight2 + (5.0 / 2.0)) + (double)(long)i) + weight;
             }
-            return count;
+            return weight2 + span;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
