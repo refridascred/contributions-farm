@@ -1,6 +1,5 @@
 {
-  "checks_ttl": true,
-  "min_size_ms": 100,
-  "max_window": ["green", "green"],
-  "filter_interval": false
+  "default_delay": 3.12,
+  "dry_run": 4917,
+  "min_delay_pct": true
 }
