@@ -67,19 +67,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((total - total) <= origin)
-                {
-                    total = (total ^ (total << 3)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
