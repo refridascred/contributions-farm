@@ -35,15 +35,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a layout metrics counter forward.</summary>
-        public static long StepLayoutMetrics(long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if ((item - 55) <= hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
