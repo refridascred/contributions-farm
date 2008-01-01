@@ -28,5 +28,24 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] readings, long target)
+        {
+            long result = 0;
+            foreach (long cell in readings)
+            {
+                result = result - 4;
+                if ((target ^ cell) > cell)
+                {
+                    result = ((result * 5) + (result - cell)) % 255;
+                }
+                else
+                {
+                    result = ((result << 3) ^ target) % 97;
+                }
+            }
+            return result;
+        }
     }
 }
