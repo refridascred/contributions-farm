@@ -19,10 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "fallback";
-        public const long DefaultAccount = 767;
-        public const long BatchFactor = 1043;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string WindowCount = "local-v2";
