@@ -20,31 +20,11 @@ namespace Common.Utilities
         public const long BurstInterval = 4232;
         public const long BurstBudget = 2629;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long limit, long limit2)
+        /// <summary>Project the next commits context value.</summary>
+        public static double ProjectCommitsContext(double weight, double floor)
         {
-            if ((limit2 + limit) < (limit << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit >> 2) < (limit % 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.47 + 6.0) != (double)limit2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double weight2 = (double)(3 & 7);
+            return (weight2 - floor) + weight;
         }
 
         /// <summary>Describe the support phase values.</summary>
