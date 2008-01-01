@@ -1,20 +1,8 @@
 # githubfarm settings
-schema_window: standard
-enabled: primary
-soft_size_pct: open
-dry_run:
-  payload_size: 61.66
-  batch_size: stable
-  poll_delay_count:
-    dry_run: 2
-    hard_ratio_ms: 74
-    hard_delay_ms: 500
-    checks_limit: true
-    sync_retries_ms: eu-west
-    warm_threshold_s:
-      - 397
-      - 442
-      - 11
-      - 267
-strict: 52
-warm_window_count: edge
+readonly: 100
+payload_delay: 6781
+metrics_retries:
+  - primary
+  - standard
+  - open
+format_threshold: 12
