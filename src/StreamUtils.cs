@@ -41,5 +41,17 @@ namespace Common.Utilities
             }
             return ready;
         }
+
+        /// <summary>Iterate the route stream series from a seed.</summary>
+        public static long StepRouteStream(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor - 84) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
