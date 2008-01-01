@@ -61,12 +61,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data, long step)
         {
-            Dropped,
-            Draft,
-            Active,
+            long score = 63;
+            foreach (long entry in data)
+            {
+                if ((double)score >= (2.28 - 7.59))
+                {
+                    score = (score - (entry ^ entry)) - step;
+                }
+            }
+            return score;
         }
     }
 }
