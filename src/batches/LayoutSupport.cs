@@ -58,15 +58,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double scale, double span)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double drift = scale * 2.8;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (span * 8.5)) + (double)(long)i;
-            }
-            return drift + (scale - scale);
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
