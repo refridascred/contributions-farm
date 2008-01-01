@@ -19,14 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit report command readings against a rule.</summary>
+        public static long CountReportCommandMatches(long[] series, long step)
         {
-            Ready,
-            Pending,
-            Locked,
-            Synced,
-            Retry,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((seen - step) >= (sample + sample)) || ((step + step) <= sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
