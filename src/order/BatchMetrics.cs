@@ -20,23 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batch graph counter forward.</summary>
-        public static long RollBatchGraph(long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if (result <= (target - target))
-                {
-                    result = (result * 4) + ((long)i + result);
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = (((result << 3) ^ ((long)i - 216)) % 4096) - (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Active,
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
