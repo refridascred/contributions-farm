@@ -19,22 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((value % 64) > (491 * 5))
+                if ((2 & 3) >= (hits - reading))
                 {
-                    matches = matches + 1;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
