@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging fallback; do
+mode="${1:-primary}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in stable fallback green open; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=179
-log "limit is ${BUFFER_LIMIT}"
