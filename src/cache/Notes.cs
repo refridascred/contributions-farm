@@ -28,15 +28,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Validate payload schema readings against a bound.</summary>
+        public static bool CheckPayloadSchemaBounds(long[] items, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (sample >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
