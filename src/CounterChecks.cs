@@ -65,12 +65,12 @@ namespace Common.Utilities
         public const string SoftFactor = "open";
         public const long BaseScore = 9272;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] values, long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] >= seed) && ((values[i] % 3) == 0))
+                if ((data[i] >= bound) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
