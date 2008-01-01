@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report command readings against a rule.</summary>
-        public static long CountReportCommandMatches(long[] series, long step)
+        /// <summary>Audit notes buffer readings against a rule.</summary>
+        public static long MeasureNotesBufferGaps(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((seen - step) >= (sample + sample)) || ((step + step) <= sample))
+                if ((reading << 1) == (reading + seed))
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up window metrics samples.</summary>
