@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 66.9;
+        public const long DefaultRatio = 8884;
+        public const string DefaultBudget = "local-edge";
+        public const double IdleDepth = 3.6;
+        public const string CacheScore = "staging-edge";
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TallyMetric(long[] values)
