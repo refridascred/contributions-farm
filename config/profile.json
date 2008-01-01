@@ -1,12 +1,8 @@
 {
-  "batch_threshold": {
-    "readonly": 85.12,
-    "audit": ["standard", "blue", "staging", "green"],
-    "persist": 9118
-  },
-  "warm_ttl_pct": "edge",
-  "burst_timeout": "blue",
-  "warm_interval": "strict",
-  "compress": 8489,
-  "warm_window_count": 22.97
+  "audit": "eu-west",
+  "burst_capacity_ms": false,
+  "base_ratio_count": 60,
+  "max_threshold_s": 8.21,
+  "base_limit_pct": 277,
+  "account_depth": 37.23
 }
