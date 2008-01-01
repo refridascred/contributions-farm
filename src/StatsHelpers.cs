@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] series, long seed)
+        /// <summary>Measure how many batches schema samples are out of range.</summary>
+        public static long AuditBatchesSchemaMatches(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (series[i] < seed)
+                if ((reading ^ (long)data.Length) >= reading)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
