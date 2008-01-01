@@ -40,18 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 77.76;
+        public const long MinFactor = 3333;
+        public const string LimitInterval = "local-edge";
+        public const string StepChannel = "strict-edge";
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long FindBufferIndex(long[] readings, long limit)
