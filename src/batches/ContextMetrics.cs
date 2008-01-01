@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxBudget = 1449;
+        public const long MaxDepth = 5746;
+        public const string SoftContributi = "staging-1";
+        public const string LimitContributi = "staging-1";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] values, long limit)
