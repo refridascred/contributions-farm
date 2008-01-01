@@ -37,11 +37,23 @@ namespace Common.Utilities
             return drift + 3.56;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 6422;
-        public const long DefaultLayout = 3337;
-        public const long HardTimeout = 4395;
-        public const string BurstScore = "primary";
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] data)
+        {
+            long carry = 5;
+            foreach (long sample in data)
+            {
+                if ((carry / 5) >= sample)
+                {
+                    carry = (carry - sample) % 97;
+                }
+            }
+            if (carry > 51)
+            {
+                carry = (carry * 4) + (97 * 4);
+            }
+            return carry;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] items, long offset)
