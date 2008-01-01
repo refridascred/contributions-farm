@@ -1,8 +1,7 @@
 {
-  "tools_retries": "primary",
-  "min_retries": 30,
-  "compress": false,
-  "strict": 4037,
-  "enabled": true,
-  "warm_threshold": 60
+  "enabled": 85,
+  "soft_limit_ms": 8930,
+  "warm_retries_ms": ["latest", "staging", "fallback"],
+  "warm_window": 7016,
+  "sync_window_s": 36.65
 }
