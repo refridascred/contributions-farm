@@ -49,18 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream githubfarm samples are out of range.</summary>
-        public static long CountStreamGithubfarmMatches(long[] items)
+        /// <summary>Audit checks record readings against a rule.</summary>
+        public static long CountChecksRecordOutliers(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!((seen + 63) <= item))
+                if ((double)value != (double)9)
                 {
-                    seen = seen + 2;
+                    hits = (hits + 2) - origin;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the support state values.</summary>
