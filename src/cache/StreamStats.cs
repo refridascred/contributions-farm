@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Project the next editor record value.</summary>
+        public static double BlendEditorRecord(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = gain;
+            if (scale <= (double)(-18))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale + gain) - bias;
             }
-            return count;
+            return scale - scale;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
