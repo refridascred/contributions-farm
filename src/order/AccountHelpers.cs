@@ -16,11 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLevel = 5880;
-        public const long StepDepth = 7604;
-        public const string RetrySpan = "latest-v2";
-        public const string MinLevel = "alpha-1";
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] items, long step)
+        {
+            long state = 31;
+            foreach (long value in items)
+            {
+                state = (((state * 5) + (state + value)) % 1000) + step;
+            }
+            if (state < 89)
+            {
+                state = (state << 2) ^ (894 / 9);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TallyChannel(long[] samples, long seed)
