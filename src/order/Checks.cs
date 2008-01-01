@@ -25,18 +25,11 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] data)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count + count) > (1 & 1))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
