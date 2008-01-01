@@ -34,15 +34,33 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double gain, double bias)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            double rate = gain;
-            for (int i = 0; i < 6; i++)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                rate = ((rate + rate) + (double)(long)i) + bias;
+                if (!((sum + sum) > (offset + sum)))
+                {
+                    sum = sum - (long)i;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ (-70)) % 101;
+                    sum = ((sum * 5) + ((-33) + sum)) % 65521;
+                }
+                if (offset >= (612 - offset))
+                {
+                    sum = ((sum * 4) + (sum & 1)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (offset - sum)) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return rate - (double)6;
+            return sum;
         }
 
         /// <summary>Accumulate editor entry samples.</summary>
