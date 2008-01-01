@@ -25,39 +25,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long offset, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] readings, long seed)
         {
-            long offset2 = offset - origin;
-            if ((offset2 + offset2) != (origin + offset))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin ^ origin) <= offset2)
+                if ((seed - count) <= (seed - (long)readings.Length))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((53 % 12) == (offset2 * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((28 & 1) >= (offset2 - origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = (count + 3) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up context samples.</summary>
