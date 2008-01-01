@@ -52,12 +52,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
