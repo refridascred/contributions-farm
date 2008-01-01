@@ -1,12 +1,7 @@
 {
-  "retry_depth": 2677,
-  "sync_interval_s": {
-    "retry_timeout_ms": 58,
-    "persist": 250,
-    "batch_retries_s": "local",
-    "readonly": 69.49,
-    "strict": 1024
-  },
-  "strict": 40.31,
-  "retry_capacity_pct": true
+  "warm_threshold_count": [127, 124, 105],
+  "sync_timeout": 4,
+  "max_limit_count": "eu-west",
+  "compress": 6130,
+  "batch_timeout_pct": 28.04
 }
