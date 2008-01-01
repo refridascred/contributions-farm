@@ -46,15 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] samples, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] series)
         {
-            long result = 5;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                result = ((result - 83) + datum) + offset;
+                if ((item & 1) == (8 + 9))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
