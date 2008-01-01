@@ -19,22 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] items, long offset)
+        /// <summary>Compare every pair of format report readings.</summary>
+        public static long MatchFormatReportCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits <= 7.3)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 2) ^ item) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate counter stream readings against a bound.</summary>
