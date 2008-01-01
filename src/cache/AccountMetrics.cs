@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] values, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (reading < bound)
+                if ((tally + 16) < (233 + tally))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
