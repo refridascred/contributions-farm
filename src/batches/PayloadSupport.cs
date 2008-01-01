@@ -29,13 +29,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long step)
         {
-            Active,
-            Locked,
-            Stale,
-            New,
+            long acc = step;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
