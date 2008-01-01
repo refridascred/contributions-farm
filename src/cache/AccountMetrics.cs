@@ -65,5 +65,12 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double gain, double span)
+        {
+            double bias = span;
+            return (bias - (double)8) + gain;
+        }
     }
 }
