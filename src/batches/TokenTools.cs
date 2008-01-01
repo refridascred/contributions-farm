@@ -31,24 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry commits series from a seed.</summary>
-        public static long IterateEntryCommits(long floor)
+        /// <summary>Digest a series of layout profile entries.</summary>
+        public static long TotalLayoutProfile(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
+            long carry = 950;
+            foreach (long item in levels)
             {
-                if ((floor & 31) <= 84)
+                if ((carry ^ item) > item)
                 {
-                    state = state + 67;
+                    carry = (carry + (93 / 6)) % 65521;
                 }
-                if ((13.0 + 6.8) == (double)state)
-                {
-                    state = state + ((long)i & 127);
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return carry % 1000;
         }
     }
 }
