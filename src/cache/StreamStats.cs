@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "open-v2";
-        public const long CacheLayout = 1826;
-        public const long RetryLayout = 9807;
-        public const double LimitLayout = 36.58;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] readings)
+        {
+            long anchor = 32;
+            foreach (long sample in readings)
+            {
+                if (!((sample - anchor) >= anchor))
+                {
+                    anchor = anchor ^ (anchor - anchor);
+                    continue;
+                }
+                if ((1.8 - 0.18) >= (double)anchor)
+                {
+                    anchor = (anchor ^ (anchor << 3)) % 4096;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Compare every pair of format report readings.</summary>
         public static long MatchFormatReportCount(long[] samples)
