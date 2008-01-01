@@ -28,15 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate channel session samples.</summary>
-        public static long CombineChannelSession(long[] data, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] samples, long floor)
         {
-            long result = 76;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                result = ((result ^ result) - cell) - bound;
+                if (item != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return ready;
         }
     }
 }
