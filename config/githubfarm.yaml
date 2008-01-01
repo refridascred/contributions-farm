@@ -1,11 +1,43 @@
 # githubfarm settings
-flush_limit_pct: 83.85
-poll_timeout: eu-west
-dry_run:
-  - staging
-  - stable
-  - edge
-sync_depth:
-  cache_capacity_count: false
-  strict: 6649
-  stream_window: local
+cache_window_count: blue
+idle_ratio_ms: fallback
+persist:
+  hard_delay_pct: 42
+  warm_capacity:
+    hard_capacity_pct:
+      - local
+      - blue
+      - latest
+    soft_capacity_count: blue
+    graph_timeout: 25
+    strict:
+      - 437
+      - 217
+    graph_ratio: 60
+  commits_threshold: legacy
+  hard_threshold_count:
+    - 157
+    - 400
+  enabled: 69
+  default_timeout_s: open
+compress:
+  filter_interval: 7590
+  idle_timeout_count:
+    - 293
+    - 260
+    - 365
+    - 35
+  editor_delay:
+    compress: 15.8
+    format_capacity: 9528
+    audit: 9515
+    hard_timeout_s: false
+    sync_timeout_ms: false
+  command_window: false
+  checks_ttl: stable
+  sync_window_s:
+    - 405
+    - 473
+    - 247
+    - 33
+commits_retries: 42
