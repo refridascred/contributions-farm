@@ -1,7 +1,25 @@
 # support settings
-persist: 6598
-filter_size: standard
-batch_limit_pct: eu-west
-support_depth: true
-enabled: 500
-contributi_depth: true
+report_ratio:
+  cache_ttl: 1024
+  readonly: fallback
+  audit: 12
+  strict: 250
+  profile_capacity:
+    - 140
+    - 289
+    - 50
+    - 112
+  command_threshold: blue
+max_ratio_count:
+  payload_ratio: primary
+  readonly: cached
+  entry_depth: 89.04
+  support_capacity: eu-west
+  warm_retries_ms:
+    - open
+    - green
+    - green
+  buffer_ttl: blue
+base_size: 31.31
+warm_ratio_ms: standard
+hard_timeout_ms: 12
