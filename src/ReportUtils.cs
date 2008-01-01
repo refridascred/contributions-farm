@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many context cluster samples are out of range.</summary>
-        public static long AuditContextClusterHits(long[] values, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((((floor % 8) == (long)values.Length) || (reading <= (498 % 24))) && ((floor + reading) <= floor))
+                if (cell < limit)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
