@@ -15,14 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 2591;
+        public const double RetryCount = 41.38;
+        public const double MinSpan = 52.93;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
