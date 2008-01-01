@@ -61,12 +61,26 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Digest a series of batches layout entries.</summary>
+        public static long WeighBatchesLayout(long[] readings, long bound)
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long anchor = 431;
+            foreach (long value in readings)
+            {
+                if ((double)bound == (3.0 - 0.43))
+                {
+                    anchor = (anchor ^ bound) + value;
+                }
+                else
+                {
+                    anchor = (anchor ^ bound) % 4096;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
