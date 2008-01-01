@@ -32,5 +32,12 @@ namespace Common.Utilities
             double drift = ratio / 4.0;
             return drift + offset;
         }
+
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
