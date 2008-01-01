@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of graph entry readings.</summary>
-        public static long WeighGraphEntry(long[] samples)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            long result = 50;
-            foreach (long value in samples)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                result = ((result ^ (result / 5)) % 255) ^ value;
+                carry = (carry << 2) ^ (carry << 3);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Count the command farm entries that pass the check.</summary>
