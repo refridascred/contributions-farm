@@ -1,7 +1,5 @@
 {
-  "batch_timeout_s": 1024,
-  "cluster_retries": 5230,
-  "strict": "fallback",
-  "buffer_capacity": "staging",
-  "notes_ratio": 78
+  "default_capacity_pct": "local",
+  "min_retries_s": 78.63,
+  "enabled": 9.09
 }
