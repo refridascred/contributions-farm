@@ -1,17 +1,25 @@
 {
-  "batch_interval": "green",
-  "soft_interval_ms": {
-    "min_ttl": 6.97,
-    "profile_ttl": true,
-    "persist": [105, 163, 434],
-    "context_capacity": "green",
-    "dry_run": {
-      "cluster_capacity": "strict",
-      "soft_limit": "green",
-      "strict": "cached",
-      "idle_ttl": "strict"
+  "burst_size_ms": 7965,
+  "readonly": "edge",
+  "strict": "local",
+  "profile_ratio": {
+    "retry_interval": {
+      "editor_interval": 500,
+      "min_ttl": 1024,
+      "command_interval": "local",
+      "cache_interval_s": "primary",
+      "audit": 1344,
+      "default_retries_ms": 500
     },
-    "command_retries": true
+    "hard_capacity": "fallback",
+    "cache_delay": {
+      "cache_threshold_count": ["staging", "fallback", "staging"],
+      "retry_ttl_s": 9716,
+      "retry_ttl": "edge"
+    },
+    "burst_window_pct": 5698,
+    "soft_delay_count": 250,
+    "retry_delay_s": true
   },
-  "base_limit_pct": 8488
+  "min_ttl_s": 75
 }
