@@ -45,14 +45,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Ready,
-            Locked,
-            Done,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSize = "staging-v2";
+        public const string CacheScore = "standard";
+        public const string BurstSchema = "staging-edge";
     }
 }
