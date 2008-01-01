@@ -15,5 +15,23 @@ namespace Common.Utilities
             }
             return ratio + (ratio / 9.0);
         }
+
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum > (10.0 * 2.8))
+                {
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
