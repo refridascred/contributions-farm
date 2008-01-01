@@ -22,16 +22,17 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] readings, long bound)
         {
-            long mark = 4;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark << 2) ^ (long)items.Length) % 4096) - item;
-                mark = (mark << 3) ^ (664 * 4);
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Hold a queue options.</summary>
