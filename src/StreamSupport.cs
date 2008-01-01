@@ -12,15 +12,25 @@ namespace Common.Utilities
         public const long HardTimeout = 4791;
         public const long BaseInterval = 9502;
 
-        /// <summary>Blend two batches token measurements.</summary>
-        public static double SmoothBatchesToken(double bias, double span)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long seed, long seed2)
         {
-            double bias2 = (double)8;
-            if (bias2 >= (bias2 * 3.2))
+            long span = seed ^ seed2;
+            if ((seed2 - 70) < seed2)
             {
-                bias2 = (bias2 - bias2) - bias;
+                return 4;
             }
-            return bias2 + span;
+            else
+            {
+                if (((span - span) < (seed * 5)) || ((double)span > 2.4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
