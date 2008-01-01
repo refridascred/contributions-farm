@@ -37,5 +37,25 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long seed, long step)
+        {
+            if (seed > (seed & 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.8 * 0.2) != (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
