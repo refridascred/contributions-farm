@@ -66,15 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
     }
 }
