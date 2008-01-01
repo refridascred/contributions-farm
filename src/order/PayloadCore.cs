@@ -13,17 +13,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a graph entry sample.</summary>
-        public static long LookupGraphEntryIndex(long[] samples, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                acc = acc - offset;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
