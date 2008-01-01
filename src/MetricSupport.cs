@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Done,
-            Idle,
-            Retry,
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
