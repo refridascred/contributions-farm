@@ -22,20 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 72.62;
+        public const long WindowTimeout = 9369;
+        public const long WindowProfile = 5885;
+        public const string MaxWidth = "legacy";
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
