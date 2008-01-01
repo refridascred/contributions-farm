@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchRatio = 7275;
+        public const double MaxScore = 58.34;
+        public const double StepScore = 14.61;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BaseScore = 9.88;
