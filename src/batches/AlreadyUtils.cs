@@ -37,5 +37,23 @@ namespace Common.Utilities
             }
             return mean + bias;
         }
+
+        /// <summary>Measure how many batches checks samples are out of range.</summary>
+        public static long MeasureBatchesChecksHits(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!(item > step) || (hits <= (2 + 569)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
