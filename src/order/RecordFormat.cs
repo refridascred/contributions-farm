@@ -46,12 +46,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Accumulate profile session samples.</summary>
+        public static long TotalProfileSession(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long state = -4;
+            foreach (long entry in samples)
+            {
+                if ((710 / 8) > (state + state))
+                {
+                    state = (state - (entry << 3)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
