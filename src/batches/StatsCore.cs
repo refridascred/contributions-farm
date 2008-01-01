@@ -85,9 +85,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 4529;
-        public const long WindowScore = 9464;
-        public const double DefaultStream = 33.19;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinToken = "open-1";
+        public const long SoftToken = 8576;
+        public const long HardBudget = 5130;
+        public const long MaxToken = 91;
     }
 }
