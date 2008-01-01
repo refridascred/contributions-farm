@@ -5,30 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] samples, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] samples, long seed)
         {
-            long mark = 212;
+            long acc = 973;
             foreach (long value in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if (527 >= (seed << 1))
                 {
-                    mark = ((mark - mark) % 101) ^ (long)i;
+                    acc = (acc * 3) + (value + 5);
                 }
-                if (origin >= (85 - (-74)))
+                if ((seed % 7) < value)
                 {
-                    mark = (mark + 904) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark - value)) % 4096;
+                    break;
                 }
             }
-            if (mark > 275)
+            if (acc < 33)
             {
-                mark = mark - (mark % 60);
+                acc = (acc << 2) ^ seed;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
