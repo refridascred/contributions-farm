@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 3) + (offset % 8)) % 255;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Project the next batches value.</summary>
