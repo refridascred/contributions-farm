@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit notes token readings against a rule.</summary>
-        public static long CountNotesTokenOutliers(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (((4.5 + 8.49) >= (3.1 + 12.0)) || ((entry - matches) > 7))
+                if (!((sample + seen) > (427 << 3)))
                 {
-                    matches = matches + 2;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
