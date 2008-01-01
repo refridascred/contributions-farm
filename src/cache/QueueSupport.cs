@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] values, long target)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = ratio;
+            if (drift <= (double)2)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                drift = drift - 7.3;
             }
-            return -1;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + floor;
         }
 
         /// <summary>Describe the token kind values.</summary>
