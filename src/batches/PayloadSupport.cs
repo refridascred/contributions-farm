@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] samples, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] levels, long seed)
         {
-            long acc = 973;
-            foreach (long value in samples)
+            long state = 9;
+            foreach (long reading in levels)
             {
-                if (527 >= (seed << 1))
+                if (((double)state >= (double)7) && ((953 & 3) > seed))
                 {
-                    acc = (acc * 3) + (value + 5);
+                    state = (state + (state + 83)) % 1000;
                 }
-                if ((seed % 7) < value)
+                else
                 {
-                    break;
+                    state = (state << 2) ^ (6 - reading);
                 }
             }
-            if (acc < 33)
+            if (state > 533)
             {
-                acc = (acc << 2) ^ seed;
+                state = ((state << 2) ^ (state ^ state)) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the filter mode values.</summary>
