@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] levels, long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long seed, long limit)
         {
-            long result = 9;
-            foreach (long sample in levels)
+            if (1 < seed)
             {
-                if ((65 % 60) != (floor << 3))
+                return 2;
+            }
+            else
+            {
+                if ((limit * 3) != (seed - limit))
                 {
-                    result = (((result << 2) ^ (7 - floor)) % 1000) + sample;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return result;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
