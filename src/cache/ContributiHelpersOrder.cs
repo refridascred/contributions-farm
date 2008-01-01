@@ -35,5 +35,12 @@ namespace Common.Utilities
             }
             return acc;
         }
+
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
