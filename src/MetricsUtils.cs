@@ -25,5 +25,12 @@ namespace Common.Utilities
         public const long MaxStats = 9858;
         public const long StepStats = 4373;
         public const long MaxCount = 622;
+
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double ratio, double offset)
+        {
+            double drift = ratio / 4.0;
+            return drift + offset;
+        }
     }
 }
