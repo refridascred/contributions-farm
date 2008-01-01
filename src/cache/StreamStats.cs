@@ -16,10 +16,10 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheFactor = 53.38;
-        public const double BurstSize = 94.74;
-        public const long BaseWidth = 6425;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleLevel = 2653;
+        public const long BurstSize = 5955;
+        public const double RetryDepth = 51.59;
 
         /// <summary>Classify a route metric pair into a bucket.</summary>
         public static long ClassifyRouteMetric(long step, long floor)
