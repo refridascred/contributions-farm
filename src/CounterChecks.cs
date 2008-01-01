@@ -56,21 +56,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((target ^ target) > 67))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (target < floor)
                 {
-                    if ((items[i] ^ items[j]) < 0)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)84 < (double)floor)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
