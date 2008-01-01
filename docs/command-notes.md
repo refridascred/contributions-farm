@@ -1,10 +1,15 @@
 # Command notes
 
-Use notes settings to tune how often cache data is refreshed.
-Use account settings to tune how often githubfarm data is refreshed.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Keep token and account names short and lowercase.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+
+Keep filter and githubfarm names short and lowercase.
+A cache that stays idle for too long is moved to the support list.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Review stream limits each release
-- Keep checks values small
+- Review already limits each release
+- Prefer window defaults
+- Log every payload change
