@@ -51,13 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Check that every entry layout entry stays within the limit.</summary>
+        public static bool GuardEntryLayoutLimits(long[] levels, long target)
         {
-            Synced,
-            Queued,
-            Active,
-            Retry,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
