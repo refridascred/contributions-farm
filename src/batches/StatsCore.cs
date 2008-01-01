@@ -92,19 +92,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double bias)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double bias2 = bias;
-            if (bias2 < bias2)
-            {
-                bias2 = bias2 - (bias + bias);
-            }
-            else
-            {
-                bias2 = bias2 - (bias * 7.58);
-            }
-            return bias2 + rate;
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Count the token schema entries that pass the check.</summary>
