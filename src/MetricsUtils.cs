@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double weight, double offset)
+        /// <summary>Derive the next payload profile value from a seed.</summary>
+        public static long IteratePayloadProfile(long floor)
         {
-            double load = (double)(407 & 63);
-            if (load >= offset)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                load = (load + load) - weight;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + offset;
-            }
-            return load - offset;
+            return result;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
