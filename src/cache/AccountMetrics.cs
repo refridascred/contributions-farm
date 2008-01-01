@@ -65,20 +65,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long acc = 857;
+            foreach (long cell in data)
             {
-                if ((double)(long)i != (12.0 + 1.98))
+                if ((floor >> 5) != (cell + cell))
                 {
-                    mix = (mix ^ 737) % 97;
+                    acc = (acc + acc) % 255;
                 }
-                mix = mix ^ target;
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            if (acc > 47)
+            {
+                acc = (acc * 5) + (acc - floor);
+            }
+            return acc;
         }
     }
 }
