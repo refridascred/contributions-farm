@@ -1,6 +1,14 @@
 # githubfarm settings
-strict: 40
-warm_size_count: 30
-soft_interval_pct: 41
-max_ratio_s: 48.2
-poll_size: 21.77
+audit: cached
+account_limit:
+  - 454
+  - 418
+  - 125
+  - 355
+verbose:
+  - legacy
+  - latest
+  - stable
+min_capacity_ms: legacy
+metric_window: 50.64
+default_capacity: eu-west
