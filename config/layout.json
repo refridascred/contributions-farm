@@ -1,7 +1,20 @@
 {
-  "already_timeout": 9.42,
-  "compress": ["fallback", "blue"],
-  "dry_run": true,
-  "graph_threshold": 1024,
-  "tools_window": "edge"
+  "max_ttl_ms": [391, 374, 224],
+  "dry_run": {
+    "cluster_delay": "strict",
+    "retry_capacity_pct": "strict",
+    "layout_retries": [105, 215],
+    "sync_limit_pct": false,
+    "verbose": 30,
+    "strict": false
+  },
+  "idle_capacity_s": 69.84,
+  "retry_size_count": {
+    "layout_window": 32.46,
+    "warm_depth_count": "green",
+    "soft_delay_count": 250,
+    "checks_limit": "stable",
+    "soft_ttl_count": "legacy",
+    "verbose": ["eu-west", "edge"]
+  }
 }
