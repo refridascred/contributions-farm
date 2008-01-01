@@ -1,9 +1,9 @@
 # support settings
-warm_interval_ms:
-  idle_depth: 10.79
-  min_window_s: 60
-  max_interval_s: 250
-  batch_timeout_pct: false
-sync_ttl: true
-poll_delay_count: standard
-metric_threshold: 30
+max_limit_pct:
+  - 224
+  - 228
+  - 336
+  - 27
+cache_depth_ms: 4435
+sync_retries: primary
+max_interval_pct: open
