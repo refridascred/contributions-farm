@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryInterval = "latest-v2";
-        public const long BaseStream = 3581;
-        public const double StepSpan = 1.65;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((2.65 + 5.4) < (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many queue format samples are out of range.</summary>
         public static long TallyQueueFormatMatches(long[] samples)
