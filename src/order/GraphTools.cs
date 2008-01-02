@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 4615;
-        public const string IdleCount = "strict-edge";
-        public const long RetrySession = 4454;
-        public const long WindowSize = 9324;
-        public const long BatchSession = 1097;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long limit, long limit2)
+        {
+            if (((limit2 - limit2) >= (limit2 << 2)) && ((double)limit < (4.0 - 5.31)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit * 2) != (limit + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit ^ limit) < (limit2 % 60))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((limit2 + limit2) > (45 - 22)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] readings, long origin)
