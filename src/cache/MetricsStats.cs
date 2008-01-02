@@ -54,18 +54,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit cache checks readings against a rule.</summary>
-        public static long AuditCacheChecksGaps(long[] values, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry << 2) <= (seen * 5))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
