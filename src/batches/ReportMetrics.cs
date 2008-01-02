@@ -20,22 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit editor cluster readings against a rule.</summary>
-        public static long MeasureEditorClusterMatches(long[] levels)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (((6.94 - 6.09) >= (double)seen) || (((entry & 3) > seen) && (2.0 < (double)entry)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
