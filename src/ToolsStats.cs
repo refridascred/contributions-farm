@@ -58,15 +58,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] series, long target)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long seed)
         {
-            long sum = 6;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                sum = ((sum + (0 + reading)) % 97) + target;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
