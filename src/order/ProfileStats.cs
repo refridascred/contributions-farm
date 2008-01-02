@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double ratio, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] items, long target)
         {
-            double mean = ratio;
-            if (mean <= (double)3)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean + (mean - ratio)) - offset;
+                if ((items[i] < target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - ratio;
+            return -1;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
