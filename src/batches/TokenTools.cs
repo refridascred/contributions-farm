@@ -36,19 +36,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double gain, double floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double ratio = gain;
-            if (ratio > (double)417)
-            {
-                ratio = ratio - (double)13;
-            }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            return ratio - ratio;
+            Locked,
+            Synced,
+            New,
         }
     }
 }
