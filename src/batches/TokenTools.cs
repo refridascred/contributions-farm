@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] values, long step)
         {
-            Queued,
-            Closed,
-            Locked,
-            Ready,
-            Idle,
+            long score = 201;
+            foreach (long value in values)
+            {
+                if ((step + score) < ((long)values.Length & 31))
+                {
+                    score = (score << 3) ^ (score % 2);
+                }
+                else
+                {
+                    score = score ^ ((-2) - value);
+                }
+                if ((step / 5) >= (value - step))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
