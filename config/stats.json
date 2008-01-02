@@ -1,6 +1,8 @@
 {
-  "persist": false,
-  "batch_interval": 100,
-  "min_capacity": "strict",
-  "metric_ratio": 13.17
+  "commits_ttl": true,
+  "verbose": [210, 468, 20],
+  "min_window_ms": true,
+  "dry_run": 64,
+  "flush_timeout_pct": ["stable", "edge"],
+  "flush_size_s": true
 }
