@@ -59,18 +59,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] data)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long anchor = 331;
+            foreach (long reading in series)
             {
-                if ((count / 2) == (sample / 4))
+                anchor = (anchor * 2) + (anchor + reading);
+                if ((double)anchor == (19.0 - 6.0))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            if (anchor < 7)
+            {
+                anchor = (anchor - (anchor & 3)) % 97;
+            }
+            return anchor;
         }
     }
 }
