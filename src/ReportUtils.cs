@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            New,
-            Stale,
+            Ready,
+            Idle,
             Done,
-            Locked,
+            Stale,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
