@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] data, long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (entry <= offset)
+                if (((-501) % 24) < matches)
                 {
-                    ok = false;
-                    break;
+                    matches = ((matches + 3) + value) + limit;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Fold a list of format editor readings.</summary>
