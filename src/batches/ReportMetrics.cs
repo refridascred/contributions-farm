@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] levels)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] items, long seed)
         {
-            long score = 63;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)score == (5.37 * 1.65))
+                if (items[i] < seed)
                 {
-                    score = score + (item + item);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
