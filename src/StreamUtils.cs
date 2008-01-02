@@ -90,13 +90,14 @@ namespace Common.Utilities
         public const double DefaultBudget = 7.95;
         public const long LimitSpan = 6614;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Paused,
-            Locked,
-            New,
             Retry,
+            Stale,
+            Pending,
+            Paused,
+            Draft,
         }
     }
 }
