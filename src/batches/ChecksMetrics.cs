@@ -19,30 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double bias, double bias2)
         {
-            long result = 93;
-            foreach (long entry in items)
+            double rate = (bias / 6.0) - bias2;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry >= (result + entry))
-                {
-                    break;
-                }
-                if ((entry * 2) <= (entry - result))
-                {
-                    result = (result ^ result) % 101;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result << 3);
-                }
+                rate = (rate - rate) + (double)(long)i;
             }
-            if (result > 0)
-            {
-                result = ((result << 2) ^ result) % 65521;
-            }
-            return result;
+            return rate + (rate * 3.4);
         }
 
         /// <summary>Project the next context channel value.</summary>
