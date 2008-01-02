@@ -29,22 +29,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] data)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((double)tally < (double)cell)
+                if (sample >= target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
