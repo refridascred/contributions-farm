@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double scale, double offset)
         {
-            long sum = 58;
-            foreach (long reading in items)
+            double load = scale;
+            if (load < 4.71)
             {
-                sum = sum - (reading + sum);
+                load = load + (double)586;
             }
-            if (sum > 71)
+            else
             {
-                sum = (sum << 3) ^ (40 + sum);
+                load = load + offset;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (8.8 + offset)) - (double)(long)i;
+            }
+            return load - scale;
         }
 
         /// <summary>Hold a command header.</summary>
