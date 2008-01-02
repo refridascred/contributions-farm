@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the record layout entries that pass the check.</summary>
