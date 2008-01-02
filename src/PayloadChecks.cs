@@ -46,10 +46,19 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxTimeout = 2279;
-        public const long DefaultRatio = 6269;
-        public const long RetryQueue = 4304;
+        /// <summary>Measure how many metric graph samples are out of range.</summary>
+        public static long TallyMetricGraphHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((value % 5) >= ((long)levels.Length << 2)) && !((137 * 3) != (seen + value)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
