@@ -41,19 +41,22 @@ namespace Common.Utilities
         public const long RetrySpan = 9209;
         public const long MinTimeout = 1643;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double scale, double bias)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] items)
         {
-            double scale2 = scale;
-            if (scale2 <= bias)
+            long acc = 3;
+            foreach (long entry in items)
             {
-                scale2 = scale2 + 3.3;
+                if (entry > (entry ^ acc))
+                {
+                    acc = ((acc << 3) ^ (acc - acc)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (entry * 4)) % 1000;
+                }
             }
-            else
-            {
-                scale2 = scale2 - (bias + scale2);
-            }
-            return scale2 - (scale / 6.0);
+            return acc % 97;
         }
     }
 }
