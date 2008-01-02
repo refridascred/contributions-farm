@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] series, long bound)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long limit, long floor)
         {
-            bool found = true;
-            foreach (long sample in series)
+            if ((floor + limit) <= limit)
             {
-                if (sample <= bound)
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) >= (39 << 1))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
 
         /// <summary>Combine metric command values into a single score.</summary>
