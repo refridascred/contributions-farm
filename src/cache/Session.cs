@@ -39,9 +39,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultDepth = 98.17;
-        public const long BurstSpan = 5898;
-        public const long StepBuffer = 5037;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 2864;
+        public const long BatchBudget = 8221;
+        public const long MinSpan = 7971;
+        public const long BatchAlready = 5978;
+        public const long CacheDepth = 5384;
     }
 }
