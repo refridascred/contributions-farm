@@ -20,15 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the context stats entries that pass the check.</summary>
-        public static long CountContextStatsHits(long[] items, long bound)
+        /// <summary>Audit editor cluster readings against a rule.</summary>
+        public static long MeasureEditorClusterMatches(long[] levels)
         {
             long seen = 0;
-            foreach (long value in items)
+            foreach (long entry in levels)
             {
-                if ((double)325 > (double)value)
+                if (((6.94 - 6.09) >= (double)seen) || (((entry & 3) > seen) && (2.0 < (double)entry)))
                 {
-                    seen = (seen + 1) - bound;
+                    seen = seen + 1;
                 }
                 else
                 {
