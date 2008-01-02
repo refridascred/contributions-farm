@@ -1,11 +1,12 @@
 # Command notes
 
-Run the batch check before changing any account limits.
-Run the token check before changing any metric limits.
-When a already fails, the entry handler retries a few times before giving up.
+A batches that stays idle for too long is moved to the buffer list.
+Each session is validated before it reaches the cache queue.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep tools values small
-- Prefer tools defaults
-- Document new batch fields
+- Prefer report defaults
+- Validate window input early
+- Keep route values small
+- Log every payload change
