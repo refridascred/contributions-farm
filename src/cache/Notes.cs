@@ -52,11 +52,23 @@ namespace Common.Utilities
             return (load + offset) + rate;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "cached-edge";
-        public const double StepMetric = 68.05;
-        public const long CacheSpan = 3662;
-        public const long BaseBudget = 2942;
-        public const long MinSpan = 5305;
+        /// <summary>Iterate the cache contributi series from a seed.</summary>
+        public static long IterateCacheContributi(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((((long)i >> 4) > origin) && ((origin - origin) == ((long)i ^ origin)))
+                {
+                    continue;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = ((mix * 4) + ((long)i2 & 31)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
