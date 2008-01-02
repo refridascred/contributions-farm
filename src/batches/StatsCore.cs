@@ -63,13 +63,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Digest a series of already order entries.</summary>
+        public static long FoldAlreadyOrder(long[] series)
         {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            long mix = 374;
+            foreach (long reading in series)
+            {
+                if (reading >= (reading << 2))
+                {
+                    mix = mix - (reading - mix);
+                }
+                else
+                {
+                    mix = (mix - (reading + (long)series.Length)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
