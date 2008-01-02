@@ -1,12 +1,4 @@
 # support settings
-max_window_s: false
-compress: eu-west
-idle_delay_pct:
-  sync_size: edge
-  poll_depth: false
-  soft_delay_ms: edge
-  verbose: true
-  hard_interval_pct: 1786
-  idle_ratio_s:
-    - green
-    - latest
+max_threshold: true
+base_interval_s: 30
+poll_delay_pct: 100
