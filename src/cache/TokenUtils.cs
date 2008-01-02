@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] readings, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 31;
+            foreach (long cell in data)
             {
-                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
+                if ((14.0 - 9.6) != (double)score)
                 {
-                    return (long)i;
+                    score = (score + (score + 7)) ^ cell;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Describe the tools status values.</summary>
