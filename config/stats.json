@@ -1,5 +1,5 @@
 {
-  "batch_retries_count": "local",
-  "cache_delay": 2.95,
-  "persist": false
+  "flush_size_s": 16,
+  "warm_size_ms": "blue",
+  "base_depth_ms": 41.49
 }
