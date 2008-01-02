@@ -14,10 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheCount = 0.53;
-        public const long SoftMetric = 3977;
-        public const long BurstScore = 1575;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Draft,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Digest a series of cluster queue entries.</summary>
         public static long FoldClusterQueue(long[] samples)
