@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] items, long seed)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
