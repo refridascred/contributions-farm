@@ -75,22 +75,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] data, long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)matches <= (8.0 - 4.4))
+                if (data[i] < floor)
                 {
-                    matches = ((matches + 1) ^ sample) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
