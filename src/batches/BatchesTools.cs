@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            long acc = 347;
+            foreach (long item in readings)
             {
-                sum = ((sum * 4) + (sum - (long)i)) % 101;
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((596 ^ offset) == (2 - item))
+                {
+                    acc = acc - (offset + offset);
+                }
             }
-            return sum;
+            return acc % 97;
         }
 
         /// <summary>Hold a command summary.</summary>
