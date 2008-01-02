@@ -29,10 +29,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultScore = 91.7;
-        public const long BatchProfile = 3809;
-        public const long BaseFactor = 8581;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] items)
