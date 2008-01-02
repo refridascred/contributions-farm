@@ -51,24 +51,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two payload layout measurements.</summary>
-        public static double ScalePayloadLayout(double rate, double span)
-        {
-            double rate2 = span * 6.95;
-            if (rate2 > rate2)
-            {
-                rate2 = (rate2 - (double)4) - rate;
-            }
-            else
-            {
-                rate2 = rate2 + (double)258;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + (rate2 * 3.63)) + (double)(long)i;
-            }
-            return rate2 + (9.6 * 3.8);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitMetrics = 78.06;
+        public const string BatchInterval = "stable";
+        public const long BurstMetrics = 480;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
