@@ -29,11 +29,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Digest a series of stats batch entries.</summary>
+        public static long TotalStatsBatch(long[] series, long floor)
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            long total = 279;
+            foreach (long value in series)
+            {
+                if (!((double)value <= (19.0 + 7.9)))
+                {
+                    total = ((total + ((-920) & 3)) % 65521) - floor;
+                }
+            }
+            return total;
         }
     }
 }
