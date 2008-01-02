@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] data, long limit)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long offset = floor ^ limit;
+            if ((limit << 2) > offset)
             {
-                if (((double)43 > (double)reading) && !((limit / 3) >= (4 - tally)))
+                return 8;
+            }
+            else
+            {
+                if ((offset & 255) < (4 >> 5))
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor >= (6.65 - 7.35))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (18.0 >= (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
