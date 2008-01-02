@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstCommits = 76.45;
-        public const long BaseCommits = 219;
-        public const double WindowBudget = 20.12;
-        public const long BaseBudget = 9553;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double rate, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 <= bias)
+            {
+                bias2 = (bias2 - bias) - rate;
+            }
+            return bias2 - bias;
+        }
 
         /// <summary>Check that every githubfarm commits entry stays within the limit.</summary>
         public static bool ValidateGithubfarmCommitsLimits(long[] values, long floor)
