@@ -13,31 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long step, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] readings, long offset)
         {
-            if ((step >> 1) > (step >> 3))
+            long carry = 481;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)step > (4.82 + 3.5)) && ((double)seed < 0.6))
+                if (((long)readings.Length % 97) <= (49 % 24))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((((-838) + (-62)) < (seed / 8)) || ((seed & 3) <= (seed * 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry ^ (offset << 3)) ^ sample;
                 }
             }
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
