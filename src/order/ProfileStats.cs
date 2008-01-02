@@ -23,11 +23,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "staging-v2";
-        public const long BatchFactor = 4748;
-        public const long HardWindow = 9166;
-        public const string BatchWindow = "local-1";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
