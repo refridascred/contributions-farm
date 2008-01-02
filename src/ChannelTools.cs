@@ -43,26 +43,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] samples, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long total = 324;
-            foreach (long cell in samples)
+            long total = 7;
+            foreach (long cell in levels)
             {
-                if (!((cell << 2) < (cell % 5)))
+                if ((double)cell == (6.0 + 9.0))
                 {
-                    total = total + (offset >> 1);
-                }
-                if (offset <= (682 ^ 17))
-                {
-                    total = total + total;
+                    total = (total ^ (total >> 2)) % 255;
                 }
                 else
                 {
-                    total = ((total * 4) + (offset ^ total)) % 4096;
+                    total = ((total << 3) ^ (cell % 7)) % 65521;
                 }
             }
-            return total;
+            if (total < 843)
+            {
+                total = ((total << 2) ^ 7) % 4096;
+            }
+            return total % 65521;
         }
     }
 }
