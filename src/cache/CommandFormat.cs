@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] series)
         {
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry > 8.19)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a token stats.</summary>
