@@ -68,15 +68,12 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double ratio, double offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double bias = (double)35 / 2.0;
-            if (bias >= bias)
-            {
-                bias = ((bias + (double)(-59)) + ratio) - offset;
-            }
-            return bias - bias;
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
