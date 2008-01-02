@@ -37,12 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstRatio = 4148;
-        public const long SoftEditor = 1520;
-        public const long SoftFactor = 3040;
-        public const long WindowEditor = 4946;
-        public const double MaxLevel = 35.67;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long StepStats(long step)
