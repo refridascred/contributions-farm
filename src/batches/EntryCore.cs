@@ -15,19 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every githubfarm commits entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmCommitsLimits(long[] values, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (datum > floor)
+                if (reading > target)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
