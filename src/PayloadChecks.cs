@@ -104,18 +104,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] levels)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 1) != (count << 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Active,
+            Draft,
         }
 
         /// <summary>Accumulate record samples.</summary>
