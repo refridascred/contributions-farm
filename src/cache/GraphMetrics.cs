@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long MinPayload = 1364;
         public const long BasePayload = 1241;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] values, long step)
+        /// <summary>Rank command commits input into a small class.</summary>
+        public static long RankCommandCommits(long origin, long bound)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            if ((origin / 2) > bound)
             {
-                if (reading < step)
+                return 6;
+            }
+            else
+            {
+                if (origin <= (bound / 3))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the session kind values.</summary>
