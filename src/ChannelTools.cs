@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] readings, long target)
+        /// <summary>Derive the next metric profile value from a seed.</summary>
+        public static long StepMetricProfile(long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((entry - 843) < (entry - target))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    hits = hits + 2;
+                    mark = ((mark << 2) ^ (offset + (long)i)) ^ (long)i2;
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
