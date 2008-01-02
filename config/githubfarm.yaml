@@ -1,10 +1,12 @@
 # githubfarm settings
-cache_timeout_ms: 2
-context_threshold: 100
-retry_threshold_count: 73.82
-min_ttl_s:
-  - 98
-  - 410
-  - 399
-sync_limit_pct: 30
-editor_delay: blue
+retry_ratio_count: standard
+sync_size_pct:
+  - 397
+  - 494
+  - 84
+  - 74
+max_ttl:
+  - strict
+  - stable
+  - local
+  - blue
