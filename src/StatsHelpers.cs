@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double scale, double bias)
         {
-            long mix = 36;
-            foreach (long entry in series)
-            {
-                if (entry >= (mix << 2))
-                {
-                    mix = mix ^ (entry - mix);
-                }
-                mix = (mix << 3) ^ (entry & 63);
-                if (entry < (mix + mix))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            double load = bias;
+            return (load - (bias + bias)) + scale;
         }
 
         /// <summary>Describe the payload status values.</summary>
