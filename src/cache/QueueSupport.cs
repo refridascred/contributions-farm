@@ -20,11 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long floor, long bound)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            if (6.9 >= (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound + bound) <= ((-48) ^ 2)) && ((bound - 90) == (bound - bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
