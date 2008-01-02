@@ -1,6 +1,7 @@
 {
-  "audit": false,
-  "dry_run": true,
-  "flush_window": true,
-  "counter_ratio": true
+  "schema_limit": "open",
+  "max_retries": 70.82,
+  "enabled": "open",
+  "metric_capacity": "latest",
+  "default_threshold_s": 906
 }
