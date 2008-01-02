@@ -35,19 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples, long offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long mark = 190;
-            foreach (long cell in samples)
-            {
-                mark = (mark ^ (8 - cell)) % 65521;
-            }
-            if (mark > 243)
-            {
-                mark = ((mark * 2) + (mark + offset)) % 4096;
-            }
-            return mark % 97;
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
