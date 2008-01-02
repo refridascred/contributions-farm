@@ -1,5 +1,9 @@
 # support settings
-batch_retries: stable
-hard_interval: 60
-report_interval: 70
-base_ttl: 250
+hard_retries_pct:
+  enabled: 3
+  persist: 250
+  base_size: 19
+  soft_window: true
+  sync_capacity_count: green
+tools_ratio: 52.67
+flush_ttl: legacy
