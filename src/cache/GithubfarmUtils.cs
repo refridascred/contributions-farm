@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double weight, double bias)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double load = (double)(98 >> 2);
-            if (load >= (load * 13.0))
-            {
-                load = (load - bias) + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - 9.72) + (double)(long)i;
-            }
-            return load + bias;
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
