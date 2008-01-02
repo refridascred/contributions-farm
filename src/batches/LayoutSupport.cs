@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] series, long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long bound, long bound2)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            if (476 >= bound)
             {
-                if (datum > origin)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) > (36 >> 4))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)bound2 >= 1.0) && ((bound2 & 7) != (176 * 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((745 & 7) < (bound2 & 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a filter record.</summary>
