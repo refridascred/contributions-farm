@@ -20,38 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long seed, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] samples, long origin)
         {
-            if ((double)seed == (double)bound)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (926 >= (seed + bound))
+                if (((long)samples.Length + origin) < ((-326) % 16))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((20 / 8) > bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + bound) == (5 % 97))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 2) ^ entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine profile already values into a single score.</summary>
