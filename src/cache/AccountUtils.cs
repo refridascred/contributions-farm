@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] data)
+        /// <summary>Grade a buffer session value against two limits.</summary>
+        public static long GradeBufferSession(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            if (374 >= bound)
             {
-                if (17.0 >= (double)hits)
+                return 5;
+            }
+            else
+            {
+                if ((offset + bound) < bound)
                 {
-                    hits = (hits + 3) + sample;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
