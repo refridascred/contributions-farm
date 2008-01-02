@@ -27,19 +27,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double scale, double floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            double load = 1.38 - 1.73;
-            if (load <= (scale * 19.0))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (double)255) - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + (double)3;
+            return hits;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
