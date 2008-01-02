@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long acc = 6;
-            foreach (long datum in values)
-            {
-                acc = ((acc ^ (acc * 2)) % 255) - datum;
-            }
-            if (acc < 216)
-            {
-                acc = (acc << 3) ^ (acc % 100);
-            }
-            return acc % 4096;
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of filter batch readings.</summary>
