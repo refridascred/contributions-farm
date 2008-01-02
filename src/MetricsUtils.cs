@@ -54,22 +54,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long target, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long origin, long step)
         {
-            if (!(origin > (target & 3)))
+            if ((origin ^ step) < (origin ^ 787))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((target < (origin * 2)) || ((origin / 4) > origin))
+                if ((double)step <= (8.0 - 15.0))
                 {
                     return 3;
                 }
                 else
                 {
-                    return 0;
+                    if ((1.0 * 2.14) > (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
