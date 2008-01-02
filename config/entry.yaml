@@ -1,9 +1,5 @@
 # entry settings
-session_retries:
-  - primary
-  - blue
-  - edge
-batch_threshold_count: 500
-order_interval: true
-poll_size_s: 11.99
-dry_run: true
+strict: 9935
+record_size: 9.13
+order_capacity: fallback
+persist: local
