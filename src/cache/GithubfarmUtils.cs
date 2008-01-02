@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] series, long limit)
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            long acc = 709;
+            foreach (long entry in series)
+            {
+                if (acc <= entry)
+                {
+                    acc = (acc * 2) + (limit >> 1);
+                }
+                if ((double)(long)series.Length < (0.2 / 7.0))
+                {
+                    break;
+                }
+            }
+            if (acc > (-983))
+            {
+                acc = (acc * 3) + (limit % 10);
+            }
+            return acc;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
