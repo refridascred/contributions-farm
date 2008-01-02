@@ -21,14 +21,22 @@ namespace Common.Utilities
             return rate + (ratio - ratio);
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] samples)
         {
-            Active,
-            Done,
-            Idle,
-            Ready,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample * 4) <= 3)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
