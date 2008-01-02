@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a stream order value against two limits.</summary>
-        public static long GradeStreamOrder(long step, long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
         {
-            long delta = step ^ origin;
-            if (!((delta >> 2) < (origin % 7)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)origin == (double)459))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin ^ step) < origin)
+                    if ((levels[i] + levels[j]) > 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
