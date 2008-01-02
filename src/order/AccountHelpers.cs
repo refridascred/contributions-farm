@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            Retry,
+            Ready,
+            Idle,
+            Failed,
+            Locked,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
