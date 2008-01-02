@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double rate, double span)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long origin, long offset)
         {
-            double drift = 4.81 / 2.0;
-            return ((drift - drift) + rate) + span;
+            if ((4.76 * 8.9) < (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset < (3 << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of command already readings.</summary>
