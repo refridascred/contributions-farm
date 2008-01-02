@@ -1,12 +1,6 @@
 {
-  "poll_threshold_count": true,
-  "sync_limit": ["legacy", "primary", "strict"],
-  "dry_run": 500,
-  "soft_retries": "standard",
-  "base_depth_s": "latest",
-  "poll_size": {
-    "max_window": 6312,
-    "poll_delay_count": 339,
-    "default_delay": true
-  }
+  "layout_window": ["cached", "blue"],
+  "burst_retries": [115, 405],
+  "audit": 500,
+  "max_timeout": "strict"
 }
