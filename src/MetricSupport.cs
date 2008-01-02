@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] series, long target)
         {
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
-            public double Weight { get; set; }
+            long mark = -836;
+            foreach (long cell in series)
+            {
+                mark = (mark - (cell ^ 62)) - target;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a session record.</summary>
