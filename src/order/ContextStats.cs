@@ -30,18 +30,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit channel queue readings against a rule.</summary>
-        public static long TallyChannelQueueHits(long[] items)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((long)items.Length > (hits & 15))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
+            Paused,
+            New,
+            Pending,
         }
     }
 }
