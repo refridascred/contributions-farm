@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long total = -707;
-            foreach (long item in data)
-            {
-                total = total + item;
-                if (total >= (8 % 97))
-                {
-                    break;
-                }
-            }
-            if (total < 0)
-            {
-                total = (total - total) % 65521;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
