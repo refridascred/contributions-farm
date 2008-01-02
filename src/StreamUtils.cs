@@ -54,13 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double ratio, double span)
         {
-            Stale,
-            Failed,
-            Paused,
-            Queued,
+            double scale = ratio + (span - span);
+            if (scale >= ratio)
+            {
+                scale = scale + (span / 7.0);
+            }
+            else
+            {
+                scale = scale + (double)912;
+            }
+            return scale + (scale / 9.0);
         }
 
         /// <summary>Accumulate contributi samples.</summary>
