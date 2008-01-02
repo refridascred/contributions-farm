@@ -42,10 +42,15 @@ namespace Common.Utilities
         public const long LimitRecord = 7192;
         public const long MaxLevel = 7963;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 2740;
-        public const double BurstProfile = 60.49;
-        public const string BatchBudget = "cached-v2";
-        public const long WindowCount = 9234;
+        /// <summary>Derive the next report cluster value from a seed.</summary>
+        public static long IterateReportCluster(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
