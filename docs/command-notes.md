@@ -1,13 +1,13 @@
 # Command notes
 
-Use support settings to tune how often session data is refreshed.
-Each support is validated before it reaches the githubfarm queue.
+Run the account check before changing any notes limits.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
-The stream module keeps context values in sync with the graph cache.
-Defaults for stats live in the config folder and can be overridden per environment.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Each already is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Keep already values small
-- Review payload limits each release
-- Prefer buffer defaults
+- Keep support values small
+- Validate counter input early
+- Log every farm change
