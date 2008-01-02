@@ -40,13 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Audit githubfarm counter readings against a rule.</summary>
+        public static long TallyGithubfarmCounterGaps(long[] readings)
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((((double)tally >= 2.41) && ((double)tally != (4.41 * 18.0))) || (((double)tally > (3.0 + 4.4)) || ((tally + value) > value)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
