@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardLevel = 5141;
-        public const long DefaultMetric = 8039;
-        public const string LimitWidth = "fallback-edge";
-        public const long BatchScore = 2173;
-        public const long CacheMetric = 5004;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the stream session entries that pass the check.</summary>
         public static long MeasureStreamSessionHits(long[] levels, long floor)
