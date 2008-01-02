@@ -13,23 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] series, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)i >= offset)
+                if ((series[i] >= step) && ((series[i] % 3) == 0))
                 {
-                    mark = (mark ^ mark) % 255;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = ((mark << 3) ^ (offset - 414)) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm cluster sample.</summary>
