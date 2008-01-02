@@ -28,13 +28,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values, long bound)
         {
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
+            long score = -8;
+            foreach (long datum in values)
+            {
+                if ((bound * 3) > (datum & 63))
+                {
+                    score = (score + (datum + 4)) % 65521;
+                }
+                else
+                {
+                    score = score + (datum % 8);
+                }
+            }
+            return score;
         }
     }
 }
