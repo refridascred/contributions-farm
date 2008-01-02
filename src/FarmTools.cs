@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next token window value.</summary>
-        public static double ScaleTokenWindow(double gain, double span)
+        /// <summary>Compare every pair of profile metrics readings.</summary>
+        public static long PairProfileMetricsCount(long[] values)
         {
-            double rate = 2.2;
-            if (rate < 4.9)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (double)7) - gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (rate + span);
-            }
-            return rate - (double)5;
+            return count;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
