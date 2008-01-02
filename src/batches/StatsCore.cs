@@ -58,17 +58,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] series, long step)
+        /// <summary>Classify a cluster tools pair into a bucket.</summary>
+        public static long SortClusterTools(long limit, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (2 > (limit + limit))
             {
-                if (series[i] > step)
+                return 2;
+            }
+            else
+            {
+                if (((limit & 15) >= (floor - floor)) && ((3.9 - 3.2) < (double)limit))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
