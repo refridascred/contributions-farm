@@ -31,11 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "fallback-edge";
-        public const long RetryAlready = 6256;
-        public const long WindowAlready = 7443;
-        public const double WindowTimeout = 5.1;
-        public const double SoftLevel = 19.1;
+        /// <summary>Audit report cache readings against a rule.</summary>
+        public static long MeasureReportCacheGaps(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (3.0 >= (double)hits)
+                {
+                    hits = ((hits + 2) + cell) + offset;
+                }
+            }
+            return hits;
+        }
     }
 }
