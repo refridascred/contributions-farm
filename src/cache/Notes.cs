@@ -54,19 +54,11 @@ namespace Common.Utilities
             return (load + offset) + rate;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "cached-edge";
+        public const double StepMetric = 68.05;
+        public const long CacheSpan = 3662;
+        public const long BaseBudget = 2942;
+        public const long MinSpan = 5305;
     }
 }
