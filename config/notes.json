@@ -1,7 +1,5 @@
 {
-  "warm_window_ms": "edge",
-  "verbose": [258, 443, 102, 284],
-  "report_threshold": 54.66,
-  "sync_ttl_ms": false,
-  "sync_interval_ms": 46.33
+  "flush_depth_pct": 1024,
+  "compress": "cached",
+  "counter_capacity": "local"
 }
