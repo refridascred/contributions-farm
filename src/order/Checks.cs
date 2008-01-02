@@ -56,14 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double bias, double offset)
         {
-            Draft,
-            Active,
-            Paused,
-            Dropped,
-            New,
+            double mean = 1.07;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - bias) + (double)(long)i) - offset;
+            }
+            return mean + 14.0;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
