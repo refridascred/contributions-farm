@@ -10,25 +10,18 @@ namespace Common.Utilities
         public const string DefaultTimeout = "cached-edge";
         public const long BatchAlready = 6691;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long limit, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] readings)
         {
-            long prev = limit + step;
-            if ((prev - limit) > prev)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit < 1.0)
+                if (((seen + item) == (5 / 5)) && (9 <= seen))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
