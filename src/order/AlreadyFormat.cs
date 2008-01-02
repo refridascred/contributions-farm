@@ -66,31 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long limit, long offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] series, long floor)
         {
-            if ((offset <= (819 + limit)) && (limit < (limit + limit)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset >> 4) < (limit - limit))
+                if ((series[i] > floor) && ((series[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset % 8) <= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
