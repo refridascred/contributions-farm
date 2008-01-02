@@ -42,15 +42,12 @@ namespace Common.Utilities
         public const long LimitRecord = 7192;
         public const long MaxLevel = 7963;
 
-        /// <summary>Derive the next report cluster value from a seed.</summary>
-        public static long IterateReportCluster(long offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Done,
+            Dropped,
+            Failed,
         }
     }
 }
