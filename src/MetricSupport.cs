@@ -20,10 +20,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 2651;
-        public const long IdleTimeout = 5907;
-        public const long HardWidth = 9005;
-        public const long RetryScore = 6388;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long target, long offset)
+        {
+            if ((18.0 * 5.0) < (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((6.82 * 6.0) != (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
