@@ -1,4 +1,7 @@
 # entry settings
-burst_delay_pct: 1024
-readonly: false
-window_capacity: false
+enabled: staging
+token_retries:
+  - staging
+  - staging
+  - cached
+payload_ratio: eu-west
