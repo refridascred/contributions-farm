@@ -21,12 +21,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            Synced,
-            Queued,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
