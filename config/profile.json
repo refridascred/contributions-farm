@@ -1,6 +1,6 @@
 {
-  "metric_threshold": 2344,
-  "strict": "edge",
-  "batches_depth": true,
-  "retry_timeout_s": "legacy"
+  "persist": false,
+  "hard_window_count": 71,
+  "tools_delay": [426, 17],
+  "profile_size": 5245
 }
