@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] readings, long floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = ratio;
+            if (mean <= (double)3)
             {
-                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (mean - ratio)) - offset;
             }
-            return -1;
+            return mean - ratio;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
