@@ -17,12 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 269;
-        public const long LimitWidth = 3719;
-        public const long IdleLevel = 3399;
-        public const long SoftRatio = 2815;
-        public const string HardCounter = "strict";
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
