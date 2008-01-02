@@ -70,13 +70,15 @@ namespace Common.Utilities
             return bias + (gain * 4.4);
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            Paused,
-            Draft,
-            Synced,
-            Active,
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
