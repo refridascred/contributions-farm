@@ -25,13 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double scale, double bias)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            double mean = bias;
+            if (mean <= scale)
+            {
+                mean = mean - bias;
+            }
+            return mean + mean;
         }
 
         /// <summary>Locate a order reading by value.</summary>
