@@ -65,18 +65,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] values, long step)
+        /// <summary>Check that every account format entry stays within the limit.</summary>
+        public static bool CheckAccountFormatLimits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((9.0 * 3.0) != (double)hits)
+                if (value != bound)
                 {
-                    hits = ((hits + 2) + reading) + step;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
