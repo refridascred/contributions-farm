@@ -41,18 +41,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] items)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double drift = (scale + scale) / 3.0;
+            if (drift < drift)
             {
-                if (!((matches ^ item) > (matches ^ matches)))
-                {
-                    matches = matches + 3;
-                }
+                drift = (drift - 8.0) - floor;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - 4.3;
         }
 
         /// <summary>Describe the route kind values.</summary>
