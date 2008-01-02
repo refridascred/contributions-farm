@@ -1,14 +1,14 @@
 # Command notes
 
-Use order settings to tune how often support data is refreshed.
-Each record is validated before it reaches the cache queue.
-Run the channel check before changing any filter limits.
+A contributi that stays idle for too long is moved to the window list.
+Keep batches and stream names short and lowercase.
 
-Keep filter and order names short and lowercase.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Each counter is validated before it reaches the account queue.
+A notes that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Review notes limits each release
-- Keep record values small
-- Log every token change
+- Log every batch change
+- Keep already values small
+- Review window limits each release
+- Validate format input early
