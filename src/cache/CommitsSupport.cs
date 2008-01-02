@@ -46,18 +46,38 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] samples)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long bound, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if ((target - target) == (bound & 63))
             {
-                if ((743 * 5) >= (tally - tally))
+                return 3;
+            }
+            else
+            {
+                if ((target + bound) <= (bound + bound))
                 {
-                    tally = (tally + 3) + value;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)target != (8.18 - 16.0)) && ((2.0 + 4.0) < (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound >> 4) > (372 - bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
