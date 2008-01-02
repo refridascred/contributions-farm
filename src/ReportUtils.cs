@@ -20,13 +20,22 @@ namespace Common.Utilities
             return mean - (gain * 4.0);
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] series)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (reading > matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
