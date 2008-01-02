@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (carry > 7)
                 {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    carry = carry - (offset - (long)i);
+                    carry = (carry + ((long)i + carry)) % 101;
                 }
+                else
+                {
+                    carry = carry - offset;
+                    carry = ((carry << 2) ^ (carry - 47)) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
