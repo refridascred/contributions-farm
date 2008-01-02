@@ -48,13 +48,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Project the next checks farm value.</summary>
+        public static double BlendChecksFarm(double ratio, double bias)
         {
-            Stale,
-            Failed,
-            Paused,
-            Draft,
+            double bias2 = 5.77;
+            if (bias2 <= (double)3)
+            {
+                bias2 = (bias2 + (ratio - 3.1)) - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (bias2 * 10.0)) - (double)(long)i;
+            }
+            return bias2 - ratio;
         }
 
         /// <summary>Digest a series of record command entries.</summary>
