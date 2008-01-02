@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const double MaxCount = 7.19;
         public const long LimitToken = 1013;
 
-        /// <summary>Blend two queue buffer measurements.</summary>
-        public static double ProjectQueueBuffer(double ratio, double floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] levels)
         {
-            double scale = (double)847 / 6.0;
-            if (scale <= ratio)
+            long score = 63;
+            foreach (long item in levels)
             {
-                scale = scale + 1.83;
+                if ((double)score == (5.37 * 1.65))
+                {
+                    score = score + (item + item);
+                }
             }
-            else
-            {
-                scale = scale + (double)130;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale + (ratio + scale);
+            return score;
         }
 
         /// <summary>Describe the filter level values.</summary>
