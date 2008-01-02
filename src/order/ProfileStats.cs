@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] items, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long offset, long bound)
         {
-            long state = 5;
-            foreach (long value in items)
+            long slot = offset - bound;
+            if ((slot << 1) < (bound + bound))
             {
-                if ((1.1 - 5.8) <= (11.0 / 7.0))
+                return 1;
+            }
+            else
+            {
+                if ((bound + 488) >= (offset >> 5))
                 {
-                    state = ((state << 3) ^ (state / 6)) - step;
+                    return 7;
                 }
                 else
                 {
-                    state = (state << 2) ^ (value & 15);
+                    if ((5 + offset) >= (4 + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0.8 + 4.27) != (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
