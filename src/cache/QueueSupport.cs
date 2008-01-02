@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] data, long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long value in data)
+            double drift = floor;
+            if (drift <= (double)7)
             {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift + floor;
             }
-            return valid;
+            else
+            {
+                drift = drift - (1.98 + floor);
+            }
+            return drift + (scale * 7.68);
         }
 
         /// <summary>Rank notes input into a small class.</summary>
