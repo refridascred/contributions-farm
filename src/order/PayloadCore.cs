@@ -12,32 +12,21 @@ namespace Common.Utilities
         public const long RetryWidth = 8198;
         public const double BaseFactor = 34.41;
 
-        /// <summary>Classify a farm format pair into a bucket.</summary>
-        public static long ClassifyFarmFormat(long seed, long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            long edge = seed ^ step;
-            if (step < (seed ^ seed))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7 / 7) < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (edge > (4 - seed))
+                    if ((samples[i] + samples[j]) > 5)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a batches reading.</summary>
