@@ -60,14 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Failed,
-            Dropped,
-            Queued,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardAlready = 64.26;
+        public const double CacheInterval = 49.91;
+        public const long BurstAlready = 3284;
+        public const long MaxCount = 3661;
+        public const double MinDepth = 4.33;
     }
 }
