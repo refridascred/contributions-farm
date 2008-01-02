@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long bound, long bound2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound2 % 64) <= (bound2 + bound))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound != (4.6 / 3.0))
                 {
-                    if ((values[i] - values[j]) < 16)
+                    return 4;
+                }
+                else
+                {
+                    if (bound < (bound + bound2))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
