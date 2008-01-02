@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] levels)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((6.2 * 9.1) > 8.0) || (sample > (hits / 7)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
