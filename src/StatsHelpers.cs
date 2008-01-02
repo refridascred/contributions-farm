@@ -25,12 +25,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] items, long seed)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long carry = -21;
+            foreach (long value in items)
+            {
+                if (5.92 >= (double)carry)
+                {
+                    carry = (((carry << 2) ^ seed) % 65521) ^ value;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
