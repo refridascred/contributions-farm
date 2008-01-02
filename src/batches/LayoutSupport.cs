@@ -44,21 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count layout window pairs that satisfy a relation.</summary>
-        public static long CompareLayoutWindowCount(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)seen == (double)cell) && ((double)cell >= (double)seen))
                 {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
