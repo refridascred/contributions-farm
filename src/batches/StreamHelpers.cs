@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((origin & 15) <= (3 * 4))
+                if ((3 % 3) != ((long)i - origin))
                 {
+                    carry = (carry ^ (carry / 5)) % 65521;
                     continue;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Hold a channel stats.</summary>
