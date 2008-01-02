@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinTimeout = "latest-1";
-        public const long DefaultBudget = 4412;
-        public const string MaxAccount = "primary-v2";
-        public const double WindowWidth = 30.35;
-        public const string HardAccount = "staging-1";
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Size { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
