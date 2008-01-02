@@ -50,16 +50,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc ^ (long)i) % 101;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "stable";
+        public const long SoftTools = 8775;
+        public const long StepTools = 3644;
+        public const long SoftCount = 6123;
+        public const string WindowTools = "strict-1";
     }
 }
