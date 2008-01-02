@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Check that every cluster stream entry stays within the limit.</summary>
+        public static bool GuardClusterStreamBounds(long[] readings, long seed)
         {
-            Stale,
-            Closed,
-            Idle,
-            New,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the cache phase values.</summary>
