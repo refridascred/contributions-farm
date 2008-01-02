@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] items, long step)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double gain, double span)
         {
-            long state = 60;
-            foreach (long sample in items)
+            double ratio = gain;
+            if (ratio < ratio)
             {
-                if (((2.14 * 15.0) >= (double)state) && ((double)sample > (double)step))
-                {
-                    state = (state + 55) % 255;
-                }
-                if ((90 * 4) >= (556 + sample))
-                {
-                    break;
-                }
+                ratio = (ratio + gain) - span;
             }
-            return state % 65521;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)(-67)) + (double)(long)i;
+            }
+            return ratio - (double)71;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
