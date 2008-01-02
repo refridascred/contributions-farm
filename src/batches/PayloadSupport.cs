@@ -29,22 +29,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            long mix = 3;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((15.0 + 1.9) < (double)mix) && (item <= (item + item)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 2) + (mix + item)) % 65521;
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 8)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
