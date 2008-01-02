@@ -1,9 +1,6 @@
-id,region,state,rank
-1,175,783,215
-2,eu-west,eu-west,30.36
-3,34.08,89.72,575
-4,931,28.47,eu-west
-5,209,41.17,standard
-6,892,242,89.42
-7,517,primary,standard
-8,legacy,5.89,eu-west
+id,owner,level
+1,latest,110
+2,71.77,375
+3,995,fallback
+4,287,staging
+5,standard,edge
