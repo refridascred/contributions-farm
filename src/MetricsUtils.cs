@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 5525;
+        public const long DefaultScore = 6908;
+        public const double IdleMetric = 76.6;
+        public const long MaxMetric = 6199;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
