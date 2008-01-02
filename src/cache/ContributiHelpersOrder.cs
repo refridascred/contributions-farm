@@ -12,11 +12,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] series)
         {
-            public double Size { get; set; }
-            public bool Region { get; set; }
+            long sum = 298;
+            foreach (long datum in series)
+            {
+                sum = (((sum << 2) ^ ((long)series.Length & 3)) % 97) - datum;
+            }
+            return sum;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
