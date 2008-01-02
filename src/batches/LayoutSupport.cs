@@ -34,13 +34,11 @@ namespace Common.Utilities
         public const long WindowDepth = 9656;
         public const double WindowGraph = 6.79;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
