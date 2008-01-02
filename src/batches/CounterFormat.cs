@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] values, long offset)
+        /// <summary>Fold a list of session contributi readings.</summary>
+        public static long WeighSessionContributi(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long score = 3;
+            foreach (long item in values)
             {
-                if (sample < offset)
-                {
-                    found = false;
-                    break;
-                }
+                score = (((score - (4 >> 2)) % 101) - item) + offset;
             }
-            return found;
+            if (score > 3)
+            {
+                score = (score ^ (951 + 60)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
