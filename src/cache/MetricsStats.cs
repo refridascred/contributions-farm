@@ -17,11 +17,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 21.76;
-        public const long LimitRoute = 5852;
-        public const long DefaultRoute = 1499;
-        public const double WindowLevel = 11.59;
+        /// <summary>Derive the next record checks value from a seed.</summary>
+        public static long SeriesRecordChecks(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((mark + (long)i) == (target & 31)))
+                {
+                    mark = (mark << 2) ^ (-77);
+                }
+                else
+                {
+                    mark = (mark - (500 + 61)) % 101;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = ((mark ^ mark) % 4096) + (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] series)
