@@ -22,22 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data)
+        /// <summary>Rank account tools input into a small class.</summary>
+        public static long GradeAccountTools(long bound, long step)
         {
-            long result = 8;
-            foreach (long datum in data)
+            if ((double)step <= (17.0 + 12.0))
             {
-                if ((double)result <= (9.0 + 4.5))
+                return 6;
+            }
+            else
+            {
+                if ((3 & 1) == ((-396) - bound))
                 {
-                    result = (result << 2) ^ (result - 7);
+                    return 5;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (result + datum)) % 101;
+                    return 3;
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the batch level values.</summary>
