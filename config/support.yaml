@@ -1,18 +1,20 @@
 # support settings
-tools_retries: 40.82
-report_delay:
-  batch_threshold_count:
-    - 310
-    - 384
-  hard_retries: latest
-  persist: standard
-  sync_threshold: 20
-  cache_size_ms:
-    - 458
-    - 2
-    - 439
-    - 174
-idle_interval_pct: 3980
-poll_size_s: stable
-commits_ratio: true
-strict: true
+enabled: blue
+warm_ttl_count:
+  - 243
+  - 203
+  - 255
+  - 230
+batch_size: 74
+sync_retries_ms:
+  strict: 65.24
+  already_retries: 13
+  enabled: 2449
+  idle_ttl:
+    - 268
+    - 314
+  burst_interval_count: blue
+  persist: 60
+max_size_pct:
+  - 388
+  - 131
