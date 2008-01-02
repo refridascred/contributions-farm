@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of graph support entries.</summary>
-        public static long DigestGraphSupport(long[] values, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long offset2)
         {
-            long mark = 495;
-            foreach (long cell in values)
+            if ((offset2 < (offset ^ 874)) && ((offset2 * 2) < (2 ^ offset2)))
             {
-                mark = (((mark - 253) % 1000) - cell) - target;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((offset2 + offset2) <= (offset2 ^ 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
