@@ -65,22 +65,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] data, long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long target, long offset)
         {
-            long result = 945;
-            foreach (long value in data)
+            if (offset <= (offset + target))
             {
-                if ((value - floor) == (0 - value))
+                return 3;
+            }
+            else
+            {
+                if ((target <= offset) || (target <= (offset + 771)))
                 {
-                    result = (result - (result ^ result)) % 97;
+                    return 2;
                 }
                 else
                 {
-                    result = (result - floor) % 255;
+                    if (!((3.4 * 16.0) != (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return result;
         }
     }
 }
