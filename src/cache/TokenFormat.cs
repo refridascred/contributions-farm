@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] readings, long floor)
         {
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long total = -1;
+            foreach (long reading in readings)
+            {
+                if (!(floor >= 6))
+                {
+                    total = ((total - (total >> 3)) % 4096) + reading;
+                }
+            }
+            return total;
         }
     }
 }
