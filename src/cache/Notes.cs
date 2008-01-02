@@ -32,31 +32,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long offset, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            if ((double)limit != (double)offset)
+            long anchor = 6;
+            foreach (long reading in levels)
             {
-                return 8;
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = (anchor << 3) ^ (reading + (long)i);
+                }
+                anchor = ((anchor << 3) ^ (reading + anchor)) % 4096;
             }
-            else
+            if (anchor > 338)
             {
-                if (limit <= (limit + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit >> 4) >= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                anchor = (anchor << 2) ^ (anchor % 10);
             }
+            return anchor;
         }
 
         /// <summary>Describe the layout phase values.</summary>
