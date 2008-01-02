@@ -1,9 +1,6 @@
 # githubfarm settings
-max_size_pct:
-  - 418
-  - 200
-poll_threshold_pct: true
-payload_ttl: false
-min_ratio_ms: 751
-default_threshold_s: 9209
-retry_delay_s: 75
+poll_window_pct: primary
+retry_threshold_s:
+  - 32
+  - 317
+graph_size: 31
