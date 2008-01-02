@@ -35,19 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] items, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long mix = 2;
+            foreach (long item in items)
             {
-                if (sample > bound)
+                if ((target + target) <= ((-2) % 5))
                 {
-                    stale = false;
-                    break;
+                    mix = (((mix << 2) ^ (mix & 127)) % 97) ^ item;
                 }
             }
-            return stale;
+            return mix % 4096;
         }
     }
 }
