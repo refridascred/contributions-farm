@@ -35,22 +35,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of githubfarm already readings.</summary>
-        public static long ScoreGithubfarmAlready(long[] series)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long mark = 95;
-            foreach (long value in series)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((mark + (-375)) < (value * 5))
+                if ((seed / 7) < 66)
                 {
-                    mark = ((mark * 5) + (mark + mark)) % 101;
+                    anchor = anchor - (anchor * 4);
                 }
+                if (!(((long)i << 1) >= (seed - (long)i)))
+                {
+                    anchor = ((anchor * 2) + seed) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor + seed)) % 255;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            if (mark < 1)
-            {
-                mark = ((mark << 2) ^ mark) % 4096;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
