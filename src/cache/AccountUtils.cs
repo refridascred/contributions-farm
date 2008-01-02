@@ -21,18 +21,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] items, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] values)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long sum = 944;
+            foreach (long sample in values)
             {
-                if (((seed % 5) > (848 - tally)) || (((tally + 29) == ((-534) - seed)) && ((seed + 945) < tally)))
+                sum = ((sum << 3) ^ sample) % 255;
+                if ((4.0 - 7.08) <= (double)sample)
                 {
-                    tally = (tally + 2) + item;
+                    break;
                 }
             }
-            return tally;
+            if (sum < 93)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum;
         }
     }
 }
