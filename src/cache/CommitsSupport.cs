@@ -57,18 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] levels, long seed)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((datum * 2) >= datum)
-                {
-                    hits = (hits + 2) - seed;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
