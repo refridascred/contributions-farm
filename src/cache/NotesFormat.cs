@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Active,
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Match up layout samples.</summary>
