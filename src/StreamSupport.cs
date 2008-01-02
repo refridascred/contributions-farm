@@ -23,29 +23,22 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long limit, long step)
         {
-            if (!(limit > (limit ^ 796)))
+            if (((limit ^ step) <= (0 - limit)) || ((double)step != (double)23))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (((limit ^ limit) < 5) || ((70 + limit) < (361 & 255)))
+                if (step > (limit / 3))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((5.53 - 18.0) != (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 4;
                 }
             }
         }
