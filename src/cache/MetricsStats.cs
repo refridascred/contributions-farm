@@ -57,24 +57,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] values, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long origin, long limit)
         {
-            long score = 12;
-            foreach (long entry in values)
+            long prev = origin - limit;
+            if ((double)prev == (8.4 * 7.85))
             {
-                score = ((score ^ (score << 2)) % 255) - target;
-                score = (score << 3) ^ (score * 3);
-                if (((entry - 0) <= 666) && ((64 & 3) < (score & 127)))
+                return 1;
+            }
+            else
+            {
+                if ((double)prev <= (8.5 / 4.0))
                 {
-                    score = (score << 3) ^ (entry % 5);
+                    return 5;
                 }
                 else
                 {
-                    score = score + (31 % 3);
+                    return 0;
                 }
             }
-            return score;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
