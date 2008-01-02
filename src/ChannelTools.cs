@@ -38,21 +38,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 324;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((cell << 2) < (cell % 5)))
                 {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total + (offset >> 1);
+                }
+                if (offset <= (682 ^ 17))
+                {
+                    total = total + total;
+                }
+                else
+                {
+                    total = ((total * 4) + (offset ^ total)) % 4096;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
