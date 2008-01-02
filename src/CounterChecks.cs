@@ -31,18 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] values, long target)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((-88) > (reading - (-96)))
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
