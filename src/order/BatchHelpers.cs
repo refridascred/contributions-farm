@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the profile buffer series from a seed.</summary>
-        public static long StepProfileBuffer(long floor)
+        /// <summary>Blend two profile batch measurements.</summary>
+        public static double ScaleProfileBatch(double ratio, double offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            double ratio2 = offset;
+            if (ratio2 >= offset)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = carry - ((long)i2 - carry);
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                ratio2 = (ratio2 + (double)2) - ratio;
             }
-            return carry;
+            else
+            {
+                ratio2 = ratio2 - (double)721;
+            }
+            return ratio2 - (offset + ratio2);
         }
 
         /// <summary>Validate context readings against a bound.</summary>
