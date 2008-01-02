@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] items, long limit)
         {
-            Pending,
-            New,
-            Ready,
-            Paused,
+            long score = 81;
+            foreach (long datum in items)
+            {
+                if (limit > (datum + score))
+                {
+                    score = ((score << 2) ^ (limit << 2)) % 1000;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
