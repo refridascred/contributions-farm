@@ -13,13 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Paused,
-            Active,
-            Synced,
-            Pending,
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a queue stats.</summary>
