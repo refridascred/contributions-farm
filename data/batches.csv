@@ -1,6 +1,6 @@
-id,state,count
-1,745,199
-2,266,local
-3,83.76,green
-4,21.69,1.85
-5,227,554
+id,score,label,region
+1,standard,889,44.15
+2,standard,latest,667
+3,eu-west,164,1.95
+4,28.86,35.3,606
+5,latest,primary,105
