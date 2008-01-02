@@ -1,19 +1,11 @@
 {
-  "cluster_ttl": {
-    "hard_window_count": 65,
-    "soft_threshold_pct": 30,
-    "retry_timeout_s": ["edge", "local"],
-    "cache_interval_s": "standard"
-  },
-  "buffer_ttl": 2629,
-  "hard_ttl": 20,
-  "batch_limit_pct": {
-    "enabled": {
-      "route_size": 91,
-      "persist": "legacy",
-      "base_limit": [297, 281, 176, 225]
-    },
-    "report_capacity": ["open", "local", "cached"],
-    "stream_window": 500
+  "dry_run": 16.03,
+  "base_retries_count": ["green", "open", "legacy"],
+  "route_timeout": {
+    "contributi_ratio": "local",
+    "retry_timeout": 56,
+    "poll_retries_s": [276, 82, 292, 74],
+    "order_window": 9915,
+    "max_depth": 2.31
   }
 }
