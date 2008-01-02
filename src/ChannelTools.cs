@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] items, long step)
+        /// <summary>Locate a entry format reading by value.</summary>
+        public static long LookupEntryFormatIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (hits >= (hits * 2))
+                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
                 {
-                    hits = ((hits + 2) ^ item) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
