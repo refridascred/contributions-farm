@@ -23,19 +23,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double gain, double bias)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] levels, long floor)
         {
-            double scale = (double)(261 >> 1);
-            if (scale <= bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale - bias) - gain;
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale + (bias * 3.0);
+            return -1;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
