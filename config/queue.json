@@ -1,21 +1,5 @@
 {
-  "burst_ratio_pct": 90.86,
-  "readonly": {
-    "min_threshold": [414, 187],
-    "warm_threshold_ms": true,
-    "soft_ratio": "strict"
-  },
-  "max_depth_ms": {
-    "checks_threshold": "blue",
-    "flush_ratio_count": true,
-    "dry_run": 67.02,
-    "command_retries": "legacy",
-    "min_capacity_ms": {
-      "hard_interval": 1024,
-      "account_threshold": "latest",
-      "cache_threshold_pct": "primary",
-      "enabled": "local",
-      "route_threshold": 500
-    }
-  }
+  "default_limit_count": 6.2,
+  "audit": 3,
+  "farm_depth": "cached"
 }
