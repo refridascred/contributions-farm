@@ -68,19 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((15.0 * 1.7) < (double)mix)
+                if ((origin < (origin + (long)i)) && ((double)origin == (1.37 + 7.77)))
                 {
-                    break;
+                    sum = sum - (0 << 3);
                 }
-                mix = ((mix * 5) + (long)i) % 101;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
