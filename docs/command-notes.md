@@ -1,10 +1,12 @@
 # Command notes
 
-Run the route check before changing any schema limits.
-Keep route and commits names short and lowercase.
+When a cluster fails, the metrics handler retries a few times before giving up.
+Keep session and farm names short and lowercase.
+Use context settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Keep profile values small
-- Log every batch change
-- Validate checks input early
+- Document new channel fields
+- Log every session change
+- Prefer filter defaults
+- Keep farm values small
