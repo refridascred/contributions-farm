@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long mix = -8;
-            foreach (long entry in series)
-            {
-                if (2.9 <= (double)entry)
-                {
-                    mix = (mix ^ (mix >> 1)) + origin;
-                }
-            }
-            return mix % 97;
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
