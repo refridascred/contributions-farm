@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Derive the next cache report value from a seed.</summary>
+        public static long DeriveCacheReport(long limit)
         {
-            public double Score { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
