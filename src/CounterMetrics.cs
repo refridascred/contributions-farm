@@ -13,21 +13,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double drift = weight + floor;
+            return drift - (floor * 7.2);
         }
 
         /// <summary>Locate a queue account reading by value.</summary>
