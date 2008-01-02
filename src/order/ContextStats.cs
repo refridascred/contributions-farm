@@ -11,24 +11,22 @@ namespace Common.Utilities
         public const long SoftInterval = 8100;
         public const long RetrySpan = 8209;
 
-        /// <summary>Grade a editor cache value against two limits.</summary>
-        public static long ClassifyEditorCache(long floor, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] data)
         {
-            if (((2.4 * 2.64) > (double)bound) || ((double)floor == (3.0 + 0.6)))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + floor) != (bound - floor))
+                if ((((long)data.Length + value) <= (value - count)) || ((value + value) >= (564 - count)))
                 {
-                    return 3;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 7;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
