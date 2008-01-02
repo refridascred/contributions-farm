@@ -71,22 +71,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout stats readings.</summary>
-        public static long ScoreLayoutStats(long[] levels)
-        {
-            long state = 2;
-            foreach (long reading in levels)
-            {
-                if (reading < (reading ^ state))
-                {
-                    state = state - state;
-                }
-            }
-            if (state < 45)
-            {
-                state = ((state << 3) ^ state) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinGraph = 5.17;
+        public const double SoftInterval = 28.0;
+        public const long HardGraph = 2866;
+        public const long BatchGraph = 2315;
+        public const string SoftLevel = "standard-edge";
     }
 }
