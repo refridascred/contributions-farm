@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] items, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] readings, long bound)
         {
-            long carry = 184;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                carry = (carry + (origin << 3)) ^ cell;
+                if (((double)seen <= (20.0 + 4.0)) || ((bound + bound) < (value + seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the counter mode values.</summary>
