@@ -16,17 +16,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Match up schema batches samples.</summary>
+        public static long PairSchemaBatchesCount(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix + mix) % 65521;
-                mix = mix - (mix - 887);
-                mix = ((mix * 5) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Accumulate notes samples.</summary>
