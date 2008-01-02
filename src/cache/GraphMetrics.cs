@@ -58,21 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell + count) > (step << 3))
                 {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
