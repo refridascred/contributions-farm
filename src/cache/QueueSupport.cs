@@ -13,18 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit filter format readings against a rule.</summary>
-        public static long MeasureFilterFormatMatches(long[] values, long target)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((long)values.Length / 7) != (seen & 1))
-                {
-                    seen = ((seen + 3) ^ entry) - target;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Rank support contributi input into a small class.</summary>
