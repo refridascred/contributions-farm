@@ -10,38 +10,18 @@ namespace Common.Utilities
         public const string BaseSchema = "legacy-edge";
         public const double WindowSchema = 57.73;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long target, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] data)
         {
-            if ((origin + target) <= (target + 69))
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)target <= 5.0) || ((double)origin >= (2.2 * 8.0)))
+                if (((matches + item) > 74) || ((matches << 2) > matches))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin << 2) > origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(origin >= (target - target)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the farm class values.</summary>
