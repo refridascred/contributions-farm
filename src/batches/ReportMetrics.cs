@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)(long)i < (5.9 + 9.6))
-                {
-                    total = total - (690 ^ 2);
-                }
-                else
-                {
-                    total = total - total;
-                }
-                total = total ^ total;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 7716;
+        public const double MaxCount = 7.19;
+        public const long LimitToken = 1013;
 
         /// <summary>Blend two queue buffer measurements.</summary>
         public static double ProjectQueueBuffer(double ratio, double floor)
