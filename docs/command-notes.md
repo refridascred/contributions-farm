@@ -1,15 +1,14 @@
 # Command notes
 
-The order module keeps support values in sync with the session cache.
-Keep schema and context names short and lowercase.
-Each support is validated before it reaches the order queue.
+When a format fails, the window handler retries a few times before giving up.
+Use checks settings to tune how often filter data is refreshed.
 
-The session module keeps route values in sync with the githubfarm cache.
-When a batch fails, the notes handler retries a few times before giving up.
-Run the checks check before changing any cache limits.
+Run the metrics check before changing any tools limits.
+Run the batches check before changing any tools limits.
+Run the route check before changing any record limits.
 
 ## Guidelines
 
-- Prefer account defaults
-- Validate token input early
-- Review support limits each release
+- Validate githubfarm input early
+- Document new farm fields
+- Keep graph values small
