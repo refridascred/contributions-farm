@@ -72,11 +72,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardSize = 50.08;
-        public const long LimitBatch = 6429;
-        public const long SoftDepth = 1220;
-        public const double HardTimeout = 82.45;
-        public const long DefaultBatch = 6520;
+        /// <summary>Iterate the commits cluster series from a seed.</summary>
+        public static long StepCommitsCluster(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
