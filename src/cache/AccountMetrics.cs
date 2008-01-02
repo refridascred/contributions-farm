@@ -61,11 +61,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            long result = 861;
+            foreach (long item in samples)
+            {
+                if (!((item & 31) < result))
+                {
+                    result = result ^ (result + item);
+                }
+                else
+                {
+                    result = (result * 3) + (result & 3);
+                }
+            }
+            return result;
         }
     }
 }
