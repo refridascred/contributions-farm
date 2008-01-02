@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] levels, long step)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((step % 2) < tally)
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next cache value.</summary>
