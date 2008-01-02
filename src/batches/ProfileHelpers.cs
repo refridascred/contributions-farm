@@ -15,20 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (offset <= (state - 0))
-                {
-                    state = state ^ offset;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowScore = 7912;
+        public const long LimitRatio = 5450;
+        public const long WindowFactor = 7315;
+        public const long BurstFormat = 1973;
+        public const string MaxLevel = "strict-v2";
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
