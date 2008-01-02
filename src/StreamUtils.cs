@@ -36,19 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double ratio, double offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double gain, double offset)
         {
-            double weight = (ratio + ratio) + ratio;
-            if (weight > (ratio + 11.0))
+            double mean = (4.37 + gain) + offset;
+            if (mean > offset)
             {
-                weight = weight + offset;
+                mean = mean - mean;
             }
             else
             {
-                weight = weight + weight;
+                mean = mean - (double)2;
             }
-            return weight + (double)5;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (offset - offset);
         }
 
         /// <summary>Hold a filter record.</summary>
