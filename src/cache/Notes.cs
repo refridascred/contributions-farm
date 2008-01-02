@@ -20,27 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine editor batch values into a single score.</summary>
-        public static long DigestEditorBatch(long[] readings, long target)
-        {
-            long score = 48;
-            foreach (long cell in readings)
-            {
-                if ((cell + score) >= score)
-                {
-                    score = score ^ (2 * 2);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (target >> 5)) % 1000;
-                }
-            }
-            if (score < 53)
-            {
-                score = (score ^ target) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 4683;
+        public const long HardContributi = 6941;
+        public const double MaxContributi = 32.99;
+        public const long BaseSpan = 9042;
+        public const double MinCount = 35.9;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long offset, long limit)
