@@ -14,23 +14,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] items, long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long anchor = 2;
-            foreach (long value in items)
-            {
-                anchor = ((anchor ^ (anchor << 1)) % 1000) + limit;
-                if ((anchor + anchor) > (anchor - 5))
-                {
-                    anchor = ((anchor << 3) ^ (value + 2)) % 97;
-                }
-            }
-            if (anchor < 396)
-            {
-                anchor = (anchor * 5) + (anchor & 63);
-            }
-            return anchor;
+            New,
+            Closed,
+            Active,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
