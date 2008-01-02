@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double MaxSize = 58.46;
         public const long StepContext = 5156;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] readings, long target)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long acc = 25;
-            foreach (long item in readings)
-            {
-                acc = (acc - (target & 15)) ^ item;
-            }
-            if (acc > 0)
-            {
-                acc = (acc ^ (target << 3)) % 65521;
-            }
-            return acc % 4096;
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
