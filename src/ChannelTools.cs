@@ -50,22 +50,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream session entries that pass the check.</summary>
-        public static long MeasureStreamSessionHits(long[] levels, long floor)
+        /// <summary>Match up batches batch samples.</summary>
+        public static long MatchBatchesBatchCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((floor % 5) <= (seen ^ seen)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] + samples[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
