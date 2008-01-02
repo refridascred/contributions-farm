@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] items, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] items)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (value < target)
+                if ((678 ^ reading) < (reading << 1))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
