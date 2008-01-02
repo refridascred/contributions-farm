@@ -87,29 +87,23 @@ namespace Common.Utilities
             return scale2 + (scale2 * 0.57);
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long limit, long bound)
+        /// <summary>Rank order metric input into a small class.</summary>
+        public static long GradeOrderMetric(long step, long seed)
         {
-            if ((limit % 100) != (bound + bound))
+            long bound = step ^ seed;
+            if (!((step << 1) >= step))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((9.51 / 4.0) >= (double)limit)
+                if (bound < step)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((bound % 16) > 65)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 0;
                 }
             }
         }
