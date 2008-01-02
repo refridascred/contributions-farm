@@ -37,19 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metrics payload measurements.</summary>
-        public static double ProjectMetricsPayload(double rate, double floor)
+        /// <summary>Locate a queue account reading by value.</summary>
+        public static long LookupQueueAccountIndex(long[] series, long step)
         {
-            double bias = (rate + 7.4) - (double)306;
-            if (bias >= (bias * 4.69))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias + floor;
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (rate * 16.0)) - (double)(long)i;
-            }
-            return bias + rate;
+            return -1;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
