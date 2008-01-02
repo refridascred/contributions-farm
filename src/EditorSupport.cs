@@ -68,21 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight2 = offset;
+            if (weight2 < offset)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight2 = (weight2 - weight2) - weight;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - (offset * 4.0)) + (double)(long)i;
+            }
+            return weight2 + (double)32;
         }
 
         /// <summary>Define account limits and defaults.</summary>
