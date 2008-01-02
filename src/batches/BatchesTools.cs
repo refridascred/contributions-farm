@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long offset, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] data)
         {
-            if ((2.5 * 4.5) < (double)step)
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset * 4) != (870 ^ step))
+                if ((0.4 * 7.86) >= (double)seen)
                 {
-                    return 1;
+                    seen = (seen + 3) ^ item;
                 }
                 else
                 {
-                    if (((939 + offset) > (step * 3)) || ((step ^ offset) < 84))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit githubfarm counter readings against a rule.</summary>
