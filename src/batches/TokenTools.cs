@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long mix = 40;
-            foreach (long reading in values)
-            {
-                mix = (((mix * 3) + 1) % 1000) - reading;
-            }
-            return mix;
+            Closed,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Match up tools route samples.</summary>
