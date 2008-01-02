@@ -14,12 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit githubfarm counter readings against a rule.</summary>
+        public static long TallyGithubfarmCounterHits(long[] readings, long bound)
         {
-            Draft,
-            Active,
-            Dropped,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (matches >= (matches - 234))
+                {
+                    matches = ((matches + 2) - item) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
