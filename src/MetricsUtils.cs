@@ -34,12 +34,24 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long floor, long target)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            if (!(9.6 < (double)floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((-7) ^ floor) != (target % 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
