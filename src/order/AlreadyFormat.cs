@@ -43,18 +43,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((-4) / 4) > hits)
-                {
-                    hits = ((hits + 2) - entry) - bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 312;
+        public const long RetryNotes = 3202;
+        public const long RetryScore = 6634;
+        public const long CacheNotes = 5953;
     }
 }
