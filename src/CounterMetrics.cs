@@ -50,21 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (149 < (hits - reading))
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) - seed;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
