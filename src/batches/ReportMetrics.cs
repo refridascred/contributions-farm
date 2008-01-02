@@ -35,18 +35,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (reading < tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
