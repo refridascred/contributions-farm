@@ -70,19 +70,17 @@ namespace Common.Utilities
             return rate2 + (rate2 + rate2);
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] levels, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)(long)i <= (double)score))
+                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
                 {
-                    score = ((score << 2) ^ (14 % 24)) % 255;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
     }
 }
