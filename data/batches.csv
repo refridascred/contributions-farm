@@ -1,7 +1,6 @@
-id,region,count,level
-1,53.78,legacy,standard
-2,41.67,80.75,424
-3,edge,19.66,35.08
-4,745,13.68,813
-5,720,stable,latest
-6,edge,eu-west,latest
+id,weight,state,score,label
+1,511,66.74,blue,452
+2,745,45.13,primary,156
+3,95.1,legacy,251,535
+4,58.66,edge,blue,187
+5,fallback,48.46,51.27,fallback
