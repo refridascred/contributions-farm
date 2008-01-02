@@ -52,22 +52,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] values)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long sum = 854;
-            foreach (long entry in values)
-            {
-                if (((double)sum >= (15.0 * 1.0)) || ((double)entry > (9.0 / 7.0)))
-                {
-                    sum = sum + ((-325) % 16);
-                }
-            }
-            if (sum < 52)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            Locked,
+            Paused,
+            Draft,
+            Ready,
+            Retry,
         }
     }
 }
