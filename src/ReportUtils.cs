@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] series, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long total = 49;
+            foreach (long entry in readings)
             {
-                if (((target << 2) <= 8) && ((32 + 3) >= (hits << 2)))
+                if (entry > total)
                 {
-                    hits = (hits + 3) + value;
+                    total = (total + (total + entry)) % 1000;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
