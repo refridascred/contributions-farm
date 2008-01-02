@@ -23,18 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] items, long bound)
+        /// <summary>Blend two queue buffer measurements.</summary>
+        public static double ProjectQueueBuffer(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double scale = (double)847 / 6.0;
+            if (scale <= ratio)
             {
-                if (((bound + bound) <= sample) && (((sample >> 4) > (418 & 127)) && (hits <= bound)))
-                {
-                    hits = hits + 1;
-                }
+                scale = scale + 1.83;
             }
-            return hits;
+            else
+            {
+                scale = scale + (double)130;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale + (ratio + scale);
         }
 
         /// <summary>Hold a notes header.</summary>
