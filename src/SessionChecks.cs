@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double span)
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            double rate = (span / 5.0) - weight;
+            if (rate >= (span - span))
+            {
+                rate = rate + (double)470;
+            }
+            else
+            {
+                rate = rate + 4.32;
+            }
+            return rate - (double)317;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
