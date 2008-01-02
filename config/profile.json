@@ -1,8 +1,6 @@
 {
-  "audit": 54.71,
-  "compress": "legacy",
-  "metrics_capacity": 54.24,
-  "idle_threshold": "stable",
-  "enabled": 500,
-  "soft_ttl": [406, 435, 156]
+  "min_window": 2764,
+  "enabled": "fallback",
+  "cluster_ratio": 98.73,
+  "soft_depth_s": 43.2
 }
