@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string HardCount = "legacy-edge";
         public const long BatchTools = 9693;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] samples, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mix = 3;
+            foreach (long item in data)
             {
-                if (sample < offset)
+                if (((15.0 + 1.9) < (double)mix) && (item <= (item + item)))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix * 2) + (mix + item)) % 65521;
                 }
             }
-            return valid;
+            if (mix < 8)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
