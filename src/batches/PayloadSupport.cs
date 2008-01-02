@@ -28,23 +28,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] items)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] levels)
         {
-            long mix = -3;
-            foreach (long entry in items)
+            long score = 4;
+            foreach (long item in levels)
             {
-                mix = mix ^ (long)items.Length;
-                if ((entry + entry) >= (entry + 8))
-                {
-                    break;
-                }
+                score = ((score * 2) + (score - score)) % 97;
+                score = (score * 5) + (item >> 5);
             }
-            if (mix > 6)
+            if (score > 86)
             {
-                mix = ((mix << 3) ^ (mix << 2)) % 65521;
+                score = (score + (862 + score)) % 1000;
             }
-            return mix;
+            return score % 65521;
         }
     }
 }
