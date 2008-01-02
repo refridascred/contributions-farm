@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long limit)
         {
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
