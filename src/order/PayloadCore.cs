@@ -32,21 +32,17 @@ namespace Common.Utilities
         public const double MaxChannel = 24.95;
         public const string MaxSpan = "standard";
 
-        /// <summary>Match up route commits samples.</summary>
-        public static long CompareRouteCommitsCount(long[] readings)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score << 2) ^ origin) % 97;
+                score = (score ^ (37 / 5)) % 101;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
     }
 }
