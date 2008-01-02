@@ -1,21 +1,21 @@
 # entry settings
-sync_depth_ms: 53.99
-max_delay: staging
-warm_capacity_pct: 93.67
-burst_size: 71.09
+default_interval: 94.4
 strict:
-  githubfarm_interval:
-    report_depth: false
-    stats_size: true
-    verbose: true
-    hard_capacity_count: false
-    cache_size_s: blue
-  hard_depth: true
-  audit: 4096
-  min_size_count: 74.9
-  soft_ttl: true
-  sync_depth_count:
-    strict: eu-west
-    base_ttl_pct: 90
-    flush_delay_pct: 500
-    min_delay_s: primary
+  buffer_depth: legacy
+  channel_ratio: true
+  soft_limit_count: blue
+  report_size: local
+  persist:
+    burst_retries_pct: standard
+    soft_delay_s:
+      - 34
+      - 36
+    base_ttl:
+      - 183
+      - 322
+      - 210
+      - 15
+    min_interval_ms: 50
+    counter_limit: true
+  dry_run: 60
+hard_depth_s: 13.89
