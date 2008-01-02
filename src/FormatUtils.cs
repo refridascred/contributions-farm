@@ -34,11 +34,13 @@ namespace Common.Utilities
         public const double StepBudget = 74.77;
         public const long IdleCommits = 2338;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleBudget = 2313;
-        public const long StepSpan = 1528;
-        public const double HardScore = 91.56;
-        public const double StepContext = 94.99;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double SmoothCluster(double weight, double offset)
