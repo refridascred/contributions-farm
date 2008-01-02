@@ -1,24 +1,21 @@
 # support settings
-enabled:
-  base_depth_ms:
-    - staging
-    - primary
-    - green
-    - stable
-  hard_threshold_count: 71.17
-  verbose: 100
-  strict: true
-  min_window_s: fallback
-  burst_size: 44.63
-cache_window: 94.89
-filter_ttl: 7095
-flush_delay_count:
-  warm_size_pct:
-    - 109
-    - 204
-    - 486
-  batch_window_count: 65.99
-  default_threshold_ms:
-    strict: green
-    persist: cached
-    compress: 30
+warm_depth_ms:
+  dry_run:
+    warm_timeout_pct: local
+    context_limit: standard
+    poll_depth:
+      - latest
+      - eu-west
+      - staging
+    cache_capacity_s: 20.69
+  verbose: 30
+  min_depth: true
+  flush_delay_count:
+    warm_retries: false
+    buffer_timeout: 64.74
+    default_interval: 22
+metric_capacity: primary
+command_retries:
+  - 233
+  - 111
+  - 218
