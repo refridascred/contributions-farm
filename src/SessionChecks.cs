@@ -12,19 +12,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] levels, long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
