@@ -30,12 +30,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "strict";
-        public const double CacheSession = 26.28;
-        public const string BurstWidth = "staging";
-        public const long DefaultSession = 9060;
-        public const string BurstSession = "cached-v2";
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Count the editor tools entries that pass the check.</summary>
         public static long AuditEditorToolsMatches(long[] items)
