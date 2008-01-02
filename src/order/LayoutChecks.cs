@@ -35,21 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((14.0 + 0.2) == (double)entry)
                 {
-                    anchor = ((anchor - (long)i) % 1000) ^ (long)i2;
-                    anchor = anchor + (target ^ 9);
+                    tally = tally + 1;
                 }
-                anchor = ((anchor << 3) ^ ((long)i + (-50))) % 255;
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
