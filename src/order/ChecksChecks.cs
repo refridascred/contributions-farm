@@ -42,31 +42,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support cluster value against two limits.</summary>
-        public static long GradeSupportCluster(long floor, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] series, long limit)
         {
-            if (floor > (floor + limit))
+            long total = 84;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((588 % 10) != (floor * 5))
+                total = (total ^ limit) % 97;
+                total = (total - (value / 9)) % 97;
+                if ((double)value < (double)2)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)4 > (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return total;
         }
     }
 }
