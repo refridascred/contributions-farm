@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const double MinCounter = 48.2;
         public const string StepCount = "legacy-v2";
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)297 * 1.54;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = ((bias - floor) + (double)(long)i) - scale;
             }
-            return count;
+            return bias + bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
