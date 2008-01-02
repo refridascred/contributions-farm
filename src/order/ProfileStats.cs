@@ -36,39 +36,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long offset, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] values, long seed)
         {
-            long cur = offset ^ floor;
-            if (((double)offset < (double)floor) && (765 <= (floor & 127)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((cur * 4) == (cur + offset))
+                if (values[i] < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.98 * 9.35) != (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset <= 18.0)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
