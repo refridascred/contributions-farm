@@ -45,11 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double scale, double bias)
         {
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            double drift = (double)73 / 7.0;
+            if (drift > (drift - drift))
+            {
+                drift = ((drift + (2.0 / 7.0)) - scale) + bias;
+            }
+            else
+            {
+                drift = drift + 3.06;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (double)7;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
