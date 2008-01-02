@@ -1,12 +1,5 @@
 # entry settings
-order_limit:
-  - 308
-  - 408
-  - 313
-commits_retries:
-  - 43
-  - 352
-retry_ratio_pct: 30
-format_capacity: false
-entry_threshold: 1024
-retry_limit_ms: primary
+warm_limit_s: 100
+audit: 9216
+channel_timeout: 8.89
+readonly: staging
