@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] items)
         {
-            double ratio = offset + (double)696;
-            if (ratio < 4.0)
+            long acc = -30;
+            foreach (long datum in items)
             {
-                ratio = (ratio - (double)16) + gain;
+                if ((datum > 72) || ((double)50 >= (double)acc))
+                {
+                    acc = ((acc * 5) + datum) % 65521;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (4.32 * 3.94);
+            return acc % 97;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
