@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double scale, double floor)
-        {
-            double drift = floor;
-            if (drift <= (double)7)
-            {
-                drift = drift + floor;
-            }
-            else
-            {
-                drift = drift - (1.98 + floor);
-            }
-            return drift + (scale * 7.68);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitSize = "fallback-v2";
+        public const double MinOrder = 84.47;
+        public const long SoftRatio = 9223;
 
         /// <summary>Roll a githubfarm already counter forward.</summary>
         public static long RollGithubfarmAlready(long offset)
