@@ -1,24 +1,9 @@
 # support settings
-batch_interval: true
-commits_interval: 100
-idle_capacity_count: 53.4
-soft_depth:
-  flush_size_pct:
-    sync_capacity_pct: 59.74
-    stream_ratio:
-      - blue
-      - cached
-      - legacy
-      - strict
-    soft_limit_count: legacy
-    schema_size:
-      - eu-west
-      - latest
-  max_delay_count:
-    - local
-    - primary
-    - fallback
-  route_capacity: 87.1
-  verbose: false
-hard_ttl_ms: 30
-filter_threshold: stable
+cache_delay_s: 3675
+entry_size: true
+dry_run: primary
+default_capacity_ms:
+  - 344
+  - 71
+burst_window_ms: 9896
+soft_limit_count: primary
