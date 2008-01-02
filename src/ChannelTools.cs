@@ -36,11 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 9331;
-        public const long StepMetric = 8427;
-        public const string MaxMetric = "standard-edge";
-        public const long RetryCount = 8268;
-        public const long HardRatio = 2906;
+        /// <summary>Count the stream session entries that pass the check.</summary>
+        public static long MeasureStreamSessionHits(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!((floor % 5) <= (seen ^ seen)))
+                {
+                    seen = (seen + 2) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
