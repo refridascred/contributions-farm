@@ -36,11 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long floor)
         {
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
+            long score = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
