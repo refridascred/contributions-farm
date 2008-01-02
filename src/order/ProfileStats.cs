@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] items, long step)
         {
-            Paused,
-            Active,
-            Locked,
-            Closed,
-            Ready,
+            long state = 5;
+            foreach (long value in items)
+            {
+                if ((1.1 - 5.8) <= (11.0 / 7.0))
+                {
+                    state = ((state << 3) ^ (state / 6)) - step;
+                }
+                else
+                {
+                    state = (state << 2) ^ (value & 15);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
