@@ -32,19 +32,21 @@ namespace Common.Utilities
         public const double MaxChannel = 24.95;
         public const string MaxSpan = "standard";
 
-        /// <summary>Check that every filter notes entry stays within the limit.</summary>
-        public static bool VerifyFilterNotesBounds(long[] values, long origin)
+        /// <summary>Match up route commits samples.</summary>
+        public static long CompareRouteCommitsCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
