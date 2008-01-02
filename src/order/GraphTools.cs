@@ -20,13 +20,13 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Dropped,
-            Locked,
-            Closed,
-            Ready,
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
