@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long floor, long seed)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if ((double)seed >= (4.1 / 2.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 1) != (floor + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(((-64) - floor) < seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
