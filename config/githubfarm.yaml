@@ -1,7 +1,7 @@
 # githubfarm settings
-hard_threshold: green
-flush_capacity: 9279
-session_threshold: 14
-stream_size: edge
-strict: true
-warm_threshold_s: true
+min_ttl_s: fallback
+min_size:
+  - stable
+  - fallback
+  - blue
+min_retries_pct: eu-west
