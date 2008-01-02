@@ -32,10 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultSize = 2781;
-        public const long WindowDepth = 9656;
-        public const double WindowGraph = 6.79;
+        /// <summary>Look up the position of a githubfarm cluster sample.</summary>
+        public static long LocateGithubfarmClusterIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
