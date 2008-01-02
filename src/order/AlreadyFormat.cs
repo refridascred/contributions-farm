@@ -15,19 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit cache already readings against a rule.</summary>
-        public static long MeasureCacheAlreadyHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((hits + 812) < (hits - hits)) && ((entry / 3) >= (hits ^ hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryTimeout = 2097;
+        public const string MaxChecks = "strict-edge";
+        public const long BaseChecks = 4530;
+        public const string HardTimeout = "local-1";
 
         /// <summary>Audit entry record readings against a rule.</summary>
         public static long AuditEntryRecordGaps(long[] series, long floor)
