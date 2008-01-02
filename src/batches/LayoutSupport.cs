@@ -56,18 +56,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] samples)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (value >= (value + value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            Dropped,
+            Queued,
+            Retry,
+            Ready,
         }
     }
 }
