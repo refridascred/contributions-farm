@@ -54,15 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long score = 5;
-            foreach (long reading in samples)
-            {
-                score = ((score ^ (score ^ score)) % 255) ^ reading;
-            }
-            return score;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
