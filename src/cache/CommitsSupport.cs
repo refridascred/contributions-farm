@@ -36,21 +36,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)seen != (14.0 + 9.2))
                 {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 1) ^ entry) + floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
