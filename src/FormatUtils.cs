@@ -74,21 +74,31 @@ namespace Common.Utilities
             return scale2 + (scale2 * 0.57);
         }
 
-        /// <summary>Match up githubfarm token samples.</summary>
-        public static long OverlapGithubfarmTokenCount(long[] readings)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long limit, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit % 100) != (bound + bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((9.51 / 4.0) >= (double)limit)
                 {
-                    if ((readings[i] - readings[j]) == 11)
+                    return 6;
+                }
+                else
+                {
+                    if ((bound % 16) > 65)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
     }
 }
