@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging local edge; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=76
+CHANNEL_LIMIT=495
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+mode="${1:-eu-west}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
