@@ -41,9 +41,19 @@ namespace Common.Utilities
         public const long RetrySpan = 9209;
         public const long MinTimeout = 1643;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftSize = 46.91;
-        public const double BaseStream = 22.0;
-        public const double MinFactor = 34.83;
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double scale, double bias)
+        {
+            double scale2 = scale;
+            if (scale2 <= bias)
+            {
+                scale2 = scale2 + 3.3;
+            }
+            else
+            {
+                scale2 = scale2 - (bias + scale2);
+            }
+            return scale2 - (scale / 6.0);
+        }
     }
 }
