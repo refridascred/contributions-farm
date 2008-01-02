@@ -37,19 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric route entry stays within the limit.</summary>
-        public static bool CheckMetricRouteRange(long[] series, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] data, long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long carry = 737;
+            foreach (long value in data)
             {
-                if (sample <= step)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((((carry << 2) ^ carry) % 65521) + value) + target;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Match up stats batches samples.</summary>
