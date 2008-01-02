@@ -20,13 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long bound)
         {
-            Paused,
-            Active,
-            Ready,
-            Pending,
+            if ((double)seed == (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if (926 >= (seed + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((20 / 8) > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + bound) == (5 % 97))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine profile already values into a single score.</summary>
