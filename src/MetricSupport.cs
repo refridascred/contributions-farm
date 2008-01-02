@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a buffer queue sample.</summary>
-        public static long SeekBufferQueueIndex(long[] values, long step)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
