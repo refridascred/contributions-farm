@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowSpan = "staging";
-        public const long RetryRatio = 145;
-        public const string StepFactor = "open";
-        public const double DefaultLevel = 92.32;
-        public const long LimitOrder = 7426;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark + 772) % 255;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleCount = 9835;
