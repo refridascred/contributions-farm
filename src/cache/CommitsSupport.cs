@@ -71,12 +71,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSupport = "latest";
+        public const long BurstTimeout = 9646;
+        public const double BatchSupport = 32.45;
+        public const long BaseSupport = 8610;
     }
 }
