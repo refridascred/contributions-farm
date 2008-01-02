@@ -38,25 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long target, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] items, long origin)
         {
-            long gap = target + seed;
-            if ((gap & 63) > gap)
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(gap >= (gap << 3)))
+                if (entry > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
