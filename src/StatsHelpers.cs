@@ -45,9 +45,10 @@ namespace Common.Utilities
         public const long LimitContributi = 9308;
         public const long WindowTimeout = 5974;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 55.54;
-        public const string CacheProfile = "latest-v2";
-        public const long SoftWidth = 5576;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitLevel = 6695;
+        public const long StepEditor = 2912;
+        public const long MaxSize = 5183;
+        public const long MaxEditor = 7655;
     }
 }
