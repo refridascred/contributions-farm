@@ -37,15 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] values, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] items)
         {
-            long total = 6;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                total = (((total << 2) ^ total) ^ entry) - step;
+                if (!!(count >= (cell + 28)))
+                {
+                    count = count + 2;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
