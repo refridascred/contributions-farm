@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Failed,
-            Ready,
-            Locked,
-            Draft,
             Idle,
+            Draft,
+            Failed,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
