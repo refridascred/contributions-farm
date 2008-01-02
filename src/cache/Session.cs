@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next graph already value.</summary>
-        public static double AdjustGraphAlready(double weight, double span)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double bias = 4.0;
-            if (bias < (double)14)
-            {
-                bias = ((bias + (double)267) - weight) - span;
-            }
-            return bias + bias;
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the record layout entries that pass the check.</summary>
