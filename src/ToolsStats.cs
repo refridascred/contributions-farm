@@ -62,17 +62,11 @@ namespace Common.Utilities
             return rate2 + (rate2 + rate2);
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 4.14;
+        public const long DefaultContext = 7441;
+        public const long CacheContext = 1223;
+        public const long StepScore = 3471;
+        public const double DefaultTimeout = 66.13;
     }
 }
