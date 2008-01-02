@@ -14,22 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] values, long seed)
         {
-            long score = 42;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score >> 5) >= score)
+                if (values[i] <= seed)
                 {
-                    score = (score * 5) + (529 * 2);
-                }
-                else
-                {
-                    score = (score + (reading % 97)) % 97;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the report level values.</summary>
