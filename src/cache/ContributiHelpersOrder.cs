@@ -39,19 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Iterate the counter metrics series from a seed.</summary>
+        public static long DeriveCounterMetrics(long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((floor << 3) != (floor ^ score))
+                long edge = (long)i % 16;
+                if (((double)result <= (0.6 + 7.0)) || ((double)(long)i >= (19.0 * 14.0)))
                 {
-                    score = (score ^ ((long)i % 64)) % 65521;
+                    result = (result + (long)i) % 65521;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 65521;
+                if (bound >= (67 >> 1))
+                {
+                    edge = (edge ^ result) % 255;
+                    edge = edge - (bound % 8);
+                }
+                else
+                {
+                    result = ((result * 4) + (long)i) % 1000;
+                    result = ((result * 5) + (edge << 1)) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
