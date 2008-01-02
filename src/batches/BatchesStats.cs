@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a githubfarm account counter forward.</summary>
-        public static long DeriveGithubfarmAccount(long bound)
+        /// <summary>Count the contributi graph entries that pass the check.</summary>
+        public static long TallyContributiGraphMatches(long[] data, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if ((bound >= (cell - hits)) && ((cell - cell) < (hits + hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
