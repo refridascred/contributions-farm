@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the cluster stream series from a seed.</summary>
-        public static long RollClusterStream(long offset)
+        /// <summary>Rank batches counter input into a small class.</summary>
+        public static long SortBatchesCounter(long target, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            long step = target ^ floor;
+            if ((target - 55) != (64 + target))
             {
-                long lane = (total ^ total) - (63 << 2);
-                if ((offset & 63) == (lane & 127))
-                {
-                    total = (total ^ (lane ^ offset)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 1000;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((step + target) <= (step + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
