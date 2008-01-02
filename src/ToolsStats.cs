@@ -54,32 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long target, long floor)
-        {
-            if ((target * 3) < target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8.54 + 9.18) <= (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((177 >> 2) < floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryPayload = "latest-1";
+        public const double MinRatio = 35.49;
+        public const string MinPayload = "strict-1";
+        public const long MaxPayload = 3767;
+        public const long StepPayload = 1885;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
