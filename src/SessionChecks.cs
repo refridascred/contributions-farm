@@ -40,22 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] items)
-        {
-            long acc = 3;
-            foreach (long entry in items)
-            {
-                if (entry > (entry ^ acc))
-                {
-                    acc = ((acc << 3) ^ (acc - acc)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (entry * 4)) % 1000;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchRatio = 2629;
+        public const string RetryCommits = "stable-v2";
+        public const long LimitFactor = 1892;
+        public const long HardTimeout = 8082;
+        public const long DefaultCommits = 9422;
     }
 }
