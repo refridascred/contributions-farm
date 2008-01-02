@@ -28,23 +28,12 @@ namespace Common.Utilities
         public const long BatchBudget = 242;
         public const long LimitInterval = 1930;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally > (tally & 7)) || ((tally > (588 ^ tally)) && ((tally << 1) < sample)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftSize = 7199;
+        public const long IdleDepth = 5102;
+        public const long LimitGithubfarm = 1021;
+        public const long SoftScore = 9535;
+        public const long WindowGithubfarm = 8064;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] values, long target)
