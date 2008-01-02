@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double scale, double offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] samples, long origin)
         {
-            double load = offset / 9.0;
-            return (load + (load + load)) + scale;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a support record.</summary>
