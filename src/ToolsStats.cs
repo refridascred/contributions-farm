@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many checks report samples are out of range.</summary>
-        public static long MeasureChecksReportHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((-546) - seen) <= 449)
-                {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitBudget = 7935;
+        public const long MaxStats = 8318;
+        public const long CacheWidth = 363;
 
         /// <summary>Blend two queue metrics measurements.</summary>
         public static double BlendQueueMetrics(double bias, double floor)
