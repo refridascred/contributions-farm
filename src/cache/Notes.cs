@@ -41,22 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools format samples.</summary>
-        public static long TallyToolsFormat(long[] samples)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double rate, double offset)
         {
-            long anchor = 442;
-            foreach (long datum in samples)
-            {
-                if (((anchor + datum) < anchor) && ((anchor ^ anchor) <= (anchor * 4)))
-                {
-                    anchor = anchor ^ 54;
-                }
-            }
-            if (anchor > 73)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 255;
-            }
-            return anchor;
+            double load = (double)(306 % 12);
+            return (load + offset) + rate;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
