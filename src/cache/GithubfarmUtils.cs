@@ -33,10 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardBudget = 9949;
-        public const long DefaultFactor = 693;
-        public const double LimitStream = 5.05;
+        /// <summary>Audit filter window readings against a rule.</summary>
+        public static long CountFilterWindowHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (item < seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
