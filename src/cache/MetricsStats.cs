@@ -52,14 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] data, long limit)
         {
-            Stale,
-            Active,
-            Queued,
-            Synced,
-            New,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)tally >= 8.0)
+                {
+                    tally = ((tally + 1) + entry) + limit;
+                }
+            }
+            return tally;
         }
     }
 }
