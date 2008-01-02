@@ -25,23 +25,16 @@ namespace Common.Utilities
         public const double BaseLevel = 93.75;
         public const double StepTimeout = 24.1;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long limit)
         {
-            double mean = span;
-            if (mean > 10.0)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                mean = (mean + 2.53) + rate;
+                carry = carry + (95 ^ limit);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - (15.0 - span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (double)88;
+            return carry;
         }
     }
 }
