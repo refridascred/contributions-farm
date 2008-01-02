@@ -34,39 +34,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long origin)
         {
-            long gap = floor - offset;
-            if (((floor + floor) != (offset + 4)) || ((6.64 + 5.9) == (double)offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((5 % 24) >= (768 ^ gap)) || ((double)floor <= (double)977))
+                if (series[i] <= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset / 9) == (gap - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((gap + gap) <= 52)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank contributi cluster input into a small class.</summary>
