@@ -36,10 +36,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "strict-v2";
-        public const long RetryBudget = 4057;
-        public const string CacheLevel = "fallback-1";
+        /// <summary>Fold a list of editor route readings.</summary>
+        public static long TotalEditorRoute(long[] readings)
+        {
+            long score = 853;
+            foreach (long value in readings)
+            {
+                score = (score + value) % 97;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] readings)
