@@ -1,5 +1,8 @@
 # support settings
-soft_retries_count: staging
-compress: 46
-sync_interval_count: 47.72
-context_delay: strict
+strict:
+  - 199
+  - 339
+  - 471
+  - 54
+soft_capacity_ms: 93
+soft_capacity_pct: 30
