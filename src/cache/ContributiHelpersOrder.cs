@@ -21,11 +21,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] items, long step)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
