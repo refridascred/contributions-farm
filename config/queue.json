@@ -1,5 +1,6 @@
 {
-  "contributi_ratio": 15.47,
-  "schema_threshold": 76,
-  "burst_capacity": 24
+  "checks_capacity": false,
+  "verbose": "legacy",
+  "soft_timeout": 6587,
+  "cache_retries": 60
 }
