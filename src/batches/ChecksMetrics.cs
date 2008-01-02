@@ -49,13 +49,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long origin)
         {
-            public double Offset { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            if (!((314 * 4) == (origin + origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin % 16) == (5 >> 2)) && ((origin - limit) <= (limit >> 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
