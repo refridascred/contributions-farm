@@ -30,19 +30,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a order cache reading.</summary>
-        public static double ProjectOrderCache(double gain, double span)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] values)
         {
-            double scale = gain;
-            if (scale > (double)8)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                scale = (scale + gain) + span;
+                if (!(((1.02 * 6.0) <= (double)entry) || ((double)tally >= (6.0 / 7.0))))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                scale = scale - 20.0;
-            }
-            return scale + gain;
+            return tally;
         }
     }
 }
