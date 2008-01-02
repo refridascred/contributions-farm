@@ -33,14 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long origin)
         {
-            Draft,
-            Paused,
-            Ready,
-            Active,
-            Retry,
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((2.1 + 2.7) > (double)(long)i) || ((long)i >= (mix >> 4)))
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
