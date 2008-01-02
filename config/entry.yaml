@@ -1,5 +1,12 @@
 # entry settings
-window_ttl: false
-support_interval: blue
-payload_timeout: edge
-burst_threshold: 17.16
+order_limit:
+  - 308
+  - 408
+  - 313
+commits_retries:
+  - 43
+  - 352
+retry_ratio_pct: 30
+format_capacity: false
+entry_threshold: 1024
+retry_limit_ms: primary
