@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next filter farm value.</summary>
-        public static double ProjectFilterFarm(double scale, double offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double mean = scale;
-            if (mean > scale)
-            {
-                mean = mean - (scale - scale);
-            }
-            else
-            {
-                mean = mean - offset;
-            }
-            return mean - (double)5;
+            Idle,
+            Failed,
+            Stale,
+            Active,
+            Done,
         }
 
         /// <summary>Audit cache already readings against a rule.</summary>
