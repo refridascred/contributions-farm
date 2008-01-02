@@ -53,22 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] items, long floor)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (12.0 >= (double)hits)
-                {
-                    hits = ((hits + 3) ^ sample) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
