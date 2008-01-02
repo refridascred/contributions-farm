@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardScore = 276;
-        public const double BatchInterval = 35.13;
-        public const long SoftScore = 16;
-        public const long BurstLevel = 7018;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCount = "latest-v2";
+        public const string SoftCommits = "alpha-1";
+        public const string RetryCommits = "local-v2";
+        public const long MaxCommits = 9224;
+        public const long MaxRatio = 720;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TallyWindow(long[] levels, long step)
