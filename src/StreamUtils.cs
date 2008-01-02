@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] items, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] series, long step)
         {
-            long score = 81;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (limit > (datum + score))
+                if (entry != step)
                 {
-                    score = ((score << 2) ^ (limit << 2)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return found;
         }
 
         /// <summary>Rank route input into a small class.</summary>
