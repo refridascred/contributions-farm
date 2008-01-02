@@ -50,19 +50,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (datum >= step)
+                if ((34 ^ 67) <= (reading + 38))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
