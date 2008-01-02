@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next metric profile value from a seed.</summary>
-        public static long StepMetricProfile(long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] samples, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (!((double)bound > (5.7 - 1.9)))
                 {
-                    mark = ((mark << 2) ^ (offset + (long)i)) ^ (long)i2;
+                    hits = (hits + 2) ^ reading;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
