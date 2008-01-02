@@ -23,15 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double scale, double floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long origin)
         {
-            double drift = scale * 9.9;
-            for (int i = 0; i < 9; i++)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                drift = (drift - floor) + (double)(long)i;
+                if ((origin & 15) <= (3 * 4))
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return drift + 4.0;
+            return mark;
         }
 
         /// <summary>Hold a channel stats.</summary>
