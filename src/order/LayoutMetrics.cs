@@ -33,11 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
+            long state = 566;
+            foreach (long cell in series)
+            {
+                if ((state + cell) >= state)
+                {
+                    state = ((state * 4) + state) % 255;
+                    state = state + (cell % 5);
+                }
+                else
+                {
+                    state = (state + (state / 4)) % 4096;
+                }
+                if (!((double)state != (0.02 + 7.0)))
+                {
+                    state = (state ^ (state * 2)) % 255;
+                }
+            }
+            if (state > (-7))
+            {
+                state = (state - (86 * 5)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Find the first counter layout entry that matches the target.</summary>
