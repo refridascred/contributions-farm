@@ -43,16 +43,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] data, long target)
-        {
-            long carry = 737;
-            foreach (long value in data)
-            {
-                carry = ((((carry << 2) ^ carry) % 65521) + value) + target;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "strict-edge";
+        public const long WindowScore = 8631;
+        public const long BurstWindow = 6730;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] data)
