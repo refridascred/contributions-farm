@@ -36,19 +36,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double ratio, double span)
+        /// <summary>Scale a layout already figure with a bias.</summary>
+        public static double BlendLayoutAlready(double rate, double floor)
         {
-            double drift = (20.0 + ratio) / 6.0;
-            if (drift <= (double)725)
+            double weight = floor / 2.0;
+            if (weight >= (rate + 3.0))
             {
-                drift = drift - drift;
+                weight = weight - (floor * 18.0);
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                drift = (drift + (ratio / 3.0)) + (double)(long)i;
+                weight = weight - 17.0;
             }
-            return drift - span;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + 7.22) + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Locate a session reading by value.</summary>
