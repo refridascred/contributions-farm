@@ -49,25 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long origin, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] samples)
         {
-            long prev = origin - limit;
-            if ((double)prev == (8.4 * 7.85))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)prev <= (8.5 / 4.0))
+                if (!(cell > (cell << 1)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
