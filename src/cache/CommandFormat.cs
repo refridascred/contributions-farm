@@ -13,16 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 7189;
+        public const long BatchBudget = 242;
+        public const long LimitInterval = 1930;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatHits(long[] data)
