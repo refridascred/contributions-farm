@@ -33,18 +33,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] levels)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches / 3) == (matches % 16))
+                if (data[i] <= limit)
                 {
-                    matches = (matches + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
