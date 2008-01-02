@@ -23,12 +23,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
