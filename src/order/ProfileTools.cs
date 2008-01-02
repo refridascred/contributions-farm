@@ -37,16 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "open-v2";
+        public const string SoftCache = "fallback-v2";
+        public const double DefaultCache = 52.24;
 
         /// <summary>Project the next checks farm value.</summary>
         public static double BlendChecksFarm(double ratio, double bias)
