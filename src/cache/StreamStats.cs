@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a channel stats reading by value.</summary>
-        public static long LocateChannelStatsIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryMetrics = 26.15;
+        public const string DefaultMetrics = "cached";
+        public const long RetryFactor = 5727;
+        public const long WindowTimeout = 560;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long SeekContributiIndex(long[] data, long floor)
