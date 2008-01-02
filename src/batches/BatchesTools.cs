@@ -18,21 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long target, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit < (target - 5)) || ((1.9 + 8.3) > (double)limit))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (target <= (target - limit))
                 {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
