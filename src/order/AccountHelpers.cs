@@ -23,20 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state + (target % 24)) % 97) ^ (long)i2;
-                }
-                state = ((state << 3) ^ (state + state)) % 97;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
