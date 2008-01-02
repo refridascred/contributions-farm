@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Accumulate order stats samples.</summary>
+        public static long CombineOrderStats(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 9;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((limit - limit) == (limit ^ 9)))
                 {
-                    if ((levels[i] ^ levels[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 3) ^ (item - total)) % 4096;
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
