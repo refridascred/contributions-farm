@@ -42,19 +42,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double rate, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] values, long origin)
         {
-            double scale = rate;
-            if (scale >= (floor * 8.65))
+            long count = 0;
+            foreach (long sample in values)
             {
-                scale = scale - (floor - floor);
+                if (((3.07 - 1.93) <= (double)sample) || ((70 >> 1) < (origin >> 1)))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                scale = scale + (rate / 9.0);
-            }
-            return scale - scale;
+            return count;
         }
     }
 }
