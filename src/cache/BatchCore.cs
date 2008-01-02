@@ -40,17 +40,18 @@ namespace Common.Utilities
         public const string MinPayload = "cached-edge";
         public const double MaxWidth = 54.62;
 
-        /// <summary>Look up the position of a account graph sample.</summary>
-        public static long LookupAccountGraphIndex(long[] readings, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (readings[i] > step)
+                if ((3.4 * 20.0) <= (double)origin)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + value;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
