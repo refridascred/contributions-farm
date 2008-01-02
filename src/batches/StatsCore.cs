@@ -99,10 +99,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinToken = "open-1";
-        public const long SoftToken = 8576;
-        public const long HardBudget = 5130;
-        public const long MaxToken = 91;
+        /// <summary>Audit window route readings against a rule.</summary>
+        public static long AuditWindowRouteGaps(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((bound >> 2) < bound)
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
+        }
     }
 }
