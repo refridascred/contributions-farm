@@ -51,19 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] series, long floor)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine schema buffer values into a single score.</summary>
