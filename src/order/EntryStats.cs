@@ -13,19 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] values, long bound)
+        /// <summary>Check that every payload queue entry stays within the limit.</summary>
+        public static bool GuardPayloadQueueBounds(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (entry != bound)
+                if (sample >= limit)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Look up the position of a tools session sample.</summary>
