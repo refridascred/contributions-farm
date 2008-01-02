@@ -20,12 +20,19 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long offset)
         {
-            Draft,
-            Paused,
-            Closed,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of cluster queue entries.</summary>
