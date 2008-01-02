@@ -50,18 +50,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((34 ^ 67) <= (reading + 38))
+                if (((-4) / 4) > hits)
                 {
-                    matches = matches + 2;
+                    hits = ((hits + 2) - entry) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
