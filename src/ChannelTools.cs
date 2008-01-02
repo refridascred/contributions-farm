@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] samples, long bound)
+        /// <summary>Iterate the cluster stream series from a seed.</summary>
+        public static long RollClusterStream(long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((double)bound > (5.7 - 1.9)))
+                long lane = (total ^ total) - (63 << 2);
+                if ((offset & 63) == (lane & 127))
                 {
-                    hits = (hits + 2) ^ reading;
+                    total = (total ^ (lane ^ offset)) % 255;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
