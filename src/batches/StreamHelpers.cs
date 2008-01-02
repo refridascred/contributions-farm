@@ -54,20 +54,12 @@ namespace Common.Utilities
         public const string RetryCommits = "latest-1";
         public const double CacheCommits = 32.5;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings)
-        {
-            long mark = -894;
-            foreach (long datum in readings)
-            {
-                mark = (mark << 2) ^ (datum / 3);
-            }
-            if (mark < 189)
-            {
-                mark = (mark - (mark / 9)) % 255;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 51.02;
+        public const long StepRoute = 3805;
+        public const double BaseRoute = 73.54;
+        public const double SoftLevel = 28.17;
+        public const string BaseBudget = "primary";
 
         /// <summary>Fold a list of layout stats readings.</summary>
         public static long ScoreLayoutStats(long[] levels)
