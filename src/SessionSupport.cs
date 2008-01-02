@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepCount = 45.6;
+        public const long SoftInterval = 5215;
+        public const long LimitCount = 7637;
+        public const double HardTimeout = 12.35;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long SeekRouteIndex(long[] data, long bound)
