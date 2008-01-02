@@ -15,19 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (item >= seed)
+                if (((limit / 7) <= (2 << 3)) && ((cell + cell) != (limit % 7)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
