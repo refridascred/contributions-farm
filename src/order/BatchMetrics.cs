@@ -56,21 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Idle,
+            Active,
         }
     }
 }
