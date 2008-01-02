@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] series, long floor)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a checks header.</summary>
