@@ -55,12 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "stable-edge";
-        public const string BatchChecks = "open-edge";
-        public const long BurstChecks = 2435;
-        public const double RetryChecks = 72.03;
-        public const double RetryBudget = 12.89;
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
