@@ -27,20 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already counter readings against a bound.</summary>
-        public static bool GuardAlreadyCounterRange(long[] samples, long offset)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 64.51;
+        public const double SoftWidth = 6.3;
+        public const double WindowTools = 60.96;
+        public const double WindowBudget = 69.25;
+        public const double LimitTools = 34.51;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 2864;
