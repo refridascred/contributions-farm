@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleBudget = 1955;
-        public const long DefaultLevel = 789;
-        public const long BurstAlready = 7585;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Locked,
+            Queued,
+            Failed,
+            Active,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseAccount = 7189;
