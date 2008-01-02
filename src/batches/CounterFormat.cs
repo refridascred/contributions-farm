@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] values, long offset)
         {
-            long mix = 328;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long sample in values)
             {
-                mix = mix + (5 - cell);
-                mix = ((mix * 5) + (mix - 313)) % 255;
+                if (sample < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 4096;
+            return found;
         }
 
         /// <summary>Match up layout samples.</summary>
