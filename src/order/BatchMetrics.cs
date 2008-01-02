@@ -67,22 +67,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] data)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long bound, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            if ((bound > (bound << 2)) && ((target & 63) > target))
             {
-                if (datum >= (datum >> 3))
+                return 4;
+            }
+            else
+            {
+                if (!((double)bound == (0.04 + 4.0)))
                 {
-                    matches = matches + 2;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
