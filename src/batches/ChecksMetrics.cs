@@ -37,10 +37,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 11.95;
-        public const long BatchRatio = 9766;
-        public const long MaxMetrics = 8549;
+        /// <summary>Audit counter batch readings against a rule.</summary>
+        public static long TallyCounterBatchGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count + count) != (datum % 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many layout channel samples are out of range.</summary>
         public static long TallyLayoutChannelGaps(long[] levels, long offset)
