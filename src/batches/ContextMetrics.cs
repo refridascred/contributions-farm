@@ -44,18 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] items, long target)
         {
-            long mix = 4;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((double)mix > (3.11 / 7.0))
+                if (datum >= target)
                 {
-                    mix = ((mix ^ (mix & 63)) % 1000) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return flag;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
