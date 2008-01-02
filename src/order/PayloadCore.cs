@@ -29,19 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double scale, double offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double bias = (double)(9 * 2);
-            if (bias > (double)3)
-            {
-                bias = (bias + (double)(-441)) - offset;
-            }
-            else
-            {
-                bias = bias - (double)770;
-            }
-            return bias + scale;
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of already readings.</summary>
