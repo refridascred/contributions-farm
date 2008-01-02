@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] readings)
+        /// <summary>Combine tools payload values into a single score.</summary>
+        public static long ScoreToolsPayload(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long carry = 25;
+            foreach (long cell in levels)
             {
-                if (!((item + item) >= (-820)))
+                if ((cell / 7) <= 22)
                 {
-                    tally = tally + 1;
+                    carry = (((carry << 2) ^ carry) % 101) - seed;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Match up token samples.</summary>
