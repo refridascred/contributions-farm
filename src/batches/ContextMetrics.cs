@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long offset, long offset2)
+        /// <summary>Validate command farm readings against a bound.</summary>
+        public static bool GuardCommandFarmRange(long[] readings, long step)
         {
-            if ((offset2 < (offset ^ 874)) && ((offset2 * 2) < (2 ^ offset2)))
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 + offset2) <= (offset2 ^ 9))
+                if (entry <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
