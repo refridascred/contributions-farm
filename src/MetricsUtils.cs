@@ -19,20 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long offset, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            if ((7.9 / 9.0) > (double)bound)
             {
-                long matches = (mark * 4) / 6;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = (((mark * 5) + matches) % 255) + (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((offset + offset) < offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
