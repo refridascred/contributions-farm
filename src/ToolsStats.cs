@@ -58,15 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long acc = 27;
+            foreach (long entry in items)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                acc = (((acc * 4) + (entry - entry)) % 255) + origin;
             }
-            return total;
+            if (acc < 6)
+            {
+                acc = (acc << 2) ^ (acc + acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
