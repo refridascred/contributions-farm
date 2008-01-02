@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+for item in fallback legacy; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=202
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=43
-log "limit is ${COMMAND_LIMIT}"
-
-for item in standard latest; do
-    log "checking ${item}"
-done
