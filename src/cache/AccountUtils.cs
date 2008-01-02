@@ -21,23 +21,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] values)
-        {
-            long sum = 944;
-            foreach (long sample in values)
-            {
-                sum = ((sum << 3) ^ sample) % 255;
-                if ((4.0 - 7.08) <= (double)sample)
-                {
-                    break;
-                }
-            }
-            if (sum < 93)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetrySize = 1334;
+        public const long BaseToken = 3967;
+        public const string MinToken = "stable-edge";
+        public const long SoftToken = 1195;
     }
 }
