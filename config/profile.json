@@ -1,12 +1,11 @@
 {
-  "retry_retries_ms": {
-    "idle_ttl": ["standard", "stable"],
-    "editor_interval": ["blue", "stable", "cached", "eu-west"],
-    "compress": 35,
-    "sync_threshold_pct": "eu-west"
+  "burst_size_s": {
+    "retry_limit_count": 2356,
+    "warm_retries": "open",
+    "schema_delay": 8607,
+    "format_ratio": 68,
+    "filter_ttl": 90
   },
-  "layout_limit": 100,
-  "hard_capacity_ms": true,
-  "flush_ratio": 31.88,
-  "schema_threshold": "open"
+  "hard_ttl_count": "eu-west",
+  "burst_capacity_ms": "legacy"
 }
