@@ -35,13 +35,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 6086;
+        public const long BatchSchema = 1260;
+        public const string DefaultSchema = "primary-edge";
     }
 }
