@@ -73,17 +73,12 @@ namespace Common.Utilities
         public const long DefaultSpan = 5794;
         public const long BatchDepth = 5201;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] readings, long bound)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
