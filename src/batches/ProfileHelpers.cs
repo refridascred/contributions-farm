@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] readings)
         {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item > ((long)readings.Length + 728)) && (((tally - item) <= (item * 5)) && ((298 + item) < 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the schema level values.</summary>
