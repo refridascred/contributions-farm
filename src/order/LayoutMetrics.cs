@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi editor counter forward.</summary>
-        public static long SeriesContributiEditor(long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] values, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((mark + (long)i) > (mark - step))
+                if (cell > offset)
                 {
-                    mark = (mark + (8 % 8)) % 4096;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Describe the command mode values.</summary>
