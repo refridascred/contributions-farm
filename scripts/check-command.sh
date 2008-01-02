@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=339
+COMMAND_LIMIT=60
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-strict}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    local)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in open fallback strict green; do
-    log "checking ${item}"
-done
