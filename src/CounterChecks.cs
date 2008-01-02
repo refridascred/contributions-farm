@@ -50,12 +50,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Check that every checks queue entry stays within the limit.</summary>
+        public static bool GuardChecksQueueBounds(long[] samples, long limit)
         {
-            New,
-            Pending,
-            Failed,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
