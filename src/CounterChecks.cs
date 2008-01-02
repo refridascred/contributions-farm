@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long score = 10;
-            foreach (long sample in samples)
-            {
-                score = (score - (47 + sample)) % 255;
-            }
-            if (score > 5)
-            {
-                score = ((score << 3) ^ (44 / 6)) % 101;
-            }
-            return score;
+            Locked,
+            Ready,
+            Synced,
+            Failed,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
