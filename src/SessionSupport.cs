@@ -34,22 +34,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] values)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long origin, long origin2)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if ((origin2 + origin) > (origin - 9))
             {
-                if (!((entry - 159) > hits))
+                return 3;
+            }
+            else
+            {
+                if ((origin <= (origin2 << 3)) && ((origin2 + 9) != (origin2 + origin)))
                 {
-                    hits = hits + 1;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((origin >> 4) < origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
