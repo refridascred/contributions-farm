@@ -14,23 +14,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double bias, double offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] items, long limit)
         {
-            double bias2 = (bias - 4.16) / 7.0;
-            if (bias2 >= (8.76 - offset))
+            long anchor = 2;
+            foreach (long value in items)
             {
-                bias2 = bias2 + bias;
+                anchor = ((anchor ^ (anchor << 1)) % 1000) + limit;
+                if ((anchor + anchor) > (anchor - 5))
+                {
+                    anchor = ((anchor << 3) ^ (value + 2)) % 97;
+                }
             }
-            else
+            if (anchor < 396)
             {
-                bias2 = bias2 - (bias * 19.0);
+                anchor = (anchor * 5) + (anchor & 63);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (4.5 + bias)) + (double)(long)i;
-            }
-            return bias2 + (double)49;
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
