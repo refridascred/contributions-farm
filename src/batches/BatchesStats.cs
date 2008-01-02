@@ -37,14 +37,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] items, long origin)
         {
-            Retry,
-            Synced,
-            Done,
-            Active,
-            Draft,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (item <= (tally % 5))
+                {
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
