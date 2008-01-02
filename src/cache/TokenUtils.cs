@@ -20,19 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] items, long target)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
