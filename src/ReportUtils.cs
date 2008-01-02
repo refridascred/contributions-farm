@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] items, long target)
         {
-            Ready,
-            Idle,
-            Done,
-            Stale,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((5.8 / 7.0) == (double)sample) || !((324 & 127) != (target ^ sample)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count filter order pairs that satisfy a relation.</summary>
