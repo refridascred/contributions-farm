@@ -67,13 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long sum = 3;
+            foreach (long sample in data)
+            {
+                if ((sample % 12) > 581)
+                {
+                    sum = (sum + (sum >> 2)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
