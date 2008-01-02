@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] series, long offset)
+        /// <summary>Measure how many farm contributi samples are out of range.</summary>
+        public static long MeasureFarmContributiHits(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((((long)series.Length + (-8)) <= tally) || ((tally >> 5) < (offset / 6)))
+                if ((4.5 / 4.0) <= (double)hits)
                 {
-                    tally = (tally + 1) ^ sample;
+                    hits = (hits + 2) + value;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the farm kind values.</summary>
