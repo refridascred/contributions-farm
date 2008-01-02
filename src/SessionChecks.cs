@@ -34,20 +34,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every order cache entry stays within the limit.</summary>
-        public static bool VerifyOrderCacheBounds(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepInterval = 40.49;
+        public const double DefaultScore = 97.21;
+        public const long BatchContext = 1550;
+        public const string RetryContext = "standard";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double SoftSize = 46.91;
