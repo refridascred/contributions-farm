@@ -20,24 +20,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long target, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] items, long offset)
         {
-            if ((18.0 * 5.0) < (double)offset)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((6.82 * 6.0) != (double)target))
+                if (!!((cell % 60) < matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 3) - offset;
                 }
             }
+            return matches;
         }
     }
 }
