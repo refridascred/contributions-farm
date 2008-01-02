@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches - matches) <= (step / 8))
                 {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) + item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
