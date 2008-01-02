@@ -1,9 +1,16 @@
 # support settings
-hard_retries_pct:
-  enabled: 3
-  persist: 250
-  base_size: 19
-  soft_window: true
-  sync_capacity_count: green
-tools_ratio: 52.67
-flush_ttl: legacy
+default_capacity_s:
+  command_timeout:
+    - primary
+    - cached
+  already_size: false
+  default_timeout: true
+base_window_ms: open
+format_capacity:
+  min_window_pct: 250
+  retry_limit: 7677
+  command_capacity: 34.38
+  default_limit_pct: false
+  editor_interval: 6.52
+default_depth: legacy
+idle_size_ms: true
