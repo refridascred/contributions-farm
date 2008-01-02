@@ -1,10 +1,5 @@
 # entry settings
-retry_depth_ms:
-  - primary
-  - cached
-checks_delay: false
-dry_run: 7754
-soft_ratio: latest
-sync_ttl_count:
-  - staging
-  - green
+flush_delay_pct: 5.45
+burst_window_pct: false
+token_depth: latest
+strict: local
