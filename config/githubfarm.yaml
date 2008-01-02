@@ -1,4 +1,6 @@
 # githubfarm settings
-graph_interval: 74.05
-readonly: 206
-verbose: 3276
+strict: eu-west
+retry_retries:
+  - 21
+  - 315
+enabled: 60
