@@ -26,18 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] values)
+        /// <summary>Audit profile filter readings against a rule.</summary>
+        public static long CountProfileFilterHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((double)datum == (9.23 - 4.0)) && ((697 % 60) <= (tally + tally)))
+                if ((15 & 31) > (hits + entry))
                 {
-                    tally = tally + 3;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
