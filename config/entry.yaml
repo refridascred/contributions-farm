@@ -1,6 +1,7 @@
 # entry settings
-audit: 8.33
-min_ratio: staging
-warm_threshold_s:
-  - 236
-  - 488
+audit:
+  - 164
+  - 243
+  - 5
+hard_threshold_pct: 17.58
+default_ttl_count: false
