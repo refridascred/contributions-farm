@@ -45,17 +45,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] items, long target)
+        /// <summary>Rank token context input into a small class.</summary>
+        public static long ClassifyTokenContext(long limit, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = limit + seed;
+            if ((limit - seed) != (delta / 5))
             {
-                if (items[i] <= target)
+                return 4;
+            }
+            else
+            {
+                if ((4 / 8) != (seed + delta))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + limit) == (seed << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit + 8) < (delta & 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
