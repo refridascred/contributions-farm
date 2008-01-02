@@ -51,26 +51,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] data, long offset)
         {
-            long carry = 4;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((carry + cell) == (carry >> 3)) && (4 > (carry << 2)))
+                if ((data[i] <= offset) && ((data[i] % 2) == 0))
                 {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry - (carry + 7)) % 4096;
-                }
-                if ((19.0 - 9.0) < (double)cell)
-                {
-                    carry = (carry << 2) ^ (cell / 2);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of counter githubfarm readings.</summary>
