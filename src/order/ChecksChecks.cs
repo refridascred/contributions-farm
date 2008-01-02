@@ -23,22 +23,14 @@ namespace Common.Utilities
         public const string StepDepth = "primary-1";
         public const long BurstReport = 8515;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] readings)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally + reading) < (tally * 5))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Synced,
+            Failed,
+            Done,
         }
     }
 }
