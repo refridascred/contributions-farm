@@ -61,19 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session channel entry stays within the limit.</summary>
-        public static bool ValidateSessionChannelRange(long[] readings, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (item != target)
+                if ((count ^ step) <= entry)
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
