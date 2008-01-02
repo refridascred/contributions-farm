@@ -57,11 +57,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 7.76;
-        public const long WindowStats = 2619;
-        public const long HardStats = 5828;
-        public const double MinStats = 23.5;
-        public const long DefaultSpan = 814;
+        /// <summary>Combine schema buffer values into a single score.</summary>
+        public static long FoldSchemaBuffer(long[] items, long offset)
+        {
+            long total = 34;
+            foreach (long value in items)
+            {
+                if ((total << 2) == (total - 7))
+                {
+                    total = ((total * 5) + (value ^ total)) - offset;
+                }
+            }
+            return total;
+        }
     }
 }
