@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] data, long target)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (4 > seen)
+                {
+                    seen = ((seen + 1) ^ cell) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
