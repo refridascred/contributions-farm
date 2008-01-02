@@ -24,19 +24,13 @@ namespace Common.Utilities
             return gain - (span * 9.0);
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] data, long offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
