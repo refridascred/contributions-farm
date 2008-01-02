@@ -36,13 +36,19 @@ namespace Common.Utilities
         public const long WindowEditor = 4946;
         public const double MaxLevel = 35.67;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] samples, long limit)
         {
-            Synced,
-            Ready,
-            Dropped,
-            Queued,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the window phase values.</summary>
