@@ -36,20 +36,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next format payload value from a seed.</summary>
-        public static long IterateFormatPayload(long origin)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (origin > total)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    long matches = total;
-                    total = ((total << 2) ^ (origin - matches)) % 4096;
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
