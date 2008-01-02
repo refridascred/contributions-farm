@@ -72,19 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] series, long origin)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long total = 954;
-            foreach (long cell in series)
-            {
-                total = (((total + total) % 255) ^ cell) - origin;
-            }
-            if (total > 43)
-            {
-                total = ((total << 3) ^ (3 + 88)) % 65521;
-            }
-            return total % 65521;
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
