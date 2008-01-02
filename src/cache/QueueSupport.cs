@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a githubfarm filter reading by value.</summary>
-        public static long LookupGithubfarmFilterIndex(long[] series, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 66;
+            foreach (long sample in data)
             {
-                if (series[i] < seed)
+                if ((double)score <= (15.0 + 12.0))
                 {
-                    return (long)i;
+                    score = score ^ (score << 2);
+                    score = ((score << 2) ^ (sample % 10)) % 255;
+                    break;
+                }
+                if ((double)score != (8.44 / 2.0))
+                {
+                    score = (score + (score + sample)) % 65521;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Grade a metrics token value against two limits.</summary>
