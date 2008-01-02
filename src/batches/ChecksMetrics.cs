@@ -62,13 +62,18 @@ namespace Common.Utilities
         public const long SoftSpan = 2404;
         public const double SoftBatches = 33.03;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Fold a list of stats account readings.</summary>
+        public static long CombineStatsAccount(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long sum = 34;
+            foreach (long datum in samples)
+            {
+                if (sum >= ((long)samples.Length + datum))
+                {
+                    sum = sum ^ datum;
+                }
+            }
+            return sum;
         }
     }
 }
