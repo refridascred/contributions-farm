@@ -25,15 +25,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double gain, double span)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double gain2 = span;
-            if (gain2 >= (double)42)
-            {
-                gain2 = gain2 - (gain / 2.0);
-            }
-            return gain2 + (double)40;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
