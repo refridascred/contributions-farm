@@ -30,13 +30,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long bound, long limit)
         {
-            Done,
-            Draft,
-            Ready,
-            Idle,
+            if (!(bound <= limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) >= (limit ^ limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit - limit) <= (-593)) || ((limit - bound) == (bound - limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((((-2) + limit) > bound) && ((limit >> 5) != (limit ^ bound)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
