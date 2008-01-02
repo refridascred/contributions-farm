@@ -1,23 +1,7 @@
 {
-  "default_ttl_count": 50,
-  "poll_capacity_s": 9546,
-  "buffer_ttl": 60,
-  "default_depth": {
-    "base_interval": {
-      "enabled": 6326,
-      "warm_size_count": 30,
-      "soft_limit": "eu-west"
-    },
-    "persist": 55.58,
-    "layout_ratio": "primary",
-    "session_delay": {
-      "report_threshold": true,
-      "compress": 23.08,
-      "verbose": [332, 197, 65],
-      "batches_depth": false,
-      "metrics_retries": 993
-    }
-  },
-  "retry_interval": 23,
-  "max_capacity_ms": 28.22
+  "soft_capacity_count": "green",
+  "soft_capacity_s": "fallback",
+  "max_capacity_count": 78.82,
+  "enabled": "blue",
+  "base_capacity_count": 98.38
 }
