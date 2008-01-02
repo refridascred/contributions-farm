@@ -35,18 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache githubfarm readings against a rule.</summary>
-        public static long TallyCacheGithubfarmMatches(long[] data, long floor)
+        /// <summary>Derive the next tools support value from a seed.</summary>
+        public static long StepToolsSupport(long bound)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((10.0 - 4.41) != (double)sample)
+                if ((12.0 + 13.0) > (double)bound)
                 {
-                    tally = (tally + 3) + floor;
+                    break;
                 }
+                else
+                {
+                    anchor = (anchor ^ (anchor + anchor)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
