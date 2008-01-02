@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes session samples are out of range.</summary>
-        public static long MeasureNotesSessionMatches(long[] values, long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((floor - floor) < (floor >> 3))
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
