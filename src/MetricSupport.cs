@@ -28,13 +28,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Draft,
-            Ready,
-            Paused,
-            Active,
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
