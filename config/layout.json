@@ -1,7 +1,14 @@
 {
-  "max_size_pct": "green",
-  "poll_ratio": ["latest", "latest", "stable", "local"],
-  "max_threshold_s": "local",
-  "batch_delay": true,
-  "verbose": 100
+  "idle_timeout_pct": 908,
+  "sync_ratio_ms": [221, 379, 321],
+  "audit": false,
+  "flush_timeout": [276, 236, 362, 11],
+  "idle_depth": {
+    "sync_retries_s": false,
+    "stream_ttl": 250,
+    "hard_depth": 85.93,
+    "enabled": false,
+    "min_ratio_ms": 7865
+  },
+  "stream_size": [398, 169, 421]
 }
