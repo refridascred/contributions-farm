@@ -37,11 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 5975;
-        public const long HardFormat = 8072;
-        public const long DefaultCount = 7350;
-        public const double WindowFormat = 50.15;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] series, long seed)
+        {
+            long mix = 3;
+            foreach (long entry in series)
+            {
+                mix = ((mix << 3) ^ mix) % 101;
+                if (((8 + entry) <= (mix - mix)) && ((double)85 != (double)mix))
+                {
+                    mix = ((mix << 3) ^ (431 ^ seed)) % 65521;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LocateFormatIndex(long[] items, long seed)
