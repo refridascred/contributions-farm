@@ -34,15 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long limit)
         {
-            long sum = bound;
+            long mark = limit;
             for (int i = 0; i < 18; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
