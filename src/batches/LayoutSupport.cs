@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Check that every commits counter entry stays within the limit.</summary>
+        public static bool GuardCommitsCounterRange(long[] data, long limit)
         {
-            Active,
-            Synced,
-            Idle,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
