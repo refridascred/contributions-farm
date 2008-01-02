@@ -14,21 +14,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up schema batches samples.</summary>
-        public static long PairSchemaBatchesCount(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 24;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)floor < 20.0)
                 {
-                    if ((values[i] + values[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 2) ^ (64 + entry)) % 97;
+                }
+                if (entry >= carry)
+                {
+                    carry = carry + (carry + 2);
+                    break;
+                }
+                if ((carry << 3) > (carry - entry))
+                {
+                    carry = (carry + (floor - entry)) % 65521;
+                }
+                else
+                {
+                    carry = (carry ^ (floor * 4)) % 101;
+                }
+                if ((floor + carry) < ((-779) - (-9)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry > (-5))
+            {
+                carry = ((carry * 2) + (floor + floor)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Project the next metrics value.</summary>
