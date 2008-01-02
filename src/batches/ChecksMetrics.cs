@@ -51,12 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double ratio, double floor)
-        {
-            double load = (floor / 5.0) + ratio;
-            return load + load;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchCount = 0.93;
+        public const double CacheScore = 21.82;
+        public const long HardBatches = 7457;
+        public const long SoftSpan = 2404;
+        public const double SoftBatches = 33.03;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandHits(long[] readings, long seed)
