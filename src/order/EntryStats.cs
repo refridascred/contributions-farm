@@ -20,21 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Describe the order mode values.</summary>
