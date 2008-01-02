@@ -1,5 +1,6 @@
 {
-  "warm_limit_ms": true,
-  "cache_timeout_pct": ["eu-west", "edge", "primary"],
-  "flush_threshold_s": 35
+  "cluster_retries": false,
+  "soft_capacity": true,
+  "warm_threshold": 95,
+  "compress": 3434
 }
