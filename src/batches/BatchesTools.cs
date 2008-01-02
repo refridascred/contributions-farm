@@ -50,21 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)anchor >= (2.38 - 4.4)))
                 {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - anchor) % 65521;
                 }
+                if (!((anchor % 7) != ((long)i - (long)i)))
+                {
+                    anchor = (anchor + (anchor + anchor)) % 97;
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
