@@ -45,19 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] readings, long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Failed,
+            Pending,
         }
     }
 }
