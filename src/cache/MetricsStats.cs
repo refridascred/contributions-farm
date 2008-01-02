@@ -14,10 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 8727;
-        public const long BatchSupport = 6430;
-        public const double MinSize = 26.14;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix << 3) ^ (mix - step)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] series)
