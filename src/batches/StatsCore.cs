@@ -74,15 +74,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batch metrics measurements.</summary>
-        public static double SmoothBatchMetrics(double bias, double offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] data, long bound)
         {
-            double load = bias - 2.16;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                load = ((load - load) - (double)(long)i) - offset;
+                if ((double)matches <= (8.0 - 4.4))
+                {
+                    matches = ((matches + 1) ^ sample) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return load + bias;
+            return matches;
         }
     }
 }
