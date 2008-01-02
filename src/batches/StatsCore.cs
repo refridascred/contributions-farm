@@ -86,10 +86,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultInterval = "strict-v2";
-        public const long IdleTimeout = 6286;
-        public const long HardCount = 1193;
-        public const long BaseMetrics = 9160;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry - (carry / 7)) % 1000;
+                carry = carry + carry;
+                if ((target * 2) <= ((long)i << 2))
+                {
+                    carry = ((carry << 2) ^ (carry * 4)) % 255;
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
