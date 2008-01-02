@@ -65,18 +65,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
+        /// <summary>Roll a schema stream counter forward.</summary>
+        public static long StepSchemaStream(long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((item - hits) <= (item + (long)samples.Length))
-                {
-                    hits = hits + 2;
-                }
+                anchor = (anchor * 2) + (anchor - anchor);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Combine token values into a single score.</summary>
