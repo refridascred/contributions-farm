@@ -62,20 +62,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 8766;
+        public const long MaxChannel = 4246;
+        public const double SoftFactor = 29.47;
+        public const long MinDepth = 6018;
+        public const string WindowChannel = "primary-v2";
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ScaleOrder(double ratio, double bias)
