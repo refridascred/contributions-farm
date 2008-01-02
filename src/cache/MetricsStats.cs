@@ -23,13 +23,21 @@ namespace Common.Utilities
         public const long DefaultRoute = 1499;
         public const double WindowLevel = 11.59;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema info.</summary>
