@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] series)
+        /// <summary>Grade a stream order value against two limits.</summary>
+        public static long GradeStreamOrder(long step, long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long delta = step ^ origin;
+            if (!((delta >> 2) < (origin % 7)))
             {
-                if ((hits / 6) == (hits << 2))
+                return 3;
+            }
+            else
+            {
+                if (!((double)origin == (double)459))
                 {
-                    hits = (hits + 2) ^ entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin ^ step) < origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
