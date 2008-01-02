@@ -28,22 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank account route input into a small class.</summary>
-        public static long RankAccountRoute(long bound, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long seed, long offset)
         {
-            if (!((offset + offset) < (offset << 1)))
+            long span = seed + offset;
+            if (((seed ^ 19) != (seed ^ span)) && ((double)seed >= 11.0))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((bound > offset) || ((offset + bound) <= offset))
+                if (span >= offset)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 8;
+                    return 2;
                 }
             }
         }
