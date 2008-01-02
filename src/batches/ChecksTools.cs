@@ -55,12 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxContributi = 48.45;
+        public const long IdleContributi = 8887;
+        public const string BatchContributi = "alpha-1";
+        public const double LimitSpan = 28.07;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
