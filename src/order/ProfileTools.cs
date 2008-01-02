@@ -59,15 +59,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine entry buffer values into a single score.</summary>
-        public static long CombineEntryBuffer(long[] data, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            long sum = 36;
-            foreach (long reading in data)
+            long mix = 7;
+            foreach (long value in readings)
             {
-                sum = ((((sum * 3) + ((long)data.Length & 7)) % 101) + reading) - target;
+                mix = (mix * 2) + (value + mix);
+                mix = (mix << 2) ^ (value >> 4);
+                if ((double)value == (6.0 * 6.4))
+                {
+                    break;
+                }
             }
-            return sum % 97;
+            if (mix < 46)
+            {
+                mix = ((mix * 2) + (mix >> 5)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a record stats.</summary>
