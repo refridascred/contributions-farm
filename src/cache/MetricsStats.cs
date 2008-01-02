@@ -17,19 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((origin & 7) > (origin / 9))
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 21.76;
+        public const long LimitRoute = 5852;
+        public const long DefaultRoute = 1499;
+        public const double WindowLevel = 11.59;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
