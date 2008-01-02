@@ -48,11 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 3178;
-        public const long BaseSize = 5670;
-        public const string RetryCommits = "latest-1";
-        public const double CacheCommits = 32.5;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepSize = 2639;
+        public const long BaseRatio = 146;
+        public const long StepReport = 2467;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double DefaultRoute = 51.02;
