@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the route format entries that pass the check.</summary>
+        public static long MeasureRouteFormatMatches(long[] series, long limit)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry <= (double)38)
+                {
+                    hits = (hits + 1) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
