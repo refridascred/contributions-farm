@@ -46,22 +46,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] data, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] series, long origin)
         {
-            long acc = 48;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((target - cell) >= (cell + acc))
+                if (entry < origin)
                 {
-                    acc = acc ^ (acc + 52);
-                }
-                if ((acc + acc) != (acc - target))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Hold a filter record.</summary>
