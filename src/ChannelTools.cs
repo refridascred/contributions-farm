@@ -30,11 +30,22 @@ namespace Common.Utilities
         public const long MaxCommits = 9224;
         public const long MaxRatio = 720;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleLevel = "strict-v2";
-        public const double DefaultContributi = 28.16;
-        public const string BurstDepth = "latest";
-        public const string SoftContributi = "standard-edge";
-        public const long BurstContributi = 7202;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!((count + count) == (32 + count)) && (((9 - entry) < ((long)readings.Length % 8)) && ((double)count == (7.13 - 0.7))))
+                {
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
