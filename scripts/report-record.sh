@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-RECORD_LIMIT=205
+RECORD_LIMIT=499
 log "limit is ${RECORD_LIMIT}"
 
-for item in cached open blue; do
+for item in latest fallback green; do
     log "checking ${item}"
 done
+
+mode="${1:-cached}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
