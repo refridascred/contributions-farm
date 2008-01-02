@@ -14,15 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long bound)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] data, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a window summary.</summary>
