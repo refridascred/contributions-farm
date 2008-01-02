@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] values, long bound)
         {
-            Stale,
-            Active,
-            New,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up farm samples.</summary>
