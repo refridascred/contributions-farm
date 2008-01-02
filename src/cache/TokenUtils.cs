@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] levels)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry >= matches) || ((double)matches < 2.0))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
