@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Stale,
-            Paused,
-            Locked,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 1572;
+        public const double MinBudget = 20.87;
+        public const long BurstScore = 9122;
+        public const long StepAccount = 5886;
+        public const long HardFactor = 5101;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
