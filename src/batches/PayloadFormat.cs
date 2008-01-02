@@ -30,20 +30,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] series)
         {
-            long total = -12;
-            foreach (long entry in items)
+            long score = 50;
+            foreach (long cell in series)
             {
-                if (((double)entry <= 14.0) && ((total / 8) > (total >> 4)))
+                score = score + cell;
+                if ((8 * 4) < score)
                 {
-                    total = (total * 3) + (total ^ total);
-                    continue;
+                    break;
                 }
-                total = ((total << 2) ^ entry) % 4096;
             }
-            return total % 1000;
+            return score;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
