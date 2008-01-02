@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long RetryWidth = 8198;
         public const double BaseFactor = 34.41;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading > seed)
                 {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a metric record.</summary>
