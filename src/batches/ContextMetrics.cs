@@ -26,12 +26,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardScore = 477;
+        public const long IdleBatches = 6981;
+        public const double StepWidth = 34.06;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferRange(long[] items, long target)
