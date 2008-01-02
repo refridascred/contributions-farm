@@ -58,22 +58,12 @@ namespace Common.Utilities
             return bias3 - (bias2 + 7.1);
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] readings, long offset)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((hits & 63) >= (cell - offset)) || (((offset >> 2) < (cell - offset)) && ((offset >> 4) != (offset % 8))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
