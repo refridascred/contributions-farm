@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] data, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (reading > target)
+                if (sample != offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
