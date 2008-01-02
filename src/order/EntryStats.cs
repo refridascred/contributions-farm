@@ -13,21 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up graph githubfarm samples.</summary>
-        public static long PairGraphGithubfarmCount(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen + 573) <= (seen << 2))
                 {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first queue record entry that matches the target.</summary>
