@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long BaseAlready = 5106;
         public const long LimitAlready = 3957;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 255;
-                anchor = (anchor ^ (bound + (long)i)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Combine already values into a single score.</summary>
