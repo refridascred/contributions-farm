@@ -1,5 +1,8 @@
 {
-  "sync_interval_ms": "eu-west",
-  "min_capacity_ms": 6342,
-  "cache_capacity_pct": "blue"
+  "strict": 55.9,
+  "default_capacity": ["open", "strict"],
+  "max_ratio_count": false,
+  "hard_ttl_s": "blue",
+  "schema_size": 6567,
+  "enabled": 96
 }
