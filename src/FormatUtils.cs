@@ -13,11 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryRatio = 5168;
-        public const string CacheBatch = "latest";
-        public const double BurstRatio = 24.33;
-        public const long MaxFactor = 2197;
+        /// <summary>Audit record cluster readings against a rule.</summary>
+        public static long AuditRecordClusterGaps(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((bound >> 5) != (374 + (-856)))
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxTimeout = 6604;
