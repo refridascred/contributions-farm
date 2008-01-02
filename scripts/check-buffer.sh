@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback staging stable standard; do
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in blue eu-west latest staging; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=14
-log "limit is ${BUFFER_LIMIT}"
