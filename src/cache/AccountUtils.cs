@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a stats tools reading by value.</summary>
-        public static long LocateStatsToolsIndex(long[] values, long seed)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
