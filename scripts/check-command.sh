@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open; do
+COMMAND_LIMIT=319
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-stable}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy standard; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
