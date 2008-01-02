@@ -1,8 +1,24 @@
 # support settings
-strict:
-  - 199
-  - 339
-  - 471
-  - 54
-soft_capacity_ms: 93
-soft_capacity_pct: 30
+enabled:
+  base_depth_ms:
+    - staging
+    - primary
+    - green
+    - stable
+  hard_threshold_count: 71.17
+  verbose: 100
+  strict: true
+  min_window_s: fallback
+  burst_size: 44.63
+cache_window: 94.89
+filter_ttl: 7095
+flush_delay_count:
+  warm_size_pct:
+    - 109
+    - 204
+    - 486
+  batch_window_count: 65.99
+  default_threshold_ms:
+    strict: green
+    persist: cached
+    compress: 30
