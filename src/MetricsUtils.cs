@@ -19,24 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long bound, long limit)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            if ((bound / 9) > (limit ^ limit))
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound >> 5) != (limit / 2))
+                long matches = (mark * 4) / 6;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 5;
+                    mark = (((mark * 5) + matches) % 255) + (long)i2;
                 }
-                else
-                {
-                    return 8;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
