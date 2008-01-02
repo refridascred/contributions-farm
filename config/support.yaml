@@ -1,35 +1,8 @@
 # support settings
-enabled:
-  - 424
-  - 19
-burst_retries:
-  warm_ratio_pct: strict
-  enabled: 60.19
-  farm_size: primary
-  retry_window_pct:
-    cache_limit: green
-    entry_limit: false
-    poll_interval: 500
-    cluster_interval: true
-    sync_retries_count: false
-  commits_limit: true
-githubfarm_delay:
-  - 110
-  - 195
-persist:
-  readonly: strict
-  buffer_ttl: 86
-  soft_capacity_ms:
-    burst_ttl_ms:
-      - 238
-      - 458
-    burst_interval: false
-    default_interval_count: primary
-    warm_ttl_pct: 76.72
-    warm_size_count: standard
-  warm_retries: blue
-  soft_retries_s:
-    - eu-west
-    - strict
-    - cached
-batch_ttl_ms: 67.85
+sync_capacity_count: 91.27
+burst_size: 12.72
+strict:
+  enabled: standard
+  min_threshold_count: legacy
+  default_retries: 1335
+  idle_window_pct: true
