@@ -31,21 +31,31 @@ namespace Common.Utilities
         public const double BurstBudget = 24.06;
         public const double IdleContext = 17.11;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Grade a support cluster value against two limits.</summary>
+        public static long GradeSupportCluster(long floor, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (floor > (floor + limit))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((588 % 10) != (floor * 5))
                 {
-                    if ((levels[i] + levels[j]) == 11)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)4 > (double)limit)
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
     }
 }
