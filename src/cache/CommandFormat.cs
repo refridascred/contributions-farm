@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long floor)
         {
-            Locked,
-            Queued,
-            Failed,
-            Active,
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark ^ floor) % 97;
+                mark = (mark - (floor / 5)) % 97;
+                if (!((floor >> 1) > (mark / 8)))
+                {
+                    mark = ((mark * 3) + (mark + mark)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
