@@ -40,32 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long seed, long seed2)
-        {
-            if ((seed2 < (seed + seed2)) || ((seed2 + seed) < seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((seed + seed2) < seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < 18)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "open-v2";
+        public const long CacheEditor = 7126;
+        public const long BurstEditor = 8347;
+        public const long DefaultSpan = 8969;
+        public const long BurstWidth = 5209;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] data)
