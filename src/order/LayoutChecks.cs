@@ -19,13 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Iterate the route cache series from a seed.</summary>
+        public static long RollRouteCache(long step)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            long sum = step;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = (sum + step) - (long)i2;
+                }
+                sum = (sum - (0 ^ step)) % 97;
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    sum = ((sum - (long)i) % 97) + (long)i3;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
