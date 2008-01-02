@@ -30,19 +30,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the layout window series from a seed.</summary>
-        public static long SeriesLayoutWindow(long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            long mix = 51;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                mix = (mix * 2) + (-4);
+                if ((6.11 / 4.0) >= (7.03 - 10.0))
                 {
-                    acc = ((acc + acc) % 4096) ^ (long)i2;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
+                else
+                {
+                    mix = (mix * 5) + (mix - mix);
+                }
+                if (((mix + reading) > 58) && ((reading + mix) != (reading << 3)))
+                {
+                    mix = mix - (reading & 255);
+                }
             }
-            return acc;
+            return mix % 97;
         }
     }
 }
