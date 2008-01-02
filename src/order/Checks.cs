@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long BaseChannel = 6946;
         public const long WindowChannel = 4284;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] values, long origin)
         {
-            Done,
-            Closed,
-            Retry,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
