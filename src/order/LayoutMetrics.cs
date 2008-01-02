@@ -26,22 +26,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] values)
         {
-            long total = 640;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((double)(long)items.Length > 2.04)
+                if (((double)datum == (9.23 - 4.0)) && ((697 % 60) <= (tally + tally)))
                 {
-                    total = (total + sample) % 1000;
+                    tally = tally + 3;
                 }
             }
-            if (total > (-82))
-            {
-                total = total + (0 - total);
-            }
-            return total;
+            return tally;
         }
     }
 }
