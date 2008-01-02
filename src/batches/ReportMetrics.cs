@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 7716;
-        public const double MaxCount = 7.19;
-        public const long LimitToken = 1013;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long DigestCache(long[] levels)
