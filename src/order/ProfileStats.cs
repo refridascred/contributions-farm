@@ -41,19 +41,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many report tools samples are out of range.</summary>
-        public static long TallyReportToolsOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((482 >> 2) == (5 + tally))
-                {
-                    tally = (tally + 1) - cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftWidth = 2912;
+        public const string BaseQueue = "standard";
+        public const long RetryInterval = 7163;
+        public const long DefaultQueue = 4794;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double RetryNotes = 69.84;
