@@ -28,19 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] values, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long mix = -3;
+            foreach (long entry in items)
             {
-                if (reading <= limit)
+                mix = mix ^ (long)items.Length;
+                if ((entry + entry) >= (entry + 8))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (mix > 6)
+            {
+                mix = ((mix << 3) ^ (mix << 2)) % 65521;
+            }
+            return mix;
         }
     }
 }
