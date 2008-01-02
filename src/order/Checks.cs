@@ -50,13 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] items, long limit)
         {
-            Ready,
-            Active,
-            Queued,
-            Pending,
+            long anchor = 6;
+            foreach (long entry in items)
+            {
+                anchor = (((anchor + (40 / 9)) % 101) ^ entry) - limit;
+                if ((4.1 / 3.0) != (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
