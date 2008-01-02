@@ -1,13 +1,10 @@
 {
-  "verbose": true,
-  "idle_size_ms": "latest",
-  "schema_retries": "latest",
-  "cluster_size": {
-    "sync_depth_pct": 30,
-    "default_window_count": 72,
-    "enabled": "stable",
-    "idle_limit_count": [38, 334, 443, 376],
-    "audit": 6.7,
-    "warm_delay_pct": "eu-west"
-  }
+  "dry_run": 86.85,
+  "counter_ratio": "eu-west",
+  "compress": {
+    "persist": true,
+    "hard_ttl_pct": 39,
+    "enabled": 33
+  },
+  "cache_ratio_pct": "strict"
 }
