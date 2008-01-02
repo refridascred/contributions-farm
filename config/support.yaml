@@ -1,5 +1,6 @@
 # support settings
-hard_threshold_count: false
-idle_capacity_pct: 7.27
-dry_run: standard
-contributi_delay: 57
+editor_threshold: 54.45
+cluster_retries: 5040
+context_limit: cached
+base_limit_pct: false
+persist: 9542
