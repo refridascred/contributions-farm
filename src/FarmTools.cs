@@ -19,19 +19,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
