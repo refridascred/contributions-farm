@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (reading < origin)
+                if ((seen + seen) < (780 - seen))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + item;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Rank format input into a small class.</summary>
