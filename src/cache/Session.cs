@@ -48,10 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardLevel = 6221;
-        public const string CacheInterval = "open-1";
-        public const string BaseInterval = "staging-v2";
-        public const long StepCount = 1854;
+        /// <summary>Check that every order batch entry stays within the limit.</summary>
+        public static bool ValidateOrderBatchRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
