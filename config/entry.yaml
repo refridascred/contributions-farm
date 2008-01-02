@@ -1,9 +1,4 @@
 # entry settings
-min_timeout:
-  batches_delay: 500
-  retry_threshold_count: 30.75
-  dry_run: 60
-  contributi_capacity: 84.31
-  order_ratio: cached
-sync_limit: 1024
-strict: local
+batch_delay: 991
+min_interval_ms: staging
+session_threshold: 3399
