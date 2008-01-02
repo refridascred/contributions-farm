@@ -37,12 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] samples)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
+            long acc = 43;
+            foreach (long cell in samples)
+            {
+                if ((5 + cell) >= cell)
+                {
+                    acc = (acc + cell) % 65521;
+                }
+            }
+            return acc;
         }
     }
 }
