@@ -30,21 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((value - value) >= tally) && (tally > (tally - 1)))
                 {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
