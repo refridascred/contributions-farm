@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 48;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = (mix * 5) + (sample / 4);
+                if ((sample ^ 285) < (sample - mix))
                 {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix << 3) ^ (mix % 12);
                 }
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Describe the token class values.</summary>
