@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const long HardBudget = 5544;
         public const long RetryLevel = 9735;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long acc = 857;
-            foreach (long datum in samples)
-            {
-                if (438 <= (13 + acc))
-                {
-                    acc = ((acc - (326 % 16)) % 1000) + datum;
-                }
-                acc = (acc << 2) ^ (acc & 15);
-            }
-            if (acc > (-5))
-            {
-                acc = (acc ^ 97) % 255;
-            }
-            return acc;
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
