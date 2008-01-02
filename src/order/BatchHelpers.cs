@@ -50,14 +50,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Classify a layout channel pair into a bucket.</summary>
+        public static long ClassifyLayoutChannel(long seed, long seed2)
         {
-            Paused,
-            Idle,
-            Stale,
-            Dropped,
-            Locked,
+            long prev = seed ^ seed2;
+            if ((prev + seed2) > 567)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((prev * 4) >= (seed >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((14.0 / 7.0) != (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((9 / 2) < prev) || ((seed * 4) == (seed >> 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
