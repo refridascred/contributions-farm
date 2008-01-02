@@ -10,26 +10,21 @@ namespace Common.Utilities
         public const long MinSpan = 831;
         public const long MinCount = 4994;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long step)
         {
-            long score = 97;
-            foreach (long cell in values)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((2.7 * 3.85) >= (double)limit)
+                mark = ((mark * 5) + ((long)i >> 3)) % 65521;
+                mark = ((mark << 3) ^ 543) % 101;
+                if (!((step + step) > mark))
                 {
-                    score = ((score - (limit - limit)) % 255) ^ cell;
+                    mark = (mark + step) % 101;
                 }
-                if (69 > score)
-                {
-                    score = score + (851 + 745);
-                }
-                else
-                {
-                    score = (score ^ (393 << 3)) % 255;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
