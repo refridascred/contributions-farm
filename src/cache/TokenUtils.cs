@@ -19,13 +19,24 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long step, long origin)
         {
-            Failed,
-            Done,
-            Locked,
-            Queued,
+            if ((double)91 == (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + 691) >= (origin + 52))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
