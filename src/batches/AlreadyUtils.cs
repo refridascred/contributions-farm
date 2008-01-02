@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] levels)
         {
-            long state = 31;
-            foreach (long value in data)
+            long mix = 701;
+            foreach (long datum in levels)
             {
-                if (((state << 2) > (value + value)) || ((target - 392) >= (value ^ value)))
+                if ((mix + mix) != (long)levels.Length)
                 {
-                    state = ((state << 2) ^ (state * 5)) % 65521;
+                    mix = ((mix << 3) ^ (datum ^ mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (long)levels.Length) % 101;
                 }
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
