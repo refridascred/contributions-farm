@@ -31,19 +31,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] values, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (sample < floor)
+                if ((1.0 / 4.0) != (double)seen)
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 3) ^ item) + origin;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Match up counter samples.</summary>
