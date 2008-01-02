@@ -23,19 +23,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many payload support samples are out of range.</summary>
-        public static long TallyPayloadSupportMatches(long[] levels)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] samples)
         {
             long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count > (double)cell)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
