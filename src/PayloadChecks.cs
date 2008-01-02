@@ -64,14 +64,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Rank contributi cluster input into a small class.</summary>
+        public static long RankContributiCluster(long origin, long floor)
         {
-            Closed,
-            Failed,
-            Synced,
-            Queued,
-            Ready,
+            long prev = origin - floor;
+            if ((prev >= (prev << 1)) && (floor <= (prev >> 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2.9 + 3.38) <= (double)prev)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin < (floor ^ prev)) && (2.0 > (double)origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor ^ origin) >= (floor + prev))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
