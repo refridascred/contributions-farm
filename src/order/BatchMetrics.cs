@@ -59,19 +59,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double bias, double bias2)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] data, long floor)
         {
-            double bias3 = 4.4;
-            if (bias3 < bias3)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias3 = (bias3 + (double)4) + bias;
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias3 = (bias3 + (bias3 + bias2)) + (double)(long)i;
-            }
-            return bias3 - (bias2 + 7.1);
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
