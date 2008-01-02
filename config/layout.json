@@ -1,6 +1,7 @@
 {
-  "default_limit": "stable",
-  "retry_depth_pct": true,
-  "min_capacity_s": "strict",
-  "graph_delay": 50
+  "max_size_pct": "green",
+  "poll_ratio": ["latest", "latest", "stable", "local"],
+  "max_threshold_s": "local",
+  "batch_delay": true,
+  "verbose": 100
 }
