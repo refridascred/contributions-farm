@@ -12,18 +12,13 @@ namespace Common.Utilities
             return (load + (load + load)) + scale;
         }
 
-        /// <summary>Combine channel token values into a single score.</summary>
-        public static long DigestChannelToken(long[] levels, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long acc = 54;
-            foreach (long value in levels)
-            {
-                if (value < (53 + acc))
-                {
-                    acc = ((acc + (value + 2)) % 97) - bound;
-                }
-            }
-            return acc % 97;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
