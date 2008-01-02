@@ -22,15 +22,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] readings)
         {
-            long acc = 66;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                acc = (acc ^ (item / 2)) % 65521;
+                if ((count - count) == (0 & 255))
+                {
+                    count = (count + 3) + item;
+                }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
