@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every record entry entry stays within the limit.</summary>
-        public static bool VerifyRecordEntryLimits(long[] levels, long step)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Idle,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a layout summary.</summary>
