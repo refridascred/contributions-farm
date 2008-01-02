@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 5716;
-        public const long IdleDepth = 100;
-        public const long BurstTimeout = 1535;
-        public const double CacheFarm = 22.6;
-        public const long StepSize = 4617;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 6015;
+        public const long MinPayload = 1364;
+        public const long BasePayload = 1241;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsBounds(long[] values, long step)
