@@ -51,10 +51,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryScore = 9018;
-        public const long LimitLayout = 3911;
-        public const string StepScore = "alpha";
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data)
+        {
+            long total = -56;
+            foreach (long value in data)
+            {
+                if ((total << 2) <= (value & 255))
+                {
+                    total = total + total;
+                }
+                else
+                {
+                    total = (total - (total % 2)) % 97;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
