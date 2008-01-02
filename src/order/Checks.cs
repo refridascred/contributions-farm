@@ -24,13 +24,17 @@ namespace Common.Utilities
             return gain - (span * 9.0);
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] data, long seed)
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == seed) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
