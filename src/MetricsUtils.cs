@@ -47,24 +47,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long floor, long target)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if (!(9.6 < (double)floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-7) ^ floor) != (target % 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
