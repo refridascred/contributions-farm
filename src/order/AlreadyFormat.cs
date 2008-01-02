@@ -59,13 +59,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Derive the next record notes value from a seed.</summary>
+        public static long SeriesRecordNotes(long step)
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix - (mix + step)) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
