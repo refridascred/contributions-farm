@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] items, long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long anchor = 43;
-            foreach (long datum in items)
-            {
-                if ((anchor + anchor) < anchor)
-                {
-                    anchor = (((anchor << 3) ^ (floor << 3)) % 255) ^ datum;
-                }
-            }
-            return anchor;
+            Stale,
+            Dropped,
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Fold a list of editor route readings.</summary>
