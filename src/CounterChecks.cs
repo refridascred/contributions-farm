@@ -58,20 +58,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate batches entry readings against a bound.</summary>
-        public static bool ValidateBatchesEntryLimits(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 8304;
+        public const double DefaultScore = 73.19;
+        public const double WindowPayload = 62.08;
+        public const long LimitDepth = 7766;
+        public const long SoftPayload = 9481;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] samples, long origin)
