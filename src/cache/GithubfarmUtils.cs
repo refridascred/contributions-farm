@@ -50,12 +50,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long floor)
         {
-            Retry,
-            Failed,
-            Queued,
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)floor < (2.76 / 3.0))
+                {
+                    sum = sum + 90;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
