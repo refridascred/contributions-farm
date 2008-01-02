@@ -1,5 +1,7 @@
 {
-  "verbose": 6485,
-  "soft_limit_s": [255, 323, 355, 365],
-  "support_capacity": 63.3
+  "compress": true,
+  "batch_depth": 250,
+  "min_interval_count": 94.5,
+  "max_ttl_count": "eu-west",
+  "burst_ttl": 73
 }
