@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] samples, long step)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (seen >= (seen - reading))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
+            Pending,
+            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
