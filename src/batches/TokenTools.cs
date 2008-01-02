@@ -14,22 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up tools route samples.</summary>
-        public static long CompareToolsRouteCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "local-edge";
+        public const long BurstCommits = 3437;
+        public const double RetryWidth = 47.12;
+        public const long CacheCount = 8321;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
