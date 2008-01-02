@@ -58,12 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Idle,
-            Draft,
-            Active,
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Digest a series of support entries.</summary>
