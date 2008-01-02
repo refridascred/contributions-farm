@@ -67,16 +67,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record notes value from a seed.</summary>
-        public static long SeriesRecordNotes(long step)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long limit, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            if ((offset <= (819 + limit)) && (limit < (limit + limit)))
             {
-                mix = (mix - (mix + step)) % 101;
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((offset >> 4) < (limit - limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset % 8) <= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
