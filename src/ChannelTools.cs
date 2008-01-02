@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] items)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((double)count >= 1.0) && (count >= (count >> 4)))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the commits level values.</summary>
