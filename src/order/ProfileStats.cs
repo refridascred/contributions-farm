@@ -73,14 +73,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double floor)
         {
-            New,
-            Active,
-            Stale,
-            Ready,
-            Synced,
+            double load = ratio;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + load) + (double)(long)i) + floor;
+            }
+            return load - ratio;
         }
     }
 }
