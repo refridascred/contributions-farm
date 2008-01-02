@@ -33,12 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Look up the position of a session payload sample.</summary>
+        public static long FindSessionPayloadIndex(long[] data, long limit)
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
