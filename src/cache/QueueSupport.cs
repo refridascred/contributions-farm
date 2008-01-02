@@ -40,17 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile context reading by value.</summary>
-        public static long SeekProfileContextIndex(long[] series, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 403;
+            foreach (long sample in levels)
             {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ sample) - target;
             }
-            return -1;
+            return anchor;
         }
     }
 }
