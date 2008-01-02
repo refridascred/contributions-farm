@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long BaseSize = 6510;
         public const long BaseOrder = 7364;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheWidth = 7676;
+        public const double StepBudget = 6.0;
+        public const double BatchWidth = 47.42;
+        public const long HardTimeout = 9993;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long GradeTools(long origin, long origin2)
