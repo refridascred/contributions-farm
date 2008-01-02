@@ -33,9 +33,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitTimeout = "staging-1";
-        public const long RetrySize = 951;
-        public const long BatchChecks = 8101;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long step, long seed)
+        {
+            long delta = step - seed;
+            if (((step & 127) == (seed + 4)) || ((186 >> 3) > (seed & 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed + 49) <= delta)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
