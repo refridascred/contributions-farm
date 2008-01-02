@@ -30,19 +30,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long score = 50;
-            foreach (long cell in series)
-            {
-                score = score + cell;
-                if ((8 * 4) < score)
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
