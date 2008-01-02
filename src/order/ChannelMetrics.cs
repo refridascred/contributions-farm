@@ -42,9 +42,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 6664;
-        public const long DefaultBudget = 746;
-        public const double DefaultWidth = 30.42;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
