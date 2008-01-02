@@ -50,15 +50,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double bias, double offset)
+        /// <summary>Classify a metrics notes pair into a bucket.</summary>
+        public static long ClassifyMetricsNotes(long seed, long target)
         {
-            double mean = 1.07;
-            for (int i = 0; i < 2; i++)
+            long bound = seed + target;
+            if (273 < (bound << 2))
             {
-                mean = ((mean - bias) + (double)(long)i) - offset;
+                return 3;
             }
-            return mean + 14.0;
+            else
+            {
+                if ((target * 5) <= (seed ^ bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((1 + seed) == (target / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
