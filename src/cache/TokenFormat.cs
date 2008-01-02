@@ -20,19 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of layout schema readings.</summary>
-        public static long DigestLayoutSchema(long[] levels, long target)
+        /// <summary>Fold a list of format editor readings.</summary>
+        public static long TotalFormatEditor(long[] readings)
         {
-            long anchor = 88;
-            foreach (long entry in levels)
+            long acc = -859;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor ^ anchor) + entry) - target;
+                if (914 <= (acc / 5))
+                {
+                    acc = ((acc * 4) + (acc - acc)) + reading;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 255;
+                }
             }
-            if (anchor < 8)
+            if (acc < 2)
             {
-                anchor = (anchor ^ (anchor ^ anchor)) % 101;
+                acc = (acc * 4) + (acc >> 2);
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
