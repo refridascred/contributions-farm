@@ -33,11 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleScore = 23.44;
-        public const string RetryLayout = "latest-edge";
-        public const long CacheInterval = 8504;
-        public const long DefaultLevel = 7179;
+        /// <summary>Derive the next notes channel value from a seed.</summary>
+        public static long IterateNotesChannel(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score ^ ((long)i / 2)) % 101;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double ScaleContributi(double scale, double bias)
