@@ -1,5 +1,7 @@
 {
-  "cache_window_count": "blue",
-  "hard_capacity_ms": 15,
-  "flush_window_s": 5918
+  "contributi_ratio": 33.64,
+  "strict": 6191,
+  "persist": "blue",
+  "max_capacity_count": 31,
+  "default_delay": 1024
 }
