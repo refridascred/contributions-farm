@@ -54,22 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up stats batches samples.</summary>
-        public static long MatchStatsBatchesCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleCount = 7574;
+        public const string BatchScore = "legacy";
+        public const long SoftCount = 5937;
+        public const long BurstContext = 3892;
+        public const double BatchDepth = 29.02;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] samples, long bound)
