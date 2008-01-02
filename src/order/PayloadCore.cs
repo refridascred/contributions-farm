@@ -23,18 +23,19 @@ namespace Common.Utilities
             return load - (double)617;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] samples)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double bias = (double)(9 * 2);
+            if (bias > (double)3)
             {
-                if ((((double)item < (double)seen) || ((seen >> 2) >= (72 - 21))) || (((double)item != (double)31) || ((9 - item) >= seen)))
-                {
-                    seen = seen + 1;
-                }
+                bias = (bias + (double)(-441)) - offset;
             }
-            return seen;
+            else
+            {
+                bias = bias - (double)770;
+            }
+            return bias + scale;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
