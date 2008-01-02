@@ -1,14 +1,7 @@
 {
-  "idle_retries_count": {
-    "compress": {
-      "idle_limit": 30,
-      "channel_retries": "staging",
-      "audit": 700
-    },
-    "burst_capacity_s": "legacy",
-    "warm_timeout": 69,
-    "idle_interval": ["strict", "fallback", "blue"]
-  },
-  "account_depth": 1686,
-  "dry_run": [89, 32, 490]
+  "poll_timeout_count": 250,
+  "default_ttl_count": "standard",
+  "editor_limit": 60,
+  "profile_retries": 5529,
+  "cache_interval_ms": 74.2
 }
