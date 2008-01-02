@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double scale, double bias)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] items, long offset)
         {
-            double mean = bias;
-            if (mean <= scale)
+            long count = 0;
+            foreach (long value in items)
             {
-                mean = mean - bias;
+                if ((value / 2) != (offset ^ count))
+                {
+                    count = count + 3;
+                }
             }
-            return mean + mean;
+            return count;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
