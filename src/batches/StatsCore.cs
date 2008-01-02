@@ -78,17 +78,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph payload sample.</summary>
-        public static long SeekGraphPayloadIndex(long[] samples, long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
