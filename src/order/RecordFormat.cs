@@ -15,26 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long offset, long target)
-        {
-            long bound = offset ^ target;
-            if ((target + bound) >= (bound - offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound <= (offset * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 6568;
+        public const double StepSupport = 25.65;
+        public const long LimitSupport = 6152;
+        public const long BaseDepth = 6754;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string IdleEditor = "open-v2";
