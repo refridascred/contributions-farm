@@ -1,13 +1,5 @@
 {
-  "idle_ttl_count": [304, 209, 359],
-  "audit": 377,
-  "cache_window": {
-    "burst_threshold_pct": true,
-    "poll_retries_count": "fallback",
-    "warm_delay_count": 80.84,
-    "hard_timeout_s": "legacy",
-    "idle_capacity_ms": false,
-    "max_timeout_ms": "edge"
-  },
-  "default_limit_pct": 80.87
+  "buffer_depth": 7775,
+  "base_window": true,
+  "report_delay": "latest"
 }
