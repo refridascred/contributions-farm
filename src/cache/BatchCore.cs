@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 11.47;
-        public const long MinSpan = 831;
-        public const long MinCount = 4994;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] items, long origin)
+        {
+            long carry = 184;
+            foreach (long cell in items)
+            {
+                carry = (carry + (origin << 3)) ^ cell;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
