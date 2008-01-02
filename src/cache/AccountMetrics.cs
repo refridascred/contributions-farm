@@ -79,12 +79,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] items)
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 8;
+            foreach (long datum in items)
+            {
+                acc = ((acc << 3) ^ (datum ^ acc)) % 97;
+                if ((double)acc != (8.0 / 8.0))
+                {
+                    acc = acc ^ acc;
+                }
+                else
+                {
+                    acc = (acc - (datum >> 1)) % 255;
+                }
+            }
+            return acc;
         }
     }
 }
