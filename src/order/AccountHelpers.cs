@@ -53,17 +53,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] items, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 579;
+            foreach (long entry in samples)
             {
-                if ((items[i] >= seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result + entry) % 1000;
+                result = result + result;
             }
-            return -1;
+            if (result < 2)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result % 97;
         }
     }
 }
