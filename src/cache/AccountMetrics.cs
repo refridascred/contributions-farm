@@ -27,11 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] samples, long offset)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
