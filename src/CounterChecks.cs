@@ -59,18 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits stream readings against a rule.</summary>
-        public static long MeasureCommitsStreamMatches(long[] levels, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((3.5 + 9.0) != (double)origin)
+                if (reading >= origin)
                 {
-                    matches = (matches + 2) - entry;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
