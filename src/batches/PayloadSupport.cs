@@ -17,17 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] values, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 27;
+            foreach (long item in items)
             {
-                if (values[i] < step)
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    score = score - ((long)i >> 5);
+                }
+                if (((double)score != (double)item) || ((score >> 4) > (item ^ item)))
+                {
+                    score = (score << 3) ^ (item + score);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
