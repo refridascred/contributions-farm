@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] data, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                long delta = seed % 5;
-                if ((carry - (long)i) != (carry * 3))
+                if ((entry - step) > step)
                 {
-                    carry = (carry + (seed / 6)) % 255;
+                    count = count + 2;
                 }
-                carry = carry ^ (delta + 33);
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
