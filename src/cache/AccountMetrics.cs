@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const long SoftDepth = 7751;
         public const long BaseLayout = 3206;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] values, long target)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                total = (total - (step << 2)) % 1000;
-                if ((double)step < (2.0 + 15.0))
+                if (cell != target)
                 {
-                    total = (total ^ 3) % 101;
+                    flag = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
