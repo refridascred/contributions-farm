@@ -46,17 +46,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] series, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                if ((743 * 5) >= (tally - tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
