@@ -58,18 +58,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] data, long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((6 > (reading - reading)) && ((step >> 5) != (hits + 91)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Active,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
