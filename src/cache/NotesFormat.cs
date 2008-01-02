@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] data, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] data)
         {
-            long result = 71;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                result = result - entry;
-                if ((entry + offset) < entry)
+                if ((datum <= ((long)data.Length + seen)) || (((seen / 9) > (seen + seen)) || ((seen % 7) > (-728))))
                 {
-                    result = ((result << 2) ^ (offset + 83)) % 1000;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a graph summary.</summary>
