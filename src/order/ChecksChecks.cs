@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstRatio = 2792;
-        public const long BurstSpan = 61;
-        public const long MinRatio = 2897;
-        public const double WindowOrder = 35.51;
-        public const long HardBudget = 9980;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long bound, long origin)
+        {
+            if ((bound > (origin + bound)) || (origin >= (38 * 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(482 >= origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxContext = "legacy-1";
