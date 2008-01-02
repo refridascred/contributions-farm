@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 5381;
-        public const double DefaultDepth = 64.23;
-        public const long MinFactor = 1465;
-        public const string StepInterval = "latest-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowInterval = 6334;
+        public const long BatchInterval = 7717;
+        public const long BurstReport = 8372;
+        public const string BurstLevel = "alpha-edge";
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] items)
