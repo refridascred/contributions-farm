@@ -14,13 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            long score = 42;
+            foreach (long reading in levels)
+            {
+                if ((score >> 5) >= score)
+                {
+                    score = (score * 5) + (529 * 2);
+                }
+                else
+                {
+                    score = (score + (reading % 97)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the report level values.</summary>
