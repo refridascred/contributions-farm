@@ -40,19 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] values, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (reading >= origin)
+                if (entry < seed)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
