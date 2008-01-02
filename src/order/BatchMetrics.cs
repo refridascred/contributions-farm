@@ -54,17 +54,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] data, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (data[i] == floor)
+                if ((8 >> 2) < ((-989) + tally))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) ^ datum) + limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
