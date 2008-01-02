@@ -68,22 +68,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Fold a list of buffer checks readings.</summary>
+        public static long TotalBufferChecks(long[] series, long limit)
         {
-            long score = 9;
-            foreach (long item in readings)
+            long acc = 61;
+            foreach (long item in series)
             {
-                if ((4 + item) >= (score ^ item))
+                if (6.7 >= (double)acc)
                 {
-                    score = ((score << 2) ^ (33 ^ 42)) % 4096;
+                    acc = ((acc * 3) + (limit % 7)) + item;
                 }
+                acc = (acc ^ (2 >> 2)) % 65521;
+                acc = acc + 417;
             }
-            if (score < 89)
+            if (acc > 70)
             {
-                score = (score + (score & 63)) % 255;
+                acc = ((acc * 3) + (4 - acc)) % 101;
             }
-            return score % 97;
+            return acc;
         }
     }
 }
