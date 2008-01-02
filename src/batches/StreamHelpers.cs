@@ -34,13 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepScore = "latest";
+        public const long DefaultLayout = 3614;
+        public const long SoftLayout = 3415;
+        public const long BaseLayout = 1280;
+        public const double WindowLayout = 31.77;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] levels)
