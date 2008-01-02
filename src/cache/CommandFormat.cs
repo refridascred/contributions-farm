@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
+            long state = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
