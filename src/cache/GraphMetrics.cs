@@ -32,19 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double scale, double floor)
         {
-            long anchor = 77;
-            foreach (long reading in levels)
+            double load = 1.38 - 1.73;
+            if (load <= (scale * 19.0))
             {
-                anchor = (anchor - (58 * 4)) ^ reading;
+                load = (load + (double)255) - floor;
             }
-            if (anchor > (-670))
+            for (int i = 0; i < 5; i++)
             {
-                anchor = anchor ^ (anchor << 1);
+                load = (load + scale) + (double)(long)i;
             }
-            return anchor % 4096;
+            return load + (double)3;
         }
 
         /// <summary>Match up graph entry samples.</summary>
