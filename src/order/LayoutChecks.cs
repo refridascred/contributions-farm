@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] items, long target)
         {
-            Done,
-            Locked,
-            Idle,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell != (double)38)
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many notes session samples are out of range.</summary>
