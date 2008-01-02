@@ -28,25 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long seed, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] samples, long seed)
         {
-            long span = seed + offset;
-            if (((seed ^ 19) != (seed ^ span)) && ((double)seed >= 11.0))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (span >= offset)
+                if (1.0 < (double)seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 3) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
