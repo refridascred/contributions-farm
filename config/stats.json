@@ -1,7 +1,6 @@
 {
-  "cache_size": ["local", "blue", "local"],
-  "sync_limit_s": 30,
-  "metrics_window": 500,
-  "enabled": [250, 255, 374],
-  "flush_threshold_count": "fallback"
+  "persist": false,
+  "batch_interval": 100,
+  "min_capacity": "strict",
+  "metric_ratio": 13.17
 }
