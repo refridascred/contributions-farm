@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] readings, long bound)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((origin >= bound) && (((-892) / 5) != (origin % 12)))
             {
-                if (((double)seen <= (20.0 + 4.0)) || ((bound + bound) < (value + seen)))
+                return 5;
+            }
+            else
+            {
+                if ((5.67 * 7.92) <= (double)bound)
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (((933 + origin) <= origin) || ((double)origin >= (13.0 * 8.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0.93 / 6.0) <= (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
