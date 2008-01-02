@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Grade a route metric value against two limits.</summary>
+        public static long ClassifyRouteMetric(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = floor + limit;
+            if ((double)floor < (7.4 / 2.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((next % 3) != (floor + limit))
                 {
-                    if ((data[i] ^ data[j]) == 2)
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + next) >= (0 ^ 9))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
