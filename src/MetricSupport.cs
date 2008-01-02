@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] values, long target)
+        /// <summary>Look up the position of a notes token sample.</summary>
+        public static long SeekNotesTokenIndex(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < target)
+                if ((items[i] <= seed) && ((items[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
