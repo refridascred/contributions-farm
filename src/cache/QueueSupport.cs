@@ -21,39 +21,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank support contributi input into a small class.</summary>
-        public static long RankSupportContributi(long seed, long seed2)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] items)
         {
-            long step = seed ^ seed2;
-            if ((seed2 + seed2) <= (step ^ seed))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((seed2 + (-213)) > (seed + seed2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed2 != (16.0 + 9.98))
+                    if ((items[i] ^ items[j]) != 2)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed2 / 8) > (-36)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
