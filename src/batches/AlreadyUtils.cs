@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] levels)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long mix = 701;
-            foreach (long datum in levels)
-            {
-                if ((mix + mix) != (long)levels.Length)
-                {
-                    mix = ((mix << 3) ^ (datum ^ mix)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (long)levels.Length) % 101;
-                }
-            }
-            return mix;
+            public bool Owner { get; set; }
+            public double Level { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
