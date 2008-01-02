@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] readings, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-456) / 7) >= anchor)
+                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor ^ (floor + 2)) % 255;
-                }
-                anchor = anchor ^ (2 << 1);
-                anchor = (anchor - (8 * 5)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
