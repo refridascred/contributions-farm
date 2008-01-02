@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two profile batch measurements.</summary>
-        public static double ScaleProfileBatch(double ratio, double offset)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double rate, double bias)
         {
-            double ratio2 = offset;
-            if (ratio2 >= offset)
+            double weight = rate;
+            if (weight > weight)
             {
-                ratio2 = (ratio2 + (double)2) - ratio;
+                weight = weight - rate;
             }
             else
             {
-                ratio2 = ratio2 - (double)721;
+                weight = weight - (bias - 6.6);
             }
-            return ratio2 - (offset + ratio2);
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (double)170;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
