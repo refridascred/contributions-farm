@@ -38,10 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleBudget = 18.12;
-        public const string CacheWidth = "staging";
-        public const long MaxFarm = 5077;
-        public const long BaseWidth = 9357;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell % 2) < (cell / 4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
