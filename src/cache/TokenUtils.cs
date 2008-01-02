@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Stale,
-            Pending,
-            Ready,
-            New,
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
