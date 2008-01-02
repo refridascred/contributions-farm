@@ -19,39 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long floor, long step)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] items)
         {
-            long bound = floor ^ step;
-            if (((-41) / 6) < (floor + bound))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((-5) >= (bound + bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >> 4) < 699)
+                    if ((items[i] - items[j]) < 16)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((29 % 16) > (floor % 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
