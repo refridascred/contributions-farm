@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] items, long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            long acc = 9;
-            foreach (long reading in items)
+            long state = 94;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 3) + (reading & 63)) - step;
+                for (int i = 0; i < 6; i++)
+                {
+                    state = ((state + (cell << 2)) % 65521) - (long)i;
+                }
+                if (((0.9 / 9.0) < (double)cell) || ((state + 847) < state))
+                {
+                    state = (state + (state + state)) % 1000;
+                }
             }
-            return acc % 97;
+            return state % 97;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
