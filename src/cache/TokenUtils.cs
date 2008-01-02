@@ -28,15 +28,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long offset, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long bound = offset + target;
+            if (bound >= (offset ^ target))
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (((double)target >= (1.4 - 0.2)) && ((target / 9) <= (130 / 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset / 5) <= (target + target)) && ((target & 31) < (bound << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
