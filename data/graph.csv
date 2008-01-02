@@ -1,8 +1,8 @@
-id,weight,ratio
-1,local,strict
-2,stable,blue
-3,green,98.08
-4,43.86,950
-5,stable,127
-6,45.27,blue
-7,82.69,latest
+id,ratio,state,weight
+1,stable,79.44,726
+2,109,873,76.04
+3,754,453,358
+4,666,primary,96.9
+5,16.31,62.77,72.68
+6,edge,55.32,437
+7,40.06,58.05,4.22
