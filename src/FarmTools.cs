@@ -29,15 +29,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double ratio, double offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double rate = ratio;
-            if (rate > (offset - rate))
-            {
-                rate = rate - (rate - offset);
-            }
-            return rate + offset;
+            Queued,
+            Retry,
+            Failed,
+            Dropped,
         }
     }
 }
