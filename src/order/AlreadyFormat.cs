@@ -37,18 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 5975;
+        public const long HardFormat = 8072;
+        public const long DefaultCount = 7350;
+        public const double WindowFormat = 50.15;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LocateFormatIndex(long[] items, long seed)
