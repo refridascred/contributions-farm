@@ -48,22 +48,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm counter readings against a rule.</summary>
-        public static long TallyGithubfarmCounterGaps(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long score = 12;
+            foreach (long entry in values)
             {
-                if ((((double)tally >= 2.41) && ((double)tally != (4.41 * 18.0))) || (((double)tally > (3.0 + 4.4)) || ((tally + value) > value)))
+                score = ((score ^ (score << 2)) % 255) - target;
+                score = (score << 3) ^ (score * 3);
+                if (((entry - 0) <= 666) && ((64 & 3) < (score & 127)))
                 {
-                    tally = tally + 2;
+                    score = (score << 3) ^ (entry % 5);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = score + (31 % 3);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
