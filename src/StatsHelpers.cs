@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] series, long seed)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long mark = 9;
-            foreach (long sample in series)
-            {
-                mark = (((mark << 2) ^ (sample & 31)) % 4096) + seed;
-            }
-            return mark;
+            Retry,
+            Ready,
+            Queued,
         }
 
         /// <summary>Validate support window readings against a bound.</summary>
