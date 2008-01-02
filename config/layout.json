@@ -1,16 +1,8 @@
 {
-  "record_capacity": {
-    "default_size_pct": 9.46,
-    "sync_size_s": 3.81,
-    "hard_interval_count": "staging"
-  },
-  "sync_ratio": "latest",
-  "compress": true,
-  "stats_ratio": "edge",
-  "counter_delay": [216, 145],
-  "soft_interval_s": {
-    "default_window": "strict",
-    "idle_interval_s": "standard",
-    "already_timeout": 1024
-  }
+  "enabled": "edge",
+  "queue_depth": true,
+  "poll_limit": 30,
+  "warm_interval": 210,
+  "base_capacity": 13,
+  "buffer_depth": 60
 }
