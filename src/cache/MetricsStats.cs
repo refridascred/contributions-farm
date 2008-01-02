@@ -17,32 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank metrics layout input into a small class.</summary>
-        public static long GradeMetricsLayout(long step, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] series, long origin)
         {
-            long edge = step + limit;
-            if ((double)limit != (8.6 / 3.0))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0 << 1) > (edge - limit))
+                if ((origin & 7) > (origin / 9))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(limit > (2 + edge)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = (matches + 1) - item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a batch options.</summary>
