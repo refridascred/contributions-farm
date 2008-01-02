@@ -70,13 +70,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] data)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((hits + hits) <= (cell + 90)) && (cell > (cell ^ cell)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
