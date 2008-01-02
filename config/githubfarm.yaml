@@ -1,7 +1,6 @@
 # githubfarm settings
-min_ttl_s: fallback
-min_size:
-  - stable
-  - fallback
-  - blue
-min_retries_pct: eu-west
+poll_limit: 40
+audit: green
+readonly:
+  - primary
+  - eu-west
