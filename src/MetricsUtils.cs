@@ -19,22 +19,37 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long offset, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long floor, long step)
         {
-            if ((7.9 / 9.0) > (double)bound)
+            long bound = floor ^ step;
+            if (((-41) / 6) < (floor + bound))
             {
                 return 1;
             }
             else
             {
-                if ((offset + offset) < offset)
+                if ((-5) >= (bound + bound))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    if ((step >> 4) < 699)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((29 % 16) > (floor % 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
