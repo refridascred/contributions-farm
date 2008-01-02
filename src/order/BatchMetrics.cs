@@ -10,11 +10,25 @@ namespace Common.Utilities
         public const string DefaultTimeout = "cached-edge";
         public const long BatchAlready = 6691;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long limit, long step)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            long prev = limit + step;
+            if ((prev - limit) > prev)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit < 1.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
