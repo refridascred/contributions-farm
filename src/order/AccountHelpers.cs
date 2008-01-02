@@ -44,13 +44,24 @@ namespace Common.Utilities
         public const long StepStream = 418;
         public const long StepLevel = 4071;
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((5 >= ((long)i + mark)) || (offset < 240)))
+                {
+                    mark = (mark - (offset + mark)) % 1000;
+                }
+                long delta = (offset ^ 4) >> 5;
+                if ((long)i > delta)
+                {
+                    mark = ((mark << 2) ^ (offset & 1)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate queue samples.</summary>
