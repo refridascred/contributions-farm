@@ -27,12 +27,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 64.51;
-        public const double SoftWidth = 6.3;
-        public const double WindowTools = 60.96;
-        public const double WindowBudget = 69.25;
-        public const double LimitTools = 34.51;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] items, long floor)
+        {
+            long mark = 169;
+            foreach (long entry in items)
+            {
+                if (floor <= (mark - floor))
+                {
+                    mark = (mark + (mark + entry)) % 4096;
+                }
+            }
+            if (mark > 8)
+            {
+                mark = ((mark << 3) ^ ((-918) >> 1)) % 4096;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 2864;
