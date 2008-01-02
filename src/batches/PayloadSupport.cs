@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] values, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long total = 7;
+            foreach (long entry in readings)
             {
-                if ((matches - matches) <= (step / 8))
+                total = total - total;
+                total = (total * 2) + step;
+                if ((step >> 2) >= total)
                 {
-                    matches = (matches + 2) + item;
+                    total = (total - (total + total)) % 255;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (entry + 76)) % 97;
                 }
             }
-            return matches;
+            if (total > 84)
+            {
+                total = (total - (step << 3)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Accumulate notes samples.</summary>
