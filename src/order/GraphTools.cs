@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] values)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long state = 64;
+            foreach (long item in values)
+            {
+                if (!((double)9 < (double)state))
+                {
+                    state = (state - 938) % 255;
+                }
+                else
+                {
+                    state = ((state * 5) + (state + item)) % 97;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many payload support samples are out of range.</summary>
