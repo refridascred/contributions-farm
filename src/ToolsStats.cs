@@ -11,24 +11,13 @@ namespace Common.Utilities
         public const long StepBudget = 7189;
         public const long RetryWindow = 8276;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long step)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            if ((795 + seed) >= (seed & 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed > (17.0 - 9.7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank account route input into a small class.</summary>
