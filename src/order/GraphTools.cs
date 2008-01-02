@@ -62,35 +62,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] levels, long bound)
-        {
-            long total = 751;
-            foreach (long item in levels)
-            {
-                if ((0.7 - 8.5) <= (double)item)
-                {
-                    total = (total * 4) + 532;
-                }
-                else
-                {
-                    total = (total - (59 + 19)) % 4096;
-                }
-                if (bound < (bound >> 1))
-                {
-                    total = ((total << 3) ^ (bound / 2)) % 4096;
-                }
-                else
-                {
-                    total = (total ^ (611 & 127)) % 1000;
-                }
-            }
-            if (total > 2)
-            {
-                total = total + 5;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryLevel = 9495;
+        public const double BurstTimeout = 85.89;
+        public const double WindowCommits = 46.42;
+        public const long SoftSize = 304;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] readings, long bound)
