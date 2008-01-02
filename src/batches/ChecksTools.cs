@@ -41,19 +41,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] values, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
