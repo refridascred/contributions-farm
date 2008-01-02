@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] readings, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long seed)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long lane = floor ^ seed;
+            if ((29 + floor) <= (lane >> 3))
             {
-                if (value > step)
+                return 2;
+            }
+            else
+            {
+                if ((10.0 + 6.0) < (double)lane)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((4 - lane) <= (lane + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the profile level values.</summary>
