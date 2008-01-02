@@ -29,18 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] values)
         {
-            long carry = 27;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (7 < carry)
+                if (!((value + seen) == (27 % 10)) && ((double)value == (3.4 + 3.0)))
                 {
-                    carry = ((carry + carry) % 1000) + value;
+                    seen = seen + 2;
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
