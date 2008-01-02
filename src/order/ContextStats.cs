@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const long SoftInterval = 8100;
         public const long RetrySpan = 8209;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long target)
+        /// <summary>Grade a editor cache value against two limits.</summary>
+        public static long ClassifyEditorCache(long floor, long bound)
         {
-            if ((79 + step) > (5 % 7))
+            if (((2.4 * 2.64) > (double)bound) || ((double)floor == (3.0 + 0.6)))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((target % 8) < (70 * 5))
+                if ((bound + floor) != (bound - floor))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 2;
+                    return 7;
                 }
             }
         }
