@@ -28,17 +28,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a schema tools reading by value.</summary>
-        public static long LookupSchemaToolsIndex(long[] series, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((series[i] == limit) && ((series[i] % 2) != 0))
+                long lane = (384 - state) << 1;
+                if ((double)offset == (13.0 + 4.0))
                 {
-                    return (long)i;
+                    state = state - (lane - 31);
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Audit counter batch readings against a rule.</summary>
