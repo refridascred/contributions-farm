@@ -16,18 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first tools command entry that matches the target.</summary>
-        public static long SeekToolsCommandIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitSpan = 5889;
+        public const string WindowPayload = "fallback-1";
+        public const double CacheFactor = 71.2;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double LimitCount = 38.42;
