@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a layout commits reading by value.</summary>
-        public static long LocateLayoutCommitsIndex(long[] readings, long seed)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Pending,
+            Draft,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
