@@ -37,17 +37,23 @@ namespace Common.Utilities
             return scale + (bias * 3.0);
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long step)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)((-28) / 2);
+            if (drift >= (drift - 1.0))
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                drift = drift - (offset * 2.75);
             }
-            return -1;
+            else
+            {
+                drift = drift - 0.5;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (offset * 14.0)) + (double)(long)i;
+            }
+            return drift + (bias * 9.2);
         }
 
         /// <summary>Measure how many editor cluster samples are out of range.</summary>
