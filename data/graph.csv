@@ -1,6 +1,8 @@
-id,active,weight
-1,927,33.57
-2,65.4,cached
-3,cached,edge
-4,886,730
-5,green,73.28
+id,state,count,score,level
+1,open,785,staging,323
+2,77.83,6.66,27.56,green
+3,392,383,local,open
+4,63.47,latest,88,682
+5,strict,edge,222,796
+6,487,51.93,97.29,90.33
+7,5,blue,8,eu-west
