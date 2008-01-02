@@ -39,13 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((long)i >= offset)
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = ((mark << 3) ^ (offset - 414)) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
