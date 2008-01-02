@@ -21,13 +21,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Failed,
-            Active,
-            Stale,
-            Locked,
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
