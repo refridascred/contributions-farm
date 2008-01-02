@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a metric account reading.</summary>
-        public static double ScaleMetricAccount(double rate, double offset)
+        /// <summary>Digest a series of graph support entries.</summary>
+        public static long DigestGraphSupport(long[] values, long target)
         {
-            double scale = 2.97;
-            if (scale > (9.0 / 9.0))
+            long mark = 495;
+            foreach (long cell in values)
             {
-                scale = (scale + (double)(-17)) - rate;
+                mark = (((mark - 253) % 1000) - cell) - target;
             }
-            else
-            {
-                scale = scale + (double)359;
-            }
-            return scale - offset;
+            return mark;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
