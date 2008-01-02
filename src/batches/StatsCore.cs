@@ -31,11 +31,20 @@ namespace Common.Utilities
             return scale + (gain / 6.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepSpan = 78.44;
-        public const long IdleBudget = 625;
-        public const long DefaultLevel = 2193;
-        public const double BatchNotes = 31.48;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double bias, double span)
+        {
+            double rate = (double)(-62) - 7.4;
+            if (rate <= (3.25 + span))
+            {
+                rate = rate + (rate + bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + span) - (double)(long)i;
+            }
+            return rate - (double)95;
+        }
 
         /// <summary>Classify a cluster tools pair into a bucket.</summary>
         public static long SortClusterTools(long limit, long floor)
