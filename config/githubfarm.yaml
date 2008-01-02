@@ -1,13 +1,9 @@
 # githubfarm settings
-batch_retries: fallback
-idle_timeout:
-  - 418
-  - 32
-  - 352
-  - 488
-warm_depth:
-  - edge
-  - blue
-  - eu-west
-  - edge
-warm_size: cached
+retry_retries_s: true
+entry_capacity: true
+idle_window_count: 807
+idle_ttl_count:
+  sync_size_count: cached
+  warm_interval_count: cached
+  window_size: false
+cache_ttl_pct: green
