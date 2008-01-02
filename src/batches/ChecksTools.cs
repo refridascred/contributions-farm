@@ -17,39 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long floor, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] readings, long offset)
         {
-            long span = floor ^ step;
-            if ((4 >= (floor + step)) || ((floor * 4) < (span & 7)))
+            long carry = 36;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor + floor) < span)
+                if (((value / 5) != (2 + carry)) && (value >= (value & 255)))
                 {
-                    return 8;
+                    break;
                 }
-                else
+                if ((offset - offset) < ((long)readings.Length + carry))
                 {
-                    if (!((24 - floor) >= step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step + 297) > (floor << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = carry ^ 971;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Grade a report record value against two limits.</summary>
