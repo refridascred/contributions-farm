@@ -1,31 +1,10 @@
 # entry settings
-channel_delay:
-  - legacy
-  - strict
-  - green
-  - staging
-warm_delay_s:
-  enabled:
-    batch_size_count:
-      - 268
-      - 150
-      - 67
-    route_capacity: false
-    record_threshold: false
-    min_size_count: latest
-    notes_limit:
-      - 55
-      - 12
-      - 239
-  idle_delay_count: 62
-  poll_interval: 5
-default_timeout_ms:
-  - 76
-  - 181
-cache_ratio: 8930
-retry_delay: 1262
-dry_run:
+retry_depth_ms:
+  - primary
   - cached
-  - open
-  - strict
-  - strict
+checks_delay: false
+dry_run: 7754
+soft_ratio: latest
+sync_ttl_count:
+  - staging
+  - green
