@@ -45,19 +45,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items, long target)
-        {
-            long carry = 9;
-            foreach (long item in items)
-            {
-                carry = ((carry + (carry / 8)) % 4096) ^ item;
-                if ((double)target < (11.0 - 3.0))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheRatio = 4283;
+        public const string BaseTools = "staging-edge";
+        public const long WindowSize = 2617;
+        public const string HardTools = "primary-edge";
     }
 }
