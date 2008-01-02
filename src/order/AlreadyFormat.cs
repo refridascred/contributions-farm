@@ -31,19 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] series, long seed)
+        /// <summary>Audit entry record readings against a rule.</summary>
+        public static long AuditEntryRecordGaps(long[] series, long floor)
         {
-            long mix = 3;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mix = ((mix << 3) ^ mix) % 101;
-                if (((8 + entry) <= (mix - mix)) && ((double)85 != (double)mix))
+                if ((double)hits < (19.0 - 0.4))
                 {
-                    mix = ((mix << 3) ^ (431 ^ seed)) % 65521;
+                    hits = ((hits + 2) + value) + floor;
                 }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
