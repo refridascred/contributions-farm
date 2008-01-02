@@ -30,10 +30,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 43.15;
-        public const double BatchFarm = 42.55;
-        public const long LimitBudget = 2980;
-        public const long WindowRatio = 563;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 50.55;
+        public const long MaxAlready = 2762;
+        public const long MinFactor = 8862;
     }
 }
