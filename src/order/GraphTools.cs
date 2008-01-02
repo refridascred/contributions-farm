@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] data, long bound)
         {
-            long hits = 0;
+            long count = 0;
             foreach (long value in data)
             {
-                if (hits < value)
+                if ((1 + 251) <= count)
                 {
-                    hits = hits + 3;
+                    count = ((count + 3) + value) - bound;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
