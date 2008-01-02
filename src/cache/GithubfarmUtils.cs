@@ -24,13 +24,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Idle,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 69.21;
+        public const long BaseLevel = 8647;
+        public const long IdleSpan = 6305;
+        public const long HardAccount = 6412;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
