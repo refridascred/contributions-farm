@@ -1,7 +1,5 @@
 {
-  "idle_window_ms": "cached",
-  "verbose": "eu-west",
-  "persist": true,
-  "flush_depth": false,
-  "token_ratio": 7144
+  "poll_window": ["open", "standard", "stable"],
+  "retry_ratio_s": 30,
+  "dry_run": 60
 }
