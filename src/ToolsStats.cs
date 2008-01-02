@@ -62,12 +62,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryPayload = "latest-1";
-        public const double MinRatio = 35.49;
-        public const string MinPayload = "strict-1";
-        public const long MaxPayload = 3767;
-        public const long StepPayload = 1885;
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double bias, double floor)
+        {
+            double scale = (double)2 / 3.0;
+            if (scale > (bias / 7.0))
+            {
+                scale = (scale - bias) + floor;
+            }
+            return scale + (bias / 2.0);
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
