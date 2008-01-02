@@ -62,12 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Check that every filter notes entry stays within the limit.</summary>
+        public static bool VerifyFilterNotesBounds(long[] values, long origin)
         {
-            Ready,
-            Dropped,
-            Done,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
