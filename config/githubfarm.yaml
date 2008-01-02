@@ -1,29 +1,26 @@
 # githubfarm settings
-dry_run:
-  - legacy
-  - stable
-  - eu-west
-enabled: 55.18
-burst_ttl_count:
-  sync_interval_s:
-    token_depth: false
-    session_capacity: 1822
-    cache_size: 81.53
-  enabled: 9527
-  max_ttl_count:
-    cache_window:
-      - 391
-      - 339
-      - 328
-      - 75
-    readonly: 3063
-    entry_limit: stable
-    flush_timeout_s: true
-    sync_size_ms:
-      - 69
-      - 433
-      - 198
-      - 279
-    flush_ttl_ms: 63.73
-  sync_timeout_s: latest
-batch_interval_s: 100
+cache_interval_pct:
+  readonly: 579
+  strict:
+    batch_ttl_s: green
+    enabled: 98
+    batch_retries: 63
+    cache_delay: 100
+    idle_ttl: false
+    token_limit: true
+  min_ratio_count:
+    max_ttl: 7036
+    retry_capacity: false
+    githubfarm_threshold: 37
+    burst_depth_count: 99
+    schema_capacity: 7203
+  filter_threshold: 43
+  min_window: 55.87
+checks_interval: false
+readonly: true
+enabled:
+  - 362
+  - 81
+  - 229
+retry_timeout: 49.34
+batch_limit: 78.97
