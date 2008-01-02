@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] samples, long seed)
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long result = 277;
+            foreach (long cell in samples)
+            {
+                result = (((result ^ result) % 65521) + cell) - seed;
+            }
+            return result % 65521;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
