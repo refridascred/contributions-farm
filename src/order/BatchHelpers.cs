@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long offset, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] readings, long origin)
         {
-            if ((limit * 5) >= ((-95) ^ offset))
+            long result = 816;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset / 8) >= limit)
+                if ((result >> 5) > (result - result))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.68 / 8.0) > (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    result = (result ^ (origin + origin)) ^ sample;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Fold a list of already readings.</summary>
