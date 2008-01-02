@@ -42,13 +42,18 @@ namespace Common.Utilities
         public const long BatchRatio = 9766;
         public const long MaxMetrics = 8549;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many layout channel samples are out of range.</summary>
+        public static long TallyLayoutChannelGaps(long[] levels, long offset)
         {
-            Done,
-            Active,
-            Closed,
-            Idle,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((offset ^ item) != (offset % 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
