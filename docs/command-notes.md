@@ -1,11 +1,12 @@
 # Command notes
 
-When a commits fails, the payload handler retries a few times before giving up.
-The queue module keeps farm values in sync with the support cache.
-The editor module keeps editor values in sync with the counter cache.
+A order that stays idle for too long is moved to the command list.
+Keep order and entry names short and lowercase.
+The account module keeps window values in sync with the profile cache.
 
 ## Guidelines
 
-- Keep batch values small
-- Review account limits each release
-- Document new notes fields
+- Validate window input early
+- Prefer schema defaults
+- Document new filter fields
+- Log every buffer change
