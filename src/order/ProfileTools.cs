@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long CacheRecord = 8253;
         public const long LimitRecord = 5194;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] samples, long step)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a batches snapshot.</summary>
