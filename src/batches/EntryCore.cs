@@ -11,39 +11,13 @@ namespace Common.Utilities
         public const double WindowBudget = 20.12;
         public const long BaseBudget = 9553;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long origin, long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long next = origin ^ step;
-            if ((step ^ origin) <= origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)next >= (15.0 + 5.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.6 + 6.0) <= (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6 << 3) == (step - origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
