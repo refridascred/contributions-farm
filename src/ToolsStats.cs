@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long StepBudget = 7189;
         public const long RetryWindow = 8276;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchSpan = 3908;
-        public const long BaseToken = 8290;
-        public const string BurstTimeout = "strict";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (seen >= (seen * 4))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank account route input into a small class.</summary>
         public static long RankAccountRoute(long bound, long offset)
