@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
