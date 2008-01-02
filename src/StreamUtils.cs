@@ -20,38 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long offset, long offset2)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] series)
         {
-            if (((offset / 6) < (offset2 + offset2)) && ((offset2 + offset) == (offset ^ offset2)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset > (1.6 - 16.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)offset != (8.24 + 9.9)) || ((offset2 + offset2) != (5 * 2)))
+                    if ((series[i] ^ series[j]) < 10)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset <= (677 - offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
