@@ -48,11 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardAlready = 64.26;
-        public const double CacheInterval = 49.91;
-        public const long BurstAlready = 3284;
-        public const long MaxCount = 3661;
-        public const double MinDepth = 4.33;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((3 >> 5) >= (tally & 255)) || ((double)tally == (3.03 - 7.0)))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
