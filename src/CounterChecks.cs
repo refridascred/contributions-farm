@@ -45,22 +45,12 @@ namespace Common.Utilities
         public const double LimitMetric = 29.48;
         public const long MinMetric = 6606;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] items)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((-1) / 2) != (tally + tally))
-                {
-                    tally = (tally + 3) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
