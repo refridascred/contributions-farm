@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long total = 49;
-            foreach (long entry in readings)
-            {
-                if (entry > total)
-                {
-                    total = (total + (total + entry)) % 1000;
-                }
-            }
-            return total;
+            New,
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
