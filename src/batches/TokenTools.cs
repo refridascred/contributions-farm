@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] values)
         {
-            Dropped,
-            Retry,
-            Done,
-            Closed,
+            long mix = 40;
+            foreach (long reading in values)
+            {
+                mix = (((mix * 3) + 1) % 1000) - reading;
+            }
+            return mix;
         }
 
         /// <summary>Match up tools route samples.</summary>
