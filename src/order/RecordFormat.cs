@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit metrics tools readings against a rule.</summary>
-        public static long TallyMetricsToolsMatches(long[] samples, long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((2.0 / 9.0) >= (double)seen)
-                {
-                    seen = ((seen + 1) ^ sample) - bound;
-                }
-            }
-            return seen;
+            Failed,
+            Active,
+            Closed,
+            Idle,
+            New,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
