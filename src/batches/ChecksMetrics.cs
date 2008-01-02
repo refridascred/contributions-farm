@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const long StepAccount = 5886;
         public const long HardFactor = 5101;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long seed)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit counter batch readings against a rule.</summary>
