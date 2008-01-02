@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 5953;
-        public const long DefaultAccount = 3258;
-        public const string BaseAccount = "alpha";
-        public const long BurstFactor = 8710;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftScore = 32.14;
+        public const string DefaultTimeout = "cached-edge";
+        public const long BatchAlready = 6691;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
