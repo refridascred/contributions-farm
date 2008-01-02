@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] series, long seed)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Rank already input into a small class.</summary>
