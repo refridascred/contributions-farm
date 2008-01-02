@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Rank cluster entry input into a small class.</summary>
+        public static long BucketClusterEntry(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((offset + target) < target)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((offset & 31) >= offset) || ((offset ^ offset) <= (offset / 6)))
                 {
-                    if ((values[i] ^ values[j]) == 19)
+                    return 7;
+                }
+                else
+                {
+                    if ((4 - 500) != (offset + target))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target >> 4) <= target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
