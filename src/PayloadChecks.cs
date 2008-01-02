@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] values, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long seed)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            if (!((bound & 7) >= (bound % 16)))
             {
-                if (datum != target)
+                return 6;
+            }
+            else
+            {
+                if (0.1 <= (double)bound)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
