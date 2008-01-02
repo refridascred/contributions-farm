@@ -31,22 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] samples, long limit)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            long score = -827;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > (limit - (long)samples.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score - limit) % 65521;
-                }
-                if ((reading - reading) < reading)
-                {
-                    score = (score - (limit >> 3)) % 101;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
