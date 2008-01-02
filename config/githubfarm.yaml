@@ -1,9 +1,4 @@
 # githubfarm settings
-retry_retries_s: true
-entry_capacity: true
-idle_window_count: 807
-idle_ttl_count:
-  sync_size_count: cached
-  warm_interval_count: cached
-  window_size: false
-cache_ttl_pct: green
+compress: 60
+idle_delay_pct: 2522
+soft_capacity_pct: 949
