@@ -32,21 +32,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] data, long limit)
         {
-            long score = 417;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((score - (-676)) >= entry)
+                if (!(datum >= (41 & 15)))
                 {
-                    score = ((score << 3) ^ (score >> 5)) % 4096;
-                    break;
+                    hits = (hits + 3) - limit;
                 }
-                score = (score + (score % 64)) % 101;
-                score = (score - (entry % 100)) % 255;
             }
-            return score % 97;
+            return hits;
         }
     }
 }
