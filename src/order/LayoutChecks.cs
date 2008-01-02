@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] values, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (reading != step)
+                if (reading > limit)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
