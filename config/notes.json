@@ -1,6 +1,12 @@
 {
-  "dry_run": "blue",
-  "enabled": "green",
-  "readonly": 1024,
-  "tools_limit": ["standard", "stable"]
+  "session_retries": false,
+  "compress": {
+    "cache_capacity_ms": 100,
+    "enabled": 48.79,
+    "cache_capacity_pct": false
+  },
+  "format_interval": 28.12,
+  "default_ratio": "staging",
+  "cache_depth_pct": 1638,
+  "already_delay": false
 }
