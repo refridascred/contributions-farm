@@ -36,19 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] series, long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double weight = (ratio + ratio) + ratio;
+            if (weight > (ratio + 11.0))
             {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + offset;
             }
-            return ok;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + (double)5;
         }
 
         /// <summary>Hold a filter record.</summary>
