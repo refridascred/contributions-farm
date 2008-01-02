@@ -1,12 +1,7 @@
 # githubfarm settings
-retry_ratio_count: standard
-sync_size_pct:
-  - 397
-  - 494
-  - 84
-  - 74
-max_ttl:
-  - strict
+stream_ratio:
   - stable
-  - local
-  - blue
+  - fallback
+min_ttl_count: blue
+warm_limit: blue
+max_ttl_pct: false
