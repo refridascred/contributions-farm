@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long limit, long bound)
         {
-            Locked,
-            Queued,
-            Done,
-            Retry,
+            long diff = limit + bound;
+            if ((double)bound >= 2.4)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)limit > (0.64 - 6.57)) && ((double)diff < (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
