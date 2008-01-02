@@ -27,39 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank contributi token input into a small class.</summary>
-        public static long BucketContributiToken(long seed, long floor)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long cur = seed ^ floor;
-            if ((floor + seed) > (floor & 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if (cur < seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur + floor) >= (floor & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor * 5) > floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
