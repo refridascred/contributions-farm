@@ -1,21 +1,19 @@
 {
-  "compress": {
-    "compress": "fallback",
-    "batch_capacity_ms": 79.52,
-    "min_size": 30,
-    "batch_limit": [159, 416, 126, 134],
-    "queue_ttl": "green",
-    "notes_capacity": "fallback"
+  "cluster_ttl": {
+    "hard_window_count": 65,
+    "soft_threshold_pct": 30,
+    "retry_timeout_s": ["edge", "local"],
+    "cache_interval_s": "standard"
   },
-  "hard_ttl": "legacy",
-  "warm_capacity": {
-    "cache_size_s": ["edge", "edge", "open"],
-    "soft_ttl_pct": 30,
-    "soft_interval": {
-      "audit": 97,
-      "cache_window": 80.05,
-      "batch_depth": 100
-    }
-  },
-  "route_ttl": "standard"
+  "buffer_ttl": 2629,
+  "hard_ttl": 20,
+  "batch_limit_pct": {
+    "enabled": {
+      "route_size": 91,
+      "persist": "legacy",
+      "base_limit": [297, 281, 176, 225]
+    },
+    "report_capacity": ["open", "local", "cached"],
+    "stream_window": 500
+  }
 }
