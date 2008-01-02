@@ -46,18 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] samples, long step)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long anchor = 89;
-            foreach (long item in samples)
-            {
-                if (((anchor + item) <= anchor) && (anchor > (anchor / 3)))
-                {
-                    anchor = anchor ^ (step << 2);
-                }
-            }
-            return anchor % 1000;
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
