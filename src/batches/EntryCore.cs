@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double rate, double bias)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double bias2 = bias;
-            if (bias2 <= bias)
-            {
-                bias2 = (bias2 - bias) - rate;
-            }
-            return bias2 - bias;
+            Paused,
+            Retry,
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Check that every githubfarm commits entry stays within the limit.</summary>
