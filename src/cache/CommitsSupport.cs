@@ -39,18 +39,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] levels, long floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)seen != (14.0 + 9.2))
-                {
-                    seen = ((seen + 1) ^ entry) + floor;
-                }
-            }
-            return seen;
+            Dropped,
+            Retry,
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
