@@ -36,12 +36,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Derive the next format payload value from a seed.</summary>
+        public static long IterateFormatPayload(long origin)
         {
-            Stale,
-            Synced,
-            Active,
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if (origin > total)
+                {
+                    long matches = total;
+                    total = ((total << 2) ^ (origin - matches)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
