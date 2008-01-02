@@ -30,18 +30,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] values)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((1.02 * 6.0) <= (double)entry) || ((double)tally >= (6.0 / 7.0))))
+                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
