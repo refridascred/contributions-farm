@@ -78,11 +78,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 5.17;
-        public const double SoftInterval = 28.0;
-        public const long HardGraph = 2866;
-        public const long BatchGraph = 2315;
-        public const string SoftLevel = "standard-edge";
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
