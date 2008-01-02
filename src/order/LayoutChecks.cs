@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 66.9;
-        public const long DefaultRatio = 8884;
-        public const string DefaultBudget = "local-edge";
-        public const double IdleDepth = 3.6;
-        public const string CacheScore = "staging-edge";
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Done,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Measure how many notes session samples are out of range.</summary>
         public static long MeasureNotesSessionMatches(long[] values, long floor)
