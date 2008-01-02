@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long LimitCount = 7637;
         public const double HardTimeout = 12.35;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long bound)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = weight;
+            if (weight2 <= (weight + weight2))
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + (weight / 8.0);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 - (offset / 9.0)) + (double)(long)i;
+            }
+            return weight2 + (double)5;
         }
 
         /// <summary>Hold a order stats.</summary>
