@@ -35,25 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long origin, long origin2)
-        {
-            long span = origin - origin2;
-            if ((origin2 % 16) <= (span << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((span <= (origin - span)) || (7.49 <= (double)span))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitInterval = 97.93;
+        public const string StepLevel = "strict-v2";
+        public const long BaseAccount = 2137;
+        public const long BatchSize = 4222;
+        public const double WindowAccount = 85.25;
     }
 }
