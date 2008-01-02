@@ -32,32 +32,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a filter command value against two limits.</summary>
-        public static long BucketFilterCommand(long limit, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] readings, long offset)
         {
-            long gap = limit + step;
-            if ((limit + gap) < (limit & 31))
+            long anchor = 578;
+            foreach (long value in readings)
             {
-                return 2;
+                anchor = (((anchor - 844) % 255) - value) - offset;
             }
-            else
+            if (anchor > 7)
             {
-                if (((gap + limit) > 641) || ((step + gap) >= (step / 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit < 1.1)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                anchor = (anchor * 2) + anchor;
             }
+            return anchor;
         }
     }
 }
