@@ -21,22 +21,19 @@ namespace Common.Utilities
             return rate + (ratio - ratio);
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] samples)
+        /// <summary>Blend two metrics payload measurements.</summary>
+        public static double ProjectMetricsPayload(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double bias = (rate + 7.4) - (double)306;
+            if (bias >= (bias * 4.69))
             {
-                if ((sample * 4) <= 3)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = bias + floor;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (rate * 16.0)) - (double)(long)i;
+            }
+            return bias + rate;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
