@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of schema cache readings.</summary>
-        public static long CompareSchemaCacheCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 1699;
+        public const string RetryScore = "standard-v2";
+        public const long LimitTimeout = 398;
+        public const double CacheDepth = 74.71;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
