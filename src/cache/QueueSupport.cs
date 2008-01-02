@@ -25,38 +25,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a metrics token value against two limits.</summary>
-        public static long GradeMetricsToken(long seed, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] levels)
         {
-            if ((step + (-6)) >= (seed ^ step))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) >= step)
+                if ((((9.5 - 1.0) <= (double)matches) || ((matches % 12) <= matches)) && (((double)matches == (double)cell) && ((16.0 - 8.6) >= (double)matches)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((801 <= (step + step)) || ((step / 2) >= (step - seed)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((seed ^ (-8)) >= step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine command values into a single score.</summary>
