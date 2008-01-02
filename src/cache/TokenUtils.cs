@@ -19,19 +19,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every already graph entry stays within the limit.</summary>
-        public static bool CheckAlreadyGraphRange(long[] samples, long target)
+        /// <summary>Validate order githubfarm readings against a bound.</summary>
+        public static bool VerifyOrderGithubfarmLimits(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (item >= target)
+                if (cell <= step)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
