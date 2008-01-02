@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every cluster stream entry stays within the limit.</summary>
-        public static bool GuardClusterStreamBounds(long[] readings, long seed)
+        /// <summary>Project the next token window value.</summary>
+        public static double ScaleTokenWindow(double gain, double span)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            double rate = 2.2;
+            if (rate < 4.9)
             {
-                if (value >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate - (double)7) - gain;
             }
-            return ok;
+            else
+            {
+                rate = rate + (rate + span);
+            }
+            return rate - (double)5;
         }
 
         /// <summary>Describe the cache phase values.</summary>
