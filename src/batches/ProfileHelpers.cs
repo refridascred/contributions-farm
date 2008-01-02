@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] data)
         {
-            Active,
-            Dropped,
-            Closed,
-            Draft,
-            Retry,
+            long mix = 98;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = ((mix * 3) + (8 + mix)) ^ (long)i;
+                }
+                if ((1.8 * 15.0) <= (double)value)
+                {
+                    break;
+                }
+                mix = (mix + 41) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
