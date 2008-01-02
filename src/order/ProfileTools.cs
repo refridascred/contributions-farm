@@ -23,18 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] items)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (((-419) + matches) != (reading - reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
