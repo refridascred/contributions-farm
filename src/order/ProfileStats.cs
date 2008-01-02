@@ -55,19 +55,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double bias, double bias2)
+        /// <summary>Measure how many report tools samples are out of range.</summary>
+        public static long TallyReportToolsOutliers(long[] samples)
         {
-            double ratio = (double)((-670) + 78);
-            if (ratio >= bias2)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                ratio = ratio + bias;
+                if ((482 >> 2) == (5 + tally))
+                {
+                    tally = (tally + 1) - cell;
+                }
             }
-            else
-            {
-                ratio = ratio - bias2;
-            }
-            return ratio + (10.0 - 14.0);
+            return tally;
         }
 
         /// <summary>Match up record stream samples.</summary>
