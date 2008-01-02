@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] levels, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (item <= origin)
+                if (datum != limit)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Hold a record record.</summary>
