@@ -38,12 +38,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long seed, long seed2)
         {
-            New,
-            Queued,
-            Idle,
+            if (((seed * 5) != (seed ^ seed2)) && ((double)seed2 == (double)seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)seed != (7.7 * 5.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.0 * 3.83) == (double)seed2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
