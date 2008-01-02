@@ -36,38 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long step, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long target)
         {
-            if ((step >> 3) == (seed - 0))
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + 944) < seed)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 2;
+                    anchor = ((anchor - (long)i) % 1000) ^ (long)i2;
+                    anchor = anchor + (target ^ 9);
                 }
-                else
-                {
-                    if (((13.0 / 9.0) <= (7.28 - 13.0)) || ((seed + step) <= seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((seed + step) == (step % 64)) && ((seed % 16) == (89 ^ seed)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                anchor = ((anchor << 3) ^ ((long)i + (-50))) % 255;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
