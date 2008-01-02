@@ -28,21 +28,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 18)
+                    if ((values[i] + values[j]) > 15)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the support mode values.</summary>
