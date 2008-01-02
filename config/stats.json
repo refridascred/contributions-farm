@@ -1,6 +1,12 @@
 {
-  "sync_retries": 19,
-  "report_ttl": "primary",
-  "poll_window_pct": [12, 282, 85, 469],
-  "burst_window": 41
+  "support_delay": ["green", "stable", "cached", "standard"],
+  "burst_ttl_ms": {
+    "default_interval": "standard",
+    "metric_window": [25, 482],
+    "default_threshold": 250,
+    "default_size_pct": "staging"
+  },
+  "flush_window": 94.7,
+  "readonly": true,
+  "warm_delay": ["cached", "eu-west", "latest", "strict"]
 }
