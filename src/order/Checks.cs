@@ -48,19 +48,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] items, long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long anchor = 6;
-            foreach (long entry in items)
-            {
-                anchor = (((anchor + (40 / 9)) % 101) ^ entry) - limit;
-                if ((4.1 / 3.0) != (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            Draft,
+            Active,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
