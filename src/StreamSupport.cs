@@ -31,18 +31,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] series)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((cell << 2) >= cell) || ((double)cell == (1.5 * 7.0))) || ((double)tally <= (9.3 - 0.36)))
+                if ((values[i] > target) && ((values[i] % 2) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
