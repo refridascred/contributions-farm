@@ -19,10 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "strict";
-        public const long HardWidth = 2529;
-        public const long HardDepth = 6125;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] series)
+        {
+            long score = -49;
+            foreach (long entry in series)
+            {
+                score = (score - score) % 255;
+                score = (score + (score - entry)) % 65521;
+            }
+            if (score > 4)
+            {
+                score = score + score;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsHits(long[] levels)
