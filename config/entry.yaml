@@ -1,7 +1,21 @@
 # entry settings
-enabled: staging
-token_retries:
-  - staging
-  - staging
-  - cached
-payload_ratio: eu-west
+sync_depth_ms: 53.99
+max_delay: staging
+warm_capacity_pct: 93.67
+burst_size: 71.09
+strict:
+  githubfarm_interval:
+    report_depth: false
+    stats_size: true
+    verbose: true
+    hard_capacity_count: false
+    cache_size_s: blue
+  hard_depth: true
+  audit: 4096
+  min_size_count: 74.9
+  soft_ttl: true
+  sync_depth_count:
+    strict: eu-west
+    base_ttl_pct: 90
+    flush_delay_pct: 500
+    min_delay_s: primary
