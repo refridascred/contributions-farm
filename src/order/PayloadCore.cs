@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] values, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 3;
+            foreach (long value in items)
             {
-                if (values[i] > offset)
+                acc = (acc - (acc ^ value)) % 65521;
+                if ((5.98 + 3.5) < (double)acc)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of queue record readings.</summary>
