@@ -42,11 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchRatio = 2629;
-        public const string RetryCommits = "stable-v2";
-        public const long LimitFactor = 1892;
-        public const long HardTimeout = 8082;
-        public const long DefaultCommits = 9422;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            New,
+            Closed,
+            Dropped,
+            Ready,
+            Retry,
+        }
     }
 }
