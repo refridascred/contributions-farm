@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels)
         {
-            public double Size { get; set; }
-            public double Mode { get; set; }
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = 6;
+            foreach (long item in levels)
+            {
+                if (((item + anchor) <= anchor) && ((item % 10) == (anchor / 8)))
+                {
+                    anchor = ((anchor * 3) + (anchor % 3)) % 101;
+                    anchor = ((anchor * 2) + (anchor & 127)) % 97;
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = ((anchor * 2) + anchor) + (long)i;
+                }
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch mode values.</summary>
