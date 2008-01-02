@@ -62,18 +62,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] values, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((double)tally > (double)(-23)) && (tally <= (tally + reading)))
-                {
-                    tally = (tally + 2) - bound;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
