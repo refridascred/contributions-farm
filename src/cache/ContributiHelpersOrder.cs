@@ -32,11 +32,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double scale, double offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double mean = (double)(6 / 8);
-            return (mean + offset) + scale;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
