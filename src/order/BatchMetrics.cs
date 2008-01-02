@@ -57,13 +57,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Synced,
-            Pending,
-            Idle,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstSize = "alpha";
+        public const long CacheCounter = 8095;
+        public const long BatchWidth = 8856;
     }
 }
