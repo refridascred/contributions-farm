@@ -30,11 +30,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] data)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches + 9) > (matches * 3))
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
