@@ -23,11 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double weight, double floor)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double drift = weight + floor;
-            return drift - (floor * 7.2);
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit cache githubfarm readings against a rule.</summary>
