@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double bias)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] readings, long offset)
         {
-            double ratio = (double)(78 + 82);
-            if (ratio < (double)238)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                ratio = ratio - (bias - scale);
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)9;
-            }
-            return ratio + 3.6;
+            return flag;
         }
     }
 }
