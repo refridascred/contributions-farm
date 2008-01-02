@@ -13,21 +13,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
