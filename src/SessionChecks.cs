@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 4434;
-        public const long CacheChecks = 2331;
-        public const double WindowChecks = 42.38;
-        public const long BurstChecks = 1844;
-        public const string SoftTimeout = "strict-edge";
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] levels)
