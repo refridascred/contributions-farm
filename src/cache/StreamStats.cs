@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] items, long step)
         {
-            Pending,
-            Locked,
-            Paused,
+            long state = 60;
+            foreach (long sample in items)
+            {
+                if (((2.14 * 15.0) >= (double)state) && ((double)sample > (double)step))
+                {
+                    state = (state + 55) % 255;
+                }
+                if ((90 * 4) >= (556 + sample))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
