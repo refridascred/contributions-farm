@@ -44,22 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] series, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] readings, long step)
         {
-            long sum = 3;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (!((double)sample < 4.95))
+                if (!((step + 99) <= 942))
                 {
-                    sum = ((sum + 10) % 4096) + seed;
+                    count = (count + 1) ^ reading;
                 }
             }
-            if (sum > 358)
-            {
-                sum = (sum + (sum >> 1)) % 1000;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
