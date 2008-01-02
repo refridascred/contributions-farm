@@ -59,39 +59,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long offset)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long slot = target ^ offset;
-            if ((double)slot <= (5.5 / 4.0))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset < (2.0 - 0.8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(7 > offset))
+                    if ((levels[i] ^ levels[j]) > 5)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((69 >> 4) >= (offset + 75))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
