@@ -35,13 +35,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            Locked,
+            Idle,
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
