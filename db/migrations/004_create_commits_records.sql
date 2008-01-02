@@ -2,8 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
+    ratio REAL,
+    created_at TIMESTAMP,
     count INTEGER NOT NULL DEFAULT 0,
-    weight REAL
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
+CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
