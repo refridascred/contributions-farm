@@ -28,13 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Locate a schema tools reading by value.</summary>
+        public static long LookupSchemaToolsIndex(long[] series, long limit)
         {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit counter batch readings against a rule.</summary>
