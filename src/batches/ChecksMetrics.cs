@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double bias, double bias2)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long floor)
         {
-            double rate = (bias / 6.0) - bias2;
-            for (int i = 0; i < 8; i++)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                rate = (rate - rate) + (double)(long)i;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return rate + (rate * 3.4);
+            return sum;
         }
 
         /// <summary>Project the next context channel value.</summary>
