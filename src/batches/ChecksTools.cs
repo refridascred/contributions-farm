@@ -52,11 +52,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 48.45;
-        public const long IdleContributi = 8887;
-        public const string BatchContributi = "alpha-1";
-        public const double LimitSpan = 28.07;
+        /// <summary>Grade a report record value against two limits.</summary>
+        public static long RankReportRecord(long step, long floor)
+        {
+            long offset = step + floor;
+            if ((3 ^ step) != (offset & 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset < floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a context command sample.</summary>
         public static long LookupContextCommandIndex(long[] items, long target)
