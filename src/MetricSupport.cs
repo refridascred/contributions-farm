@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] values, long floor)
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long mix = 5;
+            foreach (long value in values)
+            {
+                mix = mix ^ (96 - mix);
+                if ((value >> 3) <= (long)values.Length)
+                {
+                    mix = (mix ^ floor) % 4096;
+                    break;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (value << 3);
+                }
+                if ((value << 1) < value)
+                {
+                    mix = mix + value;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
