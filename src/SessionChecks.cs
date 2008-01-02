@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstDepth = "standard-1";
+        public const string BaseSchema = "legacy-edge";
+        public const double WindowSchema = 57.73;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long BucketContext(long target, long origin)
