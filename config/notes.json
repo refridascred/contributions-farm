@@ -1,5 +1,16 @@
 {
-  "soft_size": true,
-  "account_timeout": "edge",
-  "warm_timeout_s": 6512
+  "max_interval_ms": "primary",
+  "min_retries_count": {
+    "strict": 80.71,
+    "verbose": 11.81,
+    "sync_threshold_pct": 30,
+    "base_window_count": {
+      "min_interval": "strict",
+      "already_ttl": "eu-west",
+      "soft_interval_ms": "cached",
+      "compress": ["strict", "open", "strict", "staging"],
+      "persist": "cached"
+    }
+  },
+  "max_window_s": 4
 }
