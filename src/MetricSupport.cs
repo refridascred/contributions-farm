@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (!((sample + seen) > (427 << 3)))
+                if (value < target)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a cluster summary.</summary>
