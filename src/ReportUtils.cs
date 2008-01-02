@@ -45,17 +45,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a queue format reading by value.</summary>
-        public static long LookupQueueFormatIndex(long[] values, long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long step, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((step - step) == (step << 1)) || (offset >= (step + step)))
             {
-                if (values[i] > offset)
+                return 4;
+            }
+            else
+            {
+                if ((step - step) <= (step ^ offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((offset * 3) <= (3 & 63)) && ((double)offset > (6.1 - 0.34)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine queue already values into a single score.</summary>
