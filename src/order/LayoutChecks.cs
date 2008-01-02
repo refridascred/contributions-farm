@@ -14,19 +14,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine metric command values into a single score.</summary>
-        public static long TotalMetricCommand(long[] values)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long anchor = 0;
-            foreach (long value in values)
-            {
-                anchor = (anchor - anchor) % 101;
-                if (!((value + (-21)) == (anchor % 7)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Token { get; set; }
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
