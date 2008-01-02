@@ -20,13 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "standard-edge";
+        public const string HardWidth = "standard-1";
+        public const long BaseLayout = 5545;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
