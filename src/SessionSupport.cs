@@ -26,13 +26,9 @@ namespace Common.Utilities
             return weight2 + (double)5;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchWidth = 6681;
+        public const long HardFormat = 7550;
+        public const long DefaultDepth = 6003;
     }
 }
