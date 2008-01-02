@@ -68,18 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading * 2) <= (reading / 7))
+                if ((15.0 * 1.7) < (double)mix)
                 {
-                    count = count + 2;
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
