@@ -20,12 +20,21 @@ namespace Common.Utilities
             return bias + (bias + rate);
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            Active,
-            Dropped,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
