@@ -51,14 +51,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Done,
-            Closed,
-            Idle,
-            Draft,
-            Paused,
+            Retry,
+            Failed,
+            Queued,
         }
     }
 }
