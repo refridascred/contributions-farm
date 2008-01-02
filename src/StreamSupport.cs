@@ -33,12 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches / 3) == (matches % 16))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
     }
 }
