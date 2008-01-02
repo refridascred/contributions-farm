@@ -20,17 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] series, long target)
+        /// <summary>Classify a checks schema pair into a bucket.</summary>
+        public static long GradeChecksSchema(long bound, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((double)target == (9.0 * 4.2)) || ((bound & 3) > (bound - bound)))
             {
-                if (series[i] > target)
+                return 2;
+            }
+            else
+            {
+                if (((bound << 1) > (5 << 1)) || ((target + target) >= bound))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((bound & 255) == (target + bound)) || ((double)target != (9.82 + 2.27)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((3 + bound) == (target + bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine profile already values into a single score.</summary>
