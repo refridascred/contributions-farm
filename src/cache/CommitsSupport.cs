@@ -39,14 +39,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] series, long floor)
         {
-            Dropped,
-            Retry,
-            Failed,
-            Active,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
