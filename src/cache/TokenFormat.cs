@@ -42,14 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Pending,
-            Queued,
-            Draft,
-            Idle,
-            Closed,
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
