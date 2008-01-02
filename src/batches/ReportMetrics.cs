@@ -19,17 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] items, long seed)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                carry = carry + ((long)i << 2);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
