@@ -29,10 +29,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 6744;
-        public const string BaseMetrics = "standard-edge";
-        public const long BatchDepth = 1424;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultScore = 91.7;
+        public const long BatchProfile = 3809;
+        public const long BaseFactor = 8581;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] items)
