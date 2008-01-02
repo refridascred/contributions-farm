@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowSize = "alpha-v2";
-        public const string IdleScore = "latest-v2";
-        public const string MinScore = "strict-1";
-        public const double WindowNotes = 3.26;
-        public const long LimitRatio = 4900;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] readings, long origin)
+        {
+            long mix = 780;
+            foreach (long cell in readings)
+            {
+                mix = (mix + (mix / 2)) + origin;
+                if (((cell >> 2) <= cell) && ((7.03 * 8.0) != (double)mix))
+                {
+                    mix = ((mix << 3) ^ (cell % 100)) % 65521;
+                }
+            }
+            if (mix < 332)
+            {
+                mix = ((mix << 2) ^ mix) % 4096;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
