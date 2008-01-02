@@ -46,13 +46,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] levels)
         {
-            Idle,
-            Paused,
-            Retry,
-            Locked,
+            long total = 1;
+            foreach (long item in levels)
+            {
+                total = total + (item / 2);
+                if (item > (8 * 2))
+                {
+                    total = (total - (total * 2)) % 1000;
+                }
+                else
+                {
+                    total = total + (item << 1);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the route kind values.</summary>
