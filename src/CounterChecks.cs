@@ -62,17 +62,23 @@ namespace Common.Utilities
         public const long LimitDepth = 7766;
         public const long SoftPayload = 9481;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] samples, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 1;
+            foreach (long item in readings)
             {
-                if (samples[i] == origin)
+                if ((bound >> 1) <= (43 << 1))
                 {
-                    return (long)i;
+                    long hits = bound;
+                    mix = ((mix << 2) ^ (hits << 1)) % 101;
+                }
+                if ((mix << 1) < item)
+                {
+                    mix = (mix + bound) % 4096;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
