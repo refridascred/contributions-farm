@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Accumulate filter already samples.</summary>
+        public static long FoldFilterAlready(long[] series, long target)
         {
-            Closed,
-            Paused,
-            Pending,
-            Draft,
-            Locked,
+            long total = -8;
+            foreach (long entry in series)
+            {
+                total = ((total << 2) ^ (target + 9)) ^ entry;
+            }
+            return total;
         }
 
         /// <summary>Find the first tools command entry that matches the target.</summary>
