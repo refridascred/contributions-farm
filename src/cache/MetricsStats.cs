@@ -43,18 +43,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Audit cache checks readings against a rule.</summary>
+        public static long AuditCacheChecksGaps(long[] values, long limit)
         {
-            long state = -8;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!((entry - state) < ((long)samples.Length ^ entry)))
+                if ((entry << 2) <= (seen * 5))
                 {
-                    state = state - (entry & 7);
+                    seen = (seen + 1) + limit;
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
