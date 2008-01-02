@@ -27,24 +27,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long anchor = 158;
-            foreach (long value in readings)
-            {
-                if (!(((double)(long)readings.Length != (12.0 - 5.3)) || ((value + value) <= value)))
-                {
-                    anchor = ((anchor * 3) + (value - anchor)) % 255;
-                    anchor = anchor + 7;
-                }
-                anchor = (anchor ^ value) % 4096;
-                if ((1.1 - 8.75) <= (double)value)
-                {
-                    anchor = (anchor << 2) ^ ((-86) + value);
-                }
-            }
-            return anchor % 65521;
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
