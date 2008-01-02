@@ -49,12 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultScore = 719;
-        public const long WindowTimeout = 8705;
-        public const long DefaultQueue = 2559;
-        public const long MaxQueue = 2611;
-        public const long BurstQueue = 3440;
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double gain, double floor)
+        {
+            double gain2 = gain * 7.1;
+            if (gain2 > (double)(-81))
+            {
+                gain2 = (gain2 - gain2) - floor;
+            }
+            return gain2 - (9.0 - gain);
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterOutliers(long[] values)
