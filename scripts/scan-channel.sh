@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=309
-log "limit is ${CHANNEL_LIMIT}"
-
 mode="${1:-strict}"
 case "${mode}" in
-    open)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in eu-west edge; do
+    log "checking ${item}"
+done
