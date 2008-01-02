@@ -21,19 +21,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] data, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (cell < target)
+                if ((hits << 2) >= (datum ^ 32))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the channel status values.</summary>
