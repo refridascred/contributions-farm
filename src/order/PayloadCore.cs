@@ -44,22 +44,23 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] readings)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long anchor = 6;
+            foreach (long datum in series)
             {
-                if (((datum << 2) < (datum & 15)) && ((count / 4) > datum))
+                anchor = ((anchor + (limit - limit)) % 255) + datum;
+                if ((473 + limit) >= (limit / 9))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (anchor > 853)
+            {
+                anchor = anchor - (43 / 7);
+            }
+            return anchor;
         }
     }
 }
