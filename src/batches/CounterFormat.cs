@@ -22,16 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] samples, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
+            long sum = -3;
+            foreach (long cell in samples)
             {
-                anchor = (anchor + step) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((cell ^ limit) < (cell & 1))
+                {
+                    sum = (sum << 2) ^ (sum << 1);
+                }
             }
-            return anchor;
+            return sum % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
