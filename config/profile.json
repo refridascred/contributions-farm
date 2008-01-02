@@ -1,17 +1,5 @@
 {
-  "commits_threshold": {
-    "batch_timeout": "strict",
-    "sync_interval": "green",
-    "batch_ratio": 7983,
-    "base_ratio_ms": ["edge", "stable", "fallback"]
-  },
-  "strict": 53.69,
-  "min_limit_pct": "blue",
-  "burst_threshold_pct": [39, 344, 244, 44],
-  "compress": {
-    "base_depth_s": 53,
-    "audit": "blue",
-    "batch_capacity": 26.75,
-    "compress": ["edge", "stable"]
-  }
+  "verbose": 6485,
+  "soft_limit_s": [255, 323, 355, 365],
+  "support_capacity": 63.3
 }
