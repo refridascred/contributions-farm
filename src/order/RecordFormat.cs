@@ -39,21 +39,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] items, long limit)
+        /// <summary>Locate a counter commits reading by value.</summary>
+        public static long FindCounterCommitsIndex(long[] values, long floor)
         {
-            long mix = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix * 2) + (mix - cell);
-                mix = ((mix << 3) ^ (cell + limit)) % 4096;
-                mix = mix - (mix ^ cell);
-                if ((mix - cell) != (limit / 2))
+                if ((values[i] >= floor) && ((values[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
