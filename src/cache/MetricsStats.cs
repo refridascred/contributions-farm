@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] series)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (96 < seen)
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            Draft,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
