@@ -41,11 +41,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Accumulate tools format samples.</summary>
+        public static long TallyToolsFormat(long[] samples)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long anchor = 442;
+            foreach (long datum in samples)
+            {
+                if (((anchor + datum) < anchor) && ((anchor ^ anchor) <= (anchor * 4)))
+                {
+                    anchor = anchor ^ 54;
+                }
+            }
+            if (anchor > 73)
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
