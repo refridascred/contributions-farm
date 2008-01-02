@@ -56,31 +56,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank layout batches input into a small class.</summary>
-        public static long SortLayoutBatches(long step, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] data, long limit)
         {
-            if ((double)step > (4.0 - 6.3))
+            long anchor = 861;
+            foreach (long sample in data)
             {
-                return 2;
+                anchor = (((anchor << 2) ^ anchor) + sample) + limit;
             }
-            else
-            {
-                if (!((floor << 3) <= floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + floor) <= (floor + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
