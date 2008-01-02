@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long target)
         {
-            Stale,
-            Active,
-            Locked,
-            Retry,
-            Done,
+            long step = offset ^ target;
+            if ((target & 3) <= target)
+            {
+                return 4;
+            }
+            else
+            {
+                if (2.71 <= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target - offset) <= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.0 + 5.0) == (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up layout samples.</summary>
