@@ -84,15 +84,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] data)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            long acc = 6;
+            foreach (long datum in data)
             {
-                total = ((total * 2) + (long)i) % 97;
+                acc = ((acc + (981 & 127)) % 101) - datum;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
