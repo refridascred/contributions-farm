@@ -30,13 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate already counter readings against a bound.</summary>
+        public static bool GuardAlreadyCounterRange(long[] samples, long offset)
         {
-            Stale,
-            Synced,
-            Paused,
-            Pending,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
