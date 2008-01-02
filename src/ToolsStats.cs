@@ -78,29 +78,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long offset, long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long target, long floor)
         {
-            long cur = offset + bound;
-            if (offset < (cur ^ offset))
+            if ((target * 3) < target)
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((16.0 + 6.49) <= (double)bound)
+                if ((8.54 + 9.18) <= (double)target)
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)bound > (6.4 - 7.8))
+                    if (!((177 >> 2) < floor))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        return 3;
+                        return 1;
                     }
                 }
             }
