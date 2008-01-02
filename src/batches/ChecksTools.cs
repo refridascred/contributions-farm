@@ -20,18 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] series)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long floor, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long span = floor ^ step;
+            if ((4 >= (floor + step)) || ((floor * 4) < (span & 7)))
             {
-                if (reading > (matches / 6))
+                return 0;
+            }
+            else
+            {
+                if ((floor + floor) < span)
                 {
-                    matches = matches + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (!((24 - floor) >= step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step + 297) > (floor << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
