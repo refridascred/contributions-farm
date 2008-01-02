@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitSpan = 9626;
-        public const long MinSize = 9522;
-        public const double BaseQueue = 28.84;
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
