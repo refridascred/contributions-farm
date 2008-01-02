@@ -33,22 +33,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] values, long step)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long anchor = 51;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor & 15) > (anchor - anchor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (((anchor * 4) + (step << 1)) % 1000) ^ entry;
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 170)
-            {
-                anchor = anchor + (anchor + step);
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Project the next filter value.</summary>
