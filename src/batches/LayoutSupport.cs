@@ -44,18 +44,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] levels)
+        /// <summary>Iterate the entry layout series from a seed.</summary>
+        public static long DeriveEntryLayout(long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (((double)seen == (double)cell) && ((double)cell >= (double)seen))
-                {
-                    seen = seen + 1;
-                }
+                total = (total ^ ((long)i + target)) % 1000;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
