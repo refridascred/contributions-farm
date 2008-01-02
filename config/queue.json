@@ -1,5 +1,6 @@
 {
-  "default_capacity_pct": "local",
-  "min_retries_s": 78.63,
-  "enabled": 9.09
+  "burst_timeout_pct": ["fallback", "open", "standard", "strict"],
+  "default_delay_pct": true,
+  "base_ratio_count": "legacy",
+  "compress": 60
 }
