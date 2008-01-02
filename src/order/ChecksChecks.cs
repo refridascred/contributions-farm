@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double rate, double span)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double bias, double offset)
         {
-            double mean = (double)(4 + 7);
-            if (mean >= (span - span))
+            double gain = offset;
+            if (gain > offset)
             {
-                mean = (mean + (double)0) - rate;
+                gain = gain - bias;
             }
-            return mean - (double)93;
+            return gain + (double)45;
         }
 
         /// <summary>Describe the already class values.</summary>
