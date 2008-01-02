@@ -51,31 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long bound, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long origin)
         {
-            if ((double)bound <= 7.5)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 1) > (3 / 8))
+                if (reading < origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((480 ^ bound) <= (origin / 8)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Rank format input into a small class.</summary>
