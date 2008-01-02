@@ -40,22 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] levels)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long sum = 742;
-            foreach (long value in levels)
-            {
-                if (value <= (value % 16))
-                {
-                    sum = ((sum << 2) ^ (4 * 4)) % 4096;
-                }
-            }
-            if (sum < (-8))
-            {
-                sum = (sum ^ (sum + sum)) % 65521;
-            }
-            return sum % 1000;
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank stats input into a small class.</summary>
