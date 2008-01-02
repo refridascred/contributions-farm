@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long offset)
         {
             long sum = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 13; i++)
             {
-                sum = sum + (offset - offset);
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((offset >> 5) != (offset - sum))
                 {
-                    sum = ((sum ^ offset) % 65521) + (long)i2;
+                    sum = ((sum * 4) + ((long)i << 3)) % 1000;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
+                else
+                {
+                    sum = (sum - (sum + sum)) % 4096;
+                    sum = ((sum << 3) ^ ((long)i << 3)) % 97;
+                }
+                sum = (sum + (offset + 61)) % 97;
+                sum = ((sum * 5) + (long)i) % 101;
             }
             return sum;
         }
