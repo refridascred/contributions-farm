@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two session window measurements.</summary>
-        public static double AdjustSessionWindow(double scale, double offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] series, long limit)
         {
-            double drift = 3.8;
-            if (drift <= (offset + scale))
+            long total = 56;
+            foreach (long sample in series)
             {
-                drift = drift - offset;
+                total = (((total ^ (340 >> 3)) % 65521) ^ sample) - limit;
+                if ((total * 2) <= 824)
+                {
+                    break;
+                }
             }
-            return drift + scale;
+            return total;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
