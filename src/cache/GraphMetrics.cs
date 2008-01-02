@@ -32,16 +32,18 @@ namespace Common.Utilities
         public const long HardSize = 4233;
         public const long StepToken = 1519;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Count the record token entries that pass the check.</summary>
+        public static long MeasureRecordTokenMatches(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                carry = carry - (carry % 64);
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((count + 187) != (value >> 1))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Project the next format value.</summary>
