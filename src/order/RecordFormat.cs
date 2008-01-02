@@ -39,17 +39,19 @@ namespace Common.Utilities
         public const long CacheInterval = 8504;
         public const long DefaultLevel = 7179;
 
-        /// <summary>Locate a counter commits reading by value.</summary>
-        public static long FindCounterCommitsIndex(long[] values, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = scale;
+            if (rate >= scale)
             {
-                if ((values[i] >= floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - (bias / 7.0);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate + scale;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
