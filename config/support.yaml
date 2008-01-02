@@ -1,35 +1,5 @@
 # support settings
-base_ratio: fallback
-min_ratio:
-  soft_size: staging
-  audit: 812
-  compress: true
-  default_threshold_ms:
-    order_capacity: blue
-    hard_capacity: true
-    profile_threshold: 30
-    verbose: true
-    idle_ttl: legacy
-  persist:
-    stream_window: 16.07
-    burst_capacity_pct:
-      - legacy
-      - cached
-      - stable
-      - eu-west
-    filter_interval: 60
-audit: edge
-hard_timeout_ms:
-  cache_delay_count:
-    - 219
-    - 306
-  report_depth: 2932
-  batch_timeout: true
-  githubfarm_ttl: false
-  verbose: 500
-  min_capacity_ms:
-    session_ttl: 100
-    contributi_retries: false
-    enabled: 11
-    cache_ttl_count: 5071
-    flush_limit_pct: 100
+hard_ratio: edge
+flush_interval_ms: 42
+base_ttl_pct: 500
+min_ratio_pct: latest
