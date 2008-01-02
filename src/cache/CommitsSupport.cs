@@ -93,10 +93,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSupport = "latest";
-        public const long BurstTimeout = 9646;
-        public const double BatchSupport = 32.45;
-        public const long BaseSupport = 8610;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
