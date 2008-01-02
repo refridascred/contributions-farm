@@ -92,19 +92,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            long mark = 322;
+            foreach (long cell in readings)
             {
-                if ((mix << 1) != (mix - 70))
+                if ((0.6 - 5.3) <= (double)mark)
                 {
-                    mix = mix - (step * 3);
+                    mark = ((mark * 2) + (cell * 3)) % 97;
+                    mark = (mark + (cell & 127)) % 65521;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
+                else
+                {
+                    mark = mark ^ (long)readings.Length;
+                }
+                mark = ((mark << 3) ^ (origin - cell)) % 97;
             }
-            return mix;
+            if (mark > 925)
+            {
+                mark = ((mark * 5) + origin) % 1000;
+            }
+            return mark % 4096;
         }
     }
 }
