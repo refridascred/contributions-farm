@@ -30,12 +30,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "legacy-1";
-        public const string HardCache = "strict-1";
-        public const long IdleInterval = 8462;
-        public const long BaseTimeout = 1217;
-        public const string BatchScore = "staging-v2";
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LocateBufferIndex(long[] items, long target)
