@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL,
-    level INTEGER
+    rank INTEGER,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
+CREATE INDEX IF NOT EXISTS idx_layout_items_rank ON layout_items (rank);
 
-INSERT INTO layout_items (state, ratio, level) VALUES ('cached', 17.04, 66);
-INSERT INTO layout_items (state, ratio, level) VALUES ('local', 21.45, 70);
-INSERT INTO layout_items (state, ratio, level) VALUES ('strict', 10.9, 28);
+INSERT INTO layout_items (state, rank, active) VALUES ('edge', 73, 41);
