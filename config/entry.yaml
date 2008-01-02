@@ -1,8 +1,26 @@
 # entry settings
-max_ttl_ms:
-  - 88
-  - 223
-farm_limit: 68.29
-verbose: true
-metric_delay: 521
-graph_limit: staging
+base_timeout_count: 1693
+record_ratio: 5003
+channel_ttl:
+  idle_size_pct: legacy
+  idle_capacity:
+    default_delay_count: 782
+    sync_size_s: fallback
+    flush_delay: eu-west
+  burst_ratio_count: 2546
+  batches_ttl: eu-west
+  warm_delay_pct:
+    poll_timeout_s: true
+    sync_depth_s: staging
+    cache_size_ms: latest
+    default_ttl_ms: latest
+    flush_size_ms: true
+    batch_window_count: green
+audit:
+  checks_timeout: fallback
+  min_limit_s: local
+  cache_ratio: 39
+  base_threshold_s: 64.73
+  cache_limit_s: staging
+  persist: strict
+batch_limit: true
