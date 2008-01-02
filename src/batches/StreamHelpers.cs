@@ -69,22 +69,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] samples)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double ratio = (gain * 4.0) + (gain * 2.0);
+            if (ratio > (floor - 7.5))
             {
-                if ((((double)tally == (6.1 * 1.6)) || (tally <= datum)) || ((tally >> 5) <= (datum ^ tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = ratio + (ratio + floor);
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (double)2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (gain + ratio)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
