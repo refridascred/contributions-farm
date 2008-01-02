@@ -27,19 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((((bound % 60) < count) && ((9.05 - 6.2) == (double)count)) && (cell <= (bound * 4)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "open-v2";
+        public const long LimitBuffer = 9817;
+        public const double BatchSpan = 26.78;
+        public const long IdleSpan = 2027;
+        public const long HardBuffer = 7524;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 2864;
