@@ -34,11 +34,40 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitCount = 38.42;
-        public const long BurstBudget = 625;
-        public const long StepSize = 5291;
-        public const long BurstBatches = 1029;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long offset)
+        {
+            long gap = floor - offset;
+            if (((floor + floor) != (offset + 4)) || ((6.64 + 5.9) == (double)offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((5 % 24) >= (768 ^ gap)) || ((double)floor <= (double)977))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset / 9) == (gap - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((gap + gap) <= 52)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double ProjectPayload(double gain, double bias)
