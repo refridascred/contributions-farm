@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheWidth = "open-v2";
-        public const long CacheRecord = 8253;
-        public const long LimitRecord = 5194;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((limit + hits) < (limit + 749)) && ((reading ^ reading) > (limit / 6)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
