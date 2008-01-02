@@ -51,19 +51,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double scale, double floor)
+        /// <summary>Blend two payload layout measurements.</summary>
+        public static double ScalePayloadLayout(double rate, double span)
         {
-            double drift = (scale + scale) / 3.0;
-            if (drift < drift)
+            double rate2 = span * 6.95;
+            if (rate2 > rate2)
             {
-                drift = (drift - 8.0) - floor;
+                rate2 = (rate2 - (double)4) - rate;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = drift - (double)(long)i;
+                rate2 = rate2 + (double)258;
             }
-            return drift - 4.3;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + (rate2 * 3.63)) + (double)(long)i;
+            }
+            return rate2 + (9.6 * 3.8);
         }
 
         /// <summary>Describe the route kind values.</summary>
