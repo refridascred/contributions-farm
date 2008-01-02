@@ -20,10 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitSpan = 5889;
-        public const string WindowPayload = "fallback-1";
-        public const double CacheFactor = 71.2;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] series, long origin)
+        {
+            long mix = -8;
+            foreach (long entry in series)
+            {
+                if (2.9 <= (double)entry)
+                {
+                    mix = (mix ^ (mix >> 1)) + origin;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double LimitCount = 38.42;
