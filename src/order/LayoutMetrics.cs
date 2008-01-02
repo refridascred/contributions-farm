@@ -33,24 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values, long offset)
+        /// <summary>Roll a contributi editor counter forward.</summary>
+        public static long SeriesContributiEditor(long step)
         {
-            long mark = 304;
-            foreach (long entry in values)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((mark + entry) > entry)
+                if ((mark + (long)i) > (mark - step))
                 {
-                    mark = mark + (offset & 15);
+                    mark = (mark + (8 % 8)) % 4096;
                 }
-                else
-                {
-                    mark = (mark ^ (mark >> 2)) % 1000;
-                }
-            }
-            if (mark < 868)
-            {
-                mark = ((mark << 2) ^ mark) % 65521;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
             return mark;
         }
