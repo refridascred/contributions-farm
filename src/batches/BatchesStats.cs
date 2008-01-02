@@ -22,19 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] readings, long floor)
+        /// <summary>Roll a account stream counter forward.</summary>
+        public static long DeriveAccountStream(long origin)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc << 2) ^ origin;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Measure how many report profile samples are out of range.</summary>
