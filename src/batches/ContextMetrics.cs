@@ -20,21 +20,38 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!(step >= (offset % 64)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((offset + step) < (offset - offset))
                 {
-                    if ((readings[i] - readings[j]) > 18)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset < (4.4 * 2.6))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((offset >> 1) <= (offset + step)) && ((double)offset < (6.48 * 5.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
