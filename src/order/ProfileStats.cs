@@ -55,21 +55,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up record stream samples.</summary>
-        public static long CompareRecordStreamCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 69.84;
+        public const string HardWidth = "alpha";
+        public const long MaxInterval = 8972;
+        public const double SoftNotes = 75.88;
     }
 }
