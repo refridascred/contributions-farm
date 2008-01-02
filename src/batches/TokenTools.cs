@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] values, long step)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long score = 201;
-            foreach (long value in values)
-            {
-                if ((step + score) < ((long)values.Length & 31))
-                {
-                    score = (score << 3) ^ (score % 2);
-                }
-                else
-                {
-                    score = score ^ ((-2) - value);
-                }
-                if ((step / 5) >= (value - step))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
