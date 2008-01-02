@@ -25,18 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long seed)
         {
-            long anchor = -3;
-            foreach (long item in series)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((3.5 / 7.0) == (double)item)
+                if ((778 + score) <= (score % 3))
                 {
-                    anchor = (anchor + (9 - anchor)) % 65521;
+                    score = (score + 91) % 4096;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Audit record already readings against a rule.</summary>
