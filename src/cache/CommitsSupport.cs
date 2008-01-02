@@ -56,21 +56,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count stream githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchStreamGithubfarmCount(long[] samples)
+        /// <summary>Rank layout batches input into a small class.</summary>
+        public static long SortLayoutBatches(long step, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)step > (4.0 - 6.3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((floor << 3) <= floor))
                 {
-                    if ((samples[i] - samples[j]) == 3)
+                    return 5;
+                }
+                else
+                {
+                    if ((step + floor) <= (floor + step))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
