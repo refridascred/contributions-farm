@@ -55,13 +55,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] data, long seed)
         {
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (seen < (entry + seed))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
