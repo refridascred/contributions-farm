@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate order stats samples.</summary>
-        public static long CombineOrderStats(long[] readings, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] samples, long origin)
         {
-            long total = 9;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (!((limit - limit) == (limit ^ 9)))
+                if (sample <= (hits >> 1))
                 {
-                    total = ((total << 3) ^ (item - total)) % 4096;
+                    hits = (hits + 1) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Hold a already entry.</summary>
