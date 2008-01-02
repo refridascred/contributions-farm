@@ -20,13 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 28;
+        public const long WindowFactor = 7918;
+        public const double SoftRatio = 0.33;
+        public const string BatchStream = "alpha-1";
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long SortTools(long limit, long origin)
