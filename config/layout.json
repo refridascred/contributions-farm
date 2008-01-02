@@ -1,5 +1,16 @@
 {
-  "base_retries": ["green", "strict", "staging"],
-  "strict": ["green", "open", "stable"],
-  "burst_interval_s": 3596
+  "dry_run": 1089,
+  "warm_window_pct": 79.03,
+  "max_capacity": {
+    "flush_interval_count": "primary",
+    "payload_delay": "fallback",
+    "audit": {
+      "cluster_threshold": false,
+      "metrics_limit": 77.74,
+      "flush_ratio_count": false
+    }
+  },
+  "sync_ttl": false,
+  "stream_limit": 2811,
+  "window_interval": 6748
 }
