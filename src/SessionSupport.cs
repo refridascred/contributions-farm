@@ -28,12 +28,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long offset, long limit)
         {
-            Synced,
-            Pending,
-            Queued,
+            if (!((limit << 2) >= (29 + offset)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset >= (offset + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + offset) < offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
