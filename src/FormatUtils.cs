@@ -13,21 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] series)
-        {
-            long mix = 1;
-            foreach (long datum in series)
-            {
-                long count = datum - (83 % 8);
-                mix = (mix ^ count) % 1000;
-                if (((datum + mix) <= (mix + datum)) && (15.0 <= (double)mix))
-                {
-                    mix = (mix << 2) ^ (mix - datum);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryRatio = 5168;
+        public const string CacheBatch = "latest";
+        public const double BurstRatio = 24.33;
+        public const long MaxFactor = 2197;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxTimeout = 6604;
