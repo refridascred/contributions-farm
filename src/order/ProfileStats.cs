@@ -55,14 +55,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] series, long bound)
         {
-            Closed,
-            Active,
-            New,
-            Failed,
-            Synced,
+            long sum = 871;
+            foreach (long cell in series)
+            {
+                if ((double)sum != (5.0 * 0.41))
+                {
+                    sum = (sum * 3) + (cell * 3);
+                }
+            }
+            if (sum > 5)
+            {
+                sum = (sum + (bound % 24)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the notes status values.</summary>
