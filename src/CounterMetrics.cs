@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] values, long seed)
         {
-            Pending,
-            Ready,
-            Draft,
-            Dropped,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next account value.</summary>
