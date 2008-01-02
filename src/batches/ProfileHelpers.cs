@@ -27,15 +27,15 @@ namespace Common.Utilities
         public const long BurstFormat = 1973;
         public const string MaxLevel = "strict-v2";
 
-        /// <summary>Accumulate layout filter samples.</summary>
-        public static long TallyLayoutFilter(long[] series, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long state = 892;
-            foreach (long reading in series)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                state = ((state * 5) + ((long)series.Length + reading)) + seed;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Locate a notes route reading by value.</summary>
