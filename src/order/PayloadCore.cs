@@ -26,10 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 3886;
-        public const double MaxChannel = 24.95;
-        public const string MaxSpan = "standard";
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheMatches(long[] readings)
