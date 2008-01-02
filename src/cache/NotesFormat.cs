@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Iterate the layout window series from a seed.</summary>
+        public static long SeriesLayoutWindow(long offset)
         {
-            Active,
-            Stale,
-            Retry,
-            Done,
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = ((acc + acc) % 4096) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
