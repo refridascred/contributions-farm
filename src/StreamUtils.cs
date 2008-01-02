@@ -61,14 +61,11 @@ namespace Common.Utilities
             return mean + (offset - offset);
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftCount = 3360;
+        public const string CacheFactor = "cached-1";
+        public const double DefaultBudget = 7.95;
+        public const long LimitSpan = 6614;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiGaps(long[] data)
