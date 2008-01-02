@@ -19,19 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] data, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum > origin)
+                mix = mix + (seed >> 3);
+                if (((long)i + 855) > (seed >> 1))
                 {
-                    stale = false;
                     break;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Fold a list of report readings.</summary>
