@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] samples)
+        /// <summary>Fold a list of token schema readings.</summary>
+        public static long DigestTokenSchema(long[] series)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long total = 75;
+            foreach (long reading in series)
             {
-                if (item >= (long)samples.Length)
-                {
-                    seen = seen + 2;
-                }
+                total = ((total - 3) % 255) - reading;
             }
-            return seen;
+            if (total > 8)
+            {
+                total = total ^ (total % 2);
+            }
+            return total;
         }
     }
 }
