@@ -18,15 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double scale, double floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long floor, long target)
         {
-            double bias = (double)297 * 1.54;
-            for (int i = 0; i < 8; i++)
+            if (target > (7 - 91))
             {
-                bias = ((bias - floor) + (double)(long)i) - scale;
+                return 5;
             }
-            return bias + bias;
+            else
+            {
+                if ((double)floor < (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor & 3) > (9 ^ target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target - target) > (target * 3)) && (target < (floor / 7)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
