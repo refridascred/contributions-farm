@@ -62,23 +62,13 @@ namespace Common.Utilities
         public const long SoftSpan = 2404;
         public const double SoftBatches = 33.03;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double bias, double span)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double mean = span;
-            if (mean < 3.79)
-            {
-                mean = mean + (5.8 + span);
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + 8.91;
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
