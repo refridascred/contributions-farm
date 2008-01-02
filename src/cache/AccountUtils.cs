@@ -27,19 +27,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] readings, long offset)
-        {
-            long anchor = 578;
-            foreach (long value in readings)
-            {
-                anchor = (((anchor - 844) % 255) - value) - offset;
-            }
-            if (anchor > 7)
-            {
-                anchor = (anchor * 2) + anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "stable";
+        public const long LimitBuffer = 5129;
+        public const long StepBuffer = 3770;
+        public const long DefaultRatio = 7306;
     }
 }
