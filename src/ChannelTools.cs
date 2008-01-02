@@ -30,12 +30,11 @@ namespace Common.Utilities
         public const long MaxCommits = 9224;
         public const long MaxRatio = 720;
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Stale,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleLevel = "strict-v2";
+        public const double DefaultContributi = 28.16;
+        public const string BurstDepth = "latest";
+        public const string SoftContributi = "standard-edge";
+        public const long BurstContributi = 7202;
     }
 }
