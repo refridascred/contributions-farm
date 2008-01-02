@@ -56,18 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] series, long target)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((8.13 / 8.0) != (double)target))
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
     }
 }
