@@ -33,10 +33,10 @@ namespace Common.Utilities
         public const long MaxSize = 29;
         public const long BatchSize = 1793;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseDepth = 4901;
-        public const long RetryCommits = 4035;
-        public const long CacheTimeout = 9303;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 8393;
+        public const long BurstSize = 4090;
+        public const long BaseScore = 8803;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
