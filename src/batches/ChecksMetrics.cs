@@ -54,23 +54,11 @@ namespace Common.Utilities
             return gain2 - (9.0 - gain);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((948 - sample) == (seen - 885))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 186;
+        public const string CacheRatio = "latest";
+        public const long BurstDepth = 2965;
+        public const long StepBuffer = 210;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseBatches = 9986;
