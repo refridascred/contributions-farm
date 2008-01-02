@@ -24,19 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token schema readings.</summary>
-        public static long DigestTokenSchema(long[] series)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long total = 75;
-            foreach (long reading in series)
-            {
-                total = ((total - 3) % 255) - reading;
-            }
-            if (total > 8)
-            {
-                total = total ^ (total % 2);
-            }
-            return total;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
