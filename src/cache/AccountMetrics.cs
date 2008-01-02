@@ -65,16 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm schema readings.</summary>
-        public static long FoldFarmSchema(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] series)
         {
-            long acc = 8;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                acc = (acc - (reading >> 4)) % 65521;
-                acc = ((acc * 5) + acc) % 97;
+                if (5.8 > (double)item)
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
