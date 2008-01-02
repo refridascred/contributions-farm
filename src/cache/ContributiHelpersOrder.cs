@@ -24,19 +24,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
-        public static bool CheckSupportGithubfarmLimits(long[] data, long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
