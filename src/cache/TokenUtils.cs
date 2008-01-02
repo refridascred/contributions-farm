@@ -27,19 +27,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] samples, long origin)
         {
-            long total = -77;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                total = (total ^ (reading & 63)) % 255;
+                if (((double)item > (13.0 + 20.0)) || ((count + origin) > 9))
+                {
+                    count = count + 1;
+                }
             }
-            if (total > 5)
-            {
-                total = total - (total & 255);
-            }
-            return total;
+            return count;
         }
     }
 }
