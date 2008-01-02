@@ -27,11 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] series, long limit)
         {
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long carry = 56;
+            foreach (long entry in series)
+            {
+                if (((1.0 + 16.0) > (double)entry) || ((entry - entry) > (carry + limit)))
+                {
+                    carry = carry + (carry ^ 6);
+                }
+            }
+            if (carry > 6)
+            {
+                carry = ((carry << 3) ^ (230 - limit)) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of already readings.</summary>
