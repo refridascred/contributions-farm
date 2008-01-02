@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] readings, long step)
-        {
-            long total = 7;
-            foreach (long entry in readings)
-            {
-                total = total - total;
-                total = (total * 2) + step;
-                if ((step >> 2) >= total)
-                {
-                    total = (total - (total + total)) % 255;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (entry + 76)) % 97;
-                }
-            }
-            if (total > 84)
-            {
-                total = (total - (step << 3)) % 101;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardTimeout = 9985;
+        public const string HardCount = "strict";
+        public const string CacheStats = "latest-edge";
+        public const string BaseRatio = "latest-1";
+        public const double MaxDepth = 84.17;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] values)
