@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Adjust a metric account reading.</summary>
+        public static double ScaleMetricAccount(double rate, double offset)
         {
-            public bool Size { get; set; }
-            public double Token { get; set; }
-            public long Count { get; set; }
+            double scale = 2.97;
+            if (scale > (9.0 / 9.0))
+            {
+                scale = (scale + (double)(-17)) - rate;
+            }
+            else
+            {
+                scale = scale + (double)359;
+            }
+            return scale - offset;
         }
 
         /// <summary>Match up schema samples.</summary>
