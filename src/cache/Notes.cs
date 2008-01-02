@@ -12,16 +12,19 @@ namespace Common.Utilities
         public const long MinGithubfarm = 9358;
         public const long BaseGithubfarm = 6881;
 
-        /// <summary>Derive the next queue account value from a seed.</summary>
-        public static long IterateQueueAccount(long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] data, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                result = (result + (result + 45)) % 1000;
-                result = ((result * 3) + (long)i) % 65521;
+                if (entry <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Accumulate support samples.</summary>
