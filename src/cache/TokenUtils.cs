@@ -37,11 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            double weight2 = (double)(-124);
+            if (weight2 <= (7.4 * 1.0))
+            {
+                weight2 = (weight2 + offset) - weight;
+            }
+            else
+            {
+                weight2 = weight2 - (double)4;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (offset + 2.1)) + (double)(long)i;
+            }
+            return weight2 - (offset + offset);
         }
     }
 }
