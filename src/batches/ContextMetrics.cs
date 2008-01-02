@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
