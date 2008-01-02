@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long bound, long origin)
-        {
-            if ((7 + bound) != (origin >> 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((197 + bound) < (bound + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - origin) >= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 76.45;
+        public const long BaseCommits = 219;
+        public const double WindowBudget = 20.12;
+        public const long BaseBudget = 9553;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long RankSupport(long origin, long step)
