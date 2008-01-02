@@ -39,12 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultMetrics = "stable";
-        public const double SoftBudget = 40.53;
-        public const long CacheDepth = 7516;
-        public const long WindowMetrics = 7709;
-        public const long BatchInterval = 5924;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowSpan = 1779;
+        public const long StepStream = 418;
+        public const long StepLevel = 4071;
 
         /// <summary>Classify a githubfarm stream pair into a bucket.</summary>
         public static long SortGithubfarmStream(long offset, long step)
