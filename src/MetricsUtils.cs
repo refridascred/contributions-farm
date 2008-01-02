@@ -22,13 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long floor, long limit)
         {
-            Done,
-            Idle,
-            New,
-            Synced,
+            long span = floor - limit;
+            if (floor > (span - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((15.0 * 2.3) > (double)span))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((span + floor) < 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
