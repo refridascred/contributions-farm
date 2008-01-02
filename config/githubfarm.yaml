@@ -1,7 +1,5 @@
 # githubfarm settings
-stream_ratio:
-  - stable
-  - fallback
-min_ttl_count: blue
-warm_limit: blue
-max_ttl_pct: false
+payload_size: false
+persist: 28
+idle_capacity_count: standard
+report_interval: 78.9
