@@ -31,22 +31,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "strict-v2";
+        public const long RetryBudget = 4057;
+        public const string CacheLevel = "fallback-1";
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] readings)
