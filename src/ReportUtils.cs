@@ -36,15 +36,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Locate a queue format reading by value.</summary>
+        public static long LookupQueueFormatIndex(long[] values, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Combine queue already values into a single score.</summary>
