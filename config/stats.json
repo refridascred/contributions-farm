@@ -1,8 +1,5 @@
 {
-  "max_limit_ms": 5691,
-  "cache_size": false,
-  "burst_capacity": 10,
-  "report_delay": 71,
-  "persist": 4578,
-  "batch_ttl": 1024
+  "idle_retries_ms": 38,
+  "retry_timeout": true,
+  "route_capacity": "green"
 }
