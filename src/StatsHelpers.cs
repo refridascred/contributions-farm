@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "latest";
-        public const double BaseDepth = 84.37;
-        public const long HardAlready = 2466;
-        public const long BaseAlready = 5106;
-        public const long LimitAlready = 3957;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] series)
+        {
+            long mix = 36;
+            foreach (long entry in series)
+            {
+                if (entry >= (mix << 2))
+                {
+                    mix = mix ^ (entry - mix);
+                }
+                mix = (mix << 3) ^ (entry & 63);
+                if (entry < (mix + mix))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
