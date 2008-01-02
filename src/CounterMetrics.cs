@@ -42,9 +42,21 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "fallback-1";
-        public const long BatchRoute = 4586;
-        public const string BurstRoute = "primary-edge";
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
