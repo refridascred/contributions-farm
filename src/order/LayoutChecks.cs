@@ -20,31 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long target, long target2)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double bias, double offset)
         {
-            if ((double)target2 > 5.16)
+            double ratio = (double)((-94) * 2);
+            if (ratio <= offset)
             {
-                return 5;
+                ratio = ratio - (bias + offset);
             }
             else
             {
-                if ((target2 + target2) < (target2 + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target2 + target) != (717 + 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                ratio = ratio + 9.0;
             }
+            return ratio - (ratio - bias);
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
