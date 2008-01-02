@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long CacheStats = 8705;
         public const long WindowSize = 7704;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double bias, double bias2)
         {
-            New,
-            Locked,
-            Dropped,
+            double mean = bias / 8.0;
+            if (mean <= (double)323)
+            {
+                mean = (mean - bias) - bias2;
+            }
+            return mean - mean;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
