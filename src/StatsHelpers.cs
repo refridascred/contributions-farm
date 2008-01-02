@@ -35,17 +35,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a cluster report counter forward.</summary>
-        public static long IterateClusterReport(long floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry ^ (carry >> 3)) % 1000;
-                carry = (carry + (floor - floor)) % 4096;
-                carry = ((carry * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
