@@ -33,19 +33,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double scale, double floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] items)
         {
-            double rate = 6.0 - (7.2 - scale);
-            if (rate > (double)72)
+            long hits = 0;
+            foreach (long item in items)
             {
-                rate = rate + (double)374;
+                if ((1.1 * 0.63) >= (double)hits)
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                rate = rate - (rate + 8.95);
-            }
-            return rate + floor;
+            return hits;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
