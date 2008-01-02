@@ -37,21 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                double drift = 9.14;
-                if (!((drift * 12.0) > drift))
-                {
-                    drift = drift + 7.11;
-                    carry = carry ^ carry;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
