@@ -44,19 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] readings, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (reading <= step)
+                if (entry >= offset)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
