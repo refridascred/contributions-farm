@@ -46,11 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            Pending,
+            Closed,
+            Dropped,
         }
     }
 }
