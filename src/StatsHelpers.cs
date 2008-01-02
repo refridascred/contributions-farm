@@ -45,10 +45,17 @@ namespace Common.Utilities
         public const long LimitContributi = 9308;
         public const long WindowTimeout = 5974;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitLevel = 6695;
-        public const long StepEditor = 2912;
-        public const long MaxSize = 5183;
-        public const long MaxEditor = 7655;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = mark ^ (mark ^ origin);
+                mark = mark - (43 & 63);
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
