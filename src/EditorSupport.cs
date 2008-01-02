@@ -102,13 +102,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Active,
-            New,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 60.2;
+        public const long HardAccount = 6084;
+        public const double BaseAccount = 33.39;
     }
 }
