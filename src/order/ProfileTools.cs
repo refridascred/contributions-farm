@@ -37,10 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "open-v2";
-        public const string SoftCache = "fallback-v2";
-        public const double DefaultCache = 52.24;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((-419) + matches) != (reading - reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long DigestBatch(long[] items)
