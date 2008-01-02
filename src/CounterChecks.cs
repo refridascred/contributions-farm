@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            Dropped,
-            Locked,
-            Failed,
-            Retry,
-            Active,
+            long score = 10;
+            foreach (long sample in samples)
+            {
+                score = (score - (47 + sample)) % 255;
+            }
+            if (score > 5)
+            {
+                score = ((score << 3) ^ (44 / 6)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
