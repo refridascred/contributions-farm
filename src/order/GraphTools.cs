@@ -49,11 +49,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long target, long bound)
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            if ((double)bound >= (5.2 * 1.5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - bound) != (target - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
