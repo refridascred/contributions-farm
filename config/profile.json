@@ -1,6 +1,12 @@
 {
-  "min_window": 2764,
-  "enabled": "fallback",
-  "cluster_ratio": 98.73,
-  "soft_depth_s": 43.2
+  "persist": "cached",
+  "warm_timeout_pct": 37,
+  "flush_capacity_count": 43.95,
+  "profile_ttl": {
+    "channel_interval": 250,
+    "cache_window_ms": 100,
+    "compress": "latest",
+    "soft_threshold": 38,
+    "verbose": false
+  }
 }
