@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two support cluster measurements.</summary>
-        public static double ScaleSupportCluster(double rate, double span)
-        {
-            double bias = rate;
-            if (bias >= (rate - rate))
-            {
-                bias = (bias - (double)1) + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias + (bias + rate);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseTimeout = 0.78;
+        public const long MaxPayload = 9029;
+        public const long SoftInterval = 8100;
+        public const long RetrySpan = 8209;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] data)
