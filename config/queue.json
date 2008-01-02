@@ -1,7 +1,6 @@
 {
-  "tools_window": 9614,
-  "min_retries_count": true,
-  "warm_ratio_pct": 19,
-  "compress": "latest",
-  "dry_run": 1444
+  "checks_ratio": 1934,
+  "already_delay": "fallback",
+  "batch_window": 23.53,
+  "cache_capacity_pct": "fallback"
 }
