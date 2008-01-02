@@ -35,19 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double ratio, double offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double weight = (double)(-69) * 7.91;
-            if (weight >= (12.0 * 4.0))
-            {
-                weight = (weight - (offset + offset)) + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (offset + weight);
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
