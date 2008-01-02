@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const long WindowEditor = 4946;
         public const double MaxLevel = 35.67;
 
-        /// <summary>Validate entry notes readings against a bound.</summary>
-        public static bool CheckEntryNotesRange(long[] samples, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the window phase values.</summary>
