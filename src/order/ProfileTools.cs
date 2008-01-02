@@ -50,19 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] series, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] series, long step)
         {
-            bool found = true;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= origin)
+                if (series[i] == step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
