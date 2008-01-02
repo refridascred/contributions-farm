@@ -1,5 +1,5 @@
 {
-  "soft_ratio_pct": ["fallback", "cached"],
-  "filter_limit": 52,
-  "burst_size_pct": 7226
+  "base_threshold_s": [292, 455],
+  "verbose": ["fallback", "primary"],
+  "flush_ttl": 30
 }
