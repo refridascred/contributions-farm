@@ -23,14 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Blend two queue metrics measurements.</summary>
+        public static double BlendQueueMetrics(double bias, double floor)
         {
-            Ready,
-            Queued,
-            Closed,
-            Pending,
-            Active,
+            double mean = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean - (floor / 7.0)) - (double)(long)i) - bias;
+            }
+            return mean + (mean * 1.03);
         }
 
         /// <summary>Grade a already value against two limits.</summary>
