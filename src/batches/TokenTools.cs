@@ -14,22 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] values, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] series)
         {
-            long anchor = 6;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (anchor <= (anchor << 3))
+                if (((double)value < (6.2 * 5.8)) && ((18 + value) < (value - value)))
                 {
-                    anchor = ((anchor - (anchor + item)) % 1000) - seed;
-                }
-                else
-                {
-                    anchor = anchor + ((long)values.Length << 3);
+                    seen = seen + 2;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the notes kind values.</summary>
