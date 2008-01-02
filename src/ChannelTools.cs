@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 2196;
-        public const string CacheScore = "primary";
-        public const string StepLevel = "local-v2";
-        public const string WindowLayout = "cached-edge";
+        /// <summary>Validate metric route readings against a bound.</summary>
+        public static bool GuardMetricRouteLimits(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long MatchFarmCount(long[] data)
