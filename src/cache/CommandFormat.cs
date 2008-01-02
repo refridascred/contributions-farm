@@ -13,13 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Synced,
+            Paused,
             Active,
-            Done,
-            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a queue stats.</summary>
