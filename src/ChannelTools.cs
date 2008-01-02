@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] samples, long target)
         {
-            long mix = 79;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((double)mix != (double)reading)
+                if (((value + target) != (341 - value)) || ((target <= value) || (target < (750 & 31))))
                 {
-                    mix = ((mix * 2) + (reading - (long)series.Length)) % 4096;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
