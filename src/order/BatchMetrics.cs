@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const string DefaultTimeout = "cached-edge";
         public const long BatchAlready = 6691;
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
