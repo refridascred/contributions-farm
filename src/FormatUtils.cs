@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every record entry entry stays within the limit.</summary>
+        public static bool VerifyRecordEntryLimits(long[] levels, long step)
         {
-            Done,
-            Active,
-            Closed,
-            Locked,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a layout summary.</summary>
