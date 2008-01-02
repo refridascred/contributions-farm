@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 6385;
-        public const long IdleDepth = 6796;
-        public const string DefaultInterval = "open-edge";
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long SeekRouteIndex(long[] data, long bound)
