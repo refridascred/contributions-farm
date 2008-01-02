@@ -58,9 +58,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 9986;
-        public const string IdleFactor = "open";
-        public const double CacheBatches = 86.45;
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
