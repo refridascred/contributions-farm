@@ -18,12 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Grade a metrics token value against two limits.</summary>
+        public static long GradeMetricsToken(long seed, long step)
         {
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
+            if ((step + (-6)) >= (seed ^ step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((801 <= (step + step)) || ((step / 2) >= (step - seed)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((seed ^ (-8)) >= step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
