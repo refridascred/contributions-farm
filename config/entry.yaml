@@ -1,14 +1,12 @@
 # entry settings
-compress: 250
-default_delay_s:
-  - green
-  - edge
-  - edge
-sync_depth_ms: cached
-batch_limit_count: true
-warm_retries:
-  - 383
-  - 315
-  - 188
-  - 73
-flush_depth_ms: 31.62
+flush_threshold_count:
+  min_size:
+    - eu-west
+    - strict
+    - cached
+  commits_depth: cached
+  schema_delay: staging
+  idle_window_pct: 49
+idle_size_count: standard
+base_ttl: false
+strict: 250
