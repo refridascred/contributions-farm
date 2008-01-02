@@ -25,13 +25,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 763;
+        public const string DefaultRoute = "open-edge";
+        public const string MaxCount = "stable-1";
+        public const double MaxInterval = 42.15;
+        public const long MaxDepth = 1744;
     }
 }
