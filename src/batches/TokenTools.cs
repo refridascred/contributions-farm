@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftCount = 4983;
+        public const string LimitBatches = "primary";
+        public const double MaxRatio = 52.31;
+        public const string WindowCount = "alpha-edge";
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutHits(long[] series)
