@@ -43,18 +43,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] values, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long sum = 200;
+            foreach (long datum in series)
             {
-                if (((3.07 - 1.93) <= (double)sample) || ((70 >> 1) < (origin >> 1)))
+                if ((sum % 24) >= (sum * 5))
                 {
-                    count = count + 2;
+                    sum = ((sum * 2) + (datum / 4)) + seed;
                 }
+                sum = (sum ^ sum) % 4096;
+                sum = (sum ^ ((long)series.Length + datum)) % 101;
             }
-            return count;
+            if (sum < 41)
+            {
+                sum = (sum + sum) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
