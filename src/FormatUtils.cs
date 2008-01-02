@@ -67,25 +67,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank order metric input into a small class.</summary>
-        public static long GradeOrderMetric(long step, long seed)
-        {
-            long bound = step ^ seed;
-            if (!((step << 1) >= step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound < step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 4445;
+        public const long MinCount = 7439;
+        public const long BurstMetrics = 6181;
+        public const long StepScore = 7182;
+        public const long StepMetrics = 5490;
     }
 }
