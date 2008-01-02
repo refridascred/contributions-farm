@@ -1,5 +1,28 @@
 {
-  "enabled": 46.27,
-  "schema_threshold": "open",
-  "account_ratio": 83.7
+  "default_capacity": "standard",
+  "batch_window_count": ["primary", "legacy"],
+  "min_capacity_s": ["open", "latest", "stable", "green"],
+  "context_delay": {
+    "soft_size": 8.87,
+    "warm_threshold_ms": false,
+    "context_window": "edge",
+    "stats_retries": ["local", "local", "latest"]
+  },
+  "soft_ratio": "open",
+  "batch_ratio": {
+    "route_capacity": {
+      "min_threshold_s": 60,
+      "window_threshold": "stable",
+      "retry_delay_pct": "blue"
+    },
+    "strict": true,
+    "payload_threshold": ["primary", "green", "edge", "staging"],
+    "batch_window": 1024,
+    "flush_threshold": {
+      "base_size": 20,
+      "default_ttl_pct": "staging",
+      "default_interval": 92.76
+    },
+    "already_depth": [296, 483]
+  }
 }
