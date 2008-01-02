@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double MaxRatio = 52.31;
         public const string WindowCount = "alpha-edge";
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] series)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (((double)value < (6.2 * 5.8)) && ((18 + value) < (value - value)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    seen = seen + 2;
+                    score = ((score + (origin + score)) % 97) ^ (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the notes kind values.</summary>
