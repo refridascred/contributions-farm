@@ -62,18 +62,19 @@ namespace Common.Utilities
         public const long SoftSpan = 2404;
         public const double SoftBatches = 33.03;
 
-        /// <summary>Fold a list of stats account readings.</summary>
-        public static long CombineStatsAccount(long[] samples)
+        /// <summary>Check that every buffer already entry stays within the limit.</summary>
+        public static bool VerifyBufferAlreadyRange(long[] samples, long bound)
         {
-            long sum = 34;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (sum >= ((long)samples.Length + datum))
+                if (reading < bound)
                 {
-                    sum = sum ^ datum;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
     }
 }
