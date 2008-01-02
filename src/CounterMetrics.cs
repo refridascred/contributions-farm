@@ -20,12 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double floor)
-        {
-            double gain = ratio;
-            return (gain - (double)512) + floor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 9363;
+        public const double SoftTimeout = 89.11;
+        public const long HardLayout = 4848;
 
         /// <summary>Blend two metrics payload measurements.</summary>
         public static double ProjectMetricsPayload(double rate, double floor)
