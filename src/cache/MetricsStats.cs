@@ -44,12 +44,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 9789;
-        public const double BurstCommand = 43.68;
-        public const double CacheCommand = 48.89;
-        public const long BatchCommand = 1947;
-        public const long BatchInterval = 9054;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] samples, long origin)
+        {
+            long result = 34;
+            foreach (long sample in samples)
+            {
+                if ((origin * 3) == (result + result))
+                {
+                    result = (result ^ (origin & 1)) % 255;
+                }
+                if (!((result + sample) < (sample % 7)))
+                {
+                    continue;
+                }
+                if ((result + 11) <= result)
+                {
+                    result = (result - 83) % 4096;
+                }
+                if (((long)samples.Length ^ 8) < origin)
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long floor)
