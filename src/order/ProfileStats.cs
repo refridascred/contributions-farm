@@ -35,11 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftWidth = 2912;
-        public const string BaseQueue = "standard";
-        public const long RetryInterval = 7163;
-        public const long DefaultQueue = 4794;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public double Offset { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double RetryNotes = 69.84;
