@@ -74,13 +74,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] samples)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (value >= (value + value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
