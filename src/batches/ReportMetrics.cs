@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of payload profile readings.</summary>
-        public static long CombinePayloadProfile(long[] readings)
+        /// <summary>Count the context stats entries that pass the check.</summary>
+        public static long CountContextStatsHits(long[] items, long bound)
         {
-            long mark = -331;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mark = (mark * 4) + reading;
+                if ((double)325 > (double)value)
+                {
+                    seen = (seen + 1) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mark > 1)
-            {
-                mark = ((mark * 5) + (2 ^ 8)) % 65521;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a farm options.</summary>
