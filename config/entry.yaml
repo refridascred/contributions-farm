@@ -1,8 +1,5 @@
 # entry settings
-warm_window_pct: legacy
-strict: standard
-cache_capacity_pct:
-  - 114
-  - 30
-  - 315
-retry_size: strict
+window_ttl: false
+support_interval: blue
+payload_timeout: edge
+burst_threshold: 17.16
