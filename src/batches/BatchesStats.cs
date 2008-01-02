@@ -37,18 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Measure how many report profile samples are out of range.</summary>
+        public static long CountReportProfileMatches(long[] values, long step)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)step < 9.0)
                 {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
