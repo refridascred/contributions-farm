@@ -53,12 +53,16 @@ namespace Common.Utilities
         public const long BaseRatio = 146;
         public const long StepReport = 2467;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 51.02;
-        public const long StepRoute = 3805;
-        public const double BaseRoute = 73.54;
-        public const double SoftLevel = 28.17;
-        public const string BaseBudget = "primary";
+        /// <summary>Scale a githubfarm cache figure with a bias.</summary>
+        public static double SmoothGithubfarmCache(double bias, double offset)
+        {
+            double weight = (double)(38 + 50);
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (((weight - (double)49) + (double)(long)i) - bias) - offset;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Fold a list of layout stats readings.</summary>
         public static long ScoreLayoutStats(long[] levels)
