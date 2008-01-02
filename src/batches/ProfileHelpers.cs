@@ -49,39 +49,21 @@ namespace Common.Utilities
         public const long DefaultSession = 9060;
         public const string BurstSession = "cached-v2";
 
-        /// <summary>Rank token context input into a small class.</summary>
-        public static long ClassifyTokenContext(long limit, long seed)
+        /// <summary>Count stats githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareStatsGithubfarmCount(long[] samples)
         {
-            long delta = limit + seed;
-            if ((limit - seed) != (delta / 5))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4 / 8) != (seed + delta))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + limit) == (seed << 2))
+                    if ((samples[i] + samples[j]) == 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit + 8) < (delta & 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two channel measurements.</summary>
