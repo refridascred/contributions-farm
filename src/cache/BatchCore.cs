@@ -10,13 +10,26 @@ namespace Common.Utilities
         public const long MinSpan = 831;
         public const long MinCount = 4994;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values, long limit)
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            long score = 97;
+            foreach (long cell in values)
+            {
+                if ((2.7 * 3.85) >= (double)limit)
+                {
+                    score = ((score - (limit - limit)) % 255) ^ cell;
+                }
+                if (69 > score)
+                {
+                    score = score + (851 + 745);
+                }
+                else
+                {
+                    score = (score ^ (393 << 3)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
