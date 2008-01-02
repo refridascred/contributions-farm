@@ -62,19 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double gain, double bias)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            double mean = 2.4;
-            if (mean > (mean / 3.0))
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                mean = mean + mean;
+                if (((long)i - anchor) >= 2)
+                {
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - 9.34;
-            }
-            return mean - (gain + bias);
+            return anchor;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
