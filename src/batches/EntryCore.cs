@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Paused,
-            Retry,
-            Ready,
-            Done,
-            New,
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
