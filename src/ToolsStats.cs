@@ -43,18 +43,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] series)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen + seen) < (780 - seen))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) + item;
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of already readings.</summary>
