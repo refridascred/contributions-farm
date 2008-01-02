@@ -37,19 +37,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] levels)
-        {
-            long mark = 209;
-            foreach (long reading in levels)
-            {
-                mark = mark + (reading - mark);
-                if (((double)(long)levels.Length >= (1.5 + 8.9)) && (mark <= (reading >> 4)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 8901;
+        public const string MaxTimeout = "legacy-v2";
+        public const double WindowBatch = 55.87;
     }
 }
