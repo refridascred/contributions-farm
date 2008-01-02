@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series, long seed)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            long acc = 71;
+            foreach (long datum in series)
+            {
+                if ((datum * 5) > (acc + datum))
+                {
+                    acc = (acc * 4) + (405 ^ acc);
+                }
+                else
+                {
+                    acc = (acc * 5) + (seed >> 4);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Project the next tools value.</summary>
