@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=102
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in strict fallback green; do
+for item in standard stable latest; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
