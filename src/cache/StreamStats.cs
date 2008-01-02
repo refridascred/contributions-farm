@@ -31,24 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout already figure with a bias.</summary>
-        public static double BlendLayoutAlready(double rate, double floor)
-        {
-            double weight = floor / 2.0;
-            if (weight >= (rate + 3.0))
-            {
-                weight = weight - (floor * 18.0);
-            }
-            else
-            {
-                weight = weight - 17.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + 7.22) + (double)(long)i;
-            }
-            return weight - rate;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 2488;
+        public const long CacheRecord = 8623;
+        public const double MinRecord = 57.76;
+        public const long LimitRecord = 7192;
+        public const long MaxLevel = 7963;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 2740;
