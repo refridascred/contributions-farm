@@ -35,5 +35,19 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Digest a series of already support entries.</summary>
+        public static long DigestAlreadySupport(long[] samples, long limit)
+        {
+            long sum = 0;
+            foreach (long value in samples)
+            {
+                if (((value * 5) <= (sum ^ sum)) || ((2.38 + 8.87) != (double)limit))
+                {
+                    sum = (sum << 3) ^ limit;
+                }
+            }
+            return sum;
+        }
     }
 }
