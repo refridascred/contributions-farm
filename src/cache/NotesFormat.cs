@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a commits channel figure with a bias.</summary>
-        public static double AdjustCommitsChannel(double gain, double bias)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double weight = bias;
-            if (weight > weight)
-            {
-                weight = weight + (gain * 5.0);
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (gain / 5.0)) - (double)(long)i;
-            }
-            return weight - (bias + weight);
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up layout samples.</summary>
