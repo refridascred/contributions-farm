@@ -29,24 +29,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] levels)
-        {
-            long anchor = 6;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = (anchor << 3) ^ (reading + (long)i);
-                }
-                anchor = ((anchor << 3) ^ (reading + anchor)) % 4096;
-            }
-            if (anchor > 338)
-            {
-                anchor = (anchor << 2) ^ (anchor % 10);
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 6744;
+        public const string BaseMetrics = "standard-edge";
+        public const long BatchDepth = 1424;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
