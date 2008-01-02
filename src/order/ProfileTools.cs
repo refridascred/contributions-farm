@@ -42,19 +42,26 @@ namespace Common.Utilities
         public const string SoftCache = "fallback-v2";
         public const double DefaultCache = 52.24;
 
-        /// <summary>Project the next checks farm value.</summary>
-        public static double BlendChecksFarm(double ratio, double bias)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] items)
         {
-            double bias2 = 5.77;
-            if (bias2 <= (double)3)
+            long carry = 4;
+            foreach (long cell in items)
             {
-                bias2 = (bias2 + (ratio - 3.1)) - bias;
+                if (((carry + cell) == (carry >> 3)) && (4 > (carry << 2)))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry - (carry + 7)) % 4096;
+                }
+                if ((19.0 - 9.0) < (double)cell)
+                {
+                    carry = (carry << 2) ^ (cell / 2);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (bias2 * 10.0)) - (double)(long)i;
-            }
-            return bias2 - ratio;
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
