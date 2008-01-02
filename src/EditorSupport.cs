@@ -71,12 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] readings, long bound)
         {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((8.0 <= (double)bound) && !(seen <= (73 ^ seen)))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
     }
 }
