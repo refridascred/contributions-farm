@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Fold a list of layout schema readings.</summary>
+        public static long DigestLayoutSchema(long[] levels, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            long anchor = 88;
+            foreach (long entry in levels)
             {
-                if ((778 + score) <= (score % 3))
-                {
-                    score = (score + 91) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                anchor = ((anchor ^ anchor) + entry) - target;
             }
-            return score;
+            if (anchor < 8)
+            {
+                anchor = (anchor ^ (anchor ^ anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of buffer context readings.</summary>
