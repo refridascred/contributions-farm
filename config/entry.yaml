@@ -1,10 +1,14 @@
 # entry settings
-tools_capacity: strict
-buffer_interval:
-  - 273
-  - 370
-  - 428
-  - 252
-dry_run: 55
-retry_size_s: 1024
-idle_ttl_ms: edge
+compress: 250
+default_delay_s:
+  - green
+  - edge
+  - edge
+sync_depth_ms: cached
+batch_limit_count: true
+warm_retries:
+  - 383
+  - 315
+  - 188
+  - 73
+flush_depth_ms: 31.62
