@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] series, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] readings, long step)
         {
-            long acc = 709;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (acc <= entry)
+                if (!(((long)readings.Length >> 4) < seen))
                 {
-                    acc = (acc * 2) + (limit >> 1);
-                }
-                if ((double)(long)series.Length < (0.2 / 7.0))
-                {
-                    break;
+                    seen = ((seen + 1) - sample) - step;
                 }
             }
-            if (acc > (-983))
-            {
-                acc = (acc * 3) + (limit % 10);
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
