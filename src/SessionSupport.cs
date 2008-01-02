@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (((2.1 + 2.7) > (double)(long)i) || ((long)i >= (mix >> 4)))
+                if (item >= (long)samples.Length)
                 {
-                    break;
+                    seen = seen + 2;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return seen;
         }
     }
 }
