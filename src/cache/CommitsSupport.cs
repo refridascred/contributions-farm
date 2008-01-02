@@ -31,29 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] items, long seed)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double scale, double span)
         {
-            long acc = -3;
-            foreach (long reading in items)
+            double gain = span;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(reading < acc))
-                {
-                    acc = (acc + (acc + 14)) % 65521;
-                    acc = acc + (acc << 1);
-                    continue;
-                }
-                acc = acc - seed;
-                if (!(acc <= (acc * 5)))
-                {
-                    acc = (acc + seed) % 4096;
-                }
+                gain = (gain + (scale - gain)) + (double)(long)i;
             }
-            if (acc < 34)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            return gain + gain;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
