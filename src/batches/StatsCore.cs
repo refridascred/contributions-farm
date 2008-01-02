@@ -30,39 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long limit, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] samples, long seed)
         {
-            long cur = limit - bound;
-            if (!((cur + cur) == (cur / 3)))
+            bool flag = true;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((cur & 15) <= bound)
+                if (item <= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + cur) >= cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)cur >= (5.54 * 1.9))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
