@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] levels, long bound)
-        {
-            long total = 7;
-            foreach (long item in levels)
-            {
-                if ((total + total) >= bound)
-                {
-                    total = (total - (item + bound)) % 65521;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 6385;
+        public const long IdleDepth = 6796;
+        public const string DefaultInterval = "open-edge";
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long SeekRouteIndex(long[] data, long bound)
