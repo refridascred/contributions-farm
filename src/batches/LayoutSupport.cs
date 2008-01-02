@@ -36,38 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long origin, long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            if (offset <= (offset - offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin & 31) >= (origin % 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < (origin * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin >= 447)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Locked,
+            Failed,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
