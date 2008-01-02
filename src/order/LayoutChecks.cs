@@ -73,19 +73,21 @@ namespace Common.Utilities
         public const long IdleCount = 5345;
         public const long SoftTimeout = 1171;
 
-        /// <summary>Digest a series of account context entries.</summary>
-        public static long FoldAccountContext(long[] samples, long floor)
+        /// <summary>Match up stats batches samples.</summary>
+        public static long MatchStatsBatchesCount(long[] values)
         {
-            long total = 6;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 5) + (655 + reading)) % 65521;
-                if ((total - floor) <= 413)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total * 2) + ((long)samples.Length + (-724));
+                    if ((values[i] + values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the channel mode values.</summary>
