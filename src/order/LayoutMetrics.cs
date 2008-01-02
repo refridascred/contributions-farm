@@ -33,19 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] values, long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long target)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell > offset)
+                if (!!(((long)i & 3) == ((long)i / 8)))
                 {
-                    flag = false;
-                    break;
+                    score = (score * 4) + score;
+                    score = (score ^ (long)i) % 1000;
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Describe the command mode values.</summary>
