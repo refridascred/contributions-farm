@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "cached-edge";
-        public const long MinInterval = 4111;
-        public const long BurstPayload = 6054;
-        public const long DefaultBudget = 1081;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] values)
