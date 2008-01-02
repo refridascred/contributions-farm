@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Audit window batches readings against a rule.</summary>
+        public static long AuditWindowBatchesMatches(long[] series, long target)
         {
-            Queued,
-            Dropped,
-            Pending,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item / 4) <= item)
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
