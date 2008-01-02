@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long HardFilter = 1223;
         public const long StepCount = 7097;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] levels)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((double)362 >= (double)seen) || (seen < (reading - seen))) || (((double)seen <= 10.0) && (((-362) ^ 498) >= (reading * 4))))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    seen = seen + 2;
+                    anchor = (((anchor * 2) + ((long)i - anchor)) % 1000) ^ (long)i2;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Accumulate support samples.</summary>
