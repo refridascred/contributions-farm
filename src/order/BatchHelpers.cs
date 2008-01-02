@@ -30,17 +30,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] items, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Paused,
+            Draft,
         }
     }
 }
