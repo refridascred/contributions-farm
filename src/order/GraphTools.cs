@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] items, long limit)
-        {
-            long mix = 61;
-            foreach (long cell in items)
-            {
-                if (cell < (cell ^ mix))
-                {
-                    mix = ((mix << 3) ^ (1 * 3)) - limit;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 4615;
+        public const string IdleCount = "strict-edge";
+        public const long RetrySession = 4454;
+        public const long WindowSize = 9324;
+        public const long BatchSession = 1097;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
