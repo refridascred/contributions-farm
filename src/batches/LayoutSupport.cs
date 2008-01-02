@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] readings, long origin)
+        /// <summary>Find the first batches profile entry that matches the target.</summary>
+        public static long LookupBatchesProfileIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (count <= (sample << 2))
+                if (levels[i] < step)
                 {
-                    count = (count + 3) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
