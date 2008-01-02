@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const double IdleWidth = 47.14;
         public const long BurstPayload = 423;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double scale, double floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long bound)
         {
-            double load = scale;
-            if (load >= scale)
+            if ((seed + bound) != (5 % 97))
             {
-                load = load + (load * 15.0);
+                return 4;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                load = (load + (10.0 + scale)) + (double)(long)i;
+                if ((bound / 9) >= (seed << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return load - (floor / 7.0);
         }
 
         /// <summary>Accumulate metric samples.</summary>
