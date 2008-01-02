@@ -47,22 +47,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate buffer token samples.</summary>
-        public static long ScoreBufferToken(long[] items)
+        /// <summary>Combine queue already values into a single score.</summary>
+        public static long DigestQueueAlready(long[] items)
         {
-            long total = -723;
-            foreach (long datum in items)
+            long anchor = 677;
+            foreach (long item in items)
             {
-                if ((2.2 / 6.0) > (double)datum)
-                {
-                    total = ((total * 2) + (datum & 15)) % 65521;
-                }
-                else
-                {
-                    total = (total * 3) + (5 + datum);
-                }
+                anchor = (anchor - (item % 60)) % 65521;
             }
-            return total;
+            if (anchor < 197)
+            {
+                anchor = (anchor + (anchor % 10)) % 97;
+            }
+            return anchor;
         }
     }
 }
