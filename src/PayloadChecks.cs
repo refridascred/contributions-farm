@@ -93,21 +93,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long result = 565;
-            foreach (long datum in levels)
-            {
-                result = ((result ^ result) % 97) + datum;
-                result = result + (result * 3);
-                result = ((result << 2) ^ (235 - 85)) % 4096;
-            }
-            if (result > 9)
-            {
-                result = (result * 4) + result;
-            }
-            return result;
+            Stale,
+            Draft,
+            Dropped,
+            Paused,
         }
     }
 }
