@@ -13,12 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultWidth = "primary-edge";
-        public const double BaseLevel = 43.22;
-        public const string BaseBatches = "fallback";
-        public const long BatchBatches = 1467;
-        public const long StepBatches = 7985;
+        /// <summary>Audit filter format readings against a rule.</summary>
+        public static long MeasureFilterFormatMatches(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((long)values.Length / 7) != (seen & 1))
+                {
+                    seen = ((seen + 3) ^ entry) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
