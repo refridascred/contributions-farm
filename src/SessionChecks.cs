@@ -55,12 +55,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitRatio = 5.23;
-        public const long BaseCount = 9049;
-        public const string DefaultStats = "stable-1";
-        public const long RetrySpan = 9209;
-        public const long MinTimeout = 1643;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TallyStream(long[] items)
