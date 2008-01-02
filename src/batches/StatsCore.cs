@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long step)
+        /// <summary>Fold a list of command already readings.</summary>
+        public static long FoldCommandAlready(long[] readings, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long result = 49;
+            foreach (long item in readings)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((result * 4) < (item + 438))
+                {
+                    result = (result * 2) + (offset - 71);
+                }
             }
-            return mark;
+            if (result > 278)
+            {
+                result = result + (result / 5);
+            }
+            return result;
         }
 
         /// <summary>Rank metrics payload input into a small class.</summary>
