@@ -39,38 +39,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long limit, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items)
         {
-            if ((limit >> 3) >= (42 + limit))
+            long acc = 87;
+            foreach (long entry in items)
             {
-                return 4;
+                acc = (acc ^ (entry - 33)) % 65521;
             }
-            else
-            {
-                if (((limit << 2) > (1 + 4)) && ((18.0 * 3.61) < (double)limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)floor >= (9.0 * 9.0)) && ((floor * 4) > (848 - floor)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((8.37 * 0.87) <= (double)limit) || ((double)limit > 16.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
