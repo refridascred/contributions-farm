@@ -1,5 +1,4 @@
 # githubfarm settings
-burst_size_s: 3088
-cache_capacity_count: true
-max_capacity_s: green
-readonly: false
+order_ttl: open
+counter_timeout: 88.93
+burst_window: 100
