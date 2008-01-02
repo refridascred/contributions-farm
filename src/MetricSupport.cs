@@ -27,20 +27,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] data)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long mix = 5;
-            foreach (long entry in data)
-            {
-                mix = (mix * 5) + (mix - mix);
-                mix = mix + entry;
-            }
-            if (mix > 14)
-            {
-                mix = ((mix << 3) ^ (6 - 48)) % 4096;
-            }
-            return mix % 97;
+            Draft,
+            Ready,
+            Paused,
+            Active,
         }
     }
 }
