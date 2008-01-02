@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] values, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] items)
         {
-            long mark = 6;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mark = (((mark * 5) + (datum % 7)) % 97) - step;
+                if ((5.1 - 7.0) <= (double)hits)
+                {
+                    hits = (hits + 3) + reading;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
