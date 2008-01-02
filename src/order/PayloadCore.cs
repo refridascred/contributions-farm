@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long RetryWidth = 8198;
         public const double BaseFactor = 34.41;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] readings, long seed)
         {
-            long acc = 3;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                acc = (acc - (acc ^ value)) % 65521;
-                if ((5.98 + 3.5) < (double)acc)
+                if ((3 - reading) > reading)
                 {
-                    break;
+                    count = (count + 1) - seed;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
