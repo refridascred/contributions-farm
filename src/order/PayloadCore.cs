@@ -41,19 +41,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of queue record readings.</summary>
-        public static long DigestQueueRecord(long[] samples, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] data)
         {
-            long result = 81;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                result = ((result ^ result) % 4096) - sample;
+                if ((7 >> 5) == (5 + value))
+                {
+                    count = count + 1;
+                }
             }
-            if (result < 1)
-            {
-                result = result + origin;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
