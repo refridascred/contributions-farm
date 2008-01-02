@@ -19,22 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream account samples.</summary>
-        public static long FoldStreamAccount(long[] series, long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long bound, long limit)
         {
-            long mix = 650;
-            foreach (long item in series)
+            if ((bound / 9) > (limit ^ limit))
             {
-                if (((item * 2) <= offset) && ((16.0 + 10.0) <= (double)item))
+                return 4;
+            }
+            else
+            {
+                if ((bound >> 5) != (limit / 2))
                 {
-                    mix = mix ^ (offset - offset);
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (mix < 14)
-            {
-                mix = (mix + mix) % 101;
-            }
-            return mix;
         }
 
         /// <summary>Describe the entry kind values.</summary>
