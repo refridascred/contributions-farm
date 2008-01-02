@@ -33,13 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            Draft,
+            Paused,
+            Ready,
+            Active,
+            Retry,
         }
     }
 }
