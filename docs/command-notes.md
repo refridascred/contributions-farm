@@ -1,12 +1,14 @@
 # Command notes
 
-A order that stays idle for too long is moved to the command list.
-Keep order and entry names short and lowercase.
-The account module keeps window values in sync with the profile cache.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Keep filter and support names short and lowercase.
+Run the editor check before changing any report limits.
+
+Keep stats and window names short and lowercase.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate window input early
-- Prefer schema defaults
-- Document new filter fields
-- Log every buffer change
+- Keep profile values small
+- Review cluster limits each release
+- Validate githubfarm input early
