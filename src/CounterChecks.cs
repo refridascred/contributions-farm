@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Check that every token checks entry stays within the limit.</summary>
+        public static bool ValidateTokenChecksBounds(long[] samples, long seed)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
