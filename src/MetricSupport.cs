@@ -18,18 +18,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] items)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits - hits) <= (value & 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Stale,
+            Active,
+            Draft,
+            Paused,
         }
     }
 }
