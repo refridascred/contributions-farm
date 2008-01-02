@@ -37,14 +37,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            Pending,
-            Done,
-            Active,
-            Locked,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
