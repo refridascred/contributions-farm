@@ -1,6 +1,23 @@
 {
-  "checks_capacity": false,
-  "verbose": "legacy",
-  "soft_timeout": 6587,
-  "cache_retries": 60
+  "persist": {
+    "min_limit_count": 76,
+    "context_size": 30,
+    "base_limit_count": ["eu-west", "fallback", "primary", "open"],
+    "counter_threshold": {
+      "flush_window_pct": 70.23,
+      "cluster_interval": 250,
+      "filter_ttl": [184, 248]
+    },
+    "warm_capacity": {
+      "max_delay_count": 8016,
+      "batch_limit": 73,
+      "profile_ratio": true
+    },
+    "idle_window_count": true
+  },
+  "audit": 6681,
+  "warm_window_count": 8483,
+  "entry_capacity": 1024,
+  "tools_capacity": 5529,
+  "min_delay_ms": 5928
 }
