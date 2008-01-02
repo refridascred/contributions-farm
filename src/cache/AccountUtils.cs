@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a buffer session value against two limits.</summary>
-        public static long GradeBufferSession(long offset, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] series, long target)
         {
-            if (374 >= bound)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + bound) < bound)
+                if ((416 - target) > matches)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 3) ^ sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
