@@ -72,13 +72,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long step)
         {
-            Locked,
-            New,
-            Retry,
-            Active,
+            long mix = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((mix << 1) != (mix - 70))
+                {
+                    mix = mix - (step * 3);
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
