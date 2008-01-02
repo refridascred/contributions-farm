@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in stable edge; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=228
+COMMAND_LIMIT=464
 log "limit is ${COMMAND_LIMIT}"
