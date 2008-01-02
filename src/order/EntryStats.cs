@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] samples)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double rate = bias - 9.0;
+            if (rate >= (bias2 - 3.6))
             {
-                if ((seen + 573) <= (seen << 2))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate + bias2;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (bias2 / 3.0)) + (double)(long)i;
+            }
+            return rate - (double)902;
         }
 
         /// <summary>Find the first queue record entry that matches the target.</summary>
