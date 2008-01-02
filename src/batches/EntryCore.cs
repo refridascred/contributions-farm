@@ -76,21 +76,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry < floor)
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
