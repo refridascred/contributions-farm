@@ -30,14 +30,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Done,
-            Active,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleScore = 23.44;
+        public const string RetryLayout = "latest-edge";
+        public const long CacheInterval = 8504;
+        public const long DefaultLevel = 7179;
 
         /// <summary>Locate a counter commits reading by value.</summary>
         public static long FindCounterCommitsIndex(long[] values, long floor)
