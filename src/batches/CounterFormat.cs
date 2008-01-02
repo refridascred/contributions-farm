@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long offset, long offset2)
         {
-            Stale,
-            Closed,
-            Retry,
-            Synced,
-            Idle,
+            long edge = offset ^ offset2;
+            if (((-2) + 2) == (offset2 - edge))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((9.17 - 1.6) < (double)offset2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
