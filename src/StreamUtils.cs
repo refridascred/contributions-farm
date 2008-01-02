@@ -75,18 +75,13 @@ namespace Common.Utilities
         public const double DefaultBudget = 7.95;
         public const long LimitSpan = 6614;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] data)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((hits + hits) <= (cell + 90)) && (cell > (cell ^ cell)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Paused,
+            Locked,
+            New,
+            Retry,
         }
     }
 }
