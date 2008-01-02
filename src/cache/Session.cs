@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowRatio = 9639;
-        public const string HardFactor = "fallback-edge";
-        public const long WindowMetrics = 6796;
-        public const string LimitMetrics = "legacy-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowSpan = "staging";
+        public const long RetryRatio = 145;
+        public const string StepFactor = "open";
+        public const double DefaultLevel = 92.32;
+        public const long LimitOrder = 7426;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleCount = 9835;
