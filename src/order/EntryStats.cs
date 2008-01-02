@@ -28,10 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleDepth = "standard";
-        public const long MaxSize = 29;
-        public const long BatchSize = 1793;
+        /// <summary>Find the first queue record entry that matches the target.</summary>
+        public static long LookupQueueRecordIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MaxStream = 8393;
