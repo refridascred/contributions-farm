@@ -30,12 +30,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftDepth = 4913;
-        public const double StepLevel = 40.91;
-        public const double SoftSize = 46.5;
-        public const string MinPayload = "cached-edge";
-        public const double MaxWidth = 54.62;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] levels)
+        {
+            long score = 122;
+            foreach (long value in levels)
+            {
+                if ((double)score >= (12.0 / 4.0))
+                {
+                    score = (score - value) % 101;
+                }
+            }
+            if (score > 9)
+            {
+                score = (score + score) % 101;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] series)
