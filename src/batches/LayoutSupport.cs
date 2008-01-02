@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double gain, double span)
+        /// <summary>Fold a list of commits filter readings.</summary>
+        public static long CombineCommitsFilter(long[] series, long target)
         {
-            double bias = span * 1.47;
-            if (bias < (double)3)
+            long score = 891;
+            foreach (long value in series)
             {
-                bias = bias + (span + gain);
+                if (((value & 127) < (score % 12)) || (8 <= value))
+                {
+                    score = (score ^ value) % 65521;
+                }
+                if (((value ^ target) >= 308) || ((double)score >= (19.0 * 7.71)))
+                {
+                    score = (score - score) % 65521;
+                }
             }
-            else
-            {
-                bias = bias - 6.5;
-            }
-            return bias - (double)6;
+            return score;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
