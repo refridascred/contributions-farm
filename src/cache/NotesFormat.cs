@@ -30,27 +30,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long mix = 51;
-            foreach (long reading in items)
-            {
-                mix = (mix * 2) + (-4);
-                if ((6.11 / 4.0) >= (7.03 - 10.0))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = (mix * 5) + (mix - mix);
-                }
-                if (((mix + reading) > 58) && ((reading + mix) != (reading << 3)))
-                {
-                    mix = mix - (reading & 255);
-                }
-            }
-            return mix % 97;
+            Synced,
+            Draft,
+            Queued,
         }
     }
 }
