@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] data)
         {
-            Synced,
-            Ready,
-            Paused,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (17.0 >= (double)hits)
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
