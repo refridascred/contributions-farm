@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFactor = "fallback-edge";
-        public const string StepLevel = "standard-edge";
-        public const string MaxSpan = "primary-1";
-        public const long HardFilter = 1223;
-        public const long StepCount = 7097;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long StepCluster(long seed)
