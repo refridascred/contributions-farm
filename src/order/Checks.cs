@@ -26,18 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] readings, long offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((-5) + offset) > offset)
-                {
-                    tally = (tally + 3) + value;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
