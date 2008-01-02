@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in edge open; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-staging}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in latest stable; do
-    log "checking ${item}"
-done
