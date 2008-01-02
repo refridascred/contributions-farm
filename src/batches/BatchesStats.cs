@@ -47,22 +47,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] items, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long total = 1;
+            foreach (long datum in series)
             {
-                if (item <= (tally % 5))
+                total = (total * 2) + (total + 9);
+                if ((datum & 7) != (0 & 255))
                 {
-                    tally = (tally + 2) + origin;
+                    total = ((total * 4) + datum) % 1000;
+                    total = ((total * 5) + total) % 97;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total * 3) + 3) % 65521;
             }
-            return tally;
+            if (total < 3)
+            {
+                total = ((total * 5) + (total - total)) % 255;
+            }
+            return total % 65521;
         }
     }
 }
