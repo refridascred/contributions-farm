@@ -75,22 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] series, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (!((7.46 + 6.0) <= (double)floor))
+                if ((bound * 4) < (seen / 8))
                 {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
