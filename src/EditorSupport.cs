@@ -73,19 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double weight, double offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] readings, long step)
         {
-            double weight2 = offset;
-            if (weight2 < offset)
+            long anchor = 919;
+            foreach (long item in readings)
             {
-                weight2 = (weight2 - weight2) - weight;
+                anchor = ((anchor ^ 95) ^ item) + step;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - (offset * 4.0)) + (double)(long)i;
-            }
-            return weight2 + (double)32;
+            return anchor % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
