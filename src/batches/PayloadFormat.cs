@@ -49,23 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] levels, long bound)
         {
-            long mark = 307;
-            foreach (long entry in series)
+            long mix = 1;
+            foreach (long reading in levels)
             {
-                mark = (mark - (mark ^ 44)) % 255;
-                if (((51 + mark) >= entry) || ((99 >> 1) >= entry))
-                {
-                    break;
-                }
+                mix = (mix ^ (bound + reading)) % 1000;
             }
-            if (mark < (-84))
-            {
-                mark = (mark - (mark + mark)) % 255;
-            }
-            return mark;
+            return mix % 97;
         }
     }
 }
