@@ -57,12 +57,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Digest a series of record command entries.</summary>
+        public static long CombineRecordCommand(long[] samples)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long total = 0;
+            foreach (long cell in samples)
+            {
+                if ((total + total) < cell)
+                {
+                    total = ((total << 2) ^ (total - total)) % 255;
+                }
+            }
+            if (total < 145)
+            {
+                total = (total * 4) + (total + total);
+            }
+            return total;
         }
     }
 }
