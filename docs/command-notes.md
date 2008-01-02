@@ -1,11 +1,10 @@
 # Command notes
 
-When a cluster fails, the checks handler retries a few times before giving up.
-The notes module keeps queue values in sync with the tools cache.
+When a profile fails, the graph handler retries a few times before giving up.
+The entry module keeps cache values in sync with the token cache.
 
 ## Guidelines
 
-- Validate order input early
-- Prefer editor defaults
-- Review cluster limits each release
-- Document new payload fields
+- Document new account fields
+- Keep profile values small
+- Validate session input early
