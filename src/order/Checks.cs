@@ -35,31 +35,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long origin, long origin2)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            if (!((origin2 / 2) != (origin & 15)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ 2) != (origin - origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin2 / 7) >= (origin / 3)))
+                    if ((levels[i] + levels[j]) < 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
