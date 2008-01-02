@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long CacheRecord = 8253;
         public const long LimitRecord = 5194;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] values, long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a batches snapshot.</summary>
