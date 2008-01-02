@@ -29,11 +29,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((anchor ^ step) > (3 + step)) || ((anchor + 56) < (step + step)))
+                {
+                    anchor = anchor ^ (5 ^ 46);
+                    anchor = ((anchor << 3) ^ step) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a queue format reading by value.</summary>
