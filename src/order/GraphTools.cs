@@ -31,24 +31,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long target, long bound)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            if ((double)bound >= (5.2 * 1.5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target - bound) != (target - target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
