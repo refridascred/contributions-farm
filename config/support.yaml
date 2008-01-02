@@ -1,4 +1,13 @@
 # support settings
-strict: 86
-default_retries: 55
-sync_delay: green
+hard_size_pct: eu-west
+max_interval_ms: 235
+min_ttl: false
+min_ttl_pct:
+  readonly: primary
+  max_timeout_ms:
+    - 182
+    - 386
+    - 186
+    - 200
+  compress: true
+  dry_run: 89
