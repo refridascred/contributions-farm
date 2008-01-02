@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstSize = 6532;
+        public const double MinCounter = 48.2;
+        public const string StepCount = "legacy-v2";
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long PairCounterCount(long[] series)
