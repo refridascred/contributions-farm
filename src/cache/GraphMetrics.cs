@@ -30,14 +30,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstBudget = 4814;
+        public const double RetryRatio = 67.37;
+        public const long HardSize = 4233;
+        public const long StepToken = 1519;
 
         /// <summary>Look up the position of a context farm sample.</summary>
         public static long SeekContextFarmIndex(long[] samples, long origin)
