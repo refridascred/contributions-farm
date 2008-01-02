@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long limit)
         {
-            Done,
-            Paused,
-            Queued,
-            Synced,
+            long total = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                long edge = (long)i * 4;
+                total = (total * 5) + edge;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
