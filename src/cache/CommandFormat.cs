@@ -24,15 +24,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double rate, double offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] data)
         {
-            double weight = rate * 1.86;
-            if (weight <= weight)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                weight = (weight + (5.39 * 18.0)) - offset;
+                if ((tally > (tally & 7)) || ((tally > (588 ^ tally)) && ((tally << 1) < sample)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Combine context values into a single score.</summary>
