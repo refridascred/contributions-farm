@@ -49,18 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] data, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mark = 307;
+            foreach (long entry in series)
             {
-                if (seen < (entry + seed))
+                mark = (mark - (mark ^ 44)) % 255;
+                if (((51 + mark) >= entry) || ((99 >> 1) >= entry))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (mark < (-84))
+            {
+                mark = (mark - (mark + mark)) % 255;
+            }
+            return mark;
         }
     }
 }
