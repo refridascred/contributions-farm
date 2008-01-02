@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] readings)
+        /// <summary>Derive the next record stats value from a seed.</summary>
+        public static long DeriveRecordStats(long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((datum - datum) > (seen / 5))
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the farm level values.</summary>
