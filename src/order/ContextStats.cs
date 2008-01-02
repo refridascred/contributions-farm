@@ -16,18 +16,18 @@ namespace Common.Utilities
         public const double BaseWidth = 95.1;
         public const long MaxWidth = 223;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] values)
         {
-            long result = -10;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((((long)items.Length + limit) != (entry - result)) && (9.0 <= (double)result))
+                if ((cell * 2) <= (count * 2))
                 {
-                    result = ((result * 5) + ((long)items.Length - entry)) % 97;
+                    count = count + 2;
                 }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
