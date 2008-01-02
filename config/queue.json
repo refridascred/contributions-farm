@@ -1,7 +1,11 @@
 {
-  "schema_limit": "open",
-  "max_retries": 70.82,
-  "enabled": "open",
-  "metric_capacity": "latest",
-  "default_threshold_s": 906
+  "cluster_window": ["primary", "strict", "legacy"],
+  "soft_ttl_ms": {
+    "burst_retries": true,
+    "persist": false,
+    "schema_size": [472, 423, 136]
+  },
+  "audit": 32.39,
+  "readonly": "eu-west",
+  "flush_capacity": "latest"
 }
