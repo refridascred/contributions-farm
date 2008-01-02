@@ -1,6 +1,5 @@
 {
-  "default_capacity": "local",
-  "strict": [464, 372],
-  "base_size_ms": "strict",
-  "persist": 4267
+  "idle_window_s": 250,
+  "route_interval": "blue",
+  "poll_depth": "cached"
 }
