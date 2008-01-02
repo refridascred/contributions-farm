@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 8776;
-        public const long BatchStats = 9908;
-        public const long MinSpan = 4873;
-        public const long CacheStats = 8705;
-        public const long WindowSize = 7704;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)matches >= (11.0 / 4.0))
+                {
+                    matches = ((matches + 1) + datum) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] readings, long bound)
