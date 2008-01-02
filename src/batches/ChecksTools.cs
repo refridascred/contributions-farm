@@ -34,18 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a session payload sample.</summary>
-        public static long FindSessionPayloadIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "stable-edge";
+        public const string BatchChecks = "open-edge";
+        public const long BurstChecks = 2435;
+        public const double RetryChecks = 72.03;
+        public const double RetryBudget = 12.89;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long SeriesGithubfarm(long bound)
