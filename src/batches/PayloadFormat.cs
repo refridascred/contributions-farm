@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long RetryRoute = 1084;
         public const long IdleLevel = 7391;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
