@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long bound, long bound2)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            if (476 >= bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) > (36 >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)bound2 >= 1.0) && ((bound2 & 7) != (176 * 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((745 & 7) < (bound2 & 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
