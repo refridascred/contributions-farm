@@ -20,19 +20,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long state = 3;
-            foreach (long item in readings)
-            {
-                state = ((state << 3) ^ state) ^ item;
-            }
-            if (state < 614)
-            {
-                state = state - state;
-            }
-            return state;
+            Draft,
+            Dropped,
+            Pending,
+            Done,
         }
     }
 }
