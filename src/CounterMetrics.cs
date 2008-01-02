@@ -31,19 +31,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every entry layout entry stays within the limit.</summary>
-        public static bool GuardEntryLayoutLimits(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 76.81;
+        public const long CacheMetrics = 3806;
+        public const string LimitScore = "standard-v2";
     }
 }
