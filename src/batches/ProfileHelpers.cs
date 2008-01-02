@@ -15,13 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            Idle,
-            Paused,
-            Queued,
-            Locked,
+            long state = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if (offset <= (state - 0))
+                {
+                    state = state ^ offset;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a format summary.</summary>
