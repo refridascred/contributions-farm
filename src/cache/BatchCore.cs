@@ -58,24 +58,13 @@ namespace Common.Utilities
             return bias2 + (double)49;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long offset, long seed)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            if ((double)seed != (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((676 / 6) <= (offset + seed)) || ((2.2 / 6.0) <= (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Failed,
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
