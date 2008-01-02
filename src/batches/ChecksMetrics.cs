@@ -56,15 +56,23 @@ namespace Common.Utilities
         public const long SoftSpan = 2404;
         public const double SoftBatches = 33.03;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double bias, double span)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            double mean = span;
+            if (mean < 3.79)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                mean = mean + (5.8 + span);
             }
-            return state;
+            else
+            {
+                mean = mean + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + 8.91;
         }
     }
 }
