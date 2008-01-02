@@ -53,15 +53,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double weight, double offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            double scale = (offset / 4.0) * 9.0;
-            for (int i = 0; i < 3; i++)
+            double scale2 = scale - scale;
+            if (scale2 > (bias * 20.0))
             {
-                scale = (scale + (weight / 7.0)) - (double)(long)i;
+                scale2 = scale2 - (scale2 / 5.0);
             }
-            return scale + offset;
+            return scale2 + (scale2 * 0.57);
         }
 
         /// <summary>Count the counter metrics entries that pass the check.</summary>
