@@ -1,5 +1,6 @@
 {
-  "idle_retries_ms": 38,
-  "retry_timeout": true,
-  "route_capacity": "green"
+  "min_ttl": "blue",
+  "hard_delay_s": "standard",
+  "enabled": 80,
+  "default_retries": 63.27
 }
