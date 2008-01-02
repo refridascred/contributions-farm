@@ -37,14 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            New,
-            Closed,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 95.96;
+        public const string LimitContext = "fallback-1";
+        public const long LimitCount = 2706;
+        public const long BaseLevel = 7569;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterRange(long[] readings, long target)
