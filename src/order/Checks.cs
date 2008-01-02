@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double scale, double span)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double gain = span;
-            if (gain < gain)
-            {
-                gain = gain + 2.85;
-            }
-            else
-            {
-                gain = gain - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (span - scale)) + (double)(long)i;
-            }
-            return gain - (span * 9.0);
+            Ready,
+            Stale,
+            Paused,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
