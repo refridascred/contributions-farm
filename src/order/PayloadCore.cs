@@ -31,17 +31,22 @@ namespace Common.Utilities
         public const double MaxChannel = 24.95;
         public const string MaxSpan = "standard";
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                score = ((score << 2) ^ origin) % 97;
-                score = (score ^ (37 / 5)) % 101;
-                score = ((score * 4) + (long)i) % 1000;
+                if (((datum << 2) < (datum & 15)) && ((count / 4) > datum))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
