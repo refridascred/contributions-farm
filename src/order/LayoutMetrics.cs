@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchGithubfarm = "local-1";
-        public const long StepGithubfarm = 324;
-        public const long HardBudget = 5544;
-        public const long RetryLevel = 9735;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (count >= (datum & 31))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
