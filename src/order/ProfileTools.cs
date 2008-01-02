@@ -45,22 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter githubfarm readings.</summary>
-        public static long WeighCounterGithubfarm(long[] readings)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] series, long origin)
         {
-            long anchor = 69;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (((anchor + anchor) < (anchor - (-7))) || (anchor >= entry))
+                if (value <= origin)
                 {
-                    anchor = ((anchor * 5) + ((-515) << 2)) % 65521;
-                }
-                if (((long)readings.Length > (472 ^ anchor)) || ((anchor << 1) != (anchor % 3)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return anchor;
+            return found;
         }
     }
 }
