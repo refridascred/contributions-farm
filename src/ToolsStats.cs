@@ -56,19 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items, long origin)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double rate, double bias)
         {
-            long acc = 27;
-            foreach (long entry in items)
+            double rate2 = bias;
+            if (rate2 > (rate * 7.0))
             {
-                acc = (((acc * 4) + (entry - entry)) % 255) + origin;
+                rate2 = rate2 + (rate2 / 8.0);
             }
-            if (acc < 6)
-            {
-                acc = (acc << 2) ^ (acc + acc);
-            }
-            return acc % 97;
+            return rate2 + (rate2 + rate2);
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
