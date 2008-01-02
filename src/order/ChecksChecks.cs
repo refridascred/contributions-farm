@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long limit, long bound)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long diff = limit + bound;
-            if ((double)bound >= 2.4)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit > (0.64 - 6.57)) && ((double)diff < (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
