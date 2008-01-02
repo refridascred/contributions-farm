@@ -14,25 +14,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of filter batch readings.</summary>
-        public static long DigestFilterBatch(long[] samples, long seed)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            long score = 12;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell << 2) >= (cell + seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 3) + seed) % 4096;
-                    break;
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = (score - (seed & 255)) % 255;
-                score = score - (score - score);
             }
-            if (score > 38)
-            {
-                score = (score ^ (score << 2)) % 4096;
-            }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Describe the farm kind values.</summary>
