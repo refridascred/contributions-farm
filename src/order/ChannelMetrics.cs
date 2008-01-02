@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] levels, long bound)
         {
-            long acc = 270;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc - (48 >> 4)) ^ sample;
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Accumulate stats samples.</summary>
