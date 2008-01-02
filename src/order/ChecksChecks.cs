@@ -16,31 +16,12 @@ namespace Common.Utilities
             return mean - (double)93;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long step, long target)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if (((step - step) <= (target + target)) || ((target % 16) == (step << 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step ^ target) < (target + (-7))) || ((target & 3) <= (target << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target * 4) < (target - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
