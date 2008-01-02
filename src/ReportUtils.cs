@@ -72,19 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue already values into a single score.</summary>
-        public static long DigestQueueAlready(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] series, long origin)
         {
-            long anchor = 677;
-            foreach (long item in items)
+            long total = 954;
+            foreach (long cell in series)
             {
-                anchor = (anchor - (item % 60)) % 65521;
+                total = (((total + total) % 255) ^ cell) - origin;
             }
-            if (anchor < 197)
+            if (total > 43)
             {
-                anchor = (anchor + (anchor % 10)) % 97;
+                total = ((total << 3) ^ (3 + 88)) % 65521;
             }
-            return anchor;
+            return total % 65521;
         }
     }
 }
