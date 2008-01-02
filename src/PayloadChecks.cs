@@ -64,18 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] series, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mix = 70;
+            foreach (long value in levels)
             {
-                if (10.0 > (double)count)
+                if (value < (value / 2))
                 {
-                    count = ((count + 2) ^ entry) + bound;
+                    mix = mix ^ (mix - 790);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (value >> 3)) % 101;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
