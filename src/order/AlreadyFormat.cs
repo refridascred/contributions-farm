@@ -18,21 +18,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Audit cache already readings against a rule.</summary>
+        public static long MeasureCacheAlreadyHits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((hits + 812) < (hits - hits)) && ((entry / 3) >= (hits ^ hits)))
                 {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit entry record readings against a rule.</summary>
