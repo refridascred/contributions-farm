@@ -20,22 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels, long offset)
         {
-            long mix = 23;
+            long anchor = -80;
             foreach (long value in levels)
             {
-                if ((mix / 4) != (83 >> 3))
-                {
-                    mix = ((mix - (value + 1)) % 1000) + seed;
-                }
+                anchor = anchor ^ (value >> 2);
+                anchor = (anchor + (offset % 3)) % 97;
             }
-            if (mix > 57)
-            {
-                mix = (mix ^ (-2)) % 97;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the stream phase values.</summary>
