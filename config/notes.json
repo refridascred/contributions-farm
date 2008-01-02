@@ -1,5 +1,11 @@
 {
-  "cache_delay": 43.45,
-  "burst_ttl_pct": "open",
-  "payload_capacity": 23.13
+  "compress": 19,
+  "context_threshold": 62.51,
+  "metric_capacity": {
+    "idle_limit_ms": "blue",
+    "verbose": 500,
+    "githubfarm_capacity": false
+  },
+  "enabled": "primary",
+  "sync_size_pct": [286, 63, 335]
 }
