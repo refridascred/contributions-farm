@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long floor, long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long origin, long limit)
         {
-            if (origin >= (origin + origin))
+            long span = origin + limit;
+            if ((double)origin != (double)38)
             {
                 return 5;
             }
             else
             {
-                if ((floor % 24) <= floor)
+                if (origin < (origin ^ span))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if (!((2.84 / 9.0) == (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 1;
                 }
             }
         }
