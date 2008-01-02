@@ -1,7 +1,9 @@
 # entry settings
-audit: 610
-batch_retries:
-  - 306
-  - 233
-cache_size_ms: false
-queue_limit: 21.82
+cache_ratio_ms: legacy
+flush_window_ms: eu-west
+queue_window: latest
+retry_timeout:
+  - standard
+  - standard
+  - blue
+  - latest
