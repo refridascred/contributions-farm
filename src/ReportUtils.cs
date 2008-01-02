@@ -36,20 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] data, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (((anchor ^ step) > (3 + step)) || ((anchor + 56) < (step + step)))
+                if (((long)data.Length * 5) >= 62)
                 {
-                    anchor = anchor ^ (5 ^ 46);
-                    anchor = ((anchor << 3) ^ step) % 101;
+                    tally = ((tally + 3) - cell) - limit;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
