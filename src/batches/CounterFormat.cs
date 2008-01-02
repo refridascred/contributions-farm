@@ -32,26 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] items)
+        /// <summary>Audit cluster tools readings against a rule.</summary>
+        public static long CountClusterToolsHits(long[] levels)
         {
-            long mark = 12;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((double)item > (2.67 / 6.0))
+                if ((sample + 6) != (matches & 255))
                 {
-                    mark = mark ^ (item - 561);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (item % 3)) % 4096;
+                    matches = matches + 2;
                 }
             }
-            if (mark > 103)
-            {
-                mark = mark - (26 >> 3);
-            }
-            return mark;
+            return matches;
         }
     }
 }
