@@ -1,7 +1,6 @@
 {
-  "strict": [455, 176],
-  "max_retries_count": false,
-  "batch_ratio_pct": false,
-  "cluster_ttl": 30,
-  "batch_depth_pct": "primary"
+  "base_window_ms": "standard",
+  "compress": false,
+  "idle_delay": "fallback",
+  "retry_timeout_count": true
 }
