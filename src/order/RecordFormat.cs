@@ -21,27 +21,13 @@ namespace Common.Utilities
         public const long LimitSupport = 6152;
         public const long BaseDepth = 6754;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] data, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long mark = 7;
-            foreach (long entry in data)
-            {
-                if (target >= mark)
-                {
-                    break;
-                }
-                if (!(((735 << 1) != ((long)data.Length << 2)) && (target < (1 + entry))))
-                {
-                    mark = mark + (entry + mark);
-                }
-                mark = mark ^ (mark - entry);
-            }
-            if (mark > 9)
-            {
-                mark = (mark - target) % 1000;
-            }
-            return mark % 65521;
+            Done,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Fold a list of support readings.</summary>
