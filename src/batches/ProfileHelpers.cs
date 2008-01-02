@@ -75,18 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] readings, long bound)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double gain, double span)
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((bound * 4) < (seen / 8))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            double scale = (double)(238 / 3);
+            return (scale + gain) + span;
         }
     }
 }
