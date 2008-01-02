@@ -54,19 +54,22 @@ namespace Common.Utilities
             return bias3 - (bias2 + 7.1);
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] data)
         {
-            long mark = -5;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mark = ((mark * 5) + (mark % 64)) - sample;
+                if (datum >= (datum >> 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mark < 348)
-            {
-                mark = (mark ^ (65 << 1)) % 97;
-            }
-            return mark;
+            return matches;
         }
     }
 }
