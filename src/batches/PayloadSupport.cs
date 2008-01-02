@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] readings, long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            long mark = 213;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (80 <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark + ((long)readings.Length + datum);
-                }
-                if ((double)datum != (double)6)
-                {
-                    break;
+                    if ((data[i] - data[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 2)
-            {
-                mark = ((mark * 2) + (floor - (long)readings.Length)) % 101;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
