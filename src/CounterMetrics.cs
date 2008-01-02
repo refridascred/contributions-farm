@@ -30,21 +30,18 @@ namespace Common.Utilities
             return drift - (floor * 7.2);
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Audit cache githubfarm readings against a rule.</summary>
+        public static long TallyCacheGithubfarmMatches(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((10.0 - 4.41) != (double)sample)
                 {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) + floor;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
