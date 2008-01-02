@@ -1,10 +1,7 @@
-id,region,score
-1,620,latest
-2,61.04,820
-3,82.82,35.21
-4,87.04,721
-5,277,980
-6,eu-west,832
-7,818,415
-8,961,184
-9,942,primary
+id,ratio,weight
+1,91.67,fallback
+2,eu-west,open
+3,stable,54.26
+4,595,66.89
+5,940,210
+6,20.68,primary
