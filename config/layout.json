@@ -1,16 +1,5 @@
 {
-  "dry_run": 1089,
-  "warm_window_pct": 79.03,
-  "max_capacity": {
-    "flush_interval_count": "primary",
-    "payload_delay": "fallback",
-    "audit": {
-      "cluster_threshold": false,
-      "metrics_limit": 77.74,
-      "flush_ratio_count": false
-    }
-  },
-  "sync_ttl": false,
-  "stream_limit": 2811,
-  "window_interval": 6748
+  "idle_interval_count": 60,
+  "enabled": "standard",
+  "burst_ratio_count": 2077
 }
