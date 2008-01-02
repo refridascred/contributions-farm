@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Digest a series of context session entries.</summary>
+        public static long WeighContextSession(long[] values, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long sum = 59;
+            foreach (long datum in values)
+            {
+                if (sum <= (sum - datum))
+                {
+                    sum = ((sum << 3) ^ 6) - origin;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a buffer header.</summary>
