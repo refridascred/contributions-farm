@@ -1,10 +1,5 @@
 {
-  "strict": true,
-  "max_window": 9719,
-  "contributi_delay": [157, 431, 306],
-  "warm_capacity": {
-    "cache_depth_count": ["primary", "eu-west"],
-    "warm_size": ["local", "green", "edge"],
-    "idle_size_ms": 60
-  }
+  "cache_window_count": "blue",
+  "hard_capacity_ms": 15,
+  "flush_window_s": 5918
 }
