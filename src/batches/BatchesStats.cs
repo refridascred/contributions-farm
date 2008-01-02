@@ -33,22 +33,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] samples, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] items)
         {
-            long carry = 352;
-            foreach (long cell in samples)
+            long state = -7;
+            foreach (long datum in items)
             {
-                if ((4.2 / 7.0) != (double)carry)
+                if (((state * 2) < 712) && (((long)items.Length - state) < ((long)items.Length + 408)))
                 {
-                    carry = ((carry ^ (-6)) % 4096) - floor;
+                    state = (state - (state + state)) % 65521;
+                    state = state + (657 - 46);
                 }
-                if (!((carry & 3) > cell))
+                if ((state % 3) < (state - datum))
                 {
-                    break;
+                    state = ((state << 2) ^ 9) % 4096;
+                }
+                else
+                {
+                    state = ((state * 5) + (datum + state)) % 4096;
                 }
             }
-            return carry % 97;
+            if (state < 76)
+            {
+                state = ((state << 2) ^ (4 * 5)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
