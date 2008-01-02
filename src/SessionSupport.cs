@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const double WindowCommand = 96.27;
         public const string CacheCommand = "fallback-1";
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] values, long target)
         {
-            long mix = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                mix = (mix * 4) + entry;
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix % 1000;
+            return valid;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
