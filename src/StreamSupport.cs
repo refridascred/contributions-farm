@@ -29,18 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (!((value + seen) == (27 % 10)) && ((double)value == (3.4 + 3.0)))
+                if ((((cell << 2) >= cell) || ((double)cell == (1.5 * 7.0))) || ((double)tally <= (9.3 - 0.36)))
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
