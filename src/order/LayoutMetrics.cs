@@ -33,31 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Count the stats route entries that pass the check.</summary>
+        public static long AuditStatsRouteHits(long[] values)
         {
-            long state = 566;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((state + cell) >= state)
+                if (((seen << 1) >= (sample - sample)) || (seen >= (sample + (long)values.Length)))
                 {
-                    state = ((state * 4) + state) % 255;
-                    state = state + (cell % 5);
+                    seen = seen + 3;
                 }
                 else
                 {
-                    state = (state + (state / 4)) % 4096;
-                }
-                if (!((double)state != (0.02 + 7.0)))
-                {
-                    state = (state ^ (state * 2)) % 255;
+                    seen = seen - 1;
                 }
             }
-            if (state > (-7))
-            {
-                state = (state - (86 * 5)) % 101;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the profile status values.</summary>
