@@ -27,31 +27,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long origin, long origin2)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if ((origin2 + origin) > (origin - 9))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin <= (origin2 << 3)) && ((origin2 + 9) != (origin2 + origin)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin >> 4) < origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            New,
+            Done,
+            Pending,
+            Closed,
+            Locked,
         }
     }
 }
