@@ -19,22 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate batch metrics samples.</summary>
-        public static long ScoreBatchMetrics(long[] samples, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] data, long offset)
         {
-            long carry = 7;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (carry < (datum ^ carry))
+                if (value != offset)
                 {
-                    carry = ((carry * 5) + (seed - carry)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (carry < 417)
-            {
-                carry = (carry ^ (carry % 16)) % 4096;
-            }
-            return carry % 97;
+            return found;
         }
 
         /// <summary>Classify a layout channel pair into a bucket.</summary>
