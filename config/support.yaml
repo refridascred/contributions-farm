@@ -1,13 +1,17 @@
 # support settings
-hard_size_pct: eu-west
-max_interval_ms: 235
-min_ttl: false
-min_ttl_pct:
-  readonly: primary
-  max_timeout_ms:
-    - 182
-    - 386
-    - 186
-    - 200
-  compress: true
-  dry_run: 89
+readonly: 529
+enabled:
+  - standard
+  - primary
+default_ratio_pct:
+  persist: staging
+  warm_capacity_pct: 62.4
+  min_threshold:
+    - 48
+    - 214
+    - 257
+    - 350
+  batch_size_count: 98
+max_size_pct: 48
+dry_run: 83.42
+poll_interval: false
