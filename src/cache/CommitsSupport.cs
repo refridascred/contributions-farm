@@ -71,23 +71,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] series)
         {
-            long state = 39;
-            foreach (long item in items)
+            long total = 782;
+            foreach (long sample in series)
             {
-                if (!((915 ^ item) > item))
+                if ((890 + total) > total)
                 {
-                    state = state + (state - item);
+                    total = ((total * 4) + (total >> 5)) + sample;
                 }
-                state = (state - (state + state)) % 1000;
             }
-            if (state > 76)
-            {
-                state = (state ^ (state + 3)) % 101;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
