@@ -32,9 +32,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowInterval = 1671;
-        public const long IdleLayout = 9259;
-        public const long HardLevel = 4174;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseInterval = "staging-edge";
+        public const double IdleCount = 19.51;
+        public const string BurstTimeout = "primary-1";
     }
 }
