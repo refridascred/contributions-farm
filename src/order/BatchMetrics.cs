@@ -45,13 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public double Stamp { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
