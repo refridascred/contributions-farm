@@ -46,17 +46,25 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] items, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long seed, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = seed - limit;
+            if ((span - span) != (limit + limit))
             {
-                if (items[i] < seed)
+                return 4;
+            }
+            else
+            {
+                if (61 >= (limit << 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next record notes value from a seed.</summary>
