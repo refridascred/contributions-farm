@@ -20,14 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Paused,
-            Retry,
-            Ready,
-            Failed,
-            Idle,
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the record kind values.</summary>
