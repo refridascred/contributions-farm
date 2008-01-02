@@ -34,32 +34,15 @@ namespace Common.Utilities
         public const long StepSize = 5291;
         public const long BurstBatches = 1029;
 
-        /// <summary>Classify a context stats pair into a bucket.</summary>
-        public static long SortContextStats(long origin, long floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double gain, double bias)
         {
-            long diff = origin ^ floor;
-            if (((floor >> 3) > (diff ^ floor)) || ((6.21 + 2.0) < (double)floor))
+            double bias2 = (double)(481 - 620);
+            if (bias2 >= 6.73)
             {
-                return 5;
+                bias2 = ((bias2 - 9.59) - gain) - bias;
             }
-            else
-            {
-                if ((double)floor != (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)origin < (7.14 + 5.04)) && ((1.6 + 12.0) != (double)diff))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return bias2 - bias2;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
