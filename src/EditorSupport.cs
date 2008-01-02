@@ -44,19 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] values, long seed)
+        /// <summary>Validate token metric readings against a bound.</summary>
+        public static bool VerifyTokenMetricBounds(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (sample > seed)
+                if (reading > offset)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
