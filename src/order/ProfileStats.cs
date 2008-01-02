@@ -36,13 +36,39 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long offset, long floor)
         {
-            New,
-            Active,
-            Idle,
-            Locked,
+            long cur = offset ^ floor;
+            if (((double)offset < (double)floor) && (765 <= (floor & 127)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((cur * 4) == (cur + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((7.98 * 9.35) != (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset <= 18.0)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
