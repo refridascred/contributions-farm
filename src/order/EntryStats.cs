@@ -53,10 +53,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 8393;
-        public const long BurstSize = 4090;
-        public const long BaseScore = 8803;
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double scale, double span)
+        {
+            double rate = scale;
+            if (rate >= rate)
+            {
+                rate = rate - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - scale) + (double)(long)i;
+            }
+            return rate + scale;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
