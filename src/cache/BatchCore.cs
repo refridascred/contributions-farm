@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long MinSpan = 831;
         public const long MinCount = 4994;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 5) + ((long)i >> 3)) % 65521;
-                mark = ((mark << 3) ^ 543) % 101;
-                if (!((step + step) > mark))
-                {
-                    mark = (mark + step) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Done,
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the queue state values.</summary>
