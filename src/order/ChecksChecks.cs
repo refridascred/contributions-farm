@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const string CacheBatches = "fallback";
         public const long MinBatches = 1341;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinSpan = 1920;
-        public const long LimitSpan = 5637;
-        public const string HardSize = "legacy";
-        public const string StepDepth = "primary-1";
-        public const long BurstReport = 8515;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public bool Label { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
