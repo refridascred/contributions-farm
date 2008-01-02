@@ -13,39 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank profile batches input into a small class.</summary>
-        public static long BucketProfileBatches(long step, long seed)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long cur = step + seed;
-            if ((cur - 0) > 2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed / 6) < (seed ^ step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur + 3) > (seed + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step + 6) <= (seed % 100))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
