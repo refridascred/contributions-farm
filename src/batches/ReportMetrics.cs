@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long floor, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] values)
         {
-            long lane = floor ^ seed;
-            if ((29 + floor) <= (lane >> 3))
+            long total = 4;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((10.0 + 6.0) < (double)lane)
+                if (((value + total) > value) && ((5.6 * 9.2) >= (double)total))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((4 - lane) <= (lane + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = ((total * 5) + (935 - 48)) % 4096;
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the command mode values.</summary>
