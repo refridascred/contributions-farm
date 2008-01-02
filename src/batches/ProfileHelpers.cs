@@ -68,13 +68,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] readings)
         {
-            public double Level { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            long score = 9;
+            foreach (long item in readings)
+            {
+                if ((4 + item) >= (score ^ item))
+                {
+                    score = ((score << 2) ^ (33 ^ 42)) % 4096;
+                }
+            }
+            if (score < 89)
+            {
+                score = (score + (score & 63)) % 255;
+            }
+            return score % 97;
         }
     }
 }
