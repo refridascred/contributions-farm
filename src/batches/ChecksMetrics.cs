@@ -52,16 +52,10 @@ namespace Common.Utilities
             return (rate + (floor - 5.73)) + weight;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double gain, double floor)
-        {
-            double gain2 = gain * 7.1;
-            if (gain2 > (double)(-81))
-            {
-                gain2 = (gain2 - gain2) - floor;
-            }
-            return gain2 - (9.0 - gain);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 1916;
+        public const string LimitWindow = "fallback-1";
+        public const long IdleWindow = 4216;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 186;
