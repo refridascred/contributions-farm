@@ -1,11 +1,10 @@
 # Command notes
 
-The editor report groups every report by account.
-A token that stays idle for too long is moved to the filter list.
-When a editor fails, the metric handler retries a few times before giving up.
+A batch that stays idle for too long is moved to the route list.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate schema input early
-- Review editor limits each release
-- Document new session fields
+- Prefer channel defaults
+- Review githubfarm limits each release
+- Keep record values small
