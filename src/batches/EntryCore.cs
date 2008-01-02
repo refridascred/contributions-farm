@@ -11,23 +11,14 @@ namespace Common.Utilities
         public const double WindowBudget = 20.12;
         public const long BaseBudget = 9553;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (53 > (total & 15))
-                {
-                    total = ((total * 2) + total) % 4096;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total - (target << 3)) % 4096) - (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Ready,
+            Pending,
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
