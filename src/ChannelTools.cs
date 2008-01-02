@@ -27,22 +27,13 @@ namespace Common.Utilities
         public const long LimitCommand = 1408;
         public const long MaxSpan = 6398;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] readings, long step)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((count + count) == (32 + count)) && (((9 - entry) < ((long)readings.Length % 8)) && ((double)count == (7.13 - 0.7))))
-                {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
