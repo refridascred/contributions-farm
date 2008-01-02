@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] readings, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 4;
+            foreach (long sample in data)
             {
-                if (readings[i] > floor)
+                if ((81 + carry) < (sample - carry))
                 {
-                    return (long)i;
+                    carry = (carry * 4) + (25 + 90);
+                }
+                if (((-4) + (long)data.Length) > carry)
+                {
+                    carry = carry + (25 << 3);
                 }
             }
-            return -1;
+            if (carry > (-7))
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
