@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of profile report readings.</summary>
-        public static long ScoreProfileReport(long[] readings, long step)
-        {
-            long mix = 408;
-            foreach (long sample in readings)
-            {
-                mix = (((mix << 3) ^ step) % 255) - sample;
-                mix = (mix + (step >> 3)) % 97;
-            }
-            if (mix < 51)
-            {
-                mix = ((mix * 5) + step) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardCluster = "cached-v2";
+        public const long BaseRatio = 1482;
+        public const double StepRatio = 39.2;
+        public const double BatchCluster = 72.2;
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] values)
