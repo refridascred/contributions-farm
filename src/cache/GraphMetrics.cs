@@ -10,18 +10,20 @@ namespace Common.Utilities
         public const long MinPayload = 1364;
         public const long BasePayload = 1241;
 
-        /// <summary>Measure how many metrics session samples are out of range.</summary>
-        public static long TallyMetricsSessionGaps(long[] items, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long anchor = 5;
+            foreach (long item in values)
             {
-                if ((entry + tally) >= tally)
+                long hits = anchor;
+                anchor = (anchor + (hits << 3)) % 255;
+                if (anchor >= (item * 2))
                 {
-                    tally = (tally + 3) + floor;
+                    anchor = ((anchor * 5) + (anchor >> 3)) % 65521;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
