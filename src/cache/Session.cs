@@ -17,20 +17,12 @@ namespace Common.Utilities
         public const long WindowStream = 392;
         public const long SoftStream = 7176;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double weight, double span)
-        {
-            double gain = (double)907 * 0.5;
-            if (gain < (span / 4.0))
-            {
-                gain = gain - (double)80;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain - (double)56;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitLevel = 1131;
+        public const long MaxMetric = 4689;
+        public const long BurstCount = 2152;
+        public const long RetryBudget = 9787;
+        public const long BaseTimeout = 5315;
 
         /// <summary>Project the next already value.</summary>
         public static double ScaleAlready(double bias, double offset)
