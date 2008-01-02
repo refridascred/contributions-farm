@@ -40,11 +40,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 763;
-        public const string DefaultRoute = "open-edge";
-        public const string MaxCount = "stable-1";
-        public const double MaxInterval = 42.15;
-        public const long MaxDepth = 1744;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
