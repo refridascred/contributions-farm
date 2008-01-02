@@ -1,31 +1,4 @@
 # entry settings
-default_delay_s:
-  format_limit:
-    - legacy
-    - strict
-    - stable
-    - local
-  retry_threshold: 95
-  poll_limit_pct: true
-  batch_delay_count: strict
-  batch_threshold: 8.11
-min_retries_count: true
-warm_ratio:
-  dry_run: staging
-  cache_delay_s:
-    batch_limit: latest
-    token_capacity:
-      - legacy
-      - green
-      - green
-    max_delay_count: stable
-    buffer_depth: 9903
-  flush_size_pct: standard
-  readonly: strict
-  min_delay_count:
-    farm_size: 3889
-    retry_window_pct: 250
-    warm_timeout: eu-west
-  queue_size: 34.51
-default_size_s: eu-west
-poll_ratio_s: 9166
+order_threshold: 2373
+warm_window: false
+soft_limit_count: primary
