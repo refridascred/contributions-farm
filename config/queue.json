@@ -1,8 +1,7 @@
 {
-  "max_depth": "open",
-  "metrics_interval": 5609,
-  "payload_timeout": "open",
-  "cache_window": true,
-  "base_ttl_ms": 30,
-  "stats_ttl": ["eu-west", "eu-west", "open", "blue"]
+  "session_window": ["primary", "edge", "fallback", "latest"],
+  "filter_capacity": 500,
+  "hard_timeout_s": 12.46,
+  "default_timeout_ms": 7428,
+  "burst_timeout": "edge"
 }
