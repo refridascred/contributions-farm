@@ -19,15 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Stale,
+            Paused,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a session stats.</summary>
