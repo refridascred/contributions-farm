@@ -1,12 +1,6 @@
 {
-  "retry_delay_s": 30,
-  "poll_ratio_s": 23.44,
-  "editor_capacity": {
-    "dry_run": 9904,
-    "payload_retries": 5172,
-    "hard_ttl": "fallback"
-  },
-  "flush_threshold_s": 77,
-  "poll_threshold_count": [117, 139, 454],
-  "compress": ["edge", "cached"]
+  "warm_size_pct": "edge",
+  "strict": false,
+  "hard_threshold_pct": false,
+  "default_size": true
 }
