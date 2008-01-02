@@ -1,5 +1,6 @@
 {
-  "command_retries": [235, 35],
-  "warm_depth_ms": 3323,
-  "min_capacity_count": "staging"
+  "audit": false,
+  "dry_run": true,
+  "flush_window": true,
+  "counter_ratio": true
 }
