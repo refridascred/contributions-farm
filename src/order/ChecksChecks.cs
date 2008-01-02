@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of context session entries.</summary>
-        public static long WeighContextSession(long[] values, long origin)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            long sum = 59;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sum <= (sum - datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum << 3) ^ 6) - origin;
+                    if ((samples[i] - samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
