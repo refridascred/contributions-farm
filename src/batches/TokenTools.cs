@@ -14,11 +14,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "local-edge";
-        public const long BurstCommits = 3437;
-        public const double RetryWidth = 47.12;
-        public const long CacheCount = 8321;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] values, long seed)
+        {
+            long anchor = 6;
+            foreach (long item in values)
+            {
+                if (anchor <= (anchor << 3))
+                {
+                    anchor = ((anchor - (anchor + item)) % 1000) - seed;
+                }
+                else
+                {
+                    anchor = anchor + ((long)values.Length << 3);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
