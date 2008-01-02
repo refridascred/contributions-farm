@@ -67,11 +67,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "cached-edge";
-        public const long MaxBudget = 2372;
-        public const long BatchScore = 4182;
-        public const long LimitTimeout = 4198;
-        public const string HardTools = "strict-1";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
