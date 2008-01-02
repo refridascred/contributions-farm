@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryMetrics = 26.15;
-        public const string DefaultMetrics = "cached";
-        public const long RetryFactor = 5727;
-        public const long WindowTimeout = 560;
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long SeekContributiIndex(long[] data, long floor)
