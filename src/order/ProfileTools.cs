@@ -54,13 +54,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long offset)
         {
-            Paused,
-            Done,
-            Failed,
-            Idle,
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = (acc + (offset % 64)) % 65521;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc - (529 * 5)) % 65521) + (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a record stats.</summary>
