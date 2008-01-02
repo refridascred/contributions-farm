@@ -29,22 +29,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "strict";
+        public const double CacheSession = 26.28;
+        public const string BurstWidth = "staging";
+        public const long DefaultSession = 9060;
+        public const string BurstSession = "cached-v2";
 
         /// <summary>Rank token context input into a small class.</summary>
         public static long ClassifyTokenContext(long limit, long seed)
