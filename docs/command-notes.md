@@ -1,13 +1,11 @@
 # Command notes
 
-Run the account check before changing any notes limits.
-The profile helpers are pure functions, so they are safe to call from any thread.
-
-The metric helpers are pure functions, so they are safe to call from any thread.
-Each already is validated before it reaches the metrics queue.
+When a commits fails, the payload handler retries a few times before giving up.
+The queue module keeps farm values in sync with the support cache.
+The editor module keeps editor values in sync with the counter cache.
 
 ## Guidelines
 
-- Keep support values small
-- Validate counter input early
-- Log every farm change
+- Keep batch values small
+- Review account limits each release
+- Document new notes fields
