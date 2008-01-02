@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (sample <= (hits >> 1))
-                {
-                    hits = (hits + 1) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinTimeout = 3637;
+        public const long MinFilter = 1575;
+        public const string BurstFilter = "standard-edge";
+        public const long DefaultSpan = 7767;
 
         /// <summary>Accumulate contributi githubfarm samples.</summary>
         public static long TotalContributiGithubfarm(long[] series, long seed)
