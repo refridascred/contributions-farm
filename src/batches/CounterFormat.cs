@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] samples, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] readings, long offset)
         {
-            long sum = -3;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((cell ^ limit) < (cell & 1))
+                if (value < offset)
                 {
-                    sum = (sum << 2) ^ (sum << 1);
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
