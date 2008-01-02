@@ -13,21 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Combine channel token values into a single score.</summary>
+        public static long DigestChannelToken(long[] levels, long bound)
         {
-            long state = -59;
-            foreach (long value in data)
+            long acc = 54;
+            foreach (long value in levels)
             {
-                state = state + (value - state);
-                state = (state << 2) ^ (value % 64);
-                state = (state + (state * 4)) % 255;
+                if (value < (53 + acc))
+                {
+                    acc = ((acc + (value + 2)) % 97) - bound;
+                }
             }
-            if (state > 23)
-            {
-                state = (state * 2) + ((long)data.Length - state);
-            }
-            return state % 4096;
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
