@@ -1,25 +1,6 @@
 {
-  "burst_size_ms": 7965,
-  "readonly": "edge",
-  "strict": "local",
-  "profile_ratio": {
-    "retry_interval": {
-      "editor_interval": 500,
-      "min_ttl": 1024,
-      "command_interval": "local",
-      "cache_interval_s": "primary",
-      "audit": 1344,
-      "default_retries_ms": 500
-    },
-    "hard_capacity": "fallback",
-    "cache_delay": {
-      "cache_threshold_count": ["staging", "fallback", "staging"],
-      "retry_ttl_s": 9716,
-      "retry_ttl": "edge"
-    },
-    "burst_window_pct": 5698,
-    "soft_delay_count": 250,
-    "retry_delay_s": true
-  },
-  "min_ttl_s": 75
+  "max_window_count": 1024,
+  "compress": 71.2,
+  "warm_threshold_pct": true,
+  "persist": [152, 198, 165]
 }
