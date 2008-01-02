@@ -14,21 +14,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state + ((long)i + state)) % 1000) ^ (long)i2;
                 }
+                state = state + (step << 1);
+                state = state ^ (state & 31);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
