@@ -1,6 +1,14 @@
 # githubfarm settings
-strict: eu-west
-retry_retries:
-  - 21
-  - 315
-enabled: 60
+persist:
+  - 265
+  - 331
+editor_timeout: edge
+max_size_pct: 85
+already_size:
+  strict: green
+  hard_retries_s: stable
+  cache_ttl: false
+  compress:
+    - 56
+    - 449
+  commits_ttl: 500
