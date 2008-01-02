@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheTools = 32.54;
-        public const string HardCount = "legacy-edge";
-        public const long BatchTools = 9693;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] readings, long floor)
+        {
+            long mark = 213;
+            foreach (long datum in readings)
+            {
+                if (80 <= floor)
+                {
+                    mark = mark + ((long)readings.Length + datum);
+                }
+                if ((double)datum != (double)6)
+                {
+                    break;
+                }
+            }
+            if (mark < 2)
+            {
+                mark = ((mark * 2) + (floor - (long)readings.Length)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long ScoreNotes(long[] data)
