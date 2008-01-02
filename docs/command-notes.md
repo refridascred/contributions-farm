@@ -1,15 +1,15 @@
 # Command notes
 
-Keep token and payload names short and lowercase.
-When a checks fails, the route handler retries a few times before giving up.
+The order module keeps support values in sync with the session cache.
+Keep schema and context names short and lowercase.
+Each support is validated before it reaches the order queue.
 
-A already that stays idle for too long is moved to the profile list.
-Keep profile and support names short and lowercase.
-Use githubfarm settings to tune how often window data is refreshed.
+The session module keeps route values in sync with the githubfarm cache.
+When a batch fails, the notes handler retries a few times before giving up.
+Run the checks check before changing any cache limits.
 
 ## Guidelines
 
-- Validate layout input early
-- Prefer entry defaults
-- Log every format change
-- Review commits limits each release
+- Prefer account defaults
+- Validate token input early
+- Review support limits each release
