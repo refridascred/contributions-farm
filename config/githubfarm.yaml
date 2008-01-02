@@ -1,9 +1,7 @@
 # githubfarm settings
-warm_delay_pct: 100
-context_retries:
-  - green
-  - eu-west
-idle_timeout_count: strict
-soft_limit_ms: standard
-channel_interval: true
-compress: 3408
+hard_threshold: green
+flush_capacity: 9279
+session_threshold: 14
+stream_size: edge
+strict: true
+warm_threshold_s: true
