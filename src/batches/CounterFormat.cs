@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long mix = 328;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                mix = mix + (5 - cell);
+                mix = ((mix * 5) + (mix - 313)) % 255;
             }
-            return anchor;
+            return mix % 4096;
         }
 
         /// <summary>Match up layout samples.</summary>
