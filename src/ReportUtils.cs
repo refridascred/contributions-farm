@@ -54,15 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] items, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            long anchor = 5;
+            foreach (long cell in items)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if ((9.5 * 9.18) == (double)cell)
+                {
+                    anchor = ((anchor ^ cell) % 255) - offset;
+                }
             }
-            return state;
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate buffer token samples.</summary>
