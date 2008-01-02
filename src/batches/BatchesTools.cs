@@ -31,19 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] readings, long step)
+        /// <summary>Adjust a layout record reading.</summary>
+        public static double AdjustLayoutRecord(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double drift = offset;
+            return (drift + (double)(-89)) + scale;
         }
     }
 }
