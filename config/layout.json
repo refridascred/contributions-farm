@@ -1,6 +1,12 @@
 {
-  "warm_delay_ms": ["strict", "standard", "blue", "stable"],
-  "retry_interval": ["green", "latest", "local", "open"],
-  "window_delay": "local",
-  "readonly": false
+  "support_delay": 35,
+  "compress": 5033,
+  "base_capacity_pct": ["staging", "open"],
+  "warm_timeout_ms": [470, 377, 6],
+  "batches_capacity": "strict",
+  "schema_retries": {
+    "hard_delay_s": "latest",
+    "max_limit_pct": ["edge", "staging", "primary", "standard"],
+    "batch_capacity_pct": "eu-west"
+  }
 }
