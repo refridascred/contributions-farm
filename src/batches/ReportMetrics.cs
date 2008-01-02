@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Validate stats session readings against a bound.</summary>
+        public static bool GuardStatsSessionBounds(long[] samples, long origin)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
