@@ -92,11 +92,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "stable";
-        public const long SoftTools = 8775;
-        public const long StepTools = 3644;
-        public const long SoftCount = 6123;
-        public const string WindowTools = "strict-1";
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
