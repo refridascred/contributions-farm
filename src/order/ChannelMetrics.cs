@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((9.0 / 2.0) != (double)mark)
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark ^ target;
+                    mark = (mark - (mark - target)) % 1000;
+                    continue;
                 }
+                if (1 < (long)i)
+                {
+                    mark = (mark * 2) + ((long)i + target);
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
