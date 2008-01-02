@@ -1,21 +1,30 @@
 # support settings
-sync_interval_count:
-  min_timeout: eu-west
-  verbose: 88.31
-  poll_retries_ms: 74
-  strict: 77.2
-  cache_limit: 9891
-  flush_depth:
-    - primary
+audit: 1413
+persist:
+  - 354
+  - 297
+  - 128
+warm_interval_ms:
+  support_interval:
+    - green
+    - blue
     - edge
-buffer_retries: edge
-default_delay_pct: 6996
-soft_size_ms:
-  burst_ttl_s: 33.24
-  batch_interval: 100
-  notes_retries: local
-  hard_depth_ms: 32
-  batches_window: edge
-  retry_window_count: 54
-cache_delay_pct: strict
-payload_delay: 32.69
+  report_depth: stable
+  sync_limit_pct: 13.57
+  warm_interval_ms: legacy
+  order_size: 1400
+hard_delay_ms: 97.51
+cache_interval_pct:
+  enabled: 60
+  soft_threshold:
+    - 409
+    - 467
+    - 111
+    - 247
+  idle_ttl_count: false
+  editor_capacity: open
+  cache_window_count: primary
+  base_depth:
+    soft_window_count: local
+    queue_limit: green
+    profile_retries: 3513
