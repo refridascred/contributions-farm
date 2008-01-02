@@ -17,12 +17,20 @@ namespace Common.Utilities
         public const long WindowStream = 392;
         public const long SoftStream = 7176;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "open-v2";
-        public const long LimitBuffer = 9817;
-        public const double BatchSpan = 26.78;
-        public const long IdleSpan = 2027;
-        public const long HardBuffer = 7524;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double weight, double span)
+        {
+            double gain = (double)907 * 0.5;
+            if (gain < (span / 4.0))
+            {
+                gain = gain - (double)80;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain - (double)56;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmMatches(long[] levels, long step)
