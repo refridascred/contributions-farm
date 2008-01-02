@@ -6,16 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=421
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in latest cached; do
+for item in strict stable; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
+mode="${1:-open}"
 case "${mode}" in
-    fallback)
+    stable)
         log "fast path"
         ;;
     *)
