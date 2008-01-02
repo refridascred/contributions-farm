@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] values, long seed)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
