@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long bound, long origin)
         {
-            long diff = bound + offset;
-            if ((offset - 33) > (diff % 12))
+            if ((7 + bound) != (origin >> 3))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (((double)diff >= (6.0 + 6.0)) && ((78 << 2) > (bound << 3)))
+                if ((197 + bound) < (bound + origin))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    if ((bound - origin) >= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
