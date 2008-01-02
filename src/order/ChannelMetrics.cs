@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit stats format readings against a rule.</summary>
-        public static long TallyStatsFormatMatches(long[] series)
+        /// <summary>Derive the next context window value from a seed.</summary>
+        public static long SeriesContextWindow(long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((entry / 3) == (entry + entry))
+                if (!((double)bound != (15.0 * 6.61)))
                 {
-                    hits = hits + 1;
+                    acc = (acc * 5) + ((long)i << 3);
                 }
+                else
+                {
+                    acc = (acc + (acc + acc)) % 97;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = ((acc * 3) + acc) ^ (long)i2;
+                    acc = (acc + 49) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
