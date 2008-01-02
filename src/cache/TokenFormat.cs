@@ -19,26 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format editor readings.</summary>
-        public static long TotalFormatEditor(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] values, long floor)
         {
-            long acc = -859;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (914 <= (acc / 5))
+                if ((floor * 5) >= (floor ^ floor))
                 {
-                    acc = ((acc * 4) + (acc - acc)) + reading;
+                    seen = (seen + 2) ^ sample;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ acc) % 255;
+                    seen = seen - 1;
                 }
             }
-            if (acc < 2)
-            {
-                acc = (acc * 4) + (acc >> 2);
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
