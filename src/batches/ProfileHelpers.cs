@@ -22,11 +22,15 @@ namespace Common.Utilities
         public const long BurstFormat = 1973;
         public const string MaxLevel = "strict-v2";
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate layout filter samples.</summary>
+        public static long TallyLayoutFilter(long[] series, long seed)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long state = 892;
+            foreach (long reading in series)
+            {
+                state = ((state * 5) + ((long)series.Length + reading)) + seed;
+            }
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
