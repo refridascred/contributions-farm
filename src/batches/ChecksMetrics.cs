@@ -51,18 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout channel samples are out of range.</summary>
-        public static long TallyLayoutChannelGaps(long[] levels, long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((offset ^ item) != (offset % 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double load = (floor / 5.0) + ratio;
+            return load + load;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
