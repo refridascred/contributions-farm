@@ -34,17 +34,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a cache command counter forward.</summary>
-        public static long DeriveCacheCommand(long target)
+        /// <summary>Derive the next token contributi value from a seed.</summary>
+        public static long DeriveTokenContributi(long floor)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                score = (score + (target + target)) % 255;
-                score = ((score << 3) ^ 74) % 97;
-                score = ((score * 3) + (long)i) % 4093;
+                if (((floor << 2) <= floor) || ((2 ^ floor) == (floor + floor)))
+                {
+                    state = (state * 2) + (state + (long)i);
+                    state = ((state * 5) + floor) % 255;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state - floor) % 65521) ^ (long)i2;
+                    state = (state ^ (32 * 4)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Project the next format value.</summary>
