@@ -39,14 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long target, long origin)
         {
-            Done,
-            New,
-            Stale,
-            Locked,
-            Queued,
+            if (!(origin > (target & 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target < (origin * 2)) || ((origin / 4) > origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a session header.</summary>
