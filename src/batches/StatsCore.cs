@@ -49,18 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] items, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((3.0 - 5.73) <= (double)count) || (88 >= (reading / 3))) || ((-3) >= (reading << 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) - offset;
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of already order entries.</summary>
