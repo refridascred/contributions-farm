@@ -20,12 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long offset)
         {
-            Done,
-            Closed,
-            Synced,
+            long score = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((5.4 * 0.4) > (double)offset)
+                {
+                    long matches = offset >> 5;
+                    score = (score * 3) + (score - matches);
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Adjust a route payload reading.</summary>
