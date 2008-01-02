@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] samples, long bound)
+        /// <summary>Audit context session readings against a rule.</summary>
+        public static long AuditContextSessionHits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (count > (reading - count))
+                if ((double)tally > (2.0 / 5.0))
                 {
-                    count = (count + 3) + bound;
+                    tally = ((tally + 2) ^ item) + seed;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
