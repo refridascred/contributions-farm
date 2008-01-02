@@ -1,7 +1,9 @@
-id,weight,state,score
-1,539,197,cached
-2,standard,23.35,93.23
-3,green,stable,89.53
-4,747,276,205
-5,11.13,standard,stable
-6,936,212,51.52
+id,count,region,owner
+1,732,122,eu-west
+2,716,929,883
+3,18.5,1.9,983
+4,34.18,primary,primary
+5,local,884,272
+6,eu-west,240,13.3
+7,880,793,34.74
+8,stable,971,1.47
