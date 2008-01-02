@@ -1,12 +1,11 @@
 {
-  "buffer_interval": {
-    "schema_timeout": "open",
-    "idle_interval": [355, 247],
-    "retry_ratio_ms": 20
-  },
-  "verbose": 500,
-  "cache_window_count": "blue",
-  "default_size_ms": 24,
-  "queue_ratio": ["legacy", "stable"],
-  "audit": "fallback"
+  "idle_limit": 68.46,
+  "idle_limit_count": ["strict", "primary"],
+  "context_depth": {
+    "editor_retries": 60.46,
+    "flush_interval_pct": "strict",
+    "verbose": 3245,
+    "queue_window": 62.22,
+    "min_timeout": false
+  }
 }
