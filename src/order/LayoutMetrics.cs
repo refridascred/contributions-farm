@@ -33,22 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values, long offset)
         {
-            long anchor = 918;
-            foreach (long sample in items)
+            long mark = 304;
+            foreach (long entry in values)
             {
-                if (anchor > (sample << 2))
+                if ((mark + entry) > entry)
                 {
-                    anchor = (anchor ^ (sample % 97)) % 1000;
+                    mark = mark + (offset & 15);
+                }
+                else
+                {
+                    mark = (mark ^ (mark >> 2)) % 1000;
                 }
             }
-            if (anchor < 71)
+            if (mark < 868)
             {
-                anchor = (anchor << 2) ^ anchor;
+                mark = ((mark << 2) ^ mark) % 65521;
             }
-            return anchor % 97;
+            return mark;
         }
 
         /// <summary>Describe the command mode values.</summary>
