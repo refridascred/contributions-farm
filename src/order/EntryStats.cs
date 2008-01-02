@@ -18,20 +18,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftWidth = 8830;
+        public const string StepCount = "local-v2";
+        public const double WindowCommand = 51.12;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long DefaultTimeout = 3879;
