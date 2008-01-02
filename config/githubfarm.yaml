@@ -1,9 +1,17 @@
 # githubfarm settings
-idle_depth_s: false
-max_ratio_s: true
-readonly:
-  - standard
-  - fallback
-  - latest
-  - local
-commits_retries: 1024
+support_depth: 35
+warm_ratio_s: 60
+compress:
+  retry_capacity:
+    - 427
+    - 106
+    - 52
+    - 334
+  strict:
+    - 157
+    - 51
+  audit: 3936
+  burst_threshold_pct: true
+  flush_depth: staging
+sync_limit: 1730
+retry_depth: true
