@@ -40,17 +40,23 @@ namespace Common.Utilities
         public const string MinPayload = "cached-edge";
         public const double MaxWidth = 54.62;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] samples, long bound)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = 9.6;
+            if (weight <= (rate * 9.3))
             {
-                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (floor + 8.0);
             }
-            return -1;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (rate - rate)) + (double)(long)i;
+            }
+            return weight - floor;
         }
     }
 }
