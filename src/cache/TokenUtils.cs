@@ -34,12 +34,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 70.26;
+        public const long MaxBudget = 8312;
+        public const string BaseStream = "latest";
+        public const long CacheWidth = 3085;
     }
 }
