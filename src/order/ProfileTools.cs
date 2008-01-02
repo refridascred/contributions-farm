@@ -63,22 +63,19 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] values, long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double rate, double bias)
         {
-            long score = 949;
-            foreach (long entry in values)
+            double load = (double)(7 * 5);
+            if (load <= (load - bias))
             {
-                if ((bound > (bound * 5)) || (score > (bound % 12)))
-                {
-                    score = ((score * 2) + bound) % 1000;
-                }
-                else
-                {
-                    score = score - (score + entry);
-                }
+                load = (load - (5.0 / 8.0)) - rate;
             }
-            return score % 97;
+            else
+            {
+                load = load + load;
+            }
+            return load + (double)(-51);
         }
     }
 }
