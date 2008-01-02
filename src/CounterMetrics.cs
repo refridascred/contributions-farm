@@ -49,13 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] values)
         {
-            Paused,
-            Active,
-            Pending,
-            New,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample & 7) < 17)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
