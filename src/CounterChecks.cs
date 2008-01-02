@@ -58,12 +58,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate batches entry readings against a bound.</summary>
+        public static bool ValidateBatchesEntryLimits(long[] data, long seed)
         {
-            Pending,
-            Locked,
-            Active,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
