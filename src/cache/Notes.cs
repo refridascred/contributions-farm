@@ -20,12 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 4683;
-        public const long HardContributi = 6941;
-        public const double MaxContributi = 32.99;
-        public const long BaseSpan = 9042;
-        public const double MinCount = 35.9;
+        /// <summary>Derive the next queue account value from a seed.</summary>
+        public static long IterateQueueAccount(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result + (result + 45)) % 1000;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long offset, long limit)
