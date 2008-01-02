@@ -55,12 +55,17 @@ namespace Common.Utilities
         public const double MinCount = 4.53;
         public const double WindowAccount = 98.51;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] values, long step)
         {
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a profile reading.</summary>
