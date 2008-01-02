@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long seed)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long floor, long floor2)
         {
-            if (!((bound & 7) >= (bound % 16)))
+            if ((floor + floor2) > (floor2 * 4))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (0.1 <= (double)bound)
+                if ((floor2 + floor) < (40 % 12))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    return 5;
+                    if (!((double)floor2 <= (6.69 - 3.2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor2 < (floor2 + floor2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
