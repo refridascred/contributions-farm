@@ -49,25 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long seed, long limit)
+        /// <summary>Check that every entry layout entry stays within the limit.</summary>
+        public static bool CheckEntryLayoutRange(long[] values, long origin)
         {
-            long span = seed - limit;
-            if ((span - span) != (limit + limit))
+            bool ready = true;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (61 >= (limit << 3))
+                if (value >= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
