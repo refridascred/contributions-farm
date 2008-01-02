@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
+            long anchor = 6;
+            foreach (long reading in values)
+            {
+                anchor = (anchor - (reading & 255)) % 101;
+            }
+            if (anchor < 575)
+            {
+                anchor = (anchor - (anchor >> 5)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit record batch readings against a rule.</summary>
