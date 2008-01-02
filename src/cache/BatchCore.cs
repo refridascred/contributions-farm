@@ -47,14 +47,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long offset, long seed)
         {
-            Paused,
-            Draft,
-            Stale,
-            Active,
-            Locked,
+            if ((double)seed != (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((676 / 6) <= (offset + seed)) || ((2.2 / 6.0) <= (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
