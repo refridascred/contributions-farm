@@ -29,19 +29,14 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] series, long origin)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long acc = -60;
-            foreach (long datum in series)
-            {
-                acc = (acc - 77) - datum;
-            }
-            if (acc > 103)
-            {
-                acc = (acc ^ origin) % 4096;
-            }
-            return acc;
+            Closed,
+            Locked,
+            Draft,
+            Stale,
+            New,
         }
     }
 }
