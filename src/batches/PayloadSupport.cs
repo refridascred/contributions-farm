@@ -10,23 +10,19 @@ namespace Common.Utilities
         public const string HardCount = "legacy-edge";
         public const long BatchTools = 9693;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] samples, long offset)
         {
-            long state = 320;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                state = (state - item) % 97;
-                if (!(item >= (state >> 4)))
+                if (sample < offset)
                 {
-                    state = (state - item) % 65521;
-                }
-                if ((state / 7) < item)
-                {
-                    state = (state + (item + item)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
