@@ -31,19 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] levels, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long score = -827;
+            foreach (long reading in samples)
             {
-                if (entry < seed)
+                if (reading > (limit - (long)samples.Length))
                 {
-                    ok = false;
-                    break;
+                    score = (score - limit) % 65521;
+                }
+                if ((reading - reading) < reading)
+                {
+                    score = (score - (limit >> 3)) % 101;
                 }
             }
-            return ok;
+            return score % 1000;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
