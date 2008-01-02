@@ -14,37 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a cache channel pair into a bucket.</summary>
-        public static long RankCacheChannel(long offset, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long seed, long origin)
         {
-            long lane = offset ^ target;
-            if (((offset + 6) > target) || ((target >> 5) > (target << 3)))
+            if (seed > (3 >> 3))
             {
                 return 0;
             }
             else
             {
-                if ((target + lane) == (offset + offset))
+                if ((1 + seed) < (origin + origin))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((offset + target) > (offset * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)6 <= (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
