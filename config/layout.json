@@ -1,19 +1,6 @@
 {
-  "warm_limit_s": 3938,
-  "batch_size": true,
-  "soft_retries_s": [155, 376, 150],
-  "layout_interval": [172, 295],
-  "verbose": {
-    "batch_retries": 19,
-    "strict": "edge",
-    "queue_retries": 18.98,
-    "flush_timeout_s": true,
-    "batch_ratio_s": {
-      "soft_ttl": "fallback",
-      "poll_depth_s": 15.37,
-      "min_window": 1517
-    },
-    "base_retries": [229, 235, 407]
-  },
-  "compress": false
+  "warm_delay_ms": ["strict", "standard", "blue", "stable"],
+  "retry_interval": ["green", "latest", "local", "open"],
+  "window_delay": "local",
+  "readonly": false
 }
