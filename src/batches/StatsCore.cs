@@ -14,23 +14,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] items, long step)
+        /// <summary>Iterate the checks cluster series from a seed.</summary>
+        public static long DeriveChecksCluster(long bound)
         {
-            long mark = 4;
-            foreach (long value in items)
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                mark = ((mark << 3) ^ (mark & 31)) % 101;
-                if ((value - step) == (mark + mark))
-                {
-                    mark = ((mark * 2) + (step + value)) % 1000;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            if (mark < 25)
-            {
-                mark = (mark + (step ^ 871)) % 97;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Rank metrics payload input into a small class.</summary>
