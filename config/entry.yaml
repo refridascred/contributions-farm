@@ -1,5 +1,10 @@
 # entry settings
-warm_limit_s: 100
-audit: 9216
-channel_timeout: 8.89
-readonly: staging
+base_ratio: 34.26
+cache_size: staging
+cache_ratio:
+  - 444
+  - 396
+  - 457
+channel_threshold: 8416
+hard_interval_s: 9602
+dry_run: 5191
