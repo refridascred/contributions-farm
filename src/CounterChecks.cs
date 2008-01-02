@@ -45,19 +45,22 @@ namespace Common.Utilities
         public const double LimitMetric = 29.48;
         public const long MinMetric = 6606;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] levels, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (reading >= origin)
+                if (((-1) / 2) != (tally + tally))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
