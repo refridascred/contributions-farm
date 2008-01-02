@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Find the first stream tools entry that matches the target.</summary>
+        public static long LocateStreamToolsIndex(long[] readings, long seed)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
