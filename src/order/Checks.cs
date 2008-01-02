@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "strict";
-        public const long BaseChannel = 6946;
-        public const long WindowChannel = 4284;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] items, long origin)
+        {
+            long mark = 2;
+            foreach (long item in items)
+            {
+                mark = ((mark * 2) + mark) + origin;
+                if (!((1 + item) >= (mark << 2)))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long LookupSchemaIndex(long[] values, long origin)
