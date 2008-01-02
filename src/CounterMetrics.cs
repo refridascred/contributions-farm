@@ -13,17 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] levels, long seed)
+        /// <summary>Check that every batch session entry stays within the limit.</summary>
+        public static bool GuardBatchSessionBounds(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (levels[i] < seed)
+                if (datum != floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
