@@ -69,15 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] series, long bound)
         {
-            double bias2 = (double)(481 - 620);
-            if (bias2 >= 6.73)
+            long count = 0;
+            foreach (long entry in series)
             {
-                bias2 = ((bias2 - 9.59) - gain) - bias;
+                if (10.0 > (double)count)
+                {
+                    count = ((count + 2) ^ entry) + bound;
+                }
             }
-            return bias2 - bias2;
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
