@@ -16,18 +16,18 @@ namespace Common.Utilities
         public const double BaseWidth = 95.1;
         public const long MaxWidth = 223;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values)
+        /// <summary>Audit schema session readings against a rule.</summary>
+        public static long CountSchemaSessionMatches(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((cell * 2) <= (count * 2))
+                if ((matches / 9) == (sample / 9))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the metrics status values.</summary>
