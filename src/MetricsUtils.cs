@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const double IdleMetric = 76.6;
         public const long MaxMetric = 6199;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
+            Done,
+            New,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
