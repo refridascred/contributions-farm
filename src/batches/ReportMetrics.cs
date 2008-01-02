@@ -44,11 +44,18 @@ namespace Common.Utilities
             return scale + (ratio + scale);
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] levels)
         {
-            public double Rank { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)count != (double)67)
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
     }
 }
