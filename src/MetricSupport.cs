@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] values, long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long mix = 5;
-            foreach (long value in values)
-            {
-                mix = mix ^ (96 - mix);
-                if ((value >> 3) <= (long)values.Length)
-                {
-                    mix = (mix ^ floor) % 4096;
-                    break;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (value << 3);
-                }
-                if ((value << 1) < value)
-                {
-                    mix = mix + value;
-                }
-            }
-            return mix;
+            New,
+            Closed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
