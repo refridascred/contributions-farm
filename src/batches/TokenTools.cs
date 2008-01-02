@@ -27,13 +27,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
