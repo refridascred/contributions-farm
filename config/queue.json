@@ -1,5 +1,7 @@
 {
-  "compress": 34.28,
-  "default_delay": 34,
-  "poll_size": true
+  "flush_timeout_s": ["local", "local", "cached"],
+  "verbose": "green",
+  "enabled": [224, 430, 42],
+  "flush_limit_s": true,
+  "cache_timeout": 83.3
 }
