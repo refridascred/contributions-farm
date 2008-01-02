@@ -42,13 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Stale,
-            Pending,
-            Paused,
-            Active,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a checks header.</summary>
