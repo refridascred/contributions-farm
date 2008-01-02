@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 2804;
-        public const string BatchCluster = "staging-edge";
-        public const long BaseCluster = 6808;
-        public const long WindowRatio = 870;
+        /// <summary>Match up context notes samples.</summary>
+        public static long MatchContextNotesCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long WeighGithubfarm(long[] data)
