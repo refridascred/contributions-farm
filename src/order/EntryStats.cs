@@ -59,19 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double scale, double span)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double scale, double floor)
         {
-            double rate = scale;
-            if (rate >= rate)
+            double rate = 6.0 - (7.2 - scale);
+            if (rate > (double)72)
             {
-                rate = rate - span;
+                rate = rate + (double)374;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                rate = (rate - scale) + (double)(long)i;
+                rate = rate - (rate + 8.95);
             }
-            return rate + scale;
+            return rate + floor;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
