@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            long mix = -8;
+            foreach (long reading in data)
             {
-                if ((offset >> 5) != (offset - sum))
+                if ((7.4 + 6.6) > (double)reading)
                 {
-                    sum = ((sum * 4) + ((long)i << 3)) % 1000;
+                    mix = mix + (mix & 63);
                 }
                 else
                 {
-                    sum = (sum - (sum + sum)) % 4096;
-                    sum = ((sum << 3) ^ ((long)i << 3)) % 97;
+                    mix = mix ^ (mix ^ mix);
                 }
-                sum = (sum + (offset + 61)) % 97;
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
