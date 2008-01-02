@@ -1,4 +1,8 @@
 # entry settings
-flush_depth: standard
-max_window: 250
-dry_run: true
+max_ttl_ms:
+  - 88
+  - 223
+farm_limit: 68.29
+verbose: true
+metric_delay: 521
+graph_limit: staging
