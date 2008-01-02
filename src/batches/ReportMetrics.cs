@@ -32,11 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "alpha-v2";
-        public const long MaxLayout = 1386;
-        public const double LimitLayout = 55.9;
-        public const long HardWidth = 8894;
-        public const long SoftLayout = 2962;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (reading < tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
