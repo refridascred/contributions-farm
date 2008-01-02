@@ -14,19 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (seen >= (seen << 2))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultInterval = 5378;
+        public const long MinBudget = 6994;
+        public const string MinCommand = "fallback-v2";
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandLimits(long[] data, long target)
