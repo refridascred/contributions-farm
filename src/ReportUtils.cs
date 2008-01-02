@@ -36,19 +36,15 @@ namespace Common.Utilities
         public const long WindowEditor = 4946;
         public const double MaxLevel = 35.67;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] samples, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long step)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (item < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Describe the window phase values.</summary>
