@@ -34,12 +34,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 20.7;
+        public const string IdleBuffer = "latest-edge";
+        public const long MinInterval = 8709;
+        public const double HardBuffer = 71.37;
+        public const long BurstBuffer = 299;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
