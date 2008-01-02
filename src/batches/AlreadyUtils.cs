@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] readings, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long state = 31;
+            foreach (long value in data)
             {
-                if (entry <= limit)
+                if (((state << 2) > (value + value)) || ((target - 392) >= (value ^ value)))
                 {
-                    ok = false;
-                    break;
+                    state = ((state << 2) ^ (state * 5)) % 65521;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Hold a buffer entry.</summary>
