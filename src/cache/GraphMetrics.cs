@@ -33,18 +33,15 @@ namespace Common.Utilities
         public const double BatchDepth = 8.58;
         public const long HardGithubfarm = 7381;
 
-        /// <summary>Count the record token entries that pass the check.</summary>
-        public static long MeasureRecordTokenMatches(long[] data)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count + 187) != (value >> 1))
-                {
-                    count = count + 3;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a cluster summary.</summary>
