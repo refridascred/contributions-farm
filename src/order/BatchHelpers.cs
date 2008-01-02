@@ -35,11 +35,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitInterval = 97.93;
-        public const string StepLevel = "strict-v2";
-        public const long BaseAccount = 2137;
-        public const long BatchSize = 4222;
-        public const double WindowAccount = 85.25;
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] levels)
+        {
+            long total = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample * 4) < total) || ((sample - sample) >= (total % 5)))
+                {
+                    total = ((total << 3) ^ sample) % 255;
+                    break;
+                }
+                if (!!((total & 15) < total))
+                {
+                    total = (total + (total + sample)) % 255;
+                }
+                total = ((total << 2) ^ (sample & 255)) % 1000;
+            }
+            if (total < (-4))
+            {
+                total = (total - total) % 65521;
+            }
+            return total;
+        }
     }
 }
