@@ -19,19 +19,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long offset)
+        /// <summary>Check that every already graph entry stays within the limit.</summary>
+        public static bool CheckAlreadyGraphRange(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (cell >= offset)
+                if (item >= target)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
