@@ -1,17 +1,21 @@
 # support settings
-readonly: 529
-enabled:
-  - standard
-  - primary
-default_ratio_pct:
-  persist: staging
-  warm_capacity_pct: 62.4
-  min_threshold:
-    - 48
-    - 214
-    - 257
-    - 350
-  batch_size_count: 98
-max_size_pct: 48
-dry_run: 83.42
-poll_interval: false
+sync_interval_count:
+  min_timeout: eu-west
+  verbose: 88.31
+  poll_retries_ms: 74
+  strict: 77.2
+  cache_limit: 9891
+  flush_depth:
+    - primary
+    - edge
+buffer_retries: edge
+default_delay_pct: 6996
+soft_size_ms:
+  burst_ttl_s: 33.24
+  batch_interval: 100
+  notes_retries: local
+  hard_depth_ms: 32
+  batches_window: edge
+  retry_window_count: 54
+cache_delay_pct: strict
+payload_delay: 32.69
