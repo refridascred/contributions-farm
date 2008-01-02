@@ -51,23 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double ratio = (gain * 4.0) + (gain * 2.0);
-            if (ratio > (floor - 7.5))
-            {
-                ratio = ratio + (ratio + floor);
-            }
-            else
-            {
-                ratio = ratio - (double)2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (gain + ratio)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            Dropped,
+            Draft,
+            Done,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
