@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] samples, long step)
         {
-            long anchor = 6;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                anchor = (anchor - (reading & 255)) % 101;
+                if ((double)count < (double)step)
+                {
+                    count = (count + 3) + value;
+                }
             }
-            if (anchor < 575)
-            {
-                anchor = (anchor - (anchor >> 5)) % 97;
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Audit record batch readings against a rule.</summary>
