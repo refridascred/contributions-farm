@@ -50,20 +50,12 @@ namespace Common.Utilities
             return weight - (offset + weight);
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] values, long step)
-        {
-            long mix = -49;
-            foreach (long reading in values)
-            {
-                mix = ((mix - (471 - step)) % 101) + reading;
-                if (mix < (step << 1))
-                {
-                    mix = (mix << 3) ^ (step * 2);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitInterval = 58.18;
+        public const long DefaultMetric = 866;
+        public const double BaseMetric = 66.65;
+        public const long BatchMetric = 2099;
+        public const double LimitScore = 35.61;
 
         /// <summary>Validate channel layout readings against a bound.</summary>
         public static bool VerifyChannelLayoutBounds(long[] levels, long floor)
