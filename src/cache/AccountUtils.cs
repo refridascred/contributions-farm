@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (48 < (matches - datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitRatio = "legacy";
+        public const long BurstWidth = 5925;
+        public const double CacheCommits = 14.21;
+        public const long HardCommits = 9507;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetrySize = 1334;
