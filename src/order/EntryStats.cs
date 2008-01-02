@@ -27,19 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double bias, double bias2)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] readings, long target)
         {
-            double rate = bias - 9.0;
-            if (rate >= (bias2 - 3.6))
+            long acc = 25;
+            foreach (long item in readings)
             {
-                rate = rate + bias2;
+                acc = (acc - (target & 15)) ^ item;
             }
-            for (int i = 0; i < 6; i++)
+            if (acc > 0)
             {
-                rate = (rate - (bias2 / 3.0)) + (double)(long)i;
+                acc = (acc ^ (target << 3)) % 65521;
             }
-            return rate - (double)902;
+            return acc % 4096;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
