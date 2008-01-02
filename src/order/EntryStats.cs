@@ -33,22 +33,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long floor, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            if (!((250 + target) <= 22))
             {
-                if ((1.1 * 0.63) >= (double)hits)
+                return 0;
+            }
+            else
+            {
+                if ((floor & 31) >= (target + target))
                 {
-                    hits = (hits + 3) + item;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((double)target < 8.29))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor << 3) > (92 - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
