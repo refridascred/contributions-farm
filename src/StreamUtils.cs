@@ -28,18 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((count - count) == (0 & 255))
+                if (12.0 >= (double)hits)
                 {
-                    count = (count + 3) + item;
+                    hits = ((hits + 3) ^ sample) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
