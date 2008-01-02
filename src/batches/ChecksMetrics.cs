@@ -56,24 +56,22 @@ namespace Common.Utilities
         public const long MaxQueue = 2611;
         public const long BurstQueue = 3440;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] values)
         {
-            long state = 51;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                long hits = (state * 4) % 10;
-                state = ((state << 3) ^ (hits * 5)) % 1000;
-                if (datum < (36 & 127))
+                if ((948 - sample) == (seen - 885))
                 {
-                    state = (state + state) % 65521;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state > (-257))
-            {
-                state = ((state << 2) ^ (state + state)) % 97;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
