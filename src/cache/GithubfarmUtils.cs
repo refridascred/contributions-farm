@@ -50,11 +50,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
+            Retry,
+            Failed,
+            Queued,
         }
     }
 }
