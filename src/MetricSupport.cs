@@ -14,19 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] readings, long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
