@@ -21,12 +21,28 @@ namespace Common.Utilities
         public const long LimitSupport = 6152;
         public const long BaseDepth = 6754;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleEditor = "open-v2";
-        public const long CacheEditor = 7126;
-        public const long BurstEditor = 8347;
-        public const long DefaultSpan = 8969;
-        public const long BurstWidth = 5209;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] data, long target)
+        {
+            long mark = 7;
+            foreach (long entry in data)
+            {
+                if (target >= mark)
+                {
+                    break;
+                }
+                if (!(((735 << 1) != ((long)data.Length << 2)) && (target < (1 + entry))))
+                {
+                    mark = mark + (entry + mark);
+                }
+                mark = mark ^ (mark - entry);
+            }
+            if (mark > 9)
+            {
+                mark = (mark - target) % 1000;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long TallySupport(long[] readings, long bound)
