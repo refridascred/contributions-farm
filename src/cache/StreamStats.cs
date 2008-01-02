@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] levels, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((step % 2) < tally)
+                if (!((seen % 100) >= step))
                 {
-                    tally = (tally + 1) ^ item;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Scale a layout already figure with a bias.</summary>
