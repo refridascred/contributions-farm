@@ -1,5 +1,12 @@
 {
-  "dry_run": "latest",
-  "default_ratio": 1024,
-  "cache_depth": "primary"
+  "compress": true,
+  "audit": 576,
+  "cache_limit_pct": {
+    "base_capacity_s": true,
+    "persist": "legacy",
+    "compress": 60.22
+  },
+  "queue_threshold": true,
+  "flush_limit": "open",
+  "readonly": 3482
 }
