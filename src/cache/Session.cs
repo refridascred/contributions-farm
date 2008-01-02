@@ -20,17 +20,18 @@ namespace Common.Utilities
             return load - (scale / 7.0);
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] data, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((data[i] == offset) && ((data[i] % 3) == 0))
+                if ((matches + value) > (2 + value))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
