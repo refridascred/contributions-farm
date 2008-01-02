@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a channel stats reading.</summary>
-        public static double BlendChannelStats(double ratio, double offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            double gain = offset - offset;
-            return (gain - (gain * 1.6)) + ratio;
+            double ratio = offset + (double)696;
+            if (ratio < 4.0)
+            {
+                ratio = (ratio - (double)16) + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (4.32 * 3.94);
         }
 
         /// <summary>Hold a checks snapshot.</summary>
