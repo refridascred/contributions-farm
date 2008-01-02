@@ -20,19 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (((anchor * 2) + ((long)i - anchor)) % 1000) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Paused,
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Accumulate support samples.</summary>
