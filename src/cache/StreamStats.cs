@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double gain, double span)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            double ratio = gain;
-            if (ratio < ratio)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio + gain) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)(-67)) + (double)(long)i;
-            }
-            return ratio - (double)71;
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
