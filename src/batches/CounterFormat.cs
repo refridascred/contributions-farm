@@ -37,11 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitLevel = 3.2;
-        public const long HardWindow = 5498;
-        public const long BurstRatio = 4778;
-        public const string CacheWindow = "standard-v2";
-        public const long IdleScore = 1050;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] levels, long limit)
+        {
+            long total = 858;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (((total + (total + sample)) % 97) + (long)i) + limit;
+                }
+                total = (total - total) % 101;
+            }
+            return total;
+        }
     }
 }
