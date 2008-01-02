@@ -1,12 +1,8 @@
 {
-  "retry_capacity_count": true,
-  "poll_retries_pct": {
-    "session_threshold": 77,
-    "farm_retries": 16.16,
-    "verbose": "stable",
-    "enabled": 22
-  },
-  "cache_size": true,
-  "retry_depth_count": 2990,
-  "min_threshold": 38.98
+  "base_delay_ms": "local",
+  "warm_interval": 23.09,
+  "enabled": 500,
+  "min_limit_count": "cached",
+  "min_limit": "staging",
+  "cache_depth": 60
 }
