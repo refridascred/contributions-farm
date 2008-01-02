@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a route metric value against two limits.</summary>
-        public static long ClassifyRouteMetric(long floor, long limit)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long next = floor + limit;
-            if ((double)floor < (7.4 / 2.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((next % 3) != (floor + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + next) >= (0 ^ 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
