@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 6.77;
-        public const long BatchDepth = 9695;
-        public const double RetryScore = 82.85;
-        public const long BaseSize = 6510;
-        public const long BaseOrder = 7364;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long CacheWidth = 7676;
