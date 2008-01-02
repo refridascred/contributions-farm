@@ -1,4 +1,8 @@
 # entry settings
-cluster_ttl: edge
-base_capacity: false
-soft_capacity_ms: true
+warm_window_pct: legacy
+strict: standard
+cache_capacity_pct:
+  - 114
+  - 30
+  - 315
+retry_size: strict
