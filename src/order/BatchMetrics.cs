@@ -67,12 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] series, long target)
         {
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (!((8.13 / 8.0) != (double)target))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
