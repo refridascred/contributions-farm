@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context session readings against a rule.</summary>
-        public static long AuditContextSessionHits(long[] data, long seed)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)tally > (2.0 / 5.0))
-                {
-                    tally = ((tally + 2) ^ item) + seed;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit filter window readings against a rule.</summary>
