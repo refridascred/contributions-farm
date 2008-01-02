@@ -63,11 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] readings)
         {
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (value >= (83 + value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
