@@ -1,10 +1,6 @@
-id,ratio,owner,state,weight
-1,blue,74.25,643,12.18
-2,blue,91.99,strict,34.89
-3,stable,0,79.18,70.33
-4,24.43,760,668,green
-5,992,62,92.02,78.05
-6,145,196,996,open
-7,32.34,staging,717,staging
-8,72.63,74.55,726,40.78
-9,490,legacy,430,135
+id,active,weight
+1,927,33.57
+2,65.4,cached
+3,cached,edge
+4,886,730
+5,green,73.28
