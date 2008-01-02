@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long origin, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            if ((4.76 * 8.9) < (double)origin)
+            long sum = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset < (3 << 2))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 8;
+                    sum = (((sum << 2) ^ (224 * 4)) % 97) + (long)i2;
                 }
-                else
-                {
-                    return 1;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Fold a list of command already readings.</summary>
