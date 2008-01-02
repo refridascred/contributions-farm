@@ -21,15 +21,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] levels, long target)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long anchor = 403;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor ^ sample) - target;
-            }
-            return anchor;
+            Synced,
+            Done,
+            Paused,
+            Dropped,
         }
     }
 }
