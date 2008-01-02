@@ -41,20 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long total = 85;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = ((total ^ 27) - (long)i) ^ datum;
-                    total = total - (total << 2);
-                }
-                total = (total * 2) + (90 % 5);
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count buffer report pairs that satisfy a relation.</summary>
