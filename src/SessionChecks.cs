@@ -12,21 +12,38 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long target, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin + target) <= (target + 69))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)target <= 5.0) || ((double)origin >= (2.2 * 8.0)))
                 {
-                    if ((readings[i] - readings[j]) != 8)
+                    return 3;
+                }
+                else
+                {
+                    if ((origin << 2) > origin)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(origin >= (target - target)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
