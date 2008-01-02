@@ -45,19 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] values, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (entry != target)
+                if (reading <= target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
