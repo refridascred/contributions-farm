@@ -29,14 +29,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultSize = 2781;
+        public const long WindowDepth = 9656;
+        public const double WindowGraph = 6.79;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextMatches(long[] items, long target)
