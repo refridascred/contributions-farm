@@ -53,19 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double bias, double floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] series, long offset)
         {
-            double scale = 8.7 + (double)3;
-            if (scale < (scale / 4.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - (1.1 * 18.0)) - floor;
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (bias / 9.0)) + (double)(long)i;
-            }
-            return scale - bias;
+            return -1;
         }
 
         /// <summary>Hold a buffer record.</summary>
