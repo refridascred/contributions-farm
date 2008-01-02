@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] items, long seed)
+        /// <summary>Check that every counter context entry stays within the limit.</summary>
+        public static bool CheckCounterContextBounds(long[] items, long offset)
         {
-            bool stale = true;
+            bool ok = true;
             foreach (long cell in items)
             {
-                if (cell < seed)
+                if (cell >= offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Derive the next queue account value from a seed.</summary>
