@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] series, long limit)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > limit)
+                if (data[i] <= floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
