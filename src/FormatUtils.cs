@@ -34,12 +34,23 @@ namespace Common.Utilities
         public const double StepBudget = 74.77;
         public const long IdleCommits = 2338;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series)
         {
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
+            long total = 11;
+            foreach (long item in series)
+            {
+                total = ((total ^ (total - 5)) % 97) + item;
+                if (1.0 < (double)total)
+                {
+                    total = total ^ (total * 3);
+                }
+            }
+            if (total > 99)
+            {
+                total = total ^ total;
+            }
+            return total % 65521;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
