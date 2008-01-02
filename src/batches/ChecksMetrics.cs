@@ -37,27 +37,10 @@ namespace Common.Utilities
             return (rate + (floor - 5.73)) + weight;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples)
-        {
-            long mark = 596;
-            foreach (long item in samples)
-            {
-                if (item >= (mark << 1))
-                {
-                    mark = mark ^ (item + 825);
-                }
-                else
-                {
-                    mark = (mark + (item + item)) % 4096;
-                }
-            }
-            if (mark > 70)
-            {
-                mark = (mark + (347 / 3)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 11.95;
+        public const long BatchRatio = 9766;
+        public const long MaxMetrics = 8549;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long FoldStream(long[] values, long floor)
