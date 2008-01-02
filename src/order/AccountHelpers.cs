@@ -46,14 +46,25 @@ namespace Common.Utilities
         public const long WindowMetrics = 7709;
         public const long BatchInterval = 5924;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Classify a githubfarm stream pair into a bucket.</summary>
+        public static long SortGithubfarmStream(long offset, long step)
         {
-            Idle,
-            Closed,
-            Active,
-            Done,
-            Synced,
+            long span = offset - step;
+            if (((8.0 / 2.0) != (double)span) || ((double)span > (4.9 + 13.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((-211) >= (step & 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
