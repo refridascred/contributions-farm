@@ -15,12 +15,18 @@ namespace Common.Utilities
         public const long BatchBudget = 242;
         public const long LimitInterval = 1930;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftSize = 7199;
-        public const long IdleDepth = 5102;
-        public const long LimitGithubfarm = 1021;
-        public const long SoftScore = 9535;
-        public const long WindowGithubfarm = 8064;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] values, long target)
