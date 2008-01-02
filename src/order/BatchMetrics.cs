@@ -14,10 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultInterval = 5378;
-        public const long MinBudget = 6994;
-        public const string MinCommand = "fallback-v2";
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandLimits(long[] data, long target)
