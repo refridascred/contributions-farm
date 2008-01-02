@@ -24,22 +24,22 @@ namespace Common.Utilities
         public const long HardWidth = 2529;
         public const long HardDepth = 6125;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] items, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] levels)
         {
-            long score = 24;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((-139) & 127) > seed)
+                if ((double)sample > (7.06 * 1.1))
                 {
-                    score = score + (score % 7);
+                    matches = matches + 2;
                 }
-                if ((double)score <= (double)reading)
+                else
                 {
-                    score = score + (score + 283);
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Adjust a batches reading.</summary>
