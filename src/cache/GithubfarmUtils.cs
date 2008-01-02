@@ -43,19 +43,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long score = 0;
+            foreach (long datum in data)
             {
-                if ((double)floor < (2.76 / 3.0))
-                {
-                    sum = sum + 90;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                score = ((score + (682 % 7)) % 255) ^ datum;
             }
-            return sum;
+            if (score > 41)
+            {
+                score = ((score * 5) + (score << 3)) % 97;
+            }
+            return score;
         }
     }
 }
