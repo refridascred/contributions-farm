@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long step, long step2)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long span = step ^ step2;
-            if (9 >= (step ^ 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((101 >> 4) < (step + 81))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step * 2) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step2 * 4) == (span + step2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            New,
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
