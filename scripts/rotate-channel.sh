@@ -7,17 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-primary}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=434
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in primary local eu-west standard; do
+    log "checking ${item}"
+done
