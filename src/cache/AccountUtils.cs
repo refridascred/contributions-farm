@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] data)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (48 < (matches - datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
