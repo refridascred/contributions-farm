@@ -36,11 +36,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 8629;
-        public const double StepDepth = 16.73;
-        public const long CacheTimeout = 927;
-        public const long CacheChannel = 6096;
-        public const long RetryChannel = 7415;
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double floor)
+        {
+            double ratio = gain;
+            if (ratio > (double)417)
+            {
+                ratio = ratio - (double)13;
+            }
+            else
+            {
+                ratio = ratio - floor;
+            }
+            return ratio - ratio;
+        }
     }
 }
