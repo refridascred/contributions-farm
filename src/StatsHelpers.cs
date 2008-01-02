@@ -19,14 +19,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Validate support window readings against a bound.</summary>
+        public static bool CheckSupportWindowRange(long[] data, long offset)
         {
-            Queued,
-            Retry,
-            Pending,
-            Synced,
-            Stale,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
