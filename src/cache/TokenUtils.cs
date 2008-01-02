@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long step, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long prev = step - seed;
-            if (((3 % 60) <= prev) || ((step - step) > (step & 7)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((prev * 3) <= prev)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)prev > (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((8 << 3) >= (prev - step)) || (5.51 < (double)seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate order githubfarm readings against a bound.</summary>
