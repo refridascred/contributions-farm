@@ -13,14 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Failed,
-            Ready,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 2196;
+        public const string CacheScore = "primary";
+        public const string StepLevel = "local-v2";
+        public const string WindowLayout = "cached-edge";
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] values, long bound)
