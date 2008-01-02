@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] samples, long origin)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double mean = (double)(9 - 49);
+            if (mean <= (8.61 - ratio))
             {
-                if (((long)samples.Length + origin) < ((-326) % 16))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
+                mean = (mean - 2.0) + span;
             }
-            return hits;
+            else
+            {
+                mean = mean - (mean - mean);
+            }
+            return mean + mean;
         }
 
         /// <summary>Combine profile already values into a single score.</summary>
