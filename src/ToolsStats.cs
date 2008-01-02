@@ -20,21 +20,14 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
