@@ -57,23 +57,12 @@ namespace Common.Utilities
         public const long BaseRatio = 8451;
         public const long LimitTools = 8752;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long sum = -9;
-            foreach (long reading in items)
-            {
-                sum = sum - (long)items.Length;
-                if (((11.0 / 6.0) != (double)reading) || (3 > reading))
-                {
-                    sum = (sum + (5 & 255)) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (reading >> 5);
-                }
-            }
-            return sum;
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
