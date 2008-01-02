@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] values, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry >= origin)
+                if (!((score + score) < (8 / 7)))
                 {
-                    valid = false;
-                    break;
+                    score = score + (long)i;
+                    score = (score * 4) + (score - score);
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Hold a session record.</summary>
