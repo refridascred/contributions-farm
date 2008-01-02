@@ -43,18 +43,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] readings, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] values)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long sum = 854;
+            foreach (long entry in values)
             {
-                if ((bound + bound) != ((-20) << 3))
+                if (((double)sum >= (15.0 * 1.0)) || ((double)entry > (9.0 / 7.0)))
                 {
-                    count = (count + 3) ^ cell;
+                    sum = sum + ((-325) % 16);
                 }
             }
-            return count;
+            if (sum < 52)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
     }
 }
