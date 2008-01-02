@@ -15,11 +15,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 6568;
-        public const double StepSupport = 25.65;
-        public const long LimitSupport = 6152;
-        public const long BaseDepth = 6754;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
