@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] readings, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double weight, double bias)
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((52 << 3) > count)
-                {
-                    count = ((count + 3) + datum) - offset;
-                }
-            }
-            return count;
+            double ratio = weight;
+            return (ratio - (double)352) + bias;
         }
 
         /// <summary>Hold a batch summary.</summary>
