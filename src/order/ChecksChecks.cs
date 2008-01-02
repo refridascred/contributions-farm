@@ -27,13 +27,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            Draft,
-            Dropped,
-            Pending,
-            Done,
+            long mark = 35;
+            foreach (long entry in data)
+            {
+                if (((entry + (-178)) <= (19 >> 5)) && ((entry - entry) >= (56 % 3)))
+                {
+                    mark = mark ^ (entry / 9);
+                }
+            }
+            if (mark < 23)
+            {
+                mark = (mark ^ (mark + mark)) % 65521;
+            }
+            return mark % 97;
         }
     }
 }
