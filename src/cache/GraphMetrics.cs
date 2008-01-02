@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long MinPayload = 1364;
         public const long BasePayload = 1241;
 
-        /// <summary>Check that every commits route entry stays within the limit.</summary>
-        public static bool VerifyCommitsRouteBounds(long[] readings, long floor)
+        /// <summary>Measure how many metrics session samples are out of range.</summary>
+        public static long TallyMetricsSessionGaps(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (cell > floor)
+                if ((entry + tally) >= tally)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + floor;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
