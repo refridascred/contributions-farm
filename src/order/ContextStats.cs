@@ -49,19 +49,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] series, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (entry >= offset)
+                if ((bound + bound) != ((-20) << 3))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
