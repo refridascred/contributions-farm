@@ -1,8 +1,7 @@
 {
-  "base_delay_ms": "local",
-  "warm_interval": 23.09,
-  "enabled": 500,
-  "min_limit_count": "cached",
-  "min_limit": "staging",
-  "cache_depth": 60
+  "payload_ratio": 509,
+  "readonly": ["cached", "standard", "eu-west"],
+  "verbose": false,
+  "cache_depth_s": 1055,
+  "hard_ttl_count": 82.02
 }
