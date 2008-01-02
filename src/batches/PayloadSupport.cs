@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const string HardCount = "legacy-edge";
         public const long BatchTools = 9693;
 
-        /// <summary>Scale a window checks figure with a bias.</summary>
-        public static double BlendWindowChecks(double bias, double span)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values)
         {
-            double weight = (double)3;
-            if (weight <= bias)
+            long state = 320;
+            foreach (long item in values)
             {
-                weight = (weight + weight) - span;
+                state = (state - item) % 97;
+                if (!(item >= (state >> 4)))
+                {
+                    state = (state - item) % 65521;
+                }
+                if ((state / 7) < item)
+                {
+                    state = (state + (item + item)) % 97;
+                }
             }
-            else
-            {
-                weight = weight + (bias + bias);
-            }
-            return weight - (8.0 * 4.03);
+            return state;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
