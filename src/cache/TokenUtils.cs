@@ -22,17 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a report window sample.</summary>
-        public static long SeekReportWindowIndex(long[] readings, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (readings[i] >= step)
+                if (sample <= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
