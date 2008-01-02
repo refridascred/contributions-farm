@@ -53,13 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] values, long offset)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
