@@ -55,9 +55,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 8901;
-        public const string MaxTimeout = "legacy-v2";
-        public const double WindowBatch = 55.87;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
