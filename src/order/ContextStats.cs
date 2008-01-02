@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const long SoftInterval = 8100;
         public const long RetrySpan = 8209;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((((long)data.Length + value) <= (value - count)) || ((value + value) >= (564 - count)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowInterval = 1420;
+        public const double BaseWidth = 95.1;
+        public const long MaxWidth = 223;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long WindowCount = 5356;
