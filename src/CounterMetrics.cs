@@ -50,26 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long mix = 2;
-            foreach (long datum in levels)
-            {
-                if ((mix - datum) > (datum << 1))
-                {
-                    mix = (mix << 2) ^ datum;
-                }
-                else
-                {
-                    mix = (mix - (datum * 5)) % 4096;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = (mix + (mix << 1)) % 4096;
-            }
-            return mix % 4096;
+            Paused,
+            Active,
+            Pending,
+            New,
         }
     }
 }
