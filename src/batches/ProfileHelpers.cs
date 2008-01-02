@@ -37,21 +37,18 @@ namespace Common.Utilities
         public const long DefaultSession = 9060;
         public const string BurstSession = "cached-v2";
 
-        /// <summary>Count stats githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareStatsGithubfarmCount(long[] samples)
+        /// <summary>Count the editor tools entries that pass the check.</summary>
+        public static long AuditEditorToolsMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum ^ matches) >= (datum - datum))
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Blend two channel measurements.</summary>
