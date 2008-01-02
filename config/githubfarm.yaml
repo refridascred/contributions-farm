@@ -1,26 +1,4 @@
 # githubfarm settings
-cache_interval_pct:
-  readonly: 579
-  strict:
-    batch_ttl_s: green
-    enabled: 98
-    batch_retries: 63
-    cache_delay: 100
-    idle_ttl: false
-    token_limit: true
-  min_ratio_count:
-    max_ttl: 7036
-    retry_capacity: false
-    githubfarm_threshold: 37
-    burst_depth_count: 99
-    schema_capacity: 7203
-  filter_threshold: 43
-  min_window: 55.87
-checks_interval: false
-readonly: true
-enabled:
-  - 362
-  - 81
-  - 229
-retry_timeout: 49.34
-batch_limit: 78.97
+graph_interval: 74.05
+readonly: 206
+verbose: 3276
