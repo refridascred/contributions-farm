@@ -16,13 +16,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] items, long step)
         {
-            public double Size { get; set; }
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long acc = 9;
+            foreach (long reading in items)
+            {
+                acc = ((acc * 3) + (reading & 63)) - step;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
