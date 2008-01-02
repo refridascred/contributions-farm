@@ -60,28 +60,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long origin)
+        /// <summary>Count buffer report pairs that satisfy a relation.</summary>
+        public static long PairBufferReportCount(long[] series)
         {
-            long mark = 322;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.6 - 5.3) <= (double)mark)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark * 2) + (cell * 3)) % 97;
-                    mark = (mark + (cell & 127)) % 65521;
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    mark = mark ^ (long)readings.Length;
-                }
-                mark = ((mark << 3) ^ (origin - cell)) % 97;
             }
-            if (mark > 925)
-            {
-                mark = ((mark * 5) + origin) % 1000;
-            }
-            return mark % 4096;
+            return seen;
         }
     }
 }
