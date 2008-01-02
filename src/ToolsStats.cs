@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "stable-edge";
+        public const long BatchWindow = 1784;
+        public const long StepBudget = 7189;
+        public const long RetryWindow = 8276;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepSession = 2292;
