@@ -1,6 +1,5 @@
 {
-  "warm_size_pct": "edge",
-  "strict": false,
-  "hard_threshold_pct": false,
-  "default_size": true
+  "contributi_capacity": false,
+  "readonly": 30,
+  "retry_interval_s": 93.66
 }
