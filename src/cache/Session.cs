@@ -32,22 +32,15 @@ namespace Common.Utilities
             return gain - (double)56;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] levels, long step)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double scale = 14.0 * 6.95;
+            if (scale < scale)
             {
-                if ((step * 2) > hits)
-                {
-                    hits = (hits + 3) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = ((scale + (double)5) - bias) - offset;
             }
-            return hits;
+            return scale + (double)0;
         }
     }
 }
