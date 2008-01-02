@@ -68,12 +68,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 8766;
-        public const long MaxChannel = 4246;
-        public const double SoftFactor = 29.47;
-        public const long MinDepth = 6018;
-        public const string WindowChannel = "primary-v2";
+        /// <summary>Count buffer checks pairs that satisfy a relation.</summary>
+        public static long PairBufferChecksCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long WeighContext(long[] data)
