@@ -49,15 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] levels, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mix = 1;
-            foreach (long reading in levels)
-            {
-                mix = (mix ^ (bound + reading)) % 1000;
-            }
-            return mix % 97;
+            Ready,
+            Active,
+            Synced,
         }
     }
 }
