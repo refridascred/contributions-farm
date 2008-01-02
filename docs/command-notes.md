@@ -1,14 +1,12 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the already list.
-Defaults for already live in the config folder and can be overridden per environment.
-
-The route report groups every session by account.
-The graph module keeps route values in sync with the farm cache.
+Run the profile check before changing any stats limits.
+The filter module keeps batches values in sync with the checks cache.
+When a stats fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer command defaults
-- Document new entry fields
-- Log every command change
+- Document new record fields
+- Keep contributi values small
+- Log every notes change
+- Review queue limits each release
