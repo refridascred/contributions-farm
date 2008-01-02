@@ -1,6 +1,5 @@
 {
-  "min_ttl": "blue",
-  "hard_delay_s": "standard",
-  "enabled": 80,
-  "default_retries": 63.27
+  "sync_interval_ms": "eu-west",
+  "min_capacity_ms": 6342,
+  "cache_capacity_pct": "blue"
 }
