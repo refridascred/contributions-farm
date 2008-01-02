@@ -53,17 +53,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] items, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] < step)
+                if ((score + 90) == (672 << 1))
                 {
-                    return (long)i;
+                    score = ((score * 2) + (long)i) % 101;
+                    continue;
                 }
+                if ((double)floor == (double)score)
+                {
+                    score = (score ^ floor) % 4096;
+                    break;
+                }
+                score = (score ^ (score + score)) % 255;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
