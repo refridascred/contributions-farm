@@ -22,13 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long origin, long seed)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
+            if ((origin >> 2) == (origin + origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin >= (9.5 / 8.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the farm kind values.</summary>
