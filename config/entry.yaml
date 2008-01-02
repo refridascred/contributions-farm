@@ -1,5 +1,17 @@
 # entry settings
-strict: 9935
-record_size: 9.13
-order_capacity: fallback
-persist: local
+hard_window_ms:
+  soft_ttl_count:
+    - blue
+    - edge
+    - latest
+  idle_size_ms: fallback
+  readonly:
+    - blue
+    - green
+  soft_depth: open
+strict: 52.31
+verbose:
+  min_size_s: 18
+  stream_capacity: 332
+  layout_ttl: 22.84
+  base_timeout: 49.1
