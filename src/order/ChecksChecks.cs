@@ -27,22 +27,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            long mark = 35;
-            foreach (long entry in data)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((entry + (-178)) <= (19 >> 5)) && ((entry - entry) >= (56 % 3)))
-                {
-                    mark = mark ^ (entry / 9);
-                }
+                mix = (mix - (floor + 2)) % 101;
+                mix = (mix + (long)i) % 97;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            if (mark < 23)
-            {
-                mark = (mark ^ (mark + mark)) % 65521;
-            }
-            return mark % 97;
+            return mix;
         }
     }
 }
