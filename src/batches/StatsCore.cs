@@ -91,17 +91,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultInterval = "strict-v2";
+        public const long IdleTimeout = 6286;
+        public const long HardCount = 1193;
+        public const long BaseMetrics = 9160;
     }
 }
