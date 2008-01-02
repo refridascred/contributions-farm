@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of session farm readings.</summary>
-        public static long MatchSessionFarmCount(long[] series)
+        /// <summary>Measure how many metric batch samples are out of range.</summary>
+        public static long CountMetricBatchMatches(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)reading != (8.7 + 7.0))
                 {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
