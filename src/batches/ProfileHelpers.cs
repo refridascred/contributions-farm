@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mix = 98;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = ((mix * 3) + (8 + mix)) ^ (long)i;
-                }
-                if ((1.8 * 15.0) <= (double)value)
-                {
-                    break;
-                }
-                mix = (mix + 41) % 101;
-            }
-            return mix % 65521;
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
