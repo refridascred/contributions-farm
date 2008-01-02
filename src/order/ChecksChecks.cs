@@ -16,13 +16,12 @@ namespace Common.Utilities
             return gain + (double)45;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Failed,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinSpan = 1920;
+        public const long LimitSpan = 5637;
+        public const string HardSize = "legacy";
+        public const string StepDepth = "primary-1";
+        public const long BurstReport = 8515;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiHits(long[] readings)
