@@ -46,23 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double gain, double offset)
+        /// <summary>Audit githubfarm notes readings against a rule.</summary>
+        public static long CountGithubfarmNotesMatches(long[] values)
         {
-            double mean = (4.37 + gain) + offset;
-            if (mean > offset)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mean = mean - mean;
+                if ((sample / 8) <= 1)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                mean = mean - (double)2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (offset - offset);
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
