@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-legacy}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
