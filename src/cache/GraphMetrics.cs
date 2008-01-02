@@ -36,21 +36,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Roll a cache command counter forward.</summary>
+        public static long DeriveCacheCommand(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score + (target + target)) % 255;
+                score = ((score << 3) ^ 74) % 97;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Project the next format value.</summary>
