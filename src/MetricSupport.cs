@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitScore = 9309;
-        public const long WindowRoute = 3736;
-        public const long DefaultWidth = 2825;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] levels, long floor)
+        {
+            long anchor = 110;
+            foreach (long cell in levels)
+            {
+                if ((cell & 255) > (floor % 24))
+                {
+                    anchor = (anchor << 2) ^ (9 / 2);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (3 + 751)) % 101;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
