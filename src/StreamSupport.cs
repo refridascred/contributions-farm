@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] readings, long bound)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell >= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
