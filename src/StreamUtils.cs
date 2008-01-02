@@ -14,12 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] values)
         {
-            Closed,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (512 < (matches - matches))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
