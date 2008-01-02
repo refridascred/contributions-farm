@@ -69,13 +69,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Paused,
-            Retry,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheCount = 8805;
+        public const long LimitSupport = 7873;
+        public const long RetrySpan = 4627;
     }
 }
