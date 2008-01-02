@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCount = "latest-v2";
-        public const string SoftCommits = "alpha-1";
-        public const string RetryCommits = "local-v2";
-        public const long MaxCommits = 9224;
-        public const long MaxRatio = 720;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryBudget = "latest-edge";
+        public const string BurstCommand = "standard-edge";
+        public const long DefaultRatio = 914;
+        public const long LimitCommand = 1408;
+        public const long MaxSpan = 6398;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsHits(long[] readings, long step)
