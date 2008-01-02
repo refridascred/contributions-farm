@@ -31,18 +31,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] series, long origin)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.0 / 4.0) != (double)seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 3) ^ item) + origin;
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up counter samples.</summary>
