@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] values, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                if (item <= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
