@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((-53) / 6) > (value >> 3))
                 {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
