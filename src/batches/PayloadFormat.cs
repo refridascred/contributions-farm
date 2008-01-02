@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            New,
-            Retry,
-            Idle,
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
