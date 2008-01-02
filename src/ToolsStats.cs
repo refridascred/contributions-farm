@@ -43,17 +43,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] levels, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 51;
+            foreach (long entry in values)
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
+                if ((anchor & 15) > (anchor - anchor))
                 {
-                    return (long)i;
+                    anchor = (((anchor * 4) + (step << 1)) % 1000) ^ entry;
                 }
             }
-            return -1;
+            if (anchor > 170)
+            {
+                anchor = anchor + (anchor + step);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Project the next filter value.</summary>
