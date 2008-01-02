@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit token metric readings against a rule.</summary>
-        public static long CountTokenMetricGaps(long[] values)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double gain, double span)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double load = gain / 2.0;
+            if (load < (double)85)
             {
-                if ((matches + matches) >= (matches / 9))
-                {
-                    matches = (matches + 1) + value;
-                }
+                load = load + gain;
             }
-            return matches;
+            else
+            {
+                load = load - (double)7;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (gain - span)) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Fold a list of record readings.</summary>
