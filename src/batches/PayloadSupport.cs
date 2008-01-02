@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string HardCount = "legacy-edge";
         public const long BatchTools = 9693;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] items, long limit)
+        /// <summary>Scale a window checks figure with a bias.</summary>
+        public static double BlendWindowChecks(double bias, double span)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double weight = (double)3;
+            if (weight <= bias)
             {
-                if ((matches + 10) <= (item & 31))
-                {
-                    matches = (matches + 1) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = (weight + weight) - span;
             }
-            return matches;
+            else
+            {
+                weight = weight + (bias + bias);
+            }
+            return weight - (8.0 * 4.03);
         }
 
         /// <summary>Hold a checks snapshot.</summary>
