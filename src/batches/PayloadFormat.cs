@@ -20,21 +20,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count report tools pairs that satisfy a relation.</summary>
-        public static long MatchReportToolsCount(long[] levels)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
