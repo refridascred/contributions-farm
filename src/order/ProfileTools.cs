@@ -63,19 +63,10 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double rate, double bias)
-        {
-            double load = (double)(7 * 5);
-            if (load <= (load - bias))
-            {
-                load = (load - (5.0 / 8.0)) - rate;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load + (double)(-51);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstSpan = 4166;
+        public const string LimitTimeout = "staging";
+        public const string DefaultEditor = "legacy";
+        public const string SoftEditor = "standard-1";
     }
 }
