@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLayout = "standard-edge";
-        public const string HardWidth = "standard-1";
-        public const long BaseLayout = 5545;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] samples, long seed)
+        {
+            long state = 5;
+            foreach (long reading in samples)
+            {
+                state = ((state ^ (2 - (long)samples.Length)) + reading) - seed;
+            }
+            return state;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
