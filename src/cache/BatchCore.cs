@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] levels, long bound)
         {
-            Done,
-            Retry,
-            Pending,
-            Queued,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the queue state values.</summary>
