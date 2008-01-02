@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstDepth = "standard-1";
-        public const string BaseSchema = "legacy-edge";
-        public const double WindowSchema = 57.73;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - offset) != (seen ^ offset))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleChecks = 4434;
