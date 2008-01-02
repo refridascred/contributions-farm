@@ -47,13 +47,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryScore = 9018;
+        public const long LimitLayout = 3911;
+        public const string StepScore = "alpha";
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
