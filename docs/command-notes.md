@@ -1,10 +1,14 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the route list.
-Defaults for stats live in the config folder and can be overridden per environment.
+A queue that stays idle for too long is moved to the already list.
+Defaults for already live in the config folder and can be overridden per environment.
+
+The route report groups every session by account.
+The graph module keeps route values in sync with the farm cache.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Review githubfarm limits each release
-- Keep record values small
+- Validate token input early
+- Prefer command defaults
+- Document new entry fields
+- Log every command change
