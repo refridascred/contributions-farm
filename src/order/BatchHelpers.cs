@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first session queue entry that matches the target.</summary>
-        public static long FindSessionQueueIndex(long[] readings, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double scale, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)(2 * 5);
+            if (load < bias)
             {
-                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - 19.0;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - scale;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
