@@ -68,12 +68,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] items)
         {
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            long sum = -9;
+            foreach (long reading in items)
+            {
+                sum = sum - (long)items.Length;
+                if (((11.0 / 6.0) != (double)reading) || (3 > reading))
+                {
+                    sum = (sum + (5 & 255)) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (reading >> 5);
+                }
+            }
+            return sum;
         }
     }
 }
