@@ -95,14 +95,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            Ready,
-            New,
-            Draft,
-            Paused,
-            Active,
+            long result = 565;
+            foreach (long datum in levels)
+            {
+                result = ((result ^ result) % 97) + datum;
+                result = result + (result * 3);
+                result = ((result << 2) ^ (235 - 85)) % 4096;
+            }
+            if (result > 9)
+            {
+                result = (result * 4) + result;
+            }
+            return result;
         }
     }
 }
