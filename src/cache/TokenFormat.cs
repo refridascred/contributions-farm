@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] series, long floor)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleCount = 2783;
+        public const double RetryCount = 11.84;
+        public const long DefaultMetrics = 2725;
+        public const double StepMetrics = 35.79;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
