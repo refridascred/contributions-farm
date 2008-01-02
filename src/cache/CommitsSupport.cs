@@ -53,26 +53,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long state = 39;
+            foreach (long item in items)
             {
-                if ((score + 90) == (672 << 1))
+                if (!((915 ^ item) > item))
                 {
-                    score = ((score * 2) + (long)i) % 101;
-                    continue;
+                    state = state + (state - item);
                 }
-                if ((double)floor == (double)score)
-                {
-                    score = (score ^ floor) % 4096;
-                    break;
-                }
-                score = (score ^ (score + score)) % 255;
-                score = ((score * 2) + (long)i) % 4093;
+                state = (state - (state + state)) % 1000;
             }
-            return score;
+            if (state > 76)
+            {
+                state = (state ^ (state + 3)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
