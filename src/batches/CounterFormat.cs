@@ -27,18 +27,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit cluster stream readings against a rule.</summary>
-        public static long TallyClusterStreamMatches(long[] levels, long offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (7.0 <= (double)offset)
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
+            Synced,
+            Dropped,
+            Draft,
+            Idle,
         }
     }
 }
