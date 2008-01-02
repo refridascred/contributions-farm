@@ -44,18 +44,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] data, long bound)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long offset, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long prev = offset + bound;
+            if ((bound ^ offset) >= offset)
             {
-                if ((1 + 251) <= count)
+                return 5;
+            }
+            else
+            {
+                if ((bound >= (offset + prev)) || ((18.0 / 8.0) != (double)offset))
                 {
-                    count = ((count + 3) + value) - bound;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
