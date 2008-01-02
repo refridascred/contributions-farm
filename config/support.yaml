@@ -1,4 +1,11 @@
 # support settings
-batches_capacity: 1024
-dry_run: latest
-persist: 2
+dry_run: 60
+max_timeout:
+  min_ratio_count: cached
+  commits_ratio: blue
+  audit: 9646
+farm_delay: 83
+stats_depth: 77
+min_threshold_s:
+  - latest
+  - strict
