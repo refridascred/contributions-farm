@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double bias, double offset)
+        /// <summary>Combine metric command values into a single score.</summary>
+        public static long TotalMetricCommand(long[] values)
         {
-            double ratio = (double)((-94) * 2);
-            if (ratio <= offset)
+            long anchor = 0;
+            foreach (long value in values)
             {
-                ratio = ratio - (bias + offset);
+                anchor = (anchor - anchor) % 101;
+                if (!((value + (-21)) == (anchor % 7)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + 9.0;
-            }
-            return ratio - (ratio - bias);
+            return anchor;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
