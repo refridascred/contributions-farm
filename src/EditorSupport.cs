@@ -16,17 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] data, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (data[i] <= target)
+                if (!(55 > tally))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a cluster entry.</summary>
