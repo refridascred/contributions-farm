@@ -64,9 +64,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 36.15;
-        public const long BaseInterval = 9528;
-        public const long MinFormat = 110;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
