@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long bound, long origin)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            if ((bound > (origin + bound)) || (origin >= (38 * 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(482 >= origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Locked,
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
