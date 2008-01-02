@@ -30,11 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next context channel value.</summary>
-        public static double AdjustContextChannel(double weight, double floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double rate = floor;
-            return (rate + (floor - 5.73)) + weight;
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
