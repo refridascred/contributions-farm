@@ -42,11 +42,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 5244;
-        public const string CacheWidth = "open";
-        public const long IdleSession = 8491;
-        public const long MaxTimeout = 4473;
-        public const long MinSession = 8603;
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double rate, double floor)
+        {
+            double scale = rate;
+            if (scale >= (floor * 8.65))
+            {
+                scale = scale - (floor - floor);
+            }
+            else
+            {
+                scale = scale + (rate / 9.0);
+            }
+            return scale - scale;
+        }
     }
 }
