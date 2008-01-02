@@ -50,22 +50,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] values)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample & 7) < 17)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
