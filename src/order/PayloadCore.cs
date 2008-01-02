@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] samples, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long floor, long origin)
         {
-            long acc = 9;
-            foreach (long item in samples)
+            if (origin >= (origin + origin))
             {
-                if ((acc > (acc - acc)) || (((long)samples.Length + acc) <= (step % 2)))
+                return 5;
+            }
+            else
+            {
+                if ((floor % 24) <= floor)
                 {
-                    acc = ((acc + (675 / 3)) % 101) + item;
+                    return 6;
+                }
+                else
+                {
+                    if (!((2.84 / 9.0) == (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
