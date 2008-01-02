@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] items, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Roll a format counter forward.</summary>
