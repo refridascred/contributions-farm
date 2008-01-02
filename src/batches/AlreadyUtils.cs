@@ -38,19 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long mark = 28;
-            foreach (long sample in items)
-            {
-                mark = ((mark ^ (0 / 5)) % 65521) + sample;
-            }
-            if (mark > 993)
-            {
-                mark = (mark - (449 - mark)) % 101;
-            }
-            return mark;
+            Failed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the layout mode values.</summary>
