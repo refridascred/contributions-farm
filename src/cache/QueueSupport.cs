@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const double MinOrder = 84.47;
         public const long SoftRatio = 9223;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] readings, long offset)
-        {
-            long state = 544;
-            foreach (long datum in readings)
-            {
-                state = (((state + 27) % 4096) + datum) - offset;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultWidth = "primary-edge";
+        public const double BaseLevel = 43.22;
+        public const string BaseBatches = "fallback";
+        public const long BatchBatches = 1467;
+        public const long StepBatches = 7985;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
