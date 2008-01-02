@@ -19,9 +19,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepFactor = 3742;
-        public const double IdleInterval = 24.93;
-        public const long StepNotes = 5050;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double offset)
+        {
+            double mean = offset;
+            if (mean > gain)
+            {
+                mean = mean + offset;
+            }
+            else
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - 1.0) - (double)(long)i;
+            }
+            return mean - gain;
+        }
     }
 }
