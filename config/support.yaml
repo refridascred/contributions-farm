@@ -1,5 +1,9 @@
 # support settings
-hard_ratio: edge
-flush_interval_ms: 42
-base_ttl_pct: 500
-min_ratio_pct: latest
+stats_timeout: edge
+compress: true
+hard_ttl:
+  - cached
+  - legacy
+  - eu-west
+  - staging
+editor_retries: local
