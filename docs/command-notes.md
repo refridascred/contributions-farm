@@ -1,10 +1,11 @@
 # Command notes
 
-The profile report groups every report by already.
-Run the metric check before changing any format limits.
+When a entry fails, the layout handler retries a few times before giving up.
+The route report groups every entry by editor.
+Keep record and entry names short and lowercase.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Validate notes input early
-- Keep command values small
+- Keep report values small
+- Validate stream input early
+- Log every notes change
