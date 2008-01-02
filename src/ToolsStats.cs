@@ -11,12 +11,25 @@ namespace Common.Utilities
         public const long StepBudget = 7189;
         public const long RetryWindow = 8276;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 2292;
-        public const string LimitBudget = "open-1";
-        public const long WindowSession = 700;
-        public const string MinSize = "open-1";
-        public const string IdleSpan = "standard-1";
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long seed, long step)
+        {
+            if ((795 + seed) >= (seed & 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed > (17.0 - 9.7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Rank account route input into a small class.</summary>
         public static long RankAccountRoute(long bound, long offset)
