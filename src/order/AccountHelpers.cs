@@ -47,25 +47,13 @@ namespace Common.Utilities
         public const long StepStream = 418;
         public const long StepLevel = 4071;
 
-        /// <summary>Classify a githubfarm stream pair into a bucket.</summary>
-        public static long SortGithubfarmStream(long offset, long step)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long span = offset - step;
-            if (((8.0 / 2.0) != (double)span) || ((double)span > (4.9 + 13.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((-211) >= (step & 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
