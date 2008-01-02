@@ -33,14 +33,12 @@ namespace Common.Utilities
             return bias2 + (double)49;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Failed,
-            Locked,
-            Paused,
-            Active,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftDepth = 4913;
+        public const double StepLevel = 40.91;
+        public const double SoftSize = 46.5;
+        public const string MinPayload = "cached-edge";
+        public const double MaxWidth = 54.62;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long FindProfileIndex(long[] samples, long bound)
