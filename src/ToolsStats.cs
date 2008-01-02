@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long StepBudget = 7189;
         public const long RetryWindow = 8276;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] items)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen >= (seen * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) ^ reading;
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank account route input into a small class.</summary>
