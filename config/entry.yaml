@@ -1,9 +1,8 @@
 # entry settings
-cache_ratio_ms: legacy
-flush_window_ms: eu-west
-queue_window: latest
-retry_timeout:
-  - standard
-  - standard
-  - blue
-  - latest
+channel_depth: 57.18
+default_window: 500
+warm_timeout: false
+poll_capacity:
+  - 278
+  - 67
+readonly: local
