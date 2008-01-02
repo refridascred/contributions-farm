@@ -34,13 +34,20 @@ namespace Common.Utilities
         public const string BaseMetrics = "standard-edge";
         public const long BatchDepth = 1424;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] items)
         {
-            Done,
-            Draft,
-            Locked,
-            Active,
+            long total = 85;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    total = ((total ^ 27) - (long)i) ^ datum;
+                    total = total - (total << 2);
+                }
+                total = (total * 2) + (90 % 5);
+            }
+            return total;
         }
 
         /// <summary>Count buffer report pairs that satisfy a relation.</summary>
