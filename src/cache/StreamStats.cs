@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] readings)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long anchor = 32;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((sample - anchor) >= anchor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor ^ (anchor - anchor);
-                    continue;
-                }
-                if ((1.8 - 0.18) >= (double)anchor)
-                {
-                    anchor = (anchor ^ (anchor << 3)) % 4096;
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Hold a route options.</summary>
