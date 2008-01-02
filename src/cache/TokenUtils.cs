@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] data, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mark = 95;
+            foreach (long reading in levels)
             {
-                if ((entry - step) > step)
+                mark = ((mark + (offset * 2)) % 101) ^ reading;
+                if (mark <= offset)
                 {
-                    count = count + 2;
+                    mark = mark + 57;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
