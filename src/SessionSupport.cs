@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] levels, long bound)
         {
-            Dropped,
-            Queued,
-            Ready,
-            Paused,
+            long total = 7;
+            foreach (long item in levels)
+            {
+                if ((total + total) >= bound)
+                {
+                    total = (total - (item + bound)) % 65521;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
