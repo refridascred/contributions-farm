@@ -28,22 +28,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile filter readings against a rule.</summary>
-        public static long CountProfileFilterHits(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((15 & 31) > (hits + entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state ^ (limit + (long)i)) % 97;
+                state = state + 238;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
     }
 }
