@@ -23,10 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepWidth = 3632;
-        public const string IdleBudget = "fallback";
-        public const double BaseScore = 21.08;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Draft,
+            Idle,
+            Stale,
+            Failed,
+            Done,
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long step)
