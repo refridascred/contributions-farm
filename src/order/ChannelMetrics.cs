@@ -60,10 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 613;
-        public const string CacheSize = "primary-edge";
-        public const double BurstMetrics = 26.7;
-        public const long CacheRatio = 254;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
