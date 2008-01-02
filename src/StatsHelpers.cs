@@ -17,18 +17,21 @@ namespace Common.Utilities
         public const double CacheSpan = 27.95;
         public const double DefaultCount = 0.3;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] items, long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long carry = -21;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (5.92 >= (double)carry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (((carry << 2) ^ seed) % 65521) ^ value;
+                    if ((items[i] ^ items[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
