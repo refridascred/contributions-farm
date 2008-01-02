@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double ratio, double span)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] series, long target)
         {
-            double mean = (double)(9 - 49);
-            if (mean <= (8.61 - ratio))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - 2.0) + span;
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (mean - mean);
-            }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Combine profile already values into a single score.</summary>
