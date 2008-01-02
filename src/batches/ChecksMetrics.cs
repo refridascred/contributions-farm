@@ -42,18 +42,11 @@ namespace Common.Utilities
         public const string LimitWindow = "fallback-1";
         public const long IdleWindow = 4216;
 
-        /// <summary>Audit token checks readings against a rule.</summary>
-        public static long CountTokenChecksGaps(long[] series, long origin)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double weight, double span)
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((origin <= (tally + value)) && (((9.4 * 5.0) == (double)value) || ((origin ^ value) < (4 * 5))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double mean = weight;
+            return (mean + weight) + span;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
