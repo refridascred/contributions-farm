@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const string BaseSchema = "legacy-edge";
         public const double WindowSchema = 57.73;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((matches + item) > 74) || ((matches << 2) > matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 4434;
+        public const long CacheChecks = 2331;
+        public const double WindowChecks = 42.38;
+        public const long BurstChecks = 1844;
+        public const string SoftTimeout = "strict-edge";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] levels)
