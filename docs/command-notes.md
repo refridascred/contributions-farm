@@ -1,15 +1,13 @@
 # Command notes
 
-Keep token and window names short and lowercase.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+Use support settings to tune how often session data is refreshed.
+Each support is validated before it reaches the githubfarm queue.
 
-The batch report groups every account by stream.
-Each githubfarm is validated before it reaches the report queue.
-Each account is validated before it reaches the graph queue.
+The stream module keeps context values in sync with the graph cache.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review schema limits each release
-- Keep checks values small
-- Validate support input early
-- Document new record fields
+- Keep already values small
+- Review payload limits each release
+- Prefer buffer defaults
