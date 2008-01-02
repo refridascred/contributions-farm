@@ -43,23 +43,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            long carry = 8;
-            foreach (long reading in samples)
+            long state = -8;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 7; i++)
+                if (!((entry - state) < ((long)samples.Length ^ entry)))
                 {
-                    carry = ((carry ^ (carry - reading)) % 4096) + (long)i;
-                    carry = (carry * 5) + (reading - reading);
-                }
-                if ((carry < ((long)samples.Length - limit)) && ((double)carry != (double)reading))
-                {
-                    carry = ((carry << 2) ^ (reading - reading)) % 65521;
+                    state = state - (entry & 7);
                 }
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
