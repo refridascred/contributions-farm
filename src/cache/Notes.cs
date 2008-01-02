@@ -29,12 +29,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Combine profile already values into a single score.</summary>
+        public static long TallyProfileAlready(long[] items)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long sum = 2;
+            foreach (long cell in items)
+            {
+                sum = (sum << 3) ^ ((long)items.Length - sum);
+                sum = sum + cell;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
