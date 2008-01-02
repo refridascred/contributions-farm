@@ -71,18 +71,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] readings, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((8.0 <= (double)bound) && !(seen <= (73 ^ seen)))
-                {
-                    seen = (seen + 2) ^ item;
-                }
+                total = (total - ((-347) >> 2)) % 255;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
     }
 }
