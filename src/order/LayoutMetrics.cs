@@ -28,12 +28,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Fold a list of token profile readings.</summary>
+        public static long FoldTokenProfile(long[] readings, long limit)
         {
-            Retry,
-            Failed,
-            Queued,
+            long mix = 9;
+            foreach (long cell in readings)
+            {
+                if ((limit + cell) < (mix - limit))
+                {
+                    mix = mix - (limit + limit);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix - mix)) % 65521;
+                }
+                if ((844 + mix) == (limit / 5))
+                {
+                    break;
+                }
+            }
+            if (mix < 98)
+            {
+                mix = (mix - mix) % 65521;
+            }
+            return mix % 1000;
         }
     }
 }
