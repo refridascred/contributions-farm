@@ -5,34 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long origin)
         {
-            long anchor = 3;
-            foreach (long sample in data)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((anchor << 2) <= (anchor % 97))
+                sum = (sum * 5) + (origin / 2);
+                if ((sum + 810) > (43 - (long)i))
                 {
-                    anchor = anchor ^ anchor;
+                    sum = sum - sum;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ 387) % 255;
-                }
-                if ((0 + 63) != (anchor + sample))
-                {
-                    anchor = (anchor - (264 * 5)) % 97;
-                }
-                if ((sample + sample) != (anchor ^ sample))
-                {
-                    anchor = ((anchor << 2) ^ (long)data.Length) % 255;
-                }
+                sum = ((sum << 2) ^ (origin / 3)) % 65521;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            if (anchor > 383)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 4096;
+            return sum;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
