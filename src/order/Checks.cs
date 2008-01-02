@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] items, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] values, long step)
         {
-            long mark = 2;
-            foreach (long item in items)
+            long mark = 6;
+            foreach (long datum in values)
             {
-                mark = ((mark * 2) + mark) + origin;
-                if (!((1 + item) >= (mark << 2)))
-                {
-                    break;
-                }
+                mark = (((mark * 5) + (datum % 7)) % 97) - step;
             }
-            return mark % 1000;
+            return mark;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
