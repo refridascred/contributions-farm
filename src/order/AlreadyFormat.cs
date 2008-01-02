@@ -64,17 +64,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 36.15;
+        public const long BaseInterval = 9528;
+        public const long MinFormat = 110;
     }
 }
