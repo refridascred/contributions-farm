@@ -39,18 +39,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the editor tools entries that pass the check.</summary>
-        public static long AuditEditorToolsMatches(long[] items)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum ^ matches) >= (datum - datum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
