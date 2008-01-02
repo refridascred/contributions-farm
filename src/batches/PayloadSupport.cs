@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardTimeout = 9985;
-        public const string HardCount = "strict";
-        public const string CacheStats = "latest-edge";
-        public const string BaseRatio = "latest-1";
-        public const double MaxDepth = 84.17;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "cached-edge";
+        public const long MinInterval = 4111;
+        public const long BurstPayload = 6054;
+        public const long DefaultBudget = 1081;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] values)
