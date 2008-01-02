@@ -28,31 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long offset, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] values)
         {
-            if (!((limit << 2) >= (29 + offset)))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset >= (offset + offset))
+                if (!((entry - 159) > hits))
                 {
-                    return 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((offset + offset) < offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
