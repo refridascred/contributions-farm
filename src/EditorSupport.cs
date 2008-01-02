@@ -79,21 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] readings)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
