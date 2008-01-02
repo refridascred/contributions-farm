@@ -32,19 +32,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowInterval = 1671;
+        public const long IdleLayout = 9259;
+        public const long HardLevel = 4174;
     }
 }
