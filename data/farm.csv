@@ -1,6 +1,9 @@
-id,state,label,token
-1,201,green,38.58
-2,265,eu-west,21.51
-3,17.75,37.14,548
-4,blue,11.93,909
-5,edge,edge,26.54
+id,region,state,rank
+1,175,783,215
+2,eu-west,eu-west,30.36
+3,34.08,89.72,575
+4,931,28.47,eu-west
+5,209,41.17,standard
+6,892,242,89.42
+7,517,primary,standard
+8,legacy,5.89,eu-west
