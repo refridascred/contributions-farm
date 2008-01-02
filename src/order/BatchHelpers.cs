@@ -19,10 +19,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 8371;
-        public const double MinScore = 15.37;
-        public const string DefaultCount = "stable-1";
+        /// <summary>Accumulate batch metrics samples.</summary>
+        public static long ScoreBatchMetrics(long[] samples, long seed)
+        {
+            long carry = 7;
+            foreach (long datum in samples)
+            {
+                if (carry < (datum ^ carry))
+                {
+                    carry = ((carry * 5) + (seed - carry)) % 1000;
+                }
+            }
+            if (carry < 417)
+            {
+                carry = (carry ^ (carry % 16)) % 4096;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Classify a layout channel pair into a bucket.</summary>
         public static long ClassifyLayoutChannel(long seed, long seed2)
