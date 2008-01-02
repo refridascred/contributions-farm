@@ -53,22 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long result = 4;
-            foreach (long entry in readings)
-            {
-                if ((9.3 - 2.7) > (double)entry)
-                {
-                    result = result + (entry / 7);
-                }
-            }
-            if (result < 9)
-            {
-                result = ((result << 3) ^ (result * 3)) % 1000;
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
