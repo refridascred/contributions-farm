@@ -46,11 +46,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long target, long floor)
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            long span = target - floor;
+            if ((double)5 == (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target >= (1.77 * 2.91))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target <= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target < (span + span)) || ((floor / 3) >= span))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of window entries.</summary>
