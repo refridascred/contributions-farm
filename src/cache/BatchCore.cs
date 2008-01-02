@@ -42,24 +42,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the cluster window series from a seed.</summary>
-        public static long DeriveClusterWindow(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                long seen = bound + bound;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = (anchor - (seen / 9)) + (long)i2;
-                }
-                if (seen >= (anchor / 9))
-                {
-                    anchor = anchor ^ (242 - (long)i);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "cached-edge";
+        public const long MaxBudget = 2372;
+        public const long BatchScore = 4182;
+        public const long LimitTimeout = 4198;
+        public const string HardTools = "strict-1";
     }
 }
