@@ -1,7 +1,8 @@
-id,state,count
-1,830,843
-2,5.97,224
-3,150,legacy
-4,80.03,308
-5,495,fallback
-6,615,blue
+id,owner,score,rank,label
+1,latest,local,169,916
+2,220,32.6,22.24,22
+3,220,85.01,965,9.1
+4,56.5,eu-west,861,319
+5,legacy,880,standard,staging
+6,62.6,86.15,cached,96.79
+7,933,fallback,16.58,149
