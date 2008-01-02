@@ -19,23 +19,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double offset)
+        /// <summary>Find the first counter layout entry that matches the target.</summary>
+        public static long FindCounterLayoutIndex(long[] samples, long bound)
         {
-            double mean = offset;
-            if (mean > gain)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + offset;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - 1.0) - (double)(long)i;
-            }
-            return mean - gain;
+            return -1;
         }
     }
 }
