@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] data, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] levels, long bound)
         {
-            long acc = 7;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((double)datum == (7.47 - 14.0))
+                if (sample > bound)
                 {
-                    acc = (acc + (acc * 2)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc < 84)
-            {
-                acc = (acc + seed) % 1000;
-            }
-            return acc % 65521;
+            return ok;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
