@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long HardFilter = 1223;
         public const long StepCount = 7097;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] data, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (entry <= target)
+                if ((((double)362 >= (double)seen) || (seen < (reading - seen))) || (((double)seen <= 10.0) && (((-362) ^ 498) >= (reading * 4))))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Accumulate support samples.</summary>
