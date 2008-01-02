@@ -33,22 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats route entries that pass the check.</summary>
-        public static long AuditStatsRouteHits(long[] values)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = 918;
+            foreach (long sample in items)
             {
-                if (((seen << 1) >= (sample - sample)) || (seen >= (sample + (long)values.Length)))
+                if (anchor > (sample << 2))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = (anchor ^ (sample % 97)) % 1000;
                 }
             }
-            return seen;
+            if (anchor < 71)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the profile status values.</summary>
