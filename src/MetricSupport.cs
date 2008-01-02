@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            New,
-            Closed,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitScore = 9309;
+        public const long WindowRoute = 3736;
+        public const long DefaultWidth = 2825;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
