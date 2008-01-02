@@ -1,6 +1,6 @@
 # githubfarm settings
-enabled:
-  - blue
-  - latest
-flush_limit: cached
-cache_ratio: false
+profile_threshold:
+  - local
+  - standard
+enabled: 8
+cache_size: false
