@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchRatio = 3169;
-        public const long LimitCounter = 1802;
-        public const long WindowCounter = 8135;
-        public const long IdleCounter = 4951;
+        /// <summary>Locate a layout commits reading by value.</summary>
+        public static long LocateLayoutCommitsIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] readings, long bound)
