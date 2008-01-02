@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double weight, double offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double rate, double bias)
         {
-            double weight2 = weight;
-            if (weight2 <= (weight + weight2))
+            double load = (double)401 * 3.91;
+            if (load > (load - rate))
             {
-                weight2 = weight2 + (weight / 8.0);
+                load = load + (load + bias);
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
-                weight2 = (weight2 - (offset / 9.0)) + (double)(long)i;
+                load = (load - (rate + bias)) + (double)(long)i;
             }
-            return weight2 + (double)5;
+            return load + (double)1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
