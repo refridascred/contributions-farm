@@ -11,22 +11,16 @@ namespace Common.Utilities
         public const string BurstFilter = "standard-edge";
         public const long DefaultSpan = 7767;
 
-        /// <summary>Accumulate contributi githubfarm samples.</summary>
-        public static long TotalContributiGithubfarm(long[] series, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long limit)
         {
-            long score = 618;
-            foreach (long reading in series)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(score <= (reading / 3)))
-                {
-                    score = (score * 5) + (5 + score);
-                }
-                if ((2.0 + 4.09) >= (double)seed)
-                {
-                    score = ((score << 2) ^ seed) % 1000;
-                }
+                mark = (mark + ((-870) + limit)) % 101;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the graph mode values.</summary>
