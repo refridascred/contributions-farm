@@ -79,22 +79,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long result = 861;
-            foreach (long item in samples)
-            {
-                if (!((item & 31) < result))
-                {
-                    result = result ^ (result + item);
-                }
-                else
-                {
-                    result = (result * 3) + (result & 3);
-                }
-            }
-            return result;
+            public double Token { get; set; }
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
