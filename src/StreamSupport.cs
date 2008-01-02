@@ -13,15 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            long state = -59;
+            foreach (long value in data)
             {
-                total = ((total * 3) + (long)i) % 97;
+                state = state + (value - state);
+                state = (state << 2) ^ (value % 64);
+                state = (state + (state * 4)) % 255;
             }
-            return total;
+            if (state > 23)
+            {
+                state = (state * 2) + ((long)data.Length - state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
