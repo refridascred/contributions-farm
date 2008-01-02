@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Blend two session window measurements.</summary>
+        public static double AdjustSessionWindow(double scale, double offset)
         {
-            long sum = 4;
-            foreach (long value in readings)
+            double drift = 3.8;
+            if (drift <= (offset + scale))
             {
-                sum = (sum + (sum - value)) % 4096;
+                drift = drift - offset;
             }
-            return sum;
+            return drift + scale;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
