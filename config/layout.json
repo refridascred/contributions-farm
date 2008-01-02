@@ -1,8 +1,6 @@
 {
-  "enabled": "edge",
-  "queue_depth": true,
-  "poll_limit": 30,
-  "warm_interval": 210,
-  "base_capacity": 13,
-  "buffer_depth": 60
+  "default_limit": "stable",
+  "retry_depth_pct": true,
+  "min_capacity_s": "strict",
+  "graph_delay": 50
 }
