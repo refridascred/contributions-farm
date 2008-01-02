@@ -48,12 +48,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxSpan = 6987;
-        public const long IdleAccount = 8316;
-        public const long LimitAccount = 7811;
-        public const double MinCount = 4.53;
-        public const double WindowAccount = 98.51;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double gain, double bias)
+        {
+            double scale = (double)(261 >> 1);
+            if (scale <= bias)
+            {
+                scale = (scale - bias) - gain;
+            }
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale + (bias * 3.0);
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] values, long step)
