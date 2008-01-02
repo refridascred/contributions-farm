@@ -1,13 +1,7 @@
 {
-  "base_size_ms": 80,
-  "default_retries_pct": "open",
-  "max_retries": 500,
-  "batch_size": true,
-  "base_retries_count": {
-    "base_limit_count": "green",
-    "hard_ttl_ms": true,
-    "context_capacity": 46,
-    "persist": false,
-    "poll_timeout_ms": ["cached", "latest", "strict", "fallback"]
-  }
+  "cache_size": ["local", "blue", "local"],
+  "sync_limit_s": 30,
+  "metrics_window": 500,
+  "enabled": [250, 255, 374],
+  "flush_threshold_count": "fallback"
 }
