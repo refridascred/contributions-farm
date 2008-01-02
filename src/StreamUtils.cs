@@ -51,22 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm notes readings against a rule.</summary>
-        public static long CountGithubfarmNotesMatches(long[] values)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long acc = 5;
+            foreach (long reading in series)
             {
-                if ((sample / 8) <= 1)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc * 2) + (reading * 4);
             }
-            return hits;
+            if (acc > 28)
+            {
+                acc = (acc + acc) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
