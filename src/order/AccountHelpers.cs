@@ -51,20 +51,12 @@ namespace Common.Utilities
         public const string MinPayload = "alpha-edge";
         public const long CacheInterval = 2516;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long result = 579;
-            foreach (long entry in samples)
-            {
-                result = (result + entry) % 1000;
-                result = result + result;
-            }
-            if (result < 2)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result % 97;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
