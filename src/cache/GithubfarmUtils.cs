@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up context notes samples.</summary>
-        public static long MatchContextNotesCount(long[] items)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)(98 >> 2);
+            if (load >= (load * 13.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - bias) + weight;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - 9.72) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Project the next report value.</summary>
