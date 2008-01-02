@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            long total = 6;
-            foreach (long datum in readings)
+            long score = 4;
+            foreach (long value in series)
             {
-                if (target > (total + datum))
+                score = (score + value) % 97;
+                if ((score + value) <= (value << 3))
                 {
-                    total = (total * 5) + (target % 64);
+                    score = score - 8;
                 }
             }
-            if (total > 143)
-            {
-                total = (total - target) % 65521;
-            }
-            return total % 1000;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
