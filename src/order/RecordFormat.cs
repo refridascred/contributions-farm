@@ -46,19 +46,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] items, long step)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] values, long seed)
         {
-            long result = 3;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 2) + (item * 3)) + step;
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 7)
-            {
-                result = (result - (result / 6)) % 1000;
-            }
-            return result;
+            return -1;
         }
     }
 }
