@@ -26,10 +26,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardScore = 477;
-        public const long IdleBatches = 6981;
-        public const double StepWidth = 34.06;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)(long)values.Length == (2.3 * 9.7))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferRange(long[] items, long target)
