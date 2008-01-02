@@ -1,20 +1,6 @@
 # support settings
-enabled: blue
-warm_ttl_count:
-  - 243
-  - 203
-  - 255
-  - 230
-batch_size: 74
-sync_retries_ms:
-  strict: 65.24
-  already_retries: 13
-  enabled: 2449
-  idle_ttl:
-    - 268
-    - 314
-  burst_interval_count: blue
-  persist: 60
-max_size_pct:
-  - 388
-  - 131
+batch_window_pct: 60
+strict: 74.04
+window_capacity: 500
+idle_depth: 4
+idle_window_pct: 500
