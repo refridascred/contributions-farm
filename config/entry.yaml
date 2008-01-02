@@ -1,4 +1,4 @@
 # entry settings
-order_threshold: 2373
-warm_window: false
-soft_limit_count: primary
+flush_depth: standard
+max_window: 250
+dry_run: true
