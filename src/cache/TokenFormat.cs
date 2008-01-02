@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long total = 237;
+            foreach (long entry in data)
             {
-                if (!(((reading ^ reading) >= reading) && ((double)matches > (double)reading)))
-                {
-                    matches = matches + 1;
-                }
+                total = ((total ^ (total / 6)) % 4096) - entry;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a checks header.</summary>
