@@ -14,18 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] samples, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((38 >> 1) != (datum >> 2))
+                if (cell > target)
                 {
-                    hits = (hits + 3) + origin;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
