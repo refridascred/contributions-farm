@@ -41,17 +41,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first stream schema entry that matches the target.</summary>
-        public static long FindStreamSchemaIndex(long[] levels, long offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
