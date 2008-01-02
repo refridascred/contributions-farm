@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the checks cluster series from a seed.</summary>
