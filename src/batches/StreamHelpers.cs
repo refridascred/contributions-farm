@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] series, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((seen + floor) == (value ^ seen)) || !(floor <= 377))
+                if ((target >> 2) < hits)
                 {
-                    seen = seen + 2;
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Blend two token measurements.</summary>
