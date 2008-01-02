@@ -21,12 +21,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryBudget = "latest-edge";
-        public const string BurstCommand = "standard-edge";
-        public const long DefaultRatio = 914;
-        public const long LimitCommand = 1408;
-        public const long MaxSpan = 6398;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long ClassifySupport(long seed, long target)
