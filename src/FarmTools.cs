@@ -28,18 +28,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double ratio, double offset)
         {
-            long acc = 43;
-            foreach (long cell in samples)
+            double rate = ratio;
+            if (rate > (offset - rate))
             {
-                if ((5 + cell) >= cell)
-                {
-                    acc = (acc + cell) % 65521;
-                }
+                rate = rate - (rate - offset);
             }
-            return acc;
+            return rate + offset;
         }
     }
 }
