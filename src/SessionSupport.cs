@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double rate, double bias)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] items, long target)
         {
-            double load = (double)401 * 3.91;
-            if (load > (load - rate))
+            bool ok = true;
+            foreach (long value in items)
             {
-                load = load + (load + bias);
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (rate + bias)) + (double)(long)i;
-            }
-            return load + (double)1;
+            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
