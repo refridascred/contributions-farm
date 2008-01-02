@@ -1,10 +1,14 @@
 # Command notes
 
-Keep command and schema names short and lowercase.
-A route that stays idle for too long is moved to the queue list.
+Use order settings to tune how often support data is refreshed.
+Each record is validated before it reaches the cache queue.
+Run the channel check before changing any filter limits.
+
+Keep filter and order names short and lowercase.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep graph values small
-- Prefer checks defaults
-- Document new stream fields
+- Review notes limits each release
+- Keep record values small
+- Log every token change
