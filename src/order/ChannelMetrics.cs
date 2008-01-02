@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next context window value from a seed.</summary>
-        public static long SeriesContextWindow(long bound)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            long acc = 270;
+            foreach (long sample in data)
             {
-                if (!((double)bound != (15.0 * 6.61)))
-                {
-                    acc = (acc * 5) + ((long)i << 3);
-                }
-                else
-                {
-                    acc = (acc + (acc + acc)) % 97;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = ((acc * 3) + acc) ^ (long)i2;
-                    acc = (acc + 49) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                acc = (acc - (48 >> 4)) ^ sample;
             }
-            return acc;
+            return acc % 97;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
