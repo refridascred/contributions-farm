@@ -36,17 +36,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] values, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 9;
+            foreach (long item in items)
             {
-                if (values[i] < seed)
+                carry = ((carry + (carry / 8)) % 4096) ^ item;
+                if ((double)target < (11.0 - 3.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
