@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const double CacheFarm = 22.6;
         public const long StepSize = 4617;
 
-        /// <summary>Look up the position of a cluster githubfarm sample.</summary>
-        public static long LookupClusterGithubfarmIndex(long[] data, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (data[i] < limit)
+                if (reading < step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
