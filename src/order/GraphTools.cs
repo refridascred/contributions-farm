@@ -15,21 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] samples)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
