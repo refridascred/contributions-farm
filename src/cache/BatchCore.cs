@@ -40,18 +40,17 @@ namespace Common.Utilities
         public const string MinPayload = "cached-edge";
         public const double MaxWidth = 54.62;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] data, long origin)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.4 * 20.0) <= (double)origin)
+                if (samples[i] == target)
                 {
-                    hits = (hits + 2) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
