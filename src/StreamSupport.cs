@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] levels, long seed)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)matches >= (11.0 / 4.0))
-                {
-                    matches = ((matches + 1) + datum) + seed;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
