@@ -49,21 +49,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Rank metrics payload input into a small class.</summary>
+        public static long RankMetricsPayload(long offset, long offset2)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = offset - offset2;
+            if (offset2 <= span)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (10.0 > (double)offset2)
                 {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of already order entries.</summary>
