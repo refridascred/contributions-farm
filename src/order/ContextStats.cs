@@ -21,12 +21,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Locate a window session reading by value.</summary>
+        public static long LocateWindowSessionIndex(long[] readings, long origin)
         {
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
