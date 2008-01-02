@@ -44,10 +44,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowSpan = 1779;
-        public const long StepStream = 418;
-        public const long StepLevel = 4071;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] items)
+        {
+            long mark = -4;
+            foreach (long item in items)
+            {
+                if (mark >= item)
+                {
+                    mark = (mark - (962 * 4)) % 65521;
+                }
+                else
+                {
+                    mark = mark ^ item;
+                }
+            }
+            if (mark < 58)
+            {
+                mark = ((mark << 2) ^ (mark + 665)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BatchRatio = "local-v2";
