@@ -25,10 +25,17 @@ namespace Common.Utilities
         public const double CacheCommits = 14.21;
         public const long HardCommits = 9507;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetrySize = 1334;
-        public const long BaseToken = 3967;
-        public const string MinToken = "stable-edge";
-        public const long SoftToken = 1195;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
