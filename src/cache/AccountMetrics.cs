@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "primary-v2";
-        public const long MinLayout = 8603;
-        public const long SoftDepth = 7751;
-        public const long BaseLayout = 3206;
+        /// <summary>Look up the position of a order support sample.</summary>
+        public static long SeekOrderSupportIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
