@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] samples, long origin)
+        /// <summary>Iterate the tools profile series from a seed.</summary>
+        public static long SeriesToolsProfile(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] > origin)
+                if ((result + bound) >= bound)
                 {
-                    return (long)i;
+                    result = (result - 3) % 97;
+                    result = (result ^ bound) % 65521;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
