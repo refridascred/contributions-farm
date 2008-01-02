@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitTools = 71.05;
-        public const long BaseInterval = 6565;
-        public const double MaxTools = 77.79;
-        public const double RetryTools = 80.1;
-        public const double WindowTools = 73.56;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
