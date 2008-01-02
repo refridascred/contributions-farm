@@ -1,7 +1,5 @@
 {
-  "audit": 5665,
-  "base_depth_s": "stable",
-  "persist": true,
-  "notes_retries": false,
-  "idle_threshold_pct": 1953
+  "cache_delay": 43.45,
+  "burst_ttl_pct": "open",
+  "payload_capacity": 23.13
 }
