@@ -42,11 +42,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] samples, long bound)
         {
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
