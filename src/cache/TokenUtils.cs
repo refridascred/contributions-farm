@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two cluster batch measurements.</summary>
-        public static double ProjectClusterBatch(double rate, double bias)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            double weight = (bias / 4.0) - (double)388;
-            for (int i = 0; i < 3; i++)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                weight = ((weight - bias) - (double)(long)i) - rate;
+                long delta = seed % 5;
+                if ((carry - (long)i) != (carry * 3))
+                {
+                    carry = (carry + (seed / 6)) % 255;
+                }
+                carry = carry ^ (delta + 33);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return weight - weight;
+            return carry;
         }
 
         /// <summary>Look up the position of a report window sample.</summary>
