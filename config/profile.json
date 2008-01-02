@@ -1,7 +1,8 @@
 {
-  "batch_size_ms": "green",
-  "batch_capacity_ms": 108,
-  "idle_depth_s": 1330,
-  "cluster_interval": "cached",
-  "cache_threshold_s": "green"
+  "persist": "blue",
+  "hard_threshold_count": ["standard", "primary", "open", "primary"],
+  "readonly": false,
+  "dry_run": "eu-west",
+  "session_retries": 37.51,
+  "burst_window": ["local", "edge"]
 }
