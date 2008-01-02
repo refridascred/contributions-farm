@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] series, long offset)
+        /// <summary>Locate a githubfarm filter reading by value.</summary>
+        public static long LookupGithubfarmFilterIndex(long[] series, long seed)
         {
-            long result = 464;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading * 5) > ((long)series.Length ^ offset))
+                if (series[i] < seed)
                 {
-                    result = result - ((-4) / 8);
-                }
-                else
-                {
-                    result = (result << 3) ^ (result - offset);
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Hold a command header.</summary>
