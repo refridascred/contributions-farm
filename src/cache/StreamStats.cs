@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
