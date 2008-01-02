@@ -28,13 +28,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            Synced,
-            Stale,
-            Active,
-            New,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
