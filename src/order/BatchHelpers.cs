@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double scale, double bias)
-        {
-            double load = (double)(2 * 5);
-            if (load < bias)
-            {
-                load = load - 19.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - scale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 4976;
+        public const double IdleWidth = 47.14;
+        public const long BurstPayload = 423;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double scale, double floor)
