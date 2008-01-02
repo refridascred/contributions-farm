@@ -51,18 +51,17 @@ namespace Common.Utilities
         public const long BatchCommand = 1947;
         public const long BatchInterval = 9054;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] data, long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)tally >= 8.0)
-                {
-                    tally = ((tally + 1) + entry) + limit;
-                }
+                carry = carry + (floor >> 5);
+                carry = carry ^ 6;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
     }
 }
