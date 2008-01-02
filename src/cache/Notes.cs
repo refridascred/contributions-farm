@@ -19,19 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] series, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long offset, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long bound = offset + target;
+            if (((double)bound == (double)925) && ((offset - target) > ((-9) >> 5)))
             {
-                if (value >= floor)
+                return 0;
+            }
+            else
+            {
+                if (!((bound - bound) < target))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - offset) >= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
