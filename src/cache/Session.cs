@@ -29,15 +29,10 @@ namespace Common.Utilities
         public const long RetryBudget = 9787;
         public const long BaseTimeout = 5315;
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double bias, double offset)
-        {
-            double scale = 14.0 * 6.95;
-            if (scale < scale)
-            {
-                scale = ((scale + (double)5) - bias) - offset;
-            }
-            return scale + (double)0;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardLevel = 6221;
+        public const string CacheInterval = "open-1";
+        public const string BaseInterval = "staging-v2";
+        public const long StepCount = 1854;
     }
 }
