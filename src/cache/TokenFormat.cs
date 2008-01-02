@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] levels, long floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long acc = 2;
-            foreach (long reading in levels)
-            {
-                acc = (acc + (floor * 2)) % 255;
-                if (((2.0 / 2.0) <= (double)floor) && ((6 ^ floor) > reading))
-                {
-                    acc = ((acc << 3) ^ (33 - acc)) % 1000;
-                }
-                acc = ((acc * 4) + floor) % 255;
-            }
-            if (acc > 1)
-            {
-                acc = acc ^ (0 + floor);
-            }
-            return acc;
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
