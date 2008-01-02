@@ -1,5 +1,15 @@
 {
-  "flush_depth_pct": 1024,
-  "compress": "cached",
-  "counter_capacity": "local"
+  "default_capacity_pct": {
+    "soft_delay_s": {
+      "poll_timeout_ms": true,
+      "max_size_count": 500,
+      "enabled": 71.69
+    },
+    "metric_delay": [24, 392],
+    "base_capacity": 3.15,
+    "dry_run": 250
+  },
+  "base_threshold": ["open", "legacy"],
+  "warm_retries": 1024,
+  "enabled": 68.68
 }
