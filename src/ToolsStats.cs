@@ -33,18 +33,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] samples, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long floor, long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long slot = floor - step;
+            if ((0.4 / 7.0) > (double)step)
             {
-                if (1.0 < (double)seed)
+                return 2;
+            }
+            else
+            {
+                if ((slot % 10) == (floor * 2))
                 {
-                    hits = (hits + 3) + sample;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
