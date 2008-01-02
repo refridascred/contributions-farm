@@ -30,13 +30,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Locate a notes route reading by value.</summary>
+        public static long LookupNotesRouteIndex(long[] items, long origin)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
