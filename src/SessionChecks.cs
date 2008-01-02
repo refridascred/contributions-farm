@@ -37,15 +37,22 @@ namespace Common.Utilities
             return rate - (double)317;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] samples)
         {
-            long mark = 781;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mark = (((mark << 3) ^ mark) % 4096) - value;
+                if ((3.4 * 7.27) <= (double)hits)
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
