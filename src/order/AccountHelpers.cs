@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next record stats value from a seed.</summary>
-        public static long DeriveRecordStats(long offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] levels, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
