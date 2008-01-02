@@ -45,10 +45,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheRatio = 4283;
-        public const string BaseTools = "staging-edge";
-        public const long WindowSize = 2617;
-        public const string HardTools = "primary-edge";
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            New,
+            Active,
+            Stale,
+            Ready,
+            Synced,
+        }
     }
 }
