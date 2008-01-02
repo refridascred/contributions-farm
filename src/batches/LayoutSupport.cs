@@ -70,18 +70,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] data, long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long offset, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long step = offset + target;
+            if ((target + target) == (offset - target))
             {
-                if ((item + item) > tally)
+                return 7;
+            }
+            else
+            {
+                if (target < (step + step))
                 {
-                    tally = (tally + 2) + floor;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
