@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (tally <= (reading & 3))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftCount = 5971;
+        public const string RetryDepth = "primary";
+        public const long MaxSpan = 4959;
+        public const long DefaultStream = 6583;
+        public const long StepStream = 6478;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long BucketCache(long floor, long limit)
