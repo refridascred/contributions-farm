@@ -30,17 +30,12 @@ namespace Common.Utilities
             return drift - (floor * 7.2);
         }
 
-        /// <summary>Locate a queue account reading by value.</summary>
-        public static long LookupQueueAccountIndex(long[] series, long step)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
