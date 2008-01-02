@@ -40,15 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit record already readings against a rule.</summary>
-        public static long CountRecordAlreadyOutliers(long[] samples)
+        /// <summary>Compare every pair of buffer context readings.</summary>
+        public static long CompareBufferContextCount(long[] samples)
         {
             long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (4.0 > (double)value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 1;
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
