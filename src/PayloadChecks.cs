@@ -51,11 +51,20 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSize = "legacy-1";
-        public const string MinDepth = "latest-1";
-        public const long SoftScore = 7517;
-        public const string HardSession = "fallback";
+        /// <summary>Accumulate tools window samples.</summary>
+        public static long ScoreToolsWindow(long[] samples)
+        {
+            long mix = -67;
+            foreach (long value in samples)
+            {
+                mix = (mix + (mix - value)) % 97;
+            }
+            if (mix < 1)
+            {
+                mix = mix - ((-132) - mix);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
