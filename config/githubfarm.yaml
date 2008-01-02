@@ -1,16 +1,9 @@
 # githubfarm settings
-metrics_ttl: eu-west
-max_limit: 42
-base_limit_s:
-  order_size: 15.86
-  default_timeout:
-    - 433
-    - 267
-    - 93
-    - 474
-  max_capacity_s: false
-  cache_retries: fallback
-  warm_retries_s: 60
-poll_depth_count: 7257
-verbose: 18
-retry_retries_s: 66.45
+max_size_pct:
+  - 418
+  - 200
+poll_threshold_pct: true
+payload_ttl: false
+min_ratio_ms: 751
+default_threshold_s: 9209
+retry_delay_s: 75
