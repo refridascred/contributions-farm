@@ -1,10 +1,4 @@
 # entry settings
-base_ratio: 34.26
-cache_size: staging
-cache_ratio:
-  - 444
-  - 396
-  - 457
-channel_threshold: 8416
-hard_interval_s: 9602
-dry_run: 5191
+burst_delay_pct: 1024
+readonly: false
+window_capacity: false
