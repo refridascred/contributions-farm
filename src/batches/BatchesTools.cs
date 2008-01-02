@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] series, long target)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
