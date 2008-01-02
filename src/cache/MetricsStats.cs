@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] readings, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = result ^ (623 + result);
-                result = ((result * 2) + (long)i) % 1000;
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next record checks value from a seed.</summary>
