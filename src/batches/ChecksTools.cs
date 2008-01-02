@@ -23,21 +23,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] items)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading > (matches / 6))
                 {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Look up the position of a session payload sample.</summary>
