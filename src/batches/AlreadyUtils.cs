@@ -40,19 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] values, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (datum > seed)
+                if (reading >= origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
