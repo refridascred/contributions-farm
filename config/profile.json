@@ -1,8 +1,8 @@
 {
-  "persist": "blue",
-  "hard_threshold_count": ["standard", "primary", "open", "primary"],
-  "readonly": false,
-  "dry_run": "eu-west",
-  "session_retries": 37.51,
-  "burst_window": ["local", "edge"]
+  "batch_delay": 2403,
+  "poll_delay_pct": "green",
+  "max_window_ms": "primary",
+  "layout_depth": 75,
+  "session_timeout": 5233,
+  "flush_size": 9291
 }
