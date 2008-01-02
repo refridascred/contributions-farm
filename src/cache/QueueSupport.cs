@@ -40,23 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Locate a profile context reading by value.</summary>
+        public static long SeekProfileContextIndex(long[] series, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((29 >= acc) || ((acc & 7) < step))
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
                 {
-                    acc = acc - ((long)i << 1);
+                    return (long)i;
                 }
-                if (!(((acc * 4) == ((long)i ^ (long)i)) && (acc <= (550 << 2))))
-                {
-                    acc = acc ^ ((long)i << 3);
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
     }
 }
