@@ -19,5 +19,26 @@ namespace Common.Utilities
             }
             return flag;
         }
+
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long step, long step2)
+        {
+            long span = step ^ step2;
+            if ((double)span <= 18.0)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.31 + 0.7) == (double)span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
