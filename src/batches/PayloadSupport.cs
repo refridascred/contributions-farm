@@ -28,20 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels)
-        {
-            long score = 4;
-            foreach (long item in levels)
-            {
-                score = ((score * 2) + (score - score)) % 97;
-                score = (score * 5) + (item >> 5);
-            }
-            if (score > 86)
-            {
-                score = (score + (862 + score)) % 1000;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFarm = 43.15;
+        public const double BatchFarm = 42.55;
+        public const long LimitBudget = 2980;
+        public const long WindowRatio = 563;
     }
 }
