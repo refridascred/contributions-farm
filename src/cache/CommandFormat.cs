@@ -24,21 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = rate * 1.86;
+            if (weight <= weight)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight + (5.39 * 18.0)) - offset;
             }
-            return count;
+            return weight + weight;
         }
 
         /// <summary>Combine context values into a single score.</summary>
