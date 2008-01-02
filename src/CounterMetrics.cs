@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double ratio, double span)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double floor)
         {
-            double rate = span;
-            return rate + (ratio - ratio);
+            double gain = ratio;
+            return (gain - (double)512) + floor;
         }
 
         /// <summary>Blend two metrics payload measurements.</summary>
