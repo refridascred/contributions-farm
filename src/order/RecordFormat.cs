@@ -81,9 +81,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 5.06;
-        public const long CacheSize = 131;
-        public const long BurstAlready = 7255;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
