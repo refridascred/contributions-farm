@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long limit)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            if ((step & 7) == (step * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit >> 5) <= limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step & 63) >= (-4)) && ((limit & 15) <= (step + 6)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-87) & 255) > limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a checks header.</summary>
