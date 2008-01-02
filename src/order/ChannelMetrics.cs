@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Audit stats format readings against a rule.</summary>
+        public static long TallyStatsFormatMatches(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((9.0 / 2.0) != (double)mark)
+                if ((entry / 3) == (entry + entry))
                 {
-                    mark = mark ^ target;
-                    mark = (mark - (mark - target)) % 1000;
-                    continue;
+                    hits = hits + 1;
                 }
-                if (1 < (long)i)
-                {
-                    mark = (mark * 2) + ((long)i + target);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
