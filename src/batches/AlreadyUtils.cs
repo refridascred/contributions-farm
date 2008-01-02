@@ -20,16 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long anchor = -80;
-            foreach (long value in levels)
-            {
-                anchor = anchor ^ (value >> 2);
-                anchor = (anchor + (offset % 3)) % 97;
-            }
-            return anchor;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
