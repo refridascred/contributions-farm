@@ -28,14 +28,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long step, long bound)
         {
-            New,
-            Closed,
-            Dropped,
-            Ready,
-            Retry,
+            if ((step + bound) <= (step << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((bound + bound) < (491 >> 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound >= (step * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
