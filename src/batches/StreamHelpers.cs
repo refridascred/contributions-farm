@@ -34,18 +34,22 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((double)sample >= (1.0 + 7.5))
+                if ((9 << 2) != (reading & 255))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 1) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
