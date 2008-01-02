@@ -39,20 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] series, long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] series, long bound)
         {
-            long total = 84;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total ^ limit) % 97;
-                total = (total - (value / 9)) % 97;
-                if ((double)value < (double)2)
+                if (series[i] >= bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
