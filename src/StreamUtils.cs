@@ -51,19 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] values, long step)
         {
-            long acc = 5;
-            foreach (long reading in series)
+            long mix = -49;
+            foreach (long reading in values)
             {
-                acc = (acc * 2) + (reading * 4);
+                mix = ((mix - (471 - step)) % 101) + reading;
+                if (mix < (step << 1))
+                {
+                    mix = (mix << 3) ^ (step * 2);
+                }
             }
-            if (acc > 28)
-            {
-                acc = (acc + acc) % 101;
-            }
-            return acc % 97;
+            return mix % 65521;
         }
 
         /// <summary>Validate channel layout readings against a bound.</summary>
