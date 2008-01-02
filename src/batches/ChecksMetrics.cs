@@ -57,11 +57,13 @@ namespace Common.Utilities
         public const string LimitWindow = "fallback-1";
         public const long IdleWindow = 4216;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 186;
-        public const string CacheRatio = "latest";
-        public const long BurstDepth = 2965;
-        public const long StepBuffer = 210;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Closed,
+            Active,
+            Done,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseBatches = 9986;
