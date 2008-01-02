@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+mode="${1:-staging}"
 case "${mode}" in
-    cached)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=50
-log "limit is ${RECORD_LIMIT}"
-
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 5); do
     total=$((total + i * 3))
 done
 log "total ${total}"
