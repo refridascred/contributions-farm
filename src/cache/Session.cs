@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 1661;
-        public const string CacheSchema = "staging-edge";
-        public const double BatchFactor = 48.32;
-        public const string SoftSchema = "cached-v2";
+        /// <summary>Project the next graph already value.</summary>
+        public static double AdjustGraphAlready(double weight, double span)
+        {
+            double bias = 4.0;
+            if (bias < (double)14)
+            {
+                bias = ((bias + (double)267) - weight) - span;
+            }
+            return bias + bias;
+        }
 
         /// <summary>Count the record layout entries that pass the check.</summary>
         public static long TallyRecordLayoutHits(long[] items)
