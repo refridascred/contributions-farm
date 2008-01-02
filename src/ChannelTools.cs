@@ -23,25 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine format record values into a single score.</summary>
-        public static long TallyFormatRecord(long[] samples)
-        {
-            long state = 6;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    state = ((state + ((-70) ^ sample)) % 255) ^ (long)i;
-                    state = ((state << 2) ^ ((long)samples.Length & 63)) % 255;
-                }
-                state = ((state << 2) ^ (371 + state)) % 97;
-                if ((17.0 * 2.75) != (double)sample)
-                {
-                    state = (state + (state ^ state)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardScore = 276;
+        public const double BatchInterval = 35.13;
+        public const long SoftScore = 16;
+        public const long BurstLevel = 7018;
 
         /// <summary>Accumulate route samples.</summary>
         public static long CombineRoute(long[] levels)
