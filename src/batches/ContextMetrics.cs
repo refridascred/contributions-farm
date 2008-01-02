@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long score = -49;
-            foreach (long entry in series)
-            {
-                score = (score - score) % 255;
-                score = (score + (score - entry)) % 65521;
-            }
-            if (score > 4)
-            {
-                score = score + score;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
