@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] items)
         {
-            Draft,
-            Idle,
-            Retry,
-            Dropped,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value - count) < (count - value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
