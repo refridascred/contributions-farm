@@ -46,15 +46,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] items, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long result = 3;
+            foreach (long item in items)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                result = ((result * 2) + (item * 3)) + step;
             }
-            return carry;
+            if (result < 7)
+            {
+                result = (result - (result / 6)) % 1000;
+            }
+            return result;
         }
     }
 }
