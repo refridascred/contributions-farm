@@ -50,33 +50,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metrics notes pair into a bucket.</summary>
-        public static long ClassifyMetricsNotes(long seed, long target)
-        {
-            long bound = seed + target;
-            if (273 < (bound << 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target * 5) <= (seed ^ bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((1 + seed) == (target / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftCount = 49.05;
+        public const double BaseBatches = 8.02;
+        public const long IdleTimeout = 4793;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueOutliers(long[] values, long bound)
