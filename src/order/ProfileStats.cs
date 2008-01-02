@@ -38,11 +38,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Active,
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the notes status values.</summary>
