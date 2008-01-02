@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Done,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "latest";
+        public const double BaseDepth = 84.37;
+        public const long HardAlready = 2466;
+        public const long BaseAlready = 5106;
+        public const long LimitAlready = 3957;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long bound)
