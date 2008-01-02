@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] series, long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long limit)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            if ((step & 7) == (step * 3))
             {
-                if (sample <= target)
+                return 0;
+            }
+            else
+            {
+                if ((limit >> 5) <= limit)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((step & 63) >= (-4)) && ((limit & 15) <= (step + 6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-87) & 255) > limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a checks header.</summary>
