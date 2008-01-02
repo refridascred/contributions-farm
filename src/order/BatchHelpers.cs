@@ -30,18 +30,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] items, long step)
         {
-            long mark = 153;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)mark < (8.0 - 3.0))
+                if (items[i] > step)
                 {
-                    mark = (mark - (cell / 5)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
