@@ -1,8 +1,9 @@
-id,rank,count,state,region
-1,121,58.46,primary,edge
-2,992,699,966,green
-3,latest,781,eu-west,open
-4,stable,standard,13.11,200
-5,staging,936,257,218
-6,931,41.88,265,fallback
-7,green,579,656,green
+id,active,weight,state
+1,63.39,360,24.35
+2,latest,94.57,edge
+3,769,25,32.49
+4,green,strict,cached
+5,63.35,909,local
+6,191,70.59,61.39
+7,575,fallback,strict
+8,77.06,blue,local
