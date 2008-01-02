@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] series, long target)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((416 - target) > matches)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) ^ sample;
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
