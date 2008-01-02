@@ -48,12 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxTimeout = 6604;
-        public const long DefaultScore = 1458;
-        public const double LimitCommits = 29.31;
-        public const double StepBudget = 74.77;
-        public const long IdleCommits = 2338;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxSpan = 6987;
+        public const long IdleAccount = 8316;
+        public const long LimitAccount = 7811;
+        public const double MinCount = 4.53;
+        public const double WindowAccount = 98.51;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long DigestRoute(long[] series)
