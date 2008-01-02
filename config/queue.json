@@ -1,24 +1,5 @@
 {
-  "audit": {
-    "burst_interval_pct": {
-      "dry_run": true,
-      "report_capacity": "fallback",
-      "sync_retries": true
-    },
-    "base_ratio": {
-      "min_delay_ms": false,
-      "poll_depth_pct": [374, 207],
-      "session_ratio": "blue",
-      "warm_depth_count": "strict",
-      "flush_limit_pct": true,
-      "max_retries_ms": "open"
-    },
-    "warm_capacity_pct": "latest",
-    "stream_timeout": "standard"
-  },
-  "flush_timeout_s": 100,
-  "readonly": ["fallback", "cached"],
-  "verbose": 9.65,
-  "hard_timeout": 33.45,
-  "persist": false
+  "commits_ratio": "eu-west",
+  "payload_window": false,
+  "filter_depth": 30
 }
