@@ -14,28 +14,29 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long origin, long origin2)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long seed, long seed2)
         {
-            if (!((origin << 1) > (origin + origin2)))
+            long edge = seed + seed2;
+            if ((seed2 > 602) && ((double)edge > (double)8))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (origin2 >= (origin2 % 7))
+                if (seed2 >= edge)
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (((origin * 3) < (origin2 % 100)) || ((double)origin2 == (4.7 * 7.4)))
+                    if (5.9 >= (double)seed)
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 4;
+                        return 2;
                     }
                 }
             }
