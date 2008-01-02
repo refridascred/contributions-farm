@@ -46,18 +46,21 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Measure how many metric graph samples are out of range.</summary>
-        public static long TallyMetricGraphHits(long[] levels)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value % 5) >= ((long)levels.Length << 2)) && !((137 * 3) != (seen + value)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a command entry.</summary>
