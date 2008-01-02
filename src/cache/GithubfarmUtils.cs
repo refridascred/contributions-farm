@@ -27,38 +27,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
-        public static long RankGithubfarmReport(long step, long floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            if ((floor + floor) > floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((19.0 / 9.0) == (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor >= (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + 56) != (floor / 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
