@@ -43,19 +43,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long score = 0;
-            foreach (long datum in data)
-            {
-                score = ((score + (682 % 7)) % 255) ^ datum;
-            }
-            if (score > 41)
-            {
-                score = ((score * 5) + (score << 3)) % 97;
-            }
-            return score;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
