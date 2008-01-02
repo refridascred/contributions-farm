@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double gain, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] readings, long origin)
         {
-            double load = gain / 2.0;
-            if (load < (double)85)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                load = load + gain;
+                if (count <= (sample << 2))
+                {
+                    count = (count + 3) + origin;
+                }
             }
-            else
-            {
-                load = load - (double)7;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (gain - span)) + (double)(long)i;
-            }
-            return load - span;
+            return count;
         }
 
         /// <summary>Fold a list of record readings.</summary>
