@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias + (bias + rate);
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
