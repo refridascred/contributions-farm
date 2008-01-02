@@ -1,5 +1,14 @@
 {
-  "max_timeout_ms": "standard",
-  "entry_size": 9911,
-  "command_interval": 52
+  "poll_delay_ms": false,
+  "batch_ttl": "edge",
+  "counter_limit": 250,
+  "soft_window": "primary",
+  "queue_threshold": {
+    "min_retries_ms": "standard",
+    "githubfarm_window": "standard",
+    "batch_ratio_count": "eu-west",
+    "compress": "edge",
+    "min_retries_s": "fallback",
+    "poll_threshold_pct": "standard"
+  }
 }
