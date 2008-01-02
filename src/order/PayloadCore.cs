@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long RetryWidth = 8198;
         public const double BaseFactor = 34.41;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] readings, long seed)
+        /// <summary>Audit graph already readings against a rule.</summary>
+        public static long TallyGraphAlreadyMatches(long[] values)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((3 - reading) > reading)
+                if (reading > (tally + reading))
                 {
-                    count = (count + 1) - seed;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a metrics header.</summary>
