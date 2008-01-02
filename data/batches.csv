@@ -1,7 +1,6 @@
-id,label,active,region
-1,896,70.24,open
-2,10.22,90.76,593
-3,215,strict,stable
-4,44.53,996,538
-5,25.25,505,775
-6,97.39,cached,493
+id,owner,active,region
+1,69.32,green,203
+2,stable,edge,eu-west
+3,81.91,68.3,47.85
+4,45.97,46.93,strict
+5,63,175,57.33
