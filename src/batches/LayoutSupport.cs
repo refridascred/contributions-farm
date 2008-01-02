@@ -46,16 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry layout series from a seed.</summary>
-        public static long DeriveEntryLayout(long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] items, long target)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                total = (total ^ ((long)i + target)) % 1000;
-                total = ((total * 2) + (long)i) % 1000;
+                if ((5.15 * 2.0) <= (double)target)
+                {
+                    matches = (matches + 1) + reading;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the notes class values.</summary>
