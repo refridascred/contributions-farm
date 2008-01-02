@@ -1,4 +1,18 @@
 # support settings
-max_threshold: true
-base_interval_s: 30
-poll_delay_pct: 100
+tools_retries: 40.82
+report_delay:
+  batch_threshold_count:
+    - 310
+    - 384
+  hard_retries: latest
+  persist: standard
+  sync_threshold: 20
+  cache_size_ms:
+    - 458
+    - 2
+    - 439
+    - 174
+idle_interval_pct: 3980
+poll_size_s: stable
+commits_ratio: true
+strict: true
