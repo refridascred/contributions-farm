@@ -22,18 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long target, long target2)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if ((double)target2 > 5.16)
             {
-                if (!(((9.0 + 8.67) >= (double)matches) && ((value % 97) < value)))
+                return 5;
+            }
+            else
+            {
+                if ((target2 + target2) < (target2 + target))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((target2 + target) != (717 + 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
