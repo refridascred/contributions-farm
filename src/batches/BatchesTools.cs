@@ -14,24 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long seed, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            if (seed > (3 >> 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1 + seed) < (origin + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
