@@ -1,10 +1,12 @@
 # Command notes
 
-When a profile fails, the graph handler retries a few times before giving up.
-The entry module keeps cache values in sync with the token cache.
+Use graph settings to tune how often metric data is refreshed.
+Each support is validated before it reaches the window queue.
+Use editor settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Document new account fields
-- Keep profile values small
-- Validate session input early
+- Review commits limits each release
+- Log every route change
+- Keep layout values small
+- Prefer batches defaults
