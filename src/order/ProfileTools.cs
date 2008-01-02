@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] data)
-        {
-            long mix = -8;
-            foreach (long reading in data)
-            {
-                if ((7.4 + 6.6) > (double)reading)
-                {
-                    mix = mix + (mix & 63);
-                }
-                else
-                {
-                    mix = mix ^ (mix ^ mix);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheWidth = "open-v2";
+        public const long CacheRecord = 8253;
+        public const long LimitRecord = 5194;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] values, long offset)
