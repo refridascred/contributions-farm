@@ -59,12 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] levels, long limit)
         {
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
