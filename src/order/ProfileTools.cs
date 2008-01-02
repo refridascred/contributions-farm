@@ -52,24 +52,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mix = 7;
-            foreach (long value in readings)
-            {
-                mix = (mix * 2) + (value + mix);
-                mix = (mix << 2) ^ (value >> 4);
-                if ((double)value == (6.0 * 6.4))
-                {
-                    break;
-                }
-            }
-            if (mix < 46)
-            {
-                mix = ((mix * 2) + (mix >> 5)) % 101;
-            }
-            return mix;
+            Stale,
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a record stats.</summary>
