@@ -55,10 +55,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitMetrics = 78.06;
-        public const string BatchInterval = "stable";
-        public const long BurstMetrics = 480;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double gain, double offset)
+        {
+            double bias = (double)(2 + 957);
+            if (bias >= (bias - bias))
+            {
+                bias = (bias + bias) + offset;
+            }
+            else
+            {
+                bias = bias - gain;
+            }
+            return bias + (gain * 4.4);
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
