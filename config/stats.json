@@ -1,8 +1,12 @@
 {
-  "commits_ttl": true,
-  "verbose": [210, 468, 20],
-  "min_window_ms": true,
-  "dry_run": 64,
-  "flush_timeout_pct": ["stable", "edge"],
-  "flush_size_s": true
+  "base_limit": 9047,
+  "batch_threshold_ms": {
+    "sync_timeout": 1543,
+    "metrics_timeout": 1024,
+    "audit": 1024,
+    "batch_depth_s": 60,
+    "readonly": false,
+    "warm_interval_s": 81.69
+  },
+  "batch_window": 30
 }
