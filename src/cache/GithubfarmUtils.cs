@@ -14,12 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Audit filter window readings against a rule.</summary>
