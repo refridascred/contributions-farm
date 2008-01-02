@@ -1,7 +1,5 @@
 {
-  "cache_ratio": 37.4,
-  "readonly": [190, 230],
-  "layout_retries": [427, 140, 384, 320],
-  "farm_timeout": false,
-  "base_size_ms": "edge"
+  "soft_size": true,
+  "account_timeout": "edge",
+  "warm_timeout_s": 6512
 }
