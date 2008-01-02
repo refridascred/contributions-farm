@@ -1,6 +1,5 @@
 {
-  "strict": "edge",
-  "batch_threshold_count": true,
-  "min_delay": ["staging", "primary", "legacy", "standard"],
-  "enabled": ["primary", "edge", "standard", "blue"]
+  "warm_limit_ms": true,
+  "cache_timeout_pct": ["eu-west", "edge", "primary"],
+  "flush_threshold_s": 35
 }
