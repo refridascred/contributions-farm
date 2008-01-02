@@ -14,38 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long floor, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] data, long origin)
         {
-            if (target > (7 - 91))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor < (double)target)
+                if (cell > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor & 3) > (9 ^ target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target - target) > (target * 3)) && (target < (floor / 7)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
