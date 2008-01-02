@@ -63,19 +63,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every account format entry stays within the limit.</summary>
-        public static bool CheckAccountFormatLimits(long[] items, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (value != bound)
+                if (((double)tally > (double)(-23)) && (tally <= (tally + reading)))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) - bound;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
