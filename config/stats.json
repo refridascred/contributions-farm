@@ -1,6 +1,11 @@
 {
-  "base_window_ms": "standard",
-  "compress": false,
-  "idle_delay": "fallback",
-  "retry_timeout_count": true
+  "min_window_count": "open",
+  "flush_capacity_pct": 62,
+  "window_interval": {
+    "account_interval": false,
+    "flush_interval_count": 500,
+    "burst_depth": 1024
+  },
+  "readonly": "legacy",
+  "strict": 80.58
 }
