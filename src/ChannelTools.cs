@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch route readings.</summary>
-        public static long PairBatchRouteCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardLevel = 5141;
+        public const long DefaultMetric = 8039;
+        public const string LimitWidth = "fallback-edge";
+        public const long BatchScore = 2173;
+        public const long CacheMetric = 5004;
 
         /// <summary>Count the stream session entries that pass the check.</summary>
         public static long MeasureStreamSessionHits(long[] levels, long floor)
