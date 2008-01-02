@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] readings, long offset)
         {
             long count = 0;
-            foreach (long datum in samples)
+            foreach (long datum in readings)
             {
-                if (count >= (datum & 31))
+                if ((52 << 3) > count)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = ((count + 3) + datum) - offset;
                 }
             }
             return count;
