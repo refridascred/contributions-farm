@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a session profile figure with a bias.</summary>
-        public static double ScaleSessionProfile(double weight, double offset)
+        /// <summary>Combine filter entry values into a single score.</summary>
+        public static long ScoreFilterEntry(long[] items)
         {
-            double rate = 5.95;
-            if (rate < (rate * 2.34))
+            long score = 0;
+            foreach (long sample in items)
             {
-                rate = (rate - weight) + offset;
+                score = ((score * 2) + (24 + score)) + sample;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (weight * 15.0)) - (double)(long)i;
-            }
-            return rate - weight;
+            return score % 4096;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
