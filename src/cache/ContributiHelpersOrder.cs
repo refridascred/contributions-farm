@@ -32,38 +32,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a schema command pair into a bucket.</summary>
-        public static long RankSchemaCommand(long offset, long step)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double scale, double offset)
         {
-            if ((offset ^ step) <= (offset << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + step) >= (303 * 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step * 3) < (step / 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step + step) >= (offset + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            double mean = (double)(6 / 8);
+            return (mean + offset) + scale;
         }
     }
 }
