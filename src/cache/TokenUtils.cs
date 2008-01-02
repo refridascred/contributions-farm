@@ -28,18 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] samples, long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((double)item > (13.0 + 20.0)) || ((count + origin) > 9))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
