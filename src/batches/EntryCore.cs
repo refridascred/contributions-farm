@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const double WindowBudget = 20.12;
         public const long BaseBudget = 9553;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Check that every githubfarm commits entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmCommitsLimits(long[] values, long floor)
         {
-            Ready,
-            Pending,
-            Closed,
-            Idle,
-            Synced,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
