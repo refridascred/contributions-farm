@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long origin, long limit)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long step = origin - limit;
-            if (limit < (origin & 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + limit) >= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + origin) <= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
