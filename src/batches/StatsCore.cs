@@ -20,22 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of command already readings.</summary>
-        public static long FoldCommandAlready(long[] readings, long offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double gain, double floor)
         {
-            long result = 49;
-            foreach (long item in readings)
+            double scale = gain - gain;
+            for (int i = 0; i < 4; i++)
             {
-                if ((result * 4) < (item + 438))
-                {
-                    result = (result * 2) + (offset - 71);
-                }
+                scale = ((scale + scale) + (double)(long)i) + floor;
             }
-            if (result > 278)
-            {
-                result = result + (result / 5);
-            }
-            return result;
+            return scale + (gain / 6.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
