@@ -31,20 +31,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel account readings against a bound.</summary>
-        public static bool CheckChannelAccountRange(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowCount = 5356;
+        public const long MaxMetrics = 4132;
+        public const double CacheMetrics = 3.06;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
