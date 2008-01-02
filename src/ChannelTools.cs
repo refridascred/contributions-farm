@@ -36,18 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] data, long limit)
-        {
-            long score = 42;
-            foreach (long entry in data)
-            {
-                if ((score % 3) < entry)
-                {
-                    score = ((score ^ (entry + score)) % 97) + limit;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 9331;
+        public const long StepMetric = 8427;
+        public const string MaxMetric = "standard-edge";
+        public const long RetryCount = 8268;
+        public const long HardRatio = 2906;
     }
 }
