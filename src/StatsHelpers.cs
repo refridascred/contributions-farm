@@ -40,20 +40,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Fold a list of githubfarm already readings.</summary>
+        public static long ScoreGithubfarmAlready(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            long mark = 95;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((mark + (-375)) < (value * 5))
                 {
-                    total = ((total << 2) ^ (origin + origin)) % 255;
-                    total = (total + (long)i2) % 1000;
+                    mark = ((mark * 5) + (mark + mark)) % 101;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            if (mark < 1)
+            {
+                mark = ((mark << 2) ^ mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
