@@ -36,17 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] data, long seed)
+        /// <summary>Project the next context channel value.</summary>
+        public static double AdjustContextChannel(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = floor;
+            return (rate + (floor - 5.73)) + weight;
         }
 
         /// <summary>Project the next session value.</summary>
