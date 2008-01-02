@@ -29,22 +29,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] samples, long step)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long anchor = 65;
-            foreach (long value in samples)
-            {
-                if ((6 > (value + anchor)) && ((step + step) >= value))
-                {
-                    anchor = anchor - 34;
-                }
-            }
-            if (anchor > 793)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 101;
-            }
-            return anchor % 97;
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
