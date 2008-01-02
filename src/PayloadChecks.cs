@@ -38,22 +38,11 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSize = "legacy-1";
+        public const string MinDepth = "latest-1";
+        public const long SoftScore = 7517;
+        public const string HardSession = "fallback";
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportOutliers(long[] readings)
