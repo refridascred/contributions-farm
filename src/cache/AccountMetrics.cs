@@ -22,11 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public double Score { get; set; }
-            public double Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Locate a notes reading by value.</summary>
