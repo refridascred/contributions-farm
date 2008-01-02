@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] values, long floor)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long state = -704;
-            foreach (long value in values)
-            {
-                state = ((state << 3) ^ (floor << 2)) % 4096;
-                for (int i = 0; i < 3; i++)
-                {
-                    state = ((state - floor) % 4096) ^ (long)i;
-                    state = (state + (1 + state)) % 4096;
-                }
-                state = ((state << 2) ^ (value * 5)) % 101;
-            }
-            if (state > 22)
-            {
-                state = ((state * 5) + (34 % 7)) % 65521;
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
