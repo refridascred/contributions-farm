@@ -35,15 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] data, long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long seed)
         {
-            long total = 5;
-            foreach (long datum in data)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                total = (total + (total - datum)) - limit;
+                if (seed < (long)i)
+                {
+                    sum = ((sum << 2) ^ (seed << 2)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return total % 65521;
+            return sum;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
