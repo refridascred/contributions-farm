@@ -39,25 +39,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next token contributi value from a seed.</summary>
-        public static long DeriveTokenContributi(long floor)
+        /// <summary>Look up the position of a context farm sample.</summary>
+        public static long SeekContextFarmIndex(long[] samples, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((floor << 2) <= floor) || ((2 ^ floor) == (floor + floor)))
+                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
                 {
-                    state = (state * 2) + (state + (long)i);
-                    state = ((state * 5) + floor) % 255;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((state - floor) % 65521) ^ (long)i2;
-                    state = (state ^ (32 * 4)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Project the next format value.</summary>
