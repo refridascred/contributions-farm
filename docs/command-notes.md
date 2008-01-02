@@ -1,14 +1,15 @@
 # Command notes
 
-Keep profile and session names short and lowercase.
-Use channel settings to tune how often route data is refreshed.
+Keep token and window names short and lowercase.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
-Use editor settings to tune how often route data is refreshed.
-Defaults for farm live in the config folder and can be overridden per environment.
-A support that stays idle for too long is moved to the support list.
+The batch report groups every account by stream.
+Each githubfarm is validated before it reaches the report queue.
+Each account is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Review payload limits each release
-- Document new entry fields
-- Prefer route defaults
+- Review schema limits each release
+- Keep checks values small
+- Validate support input early
+- Document new record fields
