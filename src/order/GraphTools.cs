@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long WindowSize = 9324;
         public const long BatchSession = 1097;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] readings, long origin)
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
