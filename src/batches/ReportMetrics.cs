@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the report editor entries that pass the check.</summary>
-        public static long MeasureReportEditorGaps(long[] levels, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((matches + offset) < (offset << 2))
+                if ((double)(long)i < (5.9 + 9.6))
                 {
-                    matches = (matches + 1) ^ reading;
+                    total = total - (690 ^ 2);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = total - total;
                 }
+                total = total ^ total;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Blend two queue buffer measurements.</summary>
