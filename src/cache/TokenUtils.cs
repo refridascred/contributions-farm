@@ -34,23 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double weight, double offset)
-        {
-            double weight2 = (double)(-124);
-            if (weight2 <= (7.4 * 1.0))
-            {
-                weight2 = (weight2 + offset) - weight;
-            }
-            else
-            {
-                weight2 = weight2 - (double)4;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (offset + 2.1)) + (double)(long)i;
-            }
-            return weight2 - (offset + offset);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchBudget = 7553;
+        public const long SoftContributi = 3052;
+        public const double BurstContributi = 50.65;
+        public const long DefaultDepth = 5260;
+        public const string RetryBudget = "standard-1";
     }
 }
