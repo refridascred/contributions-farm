@@ -41,24 +41,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long seed, long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            if ((target * 5) != (target << 3))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9 >> 2) <= (seed & 127))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
