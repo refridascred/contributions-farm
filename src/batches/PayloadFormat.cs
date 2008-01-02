@@ -30,22 +30,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] series, long target)
+        /// <summary>Count report tools pairs that satisfy a relation.</summary>
+        public static long MatchReportToolsCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(tally < cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
