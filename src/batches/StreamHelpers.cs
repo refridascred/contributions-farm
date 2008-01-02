@@ -55,38 +55,19 @@ namespace Common.Utilities
         public const string RetryCommits = "latest-1";
         public const double CacheCommits = 32.5;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long offset2)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            if ((offset >= (offset2 / 2)) && (offset < (offset2 >> 4)))
+            long mark = -894;
+            foreach (long datum in readings)
             {
-                return 4;
+                mark = (mark << 2) ^ (datum / 3);
             }
-            else
+            if (mark < 189)
             {
-                if (75 > offset2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset2 > (63 - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset <= (offset2 - offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mark = (mark - (mark / 9)) % 255;
             }
+            return mark % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
