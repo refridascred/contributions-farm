@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] readings, long step)
-        {
-            long sum = 185;
-            foreach (long item in readings)
-            {
-                if ((step << 3) <= sum)
-                {
-                    sum = ((sum - (sum - sum)) % 1000) ^ item;
-                }
-                if ((double)sum == (7.0 - 2.2))
-                {
-                    break;
-                }
-            }
-            if (sum < 3)
-            {
-                sum = ((sum << 2) ^ 9) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 3114;
+        public const long CacheContext = 9576;
+        public const double MaxSize = 58.46;
+        public const long StepContext = 5156;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long FoldContext(long[] readings, long target)
