@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] series)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry > 8.19)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
