@@ -42,17 +42,9 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "fallback-1";
+        public const long BatchRoute = 4586;
+        public const string BurstRoute = "primary-edge";
     }
 }
