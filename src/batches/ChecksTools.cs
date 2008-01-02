@@ -23,17 +23,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] readings, long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a session payload sample.</summary>
