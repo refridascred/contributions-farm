@@ -1,5 +1,5 @@
 {
-  "retry_size_count": false,
-  "readonly": [42, 399, 142],
-  "cache_timeout_count": "strict"
+  "metrics_retries": true,
+  "dry_run": 79,
+  "hard_window_ms": ["blue", "staging", "edge"]
 }
