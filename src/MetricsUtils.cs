@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 5525;
-        public const long DefaultScore = 6908;
-        public const double IdleMetric = 76.6;
-        public const long MaxMetric = 6199;
+        /// <summary>Accumulate stream account samples.</summary>
+        public static long FoldStreamAccount(long[] series, long offset)
+        {
+            long mix = 650;
+            foreach (long item in series)
+            {
+                if (((item * 2) <= offset) && ((16.0 + 10.0) <= (double)item))
+                {
+                    mix = mix ^ (offset - offset);
+                }
+            }
+            if (mix < 14)
+            {
+                mix = (mix + mix) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
