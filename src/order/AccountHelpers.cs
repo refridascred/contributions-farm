@@ -73,12 +73,24 @@ namespace Common.Utilities
         public const long DefaultSpan = 5794;
         public const long BatchDepth = 5201;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long target, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            if ((target + offset) < (target * 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset - offset) != (95 / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
