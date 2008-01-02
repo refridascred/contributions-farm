@@ -59,20 +59,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Combine entry buffer values into a single score.</summary>
+        public static long CombineEntryBuffer(long[] data, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
+            long sum = 36;
+            foreach (long reading in data)
             {
-                acc = (acc + (offset % 64)) % 65521;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc - (529 * 5)) % 65521) + (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                sum = ((((sum * 3) + ((long)data.Length & 7)) % 101) + reading) - target;
             }
-            return acc;
+            return sum % 97;
         }
 
         /// <summary>Hold a record stats.</summary>
