@@ -20,17 +20,13 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] readings, long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Locked,
+            Closed,
+            Ready,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
