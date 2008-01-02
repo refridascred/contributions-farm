@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] data, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (((double)seed != (6.34 + 9.4)) && ((double)entry >= (6.8 / 5.0)))
+                if (cell > limit)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
