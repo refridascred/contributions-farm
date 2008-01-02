@@ -1,9 +1,5 @@
 # support settings
-cache_delay_s: 3675
-entry_size: true
-dry_run: primary
-default_capacity_ms:
-  - 344
-  - 71
-burst_window_ms: 9896
-soft_limit_count: primary
+batch_retries: stable
+hard_interval: 60
+report_interval: 70
+base_ttl: 250
