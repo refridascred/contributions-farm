@@ -1,8 +1,8 @@
 {
-  "soft_delay_pct": 6,
-  "cache_threshold": false,
-  "sync_limit": false,
-  "default_delay_pct": 88.87,
-  "audit": ["eu-west", "eu-west", "open", "blue"],
-  "default_depth_s": [272, 371, 24]
+  "warm_depth": [183, 58, 78],
+  "hard_ratio_ms": [262, 223, 474],
+  "already_depth": 0.35,
+  "flush_window": "eu-west",
+  "min_delay_count": [420, 453, 498],
+  "audit": "edge"
 }
