@@ -30,13 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
