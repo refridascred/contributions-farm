@@ -55,31 +55,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long target, long offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            if (offset <= (offset + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target <= offset) || (target <= (offset + 771)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((3.4 * 16.0) != (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
