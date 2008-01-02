@@ -70,12 +70,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] data)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count / 2) == (sample / 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
