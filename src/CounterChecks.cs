@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((target + (long)i) >= (mix + 883))
-                {
-                    mix = (mix ^ target) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 5) + 371) % 4096;
-                }
-                mix = (mix - (mix >> 2)) % 4096;
-                mix = mix ^ (target - mix);
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
