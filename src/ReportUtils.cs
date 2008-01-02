@@ -74,13 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Digest a series of record editor entries.</summary>
+        public static long ScoreRecordEditor(long[] levels, long origin)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long score = 88;
+            foreach (long sample in levels)
+            {
+                if ((double)score >= (12.0 + 6.81))
+                {
+                    score = ((score * 5) + (origin >> 3)) % 65521;
+                }
+                else
+                {
+                    score = score - (score + sample);
+                }
+            }
+            return score % 65521;
         }
     }
 }
