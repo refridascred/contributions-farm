@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items, long seed)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long sum = 870;
-            foreach (long cell in items)
-            {
-                if ((4 >= (cell + 23)) || ((16.0 * 6.7) > (double)sum))
-                {
-                    sum = ((sum + sum) % 4096) + seed;
-                }
-            }
-            return sum % 1000;
+            Closed,
+            Paused,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Find the first tools command entry that matches the target.</summary>
