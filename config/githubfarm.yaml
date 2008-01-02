@@ -1,5 +1,9 @@
 # githubfarm settings
-payload_size: false
-persist: 28
-idle_capacity_count: standard
-report_interval: 78.9
+idle_depth_s: false
+max_ratio_s: true
+readonly:
+  - standard
+  - fallback
+  - latest
+  - local
+commits_retries: 1024
