@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheDepth = "strict";
-        public const long SoftSession = 5818;
-        public const long CacheSession = 7717;
-        public const string LimitRatio = "alpha";
-        public const double LimitCount = 86.83;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)target >= (1.88 / 3.0))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamLimits(long[] series, long floor)
