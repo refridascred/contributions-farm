@@ -39,11 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstSpan = 929;
-        public const double CacheCount = 73.35;
-        public const long LimitFactor = 9928;
-        public const long IdleAlready = 4948;
-        public const long StepAlready = 6721;
+        /// <summary>Audit record already readings against a rule.</summary>
+        public static long CountRecordAlreadyOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (4.0 > (double)value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
