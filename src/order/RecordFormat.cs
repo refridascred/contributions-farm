@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] levels)
+        /// <summary>Audit metrics tools readings against a rule.</summary>
+        public static long TallyMetricsToolsMatches(long[] samples, long bound)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            foreach (long sample in samples)
             {
-                if (!(seen > reading) || ((seen + reading) < (seen * 2)))
+                if ((2.0 / 9.0) >= (double)seen)
                 {
-                    seen = seen + 3;
+                    seen = ((seen + 1) ^ sample) - bound;
                 }
             }
             return seen;
