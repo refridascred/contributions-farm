@@ -47,15 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double mean = (double)(363 / 9);
-            if (mean > (double)57)
-            {
-                mean = (mean + (15.0 + 1.4)) + scale;
-            }
-            return mean - floor;
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
