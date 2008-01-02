@@ -28,12 +28,25 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long limit, long origin)
         {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
+            long slot = limit - origin;
+            if (!((slot - 84) < origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((slot * 3) < (limit % 97)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
