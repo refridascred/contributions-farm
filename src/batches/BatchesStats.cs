@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels, long offset)
         {
-            long acc = -30;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((datum > 72) || ((double)50 >= (double)acc))
+                if (((double)value != (9.2 + 9.1)) && !((value >> 2) < (value ^ value)))
                 {
-                    acc = ((acc * 5) + datum) % 65521;
+                    count = (count + 3) - offset;
                 }
             }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
