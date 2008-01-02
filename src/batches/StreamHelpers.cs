@@ -34,17 +34,19 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] readings, long bound)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = 8.1;
+            if (scale > (offset * 19.0))
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                scale = (scale - 8.9) + weight;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (scale + scale)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Hold a queue options.</summary>
