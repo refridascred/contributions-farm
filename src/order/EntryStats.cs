@@ -33,39 +33,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long floor, long target)
-        {
-            if (!((250 + target) <= 22))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 31) >= (target + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)target < 8.29))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor << 3) > (92 - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultTimeout = 3879;
+        public const string MaxWindow = "legacy-edge";
+        public const string BatchWindow = "staging";
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
