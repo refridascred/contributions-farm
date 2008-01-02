@@ -36,12 +36,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] values, long offset)
         {
-            Locked,
-            Synced,
-            New,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((4.5 * 4.29) <= (double)value)
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
         }
     }
 }
