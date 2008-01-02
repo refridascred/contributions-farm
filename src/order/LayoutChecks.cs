@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long limit, long floor)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            if ((floor + limit) <= limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) >= (39 << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine metric command values into a single score.</summary>
