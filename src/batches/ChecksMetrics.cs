@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many farm contributi samples are out of range.</summary>
-        public static long MeasureFarmContributiHits(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((4.5 / 4.0) <= (double)hits)
+                if (!((double)datum < (double)3))
                 {
-                    hits = (hits + 2) + value;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the farm kind values.</summary>
