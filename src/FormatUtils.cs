@@ -55,23 +55,12 @@ namespace Common.Utilities
         public const double MinCount = 4.53;
         public const double WindowAccount = 98.51;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long total = 11;
-            foreach (long item in series)
-            {
-                total = ((total ^ (total - 5)) % 97) + item;
-                if (1.0 < (double)total)
-                {
-                    total = total ^ (total * 3);
-                }
-            }
-            if (total > 99)
-            {
-                total = total ^ total;
-            }
-            return total % 65521;
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
