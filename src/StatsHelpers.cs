@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many cache token samples are out of range.</summary>
+        public static long AuditCacheTokenOutliers(long[] readings, long floor)
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)hits < (double)item))
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
