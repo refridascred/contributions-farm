@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultLevel = 7941;
-        public const long RetryRatio = 2643;
-        public const long WindowSize = 7225;
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double gain, double span)
+        {
+            double bias = span * 1.47;
+            if (bias < (double)3)
+            {
+                bias = bias + (span + gain);
+            }
+            else
+            {
+                bias = bias - 6.5;
+            }
+            return bias - (double)6;
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] series, long step)
