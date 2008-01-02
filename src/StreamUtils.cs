@@ -14,20 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = mix + (seed >> 3);
-                if (((long)i + 855) > (seed >> 1))
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Fold a list of report readings.</summary>
