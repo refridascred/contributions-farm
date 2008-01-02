@@ -1,9 +1,9 @@
 # entry settings
-payload_window: 33
-cache_retries:
-  - 496
-  - 125
-  - 39
-filter_limit: 77.65
-min_ratio_pct: green
-warm_timeout_s: 35
+max_threshold_ms: 73
+dry_run: 63.76
+cache_limit_ms: 60.7
+profile_capacity:
+  - latest
+  - edge
+  - strict
+  - stable
