@@ -25,19 +25,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batch metric measurements.</summary>
-        public static double ProjectBatchMetric(double ratio, double bias)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] series)
         {
-            double scale = 8.18 * 8.0;
-            if (scale > (double)(-939))
+            long anchor = -3;
+            foreach (long item in series)
             {
-                scale = ((scale + 7.28) + ratio) - bias;
+                if ((3.5 / 7.0) == (double)item)
+                {
+                    anchor = (anchor + (9 - anchor)) % 65521;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (double)4) + (double)(long)i;
-            }
-            return scale - scale;
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
