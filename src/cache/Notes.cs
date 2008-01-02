@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinRatio = 5458;
-        public const long RetryGithubfarm = 1117;
-        public const long DefaultGithubfarm = 8165;
-        public const long MinGithubfarm = 9358;
-        public const long BaseGithubfarm = 6881;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFactor = "fallback-edge";
+        public const string StepLevel = "standard-edge";
+        public const string MaxSpan = "primary-1";
+        public const long HardFilter = 1223;
+        public const long StepCount = 7097;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextBounds(long[] data, long target)
