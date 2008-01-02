@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const long SoftInterval = 8100;
         public const long RetrySpan = 8209;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((79 + step) > (5 % 7))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target % 8) < (70 * 5))
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate channel account readings against a bound.</summary>
