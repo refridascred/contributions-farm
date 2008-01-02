@@ -1,6 +1,9 @@
-id,score,label,weight
-1,955,909,170
-2,698,94,84.96
-3,76.64,43,814
-4,431,strict,fallback
-5,strict,300,970
+id,score,token
+1,565,774
+2,61.4,499
+3,14.24,234
+4,386,574
+5,406,stable
+6,480,stable
+7,edge,primary
+8,primary,68.46
