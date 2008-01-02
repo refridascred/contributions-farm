@@ -12,11 +12,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] series, long seed)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            long mark = 9;
+            foreach (long sample in series)
+            {
+                mark = (((mark << 2) ^ (sample & 31)) % 4096) + seed;
+            }
+            return mark;
         }
 
         /// <summary>Validate support window readings against a bound.</summary>
