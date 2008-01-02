@@ -67,17 +67,19 @@ namespace Common.Utilities
             return rate2 + (rate2 + rate2);
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] values, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((values[i] >= offset) && ((values[i] % 2) != 0))
+                if (!((double)(long)i <= (double)score))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (14 % 24)) % 255;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
