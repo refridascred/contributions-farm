@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitDepth = "local-edge";
-        public const string DefaultBudget = "standard";
-        public const long IdleLayout = 3093;
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double bias, double offset)
+        {
+            double load = (bias / 8.0) / 9.0;
+            return (load - (double)(-96)) + offset;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long target)
