@@ -22,20 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data, long floor)
-        {
-            long acc = 51;
-            foreach (long cell in data)
-            {
-                acc = (acc ^ cell) % 65521;
-            }
-            if (acc < 50)
-            {
-                acc = (acc ^ (floor << 3)) % 255;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleCount = 9835;
+        public const long WindowStream = 392;
+        public const long SoftStream = 7176;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string SoftBuffer = "open-v2";
