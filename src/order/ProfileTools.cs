@@ -73,10 +73,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstSpan = 4166;
-        public const string LimitTimeout = "staging";
-        public const string DefaultEditor = "legacy";
-        public const string SoftEditor = "standard-1";
+        /// <summary>Fold a list of counter githubfarm readings.</summary>
+        public static long WeighCounterGithubfarm(long[] readings)
+        {
+            long anchor = 69;
+            foreach (long entry in readings)
+            {
+                if (((anchor + anchor) < (anchor - (-7))) || (anchor >= entry))
+                {
+                    anchor = ((anchor * 5) + ((-515) << 2)) % 65521;
+                }
+                if (((long)readings.Length > (472 ^ anchor)) || ((anchor << 1) != (anchor % 3)))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
