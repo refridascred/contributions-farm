@@ -28,13 +28,24 @@ namespace Common.Utilities
         public const long LimitCommand = 1408;
         public const long MaxSpan = 6398;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long seed, long target)
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            if ((target * 5) != (target << 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9 >> 2) <= (seed & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
