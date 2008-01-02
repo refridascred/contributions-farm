@@ -30,23 +30,37 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank metrics payload input into a small class.</summary>
-        public static long RankMetricsPayload(long offset, long offset2)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long limit, long bound)
         {
-            long span = offset - offset2;
-            if (offset2 <= span)
+            long cur = limit - bound;
+            if (!((cur + cur) == (cur / 3)))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (10.0 > (double)offset2)
+                if ((cur & 15) <= bound)
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    if ((limit + cur) >= cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)cur >= (5.54 * 1.9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
