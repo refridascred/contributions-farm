@@ -84,11 +84,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftCount = 3360;
-        public const string CacheFactor = "cached-1";
-        public const double DefaultBudget = 7.95;
-        public const long LimitSpan = 6614;
+        /// <summary>Validate channel layout readings against a bound.</summary>
+        public static bool VerifyChannelLayoutBounds(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
