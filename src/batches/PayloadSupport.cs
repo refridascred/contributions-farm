@@ -13,15 +13,24 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long offset, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            if ((8.03 / 7.0) < (double)bound)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((offset + bound) >= (92 - 42))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
