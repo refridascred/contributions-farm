@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate filter already samples.</summary>
-        public static long FoldFilterAlready(long[] series, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] values, long target)
         {
-            long total = -8;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                total = ((total << 2) ^ (target + 9)) ^ entry;
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
