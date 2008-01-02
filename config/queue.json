@@ -1,5 +1,5 @@
 {
-  "retry_capacity_ms": ["fallback", "legacy", "strict"],
-  "base_size_ms": 8645,
-  "hard_size_count": "local"
+  "base_window": 95.8,
+  "audit": false,
+  "warm_window_count": 87.71
 }
