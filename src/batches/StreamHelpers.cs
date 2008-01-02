@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long seed)
         {
-            double ratio = 17.0 * 10.0;
-            if (ratio < (floor / 4.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio - ratio;
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)5;
-            }
-            return ratio - (bias / 4.0);
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
