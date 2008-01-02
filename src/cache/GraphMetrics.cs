@@ -50,18 +50,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + count) > (step << 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleWindow = "alpha-1";
+        public const long DefaultWindow = 5503;
+        public const long BaseWindow = 923;
+        public const long HardScore = 6926;
+        public const long StepWindow = 3708;
     }
 }
