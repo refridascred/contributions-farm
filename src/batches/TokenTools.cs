@@ -35,12 +35,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double weight, double bias)
         {
-            Draft,
-            Synced,
-            Closed,
+            double mean = weight;
+            if (mean >= mean)
+            {
+                mean = mean - 9.99;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (double)8) - (double)(long)i;
+            }
+            return mean - bias;
         }
     }
 }
