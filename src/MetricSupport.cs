@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] levels, long floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long anchor = 110;
-            foreach (long cell in levels)
-            {
-                if ((cell & 255) > (floor % 24))
-                {
-                    anchor = (anchor << 2) ^ (9 / 2);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (3 + 751)) % 101;
-                }
-            }
-            return anchor;
+            public bool Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
