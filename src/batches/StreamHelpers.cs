@@ -34,19 +34,18 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double weight, double offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] series)
         {
-            double scale = 8.1;
-            if (scale > (offset * 19.0))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                scale = (scale - 8.9) + weight;
+                if ((double)sample >= (1.0 + 7.5))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (scale + scale)) + (double)(long)i;
-            }
-            return scale + scale;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
