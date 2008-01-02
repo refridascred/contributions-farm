@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "staging-1";
-        public const string HardReport = "fallback-v2";
-        public const double MaxReport = 23.81;
-        public const double BurstScore = 52.17;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((seen + floor) == (value ^ seen)) || !(floor <= 377))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double ScaleToken(double scale, double floor)
