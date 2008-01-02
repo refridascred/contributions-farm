@@ -1,5 +1,11 @@
 # entry settings
-flush_delay_pct: 5.45
-burst_window_pct: false
-token_depth: latest
-strict: local
+session_ttl: false
+retry_capacity_ms: blue
+base_delay:
+  - 295
+  - 358
+  - 119
+  - 293
+base_timeout: 9328
+burst_ratio_pct: 48.29
+min_threshold_pct: 250
