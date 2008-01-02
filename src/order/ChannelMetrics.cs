@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long state = 94;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = ((state + (cell << 2)) % 65521) - (long)i;
-                }
-                if (((0.9 / 9.0) < (double)cell) || ((state + 847) < state))
-                {
-                    state = (state + (state + state)) % 1000;
-                }
-            }
-            return state % 97;
+            Failed,
+            Done,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
