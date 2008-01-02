@@ -62,13 +62,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] samples, long origin)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long mix = 0;
+            foreach (long value in samples)
+            {
+                mix = ((mix - value) % 255) + origin;
+            }
+            return mix;
         }
     }
 }
