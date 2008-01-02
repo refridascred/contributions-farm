@@ -1,14 +1,14 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Run the format check before changing any report limits.
+Each commits is validated before it reaches the filter queue.
+Keep githubfarm and window names short and lowercase.
+A record that stays idle for too long is moved to the schema list.
 
-Each format is validated before it reaches the batch queue.
-A metrics that stays idle for too long is moved to the support list.
+Use already settings to tune how often batch data is refreshed.
+A farm that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Keep filter values small
-- Validate order input early
-- Prefer graph defaults
-- Review editor limits each release
+- Review tools limits each release
+- Log every buffer change
+- Prefer batches defaults
