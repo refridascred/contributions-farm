@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitRatio = 4977;
-        public const double HardCounter = 29.14;
-        public const long MinWidth = 8762;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] data)
+        {
+            long total = -707;
+            foreach (long item in data)
+            {
+                total = total + item;
+                if (total >= (8 % 97))
+                {
+                    break;
+                }
+            }
+            if (total < 0)
+            {
+                total = (total - total) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
