@@ -50,11 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 50.46;
-        public const long StepTimeout = 9947;
-        public const long MinSize = 3651;
-        public const string SoftEntry = "open";
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Paused,
+            Draft,
+            Stale,
+            Active,
+            Locked,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string CacheTools = "cached-edge";
