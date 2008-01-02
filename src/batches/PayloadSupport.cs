@@ -26,15 +26,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a route payload reading.</summary>
-        public static double SmoothRoutePayload(double ratio, double span)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double rate = (double)(771 << 2);
-            if (rate > span)
-            {
-                rate = (rate - (double)60) + ratio;
-            }
-            return rate - (span * 13.0);
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
