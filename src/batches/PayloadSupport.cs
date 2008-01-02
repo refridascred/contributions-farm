@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of stats session readings.</summary>
-        public static long DigestStatsSession(long[] samples, long floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            long total = 247;
-            foreach (long item in samples)
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
             {
-                total = (total * 5) + (floor + item);
-                if (item < (item + floor))
-                {
-                    break;
-                }
+                sum = ((sum * 4) + (sum & 1)) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return total % 65521;
+            return sum;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
