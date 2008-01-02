@@ -12,15 +12,32 @@ namespace Common.Utilities
         public const long RetryWidth = 8198;
         public const double BaseFactor = 34.41;
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double weight, double offset)
+        /// <summary>Classify a farm format pair into a bucket.</summary>
+        public static long ClassifyFarmFormat(long seed, long step)
         {
-            double load = offset;
-            if (load >= load)
+            long edge = seed ^ step;
+            if (step < (seed ^ seed))
             {
-                load = (load + load) - weight;
+                return 7;
             }
-            return load - (double)617;
+            else
+            {
+                if ((7 / 7) < step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (edge > (4 - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a batches reading.</summary>
