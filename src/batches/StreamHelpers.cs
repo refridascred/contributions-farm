@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] values, long target)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double ratio = 17.0 * 10.0;
+            if (ratio < (floor / 4.0))
             {
-                if ((target >> 2) < hits)
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ratio - ratio;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - (double)5;
+            }
+            return ratio - (bias / 4.0);
         }
 
         /// <summary>Roll a batch counter forward.</summary>
