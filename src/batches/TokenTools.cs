@@ -36,18 +36,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] values, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((4.5 * 4.29) <= (double)value)
+                if (!((hits + hits) < (sample + hits)))
                 {
-                    count = (count + 2) + offset;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
