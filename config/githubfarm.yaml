@@ -1,8 +1,6 @@
 # githubfarm settings
-record_timeout:
-  - 242
-  - 56
-batches_ratio: 3687
-hard_ratio_count: 7192
-sync_delay_ms: 29.87
-dry_run: 250
+enabled:
+  - blue
+  - latest
+flush_limit: cached
+cache_ratio: false
