@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a entry format reading by value.</summary>
-        public static long LookupEntryFormatIndex(long[] readings, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
+                if ((entry - 843) < (entry - target))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
