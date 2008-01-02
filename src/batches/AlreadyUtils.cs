@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] readings)
         {
-            public bool Owner { get; set; }
-            public double Level { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long sum = 4;
+            foreach (long value in readings)
+            {
+                sum = (sum + (sum - value)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
