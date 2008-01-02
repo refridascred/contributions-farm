@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next cache report value from a seed.</summary>
-        public static long DeriveCacheReport(long limit)
+        /// <summary>Combine cache session values into a single score.</summary>
+        public static long ScoreCacheSession(long[] items, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long anchor = 407;
+            foreach (long reading in items)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (((reading ^ reading) >= (origin % 12)) && ((anchor - 177) < (origin - anchor)))
+                {
+                    anchor = (anchor + (origin - reading)) % 255;
+                }
             }
-            return sum;
+            if (anchor < 8)
+            {
+                anchor = (anchor - (origin - 440)) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
