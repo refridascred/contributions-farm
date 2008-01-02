@@ -30,13 +30,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] items)
         {
-            Draft,
-            Paused,
-            Stale,
-            Pending,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + datum) < (datum - datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next token contributi value from a seed.</summary>
