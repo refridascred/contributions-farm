@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first stream tools entry that matches the target.</summary>
-        public static long LocateStreamToolsIndex(long[] readings, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (readings[i] <= seed)
+                if (value > bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
