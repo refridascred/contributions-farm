@@ -30,38 +30,9 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long bound, long limit)
-        {
-            if (!(bound <= limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) >= (limit ^ limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit - limit) <= (-593)) || ((limit - bound) == (bound - limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((((-2) + limit) > bound) && ((limit >> 5) != (limit ^ bound)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepFactor = 3742;
+        public const double IdleInterval = 24.93;
+        public const long StepNotes = 5050;
     }
 }
