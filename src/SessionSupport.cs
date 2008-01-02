@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] items, long floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Roll a format counter forward.</summary>
