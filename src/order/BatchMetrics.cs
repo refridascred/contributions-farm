@@ -17,21 +17,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] values, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc + (508 >> 4);
-                if (!((1.5 + 16.0) <= (double)bound))
+                if (values[i] < offset)
                 {
-                    acc = acc - ((long)i * 2);
+                    return (long)i;
                 }
-                acc = (acc + (acc * 2)) % 255;
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a metrics stats.</summary>
