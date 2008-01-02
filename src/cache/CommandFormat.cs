@@ -46,12 +46,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] values, long target)
         {
-            Pending,
-            Closed,
-            Dropped,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!(((target << 2) != (cell / 3)) || ((cell * 2) > target)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
