@@ -56,18 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] items)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((double)907 <= (double)entry) && (((entry + tally) > tally) || (6.91 < (double)tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
