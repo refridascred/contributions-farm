@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile layout pairs that satisfy a relation.</summary>
-        public static long PairProfileLayoutCount(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] samples, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((38 >> 1) != (datum >> 2))
                 {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + origin;
                 }
             }
             return hits;
