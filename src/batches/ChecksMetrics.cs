@@ -49,25 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long limit, long origin)
-        {
-            if (!((314 * 4) == (origin + origin)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin % 16) == (5 >> 2)) && ((origin - limit) <= (limit >> 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultScore = 719;
+        public const long WindowTimeout = 8705;
+        public const long DefaultQueue = 2559;
+        public const long MaxQueue = 2611;
+        public const long BurstQueue = 3440;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TallyCounter(long[] levels)
