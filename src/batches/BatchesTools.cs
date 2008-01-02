@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings, long offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            long acc = 347;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((596 ^ offset) == (2 - item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc - (offset + offset);
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Hold a command summary.</summary>
