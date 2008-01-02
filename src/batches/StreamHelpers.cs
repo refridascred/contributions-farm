@@ -49,13 +49,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 3178;
+        public const long BaseSize = 5670;
+        public const string RetryCommits = "latest-1";
+        public const double CacheCommits = 32.5;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long RankCommand(long offset, long offset2)
