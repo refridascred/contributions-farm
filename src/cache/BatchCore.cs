@@ -39,22 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] items, long target)
+        /// <summary>Derive the next format profile value from a seed.</summary>
+        public static long RollFormatProfile(long offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((count + cell) <= 7)
-                {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
