@@ -28,20 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Look up the position of a context session sample.</summary>
+        public static long LookupContextSessionIndex(long[] items, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long lane = (384 - state) << 1;
-                if ((double)offset == (13.0 + 4.0))
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
                 {
-                    state = state - (lane - 31);
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit counter batch readings against a rule.</summary>
