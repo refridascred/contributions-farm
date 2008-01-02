@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] readings)
-        {
-            long anchor = 621;
-            foreach (long cell in readings)
-            {
-                if ((-590) > (anchor + 426))
-                {
-                    anchor = (anchor * 3) + cell;
-                }
-            }
-            if (anchor > 338)
-            {
-                anchor = (anchor - anchor) % 101;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 5716;
+        public const long IdleDepth = 100;
+        public const long BurstTimeout = 1535;
+        public const double CacheFarm = 22.6;
+        public const long StepSize = 4617;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmMatches(long[] data)
