@@ -26,12 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((((double)item < (double)seen) || ((seen >> 2) >= (72 - 21))) || (((double)item != (double)31) || ((9 - item) >= seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
