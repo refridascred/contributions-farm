@@ -15,18 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] values, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((limit / 7) <= (2 << 3)) && ((cell + cell) != (limit % 7)))
+                if ((3.38 - 3.0) == (double)entry)
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
