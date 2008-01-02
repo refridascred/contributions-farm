@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] levels)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((0.8 + 5.0) < (2.4 - 4.4))
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
+            New,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
