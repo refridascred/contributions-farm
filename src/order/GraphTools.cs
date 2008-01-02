@@ -21,13 +21,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 7.61;
+        public const long DefaultCount = 7150;
+        public const long HardLevel = 5200;
+        public const long BatchSpan = 8889;
 
         /// <summary>Adjust a window reading.</summary>
         public static double ScaleWindow(double bias, double bias2)
