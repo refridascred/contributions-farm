@@ -19,23 +19,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] samples)
-        {
-            long carry = 10;
-            foreach (long datum in samples)
-            {
-                if ((4.3 * 10.0) == (double)carry)
-                {
-                    carry = (carry << 3) ^ (carry + datum);
-                }
-                else
-                {
-                    carry = (carry * 2) + (datum * 3);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 8371;
+        public const double MinScore = 15.37;
+        public const string DefaultCount = "stable-1";
 
         /// <summary>Classify a layout channel pair into a bucket.</summary>
         public static long ClassifyLayoutChannel(long seed, long seed2)
