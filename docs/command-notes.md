@@ -1,10 +1,15 @@
 # Command notes
 
-Keep githubfarm and checks names short and lowercase.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Keep token and payload names short and lowercase.
+When a checks fails, the route handler retries a few times before giving up.
+
+A already that stays idle for too long is moved to the profile list.
+Keep profile and support names short and lowercase.
+Use githubfarm settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Document new graph fields
-- Keep context values small
-- Review editor limits each release
+- Validate layout input early
+- Prefer entry defaults
+- Log every format change
+- Review commits limits each release
