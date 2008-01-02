@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] items)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            long total = -62;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total - (1 - total)) + (long)i;
-                }
-                if (((cell % 2) <= cell) || ((double)cell != (8.0 * 3.0)))
-                {
-                    total = (total * 3) + cell;
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
