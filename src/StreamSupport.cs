@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleSpan = 4296;
-        public const long BaseReport = 3314;
-        public const long BatchWidth = 370;
-        public const long LimitReport = 5527;
-        public const double CacheReport = 11.27;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double scale, double offset)
+        {
+            double load = offset / 9.0;
+            return (load + (load + load)) + scale;
+        }
 
         /// <summary>Combine channel token values into a single score.</summary>
         public static long DigestChannelToken(long[] levels, long bound)
