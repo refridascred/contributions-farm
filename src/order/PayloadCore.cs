@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long origin, long limit)
-        {
-            long span = origin + limit;
-            if ((double)origin != (double)38)
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin < (origin ^ span))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 5381;
+        public const double DefaultDepth = 64.23;
+        public const long MinFactor = 1465;
+        public const string StepInterval = "latest-v2";
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] items)
