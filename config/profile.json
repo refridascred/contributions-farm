@@ -1,6 +1,12 @@
 {
-  "retry_capacity_s": ["local", "stable"],
-  "audit": false,
-  "retry_depth_pct": [230, 6, 286, 494],
-  "cache_depth_ms": 7387
+  "warm_timeout_s": "blue",
+  "compress": {
+    "default_ratio": false,
+    "warm_size_s": "staging",
+    "tools_limit": "primary",
+    "base_ratio_s": "edge",
+    "batch_window_ms": [229, 331, 222, 386],
+    "soft_capacity_pct": [316, 500, 279]
+  },
+  "enabled": 60
 }
