@@ -13,24 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long offset, long bound)
+        /// <summary>Project the next format layout value.</summary>
+        public static double SmoothFormatLayout(double gain, double floor)
         {
-            if ((offset - offset) >= offset)
+            double gain2 = floor / 9.0;
+            if (gain2 > (double)0)
             {
-                return 1;
+                gain2 = gain2 - (gain * 0.83);
             }
-            else
-            {
-                if ((double)offset > (5.1 / 9.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return gain2 + (gain * 3.95);
         }
 
         /// <summary>Accumulate cluster samples.</summary>
