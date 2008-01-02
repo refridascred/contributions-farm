@@ -42,11 +42,16 @@ namespace Common.Utilities
         public const double HardScore = 91.56;
         public const double StepContext = 94.99;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstSpan = 40.58;
-        public const long SoftSize = 6989;
-        public const long LimitRatio = 3961;
-        public const long StepSession = 48;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double weight, double offset)
+        {
+            double scale = (offset / 4.0) * 9.0;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (weight / 7.0)) - (double)(long)i;
+            }
+            return scale + offset;
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
