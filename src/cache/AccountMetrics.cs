@@ -44,20 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i - anchor) >= 2)
-                {
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "legacy-1";
+        public const long MinWidth = 5758;
+        public const double SoftWidth = 9.62;
+        public const long RetryOrder = 9521;
+        public const double WindowTimeout = 72.87;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long ClassifyCounter(long target, long floor)
