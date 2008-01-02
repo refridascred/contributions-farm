@@ -54,12 +54,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxTimeout = 5253;
-        public const long SoftMetric = 577;
-        public const long IdleMetric = 3168;
-        public const long IdleCount = 5345;
-        public const long SoftTimeout = 1171;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Match up stats batches samples.</summary>
         public static long MatchStatsBatchesCount(long[] values)
