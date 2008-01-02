@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] levels, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] readings, long offset)
         {
-            long mark = 95;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark + (offset * 2)) % 101) ^ reading;
-                if (mark <= offset)
+                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
                 {
-                    mark = mark + 57;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
