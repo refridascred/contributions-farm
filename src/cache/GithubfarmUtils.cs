@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 2804;
+        public const string BatchCluster = "staging-edge";
+        public const long BaseCluster = 6808;
+        public const long WindowRatio = 870;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long WeighGithubfarm(long[] data)
