@@ -54,21 +54,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up cache contributi samples.</summary>
-        public static long CompareCacheContributiCount(long[] samples)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a record stats.</summary>
