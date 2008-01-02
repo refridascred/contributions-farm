@@ -12,13 +12,10 @@ namespace Common.Utilities
             return (load - (bias + bias)) + scale;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Paused,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleFactor = 5652;
+        public const double CacheSpan = 27.95;
+        public const double DefaultCount = 0.3;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long FoldAlready(long[] items, long seed)
