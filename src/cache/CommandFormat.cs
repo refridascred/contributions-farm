@@ -28,13 +28,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] samples, long step)
         {
-            Stale,
-            Done,
-            Synced,
-            Retry,
+            long anchor = 89;
+            foreach (long item in samples)
+            {
+                if (((anchor + item) <= anchor) && (anchor > (anchor / 3)))
+                {
+                    anchor = anchor ^ (step << 2);
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
