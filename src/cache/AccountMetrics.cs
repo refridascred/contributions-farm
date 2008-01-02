@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a notes reading by value.</summary>
