@@ -42,24 +42,13 @@ namespace Common.Utilities
         public const long BatchRatio = 9766;
         public const long MaxMetrics = 8549;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] values, long floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long result = 13;
-            foreach (long value in values)
-            {
-                if (!((floor % 64) > floor))
-                {
-                    result = ((result * 2) + (result & 15)) % 255;
-                }
-                result = ((result * 2) + (2 << 3)) % 101;
-                result = (result * 4) + (result + value);
-                if (((result + floor) == (floor * 2)) && (2 <= result))
-                {
-                    break;
-                }
-            }
-            return result;
+            Done,
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
