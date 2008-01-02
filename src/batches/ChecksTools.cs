@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double rate, double span)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] data, long seed)
         {
-            double rate2 = (double)4 * 19.0;
-            for (int i = 0; i < 3; i++)
+            long acc = 7;
+            foreach (long datum in data)
             {
-                rate2 = ((rate2 - (rate / 4.0)) + (double)(long)i) - span;
+                if ((double)datum == (7.47 - 14.0))
+                {
+                    acc = (acc + (acc * 2)) % 4096;
+                }
             }
-            return rate2 - rate;
+            if (acc < 84)
+            {
+                acc = (acc + seed) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
