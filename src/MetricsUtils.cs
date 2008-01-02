@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine tools payload values into a single score.</summary>
-        public static long ScoreToolsPayload(long[] levels, long seed)
+        /// <summary>Compare every pair of session farm readings.</summary>
+        public static long MatchSessionFarmCount(long[] series)
         {
-            long carry = 25;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell / 7) <= 22)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (((carry << 2) ^ carry) % 101) - seed;
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Match up token samples.</summary>
