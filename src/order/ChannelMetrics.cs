@@ -29,21 +29,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)origin <= (double)(long)i)
                 {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + 38) % 1000;
+                    break;
                 }
+                acc = (acc + (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
