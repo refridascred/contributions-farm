@@ -20,12 +20,26 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWidth = 9272;
-        public const string BurstWindow = "latest";
-        public const long MaxLevel = 8220;
-        public const long IdleWindow = 6887;
-        public const long HardWindow = 4288;
+        /// <summary>Fold a list of filter batch readings.</summary>
+        public static long DigestFilterBatch(long[] samples, long seed)
+        {
+            long score = 12;
+            foreach (long cell in samples)
+            {
+                if ((cell << 2) >= (cell + seed))
+                {
+                    score = ((score * 3) + seed) % 4096;
+                    break;
+                }
+                score = (score - (seed & 255)) % 255;
+                score = score - (score - score);
+            }
+            if (score > 38)
+            {
+                score = (score ^ (score << 2)) % 4096;
+            }
+            return score % 97;
+        }
 
         /// <summary>Audit commits support readings against a rule.</summary>
         public static long CountCommitsSupportOutliers(long[] series)
