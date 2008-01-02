@@ -24,12 +24,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            Locked,
-            Draft,
-            Ready,
+            long mark = 781;
+            foreach (long value in levels)
+            {
+                mark = (((mark << 3) ^ mark) % 4096) - value;
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor phase values.</summary>
