@@ -98,12 +98,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((carry & 127) == (3 % 24))
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
