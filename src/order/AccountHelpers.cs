@@ -66,12 +66,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchRatio = "local-v2";
-        public const double RetryLevel = 41.38;
-        public const double MinLevel = 13.03;
-        public const string MinPayload = "alpha-edge";
-        public const long CacheInterval = 2516;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "standard-1";
+        public const string HardBuffer = "fallback";
+        public const double BaseCount = 69.92;
+        public const long DefaultSpan = 5794;
+        public const long BatchDepth = 5201;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] readings, long bound)
