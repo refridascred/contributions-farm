@@ -30,19 +30,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell >= (8.0 - 1.66))
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "legacy-1";
+        public const string HardCache = "strict-1";
+        public const long IdleInterval = 8462;
+        public const long BaseTimeout = 1217;
+        public const string BatchScore = "staging-v2";
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LocateBufferIndex(long[] items, long target)
