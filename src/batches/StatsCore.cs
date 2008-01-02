@@ -14,39 +14,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long origin, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] items, long step)
         {
-            long diff = origin + target;
-            if ((target + diff) != (target * 3))
+            long mark = 4;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target << 3) < (diff >> 4))
+                mark = ((mark << 3) ^ (mark & 31)) % 101;
+                if ((value - step) == (mark + mark))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.34 / 3.0) < (double)diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (diff > (838 / 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = ((mark * 2) + (step + value)) % 1000;
                 }
             }
+            if (mark < 25)
+            {
+                mark = (mark + (step ^ 871)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Rank metrics payload input into a small class.</summary>
