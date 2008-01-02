@@ -36,11 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardLevel = 5885;
-        public const string SoftBudget = "primary";
-        public const long BatchContext = 6100;
-        public const long IdleContext = 6718;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextRange(long[] levels, long limit)
