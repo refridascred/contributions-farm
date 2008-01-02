@@ -19,21 +19,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count format account pairs that satisfy a relation.</summary>
-        public static long MatchFormatAccountCount(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 93;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry >= (result + entry))
                 {
-                    if ((levels[i] + levels[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
+                }
+                if ((entry * 2) <= (entry - result))
+                {
+                    result = (result ^ result) % 101;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result << 3);
                 }
             }
-            return tally;
+            if (result > 0)
+            {
+                result = ((result << 2) ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Project the next context channel value.</summary>
