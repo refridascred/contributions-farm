@@ -67,24 +67,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long bound, long target)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            if ((bound > (bound << 2)) && ((target & 63) > target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)bound == (0.04 + 4.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
