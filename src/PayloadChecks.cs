@@ -64,22 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] levels)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mix = 70;
-            foreach (long value in levels)
-            {
-                if (value < (value / 2))
-                {
-                    mix = mix ^ (mix - 790);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (value >> 3)) % 101;
-                }
-            }
-            return mix;
+            Closed,
+            Failed,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
