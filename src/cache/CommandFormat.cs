@@ -23,13 +23,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
