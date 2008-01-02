@@ -89,18 +89,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] levels, long step)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double rate = bias;
+            if (rate > bias)
             {
-                if (!((sample & 3) != (step - seen)))
-                {
-                    seen = seen + 1;
-                }
+                rate = rate + (6.58 * 3.0);
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - ratio;
         }
     }
 }
