@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] values, long seed)
+        /// <summary>Compare every pair of profile order readings.</summary>
+        public static long MatchProfileOrderCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
