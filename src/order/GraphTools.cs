@@ -65,11 +65,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryLevel = 9495;
-        public const double BurstTimeout = 85.89;
-        public const double WindowCommits = 46.42;
-        public const long SoftSize = 304;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] series, long step)
+        {
+            long mix = 839;
+            foreach (long datum in series)
+            {
+                if (((mix + step) >= 4) && (step >= (datum / 4)))
+                {
+                    mix = ((mix << 3) ^ (datum - 541)) % 101;
+                }
+            }
+            if (mix < 288)
+            {
+                mix = mix + (4 << 2);
+            }
+            return mix;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] readings, long bound)
