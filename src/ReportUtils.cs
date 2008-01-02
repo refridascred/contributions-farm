@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double bias)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] series, long target)
         {
-            double mean = bias;
-            if (mean >= mean)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mean = mean - mean;
+                if (((target << 2) <= 8) && ((32 + 3) >= (hits << 2)))
+                {
+                    hits = (hits + 3) + value;
+                }
             }
-            else
-            {
-                mean = mean - (gain * 7.4);
-            }
-            return mean - (gain * 4.0);
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
