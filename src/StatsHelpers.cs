@@ -62,18 +62,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry * 5) >= (entry + entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 55.54;
+        public const string CacheProfile = "latest-v2";
+        public const long SoftWidth = 5576;
     }
 }
