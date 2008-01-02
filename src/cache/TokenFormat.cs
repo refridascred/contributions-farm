@@ -35,18 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of buffer context readings.</summary>
-        public static long CompareBufferContextCount(long[] samples)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] samples, long bound)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((3 + cell) <= (count / 8))
                 {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + bound;
                 }
             }
             return count;
