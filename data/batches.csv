@@ -1,6 +1,8 @@
-id,score,owner,active
-1,53.92,396,92.62
-2,898,952,13.89
-3,65.3,47.5,619
-4,legacy,846,latest
-5,591,34.0,green
+id,level,ratio
+1,40.19,413
+2,eu-west,531
+3,0.44,443
+4,38.18,standard
+5,649,local
+6,91.4,green
+7,primary,42.56
