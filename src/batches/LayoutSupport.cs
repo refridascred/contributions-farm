@@ -79,15 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double rate, double bias)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] data, long floor)
         {
-            double bias2 = rate;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                bias2 = (bias2 - bias) + (double)(long)i;
+                if ((item + item) > tally)
+                {
+                    tally = (tally + 2) + floor;
+                }
             }
-            return bias2 + (bias - bias);
+            return tally;
         }
     }
 }
