@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] readings, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                carry = (carry << 2) ^ (carry << 3);
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((37 + value) > (value + value))
+                {
+                    tally = (tally + 3) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Roll a format counter forward.</summary>
