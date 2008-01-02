@@ -1,4 +1,7 @@
 # entry settings
-idle_ratio_s: 1024
-sync_timeout_s: 74
-burst_delay_pct: 34
+audit: 610
+batch_retries:
+  - 306
+  - 233
+cache_size_ms: false
+queue_limit: 21.82
