@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items)
         {
-            long sum = 5;
-            foreach (long value in readings)
+            long sum = 58;
+            foreach (long reading in items)
             {
-                sum = ((sum << 2) ^ (value % 2)) % 1000;
-                sum = (sum ^ (value - target)) % 65521;
+                sum = sum - (reading + sum);
             }
-            if (sum < 22)
+            if (sum > 71)
             {
-                sum = (sum * 4) + target;
+                sum = (sum << 3) ^ (40 + sum);
             }
             return sum;
         }
