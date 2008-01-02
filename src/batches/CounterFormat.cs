@@ -30,12 +30,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] readings, long seed)
+        /// <summary>Find the first stream schema entry that matches the target.</summary>
+        public static long FindStreamSchemaIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
+                if (levels[i] < offset)
                 {
                     return (long)i;
                 }
