@@ -46,38 +46,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long bound, long target)
+        /// <summary>Count stream githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchStreamGithubfarmCount(long[] samples)
         {
-            if ((target - target) == (bound & 63))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + bound) <= (bound + bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)target != (8.18 - 16.0)) && ((2.0 + 4.0) < (double)bound))
+                    if ((samples[i] - samples[j]) == 3)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound >> 4) > (372 - bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
