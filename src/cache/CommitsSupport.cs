@@ -49,12 +49,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 6798;
+        public const long BaseRatio = 8451;
+        public const long LimitTools = 8752;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TallyProfile(long[] items)
