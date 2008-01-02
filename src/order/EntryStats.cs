@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every command graph entry stays within the limit.</summary>
-        public static bool GuardCommandGraphLimits(long[] samples, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (item >= step)
+                if (((6.2 * 9.1) > 8.0) || (sample > (hits / 7)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
