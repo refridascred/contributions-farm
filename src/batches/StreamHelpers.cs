@@ -53,15 +53,22 @@ namespace Common.Utilities
         public const long BaseRatio = 146;
         public const long StepReport = 2467;
 
-        /// <summary>Scale a githubfarm cache figure with a bias.</summary>
-        public static double SmoothGithubfarmCache(double bias, double offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] samples)
         {
-            double weight = (double)(38 + 50);
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                weight = (((weight - (double)49) + (double)(long)i) - bias) - offset;
+                if ((((double)tally == (6.1 * 1.6)) || (tally <= datum)) || ((tally >> 5) <= (datum ^ tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Fold a list of layout stats readings.</summary>
