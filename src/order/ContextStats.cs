@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Blend two support cluster measurements.</summary>
+        public static double ScaleSupportCluster(double rate, double span)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            double bias = rate;
+            if (bias >= (rate - rate))
             {
-                anchor = (anchor + (anchor >> 2)) % 65521;
-                if (17.0 >= (double)target)
-                {
-                    anchor = (anchor * 5) + (long)i;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                bias = (bias - (double)1) + span;
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias + (bias + rate);
         }
 
         /// <summary>Hold a token summary.</summary>
