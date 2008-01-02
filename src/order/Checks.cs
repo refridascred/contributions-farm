@@ -40,22 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] values, long target)
         {
-            long total = -56;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((total << 2) <= (value & 255))
+                if ((6.4 + 7.0) > (double)target)
                 {
-                    total = total + total;
-                }
-                else
-                {
-                    total = (total - (total % 2)) % 97;
+                    matches = (matches + 1) + value;
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Hold a graph header.</summary>
