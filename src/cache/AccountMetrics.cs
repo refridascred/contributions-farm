@@ -65,39 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long target, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
         {
-            long span = target - floor;
-            if ((double)5 == (double)floor)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target >= (1.77 * 2.91))
+                if ((item - hits) <= (item + (long)samples.Length))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target <= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target < (span + span)) || ((floor / 3) >= span))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of window entries.</summary>
