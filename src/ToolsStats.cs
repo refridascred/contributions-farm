@@ -94,12 +94,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Grade a account notes value against two limits.</summary>
+        public static long BucketAccountNotes(long offset, long bound)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
+            if (!((double)offset > (7.8 / 4.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= (1.95 - 9.2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + offset) == (offset >> 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
