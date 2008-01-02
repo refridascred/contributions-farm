@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many queue farm samples are out of range.</summary>
-        public static long TallyQueueFarmHits(long[] readings)
+        /// <summary>Audit support context readings against a rule.</summary>
+        public static long CountSupportContextHits(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((hits * 2) <= (hits - cell))
+                if ((double)value >= 16.0)
                 {
-                    hits = hits + 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up metrics samples.</summary>
