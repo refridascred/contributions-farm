@@ -21,17 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a window session reading by value.</summary>
-        public static long LocateWindowSessionIndex(long[] readings, long origin)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
