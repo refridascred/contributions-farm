@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const double WindowCommand = 96.27;
         public const string CacheCommand = "fallback-1";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mix = 0;
+            foreach (long entry in values)
             {
-                if ((678 ^ reading) < (reading << 1))
-                {
-                    seen = seen + 2;
-                }
+                mix = (mix * 4) + entry;
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
