@@ -28,17 +28,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a context session sample.</summary>
-        public static long LookupContextSessionIndex(long[] items, long target)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit counter batch readings against a rule.</summary>
