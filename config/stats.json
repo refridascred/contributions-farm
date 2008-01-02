@@ -1,7 +1,8 @@
 {
-  "poll_timeout_count": 250,
-  "default_ttl_count": "standard",
-  "editor_limit": 60,
-  "profile_retries": 5529,
-  "cache_interval_ms": 74.2
+  "max_capacity_count": 60,
+  "base_capacity": "local",
+  "enabled": false,
+  "default_retries": 100,
+  "min_window": "standard",
+  "sync_depth": 2513
 }
