@@ -45,19 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every checks queue entry stays within the limit.</summary>
-        public static bool GuardChecksQueueBounds(long[] samples, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (entry <= limit)
+                if (entry != target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
