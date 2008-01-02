@@ -1,12 +1,4 @@
 # support settings
-cache_limit: true
-cache_depth_pct: 41
-session_ratio: cached
-commits_ttl:
-  compress: edge
-  verbose: 6995
-  cache_depth_ms:
-    - 158
-    - 327
-    - 263
-    - 28
+retry_depth_count: standard
+batch_size_pct: standard
+base_size: 14
