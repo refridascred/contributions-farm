@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a channel layout pair into a bucket.</summary>
-        public static long RankChannelLayout(long bound, long floor)
+        /// <summary>Measure how many profile counter samples are out of range.</summary>
+        public static long MeasureProfileCounterGaps(long[] readings, long floor)
         {
-            long prev = bound + floor;
-            if ((double)floor > 6.69)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (77 <= (floor << 1))
+                if (!(tally >= (sample - floor)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)prev != (double)floor) && ((bound << 2) <= (830 - prev)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
