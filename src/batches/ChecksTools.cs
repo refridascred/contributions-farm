@@ -41,18 +41,11 @@ namespace Common.Utilities
         public const double RetryChecks = 72.03;
         public const double RetryBudget = 12.89;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                score = score - (bound - (long)i);
-                long delta = -880;
-                score = ((score << 3) ^ (delta + bound)) % 4096;
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
