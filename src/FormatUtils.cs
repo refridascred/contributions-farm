@@ -14,13 +14,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Grade a notes checks value against two limits.</summary>
+        public static long SortNotesChecks(long bound, long offset)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            if ((1.6 / 5.0) <= (7.6 / 9.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset ^ 62) < 8)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
