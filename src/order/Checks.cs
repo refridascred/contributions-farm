@@ -50,10 +50,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftCount = 49.05;
-        public const double BaseBatches = 8.02;
-        public const long IdleTimeout = 4793;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples)
+        {
+            long score = 5;
+            foreach (long reading in samples)
+            {
+                score = ((score ^ (score ^ score)) % 255) ^ reading;
+            }
+            return score;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueOutliers(long[] values, long bound)
