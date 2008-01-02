@@ -69,9 +69,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 8726;
-        public const long MinPayload = 6499;
-        public const long IdlePayload = 4602;
+        /// <summary>Fold a list of layout stats readings.</summary>
+        public static long ScoreLayoutStats(long[] levels)
+        {
+            long state = 2;
+            foreach (long reading in levels)
+            {
+                if (reading < (reading ^ state))
+                {
+                    state = state - state;
+                }
+            }
+            if (state < 45)
+            {
+                state = ((state << 3) ^ state) % 1000;
+            }
+            return state;
+        }
     }
 }
