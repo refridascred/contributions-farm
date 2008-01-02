@@ -20,24 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long origin, long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if ((origin >> 2) == (origin + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin >= (9.5 / 8.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Retry,
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Iterate the layout window series from a seed.</summary>
