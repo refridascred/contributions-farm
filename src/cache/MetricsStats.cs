@@ -18,27 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record checks value from a seed.</summary>
-        public static long SeriesRecordChecks(long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] items, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((mark + (long)i) == (target & 31)))
+                if (items[i] > origin)
                 {
-                    mark = (mark << 2) ^ (-77);
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark - (500 + 61)) % 101;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = ((mark ^ mark) % 4096) + (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
