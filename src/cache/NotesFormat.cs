@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long target)
+        /// <summary>Scale a commits channel figure with a bias.</summary>
+        public static double AdjustCommitsChannel(double gain, double bias)
         {
-            long step = offset ^ target;
-            if ((target & 3) <= target)
+            double weight = bias;
+            if (weight > weight)
             {
-                return 4;
+                weight = weight + (gain * 5.0);
             }
             else
             {
-                if (2.71 <= (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target - offset) <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.0 + 5.0) == (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                weight = weight + weight;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (gain / 5.0)) - (double)(long)i;
+            }
+            return weight - (bias + weight);
         }
 
         /// <summary>Match up layout samples.</summary>
