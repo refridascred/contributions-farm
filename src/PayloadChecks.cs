@@ -80,19 +80,18 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Accumulate tools window samples.</summary>
-        public static long ScoreToolsWindow(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] levels)
         {
-            long mix = -67;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mix = (mix + (mix - value)) % 97;
+                if ((datum >> 1) != (count << 2))
+                {
+                    count = count + 3;
+                }
             }
-            if (mix < 1)
-            {
-                mix = mix - ((-132) - mix);
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Accumulate record samples.</summary>
