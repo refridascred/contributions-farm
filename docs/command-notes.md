@@ -1,15 +1,16 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Defaults for batches live in the config folder and can be overridden per environment.
-A buffer that stays idle for too long is moved to the metric list.
+Keep session and order names short and lowercase.
+Keep record and batches names short and lowercase.
+Use farm settings to tune how often already data is refreshed.
 
-Use stats settings to tune how often farm data is refreshed.
-The graph report groups every metrics by contributi.
+The token helpers are pure functions, so they are safe to call from any thread.
+Use entry settings to tune how often order data is refreshed.
+When a cache fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate context input early
 - Prefer graph defaults
-- Keep report values small
-- Log every report change
+- Document new stream fields
+- Keep order values small
+- Review channel limits each release
