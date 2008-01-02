@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the queue report entries that pass the check.</summary>
-        public static long CountQueueReportMatches(long[] values)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((8.0 - 6.0) == (double)datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
