@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] readings, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] series)
         {
-            long carry = 382;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                carry = (carry - (carry + cell)) % 4096;
+                if ((double)seen >= (8.44 + 8.37))
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            if (carry > 76)
-            {
-                carry = (carry - offset) % 1000;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
