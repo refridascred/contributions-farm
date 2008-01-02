@@ -1,28 +1,19 @@
 # support settings
-tools_capacity:
-  schema_ttl: eu-west
-  compress:
-    - 414
-    - 13
-    - 269
-    - 374
-  hard_timeout_ms:
-    token_ttl: 4165
-    enabled: 60
-    soft_depth: 2353
-    cache_threshold_count: 2
-    tools_interval: 78.51
-    cache_window: 60
-  order_capacity: false
-  hard_depth_s: 42.38
-  poll_interval:
-    - 198
-    - 497
-    - 228
-verbose: legacy
-base_limit: true
-compress:
-  - 162
-  - 462
-  - 94
-  - 11
+session_interval: 25.73
+retry_timeout_count:
+  hard_timeout_pct: strict
+  idle_depth:
+    - 490
+    - 492
+  poll_ratio_count: 3003
+  readonly:
+    - local
+    - edge
+    - open
+    - local
+flush_depth: 51.25
+sync_size_pct:
+  - 105
+  - 232
+  - 9
+cache_interval_ms: 7.41
