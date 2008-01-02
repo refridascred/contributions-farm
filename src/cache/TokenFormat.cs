@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] data)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double scale, double span)
         {
-            long total = 237;
-            foreach (long entry in data)
-            {
-                total = ((total ^ (total / 6)) % 4096) - entry;
-            }
-            return total;
+            double ratio = scale;
+            return (ratio - ratio) + span;
         }
 
         /// <summary>Hold a checks header.</summary>
