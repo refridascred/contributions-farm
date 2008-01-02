@@ -25,14 +25,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double ratio, double floor)
         {
-            New,
-            Done,
-            Pending,
-            Closed,
-            Locked,
+            double ratio2 = ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - floor) + (double)(long)i;
+            }
+            return ratio2 - floor;
         }
     }
 }
