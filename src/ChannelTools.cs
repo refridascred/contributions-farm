@@ -50,21 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batches batch samples.</summary>
-        public static long MatchBatchesBatchCount(long[] samples)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
     }
 }
