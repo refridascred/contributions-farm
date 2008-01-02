@@ -23,13 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Project the next channel value.</summary>
