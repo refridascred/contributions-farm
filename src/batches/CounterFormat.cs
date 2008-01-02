@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every stream cache entry stays within the limit.</summary>
-        public static bool CheckStreamCacheBounds(long[] series, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
