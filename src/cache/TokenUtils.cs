@@ -27,9 +27,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstCount = 6339;
-        public const double BatchOrder = 15.47;
-        public const long LimitDepth = 4093;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] data)
+        {
+            long total = -77;
+            foreach (long reading in data)
+            {
+                total = (total ^ (reading & 63)) % 255;
+            }
+            if (total > 5)
+            {
+                total = total - (total & 255);
+            }
+            return total;
+        }
     }
 }
