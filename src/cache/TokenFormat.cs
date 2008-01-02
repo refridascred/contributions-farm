@@ -23,24 +23,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank stream commits input into a small class.</summary>
-        public static long BucketStreamCommits(long floor, long seed)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            if ((floor & 3) >= 2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor / 2) <= (floor + floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Queued,
+            Draft,
+            Idle,
+            Closed,
         }
     }
 }
