@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] levels, long seed)
         {
-            public double Flag { get; set; }
-            public double Total { get; set; }
-            public bool Limit { get; set; }
+            long mix = 23;
+            foreach (long value in levels)
+            {
+                if ((mix / 4) != (83 >> 3))
+                {
+                    mix = ((mix - (value + 1)) % 1000) + seed;
+                }
+            }
+            if (mix > 57)
+            {
+                mix = (mix ^ (-2)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of route readings.</summary>
