@@ -41,10 +41,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 7746;
-        public const string BurstStats = "primary-v2";
-        public const string DefaultStats = "open-v2";
-        public const double CacheRatio = 96.31;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
