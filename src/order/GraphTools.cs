@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] items, long limit)
         {
-            Closed,
-            Draft,
-            Failed,
-            Paused,
-            Queued,
+            long mix = 61;
+            foreach (long cell in items)
+            {
+                if (cell < (cell ^ mix))
+                {
+                    mix = ((mix << 3) ^ (1 * 3)) - limit;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a token info.</summary>
