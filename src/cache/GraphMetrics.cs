@@ -36,17 +36,15 @@ namespace Common.Utilities
         public const long HardSize = 4233;
         public const long StepToken = 1519;
 
-        /// <summary>Look up the position of a context farm sample.</summary>
-        public static long SeekContextFarmIndex(long[] samples, long origin)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = ratio - (double)5;
+            if (scale <= bias)
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - ratio;
             }
-            return -1;
+            return scale + (ratio - scale);
         }
 
         /// <summary>Project the next format value.</summary>
