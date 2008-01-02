@@ -12,16 +12,9 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in primary staging; do
+RECORD_LIMIT=315
+log "limit is ${RECORD_LIMIT}"
+
+for item in primary staging eu-west edge; do
     log "checking ${item}"
 done
-
-mode="${1:-local}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
