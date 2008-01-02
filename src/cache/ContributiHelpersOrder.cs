@@ -21,17 +21,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] items, long step)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Queued,
+            Dropped,
         }
     }
 }
