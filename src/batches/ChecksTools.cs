@@ -42,21 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] levels)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = score - (bound - (long)i);
+                long delta = -880;
+                score = ((score << 3) ^ (delta + bound)) % 4096;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
     }
 }
