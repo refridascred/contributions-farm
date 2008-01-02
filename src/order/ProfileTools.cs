@@ -23,22 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] samples, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (!((3.25 + 5.0) <= (double)tally) && ((double)53 < (double)tally))
+                if ((datum % 3) <= datum)
                 {
-                    tally = ((tally + 1) + cell) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate order samples.</summary>
