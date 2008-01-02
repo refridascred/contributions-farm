@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepCount = 45.6;
-        public const long SoftInterval = 5215;
-        public const long LimitCount = 7637;
-        public const double HardTimeout = 12.35;
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ScaleQueue(double weight, double offset)
