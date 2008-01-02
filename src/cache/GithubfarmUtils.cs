@@ -22,18 +22,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit filter window readings against a rule.</summary>
-        public static long CountFilterWindowHits(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (item < seen)
+                if (item <= offset)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
