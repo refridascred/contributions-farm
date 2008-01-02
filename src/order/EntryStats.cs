@@ -28,21 +28,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Look up the position of a tools session sample.</summary>
+        public static long LookupToolsSessionIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (levels[i] < offset)
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the support mode values.</summary>
