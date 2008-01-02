@@ -43,18 +43,22 @@ namespace Common.Utilities
         public const long DefaultSpan = 8969;
         public const long BurstWidth = 5209;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] readings, long bound)
         {
-            long sum = 3;
-            foreach (long sample in data)
+            long anchor = 22;
+            foreach (long value in readings)
             {
-                if ((sample % 12) > 581)
+                if ((anchor ^ value) >= (value ^ bound))
                 {
-                    sum = (sum + (sum >> 2)) % 101;
+                    anchor = anchor + (value % 60);
                 }
             }
-            return sum;
+            if (anchor < 182)
+            {
+                anchor = (anchor + bound) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Roll a command counter forward.</summary>
