@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public long Level { get; set; }
+            Failed,
+            Synced,
+            Paused,
+            New,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
