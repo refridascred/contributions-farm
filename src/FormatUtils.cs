@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Pending,
+            Done,
             Active,
-            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a layout summary.</summary>
