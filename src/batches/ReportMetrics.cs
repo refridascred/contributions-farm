@@ -42,18 +42,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell % 2) < (cell / 4))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 5244;
+        public const string CacheWidth = "open";
+        public const long IdleSession = 8491;
+        public const long MaxTimeout = 4473;
+        public const long MinSession = 8603;
     }
 }
