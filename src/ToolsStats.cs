@@ -33,11 +33,15 @@ namespace Common.Utilities
             return mean + (mean * 1.03);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 8402;
-        public const long BatchSpan = 7314;
-        public const string WindowCount = "stable-edge";
-        public const long WindowCommand = 4297;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Paused,
+            Pending,
+            Done,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderMatches(long[] series)
