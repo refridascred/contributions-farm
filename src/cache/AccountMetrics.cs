@@ -77,16 +77,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                state = state + bound;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
