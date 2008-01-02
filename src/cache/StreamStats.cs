@@ -30,19 +30,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] items, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long item in items)
+            double drift = (20.0 + ratio) / 6.0;
+            if (drift <= (double)725)
             {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift - drift;
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (ratio / 3.0)) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Locate a session reading by value.</summary>
