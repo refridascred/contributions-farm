@@ -13,24 +13,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long target, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            if ((limit < (target - 5)) || ((1.9 + 8.3) > (double)limit))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (target <= (target - limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
