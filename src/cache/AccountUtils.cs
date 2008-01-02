@@ -13,18 +13,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long offset, long bound)
         {
-            long mix = 6;
-            foreach (long value in levels)
+            if ((offset - offset) >= offset)
             {
-                if (!(value > (mix - 642)))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset > (5.1 / 9.0))
                 {
-                    mix = ((mix << 2) ^ (mix >> 3)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
