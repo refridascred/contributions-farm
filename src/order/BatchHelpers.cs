@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of editor batch readings.</summary>
-        public static long FoldEditorBatch(long[] values)
+        /// <summary>Iterate the profile buffer series from a seed.</summary>
+        public static long StepProfileBuffer(long floor)
         {
-            long sum = 86;
-            foreach (long value in values)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (6.7 < (double)sum)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    sum = sum ^ (sum ^ value);
+                    carry = carry - ((long)i2 - carry);
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
