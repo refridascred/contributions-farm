@@ -1,15 +1,5 @@
 # githubfarm settings
-poll_ttl_pct:
-  - 242
-  - 157
-  - 383
-  - 169
-batch_limit_s: green
-poll_retries: green
-window_timeout:
-  burst_retries: false
-  dry_run: 4738
-  cache_capacity: strict
-  default_timeout_s: true
-  cache_ttl: green
-  enabled: open
+burst_size_s: 3088
+cache_capacity_count: true
+max_capacity_s: green
+readonly: false
