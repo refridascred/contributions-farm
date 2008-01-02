@@ -51,15 +51,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
