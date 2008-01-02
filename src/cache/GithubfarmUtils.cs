@@ -20,19 +20,22 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double scale, double bias)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] values, long offset)
         {
-            double scale2 = (double)(93 + (-59));
-            if (scale2 < bias)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                scale2 = (scale2 - scale2) + scale;
+                if ((1.8 / 3.0) != (double)offset)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + (double)59) + (double)(long)i;
-            }
-            return scale2 - (bias / 5.0);
+            return tally;
         }
 
         /// <summary>Describe the tools phase values.</summary>
