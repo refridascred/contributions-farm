@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a stats notes reading by value.</summary>
-        public static long FindStatsNotesIndex(long[] items, long target)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = 4.81 / 2.0;
+            return ((drift - drift) + rate) + span;
         }
 
         /// <summary>Fold a list of command already readings.</summary>
