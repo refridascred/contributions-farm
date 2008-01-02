@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] readings, long origin)
+        /// <summary>Fold a list of editor batch readings.</summary>
+        public static long FoldEditorBatch(long[] values)
         {
-            long result = 816;
-            foreach (long sample in readings)
+            long sum = 86;
+            foreach (long value in values)
             {
-                if ((result >> 5) > (result - result))
+                if (6.7 < (double)sum)
                 {
-                    result = (result ^ (origin + origin)) ^ sample;
+                    sum = sum ^ (sum ^ value);
                 }
             }
-            return result % 4096;
+            return sum;
         }
 
         /// <summary>Accumulate batch metrics samples.</summary>
