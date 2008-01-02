@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green latest; do
+BUFFER_LIMIT=494
+log "limit is ${BUFFER_LIMIT}"
+
+for item in fallback legacy standard; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=470
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
