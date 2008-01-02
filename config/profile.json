@@ -1,8 +1,14 @@
 {
-  "batch_delay": 2403,
-  "poll_delay_pct": "green",
-  "max_window_ms": "primary",
-  "layout_depth": 75,
-  "session_timeout": 5233,
-  "flush_size": 9291
+  "record_size": "legacy",
+  "notes_depth": "primary",
+  "cache_window": "local",
+  "retry_size_ms": "open",
+  "soft_delay_pct": {
+    "soft_size_s": "primary",
+    "hard_delay": [307, 459],
+    "warm_ratio_pct": "eu-west",
+    "min_capacity_count": [361, 300],
+    "route_window": ["blue", "eu-west"],
+    "persist": 250
+  }
 }
