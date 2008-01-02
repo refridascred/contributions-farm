@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] items)
         {
-            Stale,
-            Dropped,
-            Done,
+            long total = -62;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (total - (1 - total)) + (long)i;
+                }
+                if (((cell % 2) <= cell) || ((double)cell != (8.0 * 3.0)))
+                {
+                    total = (total * 3) + cell;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
