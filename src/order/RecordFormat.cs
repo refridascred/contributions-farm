@@ -81,19 +81,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] data, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long target)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return stale;
+            return carry;
         }
     }
 }
