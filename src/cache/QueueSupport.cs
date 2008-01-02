@@ -40,15 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] levels, long origin)
-        {
-            long sum = 8;
-            foreach (long datum in levels)
-            {
-                sum = ((sum - 29) ^ datum) + origin;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowSize = 5538;
+        public const double BurstCount = 34.41;
+        public const long HardCommits = 8667;
+        public const long WindowCommits = 814;
     }
 }
