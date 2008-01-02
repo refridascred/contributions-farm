@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long CacheStats = 8705;
         public const long WindowSize = 7704;
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double bias, double bias2)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] readings, long bound)
         {
-            double mean = bias / 8.0;
-            if (mean <= (double)323)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                mean = (mean - bias) - bias2;
+                if (cell >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - mean;
+            return stale;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
