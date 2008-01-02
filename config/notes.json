@@ -1,5 +1,12 @@
 {
-  "contributi_capacity": false,
-  "readonly": 30,
-  "retry_interval_s": 93.66
+  "retry_capacity_count": true,
+  "poll_retries_pct": {
+    "session_threshold": 77,
+    "farm_retries": 16.16,
+    "verbose": "stable",
+    "enabled": 22
+  },
+  "cache_size": true,
+  "retry_depth_count": 2990,
+  "min_threshold": 38.98
 }
