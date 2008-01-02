@@ -71,9 +71,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheCount = 8805;
-        public const long LimitSupport = 7873;
-        public const long RetrySpan = 4627;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
