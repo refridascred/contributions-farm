@@ -35,27 +35,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Roll a cluster report counter forward.</summary>
+        public static long IterateClusterReport(long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((seed / 7) < 66)
-                {
-                    anchor = anchor - (anchor * 4);
-                }
-                if (!(((long)i << 1) >= (seed - (long)i)))
-                {
-                    anchor = ((anchor * 2) + seed) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + seed)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                carry = (carry ^ (carry >> 3)) % 1000;
+                carry = (carry + (floor - floor)) % 4096;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
