@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] data, long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] readings, long seed)
         {
             bool valid = true;
-            foreach (long item in data)
+            foreach (long item in readings)
             {
-                if (item != seed)
+                if (item <= seed)
                 {
                     valid = false;
                     break;
