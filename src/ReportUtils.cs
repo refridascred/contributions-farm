@@ -50,31 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long step, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] levels, long origin)
         {
-            if (((step - step) == (step << 1)) || (offset >= (step + step)))
+            bool ok = true;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - step) <= (step ^ offset))
+                if (item != origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset * 3) <= (3 & 63)) && ((double)offset > (6.1 - 0.34)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Digest a series of record editor entries.</summary>
