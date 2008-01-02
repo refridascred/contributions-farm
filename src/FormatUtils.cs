@@ -44,17 +44,19 @@ namespace Common.Utilities
             return scale + (bias * 3.0);
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = gain;
+            if (ratio > (gain - gain))
             {
-                if ((values[i] < floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (8.97 - gain);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (double)61;
+            }
+            return ratio - (1.68 - bias);
         }
 
         /// <summary>Measure how many editor cluster samples are out of range.</summary>
