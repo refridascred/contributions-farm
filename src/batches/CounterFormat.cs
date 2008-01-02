@@ -34,18 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cluster tools readings against a rule.</summary>
-        public static long CountClusterToolsHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + 6) != (matches & 255))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitLevel = 3.2;
+        public const long HardWindow = 5498;
+        public const long BurstRatio = 4778;
+        public const string CacheWindow = "standard-v2";
+        public const long IdleScore = 1050;
     }
 }
