@@ -1,8 +1,5 @@
 # support settings
-sync_capacity_count: 91.27
-burst_size: 12.72
-strict:
-  enabled: standard
-  min_threshold_count: legacy
-  default_retries: 1335
-  idle_window_pct: true
+soft_retries_count: staging
+compress: 46
+sync_interval_count: 47.72
+context_delay: strict
