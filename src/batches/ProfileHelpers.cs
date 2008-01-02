@@ -66,13 +66,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Ready,
-            Synced,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchScore = 1201;
+        public const double SoftToken = 10.19;
+        public const long RetryScore = 6898;
     }
 }
