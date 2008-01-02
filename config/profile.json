@@ -1,5 +1,6 @@
 {
-  "flush_delay_count": [324, 433],
-  "max_threshold": "green",
-  "default_timeout_pct": [197, 335, 166, 26]
+  "retry_capacity_s": ["local", "stable"],
+  "audit": false,
+  "retry_depth_pct": [230, 6, 286, 494],
+  "cache_depth_ms": 7387
 }
