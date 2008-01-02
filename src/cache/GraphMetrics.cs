@@ -40,21 +40,12 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Match up graph entry samples.</summary>
-        public static long OverlapGraphEntryCount(long[] samples)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Queued,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
