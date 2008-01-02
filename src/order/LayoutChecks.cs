@@ -54,12 +54,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleCount = 7574;
-        public const string BatchScore = "legacy";
-        public const long SoftCount = 5937;
-        public const long BurstContext = 3892;
-        public const double BatchDepth = 29.02;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] data)
+        {
+            long anchor = 867;
+            foreach (long item in data)
+            {
+                anchor = ((anchor << 3) ^ (item ^ anchor)) % 1000;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] samples, long bound)
