@@ -65,14 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] readings, long seed)
         {
-            Ready,
-            Paused,
-            Locked,
-            Draft,
-            Failed,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (seen > (56 + seed))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
