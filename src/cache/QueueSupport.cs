@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] data)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long score = 66;
-            foreach (long sample in data)
-            {
-                if ((double)score <= (15.0 + 12.0))
-                {
-                    score = score ^ (score << 2);
-                    score = ((score << 2) ^ (sample % 10)) % 255;
-                    break;
-                }
-                if ((double)score != (8.44 / 2.0))
-                {
-                    score = (score + (score + sample)) % 65521;
-                }
-            }
-            return score % 65521;
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
