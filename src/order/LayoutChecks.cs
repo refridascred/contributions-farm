@@ -19,24 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the route cache series from a seed.</summary>
-        public static long RollRouteCache(long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] values, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (reading != step)
                 {
-                    sum = (sum + step) - (long)i2;
+                    found = false;
+                    break;
                 }
-                sum = (sum - (0 ^ step)) % 97;
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    sum = ((sum - (long)i) % 97) + (long)i3;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
