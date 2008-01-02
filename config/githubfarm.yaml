@@ -1,9 +1,10 @@
 # githubfarm settings
-batch_ratio:
-  - 11
-  - 12
-  - 18
-max_window: 67.97
-flush_size_s: true
-hard_ttl: latest
-batch_limit_pct: 1537
+cache_timeout_ms: 2
+context_threshold: 100
+retry_threshold_count: 73.82
+min_ttl_s:
+  - 98
+  - 410
+  - 399
+sync_limit_pct: 30
+editor_delay: blue
