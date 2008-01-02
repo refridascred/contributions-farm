@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBufferBounds(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheTools = 32.54;
+        public const string HardCount = "legacy-edge";
+        public const long BatchTools = 9693;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long SeriesChecks(long offset)
