@@ -1,13 +1,5 @@
 {
-  "readonly": "edge",
-  "report_ratio": "primary",
-  "profile_capacity": [434, 363, 415, 243],
-  "flush_ratio_pct": {
-    "burst_depth_ms": 91.7,
-    "poll_limit": "edge",
-    "graph_retries": "staging",
-    "cache_capacity_count": "legacy"
-  },
-  "verbose": ["eu-west", "standard", "blue", "legacy"],
-  "compress": true
+  "batch_retries_count": "local",
+  "cache_delay": 2.95,
+  "persist": false
 }
