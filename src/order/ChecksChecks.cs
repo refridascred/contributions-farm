@@ -16,19 +16,31 @@ namespace Common.Utilities
             return mean - (double)93;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] samples, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long step, long target)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            if (((step - step) <= (target + target)) || ((target % 16) == (step << 3)))
             {
-                if (cell > target)
+                return 8;
+            }
+            else
+            {
+                if (((step ^ target) < (target + (-7))) || ((target & 3) <= (target << 1)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((target * 4) < (target - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
