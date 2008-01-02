@@ -27,15 +27,11 @@ namespace Common.Utilities
         public const long HardLevel = 5200;
         public const long BatchSpan = 8889;
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double bias, double bias2)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double load = (bias2 / 7.0) + (double)952;
-            if (load <= bias2)
-            {
-                load = (load + (load * 4.11)) + bias;
-            }
-            return load - 3.22;
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
