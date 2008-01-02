@@ -58,9 +58,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchRatio = 7598;
-        public const long IdleWidth = 5129;
-        public const long HardCommand = 9527;
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
