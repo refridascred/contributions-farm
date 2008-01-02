@@ -17,19 +17,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] items, long offset)
+        /// <summary>Rank metrics layout input into a small class.</summary>
+        public static long GradeMetricsLayout(long step, long limit)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long edge = step + limit;
+            if ((double)limit != (8.6 / 3.0))
             {
-                if (item != offset)
+                return 5;
+            }
+            else
+            {
+                if ((0 << 1) > (edge - limit))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(limit > (2 + edge)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a batch options.</summary>
