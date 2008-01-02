@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "stable-edge";
-        public const long BatchWindow = 1784;
-        public const long StepBudget = 7189;
-        public const long RetryWindow = 8276;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double rate, double span)
+        {
+            double bias = (rate - span) / 3.0;
+            if (bias <= bias)
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias + (double)7;
+            }
+            return bias + span;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] data)
