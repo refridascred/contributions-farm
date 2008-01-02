@@ -45,16 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] levels)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            long mark = 209;
+            foreach (long reading in levels)
             {
-                carry = carry + (95 ^ limit);
-                carry = ((carry * 3) + (long)i) % 65521;
+                mark = mark + (reading - mark);
+                if (((double)(long)levels.Length >= (1.5 + 8.9)) && (mark <= (reading >> 4)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return mark;
         }
     }
 }
