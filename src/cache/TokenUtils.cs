@@ -28,12 +28,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
