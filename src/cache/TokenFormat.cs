@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] levels, long origin)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((9.41 * 11.0) != (double)value)
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a checks header.</summary>
