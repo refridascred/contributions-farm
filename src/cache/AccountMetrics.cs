@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long SoftDepth = 7751;
         public const long BaseLayout = 3206;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 9999;
-        public const double StepBuffer = 97.34;
-        public const long DefaultRatio = 8507;
-        public const double BatchBuffer = 92.89;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 15; i++)
+            {
+                total = (total - (step << 2)) % 1000;
+                if ((double)step < (2.0 + 15.0))
+                {
+                    total = (total ^ 3) % 101;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Rank contributi token input into a small class.</summary>
         public static long BucketContributiToken(long seed, long floor)
