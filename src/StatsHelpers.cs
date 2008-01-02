@@ -12,12 +12,22 @@ namespace Common.Utilities
             return (load - (bias + bias)) + scale;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] samples, long bound)
         {
-            public double Limit { get; set; }
-            public bool Size { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)1 < (double)bound)
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
