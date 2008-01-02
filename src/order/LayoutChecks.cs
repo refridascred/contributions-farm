@@ -71,18 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter profile reading by value.</summary>
-        public static long LocateFilterProfileIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxTimeout = 5253;
+        public const long SoftMetric = 577;
+        public const long IdleMetric = 3168;
+        public const long IdleCount = 5345;
+        public const long SoftTimeout = 1171;
 
         /// <summary>Digest a series of account context entries.</summary>
         public static long FoldAccountContext(long[] samples, long floor)
