@@ -31,18 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout profile entries.</summary>
-        public static long TotalLayoutProfile(long[] levels)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long carry = 950;
-            foreach (long item in levels)
-            {
-                if ((carry ^ item) > item)
-                {
-                    carry = (carry + (93 / 6)) % 65521;
-                }
-            }
-            return carry % 1000;
+            Draft,
+            Synced,
+            Closed,
         }
     }
 }
