@@ -33,12 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitLevel = 1131;
-        public const long MaxMetric = 4689;
-        public const long BurstCount = 2152;
-        public const long RetryBudget = 9787;
-        public const long BaseTimeout = 5315;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardLevel = 6221;
