@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowInterval = 6334;
-        public const long BatchInterval = 7717;
-        public const long BurstReport = 8372;
-        public const string BurstLevel = "alpha-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 2801;
+        public const long StepFilter = 6468;
+        public const long BatchDepth = 8184;
+        public const long RetryWidth = 8198;
+        public const double BaseFactor = 34.41;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] items)
