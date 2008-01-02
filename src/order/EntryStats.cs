@@ -28,18 +28,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a tools session sample.</summary>
-        public static long LookupToolsSessionIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleDepth = "standard";
+        public const long MaxSize = 29;
+        public const long BatchSize = 1793;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
