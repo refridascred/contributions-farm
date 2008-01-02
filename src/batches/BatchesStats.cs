@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the contributi graph entries that pass the check.</summary>
-        public static long TallyContributiGraphMatches(long[] data, long bound)
+        /// <summary>Validate stats route readings against a bound.</summary>
+        public static bool GuardStatsRouteLimits(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((bound >= (cell - hits)) && ((cell - cell) < (hits + hits)))
+                if (entry != floor)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
