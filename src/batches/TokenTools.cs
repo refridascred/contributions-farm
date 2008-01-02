@@ -27,19 +27,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] items, long offset)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading > offset)
+                if (!(825 <= (mix + origin)))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix * 3) + origin) % 4096;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
