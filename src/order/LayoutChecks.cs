@@ -54,13 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Check that every metric route entry stays within the limit.</summary>
+        public static bool CheckMetricRouteRange(long[] series, long step)
         {
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up stats batches samples.</summary>
