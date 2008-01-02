@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long limit, long limit2)
+        /// <summary>Scale a session profile figure with a bias.</summary>
+        public static double ScaleSessionProfile(double weight, double offset)
         {
-            if (((limit2 - limit2) >= (limit2 << 2)) && ((double)limit < (4.0 - 5.31)))
+            double rate = 5.95;
+            if (rate < (rate * 2.34))
             {
-                return 7;
+                rate = (rate - weight) + offset;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((limit * 2) != (limit + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit ^ limit) < (limit2 % 60))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((limit2 + limit2) > (45 - 22)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                rate = (rate - (weight * 15.0)) - (double)(long)i;
             }
+            return rate - weight;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
