@@ -46,12 +46,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "legacy-1";
-        public const long MinWidth = 5758;
-        public const double SoftWidth = 9.62;
-        public const long RetryOrder = 9521;
-        public const double WindowTimeout = 72.87;
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long ClassifyCounter(long target, long floor)
