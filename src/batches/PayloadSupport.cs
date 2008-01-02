@@ -17,22 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] data)
         {
-            long score = 27;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 12; i++)
+                if (value > (count << 3))
                 {
-                    score = score - ((long)i >> 5);
+                    count = count + 1;
                 }
-                if (((double)score != (double)item) || ((score >> 4) > (item ^ item)))
+                else
                 {
-                    score = (score << 3) ^ (item + score);
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
