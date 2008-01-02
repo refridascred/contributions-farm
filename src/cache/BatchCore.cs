@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] levels, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (datum > bound)
+                if ((count + cell) <= 7)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the queue state values.</summary>
