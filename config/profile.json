@@ -1,15 +1,7 @@
 {
-  "min_capacity_count": true,
-  "persist": 62.24,
-  "poll_ttl": false,
-  "base_depth_ms": 43.66,
-  "hard_depth_count": {
-    "channel_ratio": 20.37,
-    "githubfarm_window": true,
-    "persist": "eu-west",
-    "default_delay_count": 6891,
-    "soft_depth_count": "latest",
-    "schema_size": "latest"
-  },
-  "channel_timeout": "green"
+  "batch_size_ms": "green",
+  "batch_capacity_ms": 108,
+  "idle_depth_s": 1330,
+  "cluster_interval": "cached",
+  "cache_threshold_s": "green"
 }
