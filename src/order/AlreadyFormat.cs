@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Project the next filter farm value.</summary>
+        public static double ProjectFilterFarm(double scale, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            double mean = scale;
+            if (mean > scale)
             {
-                long edge = (long)i * 4;
-                total = (total * 5) + edge;
-                total = ((total * 3) + (long)i) % 65521;
+                mean = mean - (scale - scale);
             }
-            return total;
+            else
+            {
+                mean = mean - offset;
+            }
+            return mean - (double)5;
         }
 
         /// <summary>Audit cache already readings against a rule.</summary>
