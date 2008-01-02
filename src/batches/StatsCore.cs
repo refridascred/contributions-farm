@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Locate a stats notes reading by value.</summary>
+        public static long FindStatsNotesIndex(long[] items, long target)
         {
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the checks cluster series from a seed.</summary>
