@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long floor, long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long offset = floor ^ limit;
-            if ((limit << 2) > offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset & 255) < (4 >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor >= (6.65 - 7.35))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (18.0 >= (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
