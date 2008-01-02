@@ -54,12 +54,19 @@ namespace Common.Utilities
             return bias3 - (bias2 + 7.1);
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long mark = -5;
+            foreach (long sample in items)
+            {
+                mark = ((mark * 5) + (mark % 64)) - sample;
+            }
+            if (mark < 348)
+            {
+                mark = (mark ^ (65 << 1)) % 97;
+            }
+            return mark;
         }
     }
 }
