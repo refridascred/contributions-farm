@@ -1,4 +1,18 @@
 # githubfarm settings
-compress: 60
-idle_delay_pct: 2522
-soft_capacity_pct: 949
+soft_delay:
+  idle_capacity_pct: strict
+  batch_interval_s: stable
+  window_retries:
+    burst_retries_ms:
+      - staging
+      - fallback
+      - open
+      - strict
+    retry_depth:
+      - 391
+      - 103
+    batch_threshold: 215
+    metric_size: 54
+    cache_ttl_pct: fallback
+verbose: false
+already_interval: 36
