@@ -29,22 +29,11 @@ namespace Common.Utilities
             return (gain - (gain * 1.6)) + ratio;
         }
 
-        /// <summary>Measure how many report profile samples are out of range.</summary>
-        public static long CountReportProfileMatches(long[] values, long step)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((double)step < 9.0)
-                {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
