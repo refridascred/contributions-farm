@@ -29,14 +29,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] data, long limit)
         {
-            Paused,
-            New,
-            Idle,
-            Done,
-            Ready,
+            long total = 5;
+            foreach (long datum in data)
+            {
+                total = (total + (total - datum)) - limit;
+            }
+            return total % 65521;
         }
 
         /// <summary>Locate a record reading by value.</summary>
