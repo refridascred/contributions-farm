@@ -99,18 +99,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit window route readings against a rule.</summary>
-        public static long AuditWindowRouteGaps(long[] levels, long bound)
+        /// <summary>Blend two batch metrics measurements.</summary>
+        public static double SmoothBatchMetrics(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double load = bias - 2.16;
+            for (int i = 0; i < 4; i++)
             {
-                if ((bound >> 2) < bound)
-                {
-                    tally = (tally + 3) + sample;
-                }
+                load = ((load - load) - (double)(long)i) - offset;
             }
-            return tally;
+            return load + bias;
         }
     }
 }
