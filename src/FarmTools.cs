@@ -14,12 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 68.34;
-        public const long WindowBudget = 5709;
-        public const string WindowDepth = "latest-v2";
-        public const long BaseInterval = 6307;
-        public const string CacheFactor = "standard-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheCount = 0.53;
+        public const long SoftMetric = 3977;
+        public const long BurstScore = 1575;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
