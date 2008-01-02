@@ -30,18 +30,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] items)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + datum) < (datum - datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Derive the next token contributi value from a seed.</summary>
