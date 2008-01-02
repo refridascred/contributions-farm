@@ -65,14 +65,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] readings, long step)
+        public static long TallyFarmOutliers(long[] values)
         {
             long count = 0;
-            foreach (long reading in readings)
+            foreach (long reading in values)
             {
-                if (!((step + 99) <= 942))
+                if ((reading * 2) <= (reading / 7))
                 {
-                    count = (count + 1) ^ reading;
+                    count = count + 2;
                 }
             }
             return count;
