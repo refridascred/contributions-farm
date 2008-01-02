@@ -37,15 +37,9 @@ namespace Common.Utilities
         public const double HardBuffer = 71.37;
         public const long BurstBuffer = 299;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] readings, long bound)
-        {
-            long anchor = 632;
-            foreach (long item in readings)
-            {
-                anchor = (((anchor * 2) + (item * 4)) % 255) - bound;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 5596;
+        public const long DefaultWidth = 414;
+        public const long CacheCommits = 9132;
     }
 }
