@@ -28,19 +28,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 6664;
+        public const long DefaultBudget = 746;
+        public const double DefaultWidth = 30.42;
     }
 }
