@@ -52,18 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] series)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double bias)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double mean = 2.4;
+            if (mean > (mean / 3.0))
             {
-                if (!(((count + (long)series.Length) <= (datum ^ count)) || ((datum >> 1) > count)))
-                {
-                    count = count + 1;
-                }
+                mean = mean + mean;
             }
-            return count;
+            else
+            {
+                mean = mean - 9.34;
+            }
+            return mean - (gain + bias);
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
