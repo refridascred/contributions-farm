@@ -34,11 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepInterval = 40.49;
-        public const double DefaultScore = 97.21;
-        public const long BatchContext = 1550;
-        public const string RetryContext = "standard";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitRatio = 5.23;
+        public const long BaseCount = 9049;
+        public const string DefaultStats = "stable-1";
+        public const long RetrySpan = 9209;
+        public const long MinTimeout = 1643;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double SoftSize = 46.91;
