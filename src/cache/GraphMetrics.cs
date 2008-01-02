@@ -33,16 +33,11 @@ namespace Common.Utilities
         public const double BatchDepth = 8.58;
         public const long HardGithubfarm = 7381;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardSize = 6498;
+        public const string WindowCache = "fallback-1";
+        public const double SoftFactor = 61.16;
+        public const double RetryCache = 48.28;
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
