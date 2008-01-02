@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double scale, double bias)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            double load = (double)14 + scale;
+            if (load >= (bias / 9.0))
             {
-                mark = (mark + 772) % 255;
-                mark = ((mark * 2) + (long)i) % 4093;
+                load = load - (bias * 1.65);
             }
-            return mark;
+            else
+            {
+                load = load - scale;
+            }
+            return load - (scale / 7.0);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
