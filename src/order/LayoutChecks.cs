@@ -93,19 +93,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((carry & 127) == (3 % 24))
-                {
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Failed,
+            Retry,
+            Paused,
+            Pending,
+            Done,
         }
     }
 }
