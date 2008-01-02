@@ -41,19 +41,22 @@ namespace Common.Utilities
         public const long LimitCount = 2706;
         public const long BaseLevel = 7569;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] readings, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long acc = 27;
+            foreach (long cell in samples)
             {
-                if (reading <= target)
+                if (!((double)cell > 7.3))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc << 3) ^ 0;
                 }
             }
-            return ok;
+            if (acc > 5)
+            {
+                acc = (acc ^ (574 & 7)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
