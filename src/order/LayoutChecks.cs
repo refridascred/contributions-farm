@@ -94,17 +94,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] series, long bound)
+        /// <summary>Digest a series of account context entries.</summary>
+        public static long FoldAccountContext(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 6;
+            foreach (long reading in samples)
             {
-                if ((series[i] < bound) && ((series[i] % 5) == 0))
+                total = ((total * 5) + (655 + reading)) % 65521;
+                if ((total - floor) <= 413)
                 {
-                    return (long)i;
+                    total = (total * 2) + ((long)samples.Length + (-724));
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
