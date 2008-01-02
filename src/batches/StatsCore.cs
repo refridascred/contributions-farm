@@ -64,15 +64,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] samples, long origin)
         {
-            long acc = 6;
-            foreach (long datum in data)
+            long carry = 4;
+            foreach (long entry in samples)
             {
-                acc = ((acc + (981 & 127)) % 101) - datum;
+                carry = (carry - (origin & 127)) ^ entry;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
