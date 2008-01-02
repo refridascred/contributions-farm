@@ -1,12 +1,11 @@
 # Command notes
 
-When a cluster fails, the metrics handler retries a few times before giving up.
-Keep session and farm names short and lowercase.
-Use context settings to tune how often githubfarm data is refreshed.
+The schema report groups every batches by editor.
+Keep context and contributi names short and lowercase.
+The buffer module keeps cluster values in sync with the cache cache.
 
 ## Guidelines
 
-- Document new channel fields
-- Log every session change
-- Prefer filter defaults
-- Keep farm values small
+- Validate window input early
+- Review stream limits each release
+- Document new layout fields
