@@ -1,6 +1,9 @@
 # githubfarm settings
-profile_threshold:
-  - local
-  - standard
-enabled: 8
-cache_size: false
+batch_ratio:
+  - 11
+  - 12
+  - 18
+max_window: 67.97
+flush_size_s: true
+hard_ttl: latest
+batch_limit_pct: 1537
