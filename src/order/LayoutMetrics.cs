@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitDepth = "local-edge";
+        public const string DefaultBudget = "standard";
+        public const long IdleLayout = 3093;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long target)
