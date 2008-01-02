@@ -53,19 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] series, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long result = 4;
+            foreach (long entry in readings)
             {
-                if (entry > seed)
+                if ((9.3 - 2.7) > (double)entry)
                 {
-                    ok = false;
-                    break;
+                    result = result + (entry / 7);
                 }
             }
-            return ok;
+            if (result < 9)
+            {
+                result = ((result << 3) ^ (result * 3)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
