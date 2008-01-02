@@ -21,27 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state - state) == (state >> 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state - state;
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((long)i == (origin + origin))
-                {
-                    state = (state - state) % 255;
-                }
-                else
-                {
-                    state = (state + (origin & 63)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
