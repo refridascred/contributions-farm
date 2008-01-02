@@ -25,18 +25,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] samples, long bound)
+        /// <summary>Rank stream commits input into a small class.</summary>
+        public static long BucketStreamCommits(long floor, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            if ((floor & 3) >= 2)
             {
-                if ((3 + cell) <= (count / 8))
+                return 1;
+            }
+            else
+            {
+                if ((floor / 2) <= (floor + floor))
                 {
-                    count = (count + 2) + bound;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
