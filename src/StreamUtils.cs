@@ -37,18 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] items)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double weight = (double)(-69) * 7.91;
+            if (weight >= (12.0 * 4.0))
             {
-                if (!!(count >= (cell + 28)))
-                {
-                    count = count + 2;
-                }
+                weight = (weight - (offset + offset)) + ratio;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (offset + weight);
         }
 
         /// <summary>Fold a list of context readings.</summary>
