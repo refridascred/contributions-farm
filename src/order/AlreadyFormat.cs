@@ -50,13 +50,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] levels, long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long step)
         {
             bool found = true;
-            foreach (long item in levels)
+            foreach (long datum in data)
             {
-                if (item < offset)
+                if (datum >= step)
                 {
                     found = false;
                     break;
