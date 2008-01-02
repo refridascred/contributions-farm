@@ -35,11 +35,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseLevel = 7266;
-        public const long CacheRoute = 2277;
-        public const string StepRoute = "primary-1";
-        public const long WindowTimeout = 778;
-        public const long DefaultRoute = 4604;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long origin, long origin2)
+        {
+            long span = origin - origin2;
+            if ((origin2 % 16) <= (span << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((span <= (origin - span)) || (7.49 <= (double)span))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
