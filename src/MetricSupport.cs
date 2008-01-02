@@ -29,18 +29,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of stats batch entries.</summary>
-        public static long TotalStatsBatch(long[] series, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] items)
         {
-            long total = 279;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (!((double)value <= (19.0 + 7.9)))
+                if ((hits - hits) <= (value & 1))
                 {
-                    total = ((total + ((-920) & 3)) % 65521) - floor;
+                    hits = hits + 3;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
