@@ -10,20 +10,22 @@ namespace Common.Utilities
         public const string HardCount = "legacy-edge";
         public const long BatchTools = 9693;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] items, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((5.4 * 0.4) > (double)offset)
+                if ((matches + 10) <= (item & 31))
                 {
-                    long matches = offset >> 5;
-                    score = (score * 3) + (score - matches);
+                    matches = (matches + 1) + limit;
                 }
-                score = ((score * 5) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
