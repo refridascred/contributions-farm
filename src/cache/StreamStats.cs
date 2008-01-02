@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Locate a channel stats reading by value.</summary>
+        public static long LocateChannelStatsIndex(long[] samples, long seed)
         {
-            long anchor = -5;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value * 3) == (value & 15))
+                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
                 {
-                    anchor = (anchor - (value + anchor)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
