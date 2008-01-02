@@ -1,16 +1,9 @@
 # entry settings
-record_ttl: 250
-counter_limit:
-  poll_size_pct: eu-west
-  compress: 13
-  cache_limit_s: 71
-  stream_timeout:
-    idle_timeout_pct: 75.71
-    window_threshold: 10.91
-    base_window_s: 96.5
-    idle_limit_ms: strict
-    flush_retries_ms: legacy
-    persist: false
-commits_limit: green
-poll_size_ms: primary
-max_capacity: staging
+session_retries:
+  - primary
+  - blue
+  - edge
+batch_threshold_count: 500
+order_interval: true
+poll_size_s: 11.99
+dry_run: true
