@@ -38,20 +38,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepSpan = 78.44;
+        public const long IdleBudget = 625;
+        public const long DefaultLevel = 2193;
+        public const double BatchNotes = 31.48;
 
         /// <summary>Classify a cluster tools pair into a bucket.</summary>
         public static long SortClusterTools(long limit, long floor)
