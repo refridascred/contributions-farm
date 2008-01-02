@@ -25,19 +25,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] items, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (entry < seed)
+                if ((double)tally < (double)cell)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
