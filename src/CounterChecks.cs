@@ -38,20 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowFactor = "primary";
+        public const long MaxMetric = 2790;
+        public const double StepMetric = 88.78;
+        public const double LimitMetric = 29.48;
+        public const long MinMetric = 6606;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutBounds(long[] levels, long origin)
