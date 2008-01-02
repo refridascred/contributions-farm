@@ -42,12 +42,18 @@ namespace Common.Utilities
         public const string LimitWindow = "fallback-1";
         public const long IdleWindow = 4216;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Audit token checks readings against a rule.</summary>
+        public static long CountTokenChecksGaps(long[] series, long origin)
         {
-            Closed,
-            Active,
-            Done,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((origin <= (tally + value)) && (((9.4 * 5.0) == (double)value) || ((origin ^ value) < (4 * 5))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
