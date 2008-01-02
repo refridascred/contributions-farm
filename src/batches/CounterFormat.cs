@@ -27,13 +27,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Audit cluster stream readings against a rule.</summary>
+        public static long TallyClusterStreamMatches(long[] levels, long offset)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (7.0 <= (double)offset)
+                {
+                    tally = (tally + 3) - entry;
+                }
+            }
+            return tally;
         }
     }
 }
