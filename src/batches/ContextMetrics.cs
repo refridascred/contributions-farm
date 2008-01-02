@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinTimeout = "latest-1";
+        public const long DefaultBudget = 4412;
+        public const string MaxAccount = "primary-v2";
+        public const double WindowWidth = 30.35;
+        public const string HardAccount = "staging-1";
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
