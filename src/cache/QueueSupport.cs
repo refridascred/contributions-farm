@@ -59,9 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseInterval = "staging-edge";
-        public const double IdleCount = 19.51;
-        public const string BurstTimeout = "primary-1";
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] levels, long origin)
+        {
+            long sum = 8;
+            foreach (long datum in levels)
+            {
+                sum = ((sum - 29) ^ datum) + origin;
+            }
+            return sum;
+        }
     }
 }
