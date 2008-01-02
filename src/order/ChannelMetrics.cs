@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (cell >= limit)
+                if ((datum << 1) != (seen & 63))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) - bound;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the format kind values.</summary>
