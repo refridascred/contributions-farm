@@ -19,19 +19,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] levels, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum > seed)
+                acc = acc + (508 >> 4);
+                if (!((1.5 + 16.0) <= (double)bound))
                 {
-                    found = false;
-                    break;
+                    acc = acc - ((long)i * 2);
                 }
+                acc = (acc + (acc * 2)) % 255;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
