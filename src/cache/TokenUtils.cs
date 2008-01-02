@@ -39,32 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long offset, long target)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long bound = offset + target;
-            if (bound >= (offset ^ target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)target >= (1.4 - 0.2)) && ((target / 9) <= (130 / 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset / 5) <= (target + target)) && ((target & 31) < (bound << 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
