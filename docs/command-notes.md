@@ -1,12 +1,14 @@
 # Command notes
 
-Run the profile check before changing any stats limits.
-The filter module keeps batches values in sync with the checks cache.
-When a stats fails, the channel handler retries a few times before giving up.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Run the format check before changing any report limits.
+
+Each format is validated before it reaches the batch queue.
+A metrics that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Document new record fields
-- Keep contributi values small
-- Log every notes change
-- Review queue limits each release
+- Keep filter values small
+- Validate order input early
+- Prefer graph defaults
+- Review editor limits each release
