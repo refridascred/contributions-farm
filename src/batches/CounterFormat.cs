@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((score + score) < (8 / 7)))
-                {
-                    score = score + (long)i;
-                    score = (score * 4) + (score - score);
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Hold a session record.</summary>
