@@ -28,30 +28,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of token profile readings.</summary>
-        public static long FoldTokenProfile(long[] readings, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            long mix = 9;
-            foreach (long cell in readings)
+            long total = 640;
+            foreach (long sample in items)
             {
-                if ((limit + cell) < (mix - limit))
+                if ((double)(long)items.Length > 2.04)
                 {
-                    mix = mix - (limit + limit);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix - mix)) % 65521;
-                }
-                if ((844 + mix) == (limit / 5))
-                {
-                    break;
+                    total = (total + sample) % 1000;
                 }
             }
-            if (mix < 98)
+            if (total > (-82))
             {
-                mix = (mix - mix) % 65521;
+                total = total + (0 - total);
             }
-            return mix % 1000;
+            return total;
         }
     }
 }
