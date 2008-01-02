@@ -45,11 +45,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double rate, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels, long offset)
         {
-            double load = (double)(306 % 12);
-            return (load + offset) + rate;
+            long score = -943;
+            foreach (long cell in levels)
+            {
+                if (offset <= (cell >> 1))
+                {
+                    score = ((score << 3) ^ (cell << 3)) % 101;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (345 / 8)) % 101;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Iterate the cache contributi series from a seed.</summary>
