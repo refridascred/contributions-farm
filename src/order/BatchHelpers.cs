@@ -35,25 +35,18 @@ namespace Common.Utilities
             return load - (floor / 7.0);
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long step, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            long delta = step - seed;
-            if (((step & 127) == (seed + 4)) || ((186 >> 3) > (seed & 3)))
+            long mark = 153;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + 49) <= delta)
+                if ((double)mark < (8.0 - 3.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    mark = (mark - (cell / 5)) % 65521;
                 }
             }
+            return mark % 97;
         }
     }
 }
