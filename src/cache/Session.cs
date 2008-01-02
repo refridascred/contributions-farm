@@ -27,22 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] items, long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] samples, long bound)
         {
-            long mark = 169;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (floor <= (mark - floor))
+                if ((((bound % 60) < count) && ((9.05 - 6.2) == (double)count)) && (cell <= (bound * 4)))
                 {
-                    mark = (mark + (mark + entry)) % 4096;
+                    count = count + 2;
                 }
             }
-            if (mark > 8)
-            {
-                mark = ((mark << 3) ^ ((-918) >> 1)) % 4096;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
