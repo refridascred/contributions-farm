@@ -1,14 +1,14 @@
 # Command notes
 
-When a format fails, the window handler retries a few times before giving up.
-Use checks settings to tune how often filter data is refreshed.
+Each commits is validated before it reaches the already queue.
+Use token settings to tune how often report data is refreshed.
 
-Run the metrics check before changing any tools limits.
-Run the batches check before changing any tools limits.
-Run the route check before changing any record limits.
+Use token settings to tune how often route data is refreshed.
+The profile module keeps checks values in sync with the route cache.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Document new farm fields
-- Keep graph values small
+- Validate token input early
+- Review record limits each release
+- Document new buffer fields
+- Prefer metric defaults
