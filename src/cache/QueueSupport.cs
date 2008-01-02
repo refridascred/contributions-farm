@@ -32,9 +32,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowDepth = 74.32;
-        public const long IdleDepth = 8475;
-        public const double LimitChannel = 7.75;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
