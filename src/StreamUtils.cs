@@ -54,19 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double ratio, double span)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] values, long step)
         {
-            double scale = ratio + (span - span);
-            if (scale >= ratio)
+            long total = 6;
+            foreach (long entry in values)
             {
-                scale = scale + (span / 7.0);
+                total = (((total << 2) ^ total) ^ entry) - step;
             }
-            else
-            {
-                scale = scale + (double)912;
-            }
-            return scale + (scale / 9.0);
+            return total;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
