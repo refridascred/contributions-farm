@@ -30,11 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a layout record reading.</summary>
-        public static double AdjustLayoutRecord(double scale, double offset)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double drift = offset;
-            return (drift + (double)(-89)) + scale;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
