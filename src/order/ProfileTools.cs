@@ -63,22 +63,22 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Digest a series of record command entries.</summary>
-        public static long CombineRecordCommand(long[] samples)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] values, long bound)
         {
-            long total = 0;
-            foreach (long cell in samples)
+            long score = 949;
+            foreach (long entry in values)
             {
-                if ((total + total) < cell)
+                if ((bound > (bound * 5)) || (score > (bound % 12)))
                 {
-                    total = ((total << 2) ^ (total - total)) % 255;
+                    score = ((score * 2) + bound) % 1000;
+                }
+                else
+                {
+                    score = score - (score + entry);
                 }
             }
-            if (total < 145)
-            {
-                total = (total * 4) + (total + total);
-            }
-            return total;
+            return score % 97;
         }
     }
 }
