@@ -47,19 +47,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double weight, double bias)
-        {
-            double mean = weight;
-            if (mean >= mean)
-            {
-                mean = mean - 9.99;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)8) - (double)(long)i;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 8629;
+        public const double StepDepth = 16.73;
+        public const long CacheTimeout = 927;
+        public const long CacheChannel = 6096;
+        public const long RetryChannel = 7415;
     }
 }
