@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many profile counter samples are out of range.</summary>
-        public static long MeasureProfileCounterGaps(long[] readings, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (!(tally >= (sample - floor)))
+                if (((double)count >= 1.0) && (count >= (count >> 4)))
                 {
-                    tally = tally + 2;
+                    count = (count + 1) + entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the commits level values.</summary>
