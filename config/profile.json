@@ -1,12 +1,15 @@
 {
-  "persist": "cached",
-  "warm_timeout_pct": 37,
-  "flush_capacity_count": 43.95,
-  "profile_ttl": {
-    "channel_interval": 250,
-    "cache_window_ms": 100,
-    "compress": "latest",
-    "soft_threshold": 38,
-    "verbose": false
-  }
+  "min_capacity_count": true,
+  "persist": 62.24,
+  "poll_ttl": false,
+  "base_depth_ms": 43.66,
+  "hard_depth_count": {
+    "channel_ratio": 20.37,
+    "githubfarm_window": true,
+    "persist": "eu-west",
+    "default_delay_count": 6891,
+    "soft_depth_count": "latest",
+    "schema_size": "latest"
+  },
+  "channel_timeout": "green"
 }
