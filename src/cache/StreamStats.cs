@@ -24,21 +24,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Compare every pair of format report readings.</summary>
-        public static long MatchFormatReportCount(long[] samples)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the schema mode values.</summary>
