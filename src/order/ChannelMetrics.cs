@@ -16,21 +16,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)origin <= (double)(long)i)
-                {
-                    acc = (acc + 38) % 1000;
-                    break;
-                }
-                acc = (acc + (long)i) % 1000;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
