@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Failed,
+            Pending,
+            Ready,
             Draft,
-            New,
-            Active,
+            Dropped,
         }
 
         /// <summary>Project the next account value.</summary>
