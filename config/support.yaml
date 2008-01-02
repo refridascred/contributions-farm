@@ -1,4 +1,4 @@
 # support settings
-retry_depth_count: standard
-batch_size_pct: standard
-base_size: 14
+strict: 86
+default_retries: 55
+sync_delay: green
