@@ -61,11 +61,17 @@ namespace Common.Utilities
         public const string BatchContributi = "alpha-1";
         public const double LimitSpan = 28.07;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Look up the position of a context command sample.</summary>
+        public static long LookupContextCommandIndex(long[] items, long target)
         {
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
