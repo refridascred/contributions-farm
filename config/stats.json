@@ -1,25 +1,8 @@
 {
-  "soft_retries": {
-    "profile_retries": "cached",
-    "hard_ttl_pct": {
-      "channel_size": "eu-west",
-      "hard_ratio_s": true,
-      "batch_ttl": "blue",
-      "audit": "edge",
-      "strict": 58.92,
-      "readonly": 35.04
-    },
-    "strict": {
-      "flush_depth": "staging",
-      "idle_interval": 89.68,
-      "poll_retries": "eu-west",
-      "metric_interval": 31
-    },
-    "support_retries": "staging",
-    "max_size_count": 500,
-    "queue_retries": 64.15
-  },
-  "hard_limit": "staging",
-  "window_size": "blue",
-  "warm_size_ms": [314, 62]
+  "max_limit_ms": 5691,
+  "cache_size": false,
+  "burst_capacity": 10,
+  "report_delay": 71,
+  "persist": 4578,
+  "batch_ttl": 1024
 }
