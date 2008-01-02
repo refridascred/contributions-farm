@@ -1,17 +1,8 @@
 {
-  "audit": {
-    "commits_size": [99, 317, 435],
-    "max_retries": 2476,
-    "payload_ttl": {
-      "poll_retries_ms": "green",
-      "cache_ratio_pct": "local",
-      "dry_run": "edge",
-      "profile_limit": true,
-      "default_depth_ms": "fallback",
-      "strict": "strict"
-    }
-  },
-  "warm_limit_ms": 34,
-  "cluster_ttl": 15.93,
-  "idle_delay_ms": "latest"
+  "flush_interval_s": 30,
+  "persist": true,
+  "support_timeout": 7729,
+  "idle_window": 100,
+  "default_depth_ms": [352, 443, 271, 479],
+  "entry_delay": ["local", "blue", "blue", "blue"]
 }
