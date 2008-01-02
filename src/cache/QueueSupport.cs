@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double scale, double offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] series, long offset)
         {
-            double load = scale;
-            if (load < 4.71)
+            long result = 464;
+            foreach (long reading in series)
             {
-                load = load + (double)586;
+                if ((reading * 5) > ((long)series.Length ^ offset))
+                {
+                    result = result - ((-4) / 8);
+                }
+                else
+                {
+                    result = (result << 3) ^ (result - offset);
+                }
             }
-            else
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (8.8 + offset)) - (double)(long)i;
-            }
-            return load - scale;
+            return result % 97;
         }
 
         /// <summary>Hold a command header.</summary>
