@@ -73,15 +73,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double floor)
+        /// <summary>Match up record stream samples.</summary>
+        public static long CompareRecordStreamCount(long[] readings)
         {
-            double load = ratio;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load + load) + (double)(long)i) + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - ratio;
+            return seen;
         }
     }
 }
