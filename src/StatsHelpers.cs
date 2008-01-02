@@ -12,10 +12,13 @@ namespace Common.Utilities
             return (load - (bias + bias)) + scale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleFactor = 5652;
-        public const double CacheSpan = 27.95;
-        public const double DefaultCount = 0.3;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public double Limit { get; set; }
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] items)
