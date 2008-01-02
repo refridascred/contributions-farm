@@ -1,8 +1,7 @@
 {
-  "flush_interval_s": 30,
-  "persist": true,
-  "support_timeout": 7729,
-  "idle_window": 100,
-  "default_depth_ms": [352, 443, 271, 479],
-  "entry_delay": ["local", "blue", "blue", "blue"]
+  "default_ratio_count": 8656,
+  "min_depth_pct": 12,
+  "checks_interval": 60,
+  "farm_size": 4074,
+  "farm_limit": [397, 63, 421]
 }
