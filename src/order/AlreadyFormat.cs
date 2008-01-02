@@ -48,19 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry layout entry stays within the limit.</summary>
-        public static bool CheckEntryLayoutRange(long[] values, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long mark = 190;
+            foreach (long cell in samples)
             {
-                if (value >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark ^ (8 - cell)) % 65521;
             }
-            return ready;
+            if (mark > 243)
+            {
+                mark = ((mark * 2) + (mark + offset)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
