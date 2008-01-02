@@ -59,21 +59,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((9.0 * 3.0) != (double)hits)
                 {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 2) + reading) + step;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
