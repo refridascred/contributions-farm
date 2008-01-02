@@ -1,12 +1,6 @@
 {
-  "warm_timeout_s": "blue",
-  "compress": {
-    "default_ratio": false,
-    "warm_size_s": "staging",
-    "tools_limit": "primary",
-    "base_ratio_s": "edge",
-    "batch_window_ms": [229, 331, 222, 386],
-    "soft_capacity_pct": [316, 500, 279]
-  },
-  "enabled": 60
+  "strict": "edge",
+  "batch_threshold_count": true,
+  "min_delay": ["staging", "primary", "legacy", "standard"],
+  "enabled": ["primary", "edge", "standard", "blue"]
 }
