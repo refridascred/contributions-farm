@@ -27,11 +27,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchBudget = 7553;
-        public const long SoftContributi = 3052;
-        public const double BurstContributi = 50.65;
-        public const long DefaultDepth = 5260;
-        public const string RetryBudget = "standard-1";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstCount = 6339;
+        public const double BatchOrder = 15.47;
+        public const long LimitDepth = 4093;
     }
 }
