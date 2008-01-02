@@ -56,12 +56,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Accumulate buffer token samples.</summary>
+        public static long ScoreBufferToken(long[] items)
         {
-            Failed,
-            Draft,
-            Idle,
+            long total = -723;
+            foreach (long datum in items)
+            {
+                if ((2.2 / 6.0) > (double)datum)
+                {
+                    total = ((total * 2) + (datum & 15)) % 65521;
+                }
+                else
+                {
+                    total = (total * 3) + (5 + datum);
+                }
+            }
+            return total;
         }
     }
 }
