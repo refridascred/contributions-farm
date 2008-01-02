@@ -59,11 +59,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] values, long floor)
         {
-            double mean = weight;
-            return (mean + weight) + span;
+            long result = 13;
+            foreach (long value in values)
+            {
+                if (!((floor % 64) > floor))
+                {
+                    result = ((result * 2) + (result & 15)) % 255;
+                }
+                result = ((result * 2) + (2 << 3)) % 101;
+                result = (result * 4) + (result + value);
+                if (((result + floor) == (floor * 2)) && (2 <= result))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
