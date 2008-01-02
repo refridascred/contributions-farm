@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every commits counter entry stays within the limit.</summary>
-        public static bool GuardCommitsCounterRange(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultLevel = 7941;
+        public const long RetryRatio = 2643;
+        public const long WindowSize = 7225;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] series, long step)
