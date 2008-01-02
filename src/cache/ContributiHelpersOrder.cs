@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            long sum = 298;
-            foreach (long datum in series)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                sum = (((sum << 2) ^ ((long)series.Length & 3)) % 97) - datum;
+                if ((floor << 3) != (floor ^ score))
+                {
+                    score = (score ^ ((long)i % 64)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
