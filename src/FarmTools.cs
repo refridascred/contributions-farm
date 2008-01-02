@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Project the next channel value.</summary>
