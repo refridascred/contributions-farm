@@ -1,11 +1,5 @@
 {
-  "cluster_window": ["primary", "strict", "legacy"],
-  "soft_ttl_ms": {
-    "burst_retries": true,
-    "persist": false,
-    "schema_size": [472, 423, 136]
-  },
-  "audit": 32.39,
-  "readonly": "eu-west",
-  "flush_capacity": "latest"
+  "compress": 34.28,
+  "default_delay": 34,
+  "poll_size": true
 }
