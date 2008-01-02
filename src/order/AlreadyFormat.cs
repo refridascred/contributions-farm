@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const long BaseChecks = 4530;
         public const string HardTimeout = "local-1";
 
-        /// <summary>Audit entry record readings against a rule.</summary>
-        public static long AuditEntryRecordGaps(long[] series, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = 3;
+            foreach (long datum in items)
             {
-                if ((double)hits < (19.0 - 0.4))
+                if ((double)mix == (double)datum)
                 {
-                    hits = ((hits + 2) + value) + floor;
+                    mix = mix ^ (21 * 3);
                 }
             }
-            return hits;
+            if (mix > 84)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a queue header.</summary>
