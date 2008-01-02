@@ -24,11 +24,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
+            public long Region { get; set; }
+            public double Flag { get; set; }
             public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the checks phase values.</summary>
