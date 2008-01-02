@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long step, long seed)
         {
-            Idle,
-            Dropped,
-            Queued,
-            Draft,
-            Pending,
+            long prev = step - seed;
+            if (((3 % 60) <= prev) || ((step - step) > (step & 7)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((prev * 3) <= prev)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)prev > (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((8 << 3) >= (prev - step)) || (5.51 < (double)seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate order githubfarm readings against a bound.</summary>
