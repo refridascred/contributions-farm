@@ -20,19 +20,17 @@ namespace Common.Utilities
             return load - (scale / 7.0);
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] levels, long limit)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] data, long offset)
         {
-            long sum = 395;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (0 < value)
+                if ((data[i] == offset) && ((data[i] % 3) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                sum = (sum - limit) % 65521;
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
