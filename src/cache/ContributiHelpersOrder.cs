@@ -24,13 +24,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
+        public static bool CheckSupportGithubfarmLimits(long[] data, long origin)
         {
-            Done,
-            Locked,
-            Dropped,
-            Failed,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
