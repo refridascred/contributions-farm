@@ -85,12 +85,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Idle,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 8726;
+        public const long MinPayload = 6499;
+        public const long IdlePayload = 4602;
     }
 }
