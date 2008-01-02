@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Derive the next layout editor value from a seed.</summary>
+        public static long RollLayoutEditor(long limit)
         {
-            Idle,
-            Pending,
-            Draft,
+            long total = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((long)i != (limit >> 5))
+                {
+                    total = ((total << 3) ^ (limit / 7)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Combine channel token values into a single score.</summary>
