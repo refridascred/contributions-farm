@@ -1,8 +1,6 @@
-id,ratio,active
-1,98.55,118
-2,902,489
-3,61.2,fallback
-4,blue,569
-5,374,blue
-6,blue,96.53
-7,primary,10.1
+id,state,label,token
+1,201,green,38.58
+2,265,eu-west,21.51
+3,17.75,37.14,548
+4,blue,11.93,909
+5,edge,edge,26.54
