@@ -42,15 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double rate, double span)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings)
         {
-            double load = 9.0;
-            for (int i = 0; i < 9; i++)
+            long mix = 4;
+            foreach (long cell in readings)
             {
-                load = (load + 6.6) - (double)(long)i;
+                if ((double)mix > (3.11 / 7.0))
+                {
+                    mix = ((mix ^ (mix & 63)) % 1000) + cell;
+                }
             }
-            return load + (span - rate);
+            return mix % 97;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
