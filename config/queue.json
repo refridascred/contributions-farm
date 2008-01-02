@@ -1,6 +1,12 @@
 {
-  "burst_timeout_pct": ["fallback", "open", "standard", "strict"],
-  "default_delay_pct": true,
-  "base_ratio_count": "legacy",
-  "compress": 60
+  "poll_threshold_count": true,
+  "sync_limit": ["legacy", "primary", "strict"],
+  "dry_run": 500,
+  "soft_retries": "standard",
+  "base_depth_s": "latest",
+  "poll_size": {
+    "max_window": 6312,
+    "poll_delay_count": 339,
+    "default_delay": true
+  }
 }
