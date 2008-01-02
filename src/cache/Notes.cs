@@ -74,15 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Derive the next notes format value from a seed.</summary>
+        public static long RollNotesFormat(long target)
         {
-            long sum = 9;
-            foreach (long item in data)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                sum = ((sum ^ sum) % 1000) - item;
+                if (!((target + target) == (anchor - (long)i)))
+                {
+                    anchor = anchor - (target ^ anchor);
+                    anchor = ((anchor << 3) ^ (target * 3)) % 101;
+                }
+                anchor = (anchor + target) % 4096;
+                anchor = anchor - (target ^ (long)i);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return sum % 97;
+            return anchor;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
