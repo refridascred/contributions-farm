@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] items)
         {
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            long anchor = -5;
+            foreach (long value in items)
+            {
+                if ((value * 3) == (value & 15))
+                {
+                    anchor = (anchor - (value + anchor)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
