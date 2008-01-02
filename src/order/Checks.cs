@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheWidth = 7676;
-        public const double StepBudget = 6.0;
-        public const double BatchWidth = 47.42;
-        public const long HardTimeout = 9993;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Done,
+            Closed,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long GradeTools(long origin, long origin2)
