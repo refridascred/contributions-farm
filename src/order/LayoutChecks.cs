@@ -23,18 +23,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] items)
+        /// <summary>Audit record batch readings against a rule.</summary>
+        public static long MeasureRecordBatchMatches(long[] items, long limit)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long entry in items)
             {
-                if ((14.0 + 0.2) == (double)entry)
+                if ((count % 97) <= (79 - entry))
                 {
-                    tally = tally + 1;
+                    count = (count + 3) + limit;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
