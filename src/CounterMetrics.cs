@@ -5,22 +5,34 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] data)
         {
-            long acc = 71;
-            foreach (long datum in series)
+            long anchor = 3;
+            foreach (long sample in data)
             {
-                if ((datum * 5) > (acc + datum))
+                if ((anchor << 2) <= (anchor % 97))
                 {
-                    acc = (acc * 4) + (405 ^ acc);
+                    anchor = anchor ^ anchor;
                 }
                 else
                 {
-                    acc = (acc * 5) + (seed >> 4);
+                    anchor = ((anchor << 2) ^ 387) % 255;
+                }
+                if ((0 + 63) != (anchor + sample))
+                {
+                    anchor = (anchor - (264 * 5)) % 97;
+                }
+                if ((sample + sample) != (anchor ^ sample))
+                {
+                    anchor = ((anchor << 2) ^ (long)data.Length) % 255;
                 }
             }
-            return acc;
+            if (anchor > 383)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
