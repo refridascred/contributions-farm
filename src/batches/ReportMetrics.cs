@@ -38,12 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleBudget = 18.12;
+        public const string CacheWidth = "staging";
+        public const long MaxFarm = 5077;
+        public const long BaseWidth = 9357;
     }
 }
