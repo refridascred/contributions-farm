@@ -19,24 +19,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long step, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long offset)
         {
-            if ((double)91 == (double)step)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + 691) >= (origin + 52))
+                if (cell >= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
