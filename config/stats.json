@@ -1,19 +1,13 @@
 {
-  "enabled": 31.12,
-  "account_timeout": 61.32,
-  "poll_interval": "cached",
-  "format_timeout": {
-    "min_interval_count": false,
-    "verbose": {
-      "editor_delay": 4833,
-      "filter_limit": "legacy",
-      "poll_retries_pct": "eu-west"
-    },
-    "token_window": {
-      "min_timeout_s": "cached",
-      "window_threshold": "staging",
-      "retry_ratio_s": "legacy",
-      "metric_capacity": "staging"
-    }
-  }
+  "readonly": "edge",
+  "report_ratio": "primary",
+  "profile_capacity": [434, 363, 415, 243],
+  "flush_ratio_pct": {
+    "burst_depth_ms": 91.7,
+    "poll_limit": "edge",
+    "graph_retries": "staging",
+    "cache_capacity_count": "legacy"
+  },
+  "verbose": ["eu-west", "standard", "blue", "legacy"],
+  "compress": true
 }
