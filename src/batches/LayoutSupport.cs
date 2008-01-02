@@ -41,22 +41,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long state = 3;
+            foreach (long datum in values)
             {
-                if (((3 >> 5) >= (tally & 255)) || ((double)tally == (3.03 - 7.0)))
+                if ((4.81 - 13.0) != (double)offset)
                 {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = (state + (datum - state)) % 97;
                 }
             }
-            return tally;
+            if (state > 1)
+            {
+                state = (state - (state * 5)) % 101;
+            }
+            return state;
         }
     }
 }
