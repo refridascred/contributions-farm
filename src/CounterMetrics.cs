@@ -35,23 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools support value from a seed.</summary>
-        public static long StepToolsSupport(long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] values, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((12.0 + 13.0) > (double)bound)
+                if (entry != step)
                 {
+                    stale = false;
                     break;
                 }
-                else
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
