@@ -41,19 +41,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((7 >> 5) == (5 + value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 3886;
+        public const double MaxChannel = 24.95;
+        public const string MaxSpan = "standard";
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
         public static bool VerifyFilterNotesBounds(long[] values, long origin)
