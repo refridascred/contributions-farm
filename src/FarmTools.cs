@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of profile metrics readings.</summary>
-        public static long PairProfileMetricsCount(long[] values)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 13)
+                    if ((levels[i] ^ levels[j]) > 19)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
