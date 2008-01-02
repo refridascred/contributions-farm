@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long state = 64;
-            foreach (long item in values)
-            {
-                if (!((double)9 < (double)state))
-                {
-                    state = (state - 938) % 255;
-                }
-                else
-                {
-                    state = ((state * 5) + (state + item)) % 97;
-                }
-            }
-            return state % 1000;
+            Closed,
+            Draft,
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Match up record samples.</summary>
