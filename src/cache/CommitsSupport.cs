@@ -57,10 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 6798;
-        public const long BaseRatio = 8451;
-        public const long LimitTools = 8752;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum * 2) >= datum)
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
