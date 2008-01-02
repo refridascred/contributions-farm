@@ -76,26 +76,9 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] levels, long bound)
-        {
-            long score = 609;
-            foreach (long entry in levels)
-            {
-                if ((entry >> 4) == (score * 4))
-                {
-                    score = (score << 3) ^ score;
-                }
-                if ((score >= (97 + bound)) || (entry <= (score / 7)))
-                {
-                    break;
-                }
-            }
-            if (score < 3)
-            {
-                score = score ^ (score + score);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 5.06;
+        public const long CacheSize = 131;
+        public const long BurstAlready = 7255;
     }
 }
