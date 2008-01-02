@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the route format entries that pass the check.</summary>
-        public static long MeasureRouteFormatMatches(long[] series, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((double)entry <= (double)38)
+                if (value > step)
                 {
-                    hits = (hits + 1) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
