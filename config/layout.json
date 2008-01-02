@@ -1,5 +1,10 @@
 {
-  "idle_interval_count": 60,
-  "enabled": "standard",
-  "burst_ratio_count": 2077
+  "max_threshold_ms": "standard",
+  "compress": [353, 186, 196],
+  "record_size": {
+    "enabled": "legacy",
+    "cache_capacity_count": "green",
+    "schema_delay": "open",
+    "verbose": "eu-west"
+  }
 }
