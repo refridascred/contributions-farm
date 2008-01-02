@@ -54,32 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long origin, long step)
-        {
-            if ((origin ^ step) < (origin ^ 787))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step <= (8.0 - 15.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.0 * 2.14) > (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardLevel = 5885;
+        public const string SoftBudget = "primary";
+        public const long BatchContext = 6100;
+        public const long IdleContext = 6718;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextRange(long[] levels, long limit)
