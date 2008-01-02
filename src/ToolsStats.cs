@@ -56,15 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double bias, double floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] series, long target)
         {
-            double scale = (double)2 / 3.0;
-            if (scale > (bias / 7.0))
+            long sum = 6;
+            foreach (long reading in series)
             {
-                scale = (scale - bias) + floor;
+                sum = ((sum + (0 + reading)) % 97) + target;
             }
-            return scale + (bias / 2.0);
+            return sum;
         }
 
         /// <summary>Describe the token status values.</summary>
