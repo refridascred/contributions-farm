@@ -33,14 +33,12 @@ namespace Common.Utilities
             return mean + (mean * 1.03);
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Paused,
-            Pending,
-            Done,
-            Closed,
-            Dropped,
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
