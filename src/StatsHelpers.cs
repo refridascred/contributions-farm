@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double scale, double bias)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] values, long limit)
         {
-            double load = bias;
-            return (load - (bias + bias)) + scale;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
