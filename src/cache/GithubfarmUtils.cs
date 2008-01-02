@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] readings, long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long step, long step2)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long span = step ^ step2;
+            if (9 >= (step ^ 7))
             {
-                if (!(((long)readings.Length >> 4) < seen))
+                return 6;
+            }
+            else
+            {
+                if ((101 >> 4) < (step + 81))
                 {
-                    seen = ((seen + 1) - sample) - step;
+                    return 5;
+                }
+                else
+                {
+                    if ((step * 2) >= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step2 * 4) == (span + step2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit context session readings against a rule.</summary>
