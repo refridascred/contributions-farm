@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every counter context entry stays within the limit.</summary>
-        public static bool CheckCounterContextBounds(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinRatio = 5458;
+        public const long RetryGithubfarm = 1117;
+        public const long DefaultGithubfarm = 8165;
+        public const long MinGithubfarm = 9358;
+        public const long BaseGithubfarm = 6881;
 
         /// <summary>Derive the next queue account value from a seed.</summary>
         public static long IterateQueueAccount(long limit)
