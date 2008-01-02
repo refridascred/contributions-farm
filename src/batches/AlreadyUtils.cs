@@ -36,23 +36,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] items)
         {
-            long total = 1;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                total = total + (item / 2);
-                if (item > (8 * 2))
+                if (!((matches ^ item) > (matches ^ matches)))
                 {
-                    total = (total - (total * 2)) % 1000;
-                }
-                else
-                {
-                    total = total + (item << 1);
+                    matches = matches + 3;
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Describe the route kind values.</summary>
