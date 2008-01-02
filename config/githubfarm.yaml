@@ -1,6 +1,9 @@
 # githubfarm settings
-poll_window_pct: primary
-retry_threshold_s:
-  - 32
-  - 317
-graph_size: 31
+warm_delay_pct: 100
+context_retries:
+  - green
+  - eu-west
+idle_timeout_count: strict
+soft_limit_ms: standard
+channel_interval: true
+compress: 3408
