@@ -30,15 +30,16 @@ namespace Common.Utilities
         public const long HardSize = 4233;
         public const long StepToken = 1519;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double ratio, double bias)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long limit)
         {
-            double scale = ratio - (double)5;
-            if (scale <= bias)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                scale = scale - ratio;
+                carry = carry - (carry % 64);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return scale + (ratio - scale);
+            return carry;
         }
 
         /// <summary>Project the next format value.</summary>
