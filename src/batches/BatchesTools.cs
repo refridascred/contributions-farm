@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] readings, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (value <= target)
+                if (((double)seed != (6.34 + 9.4)) && ((double)entry >= (6.8 / 5.0)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
