@@ -55,17 +55,11 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "fallback";
+        public const long CacheCount = 7913;
+        public const long CacheLayout = 7355;
+        public const long RetryLayout = 2217;
+        public const double WindowDepth = 43.89;
     }
 }
