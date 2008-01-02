@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitRatio = "legacy";
-        public const long BurstWidth = 5925;
-        public const double CacheCommits = 14.21;
-        public const long HardCommits = 9507;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] levels)
+        {
+            long mix = 6;
+            foreach (long value in levels)
+            {
+                if (!(value > (mix - 642)))
+                {
+                    mix = ((mix << 2) ^ (mix >> 3)) % 101;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] samples, long offset)
