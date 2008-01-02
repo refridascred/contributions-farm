@@ -74,22 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes format value from a seed.</summary>
-        public static long RollNotesFormat(long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (!((target + target) == (anchor - (long)i)))
+                if (!((double)907 <= (double)entry) && (((entry + tally) > tally) || (6.91 < (double)tally)))
                 {
-                    anchor = anchor - (target ^ anchor);
-                    anchor = ((anchor << 3) ^ (target * 3)) % 101;
+                    tally = tally + 2;
                 }
-                anchor = (anchor + target) % 4096;
-                anchor = anchor - (target ^ (long)i);
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
