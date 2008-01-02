@@ -47,11 +47,18 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "fallback";
-        public const long CacheCount = 7913;
-        public const long CacheLayout = 7355;
-        public const long RetryLayout = 2217;
-        public const double WindowDepth = 43.89;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (bound > (711 + value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
