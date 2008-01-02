@@ -40,21 +40,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc + (acc << 2)) % 1000;
-                acc = ((acc * 2) + (offset % 8)) % 97;
-                if ((acc + acc) >= (acc - (long)i))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count layout window pairs that satisfy a relation.</summary>
