@@ -1,17 +1,29 @@
 # githubfarm settings
-support_depth: 35
-warm_ratio_s: 60
-compress:
-  retry_capacity:
-    - 427
-    - 106
-    - 52
-    - 334
-  strict:
-    - 157
-    - 51
-  audit: 3936
-  burst_threshold_pct: true
-  flush_depth: staging
-sync_limit: 1730
-retry_depth: true
+dry_run:
+  - legacy
+  - stable
+  - eu-west
+enabled: 55.18
+burst_ttl_count:
+  sync_interval_s:
+    token_depth: false
+    session_capacity: 1822
+    cache_size: 81.53
+  enabled: 9527
+  max_ttl_count:
+    cache_window:
+      - 391
+      - 339
+      - 328
+      - 75
+    readonly: 3063
+    entry_limit: stable
+    flush_timeout_s: true
+    sync_size_ms:
+      - 69
+      - 433
+      - 198
+      - 279
+    flush_ttl_ms: 63.73
+  sync_timeout_s: latest
+batch_interval_s: 100
