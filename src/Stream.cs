@@ -40,5 +40,12 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
+        }
     }
 }
