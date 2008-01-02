@@ -20,16 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Fold a list of payload profile readings.</summary>
+        public static long CombinePayloadProfile(long[] readings)
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
+            long mark = -331;
+            foreach (long reading in readings)
             {
-                carry = carry + ((long)i << 2);
-                carry = ((carry * 4) + (long)i) % 65521;
+                mark = (mark * 4) + reading;
             }
-            return carry;
+            if (mark > 1)
+            {
+                mark = ((mark * 5) + (2 ^ 8)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
