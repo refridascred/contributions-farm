@@ -31,11 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] values, long target)
         {
-            public double Count { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((-88) > (reading - (-96)))
+                {
+                    seen = (seen + 3) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every checks queue entry stays within the limit.</summary>
