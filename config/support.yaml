@@ -1,6 +1,28 @@
 # support settings
-batch_window_pct: 60
-strict: 74.04
-window_capacity: 500
-idle_depth: 4
-idle_window_pct: 500
+tools_capacity:
+  schema_ttl: eu-west
+  compress:
+    - 414
+    - 13
+    - 269
+    - 374
+  hard_timeout_ms:
+    token_ttl: 4165
+    enabled: 60
+    soft_depth: 2353
+    cache_threshold_count: 2
+    tools_interval: 78.51
+    cache_window: 60
+  order_capacity: false
+  hard_depth_s: 42.38
+  poll_interval:
+    - 198
+    - 497
+    - 228
+verbose: legacy
+base_limit: true
+compress:
+  - 162
+  - 462
+  - 94
+  - 11
