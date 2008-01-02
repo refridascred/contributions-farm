@@ -1,9 +1,29 @@
 # support settings
-stats_timeout: edge
-compress: true
-hard_ttl:
-  - cached
-  - legacy
-  - eu-west
-  - staging
-editor_retries: local
+poll_threshold:
+  retry_window_ms: true
+  enabled: 6617
+  burst_capacity_count:
+    - 344
+    - 380
+    - 27
+    - 207
+  min_capacity_ms:
+    base_capacity_s: 60
+    farm_size: green
+    githubfarm_interval:
+      - 256
+      - 387
+    commits_threshold: strict
+    flush_delay_count: latest
+    support_window: cached
+  payload_size: stable
+  poll_window:
+    - standard
+    - local
+    - latest
+    - latest
+payload_window: standard
+max_window: false
+soft_ttl_count: 1024
+batch_window_count: 1024
+audit: cached
