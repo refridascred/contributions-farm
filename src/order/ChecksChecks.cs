@@ -20,14 +20,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            Active,
-            Closed,
-            Synced,
-            Failed,
-            Done,
+            long state = 3;
+            foreach (long item in readings)
+            {
+                state = ((state << 3) ^ state) ^ item;
+            }
+            if (state < 614)
+            {
+                state = state - state;
+            }
+            return state;
         }
     }
 }
