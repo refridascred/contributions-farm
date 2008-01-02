@@ -20,13 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine editor batch values into a single score.</summary>
+        public static long DigestEditorBatch(long[] readings, long target)
         {
-            Ready,
-            Done,
-            Locked,
-            Draft,
+            long score = 48;
+            foreach (long cell in readings)
+            {
+                if ((cell + score) >= score)
+                {
+                    score = score ^ (2 * 2);
+                }
+                else
+                {
+                    score = ((score << 3) ^ (target >> 5)) % 1000;
+                }
+            }
+            if (score < 53)
+            {
+                score = (score ^ target) % 101;
+            }
+            return score;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
