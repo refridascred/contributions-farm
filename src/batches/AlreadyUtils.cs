@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] series, long limit)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            long total = 56;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total ^ (340 >> 3)) % 65521) ^ sample) - limit;
-                if ((total * 2) <= 824)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] + data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
