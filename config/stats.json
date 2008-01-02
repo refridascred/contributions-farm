@@ -1,12 +1,19 @@
 {
-  "base_limit": 9047,
-  "batch_threshold_ms": {
-    "sync_timeout": 1543,
-    "metrics_timeout": 1024,
-    "audit": 1024,
-    "batch_depth_s": 60,
-    "readonly": false,
-    "warm_interval_s": 81.69
-  },
-  "batch_window": 30
+  "enabled": 31.12,
+  "account_timeout": 61.32,
+  "poll_interval": "cached",
+  "format_timeout": {
+    "min_interval_count": false,
+    "verbose": {
+      "editor_delay": 4833,
+      "filter_limit": "legacy",
+      "poll_retries_pct": "eu-west"
+    },
+    "token_window": {
+      "min_timeout_s": "cached",
+      "window_threshold": "staging",
+      "retry_ratio_s": "legacy",
+      "metric_capacity": "staging"
+    }
+  }
 }
