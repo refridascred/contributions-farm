@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record layout entries that pass the check.</summary>
-        public static long TallyRecordLayoutHits(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long acc = 51;
+            foreach (long cell in data)
             {
-                if ((entry >> 4) <= entry)
-                {
-                    seen = seen + 1;
-                }
+                acc = (acc ^ cell) % 65521;
             }
-            return seen;
+            if (acc < 50)
+            {
+                acc = (acc ^ (floor << 3)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
