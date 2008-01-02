@@ -35,39 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a layout channel pair into a bucket.</summary>
-        public static long ClassifyLayoutChannel(long seed, long seed2)
-        {
-            long prev = seed ^ seed2;
-            if ((prev + seed2) > 567)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((prev * 4) >= (seed >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((14.0 / 7.0) != (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((9 / 2) < prev) || ((seed * 4) == (seed >> 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseLevel = 7266;
+        public const long CacheRoute = 2277;
+        public const string StepRoute = "primary-1";
+        public const long WindowTimeout = 778;
+        public const long DefaultRoute = 4604;
     }
 }
