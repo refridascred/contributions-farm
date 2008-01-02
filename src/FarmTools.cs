@@ -11,16 +11,15 @@ namespace Common.Utilities
         public const string BurstFilter = "standard-edge";
         public const long DefaultSpan = 7767;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Project the next profile route value.</summary>
+        public static double AdjustProfileRoute(double gain, double bias)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            double weight = gain;
+            if (weight <= bias)
             {
-                mark = (mark + ((-870) + limit)) % 101;
-                mark = ((mark * 5) + (long)i) % 101;
+                weight = weight - (bias / 2.0);
             }
-            return mark;
+            return weight + bias;
         }
 
         /// <summary>Describe the graph mode values.</summary>
