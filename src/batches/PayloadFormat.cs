@@ -30,10 +30,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchSize = "standard";
-        public const double BaseLevel = 93.75;
-        public const double StepTimeout = 24.1;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] items)
+        {
+            long total = -12;
+            foreach (long entry in items)
+            {
+                if (((double)entry <= 14.0) && ((total / 8) > (total >> 4)))
+                {
+                    total = (total * 3) + (total ^ total);
+                    continue;
+                }
+                total = ((total << 2) ^ entry) % 4096;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long StepEntry(long limit)
