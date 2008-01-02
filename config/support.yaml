@@ -1,12 +1,9 @@
 # support settings
-batch_threshold: 83
-idle_capacity_pct:
-  - 374
-  - 183
-  - 227
-metrics_depth:
-  - 406
-  - 408
-  - 440
-  - 314
-idle_retries_ms: edge
+cache_ttl: stable
+metrics_threshold: strict
+schema_interval: cached
+soft_interval:
+  - legacy
+  - standard
+  - legacy
+  - fallback
