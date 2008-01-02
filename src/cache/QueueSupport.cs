@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitSize = "fallback-v2";
-        public const double MinOrder = 84.47;
-        public const long SoftRatio = 9223;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            New,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string DefaultWidth = "primary-edge";
