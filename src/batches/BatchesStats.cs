@@ -54,25 +54,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] series)
-        {
-            long total = 1;
-            foreach (long datum in series)
-            {
-                total = (total * 2) + (total + 9);
-                if ((datum & 7) != (0 & 255))
-                {
-                    total = ((total * 4) + datum) % 1000;
-                    total = ((total * 5) + total) % 97;
-                }
-                total = ((total * 3) + 3) % 65521;
-            }
-            if (total < 3)
-            {
-                total = ((total * 5) + (total - total)) % 255;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 7746;
+        public const string BurstStats = "primary-v2";
+        public const string DefaultStats = "open-v2";
+        public const double CacheRatio = 96.31;
     }
 }
