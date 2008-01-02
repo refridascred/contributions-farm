@@ -37,19 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] levels, long limit)
+        /// <summary>Adjust a order cache reading.</summary>
+        public static double ProjectOrderCache(double gain, double span)
         {
-            long total = 858;
-            foreach (long sample in levels)
+            double scale = gain;
+            if (scale > (double)8)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = (((total + (total + sample)) % 97) + (long)i) + limit;
-                }
-                total = (total - total) % 101;
+                scale = (scale + gain) + span;
             }
-            return total;
+            else
+            {
+                scale = scale - 20.0;
+            }
+            return scale + gain;
         }
     }
 }
