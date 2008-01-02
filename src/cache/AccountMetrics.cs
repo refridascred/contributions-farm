@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long SoftDepth = 7751;
         public const long BaseLayout = 3206;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] values, long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Locate a notes reading by value.</summary>
