@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Fold a list of stats session readings.</summary>
+        public static long DigestStatsSession(long[] samples, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long total = 247;
+            foreach (long item in samples)
             {
-                if (carry > 7)
+                total = (total * 5) + (floor + item);
+                if (item < (item + floor))
                 {
-                    carry = carry - (offset - (long)i);
-                    carry = (carry + ((long)i + carry)) % 101;
+                    break;
                 }
-                else
-                {
-                    carry = carry - offset;
-                    carry = ((carry << 2) ^ (carry - 47)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return total % 65521;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
