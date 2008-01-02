@@ -30,18 +30,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] data, long limit)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!(datum >= (41 & 15)))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
+            Stale,
+            Done,
+            Synced,
+            Retry,
         }
     }
 }
