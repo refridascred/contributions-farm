@@ -66,21 +66,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 8;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 255;
+                if (anchor >= (anchor & 3))
                 {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ (anchor - value)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (value << 1)) % 255;
                 }
             }
-            return count;
+            return anchor % 97;
         }
     }
 }
