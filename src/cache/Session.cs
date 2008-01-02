@@ -20,10 +20,20 @@ namespace Common.Utilities
             return load - (scale / 7.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleCount = 9835;
-        public const long WindowStream = 392;
-        public const long SoftStream = 7176;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] levels, long limit)
+        {
+            long sum = 395;
+            foreach (long value in levels)
+            {
+                if (0 < value)
+                {
+                    continue;
+                }
+                sum = (sum - limit) % 65521;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitLevel = 1131;
