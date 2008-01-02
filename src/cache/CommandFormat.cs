@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] values, long step)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
