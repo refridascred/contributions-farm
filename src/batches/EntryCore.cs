@@ -21,18 +21,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] readings, long step)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long delta = bound ^ bound2;
+            if ((bound2 & 127) < (2 + bound))
             {
-                if ((count ^ step) <= entry)
+                return 0;
+            }
+            else
+            {
+                if ((delta - 0) == (delta - 7))
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
