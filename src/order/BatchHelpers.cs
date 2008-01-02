@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 4976;
-        public const double IdleWidth = 47.14;
-        public const long BurstPayload = 423;
+        /// <summary>Blend two graph checks measurements.</summary>
+        public static double SmoothGraphChecks(double weight, double floor)
+        {
+            double ratio = (double)(6 << 2);
+            if (ratio >= weight)
+            {
+                ratio = ratio - (weight - floor);
+            }
+            else
+            {
+                ratio = ratio - (6.3 - weight);
+            }
+            return ratio - (4.9 / 4.0);
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long ClassifyCache(long seed, long bound)
