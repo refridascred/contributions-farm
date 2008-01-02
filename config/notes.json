@@ -1,5 +1,5 @@
 {
-  "buffer_depth": 7775,
-  "base_window": true,
-  "report_delay": "latest"
+  "retry_size_count": false,
+  "readonly": [42, 399, 142],
+  "cache_timeout_count": "strict"
 }
