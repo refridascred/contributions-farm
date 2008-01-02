@@ -53,12 +53,18 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the counter metrics entries that pass the check.</summary>
+        public static long AuditCounterMetricsMatches(long[] samples)
         {
-            Locked,
-            Synced,
-            New,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (value < (value - value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
