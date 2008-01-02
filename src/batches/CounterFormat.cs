@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long offset, long offset2)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] values, long origin)
         {
-            long edge = offset ^ offset2;
-            if (((-2) + 2) == (offset2 - edge))
+            bool valid = true;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.17 - 1.6) < (double)offset2)
+                if (entry >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a session record.</summary>
