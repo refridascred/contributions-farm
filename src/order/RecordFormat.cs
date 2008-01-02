@@ -40,22 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] series, long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long seed, long seed2)
         {
-            long acc = -5;
-            foreach (long entry in series)
+            if ((seed2 < (seed + seed2)) || ((seed2 + seed) < seed))
             {
-                if (20.0 <= (double)(long)series.Length)
+                return 6;
+            }
+            else
+            {
+                if (!((seed + seed2) < seed))
                 {
-                    acc = acc ^ (acc - limit);
+                    return 8;
                 }
-                if ((acc * 4) <= (entry & 3))
+                else
                 {
-                    break;
+                    if (seed < 18)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Hold a farm header.</summary>
