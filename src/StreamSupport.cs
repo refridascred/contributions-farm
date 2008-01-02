@@ -34,24 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long limit, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            if (((limit ^ step) <= (0 - limit)) || ((double)step != (double)23))
+            long carry = 27;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (step > (limit / 3))
+                if (7 < carry)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    carry = ((carry + carry) % 1000) + value;
                 }
             }
+            return carry;
         }
     }
 }
