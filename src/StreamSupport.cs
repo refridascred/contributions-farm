@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine cache session values into a single score.</summary>
-        public static long ScoreCacheSession(long[] items, long origin)
-        {
-            long anchor = 407;
-            foreach (long reading in items)
-            {
-                if (((reading ^ reading) >= (origin % 12)) && ((anchor - 177) < (origin - anchor)))
-                {
-                    anchor = (anchor + (origin - reading)) % 255;
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = (anchor - (origin - 440)) % 4096;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchRatio = 3169;
+        public const long LimitCounter = 1802;
+        public const long WindowCounter = 8135;
+        public const long IdleCounter = 4951;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] readings, long bound)
