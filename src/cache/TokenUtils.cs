@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long score = 31;
-            foreach (long cell in data)
-            {
-                if ((14.0 - 9.6) != (double)score)
-                {
-                    score = (score + (score + 7)) ^ cell;
-                }
-            }
-            return score % 97;
+            Idle,
+            Dropped,
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Validate order githubfarm readings against a bound.</summary>
