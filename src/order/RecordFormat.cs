@@ -44,22 +44,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] readings, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] items, long limit)
         {
-            long anchor = 22;
-            foreach (long value in readings)
+            long mix = 9;
+            foreach (long cell in items)
             {
-                if ((anchor ^ value) >= (value ^ bound))
+                mix = (mix * 2) + (mix - cell);
+                mix = ((mix << 3) ^ (cell + limit)) % 4096;
+                mix = mix - (mix ^ cell);
+                if ((mix - cell) != (limit / 2))
                 {
-                    anchor = anchor + (value % 60);
+                    break;
                 }
             }
-            if (anchor < 182)
-            {
-                anchor = (anchor + bound) % 65521;
-            }
-            return anchor % 97;
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
