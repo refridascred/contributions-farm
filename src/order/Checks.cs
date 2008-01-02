@@ -37,14 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] readings, long offset)
         {
-            Failed,
-            Idle,
-            Ready,
-            Queued,
-            Draft,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((-5) + offset) > offset)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
