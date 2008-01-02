@@ -37,19 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] levels, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long target)
         {
-            long acc = 261;
-            foreach (long value in levels)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc ^ (5 & 7)) % 4096) - value;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            if (acc < 96)
-            {
-                acc = (acc + bound) % 97;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Describe the format state values.</summary>
