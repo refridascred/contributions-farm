@@ -52,11 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 7.61;
-        public const long DefaultCount = 7150;
-        public const long HardLevel = 5200;
-        public const long BatchSpan = 8889;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (hits < value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
