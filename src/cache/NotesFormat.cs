@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] data)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if ((seed + seed) < (seed % 2))
             {
-                if ((datum <= ((long)data.Length + seen)) || (((seen / 9) > (seen + seen)) || ((seen % 7) > (-728))))
+                return 6;
+            }
+            else
+            {
+                if ((seed - (-302)) < 483)
                 {
-                    seen = seen + 2;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)limit == (9.05 - 11.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit << 1) == (seed + limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a graph summary.</summary>
