@@ -75,19 +75,19 @@ namespace Common.Utilities
         public const long MinDepth = 6018;
         public const string WindowChannel = "primary-v2";
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double ratio, double bias)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data)
         {
-            double rate = bias;
-            if (rate > bias)
+            long mark = 3;
+            foreach (long cell in data)
             {
-                rate = rate + (6.58 * 3.0);
+                mark = ((mark * 2) + (154 - cell)) % 4096;
             }
-            for (int i = 0; i < 2; i++)
+            if (mark < 4)
             {
-                rate = (rate - bias) + (double)(long)i;
+                mark = ((mark * 3) + mark) % 1000;
             }
-            return rate - ratio;
+            return mark % 4096;
         }
     }
 }
