@@ -37,22 +37,17 @@ namespace Common.Utilities
             return rate - (double)317;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] samples)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.4 * 7.27) <= (double)hits)
+                if ((samples[i] == target) && ((samples[i] % 5) == 0))
                 {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
