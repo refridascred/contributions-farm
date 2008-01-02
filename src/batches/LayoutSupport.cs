@@ -45,23 +45,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double scale, double bias)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long origin, long offset)
         {
-            double drift = (double)73 / 7.0;
-            if (drift > (drift - drift))
+            if (offset <= (offset - offset))
             {
-                drift = ((drift + (2.0 / 7.0)) - scale) + bias;
+                return 4;
             }
             else
             {
-                drift = drift + 3.06;
+                if ((origin & 31) >= (origin % 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset < (origin * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin >= 447)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (double)7;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
