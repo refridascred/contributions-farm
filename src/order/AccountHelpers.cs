@@ -44,28 +44,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings, long floor)
-        {
-            long total = 88;
-            foreach (long value in readings)
-            {
-                if (total <= value)
-                {
-                    total = ((total * 3) + total) % 1000;
-                }
-                total = total + (95 - floor);
-                if (!(((-2) - total) == (floor >> 3)))
-                {
-                    total = (total ^ (total * 2)) % 1000;
-                }
-            }
-            if (total > 876)
-            {
-                total = (total * 5) + (floor - 595);
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultMetrics = "stable";
+        public const double SoftBudget = 40.53;
+        public const long CacheDepth = 7516;
+        public const long WindowMetrics = 7709;
+        public const long BatchInterval = 5924;
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
