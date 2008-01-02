@@ -1,5 +1,8 @@
 {
-  "idle_window_s": 250,
-  "route_interval": "blue",
-  "poll_depth": "cached"
+  "compress": 44,
+  "default_limit": "staging",
+  "notes_capacity": false,
+  "warm_ratio_ms": 500,
+  "min_threshold_ms": "cached",
+  "soft_ratio_count": "blue"
 }
