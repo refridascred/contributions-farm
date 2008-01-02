@@ -68,25 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long bound, long target)
+        /// <summary>Locate a filter profile reading by value.</summary>
+        public static long LocateFilterProfileIndex(long[] data, long offset)
         {
-            long prev = bound - target;
-            if (((target + target) > (bound ^ 45)) && ((prev + bound) > (target + prev)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9 % 100) <= (bound / 6))
+                if ((data[i] == offset) && ((data[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of account context entries.</summary>
