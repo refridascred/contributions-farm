@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] series, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] readings, long bound)
         {
-            long mark = -836;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                mark = (mark - (cell ^ 62)) - target;
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return ready;
         }
 
         /// <summary>Digest a series of stats batch entries.</summary>
