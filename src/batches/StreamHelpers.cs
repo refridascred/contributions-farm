@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitLevel = 364;
+        public const double IdleGithubfarm = 35.5;
+        public const string CacheGithubfarm = "cached-edge";
+        public const double HardGithubfarm = 79.25;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long DeriveSupport(long origin)
