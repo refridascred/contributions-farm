@@ -20,24 +20,19 @@ namespace Common.Utilities
             return drift + (scale * 7.68);
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long floor, long bound)
+        /// <summary>Roll a githubfarm already counter forward.</summary>
+        public static long RollGithubfarmAlready(long offset)
         {
-            if (6.9 >= (double)bound)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound + bound) <= ((-48) ^ 2)) && ((bound - 90) == (bound - bound)))
+                if (!!((sum % 64) >= offset))
                 {
-                    return 1;
+                    sum = sum - (offset % 8);
                 }
-                else
-                {
-                    return 4;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
