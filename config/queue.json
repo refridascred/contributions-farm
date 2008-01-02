@@ -1,11 +1,7 @@
 {
-  "dry_run": 16.03,
-  "base_retries_count": ["green", "open", "legacy"],
-  "route_timeout": {
-    "contributi_ratio": "local",
-    "retry_timeout": 56,
-    "poll_retries_s": [276, 82, 292, 74],
-    "order_window": 9915,
-    "max_depth": 2.31
-  }
+  "readonly": "fallback",
+  "sync_ttl": 1024,
+  "sync_threshold_pct": [422, 392, 72],
+  "default_depth_ms": [397, 492, 341],
+  "profile_ratio": 73.26
 }
