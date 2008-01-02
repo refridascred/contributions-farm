@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many metric batch samples are out of range.</summary>
-        public static long CountMetricBatchMatches(long[] values, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((double)reading != (8.7 + 7.0))
+                if (tally <= (reading & 3))
                 {
-                    hits = (hits + 1) - offset;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
