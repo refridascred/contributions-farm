@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
