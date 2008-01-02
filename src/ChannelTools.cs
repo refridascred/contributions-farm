@@ -23,19 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric route readings against a bound.</summary>
-        public static bool GuardMetricRouteLimits(long[] readings, long step)
+        /// <summary>Combine format record values into a single score.</summary>
+        public static long TallyFormatRecord(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long state = 6;
+            foreach (long sample in samples)
             {
-                if (sample != step)
+                for (int i = 0; i < 3; i++)
                 {
-                    stale = false;
-                    break;
+                    state = ((state + ((-70) ^ sample)) % 255) ^ (long)i;
+                    state = ((state << 2) ^ ((long)samples.Length & 63)) % 255;
+                }
+                state = ((state << 2) ^ (371 + state)) % 97;
+                if ((17.0 * 2.75) != (double)sample)
+                {
+                    state = (state + (state ^ state)) % 1000;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Fold a list of already readings.</summary>
