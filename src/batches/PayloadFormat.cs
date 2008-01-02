@@ -30,29 +30,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] series, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (443 < (33 + (long)i))
+                if (!(tally < cell))
                 {
-                    anchor = (anchor ^ (bound & 7)) % 255;
-                    anchor = anchor - 9;
+                    tally = (tally + 2) + target;
                 }
                 else
                 {
-                    anchor = (anchor - ((-740) << 3)) % 97;
+                    tally = tally - 1;
                 }
-                if (!((bound / 4) >= bound))
-                {
-                    anchor = anchor - 516;
-                }
-                anchor = anchor - ((-6) >> 1);
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
