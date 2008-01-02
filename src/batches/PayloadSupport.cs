@@ -22,24 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long offset, long bound)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            if ((8.03 / 7.0) < (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + bound) >= (92 - 42))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Locked,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define already limits and defaults.</summary>
