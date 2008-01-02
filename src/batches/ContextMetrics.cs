@@ -26,22 +26,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] levels)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample > (7.06 * 1.1))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
