@@ -61,12 +61,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 8304;
-        public const double DefaultScore = 73.19;
-        public const double WindowPayload = 62.08;
-        public const long LimitDepth = 7766;
-        public const long SoftPayload = 9481;
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long ScoreRecord(long[] readings, long bound)
