@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of stream record readings.</summary>
-        public static long CompareStreamRecordCount(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 71;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = result - entry;
+                if ((entry + offset) < entry)
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 2) ^ (offset + 83)) % 1000;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Rank session input into a small class.</summary>
