@@ -1,7 +1,6 @@
 {
-  "flush_timeout_s": ["local", "local", "cached"],
-  "verbose": "green",
-  "enabled": [224, 430, 42],
-  "flush_limit_s": true,
-  "cache_timeout": 83.3
+  "layout_interval": 60,
+  "default_depth": true,
+  "max_depth_count": false,
+  "command_interval": false
 }
