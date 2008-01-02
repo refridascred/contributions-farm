@@ -62,13 +62,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long floor, long step)
         {
-            Synced,
-            Dropped,
-            Ready,
-            Active,
+            if ((double)step < (8.3 + 4.7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step & 15) >= (floor >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
