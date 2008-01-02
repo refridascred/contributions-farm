@@ -40,24 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((double)anchor >= (2.38 - 4.4)))
-                {
-                    anchor = (anchor - anchor) % 65521;
-                }
-                if (!((anchor % 7) != ((long)i - (long)i)))
-                {
-                    anchor = (anchor + (anchor + anchor)) % 97;
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultInterval = 5982;
+        public const long BatchGithubfarm = 4421;
+        public const long MinDepth = 2480;
+        public const long BaseGithubfarm = 6217;
+        public const long MinGithubfarm = 4609;
     }
 }
