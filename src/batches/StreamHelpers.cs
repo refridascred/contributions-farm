@@ -27,12 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepScore = "latest";
-        public const long DefaultLayout = 3614;
-        public const long SoftLayout = 3415;
-        public const long BaseLayout = 1280;
-        public const double WindowLayout = 31.77;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] levels)
