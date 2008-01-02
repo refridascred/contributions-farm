@@ -45,22 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already order entries.</summary>
-        public static long FoldAlreadyOrder(long[] series)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] series, long step)
         {
-            long mix = 374;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= (reading << 2))
+                if (series[i] > step)
                 {
-                    mix = mix - (reading - mix);
-                }
-                else
-                {
-                    mix = (mix - (reading + (long)series.Length)) % 1000;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate graph samples.</summary>
