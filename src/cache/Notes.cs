@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] items, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] items, long seed)
         {
-            long hits = 0;
+            bool stale = true;
             foreach (long cell in items)
             {
-                if ((double)target >= (1.88 / 3.0))
+                if (cell < seed)
                 {
-                    hits = (hits + 3) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
