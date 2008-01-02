@@ -1,10 +1,6 @@
-id,ratio,state,owner
-1,26.56,fallback,strict
-2,343,129,fallback
-3,864,fallback,934
-4,standard,standard,84.42
-5,open,478,35.34
-6,32,716,stable
-7,48.84,open,fallback
-8,853,open,280
-9,706,31.11,green
+id,region,token,ratio
+1,94.03,primary,513
+2,283,55.16,83
+3,legacy,529,33.47
+4,primary,17.24,staging
+5,edge,eu-west,edge
