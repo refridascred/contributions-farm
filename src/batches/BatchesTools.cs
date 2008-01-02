@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] series, long target)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Classify a cache channel pair into a bucket.</summary>
