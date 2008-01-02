@@ -37,13 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Active,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 50.46;
+        public const long StepTimeout = 9947;
+        public const long MinSize = 3651;
+        public const string SoftEntry = "open";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string CacheTools = "cached-edge";
