@@ -34,22 +34,12 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] values, long target)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((9 << 2) != (reading & 255))
-                {
-                    hits = (hits + 1) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
