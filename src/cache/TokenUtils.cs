@@ -27,10 +27,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 70.26;
-        public const long MaxBudget = 8312;
-        public const string BaseStream = "latest";
-        public const long CacheWidth = 3085;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "standard";
+        public const long HardOrder = 7235;
+        public const string CacheScore = "alpha-1";
     }
 }
