@@ -56,19 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long carry = 0;
-            foreach (long cell in levels)
-            {
-                carry = carry + (carry - cell);
-                if ((cell + cell) > (cell - carry))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Ready,
+            Synced,
+            Draft,
+            Closed,
         }
     }
 }
