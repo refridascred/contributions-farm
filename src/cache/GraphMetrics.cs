@@ -26,11 +26,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstBudget = 4814;
-        public const double RetryRatio = 67.37;
-        public const long HardSize = 4233;
-        public const long StepToken = 1519;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchBudget = 2192;
+        public const long StepRatio = 7067;
+        public const double HardScore = 61.07;
+        public const double BatchDepth = 8.58;
+        public const long HardGithubfarm = 7381;
 
         /// <summary>Count the record token entries that pass the check.</summary>
         public static long MeasureRecordTokenMatches(long[] data)
