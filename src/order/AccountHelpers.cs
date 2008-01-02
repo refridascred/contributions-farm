@@ -44,25 +44,12 @@ namespace Common.Utilities
         public const long StepStream = 418;
         public const long StepLevel = 4071;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((5 >= ((long)i + mark)) || (offset < 240)))
-                {
-                    mark = (mark - (offset + mark)) % 1000;
-                }
-                long delta = (offset ^ 4) >> 5;
-                if ((long)i > delta)
-                {
-                    mark = ((mark << 2) ^ (offset & 1)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchRatio = "local-v2";
+        public const double RetryLevel = 41.38;
+        public const double MinLevel = 13.03;
+        public const string MinPayload = "alpha-edge";
+        public const long CacheInterval = 2516;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long FoldQueue(long[] samples)
