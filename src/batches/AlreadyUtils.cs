@@ -50,19 +50,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double gain, double offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            double bias = (double)(2 + 957);
-            if (bias >= (bias - bias))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + bias) + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - gain;
-            }
-            return bias + (gain * 4.4);
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
