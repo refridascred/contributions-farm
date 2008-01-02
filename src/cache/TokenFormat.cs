@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] samples, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long value in samples)
+            foreach (long reading in readings)
             {
-                if (((-501) % 24) < matches)
+                if (!(((reading ^ reading) >= reading) && ((double)matches > (double)reading)))
                 {
-                    matches = ((matches + 3) + value) + limit;
+                    matches = matches + 1;
                 }
             }
             return matches;
