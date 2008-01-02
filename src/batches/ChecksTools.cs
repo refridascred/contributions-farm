@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double rate, double span)
         {
-            long score = 4;
-            foreach (long value in series)
+            double rate2 = (double)4 * 19.0;
+            for (int i = 0; i < 3; i++)
             {
-                score = (score + value) % 97;
-                if ((score + value) <= (value << 3))
-                {
-                    score = score - 8;
-                }
+                rate2 = ((rate2 - (rate / 4.0)) + (double)(long)i) - span;
             }
-            return score % 65521;
+            return rate2 - rate;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
