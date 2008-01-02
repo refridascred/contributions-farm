@@ -41,11 +41,19 @@ namespace Common.Utilities
         public const double HardBuffer = 71.37;
         public const long BurstBuffer = 299;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double floor)
         {
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
+            double mean = floor;
+            if (mean > rate)
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (rate * 7.0)) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
