@@ -1,10 +1,18 @@
 {
-  "dry_run": 86.85,
-  "counter_ratio": "eu-west",
-  "compress": {
-    "persist": true,
-    "hard_ttl_pct": 39,
-    "enabled": 33
-  },
-  "cache_ratio_pct": "strict"
+  "token_window": ["local", "local", "eu-west", "open"],
+  "strict": 63.27,
+  "batch_ttl_s": {
+    "buffer_ttl": 5,
+    "compress": 43,
+    "warm_size_ms": {
+      "burst_timeout_ms": "legacy",
+      "flush_depth_ms": [194, 109, 61, 365],
+      "hard_timeout_pct": "green",
+      "flush_size_s": 34,
+      "cache_depth_s": false,
+      "filter_size": [309, 273]
+    },
+    "tools_depth": [104, 56, 365],
+    "farm_limit": "green"
+  }
 }
