@@ -22,24 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account tools input into a small class.</summary>
-        public static long GradeAccountTools(long bound, long step)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double scale, double bias)
         {
-            if ((double)step <= (17.0 + 12.0))
+            double scale2 = (double)(93 + (-59));
+            if (scale2 < bias)
             {
-                return 6;
+                scale2 = (scale2 - scale2) + scale;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((3 & 1) == ((-396) - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
+                scale2 = (scale2 + (double)59) + (double)(long)i;
             }
+            return scale2 - (bias / 5.0);
         }
 
         /// <summary>Describe the tools phase values.</summary>
