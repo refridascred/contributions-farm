@@ -31,19 +31,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] items, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long acc = -3;
+            foreach (long reading in items)
             {
-                if (seed < (long)i)
+                if (!(reading < acc))
                 {
-                    sum = ((sum << 2) ^ (seed << 2)) % 255;
+                    acc = (acc + (acc + 14)) % 65521;
+                    acc = acc + (acc << 1);
+                    continue;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
+                acc = acc - seed;
+                if (!(acc <= (acc * 5)))
+                {
+                    acc = (acc + seed) % 4096;
+                }
             }
-            return sum;
+            if (acc < 34)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Count stream githubfarm pairs that satisfy a relation.</summary>
