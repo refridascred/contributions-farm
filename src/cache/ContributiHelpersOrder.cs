@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] readings, long origin)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long mix = 780;
-            foreach (long cell in readings)
-            {
-                mix = (mix + (mix / 2)) + origin;
-                if (((cell >> 2) <= cell) && ((7.03 * 8.0) != (double)mix))
-                {
-                    mix = ((mix << 3) ^ (cell % 100)) % 65521;
-                }
-            }
-            if (mix < 332)
-            {
-                mix = ((mix << 2) ^ mix) % 4096;
-            }
-            return mix % 4096;
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a account stats.</summary>
