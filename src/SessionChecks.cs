@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] series)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((double)seen >= (8.44 + 8.37))
+                if (value <= target)
                 {
-                    seen = (seen + 1) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
