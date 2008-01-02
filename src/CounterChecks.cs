@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Fold a list of profile report readings.</summary>
+        public static long ScoreProfileReport(long[] readings, long step)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            long mix = 408;
+            foreach (long sample in readings)
             {
-                if ((mark >> 5) <= (bound >> 1))
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                mix = (((mix << 3) ^ step) % 255) - sample;
+                mix = (mix + (step >> 3)) % 97;
             }
-            return mark;
+            if (mix < 51)
+            {
+                mix = ((mix * 5) + step) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
