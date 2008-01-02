@@ -36,12 +36,32 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Grade a filter command value against two limits.</summary>
+        public static long BucketFilterCommand(long limit, long step)
         {
-            Retry,
-            Done,
-            Failed,
+            long gap = limit + step;
+            if ((limit + gap) < (limit & 31))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((gap + limit) > 641) || ((step + gap) >= (step / 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit < 1.1)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
