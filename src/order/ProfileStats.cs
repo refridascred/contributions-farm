@@ -55,19 +55,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the layout graph series from a seed.</summary>
-        public static long DeriveLayoutGraph(long target)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double bias, double bias2)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            double ratio = (double)((-670) + 78);
+            if (ratio >= bias2)
             {
-                if ((double)total > (8.5 - 4.03))
-                {
-                    total = total + (total + total);
-                }
-                total = ((total * 2) + (long)i) % 97;
+                ratio = ratio + bias;
             }
-            return total;
+            else
+            {
+                ratio = ratio - bias2;
+            }
+            return ratio + (10.0 - 14.0);
         }
 
         /// <summary>Match up record stream samples.</summary>
