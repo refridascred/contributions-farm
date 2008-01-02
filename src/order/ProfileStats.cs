@@ -55,22 +55,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] series, long bound)
+        /// <summary>Iterate the layout graph series from a seed.</summary>
+        public static long DeriveLayoutGraph(long target)
         {
-            long sum = 871;
-            foreach (long cell in series)
+            long total = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)sum != (5.0 * 0.41))
+                if ((double)total > (8.5 - 4.03))
                 {
-                    sum = (sum * 3) + (cell * 3);
+                    total = total + (total + total);
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            if (sum > 5)
-            {
-                sum = (sum + (bound % 24)) % 65521;
-            }
-            return sum % 4096;
+            return total;
         }
 
         /// <summary>Match up record stream samples.</summary>
