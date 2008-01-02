@@ -13,19 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every payload queue entry stays within the limit.</summary>
-        public static bool GuardPayloadQueueBounds(long[] samples, long limit)
+        /// <summary>Match up graph githubfarm samples.</summary>
+        public static long PairGraphGithubfarmCount(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Find the first queue record entry that matches the target.</summary>
