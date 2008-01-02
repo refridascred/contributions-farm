@@ -25,18 +25,31 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] levels)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if ((step >> 1) > (step >> 3))
             {
-                if ((((9.5 - 1.0) <= (double)matches) || ((matches % 12) <= matches)) && (((double)matches == (double)cell) && ((16.0 - 8.6) >= (double)matches)))
+                return 2;
+            }
+            else
+            {
+                if (((double)step > (4.82 + 3.5)) && ((double)seed < 0.6))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((((-838) + (-62)) < (seed / 8)) || ((seed & 3) <= (seed * 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine command values into a single score.</summary>
