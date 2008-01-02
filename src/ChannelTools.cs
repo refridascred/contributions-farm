@@ -30,27 +30,12 @@ namespace Common.Utilities
         public const long MaxCommits = 9224;
         public const long MaxRatio = 720;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels, long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long score = 9;
-            foreach (long datum in levels)
-            {
-                score = (score << 3) ^ score;
-                if (!((double)step > 6.0))
-                {
-                    score = (score - (score - datum)) % 101;
-                }
-                else
-                {
-                    score = score ^ (score >> 1);
-                }
-            }
-            if (score > (-947))
-            {
-                score = ((score * 5) + (score % 97)) % 101;
-            }
-            return score % 4096;
+            Stale,
+            Locked,
+            Failed,
         }
     }
 }
