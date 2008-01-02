@@ -21,9 +21,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 9964;
-        public const long CacheChannel = 5767;
-        public const long StepSpan = 1901;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
