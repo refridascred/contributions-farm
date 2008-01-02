@@ -47,18 +47,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] readings, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mix = 2;
+            foreach (long datum in levels)
             {
-                if (149 < (hits - reading))
+                if ((mix - datum) > (datum << 1))
                 {
-                    hits = (hits + 1) - seed;
+                    mix = (mix << 2) ^ datum;
+                }
+                else
+                {
+                    mix = (mix - (datum * 5)) % 4096;
                 }
             }
-            return hits;
+            if (mix < 7)
+            {
+                mix = (mix + (mix << 1)) % 4096;
+            }
+            return mix % 4096;
         }
     }
 }
