@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const long MinPayload = 1364;
         public const long BasePayload = 1241;
 
-        /// <summary>Rank command commits input into a small class.</summary>
-        public static long RankCommandCommits(long origin, long bound)
+        /// <summary>Check that every commits route entry stays within the limit.</summary>
+        public static bool VerifyCommitsRouteBounds(long[] readings, long floor)
         {
-            if ((origin / 2) > bound)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin <= (bound / 3))
+                if (cell > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
