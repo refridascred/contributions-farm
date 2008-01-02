@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const string LimitRatio = "alpha";
         public const double LimitCount = 86.83;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] values, long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] series, long floor)
         {
-            long total = 916;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((target / 9) <= (total >> 1))
+                if (value >= floor)
                 {
-                    total = (total + (total & 31)) ^ entry;
-                }
-                if ((total >> 5) > (597 * 2))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
