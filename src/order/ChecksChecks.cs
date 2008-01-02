@@ -25,11 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "legacy-1";
-        public const long DefaultContext = 7734;
-        public const double BurstBudget = 24.06;
-        public const double IdleContext = 17.11;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 1300;
+        public const long StepBuffer = 5563;
+        public const long RetryLevel = 4116;
+        public const double SoftBudget = 93.38;
 
         /// <summary>Grade a support cluster value against two limits.</summary>
         public static long GradeSupportCluster(long floor, long limit)
