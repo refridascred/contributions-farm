@@ -1,6 +1,11 @@
-id,owner,active,count,state
-1,31.45,551,643,local
-2,14,991,70.58,open
-3,144,97.41,fallback,staging
-4,83.58,blue,238,913
-5,951,stable,legacy,531
+id,rank,ratio
+1,240,stable
+2,387,eu-west
+3,45.96,413
+4,local,81.2
+5,52.52,529
+6,strict,eu-west
+7,62.47,89.4
+8,eu-west,6.12
+9,90,7.92
+10,358,eu-west
