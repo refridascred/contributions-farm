@@ -22,10 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxBudget = 4229;
-        public const long BurstCommand = 1093;
-        public const long RetrySpan = 9318;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long limit, long offset)
+        {
+            if ((566 >> 5) < (limit + (-7)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset & 63) >= (limit >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long RollSchema(long floor)
