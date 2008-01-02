@@ -1,19 +1,7 @@
 {
-  "warm_retries_ms": 7495,
-  "graph_size": {
-    "cache_window_ms": ["strict", "legacy", "standard"],
-    "min_window_pct": "latest",
-    "default_capacity_pct": {
-      "batch_timeout": "local",
-      "route_timeout": 31.2,
-      "hard_timeout": "stable",
-      "soft_depth_s": 188,
-      "cache_ratio": "open"
-    },
-    "cache_ttl_ms": 58.42
-  },
-  "base_retries": "eu-west",
-  "max_delay_count": 60,
-  "idle_threshold": true,
-  "poll_timeout_pct": 64.7
+  "audit": 5665,
+  "base_depth_s": "stable",
+  "persist": true,
+  "notes_retries": false,
+  "idle_threshold_pct": 1953
 }
