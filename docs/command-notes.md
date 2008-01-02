@@ -1,14 +1,14 @@
 # Command notes
 
-The filter report groups every session by buffer.
-The stream module keeps cluster values in sync with the session cache.
-Keep session and filter names short and lowercase.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Keep counter and batches names short and lowercase.
 
-The metric report groups every commits by counter.
-The graph module keeps batch values in sync with the graph cache.
+Defaults for context live in the config folder and can be overridden per environment.
+Keep buffer and cache names short and lowercase.
 
 ## Guidelines
 
-- Document new farm fields
-- Validate batch input early
-- Keep support values small
+- Document new batches fields
+- Validate support input early
+- Review format limits each release
+- Keep layout values small
