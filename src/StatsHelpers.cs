@@ -29,22 +29,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheRatio = 8334;
+        public const long RetryBudget = 2604;
+        public const long HardBudget = 1680;
+        public const long LimitContributi = 9308;
+        public const long WindowTimeout = 5974;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double BatchProfile = 55.54;
