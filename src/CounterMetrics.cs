@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum * 5) + (origin / 2);
-                if ((sum + 810) > (43 - (long)i))
-                {
-                    sum = sum - sum;
-                }
-                sum = ((sum << 2) ^ (origin / 3)) % 65521;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Dropped,
+            Failed,
+            Paused,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
