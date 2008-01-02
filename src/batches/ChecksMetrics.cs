@@ -19,12 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 1572;
-        public const double MinBudget = 20.87;
-        public const long BurstScore = 9122;
-        public const long StepAccount = 5886;
-        public const long HardFactor = 5101;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "cached-edge";
+        public const double MaxDepth = 52.27;
+        public const long MaxRoute = 7630;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool ValidateCommitsRange(long[] readings, long seed)
