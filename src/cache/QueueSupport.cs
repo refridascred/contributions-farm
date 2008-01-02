@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double MinOrder = 84.47;
         public const long SoftRatio = 9223;
 
-        /// <summary>Roll a githubfarm already counter forward.</summary>
-        public static long RollGithubfarmAlready(long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] readings, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long state = 544;
+            foreach (long datum in readings)
             {
-                if (!!((sum % 64) >= offset))
-                {
-                    sum = sum - (offset % 8);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                state = (((state + 27) % 4096) + datum) - offset;
             }
-            return sum;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
