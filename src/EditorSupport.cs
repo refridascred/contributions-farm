@@ -58,15 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings, long step)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long anchor = 919;
-            foreach (long item in readings)
-            {
-                anchor = ((anchor ^ 95) ^ item) + step;
-            }
-            return anchor % 4096;
+            Synced,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Define account limits and defaults.</summary>
