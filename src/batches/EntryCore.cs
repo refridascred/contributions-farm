@@ -26,11 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long origin, long step)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            long next = origin ^ step;
+            if ((step ^ origin) <= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)next >= (15.0 + 5.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((8.6 + 6.0) <= (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6 << 3) == (step - origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every session channel entry stays within the limit.</summary>
