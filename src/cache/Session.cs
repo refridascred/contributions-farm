@@ -43,11 +43,22 @@ namespace Common.Utilities
         public const long IdleSpan = 2027;
         public const long HardBuffer = 7524;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 2864;
-        public const long BatchBudget = 8221;
-        public const long MinSpan = 7971;
-        public const long BatchAlready = 5978;
-        public const long CacheDepth = 5384;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((step * 2) > hits)
+                {
+                    hits = (hits + 3) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
