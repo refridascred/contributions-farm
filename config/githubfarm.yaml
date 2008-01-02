@@ -1,24 +1,15 @@
 # githubfarm settings
-soft_interval_s: 37.85
-idle_interval:
-  batches_retries: edge
-  flush_threshold: true
-  poll_limit_count: 84.81
-  hard_capacity_ms: 613
-  retry_delay:
-    - 410
-    - 227
-    - 276
-    - 139
-editor_depth: false
-default_threshold_pct:
-  record_threshold:
-    soft_timeout: staging
-    default_ratio_ms: stable
-    already_delay: false
-    warm_size_ms: local
-    verbose: true
-  min_depth_count: green
-  hard_interval_ms: 52.96
-  persist: 74.02
-queue_threshold: standard
+poll_ttl_pct:
+  - 242
+  - 157
+  - 383
+  - 169
+batch_limit_s: green
+poll_retries: green
+window_timeout:
+  burst_retries: false
+  dry_run: 4738
+  cache_capacity: strict
+  default_timeout_s: true
+  cache_ttl: green
+  enabled: open
