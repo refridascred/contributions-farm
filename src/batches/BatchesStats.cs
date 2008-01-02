@@ -33,12 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 20.7;
-        public const string IdleBuffer = "latest-edge";
-        public const long MinInterval = 8709;
-        public const double HardBuffer = 71.37;
-        public const long BurstBuffer = 299;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] samples, long floor)
+        {
+            long carry = 352;
+            foreach (long cell in samples)
+            {
+                if ((4.2 / 7.0) != (double)carry)
+                {
+                    carry = ((carry ^ (-6)) % 4096) - floor;
+                }
+                if (!((carry & 3) > cell))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long WindowCommits = 5596;
