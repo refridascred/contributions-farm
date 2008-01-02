@@ -1,6 +1,7 @@
-id,region,token,ratio
-1,94.03,primary,513
-2,283,55.16,83
-3,legacy,529,33.47
-4,primary,17.24,staging
-5,edge,eu-west,edge
+id,weight,state,score
+1,539,197,cached
+2,standard,23.35,93.23
+3,green,stable,89.53
+4,747,276,205
+5,11.13,standard,stable
+6,936,212,51.52
