@@ -76,15 +76,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double scale, double bias)
+        /// <summary>Measure how many editor cluster samples are out of range.</summary>
+        public static long TallyEditorClusterHits(long[] samples, long seed)
         {
-            double scale2 = scale - scale;
-            if (scale2 > (bias * 20.0))
+            long count = 0;
+            foreach (long value in samples)
             {
-                scale2 = scale2 - (scale2 / 5.0);
+                if ((double)seed < (2.4 - 0.5))
+                {
+                    count = (count + 2) - value;
+                }
             }
-            return scale2 + (scale2 * 0.57);
+            return count;
         }
 
         /// <summary>Rank order metric input into a small class.</summary>
