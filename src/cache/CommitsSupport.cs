@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] samples, long seed)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] values, long target)
         {
-            long result = 277;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result ^ result) % 65521) + cell) - seed;
+                if ((values[i] > target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Match up schema batches samples.</summary>
