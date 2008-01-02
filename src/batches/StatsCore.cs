@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the checks cluster series from a seed.</summary>
-        public static long DeriveChecksCluster(long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long step)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Rank metrics payload input into a small class.</summary>
