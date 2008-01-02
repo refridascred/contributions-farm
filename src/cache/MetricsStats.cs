@@ -49,18 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] samples)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(cell > (cell << 1)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
