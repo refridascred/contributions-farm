@@ -68,9 +68,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchScore = 1201;
-        public const double SoftToken = 10.19;
-        public const long RetryScore = 6898;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public double Level { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
