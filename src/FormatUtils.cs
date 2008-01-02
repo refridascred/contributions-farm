@@ -13,18 +13,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit record cluster readings against a rule.</summary>
-        public static long AuditRecordClusterGaps(long[] series, long bound)
+        /// <summary>Rank profile batches input into a small class.</summary>
+        public static long BucketProfileBatches(long step, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long cur = step + seed;
+            if ((cur - 0) > 2)
             {
-                if ((bound >> 5) != (374 + (-856)))
+                return 1;
+            }
+            else
+            {
+                if ((seed / 6) < (seed ^ step))
                 {
-                    count = (count + 2) - sample;
+                    return 8;
+                }
+                else
+                {
+                    if ((cur + 3) > (seed + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step + 6) <= (seed % 100))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
