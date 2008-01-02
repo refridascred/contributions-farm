@@ -1,8 +1,6 @@
 {
-  "strict": 55.9,
-  "default_capacity": ["open", "strict"],
-  "max_ratio_count": false,
-  "hard_ttl_s": "blue",
-  "schema_size": 6567,
-  "enabled": 96
+  "sync_retries": 19,
+  "report_ttl": "primary",
+  "poll_window_pct": [12, 282, 85, 469],
+  "burst_window": 41
 }
