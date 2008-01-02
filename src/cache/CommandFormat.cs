@@ -27,17 +27,15 @@ namespace Common.Utilities
         public const long BatchBudget = 242;
         public const long LimitInterval = 1930;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] data, long seed)
+        /// <summary>Roll a metric channel counter forward.</summary>
+        public static long StepMetricChannel(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
