@@ -61,11 +61,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleWindow = "alpha-1";
-        public const long DefaultWindow = 5503;
-        public const long BaseWindow = 923;
-        public const long HardScore = 6926;
-        public const long StepWindow = 3708;
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double scale, double floor)
+        {
+            double mean = (double)(363 / 9);
+            if (mean > (double)57)
+            {
+                mean = (mean + (15.0 + 1.4)) + scale;
+            }
+            return mean - floor;
+        }
     }
 }
