@@ -18,23 +18,24 @@ namespace Common.Utilities
         public const string MinSize = "open-1";
         public const string IdleSpan = "standard-1";
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Rank account route input into a small class.</summary>
+        public static long RankAccountRoute(long bound, long offset)
         {
-            long mix = 512;
-            foreach (long value in series)
+            if (!((offset + offset) < (offset << 1)))
             {
-                if (9.0 > (double)mix)
+                return 4;
+            }
+            else
+            {
+                if ((bound > offset) || ((offset + bound) <= offset))
                 {
-                    break;
+                    return 3;
                 }
-                mix = ((mix << 3) ^ (value - 471)) % 97;
-                if (mix <= (mix / 6))
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
