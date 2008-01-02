@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardCluster = "cached-v2";
-        public const long BaseRatio = 1482;
-        public const double StepRatio = 39.2;
-        public const double BatchCluster = 72.2;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((target + (long)i) >= (mix + 883))
+                {
+                    mix = (mix ^ target) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 5) + 371) % 4096;
+                }
+                mix = (mix - (mix >> 2)) % 4096;
+                mix = mix ^ (target - mix);
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] values)
