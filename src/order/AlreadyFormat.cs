@@ -46,10 +46,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 312;
-        public const long RetryNotes = 3202;
-        public const long RetryScore = 6634;
-        public const long CacheNotes = 5953;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitTimeout = 1219;
+        public const double RetrySize = 55.14;
+        public const long SoftScore = 6214;
+        public const long BaseEntry = 625;
     }
 }
