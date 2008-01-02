@@ -1,9 +1,7 @@
-id,region,level
-1,744,80.25
-2,green,40.07
-3,611,36.06
-4,200,14.67
-5,fallback,60.04
-6,50.3,25.43
-7,27.07,388
-8,strict,204
+id,region,count,level
+1,53.78,legacy,standard
+2,41.67,80.75,424
+3,edge,19.66,35.08
+4,745,13.68,813
+5,720,stable,latest
+6,edge,eu-west,latest
