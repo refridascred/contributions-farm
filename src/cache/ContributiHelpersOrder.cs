@@ -23,23 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double gain, double bias)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            double weight = gain;
-            if (weight > (8.0 / 4.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight + (double)772) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (double)572;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + 0.07) - (double)(long)i;
-            }
-            return weight + gain;
+            return count;
         }
 
         /// <summary>Classify a schema command pair into a bucket.</summary>
