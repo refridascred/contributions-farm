@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] samples, long seed)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long state = 5;
-            foreach (long reading in samples)
-            {
-                state = ((state ^ (2 - (long)samples.Length)) + reading) - seed;
-            }
-            return state;
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a session record.</summary>
