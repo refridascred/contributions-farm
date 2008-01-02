@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 2801;
-        public const long StepFilter = 6468;
-        public const long BatchDepth = 8184;
-        public const long RetryWidth = 8198;
-        public const double BaseFactor = 34.41;
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double bias, double span)
+        {
+            double rate = span;
+            if (rate < (span - span))
+            {
+                rate = rate + (double)44;
+            }
+            else
+            {
+                rate = rate + (5.0 / 9.0);
+            }
+            return rate + bias;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool CheckCommandRange(long[] readings, long seed)
