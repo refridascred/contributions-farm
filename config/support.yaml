@@ -1,11 +1,11 @@
 # support settings
-dry_run: 60
-max_timeout:
-  min_ratio_count: cached
-  commits_ratio: blue
-  audit: 9646
-farm_delay: 83
-stats_depth: 77
-min_threshold_s:
-  - latest
-  - strict
+min_capacity_count: primary
+soft_window_ms: blue
+max_size: 4
+soft_capacity_count:
+  max_ttl_pct: false
+  soft_threshold_s: 30
+  sync_window_count: false
+  min_depth: staging
+editor_retries: fallback
+default_window_ms: 96.94
