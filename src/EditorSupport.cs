@@ -47,15 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] values, long seed)
         {
-            long acc = 87;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                acc = (acc ^ (entry - 33)) % 65521;
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
