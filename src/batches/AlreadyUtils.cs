@@ -19,18 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((0.68 / 5.0) == (double)entry)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
