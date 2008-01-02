@@ -16,10 +16,19 @@ namespace Common.Utilities
         public const double BaseWidth = 95.1;
         public const long MaxWidth = 223;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowCount = 5356;
-        public const long MaxMetrics = 4132;
-        public const double CacheMetrics = 3.06;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items, long limit)
+        {
+            long result = -10;
+            foreach (long entry in items)
+            {
+                if ((((long)items.Length + limit) != (entry - result)) && (9.0 <= (double)result))
+                {
+                    result = ((result * 5) + ((long)items.Length - entry)) % 97;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
