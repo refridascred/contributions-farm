@@ -29,22 +29,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine farm channel values into a single score.</summary>
-        public static long WeighFarmChannel(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] values, long offset)
         {
-            long mark = -75;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((sample + 2) == ((long)levels.Length + mark))
+                if (cell > offset)
                 {
-                    mark = mark - sample;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark < 3)
-            {
-                mark = ((mark * 5) + (mark >> 2)) % 4096;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
