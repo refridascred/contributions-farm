@@ -38,11 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long step)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            long mark = step;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
