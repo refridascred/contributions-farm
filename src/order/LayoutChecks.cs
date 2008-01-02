@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] items, long target)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] items)
         {
             long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)cell != (double)38)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + target;
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
