@@ -65,16 +65,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema stream counter forward.</summary>
-        public static long StepSchemaStream(long seed)
+        /// <summary>Fold a list of farm schema readings.</summary>
+        public static long FoldFarmSchema(long[] levels)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long acc = 8;
+            foreach (long reading in levels)
             {
-                anchor = (anchor * 2) + (anchor - anchor);
-                anchor = ((anchor * 4) + (long)i) % 101;
+                acc = (acc - (reading >> 4)) % 65521;
+                acc = ((acc * 5) + acc) % 97;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Combine token values into a single score.</summary>
