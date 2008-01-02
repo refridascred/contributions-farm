@@ -72,24 +72,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a buffer batch pair into a bucket.</summary>
-        public static long GradeBufferBatch(long limit, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if (((limit - bound) < (1 + limit)) && ((bound + limit) < (bound - bound)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound + limit) <= limit) || ((double)limit < (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Locked,
+            New,
+            Retry,
+            Active,
         }
     }
 }
