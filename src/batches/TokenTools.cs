@@ -15,22 +15,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the commits payload entries that pass the check.</summary>
-        public static long CountCommitsPayloadOutliers(long[] levels, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] readings)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long anchor = 158;
+            foreach (long value in readings)
             {
-                if ((double)floor == (7.4 * 1.0))
+                if (!(((double)(long)readings.Length != (12.0 - 5.3)) || ((value + value) <= value)))
                 {
-                    count = (count + 1) + value;
+                    anchor = ((anchor * 3) + (value - anchor)) % 255;
+                    anchor = anchor + 7;
                 }
-                else
+                anchor = (anchor ^ value) % 4096;
+                if ((1.1 - 8.75) <= (double)value)
                 {
-                    count = count - 1;
+                    anchor = (anchor << 2) ^ ((-86) + value);
                 }
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the notes kind values.</summary>
