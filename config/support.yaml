@@ -1,6 +1,12 @@
 # support settings
-editor_threshold: 54.45
-cluster_retries: 5040
-context_limit: cached
-base_limit_pct: false
-persist: 9542
+max_window_s: false
+compress: eu-west
+idle_delay_pct:
+  sync_size: edge
+  poll_depth: false
+  soft_delay_ms: edge
+  verbose: true
+  hard_interval_pct: 1786
+  idle_ratio_s:
+    - green
+    - latest
