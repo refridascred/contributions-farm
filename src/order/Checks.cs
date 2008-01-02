@@ -52,12 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 8220;
-        public const string WindowCounter = "fallback";
-        public const long MaxWidth = 6750;
-        public const long LimitCounter = 3482;
-        public const string BatchScore = "open-1";
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Ready,
+            Active,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long target, long offset)
