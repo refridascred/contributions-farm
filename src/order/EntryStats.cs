@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] readings, long step)
         {
-            Dropped,
-            Paused,
-            Stale,
-            Synced,
+            long sum = 185;
+            foreach (long item in readings)
+            {
+                if ((step << 3) <= sum)
+                {
+                    sum = ((sum - (sum - sum)) % 1000) ^ item;
+                }
+                if ((double)sum == (7.0 - 2.2))
+                {
+                    break;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = ((sum << 2) ^ 9) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Project the next window value.</summary>
