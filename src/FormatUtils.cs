@@ -85,18 +85,21 @@ namespace Common.Utilities
             return scale2 + (scale2 * 0.57);
         }
 
-        /// <summary>Count the counter metrics entries that pass the check.</summary>
-        public static long AuditCounterMetricsMatches(long[] samples)
+        /// <summary>Match up githubfarm token samples.</summary>
+        public static long OverlapGithubfarmTokenCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < (value - value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
