@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public bool Count { get; set; }
-            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the cluster kind values.</summary>
