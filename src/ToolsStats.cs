@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double rate, double span)
+        /// <summary>Measure how many checks report samples are out of range.</summary>
+        public static long MeasureChecksReportHits(long[] items)
         {
-            double bias = (rate - span) / 3.0;
-            if (bias <= bias)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                bias = bias - bias;
+                if (((-546) - seen) <= 449)
+                {
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                bias = bias + (double)7;
-            }
-            return bias + span;
+            return seen;
         }
 
         /// <summary>Describe the context phase values.</summary>
