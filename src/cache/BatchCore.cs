@@ -30,22 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long score = 122;
-            foreach (long value in levels)
-            {
-                if ((double)score >= (12.0 / 4.0))
-                {
-                    score = (score - value) % 101;
-                }
-            }
-            if (score > 9)
-            {
-                score = (score + score) % 101;
-            }
-            return score % 4096;
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
