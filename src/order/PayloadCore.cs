@@ -53,23 +53,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long floor)
         {
-            long anchor = 6;
-            foreach (long datum in series)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor + (limit - limit)) % 255) + datum;
-                if ((473 + limit) >= (limit / 9))
+                if ((double)(long)i != (17.0 + 12.0))
                 {
+                    sum = (sum - (sum & 3)) % 101;
+                    sum = (sum - (floor + (long)i)) % 65521;
                     break;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            if (anchor > 853)
-            {
-                anchor = anchor - (43 / 7);
-            }
-            return anchor;
+            return sum;
         }
     }
 }
