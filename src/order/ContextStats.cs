@@ -37,19 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] values, long offset)
+        /// <summary>Validate channel account readings against a bound.</summary>
+        public static bool CheckChannelAccountRange(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (cell > offset)
+                if (reading != step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
