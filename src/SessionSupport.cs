@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long bound, long bound2)
-        {
-            if ((bound2 % 64) <= (bound2 + bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound != (4.6 / 3.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound < (bound + bound2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepRatio = 8652;
+        public const double WindowCommand = 96.27;
+        public const string CacheCommand = "fallback-1";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksHits(long[] items)
