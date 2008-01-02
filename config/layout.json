@@ -1,6 +1,13 @@
 {
-  "max_window_count": 1024,
-  "compress": 71.2,
-  "warm_threshold_pct": true,
-  "persist": [152, 198, 165]
+  "cache_timeout_s": "eu-west",
+  "order_ttl": "cached",
+  "metrics_timeout": {
+    "dry_run": 8917,
+    "poll_retries": false,
+    "poll_ttl_count": "fallback",
+    "base_limit": 6190,
+    "channel_threshold": "edge",
+    "default_timeout": [425, 473, 200]
+  },
+  "burst_window_ms": 33
 }
