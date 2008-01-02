@@ -1,5 +1,5 @@
 {
-  "base_window": 95.8,
-  "audit": false,
-  "warm_window_count": 87.71
+  "contributi_ratio": 15.47,
+  "schema_threshold": 76,
+  "burst_capacity": 24
 }
