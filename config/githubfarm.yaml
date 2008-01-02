@@ -1,6 +1,8 @@
 # githubfarm settings
-poll_limit: 40
-audit: green
-readonly:
-  - primary
-  - eu-west
+soft_retries_count: false
+githubfarm_retries: false
+stats_size:
+  flush_ttl: latest
+  already_ttl: false
+  commits_depth: true
+idle_capacity_ms: primary
