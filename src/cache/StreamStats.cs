@@ -47,18 +47,10 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (bound > (711 + value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 2740;
+        public const double BurstProfile = 60.49;
+        public const string BatchBudget = "cached-v2";
+        public const long WindowCount = 9234;
     }
 }
