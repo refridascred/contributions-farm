@@ -1,4 +1,13 @@
 # githubfarm settings
-order_ttl: open
-counter_timeout: 88.93
-burst_window: 100
+batch_retries: fallback
+idle_timeout:
+  - 418
+  - 32
+  - 352
+  - 488
+warm_depth:
+  - edge
+  - blue
+  - eu-west
+  - edge
+warm_size: cached
