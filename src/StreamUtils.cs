@@ -19,18 +19,38 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] values)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            if (((offset / 6) < (offset2 + offset2)) && ((offset2 + offset) == (offset ^ offset2)))
             {
-                if (512 < (matches - matches))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset > (1.6 - 16.0))
                 {
-                    matches = (matches + 1) + cell;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)offset != (8.24 + 9.9)) || ((offset2 + offset2) != (5 * 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset <= (677 - offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
