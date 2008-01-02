@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinTimeout = 3637;
-        public const long MinFilter = 1575;
-        public const string BurstFilter = "standard-edge";
-        public const long DefaultSpan = 7767;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long RankMetric(long seed, long target)
