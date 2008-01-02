@@ -20,13 +20,32 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long floor)
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
+            long span = offset + floor;
+            if ((floor + offset) >= span)
+            {
+                return 4;
+            }
+            else
+            {
+                if (5.37 < (double)span)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor == (4.0 / 2.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
