@@ -1,6 +1,17 @@
 {
-  "persist": false,
-  "hard_window_count": 71,
-  "tools_delay": [426, 17],
-  "profile_size": 5245
+  "commits_threshold": {
+    "batch_timeout": "strict",
+    "sync_interval": "green",
+    "batch_ratio": 7983,
+    "base_ratio_ms": ["edge", "stable", "fallback"]
+  },
+  "strict": 53.69,
+  "min_limit_pct": "blue",
+  "burst_threshold_pct": [39, 344, 244, 44],
+  "compress": {
+    "base_depth_s": 53,
+    "audit": "blue",
+    "batch_capacity": 26.75,
+    "compress": ["edge", "stable"]
+  }
 }
