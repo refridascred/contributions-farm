@@ -31,18 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit report cache readings against a rule.</summary>
-        public static long MeasureReportCacheGaps(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (3.0 >= (double)hits)
-                {
-                    hits = ((hits + 2) + cell) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "alpha-v2";
+        public const long MaxLayout = 1386;
+        public const double LimitLayout = 55.9;
+        public const long HardWidth = 8894;
+        public const long SoftLayout = 2962;
     }
 }
