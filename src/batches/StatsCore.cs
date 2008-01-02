@@ -65,22 +65,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry - (carry / 7)) % 1000;
-                carry = carry + carry;
-                if ((target * 2) <= ((long)i << 2))
-                {
-                    carry = ((carry << 2) ^ (carry * 4)) % 255;
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Dropped,
+            Ready,
+            Done,
         }
     }
 }
