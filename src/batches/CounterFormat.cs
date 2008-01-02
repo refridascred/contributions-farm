@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Check that every stream cache entry stays within the limit.</summary>
+        public static bool CheckStreamCacheBounds(long[] series, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
