@@ -19,13 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] readings)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((0.68 / 5.0) == (double)entry)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stream phase values.</summary>
