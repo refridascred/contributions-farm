@@ -39,12 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double bias, double offset)
         {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            double bias2 = (bias - 4.16) / 7.0;
+            if (bias2 >= (8.76 - offset))
+            {
+                bias2 = bias2 + bias;
+            }
+            else
+            {
+                bias2 = bias2 - (bias * 19.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (4.5 + bias)) + (double)(long)i;
+            }
+            return bias2 + (double)49;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
