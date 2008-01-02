@@ -1,5 +1,5 @@
 {
-  "default_limit_count": 6.2,
-  "audit": 3,
-  "farm_depth": "cached"
+  "retry_capacity_ms": ["fallback", "legacy", "strict"],
+  "base_size_ms": 8645,
+  "hard_size_count": "local"
 }
