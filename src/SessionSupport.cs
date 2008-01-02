@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] readings, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((37 + value) > (value + value))
-                {
-                    tally = (tally + 3) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Roll a format counter forward.</summary>
