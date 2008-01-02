@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] items)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double scale, double span)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double gain = span;
+            if (gain < gain)
             {
-                if ((5.1 - 7.0) <= (double)hits)
-                {
-                    hits = (hits + 3) + reading;
-                }
+                gain = gain + 2.85;
             }
-            return hits;
+            else
+            {
+                gain = gain - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (span - scale)) + (double)(long)i;
+            }
+            return gain - (span * 9.0);
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
