@@ -47,5 +47,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
             public bool Rank { get; set; }
         }
+
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Ready,
+            Queued,
+            Retry,
+            Paused,
+        }
     }
 }
