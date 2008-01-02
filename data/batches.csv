@@ -1,8 +1,8 @@
-id,level,ratio
-1,40.19,413
-2,eu-west,531
-3,0.44,443
-4,38.18,standard
-5,649,local
-6,91.4,green
-7,primary,42.56
+id,rank,active
+1,stable,89
+2,66.67,369
+3,edge,primary
+4,stable,fallback
+5,946,40.05
+6,751,latest
+7,open,948
