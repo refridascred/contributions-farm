@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Locked,
             Dropped,
-            Pending,
-            Synced,
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Match up tools route samples.</summary>
