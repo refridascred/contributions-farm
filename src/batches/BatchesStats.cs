@@ -33,31 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] items)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long bound)
         {
-            long state = -7;
-            foreach (long datum in items)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (((state * 2) < 712) && (((long)items.Length - state) < ((long)items.Length + 408)))
-                {
-                    state = (state - (state + state)) % 65521;
-                    state = state + (657 - 46);
-                }
-                if ((state % 3) < (state - datum))
-                {
-                    state = ((state << 2) ^ 9) % 4096;
-                }
-                else
-                {
-                    state = ((state * 5) + (datum + state)) % 4096;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            if (state < 76)
-            {
-                state = ((state << 2) ^ (4 * 5)) % 1000;
-            }
-            return state % 65521;
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
