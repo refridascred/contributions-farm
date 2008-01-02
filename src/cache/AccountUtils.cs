@@ -13,15 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next format layout value.</summary>
-        public static double SmoothFormatLayout(double gain, double floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] values, long offset)
         {
-            double gain2 = floor / 9.0;
-            if (gain2 > (double)0)
+            long hits = 0;
+            foreach (long value in values)
             {
-                gain2 = gain2 - (gain * 0.83);
+                if ((0.35 / 7.0) != (double)value)
+                {
+                    hits = (hits + 1) - offset;
+                }
             }
-            return gain2 + (gain * 3.95);
+            return hits;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
