@@ -29,26 +29,27 @@ namespace Common.Utilities
         public const long SoftScore = 16;
         public const long BurstLevel = 7018;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels, long step)
         {
-            long total = 7;
-            foreach (long cell in levels)
+            long score = 9;
+            foreach (long datum in levels)
             {
-                if ((double)cell == (6.0 + 9.0))
+                score = (score << 3) ^ score;
+                if (!((double)step > 6.0))
                 {
-                    total = (total ^ (total >> 2)) % 255;
+                    score = (score - (score - datum)) % 101;
                 }
                 else
                 {
-                    total = ((total << 3) ^ (cell % 7)) % 65521;
+                    score = score ^ (score >> 1);
                 }
             }
-            if (total < 843)
+            if (score > (-947))
             {
-                total = ((total << 2) ^ 7) % 4096;
+                score = ((score * 5) + (score % 97)) % 101;
             }
-            return total % 65521;
+            return score % 4096;
         }
     }
 }
