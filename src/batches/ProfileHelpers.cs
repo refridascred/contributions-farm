@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] readings)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item > ((long)readings.Length + 728)) && (((tally - item) <= (item * 5)) && ((298 + item) < 2)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Describe the schema level values.</summary>
