@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] samples, long bound)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)1 < (double)bound)
-                {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
