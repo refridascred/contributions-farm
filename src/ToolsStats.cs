@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const long StepBudget = 7189;
         public const long RetryWindow = 8276;
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchSpan = 3908;
+        public const long BaseToken = 8290;
+        public const string BurstTimeout = "strict";
 
         /// <summary>Rank account route input into a small class.</summary>
         public static long RankAccountRoute(long bound, long offset)
