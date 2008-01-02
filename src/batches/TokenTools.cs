@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double MaxRatio = 52.31;
         public const string WindowCount = "alpha-edge";
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] samples, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long mark = -97;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score + (origin + score)) % 97) ^ (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                mark = (((mark << 3) ^ (entry ^ 124)) % 255) - origin;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the notes kind values.</summary>
