@@ -44,18 +44,13 @@ namespace Common.Utilities
             return scale + (ratio + scale);
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] levels)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)count != (double)67)
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            Failed,
+            Locked,
         }
     }
 }
