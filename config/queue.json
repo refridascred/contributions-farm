@@ -1,23 +1,15 @@
 {
-  "persist": {
-    "min_limit_count": 76,
-    "context_size": 30,
-    "base_limit_count": ["eu-west", "fallback", "primary", "open"],
-    "counter_threshold": {
-      "flush_window_pct": 70.23,
-      "cluster_interval": 250,
-      "filter_ttl": [184, 248]
-    },
-    "warm_capacity": {
-      "max_delay_count": 8016,
-      "batch_limit": 73,
-      "profile_ratio": true
-    },
-    "idle_window_count": true
+  "compress": {
+    "farm_size": "local",
+    "min_threshold": 8868,
+    "stats_timeout": "open",
+    "commits_timeout": "standard",
+    "min_ratio": 47.6
   },
-  "audit": 6681,
-  "warm_window_count": 8483,
-  "entry_capacity": 1024,
-  "tools_capacity": 5529,
-  "min_delay_ms": 5928
+  "hard_delay_s": "stable",
+  "flush_window_ms": {
+    "flush_limit": true,
+    "max_size": "latest",
+    "metric_timeout": ["blue", "fallback"]
+  }
 }
