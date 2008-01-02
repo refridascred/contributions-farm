@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftScore = 32.14;
-        public const string DefaultTimeout = "cached-edge";
-        public const long BatchAlready = 6691;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((0.8 + 5.0) < (2.4 - 4.4))
+                {
+                    matches = (matches + 1) - entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordHits(long[] readings)
