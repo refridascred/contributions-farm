@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double rate, double span)
         {
-            Draft,
-            Done,
-            Queued,
+            double mean = (double)(4 + 7);
+            if (mean >= (span - span))
+            {
+                mean = (mean + (double)0) - rate;
+            }
+            return mean - (double)93;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
