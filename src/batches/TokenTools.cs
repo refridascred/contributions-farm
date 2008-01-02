@@ -27,19 +27,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] samples, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (!(825 <= (mix + origin)))
+                if (((8.5 + 2.19) >= (double)tally) && (floor < (floor * 3)))
                 {
-                    mix = ((mix * 3) + origin) % 4096;
+                    tally = (tally + 3) ^ datum;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
