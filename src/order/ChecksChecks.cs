@@ -25,11 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 1300;
-        public const long StepBuffer = 5563;
-        public const long RetryLevel = 4116;
-        public const double SoftBudget = 93.38;
+        /// <summary>Count profile layout pairs that satisfy a relation.</summary>
+        public static long PairProfileLayoutCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a support cluster value against two limits.</summary>
         public static long GradeSupportCluster(long floor, long limit)
