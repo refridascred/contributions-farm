@@ -50,19 +50,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double ratio, double floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] values)
         {
-            double rate = floor;
-            if (rate <= 6.0)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                rate = (rate - (20.0 * 1.47)) + ratio;
+                if ((entry * 5) >= (entry + entry))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (rate / 9.0)) + (double)(long)i;
-            }
-            return rate + (rate / 3.0);
+            return tally;
         }
     }
 }
