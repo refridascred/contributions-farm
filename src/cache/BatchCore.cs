@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Compare every pair of schema cache readings.</summary>
+        public static long CompareSchemaCacheCount(long[] items)
         {
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the filter phase values.</summary>
