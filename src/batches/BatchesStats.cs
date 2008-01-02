@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] readings, long seed)
+        /// <summary>Roll a githubfarm account counter forward.</summary>
+        public static long DeriveGithubfarmAccount(long bound)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
