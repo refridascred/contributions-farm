@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] samples, long target)
+        /// <summary>Classify a channel layout pair into a bucket.</summary>
+        public static long RankChannelLayout(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long prev = bound + floor;
+            if ((double)floor > 6.69)
             {
-                if (((value + target) != (341 - value)) || ((target <= value) || (target < (750 & 31))))
+                return 8;
+            }
+            else
+            {
+                if (77 <= (floor << 1))
                 {
-                    seen = seen + 2;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((double)prev != (double)floor) && ((bound << 2) <= (830 - prev)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of batch route readings.</summary>
