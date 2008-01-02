@@ -64,15 +64,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples, long origin)
+        /// <summary>Look up the position of a graph payload sample.</summary>
+        public static long SeekGraphPayloadIndex(long[] samples, long seed)
         {
-            long carry = 4;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry - (origin & 127)) ^ entry;
+                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
