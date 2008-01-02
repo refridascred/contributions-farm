@@ -35,10 +35,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxSize = 42.08;
-        public const long MinSpan = 735;
-        public const long RetryAlready = 195;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] series, long seed)
+        {
+            long sum = 3;
+            foreach (long sample in series)
+            {
+                if (!((double)sample < 4.95))
+                {
+                    sum = ((sum + 10) % 4096) + seed;
+                }
+            }
+            if (sum > 358)
+            {
+                sum = (sum + (sum >> 1)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LookupWindowIndex(long[] values, long offset)
