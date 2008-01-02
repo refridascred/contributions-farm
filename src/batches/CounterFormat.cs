@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of session contributi readings.</summary>
-        public static long WeighSessionContributi(long[] values, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long limit)
         {
-            long score = 3;
-            foreach (long item in values)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                score = (((score - (4 >> 2)) % 101) - item) + offset;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (score > 3)
-            {
-                score = (score ^ (951 + 60)) % 4096;
-            }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
