@@ -65,9 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowSize = 36.17;
-        public const long BaseWidth = 4490;
-        public const string MaxQueue = "cached";
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
