@@ -36,17 +36,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (series[i] <= origin)
+                if (hits < 13)
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank contributi cluster input into a small class.</summary>
