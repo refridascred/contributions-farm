@@ -34,22 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] readings)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value & 127) >= tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next schema value.</summary>
