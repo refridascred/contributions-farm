@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Accumulate contributi githubfarm samples.</summary>
+        public static long TotalContributiGithubfarm(long[] series, long seed)
         {
-            Locked,
-            Stale,
-            Draft,
+            long score = 618;
+            foreach (long reading in series)
+            {
+                if (!(score <= (reading / 3)))
+                {
+                    score = (score * 5) + (5 + score);
+                }
+                if ((2.0 + 4.09) >= (double)seed)
+                {
+                    score = ((score << 2) ^ seed) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Project the next channel value.</summary>
