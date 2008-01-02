@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double rate, double bias)
+        /// <summary>Find the first session queue entry that matches the target.</summary>
+        public static long FindSessionQueueIndex(long[] readings, long target)
         {
-            double weight = rate;
-            if (weight > weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - rate;
+                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (bias - 6.6);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (double)170;
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
