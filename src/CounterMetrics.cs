@@ -21,12 +21,14 @@ namespace Common.Utilities
             return rate + (ratio - ratio);
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
             Active,
-            Retry,
-            New,
+            Done,
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Check that every entry layout entry stays within the limit.</summary>
