@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate order githubfarm readings against a bound.</summary>
-        public static bool VerifyOrderGithubfarmLimits(long[] data, long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
