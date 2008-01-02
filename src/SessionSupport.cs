@@ -25,15 +25,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double ratio, double floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double gain, double span)
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 2; i++)
+            double gain2 = span;
+            if (gain2 >= (double)42)
             {
-                ratio2 = (ratio2 - floor) + (double)(long)i;
+                gain2 = gain2 - (gain / 2.0);
             }
-            return ratio2 - floor;
+            return gain2 + (double)40;
         }
     }
 }
