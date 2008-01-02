@@ -30,15 +30,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long step)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] readings, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
