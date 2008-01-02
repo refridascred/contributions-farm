@@ -33,19 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats session readings against a bound.</summary>
-        public static bool GuardStatsSessionBounds(long[] samples, long origin)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Draft,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
