@@ -20,32 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long offset, long target)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long bound = offset + target;
-            if (((double)bound == (double)925) && ((offset - target) > ((-9) >> 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((bound - bound) < target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - offset) >= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
