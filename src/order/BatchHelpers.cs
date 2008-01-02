@@ -20,19 +20,19 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] data, long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            bool found = true;
-            foreach (long value in data)
+            double load = scale;
+            if (load >= scale)
             {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + (load * 15.0);
             }
-            return found;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (10.0 + scale)) + (double)(long)i;
+            }
+            return load - (floor / 7.0);
         }
 
         /// <summary>Rank graph input into a small class.</summary>
