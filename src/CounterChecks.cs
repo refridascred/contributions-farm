@@ -43,12 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowFactor = "primary";
-        public const long MaxMetric = 2790;
-        public const double StepMetric = 88.78;
-        public const double LimitMetric = 29.48;
-        public const long MinMetric = 6606;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public double Count { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
