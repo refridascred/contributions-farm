@@ -53,11 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double gain, double span)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            double scale = (double)(238 / 3);
-            return (scale + gain) + span;
+            long carry = 0;
+            foreach (long cell in levels)
+            {
+                carry = carry + (carry - cell);
+                if ((cell + cell) > (cell - carry))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
