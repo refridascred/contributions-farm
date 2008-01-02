@@ -14,17 +14,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] values, long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long origin, long origin2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((origin << 1) > (origin + origin2)))
             {
-                if (values[i] <= seed)
+                return 2;
+            }
+            else
+            {
+                if (origin2 >= (origin2 % 7))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((origin * 3) < (origin2 % 100)) || ((double)origin2 == (4.7 * 7.4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the report level values.</summary>
