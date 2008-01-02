@@ -37,10 +37,27 @@ namespace Common.Utilities
             return (rate + (floor - 5.73)) + weight;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 1916;
-        public const string LimitWindow = "fallback-1";
-        public const long IdleWindow = 4216;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples)
+        {
+            long mark = 596;
+            foreach (long item in samples)
+            {
+                if (item >= (mark << 1))
+                {
+                    mark = mark ^ (item + 825);
+                }
+                else
+                {
+                    mark = (mark + (item + item)) % 4096;
+                }
+            }
+            if (mark > 70)
+            {
+                mark = (mark + (347 / 3)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double ScaleCommand(double weight, double span)
