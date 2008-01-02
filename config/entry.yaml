@@ -1,26 +1,17 @@
 # entry settings
-base_timeout_count: 1693
-record_ratio: 5003
-channel_ttl:
-  idle_size_pct: legacy
-  idle_capacity:
-    default_delay_count: 782
-    sync_size_s: fallback
-    flush_delay: eu-west
-  burst_ratio_count: 2546
-  batches_ttl: eu-west
-  warm_delay_pct:
-    poll_timeout_s: true
-    sync_depth_s: staging
-    cache_size_ms: latest
-    default_ttl_ms: latest
-    flush_size_ms: true
-    batch_window_count: green
-audit:
-  checks_timeout: fallback
-  min_limit_s: local
-  cache_ratio: 39
-  base_threshold_s: 64.73
-  cache_limit_s: staging
-  persist: strict
-batch_limit: true
+buffer_ratio:
+  entry_capacity:
+    - 475
+    - 447
+  metric_threshold: 63.14
+  max_ratio_count: 60
+  persist: 60
+  hard_interval_pct:
+    - 114
+    - 96
+tools_threshold: 9
+format_delay: 2718
+layout_ttl:
+  - eu-west
+  - latest
+warm_size: edge
