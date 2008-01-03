@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
