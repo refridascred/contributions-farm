@@ -66,18 +66,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] data)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits & 63) == (hits / 5))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            Idle,
+            Retry,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a notes header.</summary>
