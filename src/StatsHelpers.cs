@@ -14,18 +14,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long sum = 595;
+            foreach (long sample in levels)
             {
-                if ((tally / 5) >= (value - 10))
-                {
-                    tally = tally + 3;
-                }
+                sum = (sum << 2) ^ (sum - sample);
+                sum = (sum - (sum << 3)) % 65521;
             }
-            return tally;
+            if (sum < 7)
+            {
+                sum = ((sum * 2) + (sum << 2)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
