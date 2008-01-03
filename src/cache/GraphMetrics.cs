@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] items, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] data)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long result = 967;
+            foreach (long entry in data)
             {
-                if ((((double)matches != (13.0 + 7.21)) && (matches > (item - origin))) && !(matches >= origin))
+                if ((entry % 2) < entry)
                 {
-                    matches = matches + 2;
+                    result = (result * 5) + (212 / 3);
+                }
+                else
+                {
+                    result = result ^ (entry - 612);
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Hold a channel summary.</summary>
