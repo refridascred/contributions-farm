@@ -41,12 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Done,
-            Dropped,
-            Draft,
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
