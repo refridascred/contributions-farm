@@ -50,24 +50,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] values, long target)
-        {
-            long result = 7;
-            foreach (long reading in values)
-            {
-                result = result + (reading / 8);
-                if ((607 + 2) != (target << 3))
-                {
-                    result = (result - (reading + target)) % 255;
-                }
-                if (6 > result)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 4170;
+        public const long StepChannel = 2722;
+        public const string CacheChannel = "stable-edge";
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double bias, double span)
