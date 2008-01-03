@@ -1,16 +1,13 @@
 {
-  "audit": ["open", "legacy", "eu-west"],
-  "hard_capacity": true,
-  "min_timeout_ms": 30,
-  "payload_capacity": {
-    "cache_size": false,
-    "warm_retries_pct": {
-      "layout_window": "stable",
-      "idle_depth": "eu-west",
-      "retry_threshold_s": 6811
-    },
-    "cluster_capacity": 73,
-    "soft_window_s": [61, 205]
+  "sync_timeout_ms": {
+    "burst_window": false,
+    "max_ttl_count": 63,
+    "flush_delay_ms": 27.07,
+    "poll_retries_ms": [382, 253],
+    "editor_interval": 2099
   },
-  "min_size": 5944
+  "persist": "local",
+  "min_limit_count": 60,
+  "idle_size_pct": "strict",
+  "account_depth": [105, 337]
 }
