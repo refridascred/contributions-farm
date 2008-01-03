@@ -34,5 +34,13 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
