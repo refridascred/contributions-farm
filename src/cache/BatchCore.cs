@@ -13,22 +13,16 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] data, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long score = 947;
+            foreach (long value in levels)
             {
-                if (item <= target)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score << 2) ^ value) % 101;
+                score = (score - (origin + origin)) % 4096;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
