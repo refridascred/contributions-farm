@@ -1,5 +1,5 @@
 {
-  "max_ratio": 30,
-  "burst_size_s": "standard",
-  "record_retries": 24
+  "max_window_ms": 40.07,
+  "audit": ["fallback", "green", "edge"],
+  "batch_interval_pct": true
 }
