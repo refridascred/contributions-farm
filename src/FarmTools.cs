@@ -16,13 +16,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] readings, long limit)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
+            long mark = 6;
+            foreach (long datum in readings)
+            {
+                if (!(datum > limit))
+                {
+                    mark = ((mark << 3) ^ (582 % 24)) % 101;
+                }
+                if (((double)datum < 3.5) && ((9 - mark) >= mark))
+                {
+                    mark = (mark - (mark & 127)) % 255;
+                }
+                mark = ((mark * 2) + limit) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
