@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] samples, long target)
+        /// <summary>Measure how many graph cache samples are out of range.</summary>
+        public static long AuditGraphCacheMatches(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (value >= target)
+                if (seen > (value % 16))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
