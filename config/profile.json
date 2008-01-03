@@ -1,16 +1,8 @@
 {
-  "format_depth": {
-    "window_ttl": {
-      "audit": true,
-      "warm_size_count": "open",
-      "layout_ttl": 30,
-      "default_delay": 31.19,
-      "idle_threshold_pct": 52
-    },
-    "min_ratio_count": 33,
-    "flush_retries_ms": "stable"
-  },
-  "hard_threshold_pct": "local",
-  "payload_depth": "eu-west",
-  "verbose": 26.78
+  "audit": [66, 318],
+  "readonly": "open",
+  "token_window": 42.3,
+  "dry_run": [95, 287, 329],
+  "retry_threshold_ms": 0.3,
+  "cache_depth_s": 20.7
 }
