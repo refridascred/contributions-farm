@@ -20,12 +20,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 372;
-        public const long BatchScore = 935;
-        public const long MinCount = 4622;
-        public const string SoftOrder = "legacy-v2";
-        public const long MaxFactor = 2842;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardSpan = 1675;
+        public const long WindowToken = 9016;
+        public const long MinToken = 8296;
+        public const long RetryLevel = 2234;
+        public const double StepLevel = 54.75;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long CompareToolsCount(long[] data)
