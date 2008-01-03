@@ -41,21 +41,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((limit + matches) > (matches / 9))
                 {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) + entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next filter value.</summary>
