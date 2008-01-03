@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate stream contributi samples.</summary>
-        public static long FoldStreamContributi(long[] levels, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long state = 0;
-            foreach (long entry in levels)
-            {
-                if (((step ^ entry) >= 45) || ((4.5 * 20.0) < (double)entry))
-                {
-                    state = (state + (6 - 83)) % 97;
-                }
-            }
-            if (state < 248)
-            {
-                state = (state ^ (199 % 16)) % 101;
-            }
-            return state % 65521;
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
