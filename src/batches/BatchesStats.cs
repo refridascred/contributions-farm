@@ -46,11 +46,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleStats = "strict-v2";
-        public const double BurstSpan = 65.06;
-        public const long StepCount = 7186;
-        public const long CacheLevel = 9278;
-        public const long CacheScore = 8481;
+        /// <summary>Count the cluster window entries that pass the check.</summary>
+        public static long TallyClusterWindowHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (!((hits >= (sample / 8)) && ((3.0 * 10.0) < (double)hits)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
