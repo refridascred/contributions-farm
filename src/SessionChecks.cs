@@ -51,19 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] samples, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] values)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long total = 220;
+            foreach (long entry in values)
             {
-                if (value < target)
+                if (!((double)(long)values.Length > 9.47))
                 {
-                    found = false;
-                    break;
+                    total = (((total << 2) ^ (total << 1)) % 101) + entry;
                 }
+                total = ((total << 2) ^ (8 / 9)) % 4096;
             }
-            return found;
+            if (total < 3)
+            {
+                total = (total - (total << 3)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Audit layout support readings against a rule.</summary>
