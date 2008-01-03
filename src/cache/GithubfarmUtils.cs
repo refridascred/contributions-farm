@@ -44,25 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            long result = step;
+            long anchor = limit;
             for (int i = 0; i < 9; i++)
             {
-                if (((long)i / 3) >= step)
+                if (!((169 ^ limit) >= 29))
                 {
-                    result = (result ^ step) % 4096;
-                    result = ((result << 3) ^ (step << 1)) % 255;
                     continue;
                 }
-                else
-                {
-                    result = (result + (result >> 5)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Hold a command record.</summary>
