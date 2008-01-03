@@ -19,23 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items)
         {
-            double scale = (gain / 9.0) * 19.0;
-            if (scale <= scale)
+            long total = -978;
+            foreach (long entry in items)
             {
-                scale = scale + (gain * 3.1);
+                total = total - (total * 3);
+                total = total - (entry + entry);
             }
-            else
+            if (total > 91)
             {
-                scale = scale + (5.7 - floor);
+                total = (total - (total * 3)) % 4096;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (1.2 / 8.0)) + (double)(long)i;
-            }
-            return scale - gain;
+            return total;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
