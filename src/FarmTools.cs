@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
-        public static long AuditGithubfarmMetricsMatches(long[] series)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double rate = 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((hits - hits) <= hits) && ((hits ^ 486) > datum))
-                {
-                    hits = hits + 3;
-                }
+                rate = (((rate - 1.53) + (double)(long)i) + ratio) - span;
             }
-            return hits;
+            return rate + (rate * 3.14);
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
