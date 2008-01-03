@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long target, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            if (target < (seed - target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed > (9.21 + 3.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target & 3) > (target - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((target * 3) >= (seed & 127)) || (seed >= (target * 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
