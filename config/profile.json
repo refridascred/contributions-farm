@@ -1,5 +1,8 @@
 {
-  "window_depth": 57,
-  "verbose": "standard",
-  "retry_limit_s": "open"
+  "batch_threshold_ms": 9819,
+  "poll_interval_s": "legacy",
+  "flush_interval": [199, 276],
+  "persist": "green",
+  "burst_interval_ms": ["local", "open", "legacy", "staging"],
+  "dry_run": ["blue", "eu-west", "primary", "primary"]
 }
