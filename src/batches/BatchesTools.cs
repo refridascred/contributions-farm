@@ -35,13 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] items, long offset)
         {
             bool ok = true;
-            foreach (long sample in samples)
+            foreach (long value in items)
             {
-                if (sample >= seed)
+                if (value <= offset)
                 {
                     ok = false;
                     break;
