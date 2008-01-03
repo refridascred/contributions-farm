@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] items, long offset)
+        /// <summary>Adjust a account channel reading.</summary>
+        public static double AdjustAccountChannel(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)92;
+            if (gain > gain)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                gain = ((gain - (double)3) + ratio) - bias;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain - (gain - gain);
         }
 
         /// <summary>Adjust a filter reading.</summary>
