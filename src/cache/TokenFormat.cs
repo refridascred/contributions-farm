@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double ratio, double span)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double rate = (ratio + span) * 4.07;
-            if (rate <= (ratio + span))
-            {
-                rate = rate - 11.0;
-            }
-            else
-            {
-                rate = rate - (rate / 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (rate - ratio)) + (double)(long)i;
-            }
-            return rate + ratio;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a order command reading by value.</summary>
