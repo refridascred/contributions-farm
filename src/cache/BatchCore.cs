@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long LimitTimeout = 398;
         public const double CacheDepth = 74.71;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 1974;
-        public const long StepInterval = 7120;
-        public const string MinSession = "latest-1";
-        public const long HardCount = 2159;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (item <= target)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long DeriveStream(long floor)
