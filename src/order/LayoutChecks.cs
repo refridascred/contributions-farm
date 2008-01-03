@@ -28,11 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 75.18;
-        public const long SoftOrder = 1519;
-        public const string LimitOrder = "staging-edge";
-        public const long BatchOrder = 8700;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "primary-v2";
+        public const double BaseScore = 98.55;
+        public const long MaxSpan = 3308;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string RetryWindow = "strict-edge";
