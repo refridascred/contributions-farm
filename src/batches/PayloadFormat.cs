@@ -26,15 +26,13 @@ namespace Common.Utilities
         public const double SoftRatio = 0.33;
         public const string BatchStream = "alpha-1";
 
-        /// <summary>Blend two route counter measurements.</summary>
-        public static double SmoothRouteCounter(double scale, double offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double rate = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = ((rate - (double)8) - (double)(long)i) - scale;
-            }
-            return rate - (rate / 6.0);
+            Stale,
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Rank support input into a small class.</summary>
