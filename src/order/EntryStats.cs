@@ -38,12 +38,22 @@ namespace Common.Utilities
             return (ratio - (gain + gain)) + floor;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] values, long floor)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((entry + entry) > (floor + floor)) && ((hits / 7) >= (hits / 3)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
