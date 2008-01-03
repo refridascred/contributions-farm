@@ -1,11 +1,8 @@
 # entry settings
-strict:
-  graph_depth: 1024
-  warm_window_pct: 5.3
-  cache_timeout_s: local
-  compress: 8896
-  account_ratio: 21.94
-  default_capacity_ms: latest
-profile_timeout: true
-buffer_window: latest
-sync_timeout_s: 96.31
+min_interval_count:
+  - standard
+  - legacy
+  - green
+farm_timeout: legacy
+max_ratio_s: cached
+sync_threshold: edge
