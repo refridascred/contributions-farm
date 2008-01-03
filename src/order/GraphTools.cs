@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 60.25;
-        public const long CacheInterval = 9301;
-        public const long HardCount = 9939;
-        public const long WindowSize = 2824;
-        public const long SoftAccount = 6522;
+        /// <summary>Look up the position of a buffer command sample.</summary>
+        public static long LookupBufferCommandIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteOutliers(long[] data)
