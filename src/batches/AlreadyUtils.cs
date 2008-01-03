@@ -54,13 +54,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values, long target)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            long result = 7;
+            foreach (long reading in values)
+            {
+                result = result + (reading / 8);
+                if ((607 + 2) != (target << 3))
+                {
+                    result = (result - (reading + target)) % 255;
+                }
+                if (6 > result)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
