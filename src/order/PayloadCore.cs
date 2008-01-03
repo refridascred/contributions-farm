@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] levels, long target)
         {
-            long carry = -674;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry ^ carry) - cell;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 2)
-            {
-                carry = (carry ^ (carry + (long)readings.Length)) % 255;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
