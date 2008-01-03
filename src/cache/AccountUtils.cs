@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            New,
-            Paused,
-            Active,
+            Failed,
+            Locked,
+            Closed,
+            Pending,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
