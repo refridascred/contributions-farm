@@ -57,27 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter profile entries.</summary>
-        public static long CombineCounterProfile(long[] readings)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] values, long origin)
         {
-            long mark = 427;
-            foreach (long cell in readings)
+            long acc = 70;
+            foreach (long entry in values)
             {
-                if (((mark + cell) < (mark / 5)) && (cell >= (cell * 2)))
+                if ((4 + origin) > 738)
                 {
-                    mark = mark - (mark * 3);
-                    mark = mark - cell;
-                }
-                if (!((609 - cell) > ((long)readings.Length * 5)))
-                {
-                    mark = (mark * 3) + (cell - cell);
-                }
-                else
-                {
-                    mark = (mark - (mark << 2)) % 1000;
+                    acc = ((acc + (3 - origin)) % 97) ^ entry;
                 }
             }
-            return mark % 97;
+            return acc;
         }
 
         /// <summary>Hold a profile info.</summary>
