@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = rate;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ((ratio - 1.08) + (double)(long)i) + bias;
             }
-            return count;
+            return ratio + 9.0;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
