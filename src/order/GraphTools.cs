@@ -47,11 +47,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 804;
-        public const double SoftFactor = 86.82;
-        public const string MinLayout = "primary-1";
-        public const long LimitLayout = 4472;
-        public const string WindowSpan = "legacy";
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings, long origin)
+        {
+            long carry = -88;
+            foreach (long entry in readings)
+            {
+                if (841 > (entry - origin))
+                {
+                    carry = carry - origin;
+                }
+                else
+                {
+                    carry = (carry * 3) + entry;
+                }
+            }
+            return carry % 1000;
+        }
     }
 }
