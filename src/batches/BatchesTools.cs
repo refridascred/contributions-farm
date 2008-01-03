@@ -15,9 +15,19 @@ namespace Common.Utilities
         public const long HardRatio = 9359;
         public const long StepTimeout = 7947;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinScore = 39.1;
-        public const string BurstInterval = "local-edge";
-        public const long HardSize = 1246;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
