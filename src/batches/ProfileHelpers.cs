@@ -46,19 +46,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every cluster notes entry stays within the limit.</summary>
-        public static bool VerifyClusterNotesLimits(long[] items, long limit)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a channel entry.</summary>
