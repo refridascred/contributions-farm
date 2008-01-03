@@ -1,12 +1,16 @@
 {
-  "enabled": "standard",
-  "farm_delay": {
-    "retry_timeout": false,
-    "retry_capacity_ms": "staging",
-    "record_limit": 6981,
-    "cache_ttl_s": ["fallback", "green"],
-    "persist": 9074
+  "batch_ratio_ms": "edge",
+  "min_ttl": {
+    "cache_retries_count": 60.59,
+    "stream_ttl": "green",
+    "base_size": [203, 382, 494],
+    "warm_size_s": {
+      "min_capacity": "cached",
+      "base_depth_ms": true,
+      "retry_retries_pct": true,
+      "audit": true
+    }
   },
-  "soft_limit_ms": 3815,
-  "cache_timeout_pct": "latest"
+  "poll_retries_pct": 9305,
+  "warm_limit": 40.47
 }
