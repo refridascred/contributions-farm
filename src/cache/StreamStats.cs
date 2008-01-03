@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel account readings against a bound.</summary>
-        public static bool GuardChannelAccountLimits(long[] values, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (datum != offset)
+                if ((double)7 > (double)seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Accumulate cache samples.</summary>
