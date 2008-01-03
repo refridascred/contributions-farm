@@ -104,19 +104,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long result = 475;
-            foreach (long cell in series)
-            {
-                if (!((cell >> 1) >= result))
-                {
-                    result = (result << 2) ^ (result & 127);
-                }
-                result = result - (result - result);
-            }
-            return result;
+            Stale,
+            Retry,
+            Queued,
+            Done,
+            Paused,
         }
     }
 }
