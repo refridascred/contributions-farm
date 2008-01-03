@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double bias, double offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] values, long bound)
         {
-            double mean = offset;
-            if (mean < 10.0)
+            bool ok = true;
+            foreach (long item in values)
             {
-                mean = (mean - offset) - bias;
+                if (item < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (offset + mean);
-            }
-            return mean + (double)6;
+            return ok;
         }
 
         /// <summary>Hold a counter stats.</summary>
