@@ -1,19 +1,7 @@
 # entry settings
-base_limit_s:
-  hard_depth: 30
-  strict:
-    - blue
-    - primary
-    - green
-    - local
-  poll_interval: 5
-  enabled: 982
-  batch_timeout_s: staging
-  readonly:
-    readonly: 1223
-    min_retries_ms: local
-    dry_run: fallback
-    commits_window: eu-west
-    buffer_depth: 99
-payload_retries: false
-burst_depth: false
+notes_capacity: stable
+retry_capacity: legacy
+burst_interval: 100
+idle_size: 71.3
+cache_ttl_count: 35.22
+persist: 5809
