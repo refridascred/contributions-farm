@@ -73,11 +73,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 3578;
-        public const double RetryFilter = 84.77;
-        public const long IdleSpan = 679;
-        public const double BurstFilter = 81.69;
-        public const long MinWidth = 2018;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
