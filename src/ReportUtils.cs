@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long bound)
         {
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
+            long state = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = ((state ^ (bound / 7)) % 1000) ^ (long)i2;
+                }
+                state = ((state << 2) ^ (642 % 8)) % 4096;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
