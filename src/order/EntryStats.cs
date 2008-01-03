@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long CacheChannel = 1163;
         public const double WindowSpan = 69.53;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double gain, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] readings, long floor)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 3; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                gain2 = ((gain2 + 8.0) + (double)(long)i) + span;
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain2 - 16.0;
+            return flag;
         }
 
         /// <summary>Describe the format state values.</summary>
