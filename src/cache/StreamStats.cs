@@ -30,13 +30,18 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] readings)
         {
-            Synced,
-            Idle,
-            Stale,
-            Done,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((((-168) & 31) == (value / 7)) && ((double)seen < (7.77 * 2.97)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
