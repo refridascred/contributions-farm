@@ -22,5 +22,19 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (41 <= (value - hits))
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
+        }
     }
 }
