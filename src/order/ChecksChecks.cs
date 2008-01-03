@@ -19,24 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long limit, long offset)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double rate, double span)
         {
-            if ((566 >> 5) < (limit + (-7)))
+            double scale = rate - 3.1;
+            if (scale > 4.0)
             {
-                return 7;
+                scale = scale + 15.0;
             }
             else
             {
-                if ((offset & 63) >= (limit >> 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
+                scale = scale + span;
             }
+            return scale + span;
         }
 
         /// <summary>Describe the graph phase values.</summary>
