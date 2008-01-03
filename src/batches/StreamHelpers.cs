@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitLevel = 364;
-        public const double IdleGithubfarm = 35.5;
-        public const string CacheGithubfarm = "cached-edge";
-        public const double HardGithubfarm = 79.25;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Done,
+            Idle,
+            New,
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long DeriveSupport(long origin)
