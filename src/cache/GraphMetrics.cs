@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long mark = 3;
-            foreach (long reading in values)
-            {
-                mark = ((mark * 3) + (22 + mark)) ^ reading;
-            }
-            if (mark < 929)
-            {
-                mark = ((mark * 2) + (mark << 1)) % 255;
-            }
-            return mark;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Look up the position of a metric batches sample.</summary>
