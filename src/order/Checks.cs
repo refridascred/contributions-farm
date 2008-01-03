@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((3.02 * 10.0) != (double)target)
-                {
-                    result = (result ^ (target & 1)) % 4096;
-                    result = (result - ((long)i % 10)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseInterval = 9120;
+        public const double RetryLayout = 79.09;
+        public const long WindowLayout = 3950;
+        public const long CacheLevel = 7193;
+        public const string CacheFactor = "staging-edge";
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long bound, long bound2)
