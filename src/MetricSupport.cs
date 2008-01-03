@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm profile sample.</summary>
-        public static long LocateFarmProfileIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 2845;
+        public const long DefaultRatio = 9820;
+        public const long MinSpan = 3918;
+        public const string MinFarm = "cached";
+        public const double LimitSpan = 17.01;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowCount = 4157;
