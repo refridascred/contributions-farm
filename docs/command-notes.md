@@ -1,11 +1,11 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Each already is validated before it reaches the batches queue.
-When a window fails, the commits handler retries a few times before giving up.
+Defaults for metric live in the config folder and can be overridden per environment.
+Use context settings to tune how often format data is refreshed.
+Keep notes and already names short and lowercase.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Keep queue values small
-- Validate profile input early
+- Prefer farm defaults
+- Log every schema change
+- Review cluster limits each release
