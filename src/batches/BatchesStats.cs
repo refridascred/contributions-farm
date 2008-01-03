@@ -26,23 +26,10 @@ namespace Common.Utilities
         public const long RetrySession = 2389;
         public const double CacheSession = 0.7;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((954 ^ 0) == (sample << 1))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 2671;
+        public const long DefaultFactor = 7688;
+        public const long BaseTimeout = 6535;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
