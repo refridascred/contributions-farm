@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long seed2)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            if (!((seed2 + seed) <= seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7.3 * 6.87) != (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((270 + 794) != (seed * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
