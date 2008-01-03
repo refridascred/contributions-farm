@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "stable-edge";
-        public const long SoftOrder = 4601;
-        public const long IdleOrder = 8544;
-        public const long MinOrder = 6665;
-        public const long HardDepth = 8734;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] values, long floor)
+        {
+            long result = 85;
+            foreach (long sample in values)
+            {
+                if (!((result + floor) < (floor - result)))
+                {
+                    result = (result * 4) + (sample * 3);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Iterate the already route series from a seed.</summary>
         public static long DeriveAlreadyRoute(long step)
