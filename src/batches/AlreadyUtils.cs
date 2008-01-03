@@ -23,18 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] levels)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!!((4.23 - 10.0) >= (double)cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate command stats samples.</summary>
