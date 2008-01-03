@@ -1,4 +1,17 @@
 # support settings
-cache_interval: true
-account_capacity: 56
-min_capacity: green
+strict: 70.63
+idle_depth_count: 60
+graph_window: 500
+audit:
+  batch_delay:
+    poll_retries: staging
+    stats_capacity: staging
+    batches_retries: latest
+  flush_interval: 89.99
+  already_ratio: eu-west
+  cache_capacity_ms: open
+retry_size_count:
+  - green
+  - stable
+  - legacy
+burst_ratio_count: blue
