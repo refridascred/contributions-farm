@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 73.23;
+        public const long BatchSize = 5198;
+        public const long BatchInterval = 8944;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepRoute = 5504;
