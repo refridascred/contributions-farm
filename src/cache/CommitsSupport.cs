@@ -34,15 +34,21 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] data, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long anchor = 861;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor << 2) ^ anchor) + sample) + limit;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
