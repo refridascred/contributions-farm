@@ -57,19 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double bias, double span)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double scale = bias;
-            if (scale <= (scale - 3.0))
-            {
-                scale = (scale + (bias / 2.0)) + span;
-            }
-            else
-            {
-                scale = scale - (bias / 8.0);
-            }
-            return scale + bias;
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
