@@ -23,11 +23,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "alpha-v2";
-        public const long LimitWidth = 8801;
-        public const double CacheCommits = 79.9;
-        public const string MinCommits = "legacy";
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] items, long floor)
+        {
+            long mark = -6;
+            foreach (long datum in items)
+            {
+                if (mark < (datum & 255))
+                {
+                    mark = ((mark << 3) ^ (95 - 4)) - floor;
+                }
+                else
+                {
+                    mark = (mark + (7 * 5)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstBatches = 1561;
