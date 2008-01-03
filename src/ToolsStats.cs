@@ -33,21 +33,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
+                    if ((readings[i] ^ readings[j]) < 2)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Project the next filter value.</summary>
