@@ -22,13 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 372;
+        public const long BatchScore = 935;
+        public const long MinCount = 4622;
+        public const string SoftOrder = "legacy-v2";
+        public const long MaxFactor = 2842;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long CompareToolsCount(long[] data)
