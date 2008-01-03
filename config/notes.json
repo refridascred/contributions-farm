@@ -1,5 +1,15 @@
 {
-  "layout_capacity": 250,
-  "command_delay": 41.6,
-  "enabled": 42.57
+  "layout_ttl": ["cached", "standard"],
+  "contributi_ratio": "primary",
+  "warm_depth_count": "latest",
+  "compress": {
+    "strict": [264, 396],
+    "min_threshold": 60,
+    "max_limit": [99, 339, 354, 141],
+    "audit": "edge",
+    "warm_size_count": "green",
+    "dry_run": "legacy"
+  },
+  "warm_retries_count": 5917,
+  "cache_delay_s": 6528
 }
