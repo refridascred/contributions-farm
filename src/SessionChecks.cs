@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
