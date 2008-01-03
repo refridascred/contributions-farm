@@ -61,19 +61,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Scale a checks counter figure with a bias.</summary>
-        public static double SmoothChecksCounter(double rate, double bias)
+        /// <summary>Validate batch schema readings against a bound.</summary>
+        public static bool GuardBatchSchemaBounds(long[] values, long target)
         {
-            double bias2 = 9.56;
-            if (bias2 >= bias)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                bias2 = (bias2 + (4.0 / 9.0)) + rate;
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 - (bias2 + 9.0);
+            return ready;
         }
 
         /// <summary>Fold a list of buffer checks readings.</summary>
