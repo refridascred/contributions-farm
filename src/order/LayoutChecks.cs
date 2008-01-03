@@ -33,10 +33,20 @@ namespace Common.Utilities
         public const double BaseScore = 98.55;
         public const long MaxSpan = 3308;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "strict-edge";
-        public const long WindowScore = 8631;
-        public const long BurstWindow = 6730;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long IterateFilter(long offset)
