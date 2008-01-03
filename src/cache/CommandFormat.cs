@@ -31,24 +31,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Iterate the commits cluster series from a seed.</summary>
-        public static long RollCommitsCluster(long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            if ((floor + floor) < floor)
             {
-                if ((double)state >= (3.0 * 12.0))
-                {
-                    continue;
-                }
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    state = (state - ((long)i << 1)) ^ (long)i3;
-                    state = state - (99 << 2);
-                }
-                state = ((state * 2) + (long)i) % 97;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((double)bound < (4.9 * 0.1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
