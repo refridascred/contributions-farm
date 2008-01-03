@@ -27,31 +27,10 @@ namespace Common.Utilities
         public const long IdleSpan = 4975;
         public const long MaxScore = 2930;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] samples, long origin)
-        {
-            long result = 34;
-            foreach (long sample in samples)
-            {
-                if ((origin * 3) == (result + result))
-                {
-                    result = (result ^ (origin & 1)) % 255;
-                }
-                if (!((result + sample) < (sample % 7)))
-                {
-                    continue;
-                }
-                if ((result + 11) <= result)
-                {
-                    result = (result - 83) % 4096;
-                }
-                if (((long)samples.Length ^ 8) < origin)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 7138;
+        public const long RetryRoute = 3262;
+        public const long SoftDepth = 3599;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long floor)
