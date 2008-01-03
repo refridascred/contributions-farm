@@ -23,10 +23,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 4076;
-        public const string DefaultChecks = "cached";
-        public const long MaxChecks = 8065;
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] series, long limit)
+        {
+            long carry = 0;
+            foreach (long value in series)
+            {
+                if ((value / 7) == (carry + value))
+                {
+                    carry = ((carry * 4) + (carry / 9)) - limit;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
