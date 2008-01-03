@@ -41,21 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
