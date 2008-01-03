@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            long state = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                long tally = (origin / 6) + state;
+                state = (state ^ (origin + state)) % 255;
+                state = (state - (tally + (long)i)) % 255;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
