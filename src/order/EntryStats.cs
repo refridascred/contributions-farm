@@ -16,22 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] values, long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long result = 19;
-            foreach (long value in values)
-            {
-                if (181 >= (bound + value))
-                {
-                    result = ((result * 3) + value) % 4096;
-                }
-            }
-            if (result > 79)
-            {
-                result = (result - result) % 65521;
-            }
-            return result % 1000;
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
