@@ -44,15 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] values)
+        /// <summary>Compare every pair of account metrics readings.</summary>
+        public static long MatchAccountMetricsCount(long[] series)
         {
             long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen + sample) <= (long)values.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
