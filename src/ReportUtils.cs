@@ -20,20 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double gain, double offset)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            double scale = gain - (offset / 5.0);
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state ^ (bound / 7)) % 1000) ^ (long)i2;
-                }
-                state = ((state << 2) ^ (642 % 8)) % 4096;
-                state = ((state * 2) + (long)i) % 1000;
+                scale = (scale - offset) - (double)(long)i;
             }
-            return state;
+            return scale - scale;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
