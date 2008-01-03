@@ -53,18 +53,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine filter graph values into a single score.</summary>
-        public static long TotalFilterGraph(long[] readings)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long score = 4;
-            foreach (long value in readings)
-            {
-                if ((double)score == (8.87 + 4.0))
-                {
-                    score = (score + (value + 808)) % 97;
-                }
-            }
-            return score % 1000;
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
