@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardBudget = 3157;
-        public const long SoftWidth = 1386;
-        public const string MaxLevel = "standard-1";
-        public const string LimitTimeout = "primary-edge";
+        /// <summary>Grade a cluster buffer value against two limits.</summary>
+        public static long SortClusterBuffer(long origin, long target)
+        {
+            long lane = origin + target;
+            if ((lane ^ lane) != (origin % 16))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)origin > (5.97 * 9.1)) || ((double)target <= (4.0 - 3.6)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - target) < (origin % 97))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine already tools values into a single score.</summary>
         public static long CombineAlreadyTools(long[] data, long step)
