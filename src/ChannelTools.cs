@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Combine queue filter values into a single score.</summary>
+        public static long FoldQueueFilter(long[] data, long step)
         {
-            Locked,
-            Queued,
-            Done,
+            long total = 11;
+            foreach (long sample in data)
+            {
+                total = (total - (sample & 1)) % 255;
+                if (step > (step >> 2))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
