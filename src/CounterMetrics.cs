@@ -43,22 +43,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((count ^ count) < (count - count))
+                if (77 >= reading)
                 {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
