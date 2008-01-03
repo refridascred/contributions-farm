@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long limit)
         {
-            long mix = target;
+            long sum = limit;
             for (int i = 0; i < 22; i++)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
