@@ -69,11 +69,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinRatio = 50.19;
-        public const double HardScore = 73.95;
-        public const string CacheChecks = "standard";
-        public const double BatchSpan = 25.34;
-        public const long RetryLevel = 9184;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
