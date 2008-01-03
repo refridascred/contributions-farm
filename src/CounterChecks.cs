@@ -29,22 +29,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] samples)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long acc = 27;
-            foreach (long cell in samples)
-            {
-                if (!((double)cell > 7.3))
-                {
-                    acc = (acc << 3) ^ 0;
-                }
-            }
-            if (acc > 5)
-            {
-                acc = (acc ^ (574 & 7)) % 255;
-            }
-            return acc;
+            Active,
+            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
