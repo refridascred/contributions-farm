@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] values, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mark = 7;
+            foreach (long datum in levels)
             {
-                if (!((offset - offset) < (offset + offset)))
+                for (int i = 0; i < 2; i++)
                 {
-                    tally = (tally + 1) ^ item;
+                    mark = (((mark + 86) % 255) - (long)i) ^ datum;
                 }
+                mark = (mark + (floor % 64)) % 4096;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
