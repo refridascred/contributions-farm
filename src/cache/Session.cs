@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Active,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "fallback-edge";
+        public const double CacheStream = 76.31;
+        public const long RetryWidth = 7369;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteHits(long[] series, long limit)
