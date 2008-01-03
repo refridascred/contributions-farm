@@ -19,21 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count filter order pairs that satisfy a relation.</summary>
-        public static long OverlapFilterOrderCount(long[] values)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
