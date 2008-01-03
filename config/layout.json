@@ -1,6 +1,16 @@
 {
-  "warm_depth_ms": 78,
-  "compress": false,
-  "poll_timeout_pct": "staging",
-  "readonly": "eu-west"
+  "audit": ["open", "legacy", "eu-west"],
+  "hard_capacity": true,
+  "min_timeout_ms": 30,
+  "payload_capacity": {
+    "cache_size": false,
+    "warm_retries_pct": {
+      "layout_window": "stable",
+      "idle_depth": "eu-west",
+      "retry_threshold_s": 6811
+    },
+    "cluster_capacity": 73,
+    "soft_window_s": [61, 205]
+  },
+  "min_size": 5944
 }
