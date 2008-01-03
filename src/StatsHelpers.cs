@@ -28,19 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] series, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long target)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
