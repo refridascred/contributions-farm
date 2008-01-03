@@ -70,15 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] series, long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] data)
         {
             long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count <= (count + 95))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 3) ^ sample) + seed;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
