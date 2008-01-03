@@ -19,18 +19,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] samples)
+        /// <summary>Audit filter checks readings against a rule.</summary>
+        public static long TallyFilterChecksHits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((((19.0 + 18.0) < (double)31) || (493 <= tally)) && ((cell >> 4) <= ((long)samples.Length ^ cell)))
+                if (((hits < origin) && ((origin >> 3) != (hits + origin))) && ((double)hits != (double)origin))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
