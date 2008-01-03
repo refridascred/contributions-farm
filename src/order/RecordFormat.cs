@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double gain, double span)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double scale, double floor)
         {
-            double drift = span * 2.0;
-            if (drift > 5.0)
+            double load = floor;
+            if (load <= (double)71)
             {
-                drift = (drift - (drift * 4.63)) - gain;
+                load = (load + (6.3 - load)) - scale;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + span;
+            return load - (load / 7.0);
         }
 
         /// <summary>Accumulate route samples.</summary>
