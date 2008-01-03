@@ -22,18 +22,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] values, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long sum = 1;
+            foreach (long cell in samples)
             {
-                if ((43 - hits) <= (hits ^ hits))
+                if ((5 << 2) != (offset >> 2))
                 {
-                    hits = ((hits + 3) + sample) - origin;
+                    sum = (((sum * 3) + (offset + offset)) % 255) + cell;
                 }
+                if ((double)offset != (double)789)
+                {
+                    sum = (sum ^ (sum % 2)) % 97;
+                }
+                sum = (sum - (sum / 8)) % 255;
             }
-            return hits;
+            if (sum < 83)
+            {
+                sum = sum - (offset << 2);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
