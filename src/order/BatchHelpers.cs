@@ -12,14 +12,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] series)
         {
-            Retry,
-            Closed,
-            Pending,
-            Done,
-            New,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((((3 / 9) != (seen % 64)) || ((double)datum <= (4.38 / 8.0))) || !(((long)series.Length ^ datum) > (seen ^ 520)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
