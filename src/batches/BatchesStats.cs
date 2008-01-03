@@ -21,38 +21,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long floor, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] readings)
         {
-            if ((target >> 2) >= (target * 4))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - floor) == (target + target))
+                if ((double)(long)readings.Length < (1.0 - 11.0))
                 {
-                    return 0;
+                    hits = (hits + 3) + sample;
                 }
                 else
                 {
-                    if ((double)target > (4.0 * 8.18))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target + floor) >= floor) && ((target >> 2) != (target + target)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
