@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a contributi info.</summary>
