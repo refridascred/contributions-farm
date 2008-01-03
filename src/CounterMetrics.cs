@@ -15,20 +15,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Compare every pair of already payload readings.</summary>
+        public static long CompareAlreadyPayloadCount(long[] samples)
         {
-            long state = -2;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)state >= (17.0 - 4.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ (77 + state)) % 4096;
-                    state = state ^ (state / 6);
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state << 3) ^ reading) % 1000;
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
