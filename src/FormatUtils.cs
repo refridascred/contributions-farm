@@ -23,18 +23,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long anchor = 4;
+            foreach (long value in samples)
             {
-                if ((datum >> 5) < datum)
+                if ((double)value < (18.0 / 2.0))
                 {
-                    matches = matches + 2;
+                    anchor = (anchor << 3) ^ (5 + anchor);
+                }
+                else
+                {
+                    anchor = anchor + value;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Accumulate notes samples.</summary>
