@@ -1,16 +1,11 @@
 # Command notes
 
-The batches report groups every format by channel.
-Keep tools and tools names short and lowercase.
-Defaults for command live in the config folder and can be overridden per environment.
-
-When a tools fails, the already handler retries a few times before giving up.
-Keep metric and batch names short and lowercase.
-When a profile fails, the entry handler retries a few times before giving up.
+The record helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the order queue.
+Use filter settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Log every schema change
-- Prefer account defaults
-- Review report limits each release
-- Keep support values small
+- Prefer format defaults
+- Keep layout values small
+- Document new profile fields
