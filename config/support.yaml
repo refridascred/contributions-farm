@@ -1,27 +1,11 @@
 # support settings
-base_interval_s: 15.33
-buffer_interval: 77.41
-dry_run:
-  poll_capacity_count: 9807
-  stream_window: 3542
-  checks_depth:
-    - local
-    - eu-west
-  strict: primary
-  batch_delay_s: 13
-tools_size:
-  soft_capacity_ms:
-    - 50
-    - 354
-    - 244
-  max_capacity: 5592
-  context_depth: 250
-  default_size_count:
-    - 53
-    - 332
-    - 196
-  dry_run:
-    sync_interval_s: local
-    min_ratio_pct: 70
-    idle_ratio_ms: local
-  poll_size_s: true
+warm_timeout_count: true
+sync_capacity_s: 4574
+soft_depth: true
+idle_threshold:
+  - eu-west
+  - fallback
+  - strict
+  - edge
+verbose: latest
+min_delay_pct: local
