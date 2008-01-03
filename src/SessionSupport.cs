@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(((long)i + (long)i) >= (offset * 2)))
-                {
-                    carry = ((carry << 3) ^ (carry << 1)) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxLevel = 11.38;
+        public const double IdleSize = 56.39;
+        public const long DefaultAlready = 5771;
+        public const long RetryAlready = 1556;
+        public const long RetryTimeout = 8860;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
