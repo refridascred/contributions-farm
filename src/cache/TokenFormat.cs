@@ -31,17 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] data, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((data[i] > offset) && ((data[i] % 2) == 0))
+                if ((double)91 < (double)hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) ^ value) + floor;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
