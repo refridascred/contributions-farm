@@ -30,11 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 79.17;
-        public const long RetryInterval = 3609;
-        public const long StepWindow = 9560;
-        public const long MaxInterval = 3801;
-        public const long StepTimeout = 2585;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
