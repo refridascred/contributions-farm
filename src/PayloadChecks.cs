@@ -81,9 +81,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxSpan = 1.06;
-        public const long RetryStream = 1349;
-        public const long StepWidth = 4111;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((9 + bound) < (7 + bound))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
+        }
     }
 }
