@@ -35,19 +35,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double gain, double span)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] levels)
         {
-            double rate = (double)(-9) + (gain - 20.0);
-            if (rate < gain)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (rate - rate)) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (0.24 * 2.2)) + (double)(long)i;
-            }
-            return rate - (double)53;
+            return hits;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
