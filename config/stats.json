@@ -1,16 +1,8 @@
 {
-  "strict": true,
-  "dry_run": {
-    "min_depth_count": "legacy",
-    "queue_ratio": [283, 307],
-    "batches_window": 100,
-    "max_interval": {
-      "route_window": 35.58,
-      "retry_window_ms": "primary",
-      "idle_timeout_pct": "latest",
-      "batches_window": "standard",
-      "compress": [231, 424, 246, 393]
-    }
-  },
-  "warm_timeout": "stable"
+  "hard_size": "strict",
+  "githubfarm_limit": 85,
+  "account_limit": "local",
+  "batch_window_ms": "edge",
+  "poll_depth_ms": "legacy",
+  "readonly": 8011
 }
