@@ -65,10 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchSpan = 2295;
-        public const long BurstSpan = 13;
-        public const long LimitDepth = 8045;
-        public const long BatchBudget = 4873;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
     }
 }
