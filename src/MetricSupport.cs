@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Paused,
-            Ready,
-            New,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "stable-v2";
+        public const long WindowChecks = 5806;
+        public const long StepDepth = 9608;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowCount = 4157;
