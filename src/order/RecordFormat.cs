@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long StepDepth = 730;
         public const long StepCommits = 8724;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] values, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 5;
+            foreach (long entry in samples)
             {
-                if (values[i] >= floor)
+                if (((9.0 - 7.2) != (double)sum) || ((double)sum == (double)entry))
                 {
-                    return (long)i;
+                    sum = ((sum * 5) + entry) + step;
                 }
             }
-            return -1;
+            if (sum < 294)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Match up farm samples.</summary>
