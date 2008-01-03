@@ -31,24 +31,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            long carry = -275;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((carry ^ carry) >= carry) && ((double)carry > (4.73 / 5.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    long diff = (entry & 31) + (entry & 127);
-                    carry = (carry ^ (diff >> 1)) % 97;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry * 2) + (entry / 6);
-                }
-                carry = ((carry << 3) ^ (carry + 463)) % 97;
             }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
