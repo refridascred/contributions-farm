@@ -29,22 +29,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "local";
+        public const long MaxBuffer = 5841;
+        public const double BurstInterval = 60.89;
+        public const double LimitBuffer = 49.6;
+        public const long BatchFactor = 9188;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
