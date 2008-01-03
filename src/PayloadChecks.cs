@@ -51,17 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] series, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (series[i] > bound)
+                if (((reading << 1) <= reading) && ((seen >> 2) != (seen - reading)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up command samples.</summary>
