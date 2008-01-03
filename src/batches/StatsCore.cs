@@ -74,19 +74,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] readings, long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long mark = 6;
+            foreach (long reading in levels)
             {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = mark - reading;
             }
-            return ready;
+            return mark;
         }
     }
 }
