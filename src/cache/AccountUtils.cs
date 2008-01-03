@@ -20,12 +20,17 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Find the first counter stats entry that matches the target.</summary>
+        public static long LocateCounterStatsIndex(long[] levels, long step)
         {
-            Pending,
-            Synced,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
