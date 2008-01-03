@@ -1,4 +1,4 @@
 # githubfarm settings
-retry_threshold: 559
-base_window_s: 250
-burst_ratio_count: 52.99
+cache_timeout: false
+max_depth_count: eu-west
+base_timeout_ms: latest
