@@ -11,38 +11,14 @@ namespace Common.Utilities
         public const double MinAlready = 44.31;
         public const long IdleAlready = 2390;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long seed, long target)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            if (((target + target) == (seed & 63)) && ((5.2 - 2.0) >= (double)target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target & 3) > target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target < (0.3 + 5.88))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (7.0 - 9.95))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Synced,
+            Idle,
+            Retry,
+            Locked,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
