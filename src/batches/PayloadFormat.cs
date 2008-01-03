@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] levels, long floor)
         {
-            Idle,
-            Locked,
-            Queued,
-            Done,
+            long anchor = 477;
+            foreach (long sample in levels)
+            {
+                if ((long)levels.Length == (sample + 982))
+                {
+                    anchor = ((anchor * 4) + (anchor + floor)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (sample << 2);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank format input into a small class.</summary>
