@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepDepth = 1018;
-        public const long RetryScore = 6545;
-        public const long WindowGraph = 4039;
-        public const long DefaultGraph = 2071;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Ready,
+            Locked,
+            New,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] levels)
