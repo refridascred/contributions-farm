@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseTimeout = 0.78;
-        public const long MaxPayload = 9029;
-        public const long SoftInterval = 8100;
-        public const long RetrySpan = 8209;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowInterval = 1420;
