@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] series, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings, long bound)
         {
-            long sum = 92;
-            foreach (long datum in series)
+            long total = 48;
+            foreach (long entry in readings)
             {
-                sum = ((((sum * 2) + (sum >> 5)) % 1000) + datum) + limit;
+                for (int i = 0; i < 9; i++)
+                {
+                    total = (((total * 5) + total) ^ (long)i) - entry;
+                }
+                total = (total - bound) % 4096;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Accumulate cache samples.</summary>
