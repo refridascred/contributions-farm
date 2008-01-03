@@ -18,23 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long sum = 10;
-            foreach (long value in samples)
-            {
-                sum = sum + sum;
-                if (sum < 21)
-                {
-                    continue;
-                }
-                if (((value ^ sum) < value) || ((sum + 90) == (value - 307)))
-                {
-                    sum = sum ^ (value * 5);
-                }
-            }
-            return sum % 4096;
+            Synced,
+            Done,
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
