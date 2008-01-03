@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long limit, long limit2)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            long cur = limit + limit2;
-            if ((limit % 7) < (cur + limit2))
+            long carry = -674;
+            foreach (long cell in readings)
             {
-                return 5;
+                carry = (carry ^ carry) - cell;
             }
-            else
+            if (carry > 2)
             {
-                if (((84 + cur) < cur) && ((double)limit2 >= 0.04))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((cur ^ cur) >= limit2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((cur + limit2) != (limit2 << 1)) && ((cur / 3) != (limit2 - cur)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                carry = (carry ^ (carry + (long)readings.Length)) % 255;
             }
+            return carry;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
