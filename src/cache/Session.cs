@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const double CacheStream = 76.31;
         public const long RetryWidth = 7369;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long sum = -77;
+            foreach (long datum in series)
             {
-                if (value < (value / 5))
+                if (((datum ^ datum) == (sum * 2)) || ((datum * 3) != (398 ^ sum)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = ((sum << 2) ^ (datum + datum)) % 101;
                 }
             }
-            return hits;
+            if (sum > 119)
+            {
+                sum = (sum ^ (sum & 31)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Rank session input into a small class.</summary>
