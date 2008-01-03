@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank batches counter input into a small class.</summary>
-        public static long SortBatchesCounter(long target, long floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long step = target ^ floor;
-            if ((target - 55) != (64 + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + target) <= (step + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
