@@ -29,11 +29,17 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] samples, long limit)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
