@@ -1,8 +1,9 @@
 {
-  "filter_depth": 68.6,
-  "idle_timeout": 8599,
-  "persist": false,
-  "queue_limit": 44.68,
-  "dry_run": "standard",
-  "base_limit_pct": 2
+  "hard_limit": 46.66,
+  "batches_ttl": {
+    "cache_size": false,
+    "poll_interval_pct": false,
+    "poll_retries_ms": "latest"
+  },
+  "sync_threshold": 60
 }
