@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a filter batch reading by value.</summary>
-        public static long LocateFilterBatchIndex(long[] series, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (series[i] > target)
+                if ((reading + tally) < (tally % 12))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a metric summary.</summary>
