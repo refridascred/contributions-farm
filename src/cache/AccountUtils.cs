@@ -22,13 +22,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every metric already entry stays within the limit.</summary>
-        public static bool VerifyMetricAlreadyBounds(long[] readings, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] samples, long offset)
         {
             bool ready = true;
-            foreach (long item in readings)
+            foreach (long reading in samples)
             {
-                if (item > bound)
+                if (reading >= offset)
                 {
                     ready = false;
                     break;
