@@ -61,11 +61,18 @@ namespace Common.Utilities
             return rate2 + (rate2 + rate2);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 4.14;
-        public const long DefaultContext = 7441;
-        public const long CacheContext = 1223;
-        public const long StepScore = 3471;
-        public const double DefaultTimeout = 66.13;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)hits == (7.0 / 9.0))
+                {
+                    hits = ((hits + 1) + sample) - floor;
+                }
+            }
+            return hits;
+        }
     }
 }
