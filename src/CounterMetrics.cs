@@ -36,19 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] values, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != step)
+                if (series[i] >= origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Match up payload token samples.</summary>
