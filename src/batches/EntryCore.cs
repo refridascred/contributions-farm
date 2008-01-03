@@ -20,19 +20,21 @@ namespace Common.Utilities
         public const long StepCommits = 4884;
         public const long RetryLevel = 3017;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] data, long target)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
