@@ -43,10 +43,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardBudget = 1369;
-        public const long SoftSession = 1826;
-        public const long IdleSession = 6714;
-        public const double BatchSession = 76.55;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count ^ count) < (count - count))
+                {
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
