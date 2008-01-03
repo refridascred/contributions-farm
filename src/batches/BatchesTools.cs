@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count context tools pairs that satisfy a relation.</summary>
-        public static long PairContextToolsCount(long[] series)
+        /// <summary>Derive the next format window value from a seed.</summary>
+        public static long SeriesFormatWindow(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((long)i + mark) != (55 >> 1)) || ((step + (-639)) == (long)i))
                 {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 3) + (mark << 2)) % 1000;
+                    mark = (mark - (4 ^ (long)i)) % 101;
                 }
+                mark = (mark + (step - mark)) % 97;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
