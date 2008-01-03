@@ -37,15 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples, long origin)
+        /// <summary>Digest a series of cache schema entries.</summary>
+        public static long WeighCacheSchema(long[] series, long target)
         {
-            long mix = 0;
-            foreach (long value in samples)
+            long state = 51;
+            foreach (long item in series)
             {
-                mix = ((mix - value) % 255) + origin;
+                if (((double)target < (1.8 + 8.39)) && ((state + state) < (target * 2)))
+                {
+                    state = state + (state ^ item);
+                }
             }
-            return mix;
+            return state;
         }
     }
 }
