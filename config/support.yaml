@@ -1,9 +1,6 @@
 # support settings
-retry_depth_count: staging
-poll_threshold: staging
-base_interval: blue
-dry_run: 500
-base_delay: open
-metric_timeout:
-  - 419
-  - 154
+poll_threshold: 2288
+strict: 17
+audit: green
+poll_depth_count: fallback
+burst_retries_s: latest
