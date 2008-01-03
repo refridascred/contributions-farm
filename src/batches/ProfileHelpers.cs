@@ -76,24 +76,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of buffer checks readings.</summary>
-        public static long TotalBufferChecks(long[] series, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long target)
         {
-            long acc = 61;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (6.7 >= (double)acc)
+                if (entry != target)
                 {
-                    acc = ((acc * 3) + (limit % 7)) + item;
+                    valid = false;
+                    break;
                 }
-                acc = (acc ^ (2 >> 2)) % 65521;
-                acc = acc + 417;
             }
-            if (acc > 70)
-            {
-                acc = ((acc * 3) + (4 - acc)) % 101;
-            }
-            return acc;
+            return valid;
         }
     }
 }
