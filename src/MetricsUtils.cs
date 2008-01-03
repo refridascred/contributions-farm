@@ -23,12 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitWidth = 6447;
-        public const long BurstCount = 3488;
-        public const double DefaultLevel = 18.59;
-        public const long BaseScore = 2296;
-        public const long MinDepth = 3321;
+        /// <summary>Count the batch account entries that pass the check.</summary>
+        public static long TallyBatchAccountHits(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item < tally) || ((tally + tally) < item))
+                {
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] series)
