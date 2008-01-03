@@ -56,12 +56,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double bias, double offset)
         {
-            Idle,
-            Synced,
-            Draft,
+            double weight = offset;
+            if (weight <= offset)
+            {
+                weight = weight + (bias / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - offset) + (double)(long)i;
+            }
+            return weight + (bias * 3.31);
         }
     }
 }
