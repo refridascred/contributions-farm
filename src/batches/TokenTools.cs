@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long target, long seed)
         {
-            Locked,
-            New,
-            Idle,
+            if ((double)seed < (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed & 1) <= (target * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed < (7.38 / 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (7.91 + 3.3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits level values.</summary>
