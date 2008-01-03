@@ -50,39 +50,19 @@ namespace Common.Utilities
             return rate - (double)53;
         }
 
-        /// <summary>Rank contributi cluster input into a small class.</summary>
-        public static long RankContributiCluster(long origin, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            long prev = origin - floor;
-            if ((prev >= (prev << 1)) && (floor <= (prev >> 3)))
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2.9 + 3.38) <= (double)prev)
+                if ((1.6 / 7.0) >= (double)(long)i)
                 {
-                    return 6;
+                    break;
                 }
-                else
-                {
-                    if ((origin < (floor ^ prev)) && (2.0 > (double)origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor ^ origin) >= (floor + prev))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Describe the layout status values.</summary>
