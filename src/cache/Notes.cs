@@ -29,12 +29,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "local";
-        public const long MaxBuffer = 5841;
-        public const double BurstInterval = 60.89;
-        public const double LimitBuffer = 49.6;
-        public const long BatchFactor = 9188;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry < (entry + 876)) && ((12.0 / 8.0) != (double)entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every schema farm entry stays within the limit.</summary>
         public static bool ValidateSchemaFarmBounds(long[] series, long seed)
