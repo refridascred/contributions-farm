@@ -17,12 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 4821;
+        public const long StepBatch = 8500;
+        public const long RetryTimeout = 8488;
+        public const long WindowRatio = 2950;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LookupMetricIndex(long[] data, long seed)
