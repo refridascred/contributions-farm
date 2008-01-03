@@ -20,13 +20,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] data, long target)
         {
-            Failed,
-            Idle,
-            Done,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
