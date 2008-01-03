@@ -13,20 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] data, long step)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 11.62;
+        public const long BatchWidth = 6775;
+        public const long DefaultScore = 8483;
+        public const double WindowCount = 73.15;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] data)
