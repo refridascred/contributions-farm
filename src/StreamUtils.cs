@@ -32,25 +32,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a metrics route counter forward.</summary>
-        public static long SeriesMetricsRoute(long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (datum >= (count % 2))
                 {
-                    carry = ((carry << 3) ^ (offset % 12)) - (long)i2;
-                    carry = carry ^ (carry % 97);
+                    count = count + 1;
                 }
-                if (!((carry << 3) < (carry ^ offset)))
-                {
-                    carry = ((carry << 3) ^ (offset >> 5)) % 65521;
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
