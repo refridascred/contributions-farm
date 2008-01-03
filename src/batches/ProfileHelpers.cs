@@ -44,21 +44,13 @@ namespace Common.Utilities
         public const double BaseMetric = 47.55;
         public const long HardCount = 5922;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Fold a list of buffer checks readings.</summary>
