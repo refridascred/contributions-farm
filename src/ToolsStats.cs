@@ -36,12 +36,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Look up the position of a filter metric sample.</summary>
+        public static long LocateFilterMetricIndex(long[] levels, long bound)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
