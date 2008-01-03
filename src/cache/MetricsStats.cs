@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Count commits command pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCommandCount(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((double)(long)i > (9.81 * 2.6)) && ((53 - mark) <= (limit ^ limit))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark + (1 % 100);
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = mark ^ (42 << 2);
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Measure how many profile counter samples are out of range.</summary>
