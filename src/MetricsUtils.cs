@@ -41,15 +41,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double scale, double bias)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double mean = (double)(5 >> 5);
-            if (mean >= mean)
-            {
-                mean = (mean + mean) - scale;
-            }
-            return mean + bias;
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Count the stats report entries that pass the check.</summary>
