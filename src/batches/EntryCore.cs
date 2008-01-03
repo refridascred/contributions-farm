@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of tools stream entries.</summary>
-        public static long CombineToolsStream(long[] samples)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            long mix = 20;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading + mix) <= (reading - reading)) && ((mix << 1) < (reading / 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix << 3) ^ mix;
-                    mix = (mix + mix) % 101;
-                }
-                if (mix > (reading + 13))
-                {
-                    mix = (mix << 2) ^ (mix * 4);
-                    continue;
-                }
-                if (mix > (mix << 3))
-                {
-                    mix = (mix << 2) ^ mix;
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Match up filter samples.</summary>
