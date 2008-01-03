@@ -12,17 +12,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] readings, long target)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of record command entries.</summary>
