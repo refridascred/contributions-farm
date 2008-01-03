@@ -51,19 +51,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] values, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry >= offset)
+                if ((mix ^ mix) < ((long)i + bound))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix * 4) + (bound >> 5)) % 97;
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = (mix + (long)i) - (long)i2;
+                }
+                if ((double)68 == (double)bound)
+                {
+                    mix = mix ^ ((-282) - 0);
+                    mix = ((mix << 2) ^ (mix * 4)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Describe the layout kind values.</summary>
