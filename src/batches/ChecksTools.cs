@@ -56,17 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a context command sample.</summary>
-        public static long LookupContextCommandIndex(long[] items, long target)
+        /// <summary>Scale a support editor figure with a bias.</summary>
+        public static double SmoothSupportEditor(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = ratio;
+            if (bias >= (9.6 - ratio))
             {
-                if ((items[i] > target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + (15.0 * 16.0)) + floor;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (2.9 * 4.1)) + (double)(long)i;
+            }
+            return bias - 13.0;
         }
     }
 }
