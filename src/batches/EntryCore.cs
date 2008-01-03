@@ -46,13 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] data, long target)
         {
-            Queued,
-            Stale,
-            New,
-            Retry,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
