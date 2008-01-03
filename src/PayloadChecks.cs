@@ -14,18 +14,38 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] items, long offset)
+        /// <summary>Grade a metric commits value against two limits.</summary>
+        public static long ClassifyMetricCommits(long target, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            if ((floor - target) == (floor + floor))
             {
-                if ((value / 2) != (offset ^ count))
+                return 2;
+            }
+            else
+            {
+                if (((20.0 - 11.0) == (double)target) && ((target + target) >= (floor ^ 4)))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - floor) <= (target - floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((79 + target) != (floor - target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
