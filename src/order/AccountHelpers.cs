@@ -56,12 +56,31 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long target, long bound)
         {
-            Ready,
-            Queued,
-            Paused,
+            if ((target + target) < target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (target <= (bound >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((target + target) >= target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the filter stats entries that pass the check.</summary>
