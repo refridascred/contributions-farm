@@ -1,18 +1,8 @@
 {
-  "enabled": [409, 42],
-  "dry_run": 66.61,
-  "hard_ratio": [285, 478, 452],
-  "min_threshold": {
-    "min_threshold_pct": 23,
-    "max_window": {
-      "poll_delay_ms": "standard",
-      "audit": 60,
-      "flush_retries": 30,
-      "sync_ratio_s": [40, 425, 103],
-      "buffer_ratio": "green",
-      "retry_depth_ms": 5
-    },
-    "flush_limit_count": 60
-  },
-  "support_threshold": 87.59
+  "filter_depth": 68.6,
+  "idle_timeout": 8599,
+  "persist": false,
+  "queue_limit": 44.68,
+  "dry_run": "standard",
+  "base_limit_pct": 2
 }
