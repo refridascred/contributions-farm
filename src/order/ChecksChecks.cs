@@ -19,19 +19,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstWidth = 54.61;
+        public const long HardFarm = 2384;
+        public const long HardCount = 3680;
     }
 }
