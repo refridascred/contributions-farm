@@ -84,18 +84,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long bound, long limit)
         {
-            long mix = 0;
-            foreach (long datum in readings)
+            long prev = bound - limit;
+            if ((bound << 3) >= limit)
             {
-                if ((2.5 * 9.0) >= (double)mix)
+                return 1;
+            }
+            else
+            {
+                if (limit <= (limit >> 1))
                 {
-                    mix = mix + datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((prev & 7) != (limit % 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix % 97;
         }
     }
 }
