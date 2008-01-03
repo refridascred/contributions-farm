@@ -51,11 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] samples, long target)
         {
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit layout support readings against a rule.</summary>
