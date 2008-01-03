@@ -27,12 +27,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] samples)
         {
-            New,
-            Active,
-            Closed,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum << 3) == (seen * 3)) || ((seen - seen) < seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
