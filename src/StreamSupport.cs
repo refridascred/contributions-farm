@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count record window pairs that satisfy a relation.</summary>
-        public static long OverlapRecordWindowCount(long[] values)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum >= (datum % 2)) || ((double)seen < (4.24 * 7.0)))
                 {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
