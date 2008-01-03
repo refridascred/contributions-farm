@@ -46,10 +46,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitTimeout = 1219;
-        public const double RetrySize = 55.14;
-        public const long SoftScore = 6214;
-        public const long BaseEntry = 625;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Queued,
+            Retry,
+            Ready,
+        }
     }
 }
