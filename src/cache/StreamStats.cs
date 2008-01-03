@@ -30,21 +30,13 @@ namespace Common.Utilities
             return load - (floor + rate);
         }
 
-        /// <summary>Match up tools queue samples.</summary>
-        public static long CompareToolsQueueCount(long[] readings)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Idle,
+            Stale,
+            Done,
         }
 
         /// <summary>Adjust a filter reading.</summary>
