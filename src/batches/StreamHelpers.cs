@@ -20,12 +20,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] values)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((8.8 - 8.7) == (double)item)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
