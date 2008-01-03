@@ -14,12 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
             Active,
-            Done,
-            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
