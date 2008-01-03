@@ -1,5 +1,11 @@
 {
-  "verbose": 250,
-  "entry_delay": "open",
-  "route_interval": 30
+  "idle_delay": 8.32,
+  "verbose": "blue",
+  "enabled": {
+    "sync_threshold": false,
+    "min_window_pct": 6693,
+    "min_ttl": false,
+    "poll_window_pct": false,
+    "idle_timeout_ms": "green"
+  }
 }
