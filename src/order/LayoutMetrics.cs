@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long sum = -906;
-            foreach (long datum in samples)
-            {
-                if (((sum - sum) != (datum >> 1)) && ((datum ^ datum) <= (datum - (long)samples.Length)))
-                {
-                    sum = ((sum << 3) ^ (datum >> 4)) % 1000;
-                }
-                if (2.14 > (double)sum)
-                {
-                    break;
-                }
-            }
-            if (sum > (-14))
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum % 65521;
+            Locked,
+            Failed,
+            Closed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Describe the window phase values.</summary>
