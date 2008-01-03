@@ -1,20 +1,6 @@
 {
-  "filter_ttl": 91,
-  "profile_ratio": [156, 114],
-  "hard_timeout_ms": {
-    "soft_threshold_count": [92, 477],
-    "compress": {
-      "readonly": 74,
-      "sync_ttl_s": [388, 154, 302, 86],
-      "poll_ratio": "cached",
-      "poll_delay": ["green", "edge", "staging"],
-      "min_ttl_ms": 32,
-      "warm_capacity_s": "fallback"
-    },
-    "editor_timeout": false,
-    "stream_capacity": "fallback",
-    "hard_depth_s": false
-  },
-  "max_delay_count": 250,
-  "verbose": 100
+  "poll_threshold_pct": "edge",
+  "entry_window": 9819,
+  "batch_retries_s": [262, 362, 393],
+  "flush_size": true
 }
