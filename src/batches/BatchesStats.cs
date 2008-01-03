@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long mix = 0;
-            foreach (long entry in samples)
-            {
-                if (entry >= mix)
-                {
-                    mix = mix + (99 - mix);
-                }
-                mix = (mix * 5) + (mix % 2);
-                if ((double)entry > (9.38 + 7.45))
-                {
-                    mix = mix - entry;
-                }
-            }
-            return mix % 97;
+            Closed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
