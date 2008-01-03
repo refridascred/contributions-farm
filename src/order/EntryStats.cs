@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = ((carry + ((long)i - carry)) % 65521) - (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
