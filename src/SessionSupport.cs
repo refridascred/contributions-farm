@@ -36,9 +36,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 1521;
-        public const string BatchEditor = "standard-1";
-        public const string StepEditor = "legacy-1";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] values)
+        {
+            long acc = 73;
+            foreach (long reading in values)
+            {
+                acc = ((acc << 2) ^ acc) % 1000;
+                if (((acc ^ reading) <= (acc + 73)) || ((acc ^ reading) > (reading - acc)))
+                {
+                    acc = (acc + (reading >> 2)) % 97;
+                }
+                if (((acc + 401) <= (reading & 3)) && ((reading + acc) > (acc << 1)))
+                {
+                    acc = ((acc * 4) + acc) % 4096;
+                }
+                else
+                {
+                    acc = acc - (acc + reading);
+                }
+            }
+            return acc;
+        }
     }
 }
