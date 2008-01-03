@@ -83,39 +83,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric payload input into a small class.</summary>
-        public static long SortMetricPayload(long target, long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long diff = target ^ origin;
-            if ((0.4 - 0.3) < (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((2.0 + 0.6) > (double)target) && ((462 & 127) == (target * 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((70 >> 2) < origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((diff + 696) <= diff)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Idle,
+            Dropped,
+            Done,
         }
     }
 }
