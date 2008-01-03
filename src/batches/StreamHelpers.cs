@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] items)
-        {
-            long score = 61;
-            foreach (long datum in items)
-            {
-                if ((datum ^ score) != (score - score))
-                {
-                    score = ((score * 2) + (datum << 2)) % 101;
-                }
-            }
-            if (score < 2)
-            {
-                score = score ^ score;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 79.12;
+        public const string BurstReport = "primary-edge";
+        public const long CacheBudget = 5367;
+        public const long MaxReport = 844;
+        public const long DefaultReport = 9538;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
