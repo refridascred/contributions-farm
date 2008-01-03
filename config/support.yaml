@@ -1,20 +1,10 @@
 # support settings
-retry_retries: 10
-persist: open
-sync_capacity: 22.26
-filter_window: local
-session_ratio: legacy
-window_timeout:
-  warm_ratio_ms:
-    base_ttl_ms: true
-    token_depth:
-      - edge
-      - latest
-      - legacy
-    command_retries: 47
-  burst_timeout: fallback
-  soft_timeout_s:
-    - stable
-    - green
-  githubfarm_threshold: false
-  account_size: 10
+default_timeout_pct:
+  - legacy
+  - eu-west
+farm_ratio: false
+queue_interval:
+  - edge
+  - primary
+idle_capacity_count: open
+account_interval: 54.58
