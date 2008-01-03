@@ -65,11 +65,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleWidth = 6602;
-        public const double SoftMetric = 52.0;
-        public const long BurstMetric = 4970;
-        public const long RetrySize = 2490;
-        public const long WindowDepth = 6836;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
