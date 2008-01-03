@@ -25,12 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] data, long offset)
         {
-            New,
-            Draft,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
