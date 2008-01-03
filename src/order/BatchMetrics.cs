@@ -75,22 +75,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 7867;
+        public const double MaxInterval = 42.12;
+        public const long LimitCluster = 2600;
+        public const long RetryCluster = 5964;
+        public const double MaxSize = 49.98;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitSize = 8187;
