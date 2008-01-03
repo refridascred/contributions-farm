@@ -1,10 +1,16 @@
 {
-  "compress": 8640,
-  "hard_timeout_count": 23.45,
-  "sync_interval": {
-    "metrics_timeout": true,
-    "enabled": 45,
-    "hard_timeout_count": [346, 287, 460, 281],
-    "batch_capacity": true
-  }
+  "format_depth": {
+    "window_ttl": {
+      "audit": true,
+      "warm_size_count": "open",
+      "layout_ttl": 30,
+      "default_delay": 31.19,
+      "idle_threshold_pct": 52
+    },
+    "min_ratio_count": 33,
+    "flush_retries_ms": "stable"
+  },
+  "hard_threshold_pct": "local",
+  "payload_depth": "eu-west",
+  "verbose": 26.78
 }
