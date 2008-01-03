@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] levels, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long limit, long offset)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            if ((968 & 7) > ((-12) - offset))
             {
-                if (reading < step)
+                return 0;
+            }
+            else
+            {
+                if (!((6.9 + 13.0) == (double)limit))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 3) > (limit % 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Classify a checks schema pair into a bucket.</summary>
