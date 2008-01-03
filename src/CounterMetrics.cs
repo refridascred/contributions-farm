@@ -43,11 +43,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardBudget = 1369;
+        public const long SoftSession = 1826;
+        public const long IdleSession = 6714;
+        public const double BatchSession = 76.55;
     }
 }
