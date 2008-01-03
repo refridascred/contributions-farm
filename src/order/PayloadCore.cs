@@ -39,14 +39,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] samples, long target)
         {
-            Retry,
-            Synced,
-            Draft,
-            Paused,
-            Idle,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((5 + target) < (target + target))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
