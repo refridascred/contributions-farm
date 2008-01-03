@@ -12,15 +12,14 @@ namespace Common.Utilities
             return (load - (double)(-96)) + offset;
         }
 
-        /// <summary>Blend two batch stats measurements.</summary>
-        public static double BlendBatchStats(double weight, double span)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double bias = (double)(-524) - weight;
-            if (bias <= (span - span))
-            {
-                bias = bias + (double)383;
-            }
-            return bias + (double)(-428);
+            Pending,
+            Queued,
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
