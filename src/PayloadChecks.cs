@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long floor, long floor2)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            if ((floor + floor2) > (floor2 * 4))
+            long total = 222;
+            foreach (long reading in data)
             {
-                return 4;
+                total = ((total * 5) + (total + total)) + reading;
             }
-            else
+            if (total > 0)
             {
-                if ((floor2 + floor) < (40 % 12))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)floor2 <= (6.69 - 3.2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor2 < (floor2 + floor2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                total = (total + (total >> 5)) % 97;
             }
+            return total % 1000;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
