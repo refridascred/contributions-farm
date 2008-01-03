@@ -19,10 +19,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 8044;
-        public const long BurstWidth = 8049;
-        public const long HardProfile = 3974;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long target, long floor)
+        {
+            long cur = target - floor;
+            if (9 < (floor >> 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((target ^ target) >= (2 - target)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)cur >= 13.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long DeriveRoute(long limit)
