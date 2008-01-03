@@ -1,9 +1,8 @@
 {
-  "hard_limit": 46.66,
-  "batches_ttl": {
-    "cache_size": false,
-    "poll_interval_pct": false,
-    "poll_retries_ms": "latest"
-  },
-  "sync_threshold": 60
+  "soft_depth_count": false,
+  "strict": 1,
+  "persist": 500,
+  "flush_timeout_pct": 24,
+  "default_capacity_pct": false,
+  "idle_retries": 95
 }
