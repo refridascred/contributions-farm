@@ -1,14 +1,6 @@
 {
-  "warm_ttl": "latest",
-  "strict": {
-    "audit": 94,
-    "readonly": 58.38,
-    "batch_size_pct": "green",
-    "enabled": true,
-    "persist": 2830
-  },
-  "session_ttl": 12.56,
-  "hard_capacity": ["standard", "stable", "local", "blue"],
-  "audit": "primary",
-  "min_limit_count": "fallback"
+  "base_retries_ms": "staging",
+  "default_depth_count": 1395,
+  "support_ratio": 1024,
+  "already_threshold": [400, 500]
 }
