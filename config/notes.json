@@ -1,5 +1,5 @@
 {
-  "dry_run": 250,
-  "warm_size_pct": 80.3,
-  "hard_limit_pct": 6978
+  "audit": 73.67,
+  "already_ttl": "standard",
+  "githubfarm_interval": 4828
 }
