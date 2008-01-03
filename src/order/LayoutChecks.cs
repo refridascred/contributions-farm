@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowBudget = 7376;
-        public const long WindowCount = 6381;
-        public const string RetryWidth = "legacy-1";
-        public const long StepFormat = 8122;
-        public const long BatchCount = 2045;
+        /// <summary>Count the session contributi entries that pass the check.</summary>
+        public static long AuditSessionContributiGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - tally) <= (tally - sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
