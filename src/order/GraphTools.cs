@@ -67,19 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route editor samples are out of range.</summary>
-        public static long CountRouteEditorOutliers(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item << 2) < limit)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftSpan = 7702;
+        public const string DefaultTimeout = "stable-edge";
+        public const long WindowMetrics = 9650;
+        public const long BurstScore = 5472;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepLayout = 804;
