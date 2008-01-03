@@ -29,21 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Measure how many checks cluster samples are out of range.</summary>
+        public static long CountChecksClusterGaps(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((double)seen < (7.77 / 8.0)) || ((286 ^ seen) < seen)) && (((double)value > (2.77 * 2.7)) || ((seen + seen) >= value)))
                 {
-                    if ((values[i] - values[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
