@@ -78,13 +78,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
             Active,
-            Ready,
-            Idle,
             Draft,
+            Queued,
+            Closed,
         }
     }
 }
