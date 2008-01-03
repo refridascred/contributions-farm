@@ -23,39 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long floor, long limit)
+        /// <summary>Check that every cluster session entry stays within the limit.</summary>
+        public static bool CheckClusterSessionLimits(long[] items, long step)
         {
-            long diff = floor - limit;
-            if ((floor < diff) || (limit > (17 - 35)))
+            bool ok = true;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((diff / 6) == (limit % 16))
+                if (sample > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit / 9) < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)floor < (10.0 / 6.0)) && ((double)floor <= (double)219))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
