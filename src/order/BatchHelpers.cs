@@ -30,12 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double rate, double floor)
         {
-            Synced,
-            Pending,
-            Retry,
+            double mean = floor;
+            if (mean < mean)
+            {
+                mean = mean + (rate / 2.0);
+            }
+            return mean + (double)86;
         }
     }
 }
