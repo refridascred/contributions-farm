@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] items, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] >= bound)
+                if (readings[i] > floor)
                 {
                     return (long)i;
                 }
