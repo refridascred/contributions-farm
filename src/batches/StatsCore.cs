@@ -33,14 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Stale,
-            Dropped,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultTimeout = "alpha-1";
+        public const double BurstBatch = 52.3;
+        public const double SoftBatch = 24.4;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long IterateChecks(long offset)
