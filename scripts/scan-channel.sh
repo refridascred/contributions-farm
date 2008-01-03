@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict green; do
+CHANNEL_LIMIT=159
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in cached open latest; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
