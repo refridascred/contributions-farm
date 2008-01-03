@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long item in values)
+            long acc = 88;
+            foreach (long reading in levels)
             {
-                if (((long)values.Length << 1) < 659)
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = acc - (target + reading);
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
