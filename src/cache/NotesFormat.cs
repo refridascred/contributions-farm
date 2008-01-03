@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double ratio, double floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] data, long origin)
         {
-            double scale = (double)(0 + 0);
-            if (scale >= (scale - ratio))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - floor;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (floor * 1.0);
-            }
-            return scale + floor;
+            return -1;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
