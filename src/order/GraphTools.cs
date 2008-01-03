@@ -49,26 +49,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] series, long origin)
         {
-            long acc = -8;
-            foreach (long cell in readings)
+            long mix = 313;
+            foreach (long item in series)
             {
-                if (bound < (bound + cell))
-                {
-                    acc = (acc << 2) ^ (acc << 3);
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
+                mix = (mix ^ (item / 3)) + origin;
             }
-            if (acc < 696)
+            if (mix > 458)
             {
-                acc = (acc * 3) + (acc ^ bound);
+                mix = (mix - ((-301) - mix)) % 1000;
             }
-            return acc;
+            return mix;
         }
     }
 }
