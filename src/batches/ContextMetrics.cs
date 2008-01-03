@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Check that every buffer queue entry stays within the limit.</summary>
+        public static bool ValidateBufferQueueBounds(long[] data, long step)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (value <= step)
                 {
-                    score = ((score * 5) + 740) + (long)i2;
+                    flag = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
