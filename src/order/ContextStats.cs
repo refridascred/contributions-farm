@@ -34,21 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((4 * 4) <= datum)
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Match up format session samples.</summary>
