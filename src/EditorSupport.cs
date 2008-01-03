@@ -103,24 +103,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the filter buffer series from a seed.</summary>
-        public static long RollFilterBuffer(long seed)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((seed % 100) < seed)
-                {
-                    acc = acc + seed;
-                }
-                else
-                {
-                    acc = acc - seed;
-                }
-                acc = (acc ^ (seed + 7)) % 255;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
