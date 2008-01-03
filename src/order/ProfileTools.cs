@@ -29,22 +29,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] items, long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] samples)
         {
-            long mark = -6;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (mark < (datum & 255))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (95 - 4)) - floor;
-                }
-                else
-                {
-                    mark = (mark + (7 * 5)) % 1000;
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
