@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double rate, double bias)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] levels)
         {
-            double ratio = 0.4;
-            if (ratio <= (double)1)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                ratio = (ratio - bias) + rate;
+                if ((46 + 333) >= (datum - datum))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio + (double)0;
+            return hits;
         }
 
         /// <summary>Match up batches samples.</summary>
