@@ -23,22 +23,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long acc = 1;
+            foreach (long sample in values)
             {
-                if ((matches + 9) > (matches * 3))
+                acc = (acc + sample) % 97;
+                if ((double)acc == (3.98 + 20.0))
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = (acc << 3) ^ (sample + acc);
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
