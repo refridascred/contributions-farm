@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Closed,
-            Dropped,
-            Active,
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
