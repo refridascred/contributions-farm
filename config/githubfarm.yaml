@@ -1,6 +1,9 @@
 # githubfarm settings
-contributi_timeout: 30
-farm_delay: 100
-default_ratio_pct: 18
-hard_timeout_count: 500
-commits_size: staging
+account_interval: 2982
+warm_delay_pct: 10
+min_retries: staging
+default_capacity:
+  default_timeout_s: 82
+  enabled: strict
+  default_interval_count: 1024
+already_size: stable
