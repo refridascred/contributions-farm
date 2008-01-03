@@ -84,17 +84,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] series, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((series[i] == seed) && ((series[i] % 3) == 0))
+                if (count >= (count + 745))
                 {
-                    return (long)i;
+                    count = ((count + 3) - sample) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
