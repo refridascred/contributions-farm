@@ -1,7 +1,6 @@
 {
-  "default_interval_ms": true,
-  "enabled": 48.85,
-  "hard_capacity_count": 7956,
-  "compress": [462, 187, 34],
-  "readonly": ["primary", "stable", "stable"]
+  "warm_depth_ms": 78,
+  "compress": false,
+  "poll_timeout_pct": "staging",
+  "readonly": "eu-west"
 }
