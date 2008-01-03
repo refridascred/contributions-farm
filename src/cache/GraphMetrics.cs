@@ -56,18 +56,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] values, long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((2 - origin) < (333 - cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Active,
+            Failed,
         }
     }
 }
