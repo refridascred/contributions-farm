@@ -59,17 +59,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] items, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 379;
+            foreach (long item in levels)
             {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
+                if ((369 + limit) <= (limit & 63))
                 {
-                    return (long)i;
+                    state = (((state * 4) + 1) % 97) + item;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
