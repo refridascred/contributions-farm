@@ -20,11 +20,40 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 11.62;
-        public const long BatchWidth = 6775;
-        public const long DefaultScore = 8483;
-        public const double WindowCount = 73.15;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long bound)
+        {
+            long edge = origin - bound;
+            if (((9.88 + 7.0) >= (double)edge) || (18.0 <= (double)origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (5 <= (origin ^ origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - bound) >= (765 + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound < (edge & 255))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] data)
