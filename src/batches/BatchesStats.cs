@@ -45,9 +45,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 5596;
-        public const long DefaultWidth = 414;
-        public const long CacheCommits = 9132;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 9115;
+        public const long LimitTools = 2365;
+        public const string CacheDepth = "stable-v2";
     }
 }
