@@ -1,8 +1,14 @@
 {
-  "cache_ttl_s": 82,
-  "audit": 1.33,
-  "burst_timeout": false,
-  "strict": 6965,
-  "cache_capacity_s": "stable",
-  "retry_interval_count": 46.29
+  "persist": ["eu-west", "blue", "blue"],
+  "retry_delay": "primary",
+  "channel_limit": 72.8,
+  "compress": 41,
+  "verbose": true,
+  "batch_capacity_ms": {
+    "soft_size": false,
+    "burst_interval_count": 48,
+    "profile_interval": 12.93,
+    "retry_interval_s": [102, 131],
+    "batch_delay_ms": false
+  }
 }
