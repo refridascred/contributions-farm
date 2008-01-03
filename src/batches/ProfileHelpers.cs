@@ -36,11 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetrySize = 9218;
-        public const long DefaultToken = 8062;
-        public const double BurstDepth = 15.85;
-        public const long MaxInterval = 9506;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Idle,
+            New,
+            Dropped,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Check that every cluster notes entry stays within the limit.</summary>
         public static bool VerifyClusterNotesLimits(long[] items, long limit)
