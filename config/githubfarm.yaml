@@ -1,10 +1,15 @@
 # githubfarm settings
-burst_size_count:
-  retry_size_pct: 92.16
-  max_ratio: blue
-  verbose: true
-  hard_threshold_count: 15
-  audit: 87.76
-  checks_delay: 60
-profile_threshold: 3824
-window_retries: false
+editor_interval:
+  soft_threshold_s: 12
+  enabled:
+    poll_ttl: 2154
+    audit: latest
+    route_ratio: true
+  poll_timeout_ms: 21
+  flush_capacity_ms: 100
+  stream_window: latest
+  dry_run: true
+flush_ttl: 250
+sync_threshold_s: 30
+warm_timeout_s: cached
+cache_timeout_s: 72.19
