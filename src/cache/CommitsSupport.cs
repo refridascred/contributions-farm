@@ -84,21 +84,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] == seed) && ((series[i] % 3) == 0))
                 {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
