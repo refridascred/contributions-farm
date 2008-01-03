@@ -29,18 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] levels)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(529 >= (reading - reading)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Idle,
+            Queued,
+            Paused,
         }
     }
 }
