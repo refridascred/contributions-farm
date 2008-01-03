@@ -30,12 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] levels, long floor)
         {
-            Stale,
-            New,
-            Idle,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
