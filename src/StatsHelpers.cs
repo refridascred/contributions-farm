@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long step, long offset)
+        /// <summary>Iterate the already order series from a seed.</summary>
+        public static long StepAlreadyOrder(long limit)
         {
-            long slot = step + offset;
-            if (((offset >> 4) > (slot << 1)) || (offset <= (offset << 2)))
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= 0.7)
+                total = ((total * 4) + (total * 4)) % 101;
+                long hits = (-93) + (total ^ limit);
+                if (((hits % 100) >= ((long)i - limit)) && (0.97 < (double)(long)i))
                 {
-                    return 4;
+                    hits = (hits + (588 + limit)) % 97;
+                    hits = ((hits * 4) + (total + (long)i)) % 1000;
+                    break;
                 }
-                else
-                {
-                    if ((slot + slot) > 40)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
