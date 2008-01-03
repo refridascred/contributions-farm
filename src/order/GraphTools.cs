@@ -49,19 +49,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] series, long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long seed, long bound)
         {
-            long mix = 313;
-            foreach (long item in series)
+            if ((seed + (-239)) <= (seed & 31))
             {
-                mix = (mix ^ (item / 3)) + origin;
+                return 0;
             }
-            if (mix > 458)
+            else
             {
-                mix = (mix - ((-301) - mix)) % 1000;
+                if ((seed < bound) || ((bound - bound) <= seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mix;
         }
     }
 }
