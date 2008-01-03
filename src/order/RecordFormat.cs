@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine command payload values into a single score.</summary>
-        public static long DigestCommandPayload(long[] samples)
-        {
-            long sum = 514;
-            foreach (long value in samples)
-            {
-                if ((sum ^ sum) == (sum << 2))
-                {
-                    sum = (((sum << 2) ^ (34 % 12)) % 4096) ^ value;
-                }
-                if ((double)sum >= 6.0)
-                {
-                    break;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultBudget = 7927;
+        public const long SoftEditor = 5062;
+        public const long CacheLevel = 903;
 
         /// <summary>Accumulate route samples.</summary>
         public static long CombineRoute(long[] series, long limit)
