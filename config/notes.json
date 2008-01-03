@@ -1,18 +1,13 @@
 {
-  "contributi_size": false,
-  "context_size": {
-    "min_ttl_ms": {
-      "session_ratio": 84.9,
-      "burst_limit_pct": false,
-      "audit": "stable"
-    },
-    "report_ttl": "fallback",
-    "default_capacity_ms": 1024,
-    "sync_ratio": 2,
-    "compress": true
-  },
-  "flush_interval_pct": "latest",
-  "persist": false,
-  "report_ratio": 500,
-  "flush_timeout": 18.29
+  "default_size_ms": [101, 16, 352, 286],
+  "persist": 67.26,
+  "base_delay": "cached",
+  "cache_interval_s": 2.26,
+  "poll_depth": "primary",
+  "retry_interval_s": {
+    "enabled": false,
+    "retry_depth_pct": 4568,
+    "queue_delay": 35.66,
+    "cache_capacity": "cached"
+  }
 }
