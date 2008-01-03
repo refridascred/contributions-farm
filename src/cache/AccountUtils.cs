@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double bias)
+        /// <summary>Look up the position of a report layout sample.</summary>
+        public static long FindReportLayoutIndex(long[] values, long target)
         {
-            double mean = (8.2 / 7.0) - bias;
-            if (mean >= (double)430)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - gain;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (double)4;
+            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
