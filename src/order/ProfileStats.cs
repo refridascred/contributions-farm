@@ -35,10 +35,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 69.84;
-        public const string HardWidth = "alpha";
-        public const long MaxInterval = 8972;
-        public const double SoftNotes = 75.88;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long seed, long target)
+        {
+            if ((14.0 / 4.0) <= (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (seed >= (seed << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
