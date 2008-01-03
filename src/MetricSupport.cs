@@ -27,12 +27,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Roll a format window counter forward.</summary>
+        public static long RollFormatWindow(long limit)
         {
-            Retry,
-            Draft,
-            New,
+            long total = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = ((total ^ (limit % 10)) % 1000) - (long)i2;
+                    total = ((total << 3) ^ (total + (long)i)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
