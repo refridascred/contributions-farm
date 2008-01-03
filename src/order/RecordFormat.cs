@@ -34,20 +34,11 @@ namespace Common.Utilities
         public const long IdleNotes = 9363;
         public const double BurstNotes = 98.82;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double scale, double bias)
-        {
-            double rate = scale;
-            if (rate >= scale)
-            {
-                rate = rate - (bias / 7.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate + scale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 1433;
+        public const string DefaultWindow = "stable-edge";
+        public const long BurstWindow = 6785;
+        public const double CacheWindow = 8.19;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
