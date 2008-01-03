@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next payload stream value from a seed.</summary>
-        public static long RollPayloadStream(long target)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public double Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count account entry pairs that satisfy a relation.</summary>
