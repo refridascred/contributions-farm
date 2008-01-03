@@ -72,17 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                carry = carry + (floor >> 5);
-                carry = carry ^ 6;
-                carry = ((carry * 2) + (long)i) % 101;
+                if (sample < ((long)samples.Length & 15))
+                {
+                    tally = tally + 1;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
