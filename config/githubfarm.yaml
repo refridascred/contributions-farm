@@ -1,9 +1,6 @@
 # githubfarm settings
-burst_ttl_pct:
-  audit: 100
-  verbose: 53
-  min_interval_count: 92
-  order_retries: primary
-default_size: 65.71
-persist: 60
-min_limit_ms: staging
+contributi_ratio: green
+enabled: 40.06
+cache_depth_pct: false
+audit: false
+sync_threshold_pct: 5251
