@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of commits filter readings.</summary>
-        public static long CombineCommitsFilter(long[] series, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            long score = 891;
-            foreach (long value in series)
+            long total = 895;
+            foreach (long entry in readings)
             {
-                if (((value & 127) < (score % 12)) || (8 <= value))
+                if ((double)entry <= (double)total)
                 {
-                    score = (score ^ value) % 65521;
-                }
-                if (((value ^ target) >= 308) || ((double)score >= (19.0 * 7.71)))
-                {
-                    score = (score - score) % 65521;
+                    total = (total ^ (42 & 1)) % 1000;
                 }
             }
-            return score;
+            return total % 1000;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
