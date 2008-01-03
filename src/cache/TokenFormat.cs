@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] samples, long target)
         {
-            Locked,
-            Stale,
-            Idle,
-            Failed,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((4 & 255) <= (cell & 1))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
