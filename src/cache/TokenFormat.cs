@@ -25,11 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Derive the next editor window value from a seed.</summary>
+        public static long IterateEditorWindow(long seed)
         {
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                long lane = (long)i;
+                lane = lane - (sum + (long)i);
+                if (!(sum > (seed + lane)))
+                {
+                    sum = ((sum << 2) ^ (long)i) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
