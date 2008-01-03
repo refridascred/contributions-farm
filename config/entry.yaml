@@ -1,7 +1,15 @@
 # entry settings
-soft_window_ms:
-  - edge
-  - legacy
-  - primary
-metrics_delay: 1155
-payload_timeout: 25.83
+default_capacity:
+  - 164
+  - 353
+  - 274
+  - 222
+default_delay_pct: 43
+sync_retries_pct:
+  retry_capacity: primary
+  report_timeout:
+    batch_retries_s: green
+    persist: latest
+    format_threshold: open
+  burst_ttl_pct: 1901
+schema_ttl: 82.75
