@@ -44,18 +44,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many window format samples are out of range.</summary>
-        public static long AuditWindowFormatOutliers(long[] readings, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((678 - 7) != (8 - bound))
+                if (cell != limit)
                 {
-                    tally = (tally + 1) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a stats record.</summary>
