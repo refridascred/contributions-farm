@@ -23,19 +23,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every account schema entry stays within the limit.</summary>
-        public static bool CheckAccountSchemaBounds(long[] samples, long bound)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
