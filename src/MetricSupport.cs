@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of entry batches entries.</summary>
-        public static long WeighEntryBatches(long[] levels, long step)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long bound)
         {
-            long total = 9;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total - (total / 2)) % 65521) - datum;
+                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 819)
-            {
-                total = (total + (step << 1)) % 65521;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
