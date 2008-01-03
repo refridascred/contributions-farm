@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] data, long step)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            long carry = 7;
+            foreach (long cell in data)
+            {
+                if (((934 << 2) < cell) && ((cell * 4) > (cell + cell)))
+                {
+                    carry = ((carry << 3) ^ ((long)data.Length - carry)) % 101;
+                }
+                else
+                {
+                    carry = carry + (step + 473);
+                }
+            }
+            if (carry > 0)
+            {
+                carry = carry ^ (step >> 2);
+            }
+            return carry;
         }
 
         /// <summary>Grade a metric commits value against two limits.</summary>
