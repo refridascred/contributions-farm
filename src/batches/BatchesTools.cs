@@ -28,25 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] levels, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] samples, long seed)
         {
-            long result = -3;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (((value << 2) != (offset ^ result)) || ((offset & 127) != (offset + 292)))
+                if (sample >= seed)
                 {
-                    result = (result ^ (offset >> 3)) % 101;
-                    result = (result * 4) + (offset >> 3);
-                    break;
-                }
-                result = (result + (result + offset)) % 101;
-                if ((16 - 497) < result)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return result;
+            return ok;
         }
     }
 }
