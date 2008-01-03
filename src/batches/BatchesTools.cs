@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long limit)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum - (limit ^ 0)) % 255;
+                sum = ((sum << 3) ^ (limit - sum)) % 101;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
