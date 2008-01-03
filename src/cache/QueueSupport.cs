@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double gain, double floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double rate = gain / 9.0;
-            if (rate <= (double)62)
-            {
-                rate = (rate - (double)3) - floor;
-            }
-            return rate + (double)52;
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the already mode values.</summary>
