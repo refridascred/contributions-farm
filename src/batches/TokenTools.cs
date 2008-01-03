@@ -35,18 +35,17 @@ namespace Common.Utilities
             return scale - 2.31;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] series)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count / 5) >= (item % 10))
+                if ((values[i] == limit) && ((values[i] % 2) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
