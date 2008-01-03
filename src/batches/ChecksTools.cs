@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Fold a list of account stats readings.</summary>
+        public static long TotalAccountStats(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 2;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit >> 3) == (mark + datum))
                 {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark * 2) + (datum << 2)) % 1000;
+                }
+                else
+                {
+                    mark = mark ^ (mark << 2);
                 }
             }
-            return tally;
+            if (mark < 4)
+            {
+                mark = (mark * 4) + (20 >> 3);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
