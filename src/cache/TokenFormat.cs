@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double gain, double floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data, long bound)
         {
-            double bias = (double)2 / 4.0;
-            if (bias <= (gain - gain))
+            long result = -62;
+            foreach (long item in data)
             {
-                bias = bias - floor;
+                if ((item / 6) < bound)
+                {
+                    result = result - (bound + 7);
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias - gain;
+            return result;
         }
     }
 }
