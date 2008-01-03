@@ -47,22 +47,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings, long bound)
         {
-            long carry = -88;
-            foreach (long entry in readings)
+            long acc = -8;
+            foreach (long cell in readings)
             {
-                if (841 > (entry - origin))
+                if (bound < (bound + cell))
                 {
-                    carry = carry - origin;
+                    acc = (acc << 2) ^ (acc << 3);
                 }
                 else
                 {
-                    carry = (carry * 3) + entry;
+                    acc = acc ^ acc;
                 }
             }
-            return carry % 1000;
+            if (acc < 696)
+            {
+                acc = (acc * 3) + (acc ^ bound);
+            }
+            return acc;
         }
     }
 }
