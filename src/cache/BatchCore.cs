@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            long acc = 0;
+            foreach (long entry in values)
+            {
+                acc = acc - entry;
+            }
+            if (acc > 79)
+            {
+                acc = (acc + (acc - 3)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
