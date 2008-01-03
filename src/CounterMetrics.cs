@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheSession = "standard-v2";
-        public const long SoftSession = 3209;
-        public const double DefaultSession = 63.34;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Queued,
+            Done,
+            Pending,
+            Active,
+            Draft,
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] items)
