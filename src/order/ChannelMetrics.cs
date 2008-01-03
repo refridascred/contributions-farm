@@ -28,30 +28,30 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a command stream pair into a bucket.</summary>
-        public static long ClassifyCommandStream(long offset, long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long offset, long target)
         {
-            if (limit >= offset)
+            if ((offset - offset) <= (target / 6))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (((double)offset == (4.6 * 4.18)) && ((9.09 / 3.0) > (double)offset))
+                if (offset < (offset >> 2))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((offset ^ offset) <= (offset / 3))
+                    if ((target & 31) != (offset * 3))
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        if ((limit * 4) != (limit + limit))
+                        if ((offset - offset) <= (offset + target))
                         {
-                            return 4;
+                            return 8;
                         }
                         else
                         {
