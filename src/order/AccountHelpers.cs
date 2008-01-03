@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the window profile entries that pass the check.</summary>
+        public static long TallyWindowProfileOutliers(long[] items)
         {
-            Paused,
-            Stale,
-            Idle,
-            Queued,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((value > ((long)items.Length + value)) || ((double)tally < (double)value)) || ((tally + (long)items.Length) >= 64))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
