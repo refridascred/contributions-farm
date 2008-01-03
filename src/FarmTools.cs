@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchSpan = 710;
-        public const string BatchLevel = "primary-edge";
-        public const double MinAlready = 44.31;
-        public const long IdleAlready = 2390;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 5023;
+        public const double DefaultRoute = 32.0;
+        public const string MaxRoute = "standard-1";
+        public const long MinSize = 6289;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TotalEntry(long[] values)
