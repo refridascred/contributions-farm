@@ -35,31 +35,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long seed, long bound)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] levels, long limit)
         {
-            if (((seed >> 3) == (seed ^ 5)) || ((double)3 <= (double)seed))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed & 127) <= 78)
+                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(578 > (seed - 0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
