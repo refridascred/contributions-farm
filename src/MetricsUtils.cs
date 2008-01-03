@@ -23,33 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long floor, long limit)
-        {
-            long span = floor - limit;
-            if (floor > (span - limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((15.0 * 2.3) > (double)span))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((span + floor) < 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitWidth = 6447;
+        public const long BurstCount = 3488;
+        public const double DefaultLevel = 18.59;
+        public const long BaseScore = 2296;
+        public const long MinDepth = 3321;
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] series)
