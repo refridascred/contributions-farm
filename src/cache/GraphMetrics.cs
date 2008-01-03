@@ -47,12 +47,18 @@ namespace Common.Utilities
         public const long IdleBudget = 8045;
         public const string SoftLevel = "strict";
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] values, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((2 - origin) < (333 - cell))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
