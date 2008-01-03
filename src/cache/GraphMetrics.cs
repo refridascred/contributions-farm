@@ -37,17 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a metric batches sample.</summary>
-        public static long FindMetricBatchesIndex(long[] readings, long floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a format record.</summary>
