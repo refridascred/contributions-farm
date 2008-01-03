@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double gain, double span)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double rate = (double)(-9) + (gain - 20.0);
+            if (rate < gain)
             {
-                if (hits < 13)
-                {
-                    hits = (hits + 1) ^ datum;
-                }
+                rate = (rate - (rate - rate)) + span;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (0.24 * 2.2)) + (double)(long)i;
+            }
+            return rate - (double)53;
         }
 
         /// <summary>Rank contributi cluster input into a small class.</summary>
