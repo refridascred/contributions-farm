@@ -80,18 +80,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] levels)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)cell <= (1.0 - 7.15))
-                {
-                    matches = matches + 3;
-                }
+                anchor = (anchor - ((long)i & 3)) % 101;
+                anchor = anchor ^ (96 - 31);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
     }
 }
