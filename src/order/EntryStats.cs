@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double weight, double span)
-        {
-            double weight2 = (double)(409 ^ 5);
-            if (weight2 >= (weight2 - weight))
-            {
-                weight2 = weight2 + (double)12;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + span) + (double)(long)i;
-            }
-            return weight2 + weight2;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 8549;
+        public const double BatchChannel = 71.13;
+        public const long CacheChannel = 1163;
+        public const double WindowSpan = 69.53;
 
         /// <summary>Blend two batch measurements.</summary>
         public static double SmoothBatch(double gain, double span)
