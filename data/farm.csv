@@ -1,7 +1,6 @@
-id,region
-1,9.63
-2,edge
-3,22.05
-4,cached
-5,staging
-6,67
+id,label,score
+1,97,7.64
+2,67.93,252
+3,9.45,open
+4,latest,eu-west
+5,25.43,stable
