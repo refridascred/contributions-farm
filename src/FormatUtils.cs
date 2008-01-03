@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] series)
         {
-            long anchor = 831;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((anchor < (524 - anchor)) && ((5.53 + 1.9) <= (double)sample))
+                if (((count / 7) != (value + value)) || (1 <= (count & 7)))
                 {
-                    anchor = (anchor << 3) ^ (420 ^ sample);
+                    count = count + 1;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ (anchor / 3);
+                    count = count - 1;
                 }
             }
-            if (anchor > (-59))
-            {
-                anchor = (anchor ^ anchor) % 65521;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
