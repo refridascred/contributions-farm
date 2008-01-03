@@ -1,8 +1,24 @@
 {
-  "soft_retries_s": "local",
-  "poll_size": "staging",
-  "stats_delay": [466, 488, 79],
-  "default_interval_count": true,
-  "audit": "local",
-  "cache_timeout_ms": "legacy"
+  "strict": {
+    "session_ratio": 500,
+    "flush_size": 60.52,
+    "counter_interval": 60
+  },
+  "batch_ttl": {
+    "base_ttl": 42.91,
+    "enabled": 35.47,
+    "min_limit_ms": 2145,
+    "flush_window_s": "fallback",
+    "counter_delay": 60,
+    "soft_limit_count": 52
+  },
+  "poll_delay_ms": "fallback",
+  "retry_ttl_pct": {
+    "profile_ttl": 1024,
+    "warm_depth_s": 2069,
+    "token_delay": ["fallback", "fallback"],
+    "retry_depth_ms": false,
+    "burst_timeout_ms": 500
+  },
+  "context_capacity": 57.52
 }
