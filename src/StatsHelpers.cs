@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many cache token samples are out of range.</summary>
-        public static long AuditCacheTokenOutliers(long[] readings, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long step, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long slot = step + offset;
+            if (((offset >> 4) > (slot << 1)) || (offset <= (offset << 2)))
             {
-                if (!((double)hits < (double)item))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= 0.7)
                 {
-                    hits = (hits + 1) + floor;
+                    return 4;
+                }
+                else
+                {
+                    if ((slot + slot) > 40)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a stream info.</summary>
