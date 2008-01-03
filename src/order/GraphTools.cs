@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double bias, double bias2)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double load = (double)((-91) + 74);
-            if (load >= bias)
-            {
-                load = (load - (bias / 3.0)) + bias2;
-            }
-            return load + 6.9;
+            public double Label { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
