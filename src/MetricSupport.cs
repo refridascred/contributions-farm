@@ -32,11 +32,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 3507;
-        public const double HardLevel = 44.97;
-        public const string MinDepth = "legacy-v2";
-        public const long MaxBudget = 4612;
-        public const long MaxRatio = 1941;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] items, long target)
+        {
+            long mix = 99;
+            foreach (long cell in items)
+            {
+                mix = (mix + (mix - mix)) % 65521;
+                mix = ((mix << 2) ^ target) % 101;
+                if (!((mix + target) > (target + target)))
+                {
+                    mix = ((mix << 3) ^ (88 * 3)) % 101;
+                }
+                if (((92 & 31) != (mix / 7)) && ((double)cell == (14.0 + 3.0)))
+                {
+                    break;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix ^ (4 + target)) % 4096;
+            }
+            return mix;
+        }
     }
 }
