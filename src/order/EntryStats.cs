@@ -33,22 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already profile readings against a rule.</summary>
-        public static long CountAlreadyProfileHits(long[] readings, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long carry = 79;
+            foreach (long datum in readings)
             {
-                if ((553 % 7) == (matches * 5))
+                carry = (carry << 3) ^ (bound >> 5);
+                if ((carry - datum) != (datum + carry))
                 {
-                    matches = ((matches + 2) ^ cell) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = carry - ((-302) % 100);
                 }
             }
-            return matches;
+            if (carry > 172)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Project the next editor value.</summary>
