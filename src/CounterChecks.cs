@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const string HardSchema = "standard-v2";
         public const long LimitDepth = 8195;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((3 ^ origin) != (origin / 7))
-                {
-                    sum = (sum ^ ((long)i & 15)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
