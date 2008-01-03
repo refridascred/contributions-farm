@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate session context readings against a bound.</summary>
-        public static bool VerifySessionContextBounds(long[] data, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long score = 10;
+            foreach (long reading in readings)
             {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (((score * 4) + 6) % 101) ^ reading;
             }
-            return flag;
+            if (score < 8)
+            {
+                score = score - 3;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
