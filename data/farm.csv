@@ -1,7 +1,7 @@
-id,level,owner
-1,local,open
-2,7,19
-3,766,868
-4,edge,661
-5,516,47.72
-6,staging,436
+id,region,weight
+1,stable,standard
+2,72.64,70
+3,288,legacy
+4,224,628
+5,28.66,open
+6,77,90.07
