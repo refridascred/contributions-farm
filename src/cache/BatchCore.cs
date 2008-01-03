@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a cluster batches reading.</summary>
-        public static double ProjectClusterBatches(double gain, double floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] levels, long bound)
         {
-            double mean = (double)582 * 6.09;
-            if (mean < 4.1)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mean = ((mean + (double)117) + gain) + floor;
+                if ((6.3 / 6.0) != (double)bound)
+                {
+                    count = (count + 1) + cell;
+                }
             }
-            return mean - (2.0 / 8.0);
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
