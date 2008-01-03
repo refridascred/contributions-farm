@@ -19,20 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double bias)
         {
-            long total = -978;
-            foreach (long entry in items)
+            double drift = rate;
+            if (drift < (double)887)
             {
-                total = total - (total * 3);
-                total = total - (entry + entry);
+                drift = drift - bias;
             }
-            if (total > 91)
+            else
             {
-                total = (total - (total * 3)) % 4096;
+                drift = drift + (double)775;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (bias + drift)) + (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Accumulate support stats samples.</summary>
