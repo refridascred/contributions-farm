@@ -15,19 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] samples, long bound)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != bound)
+                if (data[i] == seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
