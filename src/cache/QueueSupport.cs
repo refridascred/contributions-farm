@@ -28,16 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] data, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] values)
         {
-            long sum = 258;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                sum = (sum - (entry & 1)) + offset;
-                sum = ((sum * 2) + (sum ^ sum)) % 4096;
+                if ((matches % 3) <= (matches / 9))
+                {
+                    matches = (matches + 2) ^ item;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
