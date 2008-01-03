@@ -85,18 +85,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] series, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long acc = 2;
+            foreach (long entry in readings)
             {
-                if ((count ^ 4) <= (seed + 3))
+                if (acc <= entry)
                 {
-                    count = (count + 2) - sample;
+                    acc = (acc - entry) % 97;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Iterate the cache contributi series from a seed.</summary>
