@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Paused,
-            Idle,
-            Locked,
-            Dropped,
+            Queued,
+            Failed,
+            Closed,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
