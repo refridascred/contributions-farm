@@ -1,17 +1,7 @@
 {
-  "metrics_delay": "blue",
-  "flush_window_pct": {
-    "warm_timeout_count": 82.14,
-    "max_threshold": 4382,
-    "editor_depth": 250
-  },
-  "account_capacity": {
-    "metrics_size": "standard",
-    "idle_timeout": ["fallback", "cached", "strict", "staging"],
-    "default_capacity_ms": ["stable", "eu-west", "blue"],
-    "enabled": 1024,
-    "max_timeout": 65.41,
-    "record_threshold": "fallback"
-  },
-  "hard_interval": 100
+  "format_ttl": 7.02,
+  "retry_ratio": 500,
+  "idle_window_ms": 7470,
+  "schema_retries": 4716,
+  "checks_threshold": "eu-west"
 }
