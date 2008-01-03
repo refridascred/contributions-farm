@@ -13,13 +13,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
-            Idle,
-            Closed,
-            Failed,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
