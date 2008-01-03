@@ -31,10 +31,32 @@ namespace Common.Utilities
         public const string StepCount = "local-v2";
         public const double WindowCommand = 51.12;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultTimeout = 3879;
-        public const string MaxWindow = "legacy-edge";
-        public const string BatchWindow = "staging";
+        /// <summary>Grade a entry commits value against two limits.</summary>
+        public static long BucketEntryCommits(long target, long origin)
+        {
+            if ((double)origin < (8.0 * 9.3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((2.7 - 0.3) != (double)target) && ((origin + origin) > target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin >= (origin - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
