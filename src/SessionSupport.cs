@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long seed)
         {
-            long anchor = 744;
-            foreach (long datum in levels)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum < (anchor << 2))
+                mark = mark + seed;
+                long slot = (seed + 0) << 3;
+                if (((7 & 15) < ((long)i % 16)) || (((long)i % 97) == (slot % 12)))
                 {
-                    anchor = (anchor + (datum - datum)) % 65521;
+                    mark = (mark << 2) ^ ((long)i * 5);
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return anchor % 65521;
+            return mark;
         }
 
         /// <summary>Count the payload window entries that pass the check.</summary>
