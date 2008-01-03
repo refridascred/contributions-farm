@@ -94,9 +94,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxFactor = 8778;
-        public const long StepEntry = 1828;
-        public const string DefaultEntry = "primary";
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
