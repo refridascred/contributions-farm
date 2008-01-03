@@ -46,22 +46,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the cluster window entries that pass the check.</summary>
-        public static long TallyClusterWindowHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (!((hits >= (sample / 8)) && ((3.0 * 10.0) < (double)hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinScore = "cached-1";
+        public const long HardTimeout = 6640;
+        public const double CacheBatch = 73.33;
+        public const long SoftBatch = 7730;
+        public const long IdleBatch = 2918;
     }
 }
