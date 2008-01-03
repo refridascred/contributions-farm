@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 79.12;
-        public const string BurstReport = "primary-edge";
-        public const long CacheBudget = 5367;
-        public const long MaxReport = 844;
-        public const long DefaultReport = 9538;
+        /// <summary>Find the first notes command entry that matches the target.</summary>
+        public static long LocateNotesCommandIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
