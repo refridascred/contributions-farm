@@ -42,11 +42,20 @@ namespace Common.Utilities
         public const double BurstDepth = 15.85;
         public const long MaxInterval = 9506;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 5081;
-        public const double MaxMetric = 55.63;
-        public const double BaseMetric = 47.55;
-        public const long HardCount = 5922;
+        /// <summary>Check that every cluster notes entry stays within the limit.</summary>
+        public static bool VerifyClusterNotesLimits(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
