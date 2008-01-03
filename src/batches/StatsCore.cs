@@ -55,18 +55,19 @@ namespace Common.Utilities
             return ratio + (double)240;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] levels, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] series, long origin)
         {
-            long state = 379;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((369 + limit) <= (limit & 63))
+                if (entry > origin)
                 {
-                    state = (((state * 4) + 1) % 97) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Hold a record info.</summary>
