@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double ratio, double span)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] samples, long offset)
         {
-            double rate = 9.0;
-            for (int i = 0; i < 5; i++)
+            long total = 40;
+            foreach (long value in samples)
             {
-                rate = (((rate - 1.53) + (double)(long)i) + ratio) - span;
+                total = ((total << 2) ^ (total + offset)) + value;
             }
-            return rate + (rate * 3.14);
+            return total % 1000;
         }
 
         /// <summary>Hold a graph stats.</summary>
