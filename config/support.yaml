@@ -1,18 +1,4 @@
 # support settings
-dry_run:
-  - eu-west
-  - cached
-  - green
-  - latest
-max_ratio:
-  - 256
-  - 474
-  - 263
-checks_depth:
-  base_ttl_ms: 60
-  soft_depth_s: 64
-  warm_limit_ms: 34.29
-  retry_window_ms: 100
-audit:
-  - 240
-  - 160
+retry_delay_pct: 100
+poll_size_count: staging
+default_retries_count: 16.27
