@@ -21,13 +21,13 @@ namespace Common.Utilities
             return rate + (double)52;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Synced,
-            Locked,
-            Pending,
-            Done,
+            public double Offset { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
