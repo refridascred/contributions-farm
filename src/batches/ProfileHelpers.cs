@@ -42,32 +42,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a stats session value against two limits.</summary>
-        public static long RankStatsSession(long step, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] values)
         {
-            long next = step + target;
-            if ((target - target) < target)
+            long acc = 6;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5.3 + 8.5) < (double)step)
+                if (!((acc * 2) != (sample - acc)))
                 {
-                    return 5;
+                    acc = (acc + (5 * 5)) % 4096;
                 }
-                else
+                if ((sample << 1) <= acc)
                 {
-                    if ((double)next == (4.4 + 7.7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            if (acc < 715)
+            {
+                acc = (acc + (acc * 3)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a window snapshot.</summary>
