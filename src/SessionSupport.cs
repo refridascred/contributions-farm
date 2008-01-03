@@ -22,11 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 4362;
-        public const long RetryBuffer = 75;
-        public const string SoftDepth = "local-1";
-        public const double StepBudget = 18.3;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit batch buffer readings against a rule.</summary>
         public static long TallyBatchBufferMatches(long[] levels, long seed)
