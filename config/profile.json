@@ -1,6 +1,7 @@
 {
-  "default_window_ms": "primary",
-  "filter_capacity": "standard",
-  "base_ratio_ms": 496,
-  "hard_timeout": "legacy"
+  "idle_timeout_count": "primary",
+  "hard_depth_ms": 100,
+  "strict": [94, 95, 41],
+  "base_timeout_ms": [379, 391],
+  "batch_depth": 1530
 }
