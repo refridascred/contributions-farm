@@ -1,8 +1,11 @@
 {
-  "default_capacity": 250,
-  "counter_depth": true,
-  "poll_interval": "latest",
-  "dry_run": true,
-  "cache_interval_count": ["standard", "stable"],
-  "contributi_depth": "legacy"
+  "default_capacity": {
+    "persist": "primary",
+    "commits_capacity": 85.84,
+    "base_limit": 11
+  },
+  "githubfarm_timeout": false,
+  "token_ttl": 23.33,
+  "command_retries": 84.34,
+  "notes_size": 66
 }
