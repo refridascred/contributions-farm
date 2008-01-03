@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double bias, double bias2)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            double rate = (double)(64 / 6);
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                rate = (rate + bias2) + (double)(long)i;
             }
-            return sum;
+            return rate - (bias2 + bias);
         }
 
         /// <summary>Fold a list of editor readings.</summary>
