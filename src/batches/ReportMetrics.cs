@@ -28,31 +28,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long floor, long bound)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            if ((double)floor > (double)bound)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((5.4 + 8.0) != (double)floor) && (bound <= (bound + bound)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor > (floor + 156))
+                    if ((items[i] + items[j]) > 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
