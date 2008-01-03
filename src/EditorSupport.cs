@@ -38,19 +38,14 @@ namespace Common.Utilities
         public const string DefaultBatch = "standard";
         public const double SoftFactor = 6.55;
 
-        /// <summary>Validate token metric readings against a bound.</summary>
-        public static bool VerifyTokenMetricBounds(long[] readings, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Failed,
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
