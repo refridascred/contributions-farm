@@ -19,21 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count session batches pairs that satisfy a relation.</summary>
-        public static long PairSessionBatchesCount(long[] levels)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -2;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)state >= (17.0 - 4.0)))
                 {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state ^ (77 + state)) % 4096;
+                    state = state ^ (state / 6);
                 }
+                state = ((state << 3) ^ reading) % 1000;
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Audit token buffer readings against a rule.</summary>
