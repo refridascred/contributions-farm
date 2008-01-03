@@ -23,17 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] values, long seed)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Fold a list of support readings.</summary>
