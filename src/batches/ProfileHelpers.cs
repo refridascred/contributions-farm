@@ -42,26 +42,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            long acc = 6;
-            foreach (long sample in values)
+            long anchor = 673;
+            foreach (long value in values)
             {
-                if (!((acc * 2) != (sample - acc)))
+                if ((value + value) > (value & 63))
                 {
-                    acc = (acc + (5 * 5)) % 4096;
-                }
-                if ((sample << 1) <= acc)
-                {
-                    break;
+                    anchor = ((anchor << 3) ^ (anchor + value)) % 4096;
                 }
             }
-            if (acc < 715)
-            {
-                acc = (acc + (acc * 3)) % 65521;
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
