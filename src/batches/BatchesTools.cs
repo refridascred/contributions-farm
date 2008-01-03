@@ -31,11 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 1761;
-        public const long IdleRatio = 1005;
-        public const long IdleSupport = 1932;
-        public const long MaxSupport = 4338;
-        public const string MaxWidth = "latest-v2";
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
