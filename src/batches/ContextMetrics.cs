@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBatch = "fallback-edge";
-        public const long BaseBatch = 5702;
-        public const double BurstBatch = 60.71;
-        public const string WindowSize = "fallback-edge";
-        public const long LimitBatch = 869;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score * 5) + 740) + (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileHits(long[] data, long bound)
