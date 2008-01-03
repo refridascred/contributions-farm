@@ -1,5 +1,15 @@
 {
-  "cache_timeout_count": "strict",
-  "soft_timeout_ms": ["standard", "primary"],
-  "hard_timeout": "blue"
+  "githubfarm_ratio": {
+    "cluster_ttl": "open",
+    "sync_capacity_count": {
+      "persist": 100,
+      "min_window": 1.44,
+      "dry_run": false,
+      "farm_depth": "cached",
+      "burst_ratio": false
+    },
+    "hard_interval_ms": ["strict", "stable"]
+  },
+  "flush_retries_pct": "fallback",
+  "readonly": "eu-west"
 }
