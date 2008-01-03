@@ -10,17 +10,16 @@ namespace Common.Utilities
         public const long BaseEditor = 3240;
         public const string SoftEditor = "alpha";
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] data, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((data[i] == seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry + (50 + offset)) % 255;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count graph farm pairs that satisfy a relation.</summary>
