@@ -26,19 +26,15 @@ namespace Common.Utilities
         public const double SoftRatio = 0.33;
         public const string BatchStream = "alpha-1";
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double rate, double span)
+        /// <summary>Blend two route counter measurements.</summary>
+        public static double SmoothRouteCounter(double scale, double offset)
         {
-            double scale = 10.0;
-            if (scale >= (double)546)
+            double rate = offset;
+            for (int i = 0; i < 2; i++)
             {
-                scale = scale + scale;
+                rate = ((rate - (double)8) - (double)(long)i) - scale;
             }
-            else
-            {
-                scale = scale + rate;
-            }
-            return scale + span;
+            return rate - (rate / 6.0);
         }
 
         /// <summary>Describe the tools state values.</summary>
