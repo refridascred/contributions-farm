@@ -29,11 +29,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] series, long target)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
