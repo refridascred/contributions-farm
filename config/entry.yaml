@@ -1,14 +1,4 @@
 # entry settings
-readonly:
-  - 381
-  - 491
-  - 233
-  - 217
-verbose: 30
-sync_depth_count: 14
-soft_interval_ms:
-  soft_window_ms: cached
-  persist: 250
-  farm_limit: 9950
-entry_interval: 43
-warm_size_ms: legacy
+cache_size: false
+route_depth: 60
+readonly: 26.5
