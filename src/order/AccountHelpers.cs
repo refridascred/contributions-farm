@@ -68,19 +68,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] series, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] values, long bound)
         {
-            long result = 5;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result ^ (44 & 7)) % 65521) + value) + limit;
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 859)
-            {
-                result = ((result << 2) ^ (result % 5)) % 97;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the batch state values.</summary>
