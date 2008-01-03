@@ -18,17 +18,17 @@ namespace Common.Utilities
         public const long DefaultRatio = 4614;
         public const double LimitSize = 44.12;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] values, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ (limit + (long)i)) % 97;
-                state = state + 238;
-                state = ((state * 2) + (long)i) % 97;
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
