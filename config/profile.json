@@ -1,7 +1,6 @@
 {
-  "compress": true,
-  "batch_depth": 250,
-  "min_interval_count": 94.5,
-  "max_ttl_count": "eu-west",
-  "burst_ttl": 73
+  "default_window_ms": "primary",
+  "filter_capacity": "standard",
+  "base_ratio_ms": 496,
+  "hard_timeout": "legacy"
 }
