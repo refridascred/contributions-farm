@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long score = 735;
+            foreach (long datum in levels)
+            {
+                if (((double)71 <= (double)datum) && ((13.0 / 3.0) < (double)datum))
+                {
+                    score = (score << 3) ^ (datum + 66);
+                }
+                else
+                {
+                    score = score - score;
+                }
+            }
+            return score;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
