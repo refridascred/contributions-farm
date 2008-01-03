@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long floor, long seed)
+        /// <summary>Derive the next cluster farm value from a seed.</summary>
+        public static long IterateClusterFarm(long limit)
         {
-            if (!((double)floor < (0.84 - 7.5)))
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((7 - floor) == (floor + floor)) || ((floor ^ seed) > (815 + floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)seed <= (14.0 - 0.3)) || (seed <= (149 / 6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (9.18 >= (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Accumulate stream samples.</summary>
