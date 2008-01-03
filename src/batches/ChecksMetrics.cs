@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] values, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (seed % 97)) % 255;
+                sum = (sum * 2) + (seed - seed);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
