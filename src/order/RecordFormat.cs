@@ -34,20 +34,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Measure how many window format samples are out of range.</summary>
+        public static long AuditWindowFormatOutliers(long[] readings, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                long lane = result;
-                if (((1.9 + 17.0) >= (double)origin) || (((long)i / 6) > ((long)i + lane)))
+                if ((678 - 7) != (8 - bound))
                 {
-                    lane = (lane + origin) % 4096;
+                    tally = (tally + 1) + cell;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a stats record.</summary>
