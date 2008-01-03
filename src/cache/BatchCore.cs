@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series, long limit)
-        {
-            long result = 4;
-            foreach (long value in series)
-            {
-                if ((result % 60) < (-49))
-                {
-                    result = (result - (value + limit)) % 1000;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 37.49;
+        public const long LimitSchema = 5129;
+        public const long MaxBudget = 2939;
+        public const long RetrySpan = 926;
+        public const long StepSize = 5090;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
