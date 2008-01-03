@@ -31,21 +31,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)84 * 8.9;
+            if (load >= (double)0)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load - load) + bias;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load - (scale * 1.0);
         }
 
         /// <summary>Hold a stats header.</summary>
