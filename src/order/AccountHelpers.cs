@@ -47,27 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((seed >> 1) != (seed & 63))
-                {
-                    anchor = (anchor ^ 49) % 101;
-                    anchor = anchor ^ (anchor % 60);
-                    break;
-                }
-                if (((anchor + (long)i) < 4) && (seed <= (anchor + seed)))
-                {
-                    anchor = (anchor ^ (anchor + seed)) % 4096;
-                }
-                anchor = (anchor * 2) + (seed >> 3);
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultCount = 4794;
+        public const string HardDepth = "staging-1";
+        public const string WindowEditor = "cached-1";
+        public const string MinEditor = "alpha-1";
+        public const double BatchEditor = 40.82;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
