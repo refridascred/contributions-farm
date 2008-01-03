@@ -1,12 +1,10 @@
 {
-  "soft_limit_pct": false,
-  "batch_limit_pct": {
-    "strict": 82.99,
-    "account_timeout": 20,
-    "farm_timeout": "strict",
-    "schema_timeout": "standard",
-    "enabled": 70
+  "idle_depth": [240, 433, 284, 6],
+  "sync_ratio": "local",
+  "filter_depth": {
+    "base_threshold": "cached",
+    "min_threshold": true,
+    "context_window": "fallback"
   },
-  "retry_threshold_s": "blue",
-  "sync_timeout": 58
+  "batch_threshold_s": "open"
 }
