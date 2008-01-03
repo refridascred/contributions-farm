@@ -39,18 +39,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] readings, long origin)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double bias = span;
+            if (bias <= (double)36)
             {
-                if (((213 * 2) != (item % 100)) || !(seen <= (11 - seen)))
-                {
-                    seen = (seen + 1) + origin;
-                }
+                bias = bias + 3.7;
             }
-            return seen;
+            else
+            {
+                bias = bias + (span / 5.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (ratio * 3.22);
         }
     }
 }
