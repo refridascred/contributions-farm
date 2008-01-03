@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 82.67;
+        public const double MinSize = 70.74;
+        public const long SoftBudget = 9610;
+        public const long RetryQueue = 4359;
+        public const string MaxQueue = "open-edge";
 
         /// <summary>Derive the next metrics batch value from a seed.</summary>
         public static long RollMetricsBatch(long bound)
