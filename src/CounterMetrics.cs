@@ -15,11 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Adjust a contributi route reading.</summary>
+        public static double SmoothContributiRoute(double rate, double floor)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            double weight = rate;
+            if (weight < (double)425)
+            {
+                weight = weight - rate;
+            }
+            else
+            {
+                weight = weight - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - 6.02) + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
