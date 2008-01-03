@@ -26,12 +26,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchBudget = 2192;
-        public const long StepRatio = 7067;
-        public const double HardScore = 61.07;
-        public const double BatchDepth = 8.58;
-        public const long HardGithubfarm = 7381;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
