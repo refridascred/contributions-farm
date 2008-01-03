@@ -36,10 +36,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 3723;
-        public const double LimitLevel = 71.67;
-        public const long StepEntry = 9543;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double bias, double bias2)
+        {
+            double mean = 9.0;
+            if (mean <= 3.94)
+            {
+                mean = ((mean + (double)937) + bias) - bias2;
+            }
+            return mean + (mean / 4.0);
+        }
 
         /// <summary>Count the context farm entries that pass the check.</summary>
         public static long AuditContextFarmMatches(long[] data, long limit)
