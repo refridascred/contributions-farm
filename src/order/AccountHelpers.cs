@@ -85,11 +85,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultFactor = "stable";
-        public const long SoftSpan = 562;
-        public const long IdleBatch = 522;
-        public const double BurstBatch = 77.57;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Ready,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Check that every entry tools entry stays within the limit.</summary>
         public static bool CheckEntryToolsLimits(long[] series, long floor)
