@@ -20,17 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] data, long offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = gain;
+            for (int i = 0; i < 3; i++)
             {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
+                gain2 = ((gain2 + 8.0) + (double)(long)i) + span;
             }
-            return -1;
+            return gain2 - 16.0;
         }
 
         /// <summary>Digest a series of token entries.</summary>
