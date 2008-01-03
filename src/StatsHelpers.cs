@@ -83,17 +83,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Rank metric payload input into a small class.</summary>
+        public static long SortMetricPayload(long target, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long diff = target ^ origin;
+            if ((0.4 - 0.3) < (double)origin)
             {
-                mark = mark ^ (mark ^ origin);
-                mark = mark - (43 & 63);
-                mark = ((mark * 3) + (long)i) % 4093;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (((2.0 + 0.6) > (double)target) && ((462 & 127) == (target * 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((70 >> 2) < origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((diff + 696) <= diff)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
