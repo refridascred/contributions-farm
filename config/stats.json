@@ -1,8 +1,6 @@
 {
-  "hard_size": "strict",
-  "githubfarm_limit": 85,
-  "account_limit": "local",
-  "batch_window_ms": "edge",
-  "poll_depth_ms": "legacy",
-  "readonly": 8011
+  "hard_delay": [403, 82],
+  "tools_interval": "primary",
+  "batch_threshold": 48.58,
+  "hard_ratio": 46.35
 }
