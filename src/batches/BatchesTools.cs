@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next format window value from a seed.</summary>
-        public static long SeriesFormatWindow(long step)
+        /// <summary>Audit counter layout readings against a rule.</summary>
+        public static long TallyCounterLayoutHits(long[] items)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((((long)i + mark) != (55 >> 1)) || ((step + (-639)) == (long)i))
+                if ((seen << 1) != ((long)items.Length ^ 959))
                 {
-                    mark = ((mark * 3) + (mark << 2)) % 1000;
-                    mark = (mark - (4 ^ (long)i)) % 101;
+                    seen = (seen + 2) - reading;
                 }
-                mark = (mark + (step - mark)) % 97;
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
