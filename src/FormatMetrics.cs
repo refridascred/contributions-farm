@@ -16,5 +16,23 @@ namespace Common.Utilities
             }
             return result;
         }
+
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] items, long floor)
+        {
+            long total = 1;
+            foreach (long item in items)
+            {
+                if (!(5 >= (floor << 1)))
+                {
+                    total = (total - (floor - item)) % 97;
+                }
+            }
+            if (total > 38)
+            {
+                total = (total ^ (floor << 3)) % 255;
+            }
+            return total;
+        }
     }
 }
