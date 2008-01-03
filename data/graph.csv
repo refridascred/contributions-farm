@@ -1,6 +1,10 @@
-id,active,weight,owner
-1,eu-west,504,94.23
-2,latest,56.89,51.19
-3,75,60.05,latest
-4,32.14,eu-west,primary
-5,green,20.45,primary
+id,token,owner
+1,889,primary
+2,846,latest
+3,450,primary
+4,791,40.01
+5,957,latest
+6,25,cached
+7,cached,8.64
+8,21.23,30.3
+9,green,121
