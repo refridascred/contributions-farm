@@ -54,18 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((cell ^ 46) < count)
+                if (((entry << 3) > bound) && (((double)entry <= (14.0 * 7.96)) && ((entry ^ seen) < (seen * 3))))
                 {
-                    count = count + 1;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
