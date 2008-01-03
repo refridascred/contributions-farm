@@ -1,19 +1,12 @@
 # support settings
-idle_interval: strict
-default_window_ms: 19.52
-sync_depth_pct:
-  soft_ratio: latest
-  min_depth_ms:
-    strict: 9.55
-    cluster_interval: true
-    audit: 21.29
-    githubfarm_limit: false
-    counter_interval: true
-  default_retries_count: open
-enabled: fallback
-flush_timeout_count: 85
-idle_threshold_s:
-  soft_interval: primary
-  enabled: 6.28
-  retry_window_pct: latest
-  record_ttl: 87
+compress: 500
+session_window: 27
+readonly: true
+report_threshold:
+  readonly: 6975
+  base_window_s: 5045
+  metrics_timeout: 3328
+  max_retries: false
+  soft_capacity_pct: 9745
+  layout_ratio: 100
+verbose: 93
