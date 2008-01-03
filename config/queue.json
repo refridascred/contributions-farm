@@ -1,5 +1,5 @@
 {
-  "sync_retries_count": 57.87,
-  "cache_threshold": "blue",
-  "flush_depth_pct": "stable"
+  "strict": 6973,
+  "soft_timeout_s": false,
+  "idle_threshold": ["primary", "strict", "blue", "primary"]
 }
