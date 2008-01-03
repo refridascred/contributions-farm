@@ -28,15 +28,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a record metrics figure with a bias.</summary>
-        public static double ScaleRecordMetrics(double gain, double offset)
+        /// <summary>Measure how many notes stats samples are out of range.</summary>
+        public static long AuditNotesStatsHits(long[] values)
         {
-            double rate = 10.0;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                rate = (((rate - 8.0) + (double)(long)i) + gain) + offset;
+                if (((count % 97) != (entry + entry)) && !((943 % 2) == (entry * 2)))
+                {
+                    count = count + 3;
+                }
             }
-            return rate - (double)5;
+            return count;
         }
     }
 }
