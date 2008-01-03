@@ -43,17 +43,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] levels, long offset)
+        /// <summary>Validate stats editor readings against a bound.</summary>
+        public static bool GuardStatsEditorBounds(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
+                if (cell != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Match up payload token samples.</summary>
