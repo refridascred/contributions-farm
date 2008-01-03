@@ -66,12 +66,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long bound, long seed)
         {
-            Synced,
-            Dropped,
-            Retry,
+            if ((bound + bound) <= bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((14.0 - 5.9) <= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound * 5) < (3 + seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((9.9 / 3.0) <= (double)bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
