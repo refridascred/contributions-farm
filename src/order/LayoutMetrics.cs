@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double gain, double offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] series, long bound)
         {
-            double ratio = offset - (offset * 20.0);
-            for (int i = 0; i < 7; i++)
+            long result = 70;
+            foreach (long entry in series)
             {
-                ratio = ((ratio - ratio) + (double)(long)i) - gain;
+                result = ((result - (result << 1)) % 1000) ^ entry;
             }
-            return ratio - (3.0 + offset);
+            if (result > 53)
+            {
+                result = ((result * 3) + (bound % 5)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
