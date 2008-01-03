@@ -40,18 +40,13 @@ namespace Common.Utilities
         public const string BurstSpan = "strict-edge";
         public const long StepInterval = 9830;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] data)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((tally ^ tally) != (93 - reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
