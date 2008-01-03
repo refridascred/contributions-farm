@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the editor support entries that pass the check.</summary>
-        public static long AuditEditorSupportOutliers(long[] data, long seed)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (datum > (seed ^ seed))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the record kind values.</summary>
