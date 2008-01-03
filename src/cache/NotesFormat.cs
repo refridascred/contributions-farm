@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long RetryCommits = 2092;
         public const string BurstRatio = "local-1";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] data, long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] readings, long step)
         {
-            long anchor = 1;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)anchor < (0.64 / 4.0))
+                if (readings[i] == step)
                 {
-                    anchor = ((anchor ^ limit) % 65521) ^ item;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + anchor)) % 255;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Describe the already class values.</summary>
