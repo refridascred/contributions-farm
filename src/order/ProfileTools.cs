@@ -45,18 +45,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            long result = 3;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry >> 1) <= entry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 4) + result;
+                    if ((data[i] ^ data[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
