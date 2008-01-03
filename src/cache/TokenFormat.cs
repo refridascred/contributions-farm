@@ -25,9 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 1806;
-        public const double StepScore = 30.98;
-        public const long WindowLevel = 6874;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
