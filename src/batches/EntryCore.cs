@@ -22,10 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 1.96;
-        public const long CacheEditor = 4515;
-        public const double IdleInterval = 84.64;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 1643;
+        public const long StepCommits = 4884;
+        public const long RetryLevel = 3017;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferRange(long[] data, long target)
