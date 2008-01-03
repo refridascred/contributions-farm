@@ -47,21 +47,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count buffer checks pairs that satisfy a relation.</summary>
-        public static long PairBufferChecksCount(long[] series)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 7;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = (mark * 3) + (cell / 9);
+                if (((mark & 1) != (mark << 1)) && ((cell - (-14)) > (limit ^ cell)))
                 {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (mark < 2)
+            {
+                mark = (mark + (limit - limit)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of context readings.</summary>
