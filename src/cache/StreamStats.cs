@@ -54,19 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] series, long floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
