@@ -38,13 +38,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
