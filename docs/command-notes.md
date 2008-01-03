@@ -1,10 +1,14 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the batch list.
-Use already settings to tune how often cache data is refreshed.
+The token report groups every command by order.
+A profile that stays idle for too long is moved to the schema list.
+Keep window and record names short and lowercase.
+
+The batch helpers are pure functions, so they are safe to call from any thread.
+Each stats is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Log every report change
-- Review channel limits each release
-- Keep notes values small
+- Review schema limits each release
+- Keep checks values small
+- Document new checks fields
