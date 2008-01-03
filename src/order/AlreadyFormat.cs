@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the token route series from a seed.</summary>
+        public static long RollTokenRoute(long bound)
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((bound - total) >= bound)
+                {
+                    total = total - bound;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Audit record githubfarm readings against a rule.</summary>
