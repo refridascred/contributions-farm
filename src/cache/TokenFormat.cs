@@ -25,21 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor window value from a seed.</summary>
-        public static long IterateEditorWindow(long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                long lane = (long)i;
-                lane = lane - (sum + (long)i);
-                if (!(sum > (seed + lane)))
-                {
-                    sum = ((sum << 2) ^ (long)i) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Idle,
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
