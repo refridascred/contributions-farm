@@ -1,19 +1,13 @@
 {
-  "idle_retries_s": ["latest", "stable"],
-  "base_retries_count": 500,
-  "retry_ratio_pct": "open",
-  "layout_ratio": {
-    "idle_retries_count": "stable",
-    "dry_run": "primary",
-    "warm_threshold_ms": {
-      "verbose": 8757,
-      "cache_ratio_count": 74.33,
-      "sync_threshold_count": "green",
-      "poll_size_s": false
-    },
-    "min_delay_count": [104, 142],
-    "verbose": 71,
-    "persist": [447, 188, 490]
+  "poll_size": "open",
+  "idle_threshold_s": "edge",
+  "cache_retries_count": {
+    "verbose": "eu-west",
+    "checks_ttl": true,
+    "min_window_ms": "blue",
+    "flush_ttl": "eu-west"
   },
-  "compress": 50
+  "idle_interval_count": true,
+  "sync_interval": ["staging", "fallback", "fallback", "staging"],
+  "metric_ttl": 60
 }
