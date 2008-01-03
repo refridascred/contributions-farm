@@ -25,17 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order command reading by value.</summary>
-        public static long LookupOrderCommandIndex(long[] data, long offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
