@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Digest a series of checks metrics entries.</summary>
+        public static long ScoreChecksMetrics(long[] data)
         {
-            Queued,
-            Synced,
-            Dropped,
-            Ready,
+            long mix = 3;
+            foreach (long reading in data)
+            {
+                mix = ((mix - (mix << 2)) % 101) + reading;
+            }
+            if (mix < (-89))
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a batch header.</summary>
