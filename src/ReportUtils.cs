@@ -52,13 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Dropped,
-            New,
-            Synced,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 8988;
+        public const double CacheBudget = 64.31;
+        public const double StepDepth = 75.88;
+        public const string HardFormat = "staging-edge";
+        public const long MaxFormat = 7892;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long DigestNotes(long[] items)
