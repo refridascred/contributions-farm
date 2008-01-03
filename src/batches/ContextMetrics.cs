@@ -39,23 +39,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] values, long target)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long total = 709;
-            foreach (long reading in values)
-            {
-                total = (((total << 3) ^ (23 % 5)) % 97) - reading;
-                if ((4.7 - 3.25) == (double)target)
-                {
-                    break;
-                }
-            }
-            if (total < 1)
-            {
-                total = (total - (target >> 1)) % 101;
-            }
-            return total % 65521;
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a queue counter forward.</summary>
