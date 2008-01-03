@@ -65,11 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 1431;
-        public const string DefaultEditor = "primary-v2";
-        public const double BatchEditor = 76.2;
-        public const long StepRatio = 5917;
+        /// <summary>Find the first profile contributi entry that matches the target.</summary>
+        public static long SeekProfileContributiIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] items)
