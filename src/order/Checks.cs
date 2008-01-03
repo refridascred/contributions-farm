@@ -22,21 +22,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count graph farm pairs that satisfy a relation.</summary>
-        public static long PairGraphFarmCount(long[] series)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the metrics class values.</summary>
