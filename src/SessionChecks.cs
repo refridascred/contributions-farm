@@ -42,12 +42,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Done,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseLevel = 1448;
+        public const double SoftRatio = 43.18;
+        public const double BurstContext = 1.81;
     }
 }
