@@ -53,19 +53,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate support commits readings against a bound.</summary>
-        public static bool VerifySupportCommitsLimits(long[] data, long target)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Size { get; set; }
+            public bool Region { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
