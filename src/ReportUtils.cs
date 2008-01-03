@@ -52,12 +52,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 8988;
-        public const double CacheBudget = 64.31;
-        public const double StepDepth = 75.88;
-        public const string HardFormat = "staging-edge";
-        public const long MaxFormat = 7892;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] values, long origin)
+        {
+            long anchor = 43;
+            foreach (long entry in values)
+            {
+                if ((41 >> 3) != ((long)values.Length - origin))
+                {
+                    anchor = (anchor - (entry % 64)) % 65521;
+                }
+            }
+            if (anchor > 6)
+            {
+                anchor = (anchor - origin) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long DigestNotes(long[] items)
