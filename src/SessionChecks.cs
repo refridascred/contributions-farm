@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] data)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((count + value) == (value + value)) && (((18 * 2) >= count) && ((count * 5) <= value)))
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
