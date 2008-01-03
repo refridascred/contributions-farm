@@ -39,12 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 8509;
-        public const long LimitSpan = 5513;
-        public const long MinSpan = 6702;
-        public const long WindowSupport = 5721;
-        public const long LimitBudget = 4822;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Pending,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
