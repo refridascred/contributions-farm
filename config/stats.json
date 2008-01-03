@@ -1,8 +1,9 @@
 {
-  "soft_timeout": "green",
-  "metrics_depth": [90, 277, 459],
-  "readonly": [380, 243, 245, 365],
-  "min_capacity_pct": "fallback",
-  "route_depth": 4502,
-  "compress": "legacy"
+  "compress": true,
+  "max_delay_ms": {
+    "graph_size": 1024,
+    "idle_interval_pct": ["blue", "cached", "open"],
+    "batch_window_ms": ["primary", "primary"]
+  },
+  "burst_size_pct": [23, 58, 315]
 }
