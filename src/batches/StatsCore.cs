@@ -41,13 +41,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long origin, long offset)
         {
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            long bound = origin + offset;
+            if (((origin - offset) != (origin - bound)) && ((bound << 2) > (offset * 4)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.28 / 4.0) < (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound != (7.4 / 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset ^ bound) > bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
