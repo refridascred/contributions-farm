@@ -38,16 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry + ((-498) >> 4)) % 1000;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Stale,
+            New,
+            Idle,
         }
 
         /// <summary>Combine report values into a single score.</summary>
