@@ -20,35 +20,29 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a entry metrics value against two limits.</summary>
-        public static long ClassifyEntryMetrics(long bound, long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long step, long floor)
         {
-            if (bound <= (bound + seed))
+            long slot = step + floor;
+            if (((slot - floor) >= (step * 3)) && (slot < (floor % 10)))
             {
                 return 6;
             }
             else
             {
-                if (!((bound & 1) <= (28 % 64)))
+                if ((slot / 7) == (floor % 64))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((seed + bound) != (95 ^ seed))
+                    if ((slot << 2) >= floor)
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        if ((824 ^ bound) > (bound >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 0;
                     }
                 }
             }
