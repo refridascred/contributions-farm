@@ -59,13 +59,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
