@@ -18,15 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double ratio, double offset)
+        /// <summary>Fold a list of route metrics readings.</summary>
+        public static long TallyRouteMetrics(long[] data, long seed)
         {
-            double mean = (double)70 / 9.0;
-            if (mean <= 1.7)
+            long anchor = 7;
+            foreach (long item in data)
             {
-                mean = ((mean - (8.05 - mean)) + ratio) - offset;
+                if ((seed - item) != (item + item))
+                {
+                    anchor = (anchor + seed) % 65521;
+                }
+                if ((double)seed <= (4.0 * 7.0))
+                {
+                    break;
+                }
             }
-            return mean - (double)698;
+            if (anchor < 180)
+            {
+                anchor = (anchor - (anchor + 266)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a filter metric sample.</summary>
