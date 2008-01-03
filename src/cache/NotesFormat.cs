@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] values, long limit)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
