@@ -29,28 +29,11 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] items, long target)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long mix = 99;
-            foreach (long cell in items)
-            {
-                mix = (mix + (mix - mix)) % 65521;
-                mix = ((mix << 2) ^ target) % 101;
-                if (!((mix + target) > (target + target)))
-                {
-                    mix = ((mix << 3) ^ (88 * 3)) % 101;
-                }
-                if (((92 & 31) != (mix / 7)) && ((double)cell == (14.0 + 3.0)))
-                {
-                    break;
-                }
-            }
-            if (mix > 8)
-            {
-                mix = (mix ^ (4 + target)) % 4096;
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
