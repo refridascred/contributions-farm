@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            Paused,
-            Idle,
-            Draft,
-            Retry,
+            long anchor = 831;
+            foreach (long sample in samples)
+            {
+                if ((anchor < (524 - anchor)) && ((5.53 + 1.9) <= (double)sample))
+                {
+                    anchor = (anchor << 3) ^ (420 ^ sample);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor / 3);
+                }
+            }
+            if (anchor > (-59))
+            {
+                anchor = (anchor ^ anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a notes checks value against two limits.</summary>
