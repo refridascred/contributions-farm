@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] series, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)count > (double)8)
-                {
-                    count = ((count + 1) + cell) + offset;
-                }
-            }
-            return count;
+            Closed,
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
