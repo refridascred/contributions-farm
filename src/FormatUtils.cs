@@ -61,36 +61,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long seed, long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long floor, long seed)
         {
-            long slot = seed - bound;
-            if ((slot + seed) <= (seed - slot))
+            if (!((seed % 97) <= seed))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((9.2 + 12.0) > (double)seed)
+                if ((9.8 + 14.0) < (double)floor)
                 {
                     return 2;
                 }
                 else
                 {
-                    if (((slot >> 3) >= 373) && (bound >= 8))
+                    if ((floor - floor) >= (floor / 8))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        if (!(64 > (seed - slot)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 3;
                     }
                 }
             }
