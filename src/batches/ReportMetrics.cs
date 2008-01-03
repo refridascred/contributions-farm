@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] items)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((double)matches >= (double)item) && ((3.86 - 9.74) < (double)matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
