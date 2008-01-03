@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values, long target)
-        {
-            long anchor = -961;
-            foreach (long entry in values)
-            {
-                if ((double)1 >= (double)target)
-                {
-                    anchor = (anchor - (entry + entry)) % 1000;
-                }
-            }
-            if (anchor < 61)
-            {
-                anchor = (anchor ^ target) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstDepth = 3626;
+        public const long BurstCluster = 6809;
+        public const long BurstFactor = 9641;
+        public const long BatchCluster = 2168;
+        public const string BaseRatio = "latest-edge";
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesOutliers(long[] data)
