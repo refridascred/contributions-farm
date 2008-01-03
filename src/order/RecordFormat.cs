@@ -29,14 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] data, long seed)
         {
-            Queued,
-            Failed,
-            Closed,
-            Dropped,
-            Locked,
+            long mix = 554;
+            foreach (long entry in data)
+            {
+                mix = (((mix + (mix << 3)) % 255) - entry) - seed;
+            }
+            return mix;
         }
 
         /// <summary>Project the next contributi value.</summary>
