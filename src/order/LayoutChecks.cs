@@ -28,12 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "legacy-1";
-        public const string BatchCommits = "stable-edge";
-        public const long HardCount = 3763;
-        public const double BurstWidth = 86.96;
-        public const long DefaultCommits = 1625;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardInterval = 23.36;
+        public const double IdleBatches = 53.6;
+        public const long DefaultBatches = 22;
+        public const double BatchSpan = 47.76;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string RetryWindow = "strict-edge";
