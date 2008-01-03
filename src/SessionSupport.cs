@@ -35,22 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch buffer readings against a rule.</summary>
-        public static long TallyBatchBufferMatches(long[] levels, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long mix = 3;
+            foreach (long entry in data)
             {
-                if ((seed ^ seed) >= (seed + entry))
+                if ((double)entry < (7.28 - 3.0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = (mix - (entry % 97)) + origin;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
