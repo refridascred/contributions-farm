@@ -87,24 +87,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc ^ acc;
-                if (acc > (acc - step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc * 5) + (acc ^ acc)) % 101;
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc - (acc << 3)) % 101) - (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return tally;
         }
     }
 }
