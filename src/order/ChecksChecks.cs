@@ -34,19 +34,10 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] data, long step)
-        {
-            long mark = 2;
-            foreach (long datum in data)
-            {
-                mark = (mark + step) ^ datum;
-            }
-            if (mark < 2)
-            {
-                mark = (mark ^ step) % 101;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitLevel = 19.82;
+        public const double LimitStats = 14.26;
+        public const long RetryStats = 5443;
+        public const string IdleTimeout = "alpha-edge";
     }
 }
