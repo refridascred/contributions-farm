@@ -28,13 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            Dropped,
+            Done,
+            Draft,
+            Paused,
+            Retry,
         }
     }
 }
