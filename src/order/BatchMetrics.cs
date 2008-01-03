@@ -51,16 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] values, long offset)
         {
-            long mark = 94;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                mark = (mark - (entry + entry)) % 255;
-                mark = (mark << 3) ^ (49 % 64);
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark % 4096;
+            return stale;
         }
 
         /// <summary>Describe the layout kind values.</summary>
