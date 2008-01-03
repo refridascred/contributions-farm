@@ -23,19 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel notes readings against a bound.</summary>
-        public static bool GuardChannelNotesBounds(long[] values, long bound)
+        /// <summary>Derive the next context report value from a seed.</summary>
+        public static long StepContextReport(long offset)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score * 4) + (offset / 5);
+                score = (score + score) % 97;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Hold a batch record.</summary>
