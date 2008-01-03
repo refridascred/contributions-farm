@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] values, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= target)
+                if ((values[i] <= bound) && ((values[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
