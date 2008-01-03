@@ -26,16 +26,12 @@ namespace Common.Utilities
         public const double SoftRatio = 0.33;
         public const string BatchStream = "alpha-1";
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long carry = 99;
-            foreach (long entry in readings)
-            {
-                carry = ((carry << 3) ^ (entry << 1)) % 97;
-                carry = (carry ^ (entry ^ entry)) % 4096;
-            }
-            return carry;
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
