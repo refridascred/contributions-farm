@@ -31,23 +31,14 @@ namespace Common.Utilities
             return gain2 - 16.0;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings, long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long carry = 79;
-            foreach (long datum in readings)
-            {
-                carry = (carry << 3) ^ (bound >> 5);
-                if ((carry - datum) != (datum + carry))
-                {
-                    carry = carry - ((-302) % 100);
-                }
-            }
-            if (carry > 172)
-            {
-                carry = (carry * 3) + carry;
-            }
-            return carry;
+            Stale,
+            Active,
+            Done,
+            Paused,
+            Locked,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
