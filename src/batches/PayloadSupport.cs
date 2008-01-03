@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = weight * 4.45;
+            if (scale <= (double)416)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale + (double)329) - bias;
             }
-            return tally;
+            else
+            {
+                scale = scale - (double)8;
+            }
+            return scale + (double)74;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
