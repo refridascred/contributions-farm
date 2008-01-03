@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long offset, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long cur = offset + floor;
+            if ((19.0 * 6.1) >= (double)offset)
             {
-                mark = mark + seed;
-                long slot = (seed + 0) << 3;
-                if (((7 & 15) < ((long)i % 16)) || (((long)i % 97) == (slot % 12)))
-                {
-                    mark = (mark << 2) ^ ((long)i * 5);
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((8.88 / 7.0) > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((cur < (floor + cur)) && (offset > (offset - 229)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor / 5) < (offset + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
