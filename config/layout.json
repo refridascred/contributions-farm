@@ -1,5 +1,5 @@
 {
-  "strict": 250,
-  "tools_size": "staging",
-  "verbose": "edge"
+  "enabled": 19.15,
+  "default_ttl": ["legacy", "blue", "green", "local"],
+  "commits_threshold": false
 }
