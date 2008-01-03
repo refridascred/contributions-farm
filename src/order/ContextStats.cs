@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftRatio = 5569;
+        public const long SoftCounter = 4410;
+        public const string SoftFactor = "legacy";
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandMatches(long[] data, long offset)
