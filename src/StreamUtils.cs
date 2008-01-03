@@ -12,13 +12,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            Synced,
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a counter summary.</summary>
