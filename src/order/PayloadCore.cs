@@ -32,38 +32,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long offset, long limit)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            if (((offset + offset) < limit) || ((double)limit <= (double)offset))
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((2 - limit) <= limit) || ((20.0 - 9.5) <= (double)offset))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 0;
+                    acc = ((acc * 5) + ((long)i + (long)i2)) % 1000;
                 }
-                else
-                {
-                    if (((double)offset < (17.0 - 7.4)) || (limit < (limit % 100)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit % 2) <= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
