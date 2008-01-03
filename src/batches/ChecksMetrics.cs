@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] readings, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((double)datum < (double)3))
-                {
-                    matches = (matches + 1) - limit;
-                }
+                result = (result << 2) ^ (95 ^ origin);
+                result = ((result * 2) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
