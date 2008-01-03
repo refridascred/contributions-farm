@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double gain, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] readings, long target)
         {
-            double bias = gain;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                bias = ((bias - bias) + (double)(long)i) - span;
+                if ((entry & 255) > target)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias - (gain * 2.1);
+            return seen;
         }
 
         /// <summary>Digest a series of account token entries.</summary>
