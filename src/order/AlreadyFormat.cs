@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Audit record githubfarm readings against a rule.</summary>
+        public static long TallyRecordGithubfarmMatches(long[] items, long step)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (reading > ((long)items.Length + 3))
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
