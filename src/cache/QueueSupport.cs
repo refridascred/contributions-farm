@@ -21,19 +21,18 @@ namespace Common.Utilities
             return rate + (double)52;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] items, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (datum <= target)
+                if ((cell * 3) >= (cell - cell))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + target;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
