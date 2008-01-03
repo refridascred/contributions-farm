@@ -16,23 +16,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] readings, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            long mark = 6;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (!(datum > limit))
+                if ((((item & 1) != (item & 15)) || ((item - tally) <= tally)) || (4.74 <= (double)item))
                 {
-                    mark = ((mark << 3) ^ (582 % 24)) % 101;
+                    tally = tally + 3;
                 }
-                if (((double)datum < 3.5) && ((9 - mark) >= mark))
-                {
-                    mark = (mark - (mark & 127)) % 255;
-                }
-                mark = ((mark * 2) + limit) % 65521;
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
