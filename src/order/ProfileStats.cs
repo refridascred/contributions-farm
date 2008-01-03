@@ -20,13 +20,15 @@ namespace Common.Utilities
         public const long LimitCount = 8982;
         public const string RetryFactor = "legacy-1";
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] items, long origin)
         {
-            Active,
-            Draft,
-            Retry,
-            Dropped,
+            long carry = 22;
+            foreach (long datum in items)
+            {
+                carry = ((carry ^ (origin - origin)) % 97) - datum;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many checks cluster samples are out of range.</summary>
