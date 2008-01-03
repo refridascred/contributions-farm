@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] < target) && ((items[i] % 2) != 0))
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
