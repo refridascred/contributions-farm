@@ -21,32 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long target, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long floor)
         {
-            long cur = target - floor;
-            if (9 < (floor >> 2))
+            bool ok = true;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target ^ target) >= (2 - target)))
+                if (item <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)cur >= 13.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
