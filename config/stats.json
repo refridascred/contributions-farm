@@ -1,7 +1,16 @@
 {
-  "tools_limit": "blue",
-  "metric_limit": 32.19,
-  "persist": true,
-  "idle_size_pct": true,
-  "default_interval_pct": "green"
+  "strict": true,
+  "dry_run": {
+    "min_depth_count": "legacy",
+    "queue_ratio": [283, 307],
+    "batches_window": 100,
+    "max_interval": {
+      "route_window": 35.58,
+      "retry_window_ms": "primary",
+      "idle_timeout_pct": "latest",
+      "batches_window": "standard",
+      "compress": [231, 424, 246, 393]
+    }
+  },
+  "warm_timeout": "stable"
 }
