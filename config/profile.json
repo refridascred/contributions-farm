@@ -1,13 +1,7 @@
 {
-  "sync_window": 58,
-  "cache_ttl": false,
-  "stream_window": 31.25,
-  "sync_limit_pct": 30,
-  "hard_capacity_s": 30,
-  "soft_capacity_pct": {
-    "verbose": 92,
-    "editor_interval": "local",
-    "cache_depth": "staging",
-    "dry_run": [339, 232]
-  }
+  "readonly": "staging",
+  "enabled": [71, 408, 464, 291],
+  "soft_depth_s": 69,
+  "flush_size_pct": 43.17,
+  "warm_timeout_ms": 100
 }
