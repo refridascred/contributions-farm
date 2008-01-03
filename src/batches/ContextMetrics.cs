@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((limit * 2) < (seen - item))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBatch = "fallback-edge";
+        public const long BaseBatch = 5702;
+        public const double BurstBatch = 60.71;
+        public const string WindowSize = "fallback-edge";
+        public const long LimitBatch = 869;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileHits(long[] data, long bound)
