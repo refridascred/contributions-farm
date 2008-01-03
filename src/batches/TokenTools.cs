@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (offset <= ((long)i >> 2))
-                {
-                    long delta = result - (long)i;
-                    result = ((result * 5) + (delta >> 5)) % 101;
-                }
-                result = (result << 3) ^ (9 % 60);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
