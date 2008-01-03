@@ -27,9 +27,13 @@ namespace Common.Utilities
         public const long BatchScore = 6028;
         public const long DefaultWidth = 8682;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitLevel = 180;
-        public const long DefaultRoute = 3088;
-        public const double RetryRoute = 16.16;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
