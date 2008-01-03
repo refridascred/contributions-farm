@@ -12,13 +12,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double rate, double floor)
         {
-            Stale,
-            Failed,
-            Active,
-            Idle,
+            double drift = floor;
+            if (drift <= (floor / 3.0))
+            {
+                drift = drift + drift;
+            }
+            return drift + (8.9 - rate);
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
