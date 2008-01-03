@@ -51,14 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] levels)
         {
-            Failed,
-            Stale,
-            Active,
-            Retry,
-            Draft,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((matches + value) > 95) && ((matches + 149) >= (matches << 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the buffer state values.</summary>
