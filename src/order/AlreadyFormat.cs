@@ -28,11 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryTimeout = 2097;
-        public const string MaxChecks = "strict-edge";
-        public const long BaseChecks = 4530;
-        public const string HardTimeout = "local-1";
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Done,
+            New,
+            Closed,
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long DigestWindow(long[] items)
