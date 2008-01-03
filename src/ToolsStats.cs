@@ -40,17 +40,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a filter metric sample.</summary>
-        public static long LocateFilterMetricIndex(long[] levels, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a context stats.</summary>
