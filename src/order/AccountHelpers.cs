@@ -66,25 +66,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long bound)
-        {
-            if ((double)bound > (3.0 - 3.56))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(((-2) - offset) != (offset + bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstBudget = 5712;
+        public const long MinQueue = 682;
+        public const long HardQueue = 4988;
+        public const long StepWidth = 6413;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long target, long offset)
