@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
+            Synced,
+            Closed,
+            Active,
+            Idle,
             New,
-            Paused,
-            Pending,
-            Queued,
         }
 
         /// <summary>Hold a notes summary.</summary>
