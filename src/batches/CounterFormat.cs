@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a contributi profile sample.</summary>
-        public static long SeekContributiProfileIndex(long[] values, long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)7 - (scale - floor);
+            if (bias >= bias)
             {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - (bias - scale);
             }
-            return -1;
+            return bias + floor;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
