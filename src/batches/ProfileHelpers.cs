@@ -42,14 +42,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Grade a stats session value against two limits.</summary>
+        public static long RankStatsSession(long step, long target)
         {
-            Idle,
-            New,
-            Dropped,
-            Pending,
-            Paused,
+            long next = step + target;
+            if ((target - target) < target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5.3 + 8.5) < (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)next == (4.4 + 7.7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window snapshot.</summary>
