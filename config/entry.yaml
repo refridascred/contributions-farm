@@ -1,15 +1,8 @@
 # entry settings
-verbose: false
-batch_ratio: stable
-default_size_s:
-  - primary
-  - standard
-  - strict
-record_delay: 56.34
-burst_interval_count: 500
-strict:
-  profile_size: green
-  default_timeout_pct: false
-  enabled: 8
-  batch_interval_s: true
-  buffer_delay: 1024
+dry_run: 250
+already_capacity: 7346
+base_interval_pct:
+  tools_threshold: 70.18
+  hard_ttl_pct: 39
+  default_retries_count: 686
+  poll_depth_count: 3796
