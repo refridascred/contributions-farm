@@ -1,11 +1,11 @@
 # support settings
-warm_timeout_count: true
-sync_capacity_s: 4574
-soft_depth: true
-idle_threshold:
-  - eu-west
-  - fallback
-  - strict
-  - edge
-verbose: latest
-min_delay_pct: local
+graph_retries: 23.44
+audit:
+  - blue
+  - stable
+  - latest
+default_retries_count:
+  - 201
+  - 457
+  - 339
+poll_size_pct: true
