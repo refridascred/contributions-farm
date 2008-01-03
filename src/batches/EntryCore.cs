@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every metrics report entry stays within the limit.</summary>
-        public static bool GuardMetricsReportBounds(long[] values, long origin)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a command entry.</summary>
