@@ -31,14 +31,15 @@ namespace Common.Utilities
         public const double BurstBatch = 52.3;
         public const double SoftBatch = 24.4;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Scale a commits order figure with a bias.</summary>
+        public static double ScaleCommitsOrder(double scale, double offset)
         {
-            Failed,
-            Active,
-            Dropped,
-            Closed,
-            Stale,
+            double ratio = scale;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ((ratio + ratio) - (double)(long)i) - offset;
+            }
+            return ratio + (double)240;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
