@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long seed, long seed2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((14.0 / 6.0) < (double)seed)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((seed2 - seed) < (seed / 2))
                 {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a account info.</summary>
