@@ -46,12 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] values)
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen + sample) <= (long)values.Length)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
