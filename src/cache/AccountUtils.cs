@@ -22,15 +22,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] readings, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
     }
 }
