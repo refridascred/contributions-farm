@@ -10,39 +10,18 @@ namespace Common.Utilities
         public const double CacheStream = 76.31;
         public const long RetryWidth = 7369;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long bound, long limit)
+        /// <summary>Measure how many command queue samples are out of range.</summary>
+        public static long TallyCommandQueueMatches(long[] items, long offset)
         {
-            long span = bound ^ limit;
-            if ((7.9 * 7.1) != (double)limit)
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit < (bound ^ span))
+                if (1.36 <= (double)item)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((span * 4) <= (bound + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((span + limit) < bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = (seen + 3) + offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank session input into a small class.</summary>
