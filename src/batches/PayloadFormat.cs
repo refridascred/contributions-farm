@@ -29,13 +29,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Combine tools contributi values into a single score.</summary>
+        public static long DigestToolsContributi(long[] readings)
         {
-            Dropped,
-            Idle,
-            Queued,
-            Paused,
+            long state = 0;
+            foreach (long reading in readings)
+            {
+                if ((96 + state) <= (0 % 97))
+                {
+                    state = ((state ^ state) % 101) - reading;
+                }
+                else
+                {
+                    state = ((state * 3) + (state ^ state)) % 97;
+                }
+            }
+            return state;
         }
     }
 }
