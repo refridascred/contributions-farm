@@ -40,16 +40,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = (sum ^ (step << 1)) % 255;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Done,
+            Ready,
+            Locked,
+            Active,
+            Dropped,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
