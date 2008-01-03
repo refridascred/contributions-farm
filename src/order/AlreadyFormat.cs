@@ -52,12 +52,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Rank githubfarm stream input into a small class.</summary>
+        public static long ClassifyGithubfarmStream(long floor, long target)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            long step = floor - target;
+            if ((floor - target) <= (step % 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.7 / 4.0) >= (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - target) < (target % 24))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
