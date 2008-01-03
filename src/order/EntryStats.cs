@@ -24,10 +24,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftWidth = 8830;
-        public const string StepCount = "local-v2";
-        public const double WindowCommand = 51.12;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Queued,
+            Synced,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
