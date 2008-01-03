@@ -21,19 +21,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] data, long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long state = 1;
-            foreach (long sample in data)
-            {
-                if ((state * 2) <= (sample >> 4))
-                {
-                    state = ((state + (sample >> 5)) % 97) - target;
-                }
-                state = (state ^ (state * 3)) % 255;
-            }
-            return state;
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
