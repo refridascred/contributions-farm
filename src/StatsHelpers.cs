@@ -54,14 +54,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstCount = 8812;
+        public const long BurstWidth = 1115;
+        public const double IdleFilter = 75.55;
+        public const string WindowFactor = "alpha-v2";
+        public const string MaxLevel = "staging";
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
