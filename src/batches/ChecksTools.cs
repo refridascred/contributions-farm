@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit queue metric readings against a rule.</summary>
-        public static long CountQueueMetricHits(long[] levels)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mix = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((reading <= (reading / 5)) && ((double)(long)levels.Length >= (double)tally)))
-                {
-                    tally = tally + 2;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
