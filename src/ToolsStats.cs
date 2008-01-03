@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((double)34 <= (double)seed))
             {
-                if (values[i] > bound)
+                return 0;
+            }
+            else
+            {
+                if ((seed << 3) >= (seed - bound))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound < (9.06 + 5.31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of route metrics readings.</summary>
