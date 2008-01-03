@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double weight, double span)
         {
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
+            double rate = weight;
+            if (rate < (3.27 * 7.15))
+            {
+                rate = (rate - (rate / 4.0)) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
