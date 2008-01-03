@@ -33,11 +33,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 98.35;
-        public const double BatchRatio = 27.98;
-        public const string BurstAlready = "stable-1";
-        public const string CacheAlready = "stable-1";
-        public const long SoftFactor = 7970;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
