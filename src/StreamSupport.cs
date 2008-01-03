@@ -37,15 +37,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate layout counter samples.</summary>
-        public static long CombineLayoutCounter(long[] values, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] series, long origin)
         {
-            long mark = 29;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                mark = (((mark ^ (mark ^ mark)) % 1000) ^ item) - seed;
+                if (cell <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return valid;
         }
     }
 }
