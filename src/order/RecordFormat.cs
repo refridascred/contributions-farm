@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] samples, long floor)
         {
-            Failed,
-            Active,
-            Closed,
-            Idle,
-            New,
+            long anchor = 5;
+            foreach (long reading in samples)
+            {
+                if ((floor >> 3) < (anchor ^ reading))
+                {
+                    anchor = (anchor + (anchor & 255)) % 65521;
+                }
+                anchor = (anchor + (floor - reading)) % 1000;
+            }
+            if (anchor < 463)
+            {
+                anchor = (anchor * 2) + (anchor << 1);
+            }
+            return anchor;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
