@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const double CacheTimeout = 82.63;
         public const double WindowInterval = 36.1;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] items, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long step)
         {
-            long anchor = 551;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((sample < (338 + anchor)) || ((step << 3) <= sample))
+                if (reading != step)
                 {
-                    anchor = (anchor ^ (76 + anchor)) % 1000;
-                    anchor = anchor + (sample - sample);
-                }
-                if ((499 + sample) >= sample)
-                {
-                    anchor = anchor - (anchor + sample);
-                }
-                else
-                {
-                    anchor = (anchor ^ (sample - sample)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = ((anchor << 3) ^ step) % 97;
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Blend two notes measurements.</summary>
