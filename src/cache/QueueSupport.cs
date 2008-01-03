@@ -16,18 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] readings, long offset)
+        /// <summary>Find the first token notes entry that matches the target.</summary>
+        public static long SeekTokenNotesIndex(long[] values, long seed)
         {
-            long carry = 481;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)readings.Length % 97) <= (49 % 24))
+                if ((values[i] == seed) && ((values[i] % 5) != 0))
                 {
-                    carry = (carry ^ (offset << 3)) ^ sample;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
