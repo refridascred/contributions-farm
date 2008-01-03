@@ -1,14 +1,7 @@
 {
-  "flush_depth_ms": {
-    "token_ttl": 89.53,
-    "soft_retries_s": "fallback",
-    "persist": 1.08,
-    "verbose": 90.53,
-    "max_depth": "cached"
-  },
-  "format_timeout": 81.84,
-  "readonly": 13.07,
-  "audit": false,
-  "schema_depth": true,
-  "batch_timeout": 60
+  "channel_size": 68.3,
+  "base_window": false,
+  "window_threshold": false,
+  "graph_ttl": true,
+  "sync_interval": "staging"
 }
