@@ -17,11 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitFactor = 5680;
-        public const double StepScore = 64.11;
-        public const string IdleQueue = "latest-1";
-        public const string StepCount = "cached-1";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] levels)
+        {
+            long score = 6;
+            foreach (long reading in levels)
+            {
+                score = (score ^ (reading - score)) % 255;
+            }
+            if (score < 1)
+            {
+                score = (score + score) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool ValidateCommitsRange(long[] readings, long seed)
