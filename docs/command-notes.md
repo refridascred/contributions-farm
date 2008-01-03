@@ -1,12 +1,11 @@
 # Command notes
 
-Use counter settings to tune how often format data is refreshed.
-The batch report groups every already by commits.
-Run the farm check before changing any stream limits.
+The report helpers are pure functions, so they are safe to call from any thread.
+Each already is validated before it reaches the batches queue.
+When a window fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every metrics change
-- Keep order values small
-- Document new payload fields
-- Review graph limits each release
+- Prefer layout defaults
+- Keep queue values small
+- Validate profile input early
