@@ -1,15 +1,21 @@
 # githubfarm settings
-editor_interval:
-  soft_threshold_s: 12
-  enabled:
-    poll_ttl: 2154
-    audit: latest
-    route_ratio: true
-  poll_timeout_ms: 21
-  flush_capacity_ms: 100
-  stream_window: latest
-  dry_run: true
-flush_ttl: 250
-sync_threshold_s: 30
-warm_timeout_s: cached
-cache_timeout_s: 72.19
+idle_size_pct: true
+cache_ratio_count:
+  min_delay: primary
+  compress: false
+  hard_ratio:
+    - open
+    - edge
+  idle_delay_s:
+    - staging
+    - eu-west
+    - staging
+  editor_delay: 4
+  max_threshold_pct: 1149
+idle_size_s:
+  entry_timeout: 250
+  hard_threshold_count: standard
+  persist: 63.97
+  githubfarm_threshold: primary
+audit: stable
+persist: 65.74
