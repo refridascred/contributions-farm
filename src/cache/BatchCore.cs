@@ -39,21 +39,19 @@ namespace Common.Utilities
         public const long MaxWindow = 5691;
         public const long DefaultWindow = 1951;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] levels)
+        /// <summary>Validate support commits readings against a bound.</summary>
+        public static bool VerifySupportCommitsLimits(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading < target)
                 {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
