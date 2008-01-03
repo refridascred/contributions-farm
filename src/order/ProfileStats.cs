@@ -32,24 +32,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long seed, long target)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            if ((14.0 / 4.0) <= (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed >= (seed << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Queued,
+            Pending,
+            Synced,
+            Failed,
         }
     }
 }
