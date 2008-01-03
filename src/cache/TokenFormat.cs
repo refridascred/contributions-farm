@@ -37,22 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already support readings.</summary>
-        public static long FoldAlreadySupport(long[] levels, long offset)
+        /// <summary>Iterate the counter contributi series from a seed.</summary>
+        public static long RollCounterContributi(long target)
         {
-            long anchor = 5;
-            foreach (long cell in levels)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((offset ^ 41) <= (cell + offset))
+                if (!(sum <= ((long)i ^ sum)))
                 {
-                    anchor = anchor + anchor;
+                    sum = ((sum * 5) + target) % 65521;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (cell ^ offset)) % 4096;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return anchor;
+            return sum;
         }
     }
 }
