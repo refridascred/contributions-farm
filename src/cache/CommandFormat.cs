@@ -24,18 +24,10 @@ namespace Common.Utilities
         public const long BatchBudget = 242;
         public const long LimitInterval = 1930;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 7766;
+        public const long StepNotes = 1705;
+        public const long BaseNotes = 5726;
 
         /// <summary>Digest a series of format channel entries.</summary>
         public static long ScoreFormatChannel(long[] samples)
