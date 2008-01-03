@@ -53,13 +53,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Combine filter graph values into a single score.</summary>
+        public static long TotalFilterGraph(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            long score = 4;
+            foreach (long value in readings)
+            {
+                if ((double)score == (8.87 + 4.0))
+                {
+                    score = (score + (value + 808)) % 97;
+                }
+            }
+            return score % 1000;
         }
     }
 }
