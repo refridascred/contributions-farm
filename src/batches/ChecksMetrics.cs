@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Locate a token report reading by value.</summary>
+        public static long LocateTokenReportIndex(long[] values, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result << 2) ^ (95 ^ origin);
-                result = ((result * 2) + (long)i) % 101;
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
