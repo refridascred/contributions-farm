@@ -63,15 +63,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the queue farm series from a seed.</summary>
-        public static long RollQueueFarm(long bound)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double rate, double offset)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            double drift = rate;
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                drift = (drift - offset) + (double)(long)i;
             }
-            return total;
+            return drift - drift;
         }
 
         /// <summary>Locate a format reading by value.</summary>
