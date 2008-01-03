@@ -1,13 +1,20 @@
 {
-  "audit": 5238,
-  "idle_ttl": 67.01,
-  "hard_threshold_ms": {
-    "hard_ttl_ms": 89,
-    "default_delay_ms": "local",
-    "hard_retries": 30,
-    "dry_run": "eu-west",
-    "payload_interval": 55.85,
-    "min_window": "legacy"
+  "filter_ttl": 91,
+  "profile_ratio": [156, 114],
+  "hard_timeout_ms": {
+    "soft_threshold_count": [92, 477],
+    "compress": {
+      "readonly": 74,
+      "sync_ttl_s": [388, 154, 302, 86],
+      "poll_ratio": "cached",
+      "poll_delay": ["green", "edge", "staging"],
+      "min_ttl_ms": 32,
+      "warm_capacity_s": "fallback"
+    },
+    "editor_timeout": false,
+    "stream_capacity": "fallback",
+    "hard_depth_s": false
   },
-  "soft_retries_s": "local"
+  "max_delay_count": 250,
+  "verbose": 100
 }
