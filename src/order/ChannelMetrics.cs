@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryRatio = "cached-1";
-        public const long BurstScore = 2070;
-        public const long MaxWindow = 5858;
-        public const double RetryCount = 79.5;
+        /// <summary>Iterate the cache payload series from a seed.</summary>
+        public static long StepCachePayload(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
+            {
+                long cur = ((long)i / 5) * 2;
+                if (((10.0 * 6.99) < (double)target) && ((long)i >= (target + (long)i)))
+                {
+                    anchor = anchor + (cur + anchor);
+                }
+                else
+                {
+                    cur = (cur + ((long)i % 100)) % 255;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
