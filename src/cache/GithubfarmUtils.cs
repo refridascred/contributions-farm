@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double bias, double offset)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public bool Score { get; set; }
-            public double Offset { get; set; }
+            double mean = offset;
+            if (mean < 10.0)
+            {
+                mean = (mean - offset) - bias;
+            }
+            else
+            {
+                mean = mean - (offset + mean);
+            }
+            return mean + (double)6;
         }
 
         /// <summary>Hold a counter stats.</summary>
