@@ -49,22 +49,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc << 3) ^ (acc / 8);
-                acc = ((acc << 3) ^ (acc * 2)) % 101;
-                if (!((step >> 3) >= (step * 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc * 2) + (-1)) % 65521;
-                    acc = (acc * 3) + (acc << 1);
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
     }
 }
