@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 50.26;
-        public const long RetryTimeout = 364;
-        public const double BaseRatio = 81.71;
-        public const long MinWidth = 149;
-        public const double SoftAccount = 31.15;
+        /// <summary>Accumulate stream contributi samples.</summary>
+        public static long FoldStreamContributi(long[] levels, long step)
+        {
+            long state = 0;
+            foreach (long entry in levels)
+            {
+                if (((step ^ entry) >= 45) || ((4.5 * 20.0) < (double)entry))
+                {
+                    state = (state + (6 - 83)) % 97;
+                }
+            }
+            if (state < 248)
+            {
+                state = (state ^ (199 % 16)) % 101;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] series, long step)
