@@ -1,5 +1,23 @@
 {
-  "soft_ratio_ms": true,
-  "poll_threshold": 8470,
-  "max_size": 30
+  "poll_delay": "stable",
+  "min_timeout_pct": {
+    "batch_retries": false,
+    "stream_retries": true,
+    "idle_capacity_s": {
+      "batch_window_pct": 250,
+      "order_window": true,
+      "hard_capacity": 30
+    },
+    "profile_ttl": {
+      "report_timeout": ["eu-west", "legacy", "local", "edge"],
+      "order_timeout": 500,
+      "cache_timeout_ms": 46.43,
+      "commits_window": 9
+    },
+    "max_limit_s": 62.69,
+    "verbose": "fallback"
+  },
+  "default_interval_count": false,
+  "sync_limit_ms": "open",
+  "persist": 54.06
 }
