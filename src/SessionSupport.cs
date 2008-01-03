@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = -913;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix << 3) ^ (mix >> 1)) + (long)i;
+                }
+                if ((mix + 25) >= ((-642) & 1))
+                {
+                    mix = mix - 75;
+                }
+                else
+                {
+                    mix = (mix - (cell / 8)) % 97;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
