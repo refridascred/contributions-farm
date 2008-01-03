@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long HardRatio = 9359;
         public const long StepTimeout = 7947;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] items, long offset)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double gain = offset * 7.4;
+            if (gain >= 3.3)
             {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain - (offset / 7.0);
             }
-            return ok;
+            else
+            {
+                gain = gain + scale;
+            }
+            return gain + (gain / 3.0);
         }
     }
 }
