@@ -19,15 +19,14 @@ namespace Common.Utilities
         public const string DefaultChecks = "cached";
         public const long MaxChecks = 8065;
 
-        /// <summary>Blend two metric order measurements.</summary>
-        public static double AdjustMetricOrder(double bias, double bias2)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double rate = 1.05 + (bias + bias);
-            if (rate <= (double)3)
-            {
-                rate = rate - bias2;
-            }
-            return rate + bias;
+            Queued,
+            New,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
