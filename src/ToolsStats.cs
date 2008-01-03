@@ -62,21 +62,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count graph profile pairs that satisfy a relation.</summary>
-        public static long CompareGraphProfileCount(long[] items)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
                 {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
