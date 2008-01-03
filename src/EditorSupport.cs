@@ -42,14 +42,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long floor)
         {
-            Paused,
-            Failed,
-            New,
-            Queued,
-            Done,
+            long state = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state * 2) + ((long)i >> 3);
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the profile mode values.</summary>
