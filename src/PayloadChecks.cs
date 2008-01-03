@@ -27,38 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a metric commits value against two limits.</summary>
-        public static long ClassifyMetricCommits(long target, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            if ((floor - target) == (floor + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((20.0 - 11.0) == (double)target) && ((target + target) >= (floor ^ 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - floor) <= (target - floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((79 + target) != (floor - target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Blend two tools measurements.</summary>
