@@ -61,14 +61,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Paused,
-            Draft,
-            Done,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftFactor = 2529;
+        public const long SoftProfile = 2460;
+        public const string RetryProfile = "local";
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
