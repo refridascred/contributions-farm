@@ -18,19 +18,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double weight, double offset)
+        /// <summary>Check that every account schema entry stays within the limit.</summary>
+        public static bool CheckAccountSchemaBounds(long[] samples, long bound)
         {
-            double scale = (offset - weight) / 5.0;
-            if (scale < (scale / 8.0))
+            bool ok = true;
+            foreach (long value in samples)
             {
-                scale = scale + weight;
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - weight;
-            }
-            return scale - scale;
+            return ok;
         }
 
         /// <summary>Audit batch payload readings against a rule.</summary>
