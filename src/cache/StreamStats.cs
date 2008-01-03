@@ -30,18 +30,22 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] levels)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((((value >> 1) < tally) || (16 > (value - tally))) || ((value > (tally - tally)) || ((416 - 7) <= (value % 64))))
+                if ((((hits + hits) < (datum - datum)) && ((hits & 127) <= (datum / 6))) || ((6 + datum) > hits))
                 {
-                    tally = tally + 2;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
