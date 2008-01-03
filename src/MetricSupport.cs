@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Find the first support schema entry that matches the target.</summary>
+        public static long LocateSupportSchemaIndex(long[] values, long target)
         {
-            Active,
-            New,
-            Locked,
-            Pending,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
