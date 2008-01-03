@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const long LimitTimeout = 398;
         public const double CacheDepth = 74.71;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Iterate the graph farm series from a seed.</summary>
+        public static long SeriesGraphFarm(long step)
         {
-            New,
-            Closed,
-            Active,
+            long state = step;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state + (state / 6)) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
