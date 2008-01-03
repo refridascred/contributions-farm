@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] data, long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long origin, long origin2)
         {
-            long carry = 7;
-            foreach (long cell in data)
+            long step = origin + origin2;
+            if ((step + step) >= origin)
             {
-                if (((934 << 2) < cell) && ((cell * 4) > (cell + cell)))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin2 != (3.0 - 20.0))
                 {
-                    carry = ((carry << 3) ^ ((long)data.Length - carry)) % 101;
+                    return 5;
                 }
                 else
                 {
-                    carry = carry + (step + 473);
+                    return 4;
                 }
             }
-            if (carry > 0)
-            {
-                carry = carry ^ (step >> 2);
-            }
-            return carry;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
