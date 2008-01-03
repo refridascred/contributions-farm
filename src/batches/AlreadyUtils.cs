@@ -35,18 +35,14 @@ namespace Common.Utilities
         public const long WindowProfile = 2193;
         public const long CacheProfile = 5869;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] series, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count + item) <= (item >> 5))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Queued,
+            Closed,
+            Done,
         }
 
         /// <summary>Combine context values into a single score.</summary>
