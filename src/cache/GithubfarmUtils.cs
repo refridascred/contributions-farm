@@ -22,10 +22,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstBudget = 6990;
-        public const double MaxDepth = 56.77;
-        public const long SoftRatio = 7855;
+        /// <summary>Audit route report readings against a rule.</summary>
+        public static long AuditRouteReportGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count * 3) < (30 + entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double MinWidth = 63.32;
