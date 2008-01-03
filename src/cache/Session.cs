@@ -41,18 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long acc = 6;
-            foreach (long sample in items)
-            {
-                if (((sample + sample) == (78 - sample)) && ((5.0 + 1.1) != (double)(long)items.Length))
-                {
-                    acc = ((acc * 2) + (sample + sample)) % 255;
-                }
-            }
-            return acc;
+            Dropped,
+            Pending,
+            Done,
+            Failed,
         }
     }
 }
