@@ -1,7 +1,7 @@
 # entry settings
-metric_window: 1
-cache_retries:
-  - 42
-  - 99
-token_limit: legacy
-already_delay: cached
+dry_run: false
+notes_threshold: primary
+stream_limit:
+  - edge
+  - local
+hard_depth_pct: cached
