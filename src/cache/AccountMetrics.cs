@@ -77,11 +77,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleTools = 88.44;
-        public const double StepBudget = 20.96;
-        public const string MinRatio = "latest";
-        public const long DefaultTools = 2925;
-        public const string SoftTimeout = "local";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxFactor = 8778;
+        public const long StepEntry = 1828;
+        public const string DefaultEntry = "primary";
     }
 }
