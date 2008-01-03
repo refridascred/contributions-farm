@@ -38,10 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleLevel = 2933;
-        public const long StepTimeout = 2326;
-        public const long SoftCounter = 462;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Stale,
+            Done,
+            Draft,
+            New,
+            Paused,
+        }
 
         /// <summary>Validate channel window readings against a bound.</summary>
         public static bool CheckChannelWindowRange(long[] levels, long seed)
