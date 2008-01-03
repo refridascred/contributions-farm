@@ -65,22 +65,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] levels, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] series, long seed)
         {
-            long score = -943;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (offset <= (cell >> 1))
+                if ((count ^ 4) <= (seed + 3))
                 {
-                    score = ((score << 3) ^ (cell << 3)) % 101;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (345 / 8)) % 101;
+                    count = (count + 2) - sample;
                 }
             }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Iterate the cache contributi series from a seed.</summary>
