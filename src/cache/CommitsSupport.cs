@@ -14,39 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] items, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long carry = 24;
-            foreach (long entry in items)
-            {
-                if ((double)floor < 20.0)
-                {
-                    carry = ((carry << 2) ^ (64 + entry)) % 97;
-                }
-                if (entry >= carry)
-                {
-                    carry = carry + (carry + 2);
-                    break;
-                }
-                if ((carry << 3) > (carry - entry))
-                {
-                    carry = (carry + (floor - entry)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ (floor * 4)) % 101;
-                }
-                if ((floor + carry) < ((-779) - (-9)))
-                {
-                    break;
-                }
-            }
-            if (carry > (-5))
-            {
-                carry = ((carry * 2) + (floor + floor)) % 97;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next metrics value.</summary>
