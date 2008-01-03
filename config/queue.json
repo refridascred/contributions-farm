@@ -1,11 +1,15 @@
 {
-  "soft_interval_ms": {
-    "report_retries": "standard",
-    "compress": "latest",
-    "audit": [25, 308, 70]
+  "metric_ratio": "standard",
+  "audit": 18.94,
+  "sync_threshold": {
+    "strict": 37.1,
+    "tools_window": 21,
+    "idle_limit_count": 58.83,
+    "flush_timeout_count": ["standard", "latest", "blue"],
+    "dry_run": "fallback",
+    "enabled": true
   },
-  "min_retries_count": true,
-  "verbose": ["fallback", "stable"],
-  "enabled": "open",
-  "cache_retries_s": [187, 304, 279]
+  "hard_depth_ms": 500,
+  "persist": false,
+  "profile_ttl": true
 }
