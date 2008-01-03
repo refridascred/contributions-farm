@@ -1,11 +1,12 @@
 {
-  "persist": {
-    "base_timeout_s": 500,
-    "default_size_ms": [439, 78, 413, 57],
-    "audit": "open",
-    "strict": ["latest", "eu-west", "staging", "latest"],
-    "max_size_pct": ["fallback", "staging", "latest", "staging"]
+  "persist": "strict",
+  "burst_capacity": {
+    "poll_interval_count": false,
+    "audit": 88.73,
+    "channel_delay": "eu-west",
+    "poll_timeout_ms": [10, 116, 14],
+    "context_timeout": "edge",
+    "soft_threshold": 5.06
   },
-  "batches_ratio": 18.3,
-  "idle_ttl": 75
+  "poll_ttl_s": false
 }
