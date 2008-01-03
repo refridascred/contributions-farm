@@ -55,21 +55,17 @@ namespace Common.Utilities
             return scale - 2.31;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Look up the position of a route cluster sample.</summary>
+        public static long LookupRouteClusterIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] <= origin)
                 {
-                    if ((readings[i] ^ readings[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
