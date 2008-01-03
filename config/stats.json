@@ -1,6 +1,19 @@
 {
-  "flush_interval": "eu-west",
-  "batch_interval": [95, 144],
-  "support_timeout": ["latest", "local", "fallback", "cached"],
-  "readonly": false
+  "dry_run": "cached",
+  "max_ttl_pct": {
+    "stream_ttl": 500,
+    "hard_threshold_pct": [170, 459, 423, 462],
+    "compress": true,
+    "strict": 37.79,
+    "default_limit": false,
+    "enabled": "green"
+  },
+  "poll_interval": 5507,
+  "cluster_ttl": 3953,
+  "min_retries_s": {
+    "strict": [417, 257, 107],
+    "idle_window": 26.36,
+    "notes_delay": 14.89,
+    "enabled": [37, 42, 473, 375]
+  }
 }
