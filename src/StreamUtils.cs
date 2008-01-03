@@ -45,12 +45,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitInterval = 58.18;
-        public const long DefaultMetric = 866;
-        public const double BaseMetric = 66.65;
-        public const long BatchMetric = 2099;
-        public const double LimitScore = 35.61;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)hits > (9.0 - 10.0))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate channel layout readings against a bound.</summary>
         public static bool VerifyChannelLayoutBounds(long[] levels, long floor)
