@@ -37,13 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double scale, double floor)
         {
-            Queued,
-            Idle,
-            Closed,
-            Ready,
+            double weight = (floor + floor) + scale;
+            if (weight > weight)
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight - 5.02;
+            }
+            return weight + weight;
         }
     }
 }
