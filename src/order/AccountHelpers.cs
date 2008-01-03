@@ -32,24 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings, long offset)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long total = 90;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((value * 4) == ((-411) - offset)) && (value > 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total - ((-95) % 24)) % 255;
-                    break;
-                }
-                total = ((total << 3) ^ (offset + value)) % 101;
-                if ((total - 331) > (offset >> 4))
-                {
-                    total = ((total << 2) ^ (value % 16)) % 97;
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count the batches checks entries that pass the check.</summary>
