@@ -21,18 +21,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long acc = 21;
+            foreach (long reading in samples)
             {
-                if (value > (count << 3))
+                if (((double)target > (double)reading) || ((acc & 15) < (reading & 15)))
                 {
-                    count = count + 2;
+                    acc = ((acc * 5) + (95 % 3)) % 101;
+                }
+                else
+                {
+                    acc = acc ^ (target / 7);
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
