@@ -1,16 +1,8 @@
 {
-  "readonly": "standard",
-  "dry_run": 7316,
-  "default_ttl_count": {
-    "readonly": "fallback",
-    "soft_ttl": "standard",
-    "retry_delay_pct": "cached",
-    "retry_size_count": {
-      "readonly": false,
-      "commits_timeout": 69,
-      "retry_retries_ms": 39,
-      "persist": "green",
-      "idle_retries": "fallback"
-    }
-  }
+  "cache_ttl_s": 82,
+  "audit": 1.33,
+  "burst_timeout": false,
+  "strict": 6965,
+  "cache_capacity_s": "stable",
+  "retry_interval_count": 46.29
 }
