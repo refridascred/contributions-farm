@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const long BatchCluster = 2168;
         public const string BaseRatio = "latest-edge";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] data)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > (count << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
