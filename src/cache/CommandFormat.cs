@@ -19,21 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of already batches readings.</summary>
-        public static long PairAlreadyBatchesCount(long[] series)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(229 >> 4);
+            if (bias <= bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias + (weight / 2.0)) - floor;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (0.27 * 17.0)) + (double)(long)i;
+            }
+            return bias - (double)76;
         }
 
         /// <summary>Hold a contributi record.</summary>
