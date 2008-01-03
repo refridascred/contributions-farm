@@ -12,22 +12,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] data, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((-107) > cell)
+                if ((19.0 * 3.44) <= (double)entry)
                 {
-                    hits = (hits + 1) - target;
+                    count = (count + 1) + seed;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
