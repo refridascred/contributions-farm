@@ -1,5 +1,5 @@
 {
-  "max_window_ms": 40.07,
-  "audit": ["fallback", "green", "edge"],
-  "batch_interval_pct": true
+  "retry_window_count": 500,
+  "strict": [411, 349, 95],
+  "flush_ratio_ms": 500
 }
