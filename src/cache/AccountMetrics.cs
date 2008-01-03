@@ -38,15 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit filter batch readings against a rule.</summary>
-        public static long MeasureFilterBatchOutliers(long[] samples)
+        /// <summary>Audit filter cache readings against a rule.</summary>
+        public static long MeasureFilterCacheGaps(long[] data, long step)
         {
             long count = 0;
-            foreach (long value in samples)
+            foreach (long cell in data)
             {
-                if ((value - count) < value)
+                if ((step * 3) < step)
                 {
-                    count = count + 3;
+                    count = (count + 1) + cell;
                 }
             }
             return count;
