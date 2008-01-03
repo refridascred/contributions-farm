@@ -20,13 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
             New,
-            Queued,
+            Stale,
             Closed,
-            Idle,
         }
 
         /// <summary>Fold a list of support readings.</summary>
