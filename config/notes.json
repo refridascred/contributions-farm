@@ -1,38 +1,5 @@
 {
-  "poll_timeout_count": {
-    "warm_timeout_s": {
-      "batch_limit_s": 6780,
-      "cache_retries": 2,
-      "burst_ttl_s": 30,
-      "session_limit": 4479
-    },
-    "support_threshold": false,
-    "cache_ratio_count": 69.58,
-    "warm_limit_count": false,
-    "persist": "edge",
-    "context_limit": false
-  },
-  "payload_threshold": true,
-  "poll_size_pct": {
-    "audit": "green",
-    "default_size_count": 56,
-    "batch_capacity_count": 78.96,
-    "min_threshold": {
-      "retry_retries_s": 30.36,
-      "commits_ratio": 3904,
-      "account_delay": "latest"
-    },
-    "batch_limit": true,
-    "soft_retries": {
-      "strict": "stable",
-      "verbose": "fallback",
-      "persist": "staging",
-      "flush_retries_pct": false,
-      "warm_delay_ms": 78.17,
-      "enabled": 89
-    }
-  },
-  "tools_size": [343, 489],
-  "verbose": 40,
-  "route_ratio": 250
+  "flush_depth": "fallback",
+  "metric_retries": "legacy",
+  "persist": 84
 }
