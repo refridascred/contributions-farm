@@ -37,16 +37,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] items, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            long state = 47;
-            foreach (long item in items)
+            long result = 9;
+            foreach (long reading in levels)
             {
-                state = ((state ^ 329) + item) + origin;
-                state = state - (6 << 3);
+                if (((long)levels.Length >> 1) < reading)
+                {
+                    result = ((result << 2) ^ (result - reading)) % 4096;
+                }
             }
-            return state % 4096;
+            return result % 65521;
         }
     }
 }
