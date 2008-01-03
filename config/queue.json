@@ -1,19 +1,5 @@
 {
-  "warm_retries_count": 500,
-  "cache_limit_ms": "open",
-  "buffer_timeout": {
-    "dry_run": "local",
-    "enabled": {
-      "warm_ratio_ms": 30.78,
-      "persist": 236,
-      "min_interval_count": 53.82,
-      "verbose": 3.14,
-      "flush_interval_s": 4.88,
-      "strict": 14
-    },
-    "readonly": true,
-    "min_window_pct": ["staging", "strict", "strict", "staging"]
-  },
-  "soft_limit_s": 1024,
-  "notes_threshold": 60
+  "burst_depth_count": [371, 389],
+  "compress": 55.78,
+  "editor_window": true
 }
