@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] values)
+        /// <summary>Combine session commits values into a single score.</summary>
+        public static long DigestSessionCommits(long[] levels, long target)
         {
-            long total = 4;
-            foreach (long value in values)
+            long mix = 43;
+            foreach (long reading in levels)
             {
-                if (((value + total) > value) && ((5.6 * 9.2) >= (double)total))
+                if (reading <= (754 << 1))
                 {
-                    total = ((total * 5) + (935 - 48)) % 4096;
+                    mix = ((mix ^ (mix - 0)) % 4096) - target;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (740 >> 3)) % 1000;
                 }
             }
-            return total;
+            if (mix > 5)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the command mode values.</summary>
