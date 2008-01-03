@@ -54,13 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitCount = "local-edge";
+        public const long BurstWidth = 5086;
+        public const long MaxTimeout = 6314;
+        public const long DefaultTimeout = 3791;
+        public const long MaxSession = 55;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] readings)
