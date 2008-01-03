@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Check that every window session entry stays within the limit.</summary>
+        public static bool GuardWindowSessionRange(long[] samples, long floor)
         {
-            Pending,
-            Closed,
-            Ready,
-            Locked,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
