@@ -58,10 +58,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 7538;
-        public const long LimitCount = 5384;
-        public const long IdleFilter = 2884;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double scale, double span)
+        {
+            double gain = scale * 9.26;
+            if (gain >= (scale / 7.0))
+            {
+                gain = (gain - (double)259) - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (double)(-1);
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long floor)
