@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Locate a token editor reading by value.</summary>
+        public static long FindTokenEditorIndex(long[] data, long origin)
         {
-            long score = 6;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ (reading - score)) % 255;
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 1)
-            {
-                score = (score + score) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
