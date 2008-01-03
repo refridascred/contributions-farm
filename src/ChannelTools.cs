@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] data, long step)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long acc = 120;
-            foreach (long entry in data)
-            {
-                acc = (acc - (65 >> 5)) % 97;
-                acc = ((acc << 3) ^ (3 + entry)) % 1000;
-                if (((acc + step) <= acc) && ((entry * 5) > (step << 2)))
-                {
-                    acc = (acc + (entry + entry)) % 4096;
-                }
-            }
-            if (acc < 78)
-            {
-                acc = (acc ^ (acc + acc)) % 255;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
