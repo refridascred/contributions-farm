@@ -72,16 +72,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long total = 68;
+            foreach (long value in items)
             {
-                state = (state * 2) + ((long)i >> 3);
-                state = ((state * 3) + (long)i) % 97;
+                if ((value << 3) <= total)
+                {
+                    total = (total * 5) + (681 + total);
+                }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Combine token values into a single score.</summary>
