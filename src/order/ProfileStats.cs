@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((step ^ target) >= target)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((step + step) < (target % 100)))
                 {
-                    if ((samples[i] - samples[j]) != 11)
+                    return 4;
+                }
+                else
+                {
+                    if ((4.1 / 9.0) != (double)target)
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
