@@ -38,32 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long seed, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] series, long seed)
         {
-            long diff = seed + offset;
-            if ((seed / 8) <= (offset << 2))
+            bool found = true;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed + seed) == (18 + offset)) || ((diff >> 2) < offset))
+                if (cell != seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed ^ (-45)) != (seed + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
