@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "cached";
+        public const long MinSpan = 8695;
+        public const double LimitLevel = 65.82;
+        public const string IdleTimeout = "strict-v2";
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
