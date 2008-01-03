@@ -16,18 +16,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] levels, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mark = 429;
+            foreach (long reading in samples)
             {
-                if ((((entry * 2) != (offset + 36)) && ((entry << 2) > matches)) && ((matches + offset) >= (offset % 97)))
+                if (mark <= (target + mark))
                 {
-                    matches = matches + 1;
+                    mark = ((mark - (mark ^ target)) % 255) ^ reading;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
