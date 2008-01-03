@@ -69,18 +69,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] series)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long result = 475;
+            foreach (long cell in series)
             {
-                if (!(12.0 <= (double)value) || ((double)value != (double)tally))
+                if (!((cell >> 1) >= result))
                 {
-                    tally = tally + 1;
+                    result = (result << 2) ^ (result & 127);
                 }
+                result = result - (result - result);
             }
-            return tally;
+            return result;
         }
     }
 }
