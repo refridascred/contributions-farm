@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile counter samples are out of range.</summary>
-        public static long MeasureProfileCounterMatches(long[] samples, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (!((13.0 < (double)datum) && ((tally / 6) <= (130 * 2))))
-                {
-                    tally = (tally + 2) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
