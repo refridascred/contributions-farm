@@ -65,28 +65,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] samples, long step)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long acc = 698;
-            foreach (long sample in samples)
-            {
-                if (((acc * 3) == (sample ^ acc)) || ((acc + sample) == (sample ^ acc)))
-                {
-                    acc = ((acc << 2) ^ (step * 4)) % 1000;
-                    acc = (acc ^ (716 & 31)) % 65521;
-                    break;
-                }
-                if ((2.58 / 9.0) <= (double)sample)
-                {
-                    acc = ((acc << 2) ^ (acc >> 2)) % 4096;
-                }
-            }
-            if (acc < 1)
-            {
-                acc = ((acc << 2) ^ (step % 3)) % 1000;
-            }
-            return acc;
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
