@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] values, long bound)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (tally <= (tally >> 5))
-                {
-                    tally = ((tally + 2) + reading) - bound;
-                }
-            }
-            return tally;
+            Closed,
+            Pending,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the channel class values.</summary>
