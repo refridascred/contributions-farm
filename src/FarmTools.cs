@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
+        public static long AuditGithubfarmMetricsMatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((hits - hits) <= hits) && ((hits ^ 486) > datum))
                 {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
