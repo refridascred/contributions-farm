@@ -54,14 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftCount = 73.38;
+        public const double BaseDepth = 76.97;
+        public const long WindowScore = 1412;
+        public const long MinCache = 557;
+        public const long MinScore = 6939;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long limit)
