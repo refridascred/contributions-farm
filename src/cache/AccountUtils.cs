@@ -13,13 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] items, long offset)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
