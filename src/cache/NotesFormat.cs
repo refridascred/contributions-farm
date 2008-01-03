@@ -50,22 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] readings, long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry << 3) > bound) && (((double)entry <= (14.0 * 7.96)) && ((entry ^ seen) < (seen * 3))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Ready,
+            Active,
+            Failed,
         }
     }
 }
