@@ -43,23 +43,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] readings, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] series, long step)
         {
-            long mark = 7;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                mark = (mark * 3) + (cell / 9);
-                if (((mark & 1) != (mark << 1)) && ((cell - (-14)) > (limit ^ cell)))
+                if ((step + matches) < matches)
                 {
-                    break;
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark < 2)
-            {
-                mark = (mark + (limit - limit)) % 97;
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Hold a notes info.</summary>
