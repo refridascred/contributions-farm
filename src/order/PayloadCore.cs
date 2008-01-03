@@ -13,19 +13,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] readings, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long bound)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
+                state = state ^ state;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Describe the batch status values.</summary>
