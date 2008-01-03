@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 4030;
+        public const string LimitAccount = "cached-edge";
+        public const long DefaultTimeout = 2073;
+        public const long RetryAccount = 8569;
+        public const long BaseAccount = 9644;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
