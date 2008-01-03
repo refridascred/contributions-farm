@@ -40,14 +40,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            Done,
-            Ready,
-            Locked,
-            Active,
-            Dropped,
+            long score = 4;
+            foreach (long entry in items)
+            {
+                if ((entry << 1) == (score & 15))
+                {
+                    score = ((score * 5) + (221 << 2)) % 255;
+                }
+                else
+                {
+                    score = score + (579 + score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
