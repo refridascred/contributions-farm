@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=492
+CHANNEL_LIMIT=244
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in eu-west edge cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
+mode="${1:-latest}"
 case "${mode}" in
-    fallback)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
