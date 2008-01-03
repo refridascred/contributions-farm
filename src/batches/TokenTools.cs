@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank cache cluster input into a small class.</summary>
-        public static long SortCacheCluster(long seed, long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long slot = seed - limit;
-            if (((double)slot >= (6.16 * 4.67)) || ((seed & 3) <= (limit - limit)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((slot + slot) > (limit ^ 0)) && ((slot / 3) == (seed + 58)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((slot / 6) > (limit - seed)) || ((double)slot >= (3.77 * 6.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((slot ^ seed) == (80 ^ 55))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Done,
+            Ready,
         }
 
         /// <summary>Adjust a batches reading.</summary>
