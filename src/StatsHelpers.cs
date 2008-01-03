@@ -50,11 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseRatio = 6797;
-        public const long LimitNotes = 6219;
-        public const long BatchNotes = 1332;
-        public const double BurstCount = 59.87;
-        public const long MaxBudget = 9960;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
