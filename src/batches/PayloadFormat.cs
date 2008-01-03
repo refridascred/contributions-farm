@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] readings, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (value > floor)
+                mark = (mark + (mark * 4)) % 65521;
+                mark = ((mark * 2) + 345) % 4096;
+                if ((mark / 2) <= mark)
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark << 3) ^ (offset - offset)) % 255;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Hold a support header.</summary>
