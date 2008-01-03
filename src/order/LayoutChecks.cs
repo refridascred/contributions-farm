@@ -61,11 +61,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a commits contributi reading.</summary>
-        public static double SmoothCommitsContributi(double scale, double floor)
+        /// <summary>Fold a list of farm githubfarm readings.</summary>
+        public static long TallyFarmGithubfarm(long[] samples, long origin)
         {
-            double mean = scale;
-            return (mean + scale) + floor;
+            long state = 23;
+            foreach (long entry in samples)
+            {
+                if ((state ^ state) > entry)
+                {
+                    state = (state - state) % 65521;
+                }
+                if (19.0 > (double)origin)
+                {
+                    break;
+                }
+            }
+            if (state < 765)
+            {
+                state = (state * 2) + (state * 2);
+            }
+            return state;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
