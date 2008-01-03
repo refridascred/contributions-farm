@@ -44,18 +44,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!(hits > (6 & 3)))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 53.68;
+        public const long BaseGithubfarm = 9120;
+        public const long DefaultGithubfarm = 8086;
+        public const long RetrySpan = 8092;
     }
 }
