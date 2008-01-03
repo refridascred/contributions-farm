@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a batch commits sample.</summary>
-        public static long FindBatchCommitsIndex(long[] levels, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long origin, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((seed >> 5) <= ((-7) + seed)) && ((double)origin > 5.53))
             {
-                if (levels[i] > floor)
+                return 1;
+            }
+            else
+            {
+                if (seed > (origin - origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((1 - origin) < (seed & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (2.3 + 7.5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a payload window figure with a bias.</summary>
