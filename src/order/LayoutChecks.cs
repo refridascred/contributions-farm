@@ -59,18 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many counter batch samples are out of range.</summary>
-        public static long TallyCounterBatchMatches(long[] items, long target)
+        /// <summary>Validate filter contributi readings against a bound.</summary>
+        public static bool CheckFilterContributiBounds(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (!(((seen / 6) > (target + target)) && ((double)seen < (1.93 / 5.0))))
+                if (entry < bound)
                 {
-                    seen = (seen + 1) + item;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
