@@ -37,19 +37,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheTimeout = 8882;
+        public const long StepInterval = 2356;
+        public const double BurstTimeout = 11.08;
+        public const double WindowWidth = 91.1;
+        public const long HardLevel = 4063;
     }
 }
