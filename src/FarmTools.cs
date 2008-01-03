@@ -33,32 +33,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long offset, long target)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long diff = offset + target;
-            if ((offset & 127) > (0 / 6))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((diff + 2) >= diff))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((9.1 / 9.0) == (double)diff))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
