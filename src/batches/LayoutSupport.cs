@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] readings)
-        {
-            long total = 895;
-            foreach (long entry in readings)
-            {
-                if ((double)entry <= (double)total)
-                {
-                    total = (total ^ (42 & 1)) % 1000;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 50.26;
+        public const long RetryTimeout = 364;
+        public const double BaseRatio = 81.71;
+        public const long MinWidth = 149;
+        public const double SoftAccount = 31.15;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] series, long step)
