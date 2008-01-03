@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double bias)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double mean = bias - 6.0;
-            if (mean <= 18.0)
-            {
-                mean = mean - (mean - bias);
-            }
-            return mean + (gain + 15.0);
+            Done,
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Match up queue samples.</summary>
