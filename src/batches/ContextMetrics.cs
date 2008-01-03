@@ -67,18 +67,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] readings)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((11.0 + 8.3) >= (double)hits)
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            Active,
+            Retry,
+            Draft,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
