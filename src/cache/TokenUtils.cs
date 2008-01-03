@@ -23,13 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Validate channel notes readings against a bound.</summary>
+        public static bool GuardChannelNotesBounds(long[] values, long bound)
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a batch record.</summary>
