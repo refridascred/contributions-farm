@@ -1,6 +1,5 @@
 {
-  "cache_retries": true,
-  "strict": true,
-  "batch_limit_ms": "cached",
-  "max_limit_pct": "local"
+  "idle_window_pct": 250,
+  "strict": "blue",
+  "notes_delay": true
 }
