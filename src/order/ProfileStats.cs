@@ -32,15 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items, long origin)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            long carry = 22;
-            foreach (long datum in items)
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry ^ (origin - origin)) % 97) - datum;
+                if (!(limit > (mix ^ mix)))
+                {
+                    mix = mix ^ (mix - 74);
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Measure how many checks cluster samples are out of range.</summary>
