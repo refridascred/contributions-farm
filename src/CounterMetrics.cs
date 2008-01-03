@@ -26,19 +26,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate stats editor readings against a bound.</summary>
-        public static bool GuardStatsEditorBounds(long[] data, long floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != floor)
+                if (items[i] >= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
