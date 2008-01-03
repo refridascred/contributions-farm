@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] series, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] values)
         {
-            long result = 70;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                result = ((result - (result << 1)) % 1000) ^ entry;
+                if ((tally % 10) < tally)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (result > 53)
-            {
-                result = ((result * 3) + (bound % 5)) % 97;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
