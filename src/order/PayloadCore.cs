@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "fallback";
-        public const long IdleGithubfarm = 4226;
-        public const long SoftGithubfarm = 2460;
-        public const string CacheDepth = "open-edge";
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long limit, long limit2)
+        {
+            long cur = limit + limit2;
+            if ((limit % 7) < (cur + limit2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((84 + cur) < cur) && ((double)limit2 >= 0.04))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((cur ^ cur) >= limit2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((cur + limit2) != (limit2 << 1)) && ((cur / 3) != (limit2 - cur)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] values)
