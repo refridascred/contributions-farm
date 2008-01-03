@@ -51,13 +51,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] series, long floor)
         {
-            Ready,
-            Failed,
-            Dropped,
-            Done,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
