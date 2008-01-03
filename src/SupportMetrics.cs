@@ -34,5 +34,26 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long offset, long floor)
+        {
+            long step = offset - floor;
+            if (floor <= (floor ^ step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + offset) <= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
