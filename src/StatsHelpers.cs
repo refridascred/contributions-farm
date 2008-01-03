@@ -70,14 +70,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Failed,
-            Queued,
-            Idle,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseRatio = 6797;
+        public const long LimitNotes = 6219;
+        public const long BatchNotes = 1332;
+        public const double BurstCount = 59.87;
+        public const long MaxBudget = 9960;
     }
 }
