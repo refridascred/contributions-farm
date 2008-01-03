@@ -27,24 +27,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a notes checks value against two limits.</summary>
-        public static long SortNotesChecks(long bound, long offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            if ((1.6 / 5.0) <= (7.6 / 9.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset ^ 62) < 8)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
