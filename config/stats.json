@@ -1,11 +1,13 @@
 {
-  "batch_retries_s": 250,
-  "queue_retries": {
-    "command_threshold": "stable",
-    "support_ratio": ["legacy", "legacy", "blue"],
-    "max_threshold": 75
+  "max_window_s": [21, 156, 208],
+  "flush_ttl": "staging",
+  "base_delay_count": {
+    "soft_interval_ms": 84.22,
+    "max_delay": "edge",
+    "verbose": 50.2,
+    "enabled": true
   },
-  "poll_depth_s": ["local", "blue"],
-  "batch_delay": false,
-  "default_window_count": 8849
+  "default_interval_s": 1542,
+  "retry_delay_ms": 75.58,
+  "batches_interval": 43.96
 }
