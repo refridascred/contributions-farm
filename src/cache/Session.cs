@@ -41,13 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
+            Stale,
             Dropped,
-            Pending,
-            Done,
-            Failed,
+            Queued,
         }
     }
 }
