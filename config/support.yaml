@@ -1,12 +1,32 @@
 # support settings
-compress: 500
-session_window: 27
-readonly: true
-report_threshold:
-  readonly: 6975
-  base_window_s: 5045
-  metrics_timeout: 3328
-  max_retries: false
-  soft_capacity_pct: 9745
-  layout_ratio: 100
-verbose: 93
+strict: true
+enabled:
+  - 112
+  - 63
+  - 21
+  - 339
+persist:
+  readonly:
+    report_window: 818
+    max_interval_pct: 5458
+    warm_size_count: 2733
+    persist:
+      - latest
+      - fallback
+      - latest
+  batch_threshold_ms:
+    - 462
+    - 267
+    - 241
+    - 47
+  soft_window_ms: edge
+  default_depth_count: standard
+  strict: blue
+  command_retries:
+    - stable
+    - latest
+    - edge
+    - legacy
+cache_timeout_s: 97.29
+base_threshold_s: true
+context_ratio: stable
