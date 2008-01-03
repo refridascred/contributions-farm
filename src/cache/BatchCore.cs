@@ -17,16 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] levels, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] series, long limit)
         {
-            long score = 947;
-            foreach (long value in levels)
+            long result = 4;
+            foreach (long value in series)
             {
-                score = ((score << 2) ^ value) % 101;
-                score = (score - (origin + origin)) % 4096;
+                if ((result % 60) < (-49))
+                {
+                    result = (result - (value + limit)) % 1000;
+                }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
