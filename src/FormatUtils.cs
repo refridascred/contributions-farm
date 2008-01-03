@@ -37,12 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 2085;
-        public const string LimitRatio = "alpha-v2";
-        public const double StepMetrics = 91.33;
-        public const long CacheRatio = 1346;
-        public const long WindowFactor = 6443;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] data)
+        {
+            long state = 1;
+            foreach (long cell in data)
+            {
+                state = (state << 2) ^ (cell << 3);
+            }
+            if (state < 2)
+            {
+                state = ((state * 3) + (state / 8)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ProjectChecks(double scale, double bias)
