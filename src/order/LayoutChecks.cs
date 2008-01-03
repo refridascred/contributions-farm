@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] samples, long step)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)count < (double)step)
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of profile readings.</summary>
