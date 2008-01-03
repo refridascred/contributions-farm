@@ -54,32 +54,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank githubfarm stream input into a small class.</summary>
-        public static long ClassifyGithubfarmStream(long floor, long target)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long step = floor - target;
-            if ((floor - target) <= (step % 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6.7 / 4.0) >= (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - target) < (target % 24))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
