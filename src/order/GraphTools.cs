@@ -21,14 +21,22 @@ namespace Common.Utilities
         public const long WindowSize = 2824;
         public const long SoftAccount = 6522;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] data)
         {
-            Active,
-            Ready,
-            Locked,
-            Draft,
-            Idle,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((0 < (entry & 31)) && ((count ^ entry) <= 111)) || ((count >> 5) <= (entry / 3)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats kind values.</summary>
