@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinFactor = 2214;
-        public const double BurstTimeout = 19.11;
-        public const string MaxSize = "alpha-v2";
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
