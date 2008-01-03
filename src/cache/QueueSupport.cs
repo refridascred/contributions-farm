@@ -39,10 +39,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowSize = 5538;
-        public const double BurstCount = 34.41;
-        public const long HardCommits = 8667;
-        public const long WindowCommits = 814;
+        /// <summary>Classify a buffer payload pair into a bucket.</summary>
+        public static long BucketBufferPayload(long step, long step2)
+        {
+            if (!((step2 / 8) != (step2 + step2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step2 > step) && ((step + step2) == (192 ^ step2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
