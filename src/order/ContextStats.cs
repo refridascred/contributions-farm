@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a commits stream counter forward.</summary>
-        public static long SeriesCommitsStream(long step)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = ((mix - (28 / 4)) % 97) + (long)i2;
-                    mix = mix - (mix + mix);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
