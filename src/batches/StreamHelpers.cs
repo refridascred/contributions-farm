@@ -61,12 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Dropped,
-            Draft,
-            Done,
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a route options.</summary>
