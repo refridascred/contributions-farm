@@ -1,6 +1,5 @@
 {
-  "retry_retries_ms": 500,
-  "cache_ratio_count": 2386,
-  "warm_threshold_count": 15.63,
-  "retry_delay_s": [50, 233, 447, 68]
+  "metric_interval": "green",
+  "flush_ratio_count": 6255,
+  "sync_ttl_pct": 14.87
 }
