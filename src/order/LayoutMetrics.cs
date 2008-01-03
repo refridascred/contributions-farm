@@ -30,12 +30,9 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1844;
         public const double BatchSize = 49.0;
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Queued,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstLevel = 7184;
+        public const string IdleReport = "local";
+        public const long HardFactor = 6133;
     }
 }
