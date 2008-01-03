@@ -51,10 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 4170;
-        public const long StepChannel = 2722;
-        public const string CacheChannel = "stable-edge";
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double bias, double span)
