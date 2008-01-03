@@ -59,12 +59,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 7867;
-        public const double MaxInterval = 42.12;
-        public const long LimitCluster = 2600;
-        public const long RetryCluster = 5964;
-        public const double MaxSize = 49.98;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitSize = 8187;
