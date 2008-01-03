@@ -1,13 +1,11 @@
 {
-  "enabled": ["blue", "edge"],
-  "hard_timeout_s": "strict",
-  "warm_limit": "eu-west",
-  "cache_window": {
-    "record_timeout": "primary",
-    "buffer_limit": "open",
-    "max_timeout_pct": 80.67,
-    "compress": "latest"
+  "soft_interval_ms": {
+    "report_retries": "standard",
+    "compress": "latest",
+    "audit": [25, 308, 70]
   },
-  "record_retries": 500,
-  "verbose": true
+  "min_retries_count": true,
+  "verbose": ["fallback", "stable"],
+  "enabled": "open",
+  "cache_retries_s": [187, 304, 279]
 }
