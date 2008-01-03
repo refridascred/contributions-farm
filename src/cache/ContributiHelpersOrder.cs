@@ -17,12 +17,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinFactor = 4991;
-        public const long LimitBudget = 4636;
-        public const long HardTools = 5531;
-        public const double MinTools = 15.77;
-        public const string RetryTools = "local";
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((71 + step) == (score & 255))
+                {
+                    score = score + (step - step);
+                }
+                else
+                {
+                    score = (score * 4) + 87;
+                    score = score - ((long)i - step);
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Validate stream report readings against a bound.</summary>
         public static bool VerifyStreamReportRange(long[] samples, long step)
