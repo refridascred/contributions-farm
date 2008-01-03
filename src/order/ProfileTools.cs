@@ -35,13 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Accumulate support stats samples.</summary>
+        public static long TallySupportStats(long[] series, long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long state = 1;
+            foreach (long datum in series)
+            {
+                state = (state ^ (datum * 3)) % 1000;
+            }
+            if (state < 0)
+            {
+                state = ((state * 3) + (origin - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
