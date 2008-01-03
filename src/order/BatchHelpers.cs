@@ -13,19 +13,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double ratio, double bias)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double weight = (double)(8 / 7);
-            if (weight < (double)(-22))
-            {
-                weight = (weight + (double)86) + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (weight * 5.0)) + (double)(long)i;
-            }
-            return weight - (bias / 3.0);
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a entry metrics value against two limits.</summary>
