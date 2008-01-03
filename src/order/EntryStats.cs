@@ -54,22 +54,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] values, long floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((entry + entry) > (floor + floor)) && ((hits / 7) >= (hits / 3)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
