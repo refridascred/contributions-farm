@@ -71,18 +71,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long bound)
         {
-            long total = 782;
-            foreach (long sample in series)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((890 + total) > total)
-                {
-                    total = ((total * 4) + (total >> 5)) + sample;
-                }
+                mix = (mix ^ (bound * 2)) % 4096;
+                mix = (mix + mix) % 1000;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
