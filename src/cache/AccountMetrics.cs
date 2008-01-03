@@ -64,21 +64,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
