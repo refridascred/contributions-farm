@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Retry,
-            Ready,
-            Queued,
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate support window readings against a bound.</summary>
