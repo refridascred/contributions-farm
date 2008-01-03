@@ -22,22 +22,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit route report readings against a rule.</summary>
-        public static long AuditRouteReportGaps(long[] levels)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count * 3) < (30 + entry))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
