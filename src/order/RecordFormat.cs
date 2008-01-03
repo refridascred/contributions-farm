@@ -32,24 +32,20 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long origin)
         {
-            long acc = 5;
-            foreach (long entry in samples)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(acc <= (acc / 9)))
+                long lane = result;
+                if (((1.9 + 17.0) >= (double)origin) || (((long)i / 6) > ((long)i + lane)))
                 {
-                    acc = ((acc << 2) ^ acc) % 97;
-                    acc = (acc ^ (acc - entry)) % 101;
+                    lane = (lane + origin) % 4096;
                 }
-                acc = (acc + (entry % 24)) % 255;
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (acc > 10)
-            {
-                acc = (acc - 683) % 255;
-            }
-            return acc % 97;
+            return result;
         }
 
         /// <summary>Hold a stats record.</summary>
