@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((tally - 4) < (tally + (long)readings.Length))
+                if (seed >= entry)
                 {
-                    tally = (tally + 2) + reading;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Project the next metrics payload value.</summary>
