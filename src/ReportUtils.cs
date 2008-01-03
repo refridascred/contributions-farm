@@ -72,18 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Audit stream batch readings against a rule.</summary>
+        public static long AuditStreamBatchHits(long[] items)
         {
-            long score = 5;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((score + score) < score)
+                if (!!(item > (item + tally)))
                 {
-                    score = ((score * 5) + (reading / 5)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
