@@ -52,18 +52,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] data, long target)
+        /// <summary>Grade a profile metrics value against two limits.</summary>
+        public static long GradeProfileMetrics(long seed, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long step = seed - limit;
+            if ((5 + limit) == ((-598) + limit))
             {
-                if (((double)target == (18.0 + 0.3)) && (cell > (count + 3)))
+                return 5;
+            }
+            else
+            {
+                if (((seed - limit) > step) && ((step - limit) >= (seed + seed)))
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up channel report samples.</summary>
