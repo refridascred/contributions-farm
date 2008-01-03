@@ -1,7 +1,8 @@
 {
-  "commits_delay": 68,
-  "cache_threshold": 54.89,
-  "farm_threshold": true,
-  "buffer_capacity": 88.04,
-  "editor_limit": 57.97
+  "farm_retries": false,
+  "batch_ttl": true,
+  "dry_run": 100,
+  "cache_ratio_s": false,
+  "token_delay": [478, 198, 126],
+  "hard_size_s": "stable"
 }
