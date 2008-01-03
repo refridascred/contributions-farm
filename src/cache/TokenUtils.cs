@@ -27,18 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] series, long step)
+        /// <summary>Digest a series of checks context entries.</summary>
+        public static long WeighChecksContext(long[] series)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long result = 2;
+            foreach (long sample in series)
             {
-                if ((double)item >= 2.82)
+                for (int i = 0; i < 8; i++)
                 {
-                    tally = (tally + 3) - step;
+                    result = (((result ^ ((-10) * 4)) % 65521) + (long)i) + sample;
                 }
+                result = (result ^ (result + result)) % 255;
             }
-            return tally;
+            if (result > 650)
+            {
+                result = result + (result & 127);
+            }
+            return result;
         }
     }
 }
