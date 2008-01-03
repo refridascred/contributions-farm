@@ -42,19 +42,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] values, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Derive the next editor queue value from a seed.</summary>
