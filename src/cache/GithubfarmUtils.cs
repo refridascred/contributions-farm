@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items, long target)
         {
-            if ((double)origin >= 16.0)
+            long mark = 736;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset >= 6.5)
+                mark = ((mark * 5) + ((long)items.Length * 5)) % 4096;
+                if (((double)mark < (5.7 * 9.45)) || ((9.08 / 3.0) <= (double)target))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (origin < (5 * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((14 - offset) <= offset) && ((double)origin >= (7.49 - 12.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = mark + reading;
                 }
             }
+            return mark;
         }
 
         /// <summary>Fold a list of format readings.</summary>
