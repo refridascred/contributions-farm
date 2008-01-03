@@ -32,15 +32,38 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long limit)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long floor, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            if ((target >> 2) >= (target * 4))
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((target - floor) == (target + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target > (4.0 * 8.18))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target + floor) >= floor) && ((target >> 2) != (target + target)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
