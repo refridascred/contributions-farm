@@ -16,32 +16,23 @@ namespace Common.Utilities
             return load + 6.9;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items)
         {
-            long span = offset + floor;
-            if ((floor + offset) >= span)
+            long acc = 7;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (5.37 < (double)span)
+                acc = (acc + acc) % 4096;
+                if ((acc + value) < (value + (long)items.Length))
                 {
-                    return 0;
+                    acc = acc + (value * 4);
                 }
                 else
                 {
-                    if ((double)floor == (4.0 / 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = (acc + (88 % 7)) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
