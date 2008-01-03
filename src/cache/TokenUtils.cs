@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Rank tools metric input into a small class.</summary>
+        public static long ClassifyToolsMetric(long step, long origin)
         {
-            Paused,
-            Ready,
-            Stale,
-            Queued,
-            Synced,
+            long gap = step + origin;
+            if (((origin / 3) == (step + 8)) || ((836 & 1) <= (5 - step)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7 & 3) >= (gap >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin < (7.47 * 2.9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step << 1) >= (step & 127))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter kind values.</summary>
