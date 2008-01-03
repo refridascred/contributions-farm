@@ -43,22 +43,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] levels, long step)
         {
-            long acc = 333;
-            foreach (long cell in series)
+            long carry = 78;
+            foreach (long reading in levels)
             {
-                if ((acc + acc) < (cell - acc))
-                {
-                    acc = (acc * 5) + (acc << 3);
-                }
+                carry = ((carry << 3) ^ carry) + step;
+                carry = (carry ^ (reading - carry)) % 101;
             }
-            if (acc < 348)
-            {
-                acc = (acc + (acc / 3)) % 255;
-            }
-            return acc;
+            return carry % 1000;
         }
     }
 }
