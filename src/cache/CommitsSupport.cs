@@ -46,12 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count the cache already entries that pass the check.</summary>
+        public static long MeasureCacheAlreadyHits(long[] readings, long seed)
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally >> 5) >= (seed ^ (-6)))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metric phase values.</summary>
