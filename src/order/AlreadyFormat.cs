@@ -58,15 +58,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] values, long limit)
         {
             long hits = 0;
-            foreach (long cell in items)
+            foreach (long item in values)
             {
-                if (!(((cell & 15) >= (cell + hits)) && ((double)cell >= (2.2 * 16.0))))
+                if ((hits + limit) < (item & 3))
                 {
-                    hits = hits + 2;
+                    hits = hits + 1;
                 }
             }
             return hits;
