@@ -38,10 +38,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 11.63;
-        public const string CacheSize = "standard-v2";
-        public const long BaseBudget = 4795;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] data)
+        {
+            long score = 674;
+            foreach (long cell in data)
+            {
+                score = (((score * 4) + 1) % 255) ^ cell;
+                if ((score + 4) >= (score % 3))
+                {
+                    score = ((score << 2) ^ (score & 1)) % 1000;
+                }
+                else
+                {
+                    score = ((score * 5) + (score & 255)) % 97;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Combine commits payload values into a single score.</summary>
         public static long TallyCommitsPayload(long[] values, long offset)
