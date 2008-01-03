@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double rate, double bias)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double scale = (double)(5 + 55);
-            if (scale >= scale)
-            {
-                scale = ((scale + scale) - rate) + bias;
-            }
-            else
-            {
-                scale = scale - (double)6;
-            }
-            return scale - scale;
+            Draft,
+            Locked,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
