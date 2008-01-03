@@ -1,7 +1,8 @@
 # entry settings
-base_delay_count: 30.24
-cache_window: 75.53
-commits_depth: 6.26
-already_limit: 500
-base_window: local
-audit: green
+min_timeout_count: 5
+base_limit_s:
+  - open
+  - strict
+  - legacy
+burst_timeout_ms: 1669
+already_depth: 30
