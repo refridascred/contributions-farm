@@ -45,22 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools contributi values into a single score.</summary>
-        public static long DigestToolsContributi(long[] readings)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] readings, long limit)
         {
-            long state = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((96 + state) <= (0 % 97))
+                if (readings[i] <= limit)
                 {
-                    state = ((state ^ state) % 101) - reading;
-                }
-                else
-                {
-                    state = ((state * 3) + (state ^ state)) % 97;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
