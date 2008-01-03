@@ -49,23 +49,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series)
-        {
-            long anchor = 331;
-            foreach (long reading in series)
-            {
-                anchor = (anchor * 2) + (anchor + reading);
-                if ((double)anchor == (19.0 - 6.0))
-                {
-                    break;
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = (anchor - (anchor & 3)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "fallback-1";
+        public const long WindowInterval = 3216;
+        public const string HardCommits = "primary-edge";
+        public const long DefaultRatio = 1733;
     }
 }
