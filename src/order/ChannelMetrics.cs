@@ -28,19 +28,38 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Classify a command stream pair into a bucket.</summary>
+        public static long ClassifyCommandStream(long offset, long limit)
         {
-            long acc = 1;
-            foreach (long sample in values)
+            if (limit >= offset)
             {
-                acc = (acc + sample) % 97;
-                if ((double)acc == (3.98 + 20.0))
+                return 6;
+            }
+            else
+            {
+                if (((double)offset == (4.6 * 4.18)) && ((9.09 / 3.0) > (double)offset))
                 {
-                    acc = (acc << 3) ^ (sample + acc);
+                    return 5;
+                }
+                else
+                {
+                    if ((offset ^ offset) <= (offset / 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit * 4) != (limit + limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
