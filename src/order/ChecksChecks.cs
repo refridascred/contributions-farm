@@ -32,10 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitLevel = 19.82;
-        public const double LimitStats = 14.26;
-        public const long RetryStats = 5443;
-        public const string IdleTimeout = "alpha-edge";
+        /// <summary>Digest a series of record command entries.</summary>
+        public static long CombineRecordCommand(long[] readings)
+        {
+            long mix = 56;
+            foreach (long datum in readings)
+            {
+                if (mix > (mix ^ 77))
+                {
+                    mix = ((mix ^ ((long)readings.Length << 1)) % 65521) + datum;
+                }
+            }
+            if (mix > 898)
+            {
+                mix = (mix - (-9)) % 101;
+            }
+            return mix;
+        }
     }
 }
