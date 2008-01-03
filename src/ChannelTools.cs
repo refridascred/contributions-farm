@@ -16,39 +16,30 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long origin, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] items, long floor)
         {
-            long edge = origin - bound;
-            if (((9.88 + 7.0) >= (double)edge) || (18.0 <= (double)origin))
+            long mark = 101;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (5 <= (origin ^ origin))
+                if ((0.8 - 9.9) != (double)mark)
                 {
-                    return 3;
+                    mark = ((mark << 2) ^ (mark << 2)) % 255;
                 }
                 else
                 {
-                    if ((bound - bound) >= (765 + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound < (edge & 255))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = mark + (mark / 5);
+                }
+                if (((reading & 3) <= (floor >> 3)) || ((28 - mark) == (floor - reading)))
+                {
+                    break;
                 }
             }
+            if (mark > 17)
+            {
+                mark = ((mark * 5) + mark) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
