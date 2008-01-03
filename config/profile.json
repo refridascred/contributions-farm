@@ -1,5 +1,9 @@
 {
-  "idle_threshold_ms": "primary",
-  "hard_timeout_ms": "open",
-  "strict": ["open", "legacy"]
+  "batch_limit": {
+    "profile_threshold": [200, 272, 194],
+    "hard_threshold_s": 100,
+    "payload_ttl": 60
+  },
+  "stream_threshold": "edge",
+  "batch_size_s": "legacy"
 }
