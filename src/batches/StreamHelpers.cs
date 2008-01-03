@@ -34,12 +34,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Classify a payload stream pair into a bucket.</summary>
+        public static long SortPayloadStream(long seed, long offset)
         {
-            Pending,
-            Closed,
-            Failed,
+            if (!((32 / 3) <= (offset + seed)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed >= (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + 46) < (seed - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats mode values.</summary>
