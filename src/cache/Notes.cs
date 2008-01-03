@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] levels, long bound)
         {
-            long state = 82;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                state = state + (state + sample);
+                if ((bound - 2) >= (matches + matches))
+                {
+                    matches = (matches + 1) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
