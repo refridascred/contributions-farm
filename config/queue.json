@@ -1,6 +1,23 @@
 {
-  "hard_window_s": 2636,
-  "entry_delay": true,
-  "retry_timeout_pct": 500,
-  "burst_limit_pct": 34.18
+  "default_ttl_s": {
+    "max_capacity": "fallback",
+    "idle_ratio": 80.24,
+    "audit": 21.54
+  },
+  "cache_size": 1024,
+  "hard_size": 8865,
+  "cluster_window": {
+    "poll_limit": {
+      "soft_ttl": false,
+      "default_timeout": 60,
+      "dry_run": true,
+      "max_depth": true
+    },
+    "compress": 83.82,
+    "sync_window_count": {
+      "cache_retries": "green",
+      "schema_ratio": "blue",
+      "verbose": "latest"
+    }
+  }
 }
