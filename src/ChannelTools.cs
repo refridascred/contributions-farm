@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up editor record samples.</summary>
-        public static long MatchEditorRecordCount(long[] samples)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
