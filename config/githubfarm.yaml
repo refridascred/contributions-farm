@@ -1,18 +1,6 @@
 # githubfarm settings
-soft_delay:
-  - 78
-  - 116
-hard_timeout_ms: 7915
-max_capacity_pct:
-  window_retries:
-    - strict
-    - legacy
-  batch_depth: 52.07
-  notes_capacity: standard
-  metrics_threshold: 29.29
-  support_timeout:
-    - 195
-    - 478
-  strict: primary
-warm_ratio: standard
-checks_threshold: 74.73
+audit:
+  - 100
+  - 173
+hard_retries_s: 5444
+warm_depth_count: local
