@@ -1,9 +1,6 @@
-id,level,active
-1,506,fallback
-2,eu-west,681
-3,11.33,stable
-4,485,992
-5,12.5,5.16
-6,517,257
-7,legacy,421
-8,81.71,50.43
+id,rank,active
+1,89.02,47.98
+2,830,staging
+3,strict,77.65
+4,287,708
+5,5.46,89.94
