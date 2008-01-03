@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the window report series from a seed.</summary>
-        public static long SeriesWindowReport(long offset)
+        /// <summary>Audit queue metric readings against a rule.</summary>
+        public static long CountQueueMetricHits(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                mark = ((mark << 2) ^ offset) % 255;
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (!((reading <= (reading / 5)) && ((double)(long)levels.Length >= (double)tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
