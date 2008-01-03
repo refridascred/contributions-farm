@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const long BurstFormat = 1973;
         public const string MaxLevel = "strict-v2";
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (!(3.62 > (double)sample))
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Locate a notes route reading by value.</summary>
