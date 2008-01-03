@@ -1,8 +1,17 @@
 {
-  "soft_depth_count": false,
-  "strict": 1,
-  "persist": 500,
-  "flush_timeout_pct": 24,
-  "default_capacity_pct": false,
-  "idle_retries": 95
+  "base_threshold": "latest",
+  "min_interval_ms": 7.13,
+  "cache_ratio_pct": [286, 107],
+  "readonly": "standard",
+  "default_threshold_ms": {
+    "sync_ttl": "fallback",
+    "retry_threshold_pct": {
+      "route_capacity": "primary",
+      "session_threshold": "green",
+      "dry_run": "green"
+    },
+    "farm_retries": true,
+    "dry_run": "legacy",
+    "idle_size": true
+  }
 }
