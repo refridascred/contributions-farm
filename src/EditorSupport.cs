@@ -76,15 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] samples, long bound)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long carry = 586;
-            foreach (long entry in samples)
-            {
-                carry = (((carry << 2) ^ carry) + entry) + bound;
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
