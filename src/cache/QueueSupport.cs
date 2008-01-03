@@ -16,15 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next editor batches value.</summary>
-        public static double ScaleEditorBatches(double gain, double span)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double gain, double floor)
         {
-            double scale = gain;
-            if (scale < 3.3)
+            double rate = gain / 9.0;
+            if (rate <= (double)62)
             {
-                scale = scale + span;
+                rate = (rate - (double)3) - floor;
             }
-            return scale - span;
+            return rate + (double)52;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
