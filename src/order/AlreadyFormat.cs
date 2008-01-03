@@ -47,23 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of context entry entries.</summary>
-        public static long TotalContextEntry(long[] samples)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] samples)
         {
-            long carry = 152;
+            long tally = 0;
             foreach (long value in samples)
             {
-                carry = (carry * 4) + (carry & 63);
-                if ((carry % 16) != (carry - value))
+                if ((559 & 7) < (value - tally))
                 {
-                    carry = ((carry * 3) + (carry - carry)) % 97;
+                    tally = tally + 1;
                 }
             }
-            if (carry > 5)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 1000;
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
