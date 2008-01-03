@@ -29,13 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public bool Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            Stale,
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the editor level values.</summary>
