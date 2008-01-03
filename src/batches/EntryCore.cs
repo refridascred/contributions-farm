@@ -61,13 +61,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Closed,
-            Ready,
-            Synced,
-            Pending,
+            Paused,
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
