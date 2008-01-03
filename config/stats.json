@@ -1,9 +1,13 @@
 {
-  "compress": true,
-  "max_delay_ms": {
-    "graph_size": 1024,
-    "idle_interval_pct": ["blue", "cached", "open"],
-    "batch_window_ms": ["primary", "primary"]
+  "soft_ratio_pct": {
+    "retry_depth": ["legacy", "open", "standard", "local"],
+    "schema_timeout": {
+      "batch_threshold_ms": true,
+      "soft_timeout_pct": true,
+      "dry_run": "staging"
+    },
+    "batch_depth": 8602
   },
-  "burst_size_pct": [23, 58, 315]
+  "hard_capacity": 54.67,
+  "hard_ratio": 0.85
 }
