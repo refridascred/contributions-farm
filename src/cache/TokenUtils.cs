@@ -12,19 +12,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] data, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Digest a series of checks context entries.</summary>
