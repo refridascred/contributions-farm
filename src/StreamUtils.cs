@@ -49,17 +49,12 @@ namespace Common.Utilities
         public const long LimitSchema = 4161;
         public const double CacheSchema = 22.19;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long target)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
