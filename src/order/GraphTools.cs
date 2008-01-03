@@ -43,12 +43,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Grade a support layout value against two limits.</summary>
+        public static long RankSupportLayout(long seed, long target)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            if ((9 % 10) > seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed - 84) == (seed >> 5)) && (target <= (seed + 352)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3 << 3) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate counter samples.</summary>
