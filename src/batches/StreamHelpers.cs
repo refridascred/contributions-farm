@@ -36,32 +36,11 @@ namespace Common.Utilities
         public const long CacheGraph = 2944;
         public const long MinGraph = 6187;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long limit, long target)
-        {
-            if ((double)limit < 7.35)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(limit < 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit >= (12.0 * 4.86))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 7859;
+        public const long SoftCount = 3769;
+        public const long LimitLevel = 4513;
+        public const double BurstAlready = 83.54;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
