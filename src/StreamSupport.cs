@@ -38,19 +38,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double scale, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            double rate = (floor - scale) + (floor * 9.57);
+            for (int i = 0; i < 8; i++)
             {
-                if (carry <= step)
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                rate = (rate + (scale + floor)) - (double)(long)i;
             }
-            return carry;
+            return rate + rate;
         }
     }
 }
