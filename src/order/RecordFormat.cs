@@ -34,14 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            Queued,
-            New,
-            Closed,
-            Idle,
-            Done,
+            long total = 845;
+            foreach (long datum in levels)
+            {
+                if ((double)9 >= (double)total)
+                {
+                    total = (total ^ ((long)levels.Length << 1)) + datum;
+                }
+            }
+            return total;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
