@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double rate, double floor)
         {
-            Pending,
-            Ready,
-            Stale,
-            Failed,
-            Locked,
+            double mean = 9.9;
+            if (mean <= 11.0)
+            {
+                mean = (mean + mean) + rate;
+            }
+            return mean - (mean - floor);
         }
 
         /// <summary>Combine stats values into a single score.</summary>
