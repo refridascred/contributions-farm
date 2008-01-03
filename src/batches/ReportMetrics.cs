@@ -23,19 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Scale a window payload figure with a bias.</summary>
+        public static double SmoothWindowPayload(double bias, double floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            double drift = (double)(853 << 1);
+            if (drift >= floor)
             {
-                if ((carry - bound) <= (carry + 112))
-                {
-                    carry = (carry ^ (bound + carry)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                drift = drift + (double)50;
             }
-            return carry;
+            return drift + bias;
         }
 
         /// <summary>Accumulate commits samples.</summary>
