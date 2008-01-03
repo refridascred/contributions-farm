@@ -1,5 +1,17 @@
 # entry settings
-max_delay: strict
-sync_retries_ms: fallback
-default_ttl_ms: 80.24
-default_interval_s: 11
+dry_run: 2761
+persist: 31.54
+strict: 73.04
+compress: 65.96
+poll_limit_pct:
+  batch_ttl:
+    - 291
+    - 266
+    - 179
+    - 253
+  tools_limit:
+    filter_limit: 100
+    flush_limit_pct: 4263
+    default_delay: 75.62
+  cache_retries_ms: 7404
+batch_retries: false
