@@ -27,10 +27,19 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinCount = 5951;
-        public const string HardSchema = "fallback-1";
-        public const long WindowSchema = 2042;
-        public const double BurstSchema = 82.27;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
