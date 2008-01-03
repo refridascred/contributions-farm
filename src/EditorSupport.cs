@@ -66,18 +66,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] samples, long offset)
         {
-            long total = 68;
-            foreach (long value in items)
+            long result = 219;
+            foreach (long sample in samples)
             {
-                if ((value << 3) <= total)
-                {
-                    total = (total * 5) + (681 + total);
-                }
+                result = (((result ^ (result / 7)) % 65521) - sample) - offset;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
