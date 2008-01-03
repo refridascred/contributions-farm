@@ -36,12 +36,38 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long offset, long limit)
         {
-            Retry,
-            Failed,
-            Pending,
+            if (((offset + offset) < limit) || ((double)limit <= (double)offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((2 - limit) <= limit) || ((20.0 - 9.5) <= (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)offset < (17.0 - 7.4)) || (limit < (limit % 100)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit % 2) <= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
