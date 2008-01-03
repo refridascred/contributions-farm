@@ -31,39 +31,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long offset)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long prev = seed ^ offset;
-            if ((seed % 100) > offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (prev > (seed / 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (4.3 >= (double)prev)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((prev + 1) < 625)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next metric value.</summary>
