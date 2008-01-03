@@ -48,22 +48,17 @@ namespace Common.Utilities
         public const string LimitRatio = "latest-v2";
         public const long WindowDepth = 6391;
 
-        /// <summary>Measure how many queue contributi samples are out of range.</summary>
-        public static long MeasureQueueContributiOutliers(long[] readings, long offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((569 % 7) <= (offset - count)) && (((2.62 + 5.36) != (double)count) && ((sample ^ offset) != (556 & 3))))
+                if (readings[i] == target)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
