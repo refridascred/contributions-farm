@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long offset)
         {
-            New,
-            Done,
-            Paused,
-            Failed,
+            if ((double)origin >= 16.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset >= 6.5)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin < (5 * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((14 - offset) <= offset) && ((double)origin >= (7.49 - 12.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
