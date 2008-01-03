@@ -54,12 +54,11 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double rate, double offset)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
+            double ratio = (double)(-91) / 8.0;
+            return ((ratio - (ratio - ratio)) + rate) + offset;
         }
     }
 }
