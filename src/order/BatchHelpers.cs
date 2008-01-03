@@ -30,18 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] readings, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((seen / 2) > entry) || ((double)seed > (8.5 / 5.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Pending,
+            Retry,
         }
     }
 }
