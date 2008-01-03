@@ -46,11 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public bool Limit { get; set; }
             public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
