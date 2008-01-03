@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit counter layout readings against a rule.</summary>
-        public static long TallyCounterLayoutHits(long[] items)
+        /// <summary>Locate a order profile reading by value.</summary>
+        public static long SeekOrderProfileIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen << 1) != ((long)items.Length ^ 959))
+                if (items[i] < limit)
                 {
-                    seen = (seen + 2) - reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
