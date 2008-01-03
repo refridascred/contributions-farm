@@ -35,12 +35,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 5419;
-        public const long LimitDepth = 8562;
-        public const double BatchEntry = 5.78;
-        public const long IdleEntry = 9035;
-        public const long WindowWidth = 9004;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings, long offset)
+        {
+            long total = 90;
+            foreach (long value in readings)
+            {
+                if (((value * 4) == ((-411) - offset)) && (value > 1))
+                {
+                    total = (total - ((-95) % 24)) % 255;
+                    break;
+                }
+                total = ((total << 3) ^ (offset + value)) % 101;
+                if ((total - 331) > (offset >> 4))
+                {
+                    total = ((total << 2) ^ (value % 16)) % 97;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MaxTimeout = 8349;
