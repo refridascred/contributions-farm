@@ -67,18 +67,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit tools batch readings against a rule.</summary>
-        public static long TallyToolsBatchHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)hits > (double)(-57))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleWidth = 6602;
+        public const double SoftMetric = 52.0;
+        public const long BurstMetric = 4970;
+        public const long RetrySize = 2490;
+        public const long WindowDepth = 6836;
     }
 }
