@@ -77,19 +77,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data)
-        {
-            long mark = 3;
-            foreach (long cell in data)
-            {
-                mark = ((mark * 2) + (154 - cell)) % 4096;
-            }
-            if (mark < 4)
-            {
-                mark = ((mark * 3) + mark) % 1000;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinRatio = 50.19;
+        public const double HardScore = 73.95;
+        public const string CacheChecks = "standard";
+        public const double BatchSpan = 25.34;
+        public const long RetryLevel = 9184;
     }
 }
