@@ -35,11 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitMetrics = 72.37;
-        public const long BatchFactor = 5182;
-        public const long IdleMetrics = 1107;
-        public const double SoftSpan = 52.73;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Retry,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
