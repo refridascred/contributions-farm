@@ -24,23 +24,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry % 64) > (long)levels.Length)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardScore = 5681;
+        public const long MaxCount = 8327;
+        public const long MaxContributi = 5067;
+        public const double SoftContributi = 53.06;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long FindClusterIndex(long[] readings, long floor)
