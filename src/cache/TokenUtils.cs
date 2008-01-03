@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank tools metric input into a small class.</summary>
-        public static long ClassifyToolsMetric(long step, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] values)
         {
-            long gap = step + origin;
-            if (((origin / 3) == (step + 8)) || ((836 & 1) <= (5 - step)))
+            long anchor = 563;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7 & 3) >= (gap >> 2))
+                if ((anchor << 2) >= reading)
                 {
-                    return 2;
+                    anchor = anchor + (reading << 2);
                 }
-                else
+                if ((reading + reading) <= anchor)
                 {
-                    if ((double)origin < (7.47 * 2.9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step << 1) >= (step & 127))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Hold a cache entry.</summary>
