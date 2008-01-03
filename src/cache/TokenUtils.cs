@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            Paused,
+            Ready,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Define account limits and defaults.</summary>
