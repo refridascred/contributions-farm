@@ -27,18 +27,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit cluster contributi readings against a rule.</summary>
-        public static long CountClusterContributiOutliers(long[] levels)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((item / 4) != (matches << 3))
+                if (value < target)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
