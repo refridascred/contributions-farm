@@ -22,13 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long origin, long limit)
         {
-            Retry,
-            Failed,
-            Synced,
-            Active,
+            if ((double)origin <= (8.68 - 15.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (7.0 < (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit < (78 % 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry phase values.</summary>
