@@ -19,11 +19,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double scale, double span)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double mean = span / 2.0;
-            return (mean - (double)3) + scale;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
