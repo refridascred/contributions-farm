@@ -1,7 +1,13 @@
 {
-  "warm_interval_pct": 100,
-  "min_delay_count": 19,
-  "burst_delay_count": 24.09,
-  "default_interval_ms": 4627,
-  "default_retries": true
+  "poll_ttl_pct": {
+    "layout_window": 19.05,
+    "max_limit": {
+      "audit": 7541,
+      "poll_size_pct": 1.91,
+      "min_retries": "cached"
+    },
+    "base_capacity_s": 77.84
+  },
+  "counter_ttl": 5,
+  "sync_timeout_pct": 5379
 }
