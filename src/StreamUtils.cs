@@ -35,13 +35,39 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long bound, long bound2)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long step = bound + bound2;
+            if ((bound2 & 31) > (bound - bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)bound2 >= (1.39 + 1.0)) || ((step << 1) > 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step > 5.1)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step & 15) < bound2) || ((9 + bound2) > 999))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two stream measurements.</summary>
