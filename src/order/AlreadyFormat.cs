@@ -66,18 +66,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] values, long limit)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double ratio2 = span;
+            if (ratio2 >= 2.0)
             {
-                if ((hits + limit) < (item & 3))
-                {
-                    hits = hits + 1;
-                }
+                ratio2 = (ratio2 + ratio2) - ratio;
             }
-            return hits;
+            else
+            {
+                ratio2 = ratio2 + (span + span);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = ratio2 - (double)(long)i;
+            }
+            return ratio2 + (ratio2 + 7.2);
         }
     }
 }
