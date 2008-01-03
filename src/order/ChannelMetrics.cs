@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseInterval = 72.34;
+        public const long HardBuffer = 5884;
+        public const long StepLevel = 2314;
+        public const double SoftBuffer = 31.18;
+        public const long HardRatio = 7392;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TotalQueue(long[] levels, long step)
