@@ -23,21 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Ready,
+            Active,
+            Stale,
         }
 
         /// <summary>Digest a series of account token entries.</summary>
