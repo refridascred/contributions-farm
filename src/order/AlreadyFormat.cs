@@ -28,12 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Done,
-            New,
-            Closed,
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
