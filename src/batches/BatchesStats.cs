@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a account channel reading.</summary>
-        public static double AdjustAccountChannel(double ratio, double bias)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long target)
         {
-            double gain = (double)92;
-            if (gain > gain)
+            long score = target;
+            for (int i = 0; i < 23; i++)
             {
-                gain = ((gain - (double)3) + ratio) - bias;
+                score = (score * 5) + target;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain - (gain - gain);
+            return score;
         }
 
         /// <summary>Hold a notes info.</summary>
