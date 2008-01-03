@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] items, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading % 7) <= (reading - offset))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    tally = tally + 1;
+                    result = ((result - ((long)i - result)) % 4096) - (long)i2;
+                    result = (result * 2) + result;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
