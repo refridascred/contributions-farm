@@ -58,19 +58,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double scale, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] levels, long offset)
         {
-            double gain = scale * 9.26;
-            if (gain >= (scale / 7.0))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                gain = (gain - (double)259) - span;
+                if (((5.4 - 15.0) == (double)matches) && ((matches - matches) >= (offset << 3)))
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (double)(-1);
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
