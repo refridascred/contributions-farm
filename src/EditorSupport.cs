@@ -58,12 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long bound)
         {
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry + ((-498) >> 4)) % 1000;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Combine report values into a single score.</summary>
