@@ -42,14 +42,21 @@ namespace Common.Utilities
         public const long WindowProfile = 2193;
         public const long CacheProfile = 5869;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Iterate the metric account series from a seed.</summary>
+        public static long SeriesMetricAccount(long offset)
         {
-            New,
-            Ready,
-            Queued,
-            Closed,
-            Done,
+            long result = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result - ((-2) / 8)) % 255;
+                long next = result * 2;
+                if (!(841 >= (offset + next)))
+                {
+                    next = (next << 2) ^ (offset + offset);
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Combine context values into a single score.</summary>
