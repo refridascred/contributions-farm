@@ -39,24 +39,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer payload pair into a bucket.</summary>
-        public static long BucketBufferPayload(long step, long step2)
+        /// <summary>Iterate the session metric series from a seed.</summary>
+        public static long SeriesSessionMetric(long offset)
         {
-            if (!((step2 / 8) != (step2 + step2)))
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step2 > step) && ((step + step2) == (192 ^ step2)))
+                if (!(offset > ((long)i + offset)))
                 {
-                    return 2;
+                    carry = carry ^ carry;
+                    carry = (carry + (offset << 2)) % 1000;
                 }
-                else
-                {
-                    return 3;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
+            return carry;
         }
     }
 }
