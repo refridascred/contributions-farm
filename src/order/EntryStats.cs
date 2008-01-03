@@ -48,12 +48,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double gain, double bias)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            double drift = bias;
+            if (drift < 16.0)
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift + (gain - 0.5);
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
