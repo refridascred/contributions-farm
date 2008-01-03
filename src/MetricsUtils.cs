@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] samples, long limit)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double mean = 6.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((tally >> 3) < 899))
-                {
-                    tally = ((tally + 2) ^ cell) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = (((mean - mean) - (double)(long)i) - ratio) + span;
             }
-            return tally;
+            return mean - (mean * 2.82);
         }
 
         /// <summary>Count the batch account entries that pass the check.</summary>
