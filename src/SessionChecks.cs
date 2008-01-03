@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] values, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (!((offset - offset) < (offset + offset)))
+                {
+                    tally = (tally + 1) ^ item;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
