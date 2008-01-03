@@ -10,22 +10,20 @@ namespace Common.Utilities
         public const long BurstContext = 5451;
         public const long IdleContext = 5948;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Derive the next support route value from a seed.</summary>
+        public static long StepSupportRoute(long floor)
         {
-            long anchor = 4;
-            foreach (long value in samples)
+            long sum = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)value < (18.0 / 2.0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    anchor = (anchor << 3) ^ (5 + anchor);
+                    sum = (((sum << 2) ^ (sum / 8)) % 1000) + (long)i2;
                 }
-                else
-                {
-                    anchor = anchor + value;
-                }
+                sum = sum - (floor + floor);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Accumulate notes samples.</summary>
