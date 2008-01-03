@@ -31,18 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5419;
+        public const long LimitDepth = 8562;
+        public const double BatchEntry = 5.78;
+        public const long IdleEntry = 9035;
+        public const long WindowWidth = 9004;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MaxTimeout = 8349;
