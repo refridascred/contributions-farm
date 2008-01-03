@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a command stats.</summary>
