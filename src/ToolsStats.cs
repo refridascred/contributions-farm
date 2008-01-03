@@ -42,32 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long seed, long origin)
+        /// <summary>Check that every metrics token entry stays within the limit.</summary>
+        public static bool ValidateMetricsTokenBounds(long[] readings, long seed)
         {
-            long lane = seed - origin;
-            if (((origin + lane) == (seed + seed)) || ((92 - seed) > (368 ^ seed)))
+            bool found = true;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin & 255) < seed) && (seed < (seed / 2)))
+                if (sample > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((lane * 3) >= origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Match up channel samples.</summary>
