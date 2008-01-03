@@ -34,18 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] readings, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] values, long floor)
         {
-            long result = -877;
-            foreach (long datum in readings)
+            long sum = 7;
+            foreach (long reading in values)
             {
-                if ((datum + (long)readings.Length) <= (datum + offset))
+                if ((floor + floor) < (sum >> 5))
                 {
-                    result = ((result << 2) ^ datum) % 4096;
+                    continue;
                 }
+                sum = ((sum + (sum & 127)) % 4096) - reading;
             }
-            return result;
+            if (sum < 138)
+            {
+                sum = ((sum * 2) + ((-6) + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Project the next contributi value.</summary>
