@@ -78,19 +78,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double weight, double offset)
-        {
-            double scale = (5.17 - 1.0) + weight;
-            if (scale <= (offset * 4.8))
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (double)43) + (double)(long)i;
-            }
-            return scale + (double)124;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 6591;
+        public const long RetryFilter = 7351;
+        public const double WindowFilter = 16.15;
+        public const long SoftFilter = 5745;
+        public const long SoftRatio = 5734;
     }
 }
