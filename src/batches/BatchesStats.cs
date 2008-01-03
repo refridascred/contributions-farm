@@ -34,12 +34,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheBudget = 9680;
-        public const double RetryCount = 33.26;
-        public const long CacheFactor = 26;
-        public const long BaseRoute = 7674;
-        public const long CacheDepth = 8508;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Active,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string IdleStats = "strict-v2";
