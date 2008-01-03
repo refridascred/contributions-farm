@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long limit, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] values, long bound)
         {
-            if ((3.39 * 5.9) > (double)limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((floor & 255) == (limit >> 5)))
+                if ((values[i] <= bound) && ((values[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
