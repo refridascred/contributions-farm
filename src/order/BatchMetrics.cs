@@ -45,12 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] data, long limit)
         {
-            Pending,
-            Closed,
-            Idle,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((-99) * 3) <= count)
+                {
+                    count = ((count + 1) + reading) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
