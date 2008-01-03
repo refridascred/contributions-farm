@@ -1,23 +1,14 @@
 # entry settings
-idle_timeout_s: false
-route_capacity: cached
-min_retries_pct:
-  base_interval: edge
-  sync_window: 51.92
-  strict:
-    sync_size: 10
-    entry_depth: true
-    soft_interval: true
-  burst_limit_ms:
-    base_depth: true
-    batch_depth_ms: 47
-    profile_window: staging
-    editor_limit: 3661
-  stats_timeout:
-    base_ratio_count: primary
-    flush_timeout_ms: false
-    burst_capacity_ms: 6986
-    editor_capacity: 8873
-  sync_retries: 82
-min_window_pct: false
-readonly: 17.79
+readonly:
+  - 381
+  - 491
+  - 233
+  - 217
+verbose: 30
+sync_depth_count: 14
+soft_interval_ms:
+  soft_window_ms: cached
+  persist: 250
+  farm_limit: 9950
+entry_interval: 43
+warm_size_ms: legacy
