@@ -68,17 +68,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] values, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the batch state values.</summary>
