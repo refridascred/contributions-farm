@@ -40,14 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Closed,
-            Done,
-            New,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 9721;
+        public const long WindowRatio = 3690;
+        public const long BurstNotes = 2954;
+        public const long BurstDepth = 2585;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] items, long step)
