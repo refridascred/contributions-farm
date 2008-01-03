@@ -25,23 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                long edge = (long)i - (37 - floor);
-                mix = ((mix * 2) + 5) % 101;
-                if ((double)mix == (double)edge)
-                {
-                    edge = ((edge * 2) + (edge - mix)) % 4096;
-                    mix = mix + (533 >> 3);
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 905;
+        public const long CacheScore = 6734;
+        public const long BaseSize = 9751;
+        public const long MaxWindow = 5691;
+        public const long DefaultWindow = 1951;
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] levels)
