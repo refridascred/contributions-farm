@@ -23,17 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first record channel entry that matches the target.</summary>
-        public static long LookupRecordChannelIndex(long[] series, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = rate;
+            if (weight >= (weight * 2.9))
             {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
+                weight = weight - (weight - floor);
             }
-            return -1;
+            else
+            {
+                weight = weight + rate;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define record limits and defaults.</summary>
