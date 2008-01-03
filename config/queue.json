@@ -1,15 +1,19 @@
 {
-  "metric_ratio": "standard",
-  "audit": 18.94,
-  "sync_threshold": {
-    "strict": 37.1,
-    "tools_window": 21,
-    "idle_limit_count": 58.83,
-    "flush_timeout_count": ["standard", "latest", "blue"],
-    "dry_run": "fallback",
-    "enabled": true
+  "warm_retries_count": 500,
+  "cache_limit_ms": "open",
+  "buffer_timeout": {
+    "dry_run": "local",
+    "enabled": {
+      "warm_ratio_ms": 30.78,
+      "persist": 236,
+      "min_interval_count": 53.82,
+      "verbose": 3.14,
+      "flush_interval_s": 4.88,
+      "strict": 14
+    },
+    "readonly": true,
+    "min_window_pct": ["staging", "strict", "strict", "staging"]
   },
-  "hard_depth_ms": 500,
-  "persist": false,
-  "profile_ttl": true
+  "soft_limit_s": 1024,
+  "notes_threshold": 60
 }
