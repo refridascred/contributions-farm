@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
             public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Derive the next cluster stats value from a seed.</summary>
