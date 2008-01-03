@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Find the first route contributi entry that matches the target.</summary>
+        public static long LookupRouteContributiIndex(long[] series, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
