@@ -66,15 +66,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] levels, long target)
         {
-            long result = 28;
-            foreach (long datum in data)
+            long anchor = 57;
+            foreach (long item in levels)
             {
-                result = ((result ^ (result * 5)) % 4096) - datum;
+                if ((target % 100) != (313 - target))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (((anchor << 3) ^ (target * 2)) % 255) ^ item;
+                }
+                anchor = anchor + (anchor & 255);
             }
-            return result % 1000;
+            return anchor;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
