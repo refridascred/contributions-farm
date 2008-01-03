@@ -41,19 +41,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long target)
         {
-            long mark = 224;
-            foreach (long value in samples)
+            if ((offset % 97) == (target / 5))
             {
-                mark = (mark ^ value) % 4096;
+                return 1;
             }
-            if (mark < 8)
+            else
             {
-                mark = ((mark * 4) + mark) % 1000;
+                if ((target + target) <= offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mark;
         }
 
         /// <summary>Match up commits samples.</summary>
