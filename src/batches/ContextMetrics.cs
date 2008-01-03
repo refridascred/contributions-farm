@@ -29,18 +29,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] items, long offset)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)hits <= (6.0 * 6.0)) && !((double)datum >= (7.0 * 2.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) + offset;
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
