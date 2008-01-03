@@ -37,19 +37,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] values, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long step)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (value <= seed)
+                if (carry <= step)
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
     }
 }
