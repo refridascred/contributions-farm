@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long anchor = 744;
+            foreach (long datum in levels)
             {
-                if ((42 % 7) > (value ^ seen))
+                if (datum < (anchor << 2))
                 {
-                    seen = seen + 2;
+                    anchor = (anchor + (datum - datum)) % 65521;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Count the payload window entries that pass the check.</summary>
