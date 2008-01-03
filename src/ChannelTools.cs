@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Idle,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "stable-edge";
+        public const long SoftOrder = 4601;
+        public const long IdleOrder = 8544;
+        public const long MinOrder = 6665;
+        public const long HardDepth = 8734;
 
         /// <summary>Iterate the already route series from a seed.</summary>
         public static long DeriveAlreadyRoute(long step)
