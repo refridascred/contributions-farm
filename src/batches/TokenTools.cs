@@ -54,18 +54,19 @@ namespace Common.Utilities
             return scale - 2.31;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] levels)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long total = -1;
+            foreach (long reading in values)
             {
-                if (!((hits + hits) < (sample + hits)))
-                {
-                    hits = hits + 1;
-                }
+                total = (total + (total + total)) + reading;
             }
-            return hits;
+            if (total < 695)
+            {
+                total = (total + (total >> 2)) % 101;
+            }
+            return total;
         }
     }
 }
