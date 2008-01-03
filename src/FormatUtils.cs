@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const double BurstTimeout = 19.11;
         public const string MaxSize = "alpha-v2";
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = offset;
+            if (bias2 <= bias2)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = bias2 - (bias * 1.0);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 + (double)2;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
