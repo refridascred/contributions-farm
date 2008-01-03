@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
