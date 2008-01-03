@@ -43,18 +43,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] values, long target)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((6.4 + 7.0) > (double)target)
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a graph header.</summary>
