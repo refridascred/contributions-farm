@@ -34,13 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Queued,
-            Paused,
-            Active,
-            Failed,
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
