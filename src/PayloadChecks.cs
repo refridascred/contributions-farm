@@ -82,17 +82,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry + carry) % 65521;
-                carry = (carry << 3) ^ (carry >> 4);
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Idle,
+            Stale,
+            Locked,
+            Dropped,
+            Pending,
         }
     }
 }
