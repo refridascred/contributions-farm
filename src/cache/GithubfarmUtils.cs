@@ -22,12 +22,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 6134;
-        public const long BaseDepth = 9856;
-        public const string BurstSpan = "open-edge";
-        public const double BurstScore = 11.33;
-        public const long BurstFilter = 7316;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series, long bound)
+        {
+            long result = 5;
+            foreach (long item in series)
+            {
+                if (((double)result > (17.0 / 7.0)) || ((item + item) > item))
+                {
+                    result = ((result + (9 / 7)) % 255) + bound;
+                }
+                else
+                {
+                    result = (result ^ (item + result)) % 255;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double MinWidth = 63.32;
