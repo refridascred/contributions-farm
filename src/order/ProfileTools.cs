@@ -45,17 +45,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] data, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 3;
+            foreach (long entry in levels)
             {
-                if ((data[i] <= offset) && ((data[i] % 2) == 0))
+                if ((entry >> 1) <= entry)
                 {
-                    return (long)i;
+                    result = (result * 4) + result;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
