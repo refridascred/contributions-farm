@@ -1,6 +1,4 @@
 # support settings
-poll_threshold: 2288
-strict: 17
-audit: green
-poll_depth_count: fallback
-burst_retries_s: latest
+cache_interval: true
+account_capacity: 56
+min_capacity: green
