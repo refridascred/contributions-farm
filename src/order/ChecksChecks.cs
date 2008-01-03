@@ -34,22 +34,19 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Audit payload queue readings against a rule.</summary>
-        public static long MeasurePayloadQueueHits(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mark = 2;
+            foreach (long datum in data)
             {
-                if (!((reading - tally) >= (tally % 5)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = (mark + step) ^ datum;
             }
-            return tally;
+            if (mark < 2)
+            {
+                mark = (mark ^ step) % 101;
+            }
+            return mark % 4096;
         }
     }
 }
