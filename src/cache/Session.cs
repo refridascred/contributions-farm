@@ -37,19 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] samples, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] samples)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (value < origin)
+                if (matches > (matches ^ matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Check that every order batch entry stays within the limit.</summary>
