@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] samples, long bound)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long limit)
         {
-            long state = -29;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state - bound) % 97) + reading;
-                if ((double)93 <= (double)state)
+                if (items[i] > limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Hold a support record.</summary>
