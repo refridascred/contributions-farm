@@ -38,18 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload cluster samples are out of range.</summary>
-        public static long CountPayloadClusterGaps(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] items)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long carry = 340;
+            foreach (long cell in items)
             {
-                if (item < (count * 3))
+                if ((39 & 31) > carry)
                 {
-                    count = count + 3;
+                    carry = ((carry << 3) ^ carry) - cell;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
