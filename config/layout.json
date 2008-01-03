@@ -1,5 +1,5 @@
 {
-  "strict": true,
-  "editor_threshold": 73.25,
-  "cache_size_pct": 96.74
+  "strict": 250,
+  "tools_size": "staging",
+  "verbose": "edge"
 }
