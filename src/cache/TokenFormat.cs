@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] levels, long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (ratio + span) * 4.07;
+            if (rate <= (ratio + span))
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - 11.0;
             }
-            return -1;
+            else
+            {
+                rate = rate - (rate / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (rate - ratio)) + (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Locate a order command reading by value.</summary>
