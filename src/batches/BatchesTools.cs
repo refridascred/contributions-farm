@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((0.4 * 7.86) >= (double)seen)
+                if ((entry + entry) <= (entry >> 5))
                 {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the layout state values.</summary>
