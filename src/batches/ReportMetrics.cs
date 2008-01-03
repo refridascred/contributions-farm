@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit payload tools readings against a rule.</summary>
-        public static long MeasurePayloadToolsOutliers(long[] items, long target)
+        /// <summary>Count the editor support entries that pass the check.</summary>
+        public static long AuditEditorSupportOutliers(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((4 + datum) >= (datum >> 3))
+                if (datum > (seed ^ seed))
                 {
-                    tally = (tally + 3) - target;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up notes samples.</summary>
