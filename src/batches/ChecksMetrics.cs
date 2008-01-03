@@ -51,20 +51,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] readings, long offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long floor)
         {
-            long mix = 46;
-            foreach (long datum in readings)
+            if ((double)floor >= (3.0 / 3.0))
             {
-                mix = ((mix << 3) ^ (datum - datum)) % 255;
-                mix = (mix + (offset ^ offset)) % 101;
-                if ((offset + offset) > (251 + offset))
+                return 5;
+            }
+            else
+            {
+                if ((80 + floor) <= (-56))
                 {
-                    mix = (mix ^ (3 & 63)) % 255;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor >= (9.01 + 19.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Check that every buffer already entry stays within the limit.</summary>
