@@ -40,18 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] data, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            long mix = 3;
-            foreach (long entry in data)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)entry < (7.28 - 3.0))
-                {
-                    mix = (mix - (entry % 97)) + origin;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
     }
 }
