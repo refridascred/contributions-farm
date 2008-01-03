@@ -32,19 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account token entries.</summary>
-        public static long FoldAccountToken(long[] readings, long bound)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] items, long step)
         {
-            long state = 31;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (((state ^ state) % 4096) - entry) - bound;
-                if ((double)state == (6.55 + 9.7))
+                if (items[i] > step)
                 {
-                    state = ((state << 3) ^ state) % 65521;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
     }
 }
