@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double weight, double span)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double rate = weight;
-            if (rate < (3.27 * 7.15))
-            {
-                rate = (rate - (rate / 4.0)) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + weight;
+            Locked,
+            New,
+            Idle,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
