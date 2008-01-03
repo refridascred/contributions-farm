@@ -42,11 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleStats = "strict-v2";
+        public const double BurstSpan = 65.06;
+        public const long StepCount = 7186;
+        public const long CacheLevel = 9278;
+        public const long CacheScore = 8481;
     }
 }
