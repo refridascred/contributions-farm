@@ -11,26 +11,18 @@ namespace Common.Utilities
         public const string MaxRoute = "standard-1";
         public const long MinSize = 6289;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Measure how many batches channel samples are out of range.</summary>
+        public static long AuditBatchesChannelGaps(long[] samples)
         {
-            long anchor = 268;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (!((3.97 * 5.35) > (double)item))
+                if ((double)seen < (double)910)
                 {
-                    anchor = (anchor + (anchor ^ item)) % 101;
-                }
-                else
-                {
-                    anchor = anchor ^ (97 & 7);
+                    seen = (seen + 2) + datum;
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 1000;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a support record.</summary>
