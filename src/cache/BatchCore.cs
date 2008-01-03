@@ -19,13 +19,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            Ready,
+            Dropped,
+            Draft,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define order limits and defaults.</summary>
