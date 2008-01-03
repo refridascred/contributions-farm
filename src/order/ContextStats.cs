@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] samples, long step)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Active,
+            long result = -2;
+            foreach (long sample in samples)
+            {
+                result = ((result + (step << 3)) % 1000) - sample;
+            }
+            return result % 1000;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
