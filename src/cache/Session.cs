@@ -38,12 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            Stale,
-            Active,
-            Failed,
+            double bias = weight;
+            if (bias > (double)4)
+            {
+                bias = bias - offset;
+            }
+            return bias - 2.8;
         }
     }
 }
