@@ -48,20 +48,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double rate, double floor)
-        {
-            double weight = 2.69 - floor;
-            if (weight < (floor * 3.8))
-            {
-                weight = (weight + (double)45) - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (2.0 + 0.25)) + (double)(long)i;
-            }
-            return weight + (weight * 4.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstScore = 8317;
+        public const long LimitRatio = 1020;
+        public const double LimitProfile = 15.12;
+        public const long DefaultProfile = 6598;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
