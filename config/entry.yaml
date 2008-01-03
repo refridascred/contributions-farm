@@ -1,20 +1,20 @@
 # entry settings
-poll_timeout_pct: 7.89
-strict:
-  strict: true
-  persist: 47.99
-  retry_ratio_count: 67.08
-readonly:
-  max_timeout_count: local
-  dry_run: 36.78
-  strict:
-    - primary
-    - blue
-  readonly: 2222
-  persist:
-    - 183
-    - 216
-    - 191
-burst_retries:
-  - stable
-  - eu-west
+soft_window_count:
+  order_depth:
+    - fallback
+    - edge
+    - legacy
+  default_interval_s: latest
+  base_delay: 21
+  persist: 2474
+  record_retries: 80
+  default_retries: 48.32
+persist: primary
+dry_run:
+  - blue
+  - primary
+format_ratio:
+  - blue
+  - strict
+  - open
+  - primary
