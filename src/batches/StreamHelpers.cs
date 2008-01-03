@@ -13,20 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((3 % 3) != ((long)i - origin))
-                {
-                    carry = (carry ^ (carry / 5)) % 65521;
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
