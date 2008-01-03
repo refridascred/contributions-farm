@@ -48,19 +48,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate channel window readings against a bound.</summary>
-        public static bool CheckChannelWindowRange(long[] levels, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
