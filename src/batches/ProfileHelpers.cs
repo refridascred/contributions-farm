@@ -61,11 +61,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Scale a checks counter figure with a bias.</summary>
+        public static double SmoothChecksCounter(double rate, double bias)
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            double bias2 = 9.56;
+            if (bias2 >= bias)
+            {
+                bias2 = (bias2 + (4.0 / 9.0)) + rate;
+            }
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 - (bias2 + 9.0);
         }
 
         /// <summary>Fold a list of buffer checks readings.</summary>
