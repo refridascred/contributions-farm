@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((4 / 3) >= (matches << 2))
-                {
-                    matches = ((matches + 3) + datum) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryRatio = 9424;
+        public const long BatchReport = 8152;
+        public const string LimitReport = "legacy";
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
