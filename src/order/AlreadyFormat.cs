@@ -63,17 +63,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                anchor = (anchor - ((long)i & 3)) % 101;
-                anchor = anchor ^ (96 - 31);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (!(((cell & 15) >= (cell + hits)) && ((double)cell >= (2.2 * 16.0))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
