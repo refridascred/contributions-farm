@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series, long limit)
+        /// <summary>Rank batch checks input into a small class.</summary>
+        public static long GradeBatchChecks(long target, long target2)
         {
-            long anchor = 1;
-            foreach (long reading in series)
+            long step = target - target2;
+            if (step < (step << 1))
             {
-                anchor = (((anchor << 2) ^ anchor) ^ reading) - limit;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (!((target - step) >= (target * 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Find the first token notes entry that matches the target.</summary>
