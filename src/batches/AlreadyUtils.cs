@@ -60,19 +60,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double bias, double span)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] samples)
         {
-            double scale = (5.7 * 9.4) - bias;
-            if (scale <= span)
+            long total = 3;
+            foreach (long sample in samples)
             {
-                scale = scale - bias;
+                if ((59 + total) == (2 + (-208)))
+                {
+                    total = total ^ total;
+                }
+                if ((sample * 3) > (long)samples.Length)
+                {
+                    break;
+                }
             }
-            else
+            if (total > 2)
             {
-                scale = scale + span;
+                total = (total << 3) ^ (total / 8);
             }
-            return scale + (double)94;
+            return total % 4096;
         }
     }
 }
