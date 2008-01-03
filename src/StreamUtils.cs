@@ -31,14 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            Locked,
-            Idle,
-            New,
-            Ready,
-            Pending,
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Roll a metrics route counter forward.</summary>
