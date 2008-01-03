@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 621;
-        public const long BurstTools = 6060;
-        public const double BaseDepth = 63.02;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Pending,
+            Idle,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool ValidateMetricBounds(long[] samples, long step)
