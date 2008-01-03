@@ -94,19 +94,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long origin, long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            if ((step / 6) < (origin - step))
             {
-                if (entry != target)
+                return 6;
+            }
+            else
+            {
+                if (step > (origin + origin))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + step) >= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step == (1.39 / 5.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
