@@ -31,11 +31,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 8221;
-        public const long BurstFactor = 5562;
-        public const long RetryProfile = 2699;
-        public const long CacheProfile = 3904;
-        public const string BatchProfile = "stable-edge";
+        /// <summary>Audit batch buffer readings against a rule.</summary>
+        public static long TallyBatchBufferMatches(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((seed ^ seed) >= (seed + entry))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
