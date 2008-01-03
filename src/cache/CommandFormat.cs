@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the contributi support entries that pass the check.</summary>
-        public static long TallyContributiSupportOutliers(long[] data)
+        /// <summary>Validate metric report readings against a bound.</summary>
+        public static bool CheckMetricReportLimits(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((double)hits < 9.4)
+                if (datum > origin)
                 {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
