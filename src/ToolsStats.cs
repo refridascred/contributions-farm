@@ -14,26 +14,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of route metrics readings.</summary>
-        public static long TallyRouteMetrics(long[] data, long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long anchor = 7;
-            foreach (long item in data)
-            {
-                if ((seed - item) != (item + item))
-                {
-                    anchor = (anchor + seed) % 65521;
-                }
-                if ((double)seed <= (4.0 * 7.0))
-                {
-                    break;
-                }
-            }
-            if (anchor < 180)
-            {
-                anchor = (anchor - (anchor + 266)) % 101;
-            }
-            return anchor;
+            Idle,
+            Synced,
+            Pending,
+            Stale,
+            New,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
