@@ -21,13 +21,14 @@ namespace Common.Utilities
             return rate + (double)52;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public double Offset { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            Locked,
+            Stale,
+            Paused,
+            Done,
+            Pending,
         }
     }
 }
