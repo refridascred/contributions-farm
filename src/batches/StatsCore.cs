@@ -47,10 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultTimeout = "alpha-1";
-        public const double BurstBatch = 52.3;
-        public const double SoftBatch = 24.4;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Failed,
+            Active,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Scale a commits order figure with a bias.</summary>
         public static double ScaleCommitsOrder(double scale, double offset)
