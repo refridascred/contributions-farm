@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the contributi support entries that pass the check.</summary>
+        public static long TallyContributiSupportOutliers(long[] data)
         {
-            Draft,
-            Idle,
-            New,
-            Active,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)hits < 9.4)
+                {
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the session state values.</summary>
