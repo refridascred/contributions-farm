@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double IdleRatio = 51.94;
         public const long SoftFactor = 2919;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
+            long result = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)(long)i == (double)offset) && ((double)(long)i == (7.0 - 16.0)))
+                {
+                    result = (result << 2) ^ (offset + offset);
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
