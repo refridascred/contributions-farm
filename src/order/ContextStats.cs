@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long step)
+        /// <summary>Blend two session metric measurements.</summary>
+        public static double AdjustSessionMetric(double bias, double offset)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            double weight = (double)((-495) % 5);
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                weight = ((weight + bias) + (double)(long)i) - offset;
             }
-            return total;
+            return weight - (double)533;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
