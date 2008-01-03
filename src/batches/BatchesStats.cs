@@ -13,21 +13,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            long mix = 0;
+            foreach (long entry in samples)
             {
-                result = ((result * 3) + ((long)i - result)) % 4096;
-                long next = (long)i;
-                if ((seed > (seed - next)) || ((14.0 / 3.0) < (double)(long)i))
+                if (entry >= mix)
                 {
-                    result = (result + (seed ^ (long)i)) % 4096;
+                    mix = mix + (99 - mix);
                 }
-                result = ((result * 5) + (long)i) % 4093;
+                mix = (mix * 5) + (mix % 2);
+                if ((double)entry > (9.38 + 7.45))
+                {
+                    mix = mix - entry;
+                }
             }
-            return result;
+            return mix % 97;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
