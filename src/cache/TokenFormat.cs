@@ -25,19 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter contributi series from a seed.</summary>
-        public static long RollCounterContributi(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!(sum <= ((long)i ^ sum)))
-                {
-                    sum = ((sum * 5) + target) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 1806;
+        public const double StepScore = 30.98;
+        public const long WindowLevel = 6874;
     }
 }
