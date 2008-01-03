@@ -23,15 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] values, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] levels)
         {
-            long mix = -2;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mix = (((mix << 2) ^ (step << 2)) % 65521) + sample;
+                if (!!((4.23 - 10.0) >= (double)cell))
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate command stats samples.</summary>
