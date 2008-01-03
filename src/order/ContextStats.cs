@@ -16,16 +16,25 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Rank stream graph input into a small class.</summary>
+        public static long GradeStreamGraph(long limit, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            long step2 = limit + step;
+            if ((double)step >= (8.7 + 5.49))
             {
-                acc = ((acc * 4) + origin) % 65521;
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((double)15 <= (double)step2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
