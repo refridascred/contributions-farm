@@ -20,17 +20,21 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Find the first counter stats entry that matches the target.</summary>
-        public static long LocateCounterStatsIndex(long[] levels, long step)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
+            long count = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] <= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
