@@ -22,11 +22,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleCount = 5909;
-        public const string IdleLevel = "strict-1";
-        public const long BatchWindow = 9848;
-        public const long MaxFactor = 4533;
-        public const string IdleWindow = "latest";
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
