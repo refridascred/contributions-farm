@@ -1,8 +1,7 @@
 # entry settings
-commits_depth: 5065
-hard_interval:
-  base_delay_pct: 87.26
-  warm_threshold: primary
-  default_window: 4504
-  cache_delay: 32
-audit: eu-west
+base_delay_count: 30.24
+cache_window: 75.53
+commits_depth: 6.26
+already_limit: 500
+base_window: local
+audit: green
