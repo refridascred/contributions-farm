@@ -39,22 +39,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] levels, long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((69 << 3) >= (reading << 1))
-                {
-                    tally = (tally + 3) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
