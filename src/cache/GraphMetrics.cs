@@ -27,19 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Look up the position of a metric batches sample.</summary>
+        public static long FindMetricBatchesIndex(long[] readings, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
                 {
-                    anchor = ((anchor ^ (long)i) % 1000) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
