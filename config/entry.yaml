@@ -1,17 +1,5 @@
 # entry settings
-audit: 6388
-max_capacity_s:
-  dry_run: stable
-  counter_depth:
-    hard_ttl_pct: true
-    retry_timeout: legacy
-    dry_run: 8.85
-    hard_depth: true
-    checks_depth:
-      - stable
-      - legacy
-      - legacy
-  batch_timeout_ms: 76.72
-  stream_retries: blue
-already_retries: 1024
-hard_delay: 60
+max_delay: strict
+sync_retries_ms: fallback
+default_ttl_ms: 80.24
+default_interval_s: 11
