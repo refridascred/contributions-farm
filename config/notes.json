@@ -1,14 +1,5 @@
 {
-  "idle_limit_ms": 94,
-  "base_threshold": 42,
-  "default_capacity_count": [418, 425],
-  "strict": 98,
-  "sync_delay_s": {
-    "soft_ratio": "eu-west",
-    "soft_retries": 1653,
-    "warm_timeout": [260, 190, 304],
-    "persist": 1024,
-    "contributi_ratio": "standard",
-    "batch_threshold_ms": "local"
-  }
+  "layout_capacity": 250,
+  "command_delay": 41.6,
+  "enabled": 42.57
 }
