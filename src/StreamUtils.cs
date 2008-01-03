@@ -67,14 +67,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] values)
         {
-            Retry,
-            Stale,
-            Pending,
-            Paused,
-            Draft,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!(12.0 <= (double)value) || ((double)value != (double)tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
