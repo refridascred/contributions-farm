@@ -53,19 +53,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double bias, double offset)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            double scale = 2.7 + (double)0;
-            if (scale <= (offset / 9.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - scale) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - (offset + offset);
+            return seen;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
