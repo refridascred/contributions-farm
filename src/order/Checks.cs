@@ -21,21 +21,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up token record samples.</summary>
-        public static long CompareTokenRecordCount(long[] series)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long bound, long bound2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = bound + bound2;
+            if ((double)prev >= (double)bound2)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((prev % 8) < (bound + prev)) || (bound >= (bound + prev)))
                 {
-                    if ((series[i] ^ series[j]) < 6)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound2 != (double)bound)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((prev % 100) <= prev)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the order kind values.</summary>
