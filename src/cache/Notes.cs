@@ -23,29 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long step)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                long seen = mix & 255;
-                if (((long)i - (long)i) < (step & 255))
-                {
-                    mix = ((mix << 3) ^ (step % 97)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (mix >> 3)) % 255;
-                    mix = (mix - (step + seen)) % 65521;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = ((mix ^ (664 + step)) % 65521) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
