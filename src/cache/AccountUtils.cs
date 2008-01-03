@@ -22,19 +22,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] values, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
     }
 }
