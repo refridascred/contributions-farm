@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] readings, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long mix = 790;
-            foreach (long entry in readings)
+            long state = 82;
+            foreach (long sample in items)
             {
-                if (mix <= (mix - seed))
-                {
-                    mix = mix ^ entry;
-                    mix = ((mix << 2) ^ (seed - seed)) % 255;
-                }
-                mix = mix ^ 99;
+                state = state + (state + sample);
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
