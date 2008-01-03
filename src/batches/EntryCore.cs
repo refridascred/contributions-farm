@@ -41,21 +41,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Scale a counter token figure with a bias.</summary>
+        public static double AdjustCounterToken(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = bias;
+            if (weight <= (ratio - ratio))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + bias;
             }
-            return matches;
+            else
+            {
+                weight = weight - (5.0 / 7.0);
+            }
+            return weight + (ratio / 8.0);
         }
 
         /// <summary>Hold a profile snapshot.</summary>
