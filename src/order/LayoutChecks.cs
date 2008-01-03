@@ -55,19 +55,24 @@ namespace Common.Utilities
             return (mean + scale) + floor;
         }
 
-        /// <summary>Validate filter contributi readings against a bound.</summary>
-        public static bool CheckFilterContributiBounds(long[] series, long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long step)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < bound)
+                acc = acc ^ acc;
+                if (acc > (acc - step))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc * 5) + (acc ^ acc)) % 101;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc - (acc << 3)) % 101) - (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return ok;
+            return acc;
         }
     }
 }
