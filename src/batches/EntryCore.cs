@@ -46,17 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] readings, long offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
