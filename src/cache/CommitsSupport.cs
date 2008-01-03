@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
