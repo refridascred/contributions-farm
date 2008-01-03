@@ -12,20 +12,24 @@ namespace Common.Utilities
         public const string BatchMetrics = "legacy-v2";
         public const string CacheScore = "local-1";
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long floor, long target)
         {
-            long anchor = 5;
-            foreach (long item in values)
+            if (((target + target) < target) && ((floor << 3) != (floor + 79)))
             {
-                long hits = anchor;
-                anchor = (anchor + (hits << 3)) % 255;
-                if (anchor >= (item * 2))
+                return 3;
+            }
+            else
+            {
+                if ((1 - floor) != (target >> 1))
                 {
-                    anchor = ((anchor * 5) + (anchor >> 3)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
