@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a stream graph value against two limits.</summary>
-        public static long SortStreamGraph(long target, long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long slot = target ^ step;
-            if ((slot & 7) > target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot << 1) >= 5)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((slot / 8) < (slot << 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((1 + 712) <= (slot + 205)) && ((double)slot != (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
