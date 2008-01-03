@@ -40,17 +40,32 @@ namespace Common.Utilities
         public const long RetryQueue = 4359;
         public const string MaxQueue = "open-edge";
 
-        /// <summary>Derive the next metrics batch value from a seed.</summary>
-        public static long RollMetricsBatch(long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long seed, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            long diff = seed + offset;
+            if ((seed / 8) <= (offset << 2))
             {
-                state = (state + 900) % 97;
-                state = (state + (state % 5)) % 1000;
-                state = ((state * 4) + (long)i) % 97;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (((seed + seed) == (18 + offset)) || ((diff >> 2) < offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed ^ (-45)) != (seed + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
