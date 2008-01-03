@@ -37,18 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Match up tools queue samples.</summary>
+        public static long CompareToolsQueueCount(long[] readings)
         {
-            long anchor = 22;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (716 >= (item % 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = anchor ^ ((long)samples.Length / 2);
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
