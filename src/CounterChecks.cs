@@ -21,26 +21,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of stats cluster readings.</summary>
-        public static long FoldStatsCluster(long[] items)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long result = 46;
-            foreach (long cell in items)
-            {
-                if (15.0 < (double)cell)
-                {
-                    result = ((result << 2) ^ (cell + cell)) % 101;
-                }
-                else
-                {
-                    result = result - (cell ^ cell);
-                }
-            }
-            if (result > 4)
-            {
-                result = result ^ (29 >> 3);
-            }
-            return result;
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
