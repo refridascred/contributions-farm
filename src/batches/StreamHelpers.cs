@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Done,
+            Paused,
+            Failed,
+            Draft,
+            Locked,
             Idle,
-            New,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
