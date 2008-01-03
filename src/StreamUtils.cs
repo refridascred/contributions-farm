@@ -31,15 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a metrics route counter forward.</summary>
