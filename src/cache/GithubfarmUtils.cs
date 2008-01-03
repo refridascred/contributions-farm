@@ -14,14 +14,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Active,
-            Locked,
-            Pending,
-            Idle,
-            Failed,
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a payload summary.</summary>
