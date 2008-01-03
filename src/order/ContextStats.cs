@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch cache values into a single score.</summary>
-        public static long ScoreBatchCache(long[] levels, long step)
+        /// <summary>Roll a commits stream counter forward.</summary>
+        public static long SeriesCommitsStream(long step)
         {
-            long state = 5;
-            foreach (long reading in levels)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((1.6 / 6.0) < (double)state)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    state = (state + reading) - step;
+                    mix = ((mix - (28 / 4)) % 97) + (long)i2;
+                    mix = mix - (mix + mix);
                 }
-                else
-                {
-                    state = (state - (52 + 600)) % 255;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
