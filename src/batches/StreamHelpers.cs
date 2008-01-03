@@ -36,11 +36,13 @@ namespace Common.Utilities
         public const long CacheGraph = 2944;
         public const long MinGraph = 6187;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 7859;
-        public const long SoftCount = 3769;
-        public const long LimitLevel = 4513;
-        public const double BurstAlready = 83.54;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
