@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] values, long origin)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen >= (origin >> 2)) && (value < (origin << 3)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
