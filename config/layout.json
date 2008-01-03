@@ -1,12 +1,11 @@
 {
-  "batches_timeout": 500,
-  "batch_retries_count": true,
-  "window_retries": [79, 218],
-  "dry_run": [258, 464, 472, 359],
-  "idle_ttl_count": "cached",
-  "batch_retries_ms": {
-    "tools_interval": ["staging", "open", "cached", "cached"],
-    "metric_timeout": 376,
-    "filter_interval": [410, 242, 398]
-  }
+  "persist": {
+    "base_timeout_s": 500,
+    "default_size_ms": [439, 78, 413, 57],
+    "audit": "open",
+    "strict": ["latest", "eu-west", "staging", "latest"],
+    "max_size_pct": ["fallback", "staging", "latest", "staging"]
+  },
+  "batches_ratio": 18.3,
+  "idle_ttl": 75
 }
