@@ -37,22 +37,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 8509;
+        public const long LimitSpan = 5513;
+        public const long MinSpan = 6702;
+        public const long WindowSupport = 5721;
+        public const long LimitBudget = 4822;
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
