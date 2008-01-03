@@ -47,23 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile metrics value against two limits.</summary>
-        public static long GradeProfileMetrics(long seed, long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long seed, long floor)
         {
-            long step = seed - limit;
-            if ((5 + limit) == ((-598) + limit))
+            if ((double)seed <= (double)floor)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (((seed - limit) > step) && ((step - limit) >= (seed + seed)))
+                if (8 <= (979 + floor))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    return 0;
                 }
             }
         }
