@@ -37,12 +37,31 @@ namespace Common.Utilities
             return rate - (rate / 6.0);
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long seed, long bound)
         {
-            Ready,
-            Active,
-            Synced,
+            if (((seed >> 3) == (seed ^ 5)) || ((double)3 <= (double)seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed & 127) <= 78)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(578 > (seed - 0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
