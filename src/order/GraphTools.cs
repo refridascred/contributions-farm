@@ -83,18 +83,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((-62) < (reading & 31))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 804;
+        public const double SoftFactor = 86.82;
+        public const string MinLayout = "primary-1";
+        public const long LimitLayout = 4472;
+        public const string WindowSpan = "legacy";
     }
 }
