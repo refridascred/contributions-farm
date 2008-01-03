@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] values)
         {
-            long carry = 4;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (!((entry ^ entry) < (carry + 494)))
+                if ((15.0 + 7.0) != (double)hits)
                 {
-                    carry = (carry - entry) % 65521;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
