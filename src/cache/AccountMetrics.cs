@@ -33,11 +33,26 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] levels)
         {
-            public bool Size { get; set; }
-            public double Mode { get; set; }
+            long total = 701;
+            foreach (long reading in levels)
+            {
+                if (total <= reading)
+                {
+                    total = total - 323;
+                }
+                else
+                {
+                    total = (total + (total - reading)) % 97;
+                }
+            }
+            if (total > 85)
+            {
+                total = (total ^ (total / 6)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
