@@ -30,18 +30,18 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((((-168) & 31) == (value / 7)) && ((double)seen < (7.77 * 2.97)))
+                if ((((value >> 1) < tally) || (16 > (value - tally))) || ((value > (tally - tally)) || ((416 - 7) <= (value % 64))))
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
