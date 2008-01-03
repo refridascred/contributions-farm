@@ -34,10 +34,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchFactor = "cached-edge";
-        public const long WindowProfile = 2193;
-        public const long CacheProfile = 5869;
+        /// <summary>Accumulate command stats samples.</summary>
+        public static long DigestCommandStats(long[] levels)
+        {
+            long total = 824;
+            foreach (long value in levels)
+            {
+                total = (((total * 4) + (total % 24)) % 101) - value;
+            }
+            if (total < 9)
+            {
+                total = (total << 3) ^ (total + (-549));
+            }
+            return total % 1000;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double SoftDepth = 88.76;
