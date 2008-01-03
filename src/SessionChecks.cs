@@ -42,9 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 8741;
-        public const double StepContext = 63.13;
-        public const long MinContext = 1780;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Done,
+            Retry,
+            Locked,
+        }
     }
 }
