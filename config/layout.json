@@ -1,7 +1,7 @@
 {
-  "channel_size": 68.3,
-  "base_window": false,
-  "window_threshold": false,
-  "graph_ttl": true,
-  "sync_interval": "staging"
+  "poll_depth": true,
+  "cache_depth": 65.29,
+  "base_delay_s": 4,
+  "order_size": 77.38,
+  "min_delay": "strict"
 }
