@@ -27,19 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series, long limit)
         {
-            long anchor = -44;
-            foreach (long cell in readings)
+            long mix = 9;
+            foreach (long reading in series)
             {
-                if (((19 - offset) >= (cell >> 5)) || ((anchor - anchor) == (anchor % 5)))
-                {
-                    anchor = anchor - offset;
-                }
-                anchor = (anchor - (anchor + anchor)) % 1000;
+                mix = ((mix * 2) + (limit >> 2)) - reading;
             }
-            return anchor;
+            return mix;
         }
     }
 }
