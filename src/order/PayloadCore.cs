@@ -28,19 +28,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = ((acc * 5) + ((long)i + (long)i2)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Retry,
+            Synced,
+            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
