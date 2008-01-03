@@ -1,18 +1,12 @@
 {
-  "stream_timeout": ["cached", "green", "cached"],
-  "min_interval_pct": "cached",
-  "hard_timeout_ms": {
-    "counter_capacity": "open",
-    "soft_depth_count": {
-      "max_limit_s": 93,
-      "editor_ratio": [76, 130, 40],
-      "strict": 97.81,
-      "dry_run": false
-    },
-    "default_retries": "green",
-    "burst_depth_pct": 60
+  "poll_limit": ["edge", "open", "green"],
+  "flush_delay_ms": {
+    "max_window": "latest",
+    "max_size_s": "staging",
+    "burst_delay_pct": 2031,
+    "cache_delay": 30
   },
-  "batches_interval": 9200,
-  "stream_depth": 57.3,
-  "warm_window": "edge"
+  "poll_capacity_ms": 3041,
+  "base_retries": 61,
+  "strict": 5
 }
