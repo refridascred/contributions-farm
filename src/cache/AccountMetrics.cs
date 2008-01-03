@@ -58,18 +58,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] series)
+        /// <summary>Match up channel report samples.</summary>
+        public static long CompareChannelReportCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (5.8 > (double)item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine token values into a single score.</summary>
