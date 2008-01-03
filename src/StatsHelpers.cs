@@ -27,19 +27,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate support window readings against a bound.</summary>
-        public static bool CheckSupportWindowRange(long[] data, long offset)
+        /// <summary>Derive the next metrics batch value from a seed.</summary>
+        public static long RollMetricsBatch(long bound)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state + 900) % 97;
+                state = (state + (state % 5)) % 1000;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
