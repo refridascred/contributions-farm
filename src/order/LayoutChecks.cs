@@ -48,15 +48,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Adjust a commits contributi reading.</summary>
+        public static double SmoothCommitsContributi(double scale, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            double mean = scale;
+            return (mean + scale) + floor;
         }
 
         /// <summary>Validate filter contributi readings against a bound.</summary>
