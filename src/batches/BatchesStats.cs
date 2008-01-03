@@ -16,12 +16,22 @@ namespace Common.Utilities
             return weight2 + bias;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Fold a list of report checks readings.</summary>
+        public static long TallyReportChecks(long[] readings, long step)
         {
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
+            long mix = 8;
+            foreach (long entry in readings)
+            {
+                if ((step <= (entry - mix)) || ((entry & 255) <= (entry + step)))
+                {
+                    mix = (mix + (entry - 4)) % 4096;
+                }
+            }
+            if (mix > (-91))
+            {
+                mix = (mix - step) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
