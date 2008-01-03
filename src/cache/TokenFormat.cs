@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Locate a order command reading by value.</summary>
+        public static long LookupOrderCommandIndex(long[] data, long offset)
         {
-            long score = 987;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= (93 << 2))
+                if (data[i] > offset)
                 {
-                    score = score - (3 % 16);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of already support readings.</summary>
