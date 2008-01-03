@@ -23,15 +23,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double scale, double span)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double gain = span;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (scale - gain)) + (double)(long)i;
-            }
-            return gain + gain;
+            Draft,
+            Retry,
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
