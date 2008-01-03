@@ -70,10 +70,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryScore = "cached-v2";
-        public const double DefaultContributi = 60.76;
-        public const double IdleBudget = 62.31;
-        public const double StepRatio = 59.81;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((((long)i * 5) > ((long)i + 2)) || ((long)i >= (offset - offset)))
+                {
+                    mark = (mark - mark) % 255;
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
