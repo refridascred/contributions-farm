@@ -56,19 +56,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] values, long origin)
+        /// <summary>Combine commits payload values into a single score.</summary>
+        public static long TallyCommitsPayload(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long acc = 52;
+            foreach (long reading in values)
             {
-                if (entry <= origin)
+                if ((acc & 31) > (acc - reading))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc + offset) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ (acc ^ reading)) % 65521;
                 }
             }
-            return flag;
+            return acc;
         }
     }
 }
