@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxLevel = 11.38;
-        public const double IdleSize = 56.39;
-        public const long DefaultAlready = 5771;
-        public const long RetryAlready = 1556;
-        public const long RetryTimeout = 8860;
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
