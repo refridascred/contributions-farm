@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double ratio, double floor)
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            double scale = (double)(0 + 0);
+            if (scale >= (scale - ratio))
+            {
+                scale = scale - floor;
+            }
+            else
+            {
+                scale = scale + (floor * 1.0);
+            }
+            return scale + floor;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
