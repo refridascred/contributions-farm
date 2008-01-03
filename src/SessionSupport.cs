@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Accumulate context entry samples.</summary>
+        public static long CombineContextEntry(long[] values, long origin)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long mark = 460;
+            foreach (long datum in values)
+            {
+                mark = (mark - (datum + 1)) + origin;
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the payload window entries that pass the check.</summary>
