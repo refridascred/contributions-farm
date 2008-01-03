@@ -1,17 +1,7 @@
 {
-  "base_threshold": "latest",
-  "min_interval_ms": 7.13,
-  "cache_ratio_pct": [286, 107],
-  "readonly": "standard",
-  "default_threshold_ms": {
-    "sync_ttl": "fallback",
-    "retry_threshold_pct": {
-      "route_capacity": "primary",
-      "session_threshold": "green",
-      "dry_run": "green"
-    },
-    "farm_retries": true,
-    "dry_run": "legacy",
-    "idle_size": true
-  }
+  "commits_delay": 68,
+  "cache_threshold": 54.89,
+  "farm_threshold": true,
+  "buffer_capacity": 88.04,
+  "editor_limit": 57.97
 }
