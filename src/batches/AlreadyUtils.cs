@@ -20,19 +20,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Adjust a schema notes reading.</summary>
-        public static double AdjustSchemaNotes(double weight, double floor)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double scale = (double)49 + weight;
-            if (scale < (double)4)
-            {
-                scale = scale + (weight - floor);
-            }
-            else
-            {
-                scale = scale - (double)7;
-            }
-            return scale - (weight + floor);
+            Failed,
+            Idle,
+            Done,
+            Draft,
         }
 
         /// <summary>Match up tools samples.</summary>
