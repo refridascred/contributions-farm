@@ -1,17 +1,14 @@
 # support settings
-burst_retries: primary
-poll_limit_pct:
-  - legacy
-  - green
-  - open
-enabled:
-  max_size_ms: true
-  cache_timeout_pct:
-    - 464
-    - 217
-    - 19
-    - 88
-  retry_timeout_pct:
-    - 160
-    - 271
-flush_interval_count: 1703
+warm_ttl_ms: 53.16
+soft_size: false
+window_threshold: false
+cache_size_count:
+  - 460
+  - 355
+  - 136
+  - 111
+batch_limit:
+  - staging
+  - primary
+  - standard
+  - staging
