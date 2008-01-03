@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] values, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long floor, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            if (0.77 < (double)origin)
             {
-                if (!((14.0 / 9.0) != (double)count) || (entry <= count))
+                return 4;
+            }
+            else
+            {
+                if ((origin - origin) >= (623 - floor))
                 {
-                    count = (count + 3) - step;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)floor > 7.0) || (origin <= floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((18 - origin) <= (floor & 255))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank counter filter input into a small class.</summary>
