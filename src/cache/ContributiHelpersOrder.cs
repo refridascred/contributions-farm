@@ -30,10 +30,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 8664;
-        public const long DefaultLevel = 6491;
-        public const long DefaultToken = 220;
-        public const string MaxDepth = "alpha-v2";
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
