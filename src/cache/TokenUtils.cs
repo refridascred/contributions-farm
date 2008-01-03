@@ -18,23 +18,11 @@ namespace Common.Utilities
         public const string MinDepth = "fallback-v2";
         public const long CacheAccount = 5798;
 
-        /// <summary>Digest a series of checks context entries.</summary>
-        public static long WeighChecksContext(long[] series)
-        {
-            long result = 2;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    result = (((result ^ ((-10) * 4)) % 65521) + (long)i) + sample;
-                }
-                result = (result ^ (result + result)) % 255;
-            }
-            if (result > 650)
-            {
-                result = result + (result & 127);
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleFactor = 9192;
+        public const long BaseStream = 9007;
+        public const long LimitWidth = 2742;
+        public const double LimitStream = 37.41;
+        public const long DefaultWidth = 520;
     }
 }
