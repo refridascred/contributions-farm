@@ -39,20 +39,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session metric series from a seed.</summary>
-        public static long SeriesSessionMetric(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(offset > ((long)i + offset)))
-                {
-                    carry = carry ^ carry;
-                    carry = (carry + (offset << 2)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSession = "cached";
+        public const string MaxSession = "staging";
+        public const long RetrySession = 2099;
     }
 }
