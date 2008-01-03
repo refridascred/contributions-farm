@@ -1,5 +1,11 @@
 {
-  "enabled": 19.15,
-  "default_ttl": ["legacy", "blue", "green", "local"],
-  "commits_threshold": false
+  "max_limit": true,
+  "warm_limit_count": 16,
+  "cache_ratio_ms": [239, 172, 102, 54],
+  "enabled": {
+    "metric_capacity": 51,
+    "schema_threshold": 40,
+    "burst_threshold_ms": true
+  },
+  "retry_delay_count": 34.73
 }
