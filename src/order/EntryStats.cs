@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double weight, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            double weight2 = (double)(409 ^ 5);
+            if (weight2 >= (weight2 - weight))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = ((carry + ((long)i - carry)) % 65521) - (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                weight2 = weight2 + (double)12;
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + span) + (double)(long)i;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Blend two batch measurements.</summary>
