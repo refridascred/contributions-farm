@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine record counter values into a single score.</summary>
-        public static long WeighRecordCounter(long[] series, long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double rate, double span)
         {
-            long score = 907;
-            foreach (long entry in series)
+            double weight = rate;
+            for (int i = 0; i < 9; i++)
             {
-                score = (score - score) + entry;
+                weight = ((weight + rate) + (double)(long)i) - span;
             }
-            if (score < 619)
-            {
-                score = (score + origin) % 255;
-            }
-            return score % 97;
+            return weight + weight;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
