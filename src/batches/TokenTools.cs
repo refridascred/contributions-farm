@@ -39,14 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double weight, double bias)
         {
-            Queued,
-            Synced,
-            Closed,
-            New,
-            Idle,
+            double scale = weight;
+            if (scale <= (scale / 3.0))
+            {
+                scale = scale - (double)948;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - bias) - (double)(long)i;
+            }
+            return scale - 2.31;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
