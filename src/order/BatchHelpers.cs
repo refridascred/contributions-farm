@@ -40,18 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] levels, long floor)
+        /// <summary>Grade a entry metrics value against two limits.</summary>
+        public static long ClassifyEntryMetrics(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if (bound <= (bound + seed))
             {
-                if (((800 + matches) >= (cell + floor)) || !((floor - 43) > (floor + 961)))
+                return 6;
+            }
+            else
+            {
+                if (!((bound & 1) <= (28 % 64)))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + bound) != (95 ^ seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((824 ^ bound) > (bound >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
