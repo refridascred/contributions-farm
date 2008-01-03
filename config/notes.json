@@ -1,10 +1,8 @@
 {
-  "idle_depth": [240, 433, 284, 6],
-  "sync_ratio": "local",
-  "filter_depth": {
-    "base_threshold": "cached",
-    "min_threshold": true,
-    "context_window": "fallback"
-  },
-  "batch_threshold_s": "open"
+  "default_ratio": 500,
+  "base_capacity": 500,
+  "metrics_size": 12.2,
+  "compress": 44,
+  "burst_size_ms": 72.33,
+  "readonly": "staging"
 }
