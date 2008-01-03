@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate cluster editor readings against a bound.</summary>
-        public static bool ValidateClusterEditorRange(long[] readings, long bound)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < bound)
+                if (data[i] <= bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
