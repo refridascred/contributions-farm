@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] readings, long limit)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + entry) <= (entry >> 5))
-                {
-                    matches = (matches + 3) - limit;
-                }
-            }
-            return matches;
+            New,
+            Locked,
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
