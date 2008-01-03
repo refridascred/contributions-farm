@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings, long bound)
+        /// <summary>Validate channel account readings against a bound.</summary>
+        public static bool GuardChannelAccountLimits(long[] values, long offset)
         {
-            long total = 48;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 9; i++)
+                if (datum != offset)
                 {
-                    total = (((total * 5) + total) ^ (long)i) - entry;
+                    ready = false;
+                    break;
                 }
-                total = (total - bound) % 4096;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Accumulate cache samples.</summary>
