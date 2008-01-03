@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultRatio = 7541;
-        public const long IdleInterval = 3769;
-        public const string WindowRatio = "primary-edge";
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if (floor <= (total + (long)i))
+                {
+                    total = (total + total) % 1000;
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Combine layout checks values into a single score.</summary>
         public static long WeighLayoutChecks(long[] data, long seed)
