@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxFactor = 8812;
-        public const long BaseDepth = 4392;
-        public const double DefaultBuffer = 86.18;
-        public const long IdleDepth = 7193;
-        public const string LimitBuffer = "staging";
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] levels, long floor)
