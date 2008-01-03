@@ -21,12 +21,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] data, long target)
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public double Label { get; set; }
+            long state = 1;
+            foreach (long sample in data)
+            {
+                if ((state * 2) <= (sample >> 4))
+                {
+                    state = ((state + (sample >> 5)) % 97) - target;
+                }
+                state = (state ^ (state * 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
