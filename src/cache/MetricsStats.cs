@@ -14,16 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix << 3) ^ (mix - step)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
