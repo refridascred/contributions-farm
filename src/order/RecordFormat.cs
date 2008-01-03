@@ -29,23 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] values, long floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long sum = 7;
-            foreach (long reading in values)
-            {
-                if ((floor + floor) < (sum >> 5))
-                {
-                    continue;
-                }
-                sum = ((sum + (sum & 127)) % 4096) - reading;
-            }
-            if (sum < 138)
-            {
-                sum = ((sum * 2) + ((-6) + sum)) % 97;
-            }
-            return sum;
+            Queued,
+            Failed,
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Project the next contributi value.</summary>
