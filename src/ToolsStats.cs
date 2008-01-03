@@ -42,19 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics token entry stays within the limit.</summary>
-        public static bool ValidateMetricsTokenBounds(long[] readings, long seed)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
