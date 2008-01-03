@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = bias;
+            if (scale >= bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale - (scale * 6.0)) - weight;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (3.23 - bias)) - (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Accumulate stream samples.</summary>
