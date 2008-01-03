@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-Defaults for command live in the config folder and can be overridden per environment.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Keep entry and already names short and lowercase.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Review channel limits each release
-- Keep batches values small
-- Validate queue input early
+- Review support limits each release
+- Log every metric change
+- Validate editor input early
+- Keep report values small
