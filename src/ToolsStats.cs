@@ -14,12 +14,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] samples)
         {
-            Closed,
-            New,
-            Idle,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 3) > (8 + entry))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already mode values.</summary>
