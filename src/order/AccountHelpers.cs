@@ -52,11 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxTimeout = 8349;
-        public const long LimitScore = 1711;
-        public const long BaseLevel = 2258;
-        public const double StepTimeout = 20.66;
+        /// <summary>Count the batches checks entries that pass the check.</summary>
+        public static long TallyBatchesChecksHits(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + tally) >= tally)
+                {
+                    tally = (tally + 3) - seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long ClassifyLayout(long offset, long bound)
