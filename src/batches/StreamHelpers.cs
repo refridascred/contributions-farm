@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter checks readings against a rule.</summary>
-        public static long TallyFilterChecksHits(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((hits < origin) && ((origin >> 3) != (hits + origin))) && ((double)hits != (double)origin))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 3052;
+        public const long SoftQueue = 745;
+        public const long StepDepth = 7342;
+        public const long StepLevel = 8213;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string MinFactor = "alpha-edge";
