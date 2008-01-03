@@ -33,18 +33,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batch payload readings against a rule.</summary>
-        public static long TallyBatchPayloadGaps(long[] readings)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches < 4)
+                if (values[i] <= step)
                 {
-                    matches = (matches + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
