@@ -1,7 +1,8 @@
-id,label,count
-1,blue,971
-2,137,strict
-3,staging,21.41
-4,924,873
-5,338,185
-6,27.31,515
+id,weight,ratio,level
+1,staging,86.49,14
+2,standard,cached,37.58
+3,430,771,144
+4,675,legacy,117
+5,453,17.12,361
+6,5,8.08,968
+7,61.67,open,legacy
