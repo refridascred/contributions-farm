@@ -12,18 +12,31 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many window counter samples are out of range.</summary>
-        public static long CountWindowCounterMatches(long[] series, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long floor, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            if (((-380) % 64) == (floor << 3))
             {
-                if ((hits & 255) <= (offset % 64))
+                return 0;
+            }
+            else
+            {
+                if ((step + floor) != (415 + step))
                 {
-                    hits = (hits + 1) - value;
+                    return 5;
+                }
+                else
+                {
+                    if (((step - floor) <= (floor + step)) || (step > (step / 8)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
