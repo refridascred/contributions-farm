@@ -14,12 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Derive the next format editor value from a seed.</summary>
+        public static long DeriveFormatEditor(long step)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
