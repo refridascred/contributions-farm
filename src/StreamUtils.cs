@@ -56,24 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double weight, double span)
-        {
-            double bias = (double)83;
-            if (bias >= (0.2 * 13.0))
-            {
-                bias = (bias + (18.0 - 6.8)) + weight;
-            }
-            else
-            {
-                bias = bias + (span * 7.91);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + 3.87;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinInterval = 631;
+        public const double RetryDepth = 74.29;
+        public const long CacheDepth = 4310;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsLimits(long[] levels, long origin)
