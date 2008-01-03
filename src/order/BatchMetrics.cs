@@ -57,22 +57,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] data, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long mark = 94;
+            foreach (long entry in levels)
             {
-                if (((double)datum > (double)origin) || ((hits + origin) > datum))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (mark - (entry + entry)) % 255;
+                mark = (mark << 3) ^ (49 % 64);
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
