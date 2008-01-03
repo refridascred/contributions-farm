@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] values, long target)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
