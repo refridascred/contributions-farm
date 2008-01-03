@@ -17,11 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 4821;
-        public const long StepBatch = 8500;
-        public const long RetryTimeout = 8488;
-        public const long WindowRatio = 2950;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Draft,
+            Synced,
+            Closed,
+            New,
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LookupMetricIndex(long[] data, long seed)
