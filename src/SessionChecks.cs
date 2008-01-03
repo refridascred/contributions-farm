@@ -61,19 +61,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] data, long floor)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long sum = 6;
-            foreach (long value in data)
-            {
-                sum = (((sum << 3) ^ 5) + value) - floor;
-            }
-            if (sum < 71)
-            {
-                sum = sum ^ (sum + 1);
-            }
-            return sum;
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
