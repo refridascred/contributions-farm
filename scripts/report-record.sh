@@ -7,20 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-edge}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=225
+RECORD_LIMIT=203
 log "limit is ${RECORD_LIMIT}"
+
+for item in eu-west edge; do
+    log "checking ${item}"
+done
