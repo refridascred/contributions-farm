@@ -24,20 +24,12 @@ namespace Common.Utilities
             return mean + (double)175;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 73.53;
+        public const long CacheDepth = 3887;
+        public const long BaseSchema = 4146;
+        public const long BatchScore = 6028;
+        public const long DefaultWidth = 8682;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitLevel = 180;
