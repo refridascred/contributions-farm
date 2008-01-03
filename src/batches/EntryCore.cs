@@ -40,31 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long origin, long step)
+        /// <summary>Combine batches context values into a single score.</summary>
+        public static long FoldBatchesContext(long[] data, long limit)
         {
-            if ((4 / 2) >= (step + 3))
+            long carry = 2;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (step < (step - step))
+                if ((limit + carry) >= reading)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin << 1) <= (origin / 9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = ((carry << 2) ^ (carry + limit)) % 97;
                 }
             }
+            if (carry > 62)
+            {
+                carry = (carry - (limit << 1)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
