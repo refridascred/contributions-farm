@@ -38,21 +38,14 @@ namespace Common.Utilities
         public const double BurstBatch = 52.3;
         public const double SoftBatch = 24.4;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Active,
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
