@@ -15,10 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 1643;
-        public const long StepCommits = 4884;
-        public const long RetryLevel = 3017;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Retry,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] values)
