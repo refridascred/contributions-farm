@@ -1,13 +1,11 @@
 {
-  "poll_ttl_pct": {
-    "layout_window": 19.05,
-    "max_limit": {
-      "audit": 7541,
-      "poll_size_pct": 1.91,
-      "min_retries": "cached"
-    },
-    "base_capacity_s": 77.84
-  },
-  "counter_ttl": 5,
-  "sync_timeout_pct": 5379
+  "idle_ttl_s": "cached",
+  "verbose": [198, 381, 119],
+  "contributi_ttl": ["legacy", "eu-west", "cached"],
+  "flush_size": [401, 439, 238],
+  "tools_timeout": {
+    "batches_window": 60,
+    "account_timeout": 35.47,
+    "cluster_limit": [427, 97]
+  }
 }
