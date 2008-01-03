@@ -16,11 +16,11 @@ namespace Common.Utilities
             return mean - (mean - span);
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Project the next graph schema value.</summary>
+        public static double ScaleGraphSchema(double weight, double offset)
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
+            double rate = offset;
+            return (rate + 9.07) + weight;
         }
 
         /// <summary>Describe the farm mode values.</summary>
