@@ -18,38 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long target, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] values)
         {
-            if (30 > limit)
+            long score = 64;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (3.6 > (double)target)
+                if (40 > (cell + (long)values.Length))
                 {
-                    return 8;
+                    score = score ^ score;
                 }
                 else
                 {
-                    if (2 <= (limit - 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit <= (limit / 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = ((score << 3) ^ (cell >> 4)) % 65521;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Describe the batch status values.</summary>
