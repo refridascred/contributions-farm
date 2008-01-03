@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate stats route readings against a bound.</summary>
-        public static bool GuardStatsRouteLimits(long[] values, long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
