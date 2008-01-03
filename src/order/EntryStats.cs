@@ -16,12 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] data, long offset)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record mode values.</summary>
