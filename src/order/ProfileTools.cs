@@ -34,38 +34,21 @@ namespace Common.Utilities
         public const long CacheBatches = 8935;
         public const long WindowBatches = 5539;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long floor, long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            if ((floor - bound) >= (floor / 8))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)bound <= 2.1) && ((bound + bound) == (594 + floor)))
+                    if ((data[i] + data[j]) > 8)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)floor > (17.0 - 5.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
