@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
