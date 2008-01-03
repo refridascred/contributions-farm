@@ -33,12 +33,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            New,
-            Draft,
-            Failed,
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
