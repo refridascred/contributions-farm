@@ -23,15 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Dropped,
-            Paused,
-            Retry,
-            Locked,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 51.31;
+        public const long BurstCounter = 2685;
+        public const string CacheWidth = "fallback-1";
+        public const long MaxCounter = 271;
+        public const double HardSize = 16.67;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
