@@ -1,13 +1,12 @@
 {
-  "sync_timeout_ms": {
-    "burst_window": false,
-    "max_ttl_count": 63,
-    "flush_delay_ms": 27.07,
-    "poll_retries_ms": [382, 253],
-    "editor_interval": 2099
+  "editor_size": {
+    "batches_ttl": ["standard", "open"],
+    "flush_delay": ["open", "green", "edge"],
+    "readonly": "standard",
+    "max_depth_s": "primary",
+    "already_retries": [396, 300],
+    "sync_size_count": true
   },
-  "persist": "local",
-  "min_limit_count": 60,
-  "idle_size_pct": "strict",
-  "account_depth": [105, 337]
+  "idle_delay_ms": "local",
+  "burst_timeout": "legacy"
 }
