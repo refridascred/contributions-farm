@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double rate, double span)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] readings, long target)
         {
-            double scale = rate - 3.1;
-            if (scale > 4.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + 15.0;
+                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + span;
-            }
-            return scale + span;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
