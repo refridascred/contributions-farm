@@ -1,5 +1,12 @@
 {
-  "metric_interval": "green",
-  "flush_ratio_count": 6255,
-  "sync_ttl_pct": 14.87
+  "batches_timeout": 500,
+  "batch_retries_count": true,
+  "window_retries": [79, 218],
+  "dry_run": [258, 464, 472, 359],
+  "idle_ttl_count": "cached",
+  "batch_retries_ms": {
+    "tools_interval": ["staging", "open", "cached", "cached"],
+    "metric_timeout": 376,
+    "filter_interval": [410, 242, 398]
+  }
 }
