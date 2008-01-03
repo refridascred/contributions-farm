@@ -20,21 +20,32 @@ namespace Common.Utilities
             return load - (double)384;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long prev = seed - target;
+            if (((prev << 1) == (seed & 7)) && ((prev + (-583)) > (seed + prev)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((prev & 63) != (target * 2)) && ((prev - 635) < 396))
                 {
-                    if ((levels[i] - levels[j]) < 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((target << 3) >= (prev - target))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a context reading.</summary>
