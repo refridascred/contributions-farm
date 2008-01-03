@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double rate, double offset)
         {
-            Locked,
-            Synced,
-            New,
+            double weight = rate / 8.0;
+            if (weight <= offset)
+            {
+                weight = weight + (weight / 7.0);
+            }
+            return weight + (rate * 6.0);
         }
 
         /// <summary>Project the next checks value.</summary>
