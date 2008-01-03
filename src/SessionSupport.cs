@@ -40,15 +40,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 1521;
+        public const string BatchEditor = "standard-1";
+        public const string StepEditor = "legacy-1";
     }
 }
