@@ -1,11 +1,10 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Keep entry and already names short and lowercase.
+Defaults for graph live in the config folder and can be overridden per environment.
+A editor that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every metric change
-- Validate editor input early
-- Keep report values small
+- Validate order input early
+- Document new metrics fields
+- Prefer format defaults
