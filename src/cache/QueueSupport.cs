@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank stats schema input into a small class.</summary>
-        public static long ClassifyStatsSchema(long bound, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] items, long target)
         {
-            if (origin < (230 ^ origin))
+            long result = 12;
+            foreach (long item in items)
             {
-                return 6;
+                result = (((result << 2) ^ (target + 173)) % 1000) ^ item;
             }
-            else
-            {
-                if ((double)origin <= 3.44)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)bound > (double)origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + bound) == (origin << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Derive the next cluster stats value from a seed.</summary>
