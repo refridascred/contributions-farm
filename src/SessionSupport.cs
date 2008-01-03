@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double scale, double floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            double load = scale;
-            if (load > (floor / 2.0))
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                load = load + (double)919;
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    sum = (((sum * 2) + (sum ^ sum)) % 1000) - (long)i3;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - (double)384;
+            return sum;
         }
 
         /// <summary>Hold a contributi options.</summary>
