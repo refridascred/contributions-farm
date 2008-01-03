@@ -54,12 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitCount = "local-edge";
-        public const long BurstWidth = 5086;
-        public const long MaxTimeout = 6314;
-        public const long DefaultTimeout = 3791;
-        public const long MaxSession = 55;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] readings)
