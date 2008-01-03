@@ -30,16 +30,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleTimeout = 72.67;
+        public const double CacheTimeout = 91.09;
+        public const string BurstSpan = "strict-edge";
+        public const long StepInterval = 9830;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] data)
