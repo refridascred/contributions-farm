@@ -55,19 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] data)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] values)
         {
             long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (hits > value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
