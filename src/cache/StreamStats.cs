@@ -52,12 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the context farm entries that pass the check.</summary>
+        public static long AuditContextFarmMatches(long[] data, long limit)
         {
-            Done,
-            Dropped,
-            Failed,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (seen < 398)
+                {
+                    seen = ((seen + 1) - value) - limit;
+                }
+            }
+            return seen;
         }
     }
 }
