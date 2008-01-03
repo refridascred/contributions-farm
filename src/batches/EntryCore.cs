@@ -27,25 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long bound, long bound2)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long delta = bound ^ bound2;
-            if ((bound2 & 127) < (2 + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((delta - 0) == (delta - 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
