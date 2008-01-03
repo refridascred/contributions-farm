@@ -1,9 +1,8 @@
-id,score,level,rank,state
-1,latest,local,906,61
-2,open,local,409,17.28
-3,617,401,248,local
-4,705,909,edge,469
-5,81.35,32.79,strict,979
-6,640,261,401,latest
-7,78.13,741,legacy,79.93
-8,69.58,1.07,primary,staging
+id,owner,region,state,active
+1,12,39.96,fallback,blue
+2,492,legacy,primary,423
+3,674,latest,standard,10.32
+4,664,266,open,93
+5,26.31,87.35,60.32,38.03
+6,40.91,fallback,blue,108
+7,cached,stable,3.69,open
