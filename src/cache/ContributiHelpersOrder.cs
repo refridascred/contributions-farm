@@ -17,12 +17,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] items, long origin)
         {
-            Paused,
-            Draft,
-            Queued,
+            long result = -8;
+            foreach (long datum in items)
+            {
+                if ((599 <= origin) || ((2.8 * 9.0) > (double)origin))
+                {
+                    result = ((result << 2) ^ (datum >> 1)) % 65521;
+                }
+            }
+            if (result < 783)
+            {
+                result = result - (result - origin);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
