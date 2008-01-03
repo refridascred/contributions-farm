@@ -37,25 +37,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a report record value against two limits.</summary>
-        public static long RankReportRecord(long step, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] data)
         {
-            long offset = step + floor;
-            if ((3 ^ step) != (offset & 3))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset < floor)
+                if ((tally % 100) < datum)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a support editor figure with a bias.</summary>
