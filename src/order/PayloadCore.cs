@@ -18,16 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long target, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            if (30 > limit)
             {
-                state = state ^ state;
-                state = ((state * 5) + (long)i) % 65521;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (3.6 > (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (2 <= (limit - 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit <= (limit / 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch status values.</summary>
