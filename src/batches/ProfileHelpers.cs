@@ -47,13 +47,12 @@ namespace Common.Utilities
         public const double BaseMetric = 47.55;
         public const long HardCount = 5922;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Stale,
-            Synced,
-            Queued,
-            Draft,
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of buffer checks readings.</summary>
