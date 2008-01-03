@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const string BurstSpan = "strict-edge";
         public const long StepInterval = 9830;
 
-        /// <summary>Count the token stream entries that pass the check.</summary>
-        public static long AuditTokenStreamMatches(long[] levels, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (((long)levels.Length ^ datum) != (hits / 5))
+                if ((tally ^ tally) != (93 - reading))
                 {
-                    hits = (hits + 1) + offset;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a editor options.</summary>
