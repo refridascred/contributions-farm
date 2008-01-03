@@ -27,11 +27,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            long carry = -275;
+            foreach (long entry in readings)
+            {
+                if (((carry ^ carry) >= carry) && ((double)carry > (4.73 / 5.0)))
+                {
+                    long diff = (entry & 31) + (entry & 127);
+                    carry = (carry ^ (diff >> 1)) % 97;
+                }
+                else
+                {
+                    carry = (carry * 2) + (entry / 6);
+                }
+                carry = ((carry << 3) ^ (carry + 463)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
