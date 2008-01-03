@@ -34,15 +34,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double bias, double bias2)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            double rate = (double)(816 * 5);
-            if (rate < (rate / 8.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (double)(-39)) - bias2;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate - bias;
+            return matches;
         }
 
         /// <summary>Match up format session samples.</summary>
