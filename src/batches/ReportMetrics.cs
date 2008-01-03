@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] levels, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (9.93 * 7.0) + 0.5;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                bias = ((bias + (gain * 0.4)) + (double)(long)i) + span;
             }
-            return -1;
+            return bias + (5.13 / 5.0);
         }
 
         /// <summary>Compare every pair of account readings.</summary>
