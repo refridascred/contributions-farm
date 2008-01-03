@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-edge}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
