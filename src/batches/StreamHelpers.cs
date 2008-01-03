@@ -54,10 +54,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "fallback-1";
-        public const long WindowInterval = 3216;
-        public const string HardCommits = "primary-edge";
-        public const long DefaultRatio = 1733;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
