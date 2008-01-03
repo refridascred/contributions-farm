@@ -1,10 +1,11 @@
 # Command notes
 
-Run the farm check before changing any graph limits.
-Use counter settings to tune how often payload data is refreshed.
+Defaults for window live in the config folder and can be overridden per environment.
+When a session fails, the checks handler retries a few times before giving up.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every contributi change
-- Document new commits fields
-- Review layout limits each release
+- Prefer stream defaults
+- Review channel limits each release
+- Keep context values small
