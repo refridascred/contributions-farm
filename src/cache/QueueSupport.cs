@@ -21,18 +21,19 @@ namespace Common.Utilities
             return rate + (double)52;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] samples, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] samples, long seed)
         {
-            long seen = 0;
+            bool found = true;
             foreach (long cell in samples)
             {
-                if ((cell * 3) >= (cell - cell))
+                if (cell < seed)
                 {
-                    seen = (seen + 2) + target;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
