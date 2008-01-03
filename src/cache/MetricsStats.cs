@@ -72,18 +72,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] samples)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (sample < ((long)samples.Length & 15))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
