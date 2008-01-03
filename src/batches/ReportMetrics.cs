@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Failed,
-            Queued,
-            Retry,
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
