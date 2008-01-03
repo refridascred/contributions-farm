@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Combine command payload values into a single score.</summary>
+        public static long DigestCommandPayload(long[] samples)
         {
-            Failed,
-            New,
-            Queued,
-            Stale,
+            long sum = 514;
+            foreach (long value in samples)
+            {
+                if ((sum ^ sum) == (sum << 2))
+                {
+                    sum = (((sum << 2) ^ (34 % 12)) % 4096) ^ value;
+                }
+                if ((double)sum >= 6.0)
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
