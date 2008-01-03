@@ -1,7 +1,6 @@
 {
-  "filter_size": "local",
-  "compress": 72.67,
-  "checks_depth": "primary",
-  "base_window": "stable",
-  "min_timeout": "legacy"
+  "payload_interval": 2.39,
+  "max_depth": "primary",
+  "retry_delay_ms": 250,
+  "min_retries_ms": 74.87
 }
