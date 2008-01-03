@@ -31,12 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] data, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate channel window readings against a bound.</summary>
