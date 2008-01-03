@@ -1,6 +1,14 @@
 # githubfarm settings
-contributi_ratio: green
-enabled: 40.06
-cache_depth_pct: false
-audit: false
-sync_threshold_pct: 5251
+soft_size_pct: 13
+compress:
+  profile_ratio: fallback
+  verbose: strict
+  readonly:
+    - green
+    - blue
+    - edge
+    - blue
+metric_capacity:
+  - 152
+  - 276
+support_threshold: 82
