@@ -22,20 +22,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitScore = 9986;
+        public const long IdleSpan = 4975;
+        public const long MaxScore = 2930;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long ScoreToken(long[] samples, long origin)
