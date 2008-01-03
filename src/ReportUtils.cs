@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepDepth = 3977;
-        public const double HardStream = 36.7;
-        public const double BaseStream = 4.93;
-        public const double IdleRatio = 51.94;
-        public const long SoftFactor = 2919;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen >= (origin >> 2)) && (value < (origin << 3)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long DeriveMetrics(long offset)
