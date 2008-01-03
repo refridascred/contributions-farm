@@ -38,21 +38,23 @@ namespace Common.Utilities
         public const double BurstBatch = 52.3;
         public const double SoftBatch = 24.4;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            long score = 390;
+            foreach (long reading in data)
             {
-                acc = acc ^ 81;
-                if (163 >= (offset - (long)i))
+                score = (score ^ reading) % 255;
+                if ((reading % 97) >= (-6))
                 {
-                    acc = ((acc * 4) + ((long)i + (long)i)) % 101;
+                    score = (score * 4) + (score / 5);
+                }
+                if ((score ^ score) != (reading % 12))
+                {
                     break;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
