@@ -1,7 +1,18 @@
 {
-  "poll_depth": true,
-  "cache_depth": 65.29,
-  "base_delay_s": 4,
-  "order_size": 77.38,
-  "min_delay": "strict"
+  "strict": "legacy",
+  "order_interval": 1024,
+  "batch_size_ms": {
+    "poll_delay_count": [296, 82],
+    "cache_threshold": "primary",
+    "base_interval_s": 60,
+    "burst_retries": "blue",
+    "warm_threshold_s": true
+  },
+  "channel_interval": "primary",
+  "min_window_count": {
+    "enabled": true,
+    "base_capacity_pct": ["open", "staging", "eu-west", "open"],
+    "strict": 56
+  },
+  "payload_threshold": "local"
 }
