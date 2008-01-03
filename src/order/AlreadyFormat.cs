@@ -54,13 +54,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Digest a series of context entry entries.</summary>
+        public static long TotalContextEntry(long[] samples)
         {
-            public double Label { get; set; }
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long carry = 152;
+            foreach (long value in samples)
+            {
+                carry = (carry * 4) + (carry & 63);
+                if ((carry % 16) != (carry - value))
+                {
+                    carry = ((carry * 3) + (carry - carry)) % 97;
+                }
+            }
+            if (carry > 5)
+            {
+                carry = ((carry << 2) ^ (carry + carry)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
