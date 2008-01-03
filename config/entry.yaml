@@ -1,8 +1,7 @@
 # entry settings
-min_timeout_count: 5
-base_limit_s:
-  - open
-  - strict
-  - legacy
-burst_timeout_ms: 1669
-already_depth: 30
+command_capacity: 48.95
+soft_delay_ms: 10.63
+flush_threshold: 73
+default_capacity_ms: 48.77
+strict: false
+profile_capacity: eu-west
