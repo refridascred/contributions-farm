@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] samples, long seed)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Failed,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
