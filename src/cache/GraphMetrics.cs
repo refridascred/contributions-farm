@@ -42,13 +42,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            New,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardRatio = "local-1";
+        public const long IdleBudget = 8045;
+        public const string SoftLevel = "strict";
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
