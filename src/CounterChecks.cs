@@ -63,21 +63,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
                 {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate record samples.</summary>
