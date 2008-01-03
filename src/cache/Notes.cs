@@ -53,21 +53,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up context buffer samples.</summary>
-        public static long OverlapContextBufferCount(long[] series)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Queued,
+            Done,
+            Retry,
         }
     }
 }
