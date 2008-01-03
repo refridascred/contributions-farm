@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Look up the position of a contributi profile sample.</summary>
+        public static long SeekContributiProfileIndex(long[] values, long seed)
         {
-            Pending,
-            Idle,
-            Synced,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
