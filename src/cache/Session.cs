@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] levels, long target)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long acc = 88;
-            foreach (long reading in levels)
-            {
-                acc = acc - (target + reading);
-            }
-            return acc;
+            Active,
+            Failed,
+            Draft,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
