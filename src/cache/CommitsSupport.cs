@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] data, long origin)
+        /// <summary>Digest a series of batches token entries.</summary>
+        public static long CombineBatchesToken(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 529;
+            foreach (long entry in data)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = mix - (entry << 2);
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
