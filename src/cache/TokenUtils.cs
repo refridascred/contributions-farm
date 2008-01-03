@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] readings, long bound)
+        /// <summary>Measure how many graph record samples are out of range.</summary>
+        public static long TallyGraphRecordMatches(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] >= bound)
+                if ((18.0 + 3.43) > (double)reading)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
