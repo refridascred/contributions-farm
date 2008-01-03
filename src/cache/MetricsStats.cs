@@ -72,12 +72,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryScore = "cached-v2";
+        public const double DefaultContributi = 60.76;
+        public const double IdleBudget = 62.31;
+        public const double StepRatio = 59.81;
     }
 }
