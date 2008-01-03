@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "legacy";
-        public const long HardRatio = 5759;
-        public const long BatchBatches = 315;
-        public const long DefaultTimeout = 1844;
-        public const double BatchSize = 49.0;
+        /// <summary>Audit cluster contributi readings against a rule.</summary>
+        public static long CountClusterContributiOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item / 4) != (matches << 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstLevel = 7184;
