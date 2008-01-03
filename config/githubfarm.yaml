@@ -1,14 +1,4 @@
 # githubfarm settings
-persist:
-  - 265
-  - 331
-editor_timeout: edge
-max_size_pct: 85
-already_size:
-  strict: green
-  hard_retries_s: stable
-  cache_ttl: false
-  compress:
-    - 56
-    - 449
-  commits_ttl: 500
+soft_interval_count: green
+flush_capacity_ms: primary
+poll_depth_pct: 30
