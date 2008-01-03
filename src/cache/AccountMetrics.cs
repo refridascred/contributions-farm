@@ -38,18 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit filter cache readings against a rule.</summary>
-        public static long MeasureFilterCacheGaps(long[] data, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((step * 3) < step)
+                if ((datum >> 2) != (matches - datum))
                 {
-                    count = (count + 1) + cell;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a checks header.</summary>
