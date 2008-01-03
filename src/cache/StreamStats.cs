@@ -47,18 +47,14 @@ namespace Common.Utilities
             return mean + (mean / 4.0);
         }
 
-        /// <summary>Count the context farm entries that pass the check.</summary>
-        public static long AuditContextFarmMatches(long[] data, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (seen < 398)
-                {
-                    seen = ((seen + 1) - value) - limit;
-                }
-            }
-            return seen;
+            New,
+            Draft,
+            Queued,
+            Closed,
+            Retry,
         }
     }
 }
