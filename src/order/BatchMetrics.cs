@@ -63,9 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstSize = "alpha";
-        public const long CacheCounter = 8095;
-        public const long BatchWidth = 8856;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultFactor = 2669;
+        public const double MaxRatio = 2.1;
+        public const long WindowLevel = 5889;
+        public const string LimitSize = "fallback-1";
+        public const long DefaultRatio = 3418;
     }
 }
