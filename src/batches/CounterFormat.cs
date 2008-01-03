@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double scale, double floor)
+        /// <summary>Combine queue payload values into a single score.</summary>
+        public static long DigestQueuePayload(long[] series)
         {
-            double weight = (floor + floor) + scale;
-            if (weight > weight)
+            long result = 27;
+            foreach (long entry in series)
             {
-                weight = weight - weight;
+                if (entry <= (result - (-6)))
+                {
+                    result = result ^ (result & 31);
+                }
             }
-            else
-            {
-                weight = weight - 5.02;
-            }
-            return weight + weight;
+            return result;
         }
     }
 }
