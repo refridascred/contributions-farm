@@ -22,10 +22,29 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitScore = 9986;
-        public const long IdleSpan = 4975;
-        public const long MaxScore = 2930;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if (target >= ((long)i + target))
+                {
+                    mix = (mix + ((long)i + (long)i)) % 97;
+                    continue;
+                }
+                else
+                {
+                    mix = (mix * 2) + (target - (long)i);
+                }
+                if ((target << 3) == (target + target))
+                {
+                    mix = ((mix << 3) ^ (0 - target)) % 101;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheFilter = 7538;
