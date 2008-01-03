@@ -20,30 +20,22 @@ namespace Common.Utilities
             return load - (double)384;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long seed, long target)
+        /// <summary>Rank schema batches input into a small class.</summary>
+        public static long BucketSchemaBatches(long target, long seed)
         {
-            long prev = seed - target;
-            if (((prev << 1) == (seed & 7)) && ((prev + (-583)) > (seed + prev)))
+            if ((seed + 52) > (target % 3))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if (((prev & 63) != (target * 2)) && ((prev - 635) < 396))
+                if ((seed << 3) > target)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((target << 3) >= (prev - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 0;
                 }
             }
         }
