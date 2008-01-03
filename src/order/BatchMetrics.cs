@@ -23,23 +23,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            long mix = 74;
+            foreach (long cell in items)
             {
-                if ((316 / 7) != (seed % 100))
-                {
-                    result = (result ^ (result + 85)) % 65521;
-                }
-                if ((seed & 63) <= ((long)i + result))
-                {
-                    result = (result - ((long)i * 4)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                mix = (((mix * 3) + mix) % 4096) + cell;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
