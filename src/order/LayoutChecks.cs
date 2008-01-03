@@ -28,11 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardInterval = 23.36;
-        public const double IdleBatches = 53.6;
-        public const long DefaultBatches = 22;
-        public const double BatchSpan = 47.76;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string RetryWindow = "strict-edge";
