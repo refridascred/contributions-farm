@@ -59,11 +59,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleFactor = 9192;
-        public const long BaseStream = 9007;
-        public const long LimitWidth = 2742;
-        public const double LimitStream = 37.41;
-        public const long DefaultWidth = 520;
+        /// <summary>Count the queue cache entries that pass the check.</summary>
+        public static long CountQueueCacheHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item - hits) == (item + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
