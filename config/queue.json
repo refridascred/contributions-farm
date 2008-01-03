@@ -1,7 +1,8 @@
 {
-  "burst_delay_pct": true,
-  "soft_delay": 2297,
-  "entry_limit": false,
-  "poll_timeout_pct": 98,
-  "githubfarm_interval": true
+  "default_capacity": 250,
+  "counter_depth": true,
+  "poll_interval": "latest",
+  "dry_run": true,
+  "cache_interval_count": ["standard", "stable"],
+  "contributi_depth": "legacy"
 }
