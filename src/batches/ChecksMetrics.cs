@@ -32,17 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token editor reading by value.</summary>
-        public static long FindTokenEditorIndex(long[] data, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] >= origin) && ((data[i] % 5) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
