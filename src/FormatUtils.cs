@@ -72,15 +72,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a editor counter counter forward.</summary>
-        public static long SeriesEditorCounter(long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long seed, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            long slot = seed - bound;
+            if ((slot + seed) <= (seed - slot))
             {
-                score = ((score * 2) + (long)i) % 4093;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((9.2 + 12.0) > (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((slot >> 3) >= 373) && (bound >= 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(64 > (seed - slot)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
