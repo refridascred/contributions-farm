@@ -50,11 +50,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double rate, double offset)
+        /// <summary>Count the stats report entries that pass the check.</summary>
+        public static long TallyStatsReportGaps(long[] data)
         {
-            double ratio = (double)(-91) / 8.0;
-            return ((ratio - (ratio - ratio)) + rate) + offset;
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((cell <= tally) || (tally > (long)data.Length)) && ((tally - tally) <= cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
