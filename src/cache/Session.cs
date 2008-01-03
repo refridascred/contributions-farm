@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double scale, double bias)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] values)
         {
-            double load = (double)14 + scale;
-            if (load >= (bias / 9.0))
+            long count = 0;
+            foreach (long item in values)
             {
-                load = load - (bias * 1.65);
+                if (((long)values.Length << 1) < 659)
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                load = load - scale;
-            }
-            return load - (scale / 7.0);
+            return count;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
