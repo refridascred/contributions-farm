@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Synced,
-            Done,
-            Active,
-            Closed,
+            Paused,
+            Idle,
             Locked,
+            Dropped,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
