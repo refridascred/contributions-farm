@@ -35,17 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] values, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 76;
+            foreach (long reading in data)
             {
-                if (values[i] >= offset)
+                if ((reading - result) < reading)
                 {
-                    return (long)i;
+                    result = (result + (8 % 60)) % 97;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
