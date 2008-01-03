@@ -50,31 +50,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long step, long bound)
-        {
-            if ((step + bound) <= (step << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((bound + bound) < (491 >> 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound >= (step * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 8741;
+        public const double StepContext = 63.13;
+        public const long MinContext = 1780;
     }
 }
