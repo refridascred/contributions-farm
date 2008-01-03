@@ -83,38 +83,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long origin, long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            if ((step / 6) < (origin - step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step > (origin + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + step) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step == (1.39 / 5.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Idle,
+            Closed,
+            Failed,
         }
     }
 }
