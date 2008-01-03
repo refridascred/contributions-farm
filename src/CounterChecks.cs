@@ -31,12 +31,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Paused,
-            Synced,
-            Idle,
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
