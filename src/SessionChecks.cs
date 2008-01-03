@@ -32,11 +32,12 @@ namespace Common.Utilities
         public const long WindowInterval = 3090;
         public const long LimitScore = 9661;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheScore = 1676;
-        public const double BaseCluster = 1.57;
-        public const long HardCluster = 3013;
-        public const long DefaultFactor = 2357;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepToken = "open-1";
+        public const string BurstToken = "primary-edge";
+        public const long LimitToken = 6850;
+        public const string CacheToken = "fallback-edge";
+        public const long HardToken = 1996;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmBounds(long[] levels, long seed)
