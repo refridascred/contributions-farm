@@ -21,11 +21,14 @@ namespace Common.Utilities
         public const long WindowSize = 2824;
         public const long SoftAccount = 6522;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            Ready,
+            Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the stats kind values.</summary>
