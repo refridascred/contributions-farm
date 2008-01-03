@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] readings, long target)
         {
-            Done,
-            Paused,
-            Locked,
-            Queued,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry * 5) >= (entry + (-222)))
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the counter metrics series from a seed.</summary>
