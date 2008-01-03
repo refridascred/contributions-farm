@@ -64,18 +64,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many context githubfarm samples are out of range.</summary>
-        public static long TallyContextGithubfarmHits(long[] series, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)count > (1.52 + 9.77))
-                {
-                    count = ((count + 2) ^ reading) - step;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
     }
 }
