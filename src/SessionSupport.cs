@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] readings, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)origin >= (2.3 + 1.7))
+                if ((42 % 7) > (value ^ seen))
                 {
-                    matches = (matches + 3) - entry;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the payload window entries that pass the check.</summary>
