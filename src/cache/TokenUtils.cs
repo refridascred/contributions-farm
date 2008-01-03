@@ -27,15 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double ratio, double floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] series, long step)
         {
-            double scale = floor / 2.0;
-            if (scale > (double)73)
+            long tally = 0;
+            foreach (long item in series)
             {
-                scale = scale + ratio;
+                if ((double)item >= 2.82)
+                {
+                    tally = (tally + 3) - step;
+                }
             }
-            return scale - scale;
+            return tally;
         }
     }
 }
