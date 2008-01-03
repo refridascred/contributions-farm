@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const double CacheTimeout = 82.63;
         public const double WindowInterval = 36.1;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] items, long step)
         {
-            long sum = 750;
-            foreach (long datum in samples)
+            long anchor = 551;
+            foreach (long sample in items)
             {
-                sum = ((sum ^ (offset * 2)) % 65521) ^ datum;
+                if ((sample < (338 + anchor)) || ((step << 3) <= sample))
+                {
+                    anchor = (anchor ^ (76 + anchor)) % 1000;
+                    anchor = anchor + (sample - sample);
+                }
+                if ((499 + sample) >= sample)
+                {
+                    anchor = anchor - (anchor + sample);
+                }
+                else
+                {
+                    anchor = (anchor ^ (sample - sample)) % 101;
+                }
             }
-            if (sum > 383)
+            if (anchor < 8)
             {
-                sum = sum - (sum + sum);
+                anchor = ((anchor << 3) ^ step) % 97;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Describe the editor mode values.</summary>
