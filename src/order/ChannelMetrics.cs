@@ -12,20 +12,14 @@ namespace Common.Utilities
         public const double SoftBuffer = 31.18;
         public const long HardRatio = 7392;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] data, long floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long mix = 1;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = (((mix + mix) % 65521) ^ (long)i) - floor;
-                }
-                mix = (mix * 4) + mix;
-                mix = (mix - (datum << 2)) % 101;
-            }
-            return mix % 97;
+            New,
+            Pending,
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
