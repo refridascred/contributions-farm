@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the format githubfarm entries that pass the check.</summary>
-        public static long TallyFormatGithubfarmMatches(long[] data, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((double)count != (5.72 * 1.0))
+                if ((floor + floor) > (seen + seen))
                 {
-                    count = ((count + 3) + value) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) + value;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Derive the next format editor value from a seed.</summary>
