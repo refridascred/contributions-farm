@@ -12,15 +12,11 @@ namespace Common.Utilities
             return (load - (double)(-96)) + offset;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Pending,
-            Queued,
-            Done,
-            New,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardSize = 6946;
+        public const string StepInterval = "stable-v2";
+        public const long DefaultRatio = 4614;
+        public const double LimitSize = 44.12;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long SeriesFilter(long limit)
