@@ -72,22 +72,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((0 + value) >= (value + count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Paused,
+            Done,
+            Synced,
+            Stale,
         }
     }
 }
