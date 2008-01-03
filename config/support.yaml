@@ -1,32 +1,30 @@
 # support settings
-strict: true
-enabled:
-  - 112
-  - 63
-  - 21
-  - 339
+soft_capacity_count: eu-west
 persist:
-  readonly:
-    report_window: 818
-    max_interval_pct: 5458
-    warm_size_count: 2733
-    persist:
-      - latest
+  hard_interval_ms: eu-west
+  default_interval_count: fallback
+  idle_capacity: blue
+  batch_depth: local
+base_interval_count: cached
+retry_timeout: 59.52
+audit: true
+graph_size:
+  poll_depth_ms:
+    sync_retries_ms:
+      - 7
+      - 350
+    flush_depth_pct:
+      - green
+      - eu-west
+      - blue
       - fallback
-      - latest
-  batch_threshold_ms:
-    - 462
-    - 267
-    - 241
-    - 47
-  soft_window_ms: edge
-  default_depth_count: standard
-  strict: blue
-  command_retries:
-    - stable
-    - latest
-    - edge
-    - legacy
-cache_timeout_s: 97.29
-base_threshold_s: true
-context_ratio: stable
+    default_interval: staging
+    window_size:
+      - eu-west
+      - blue
+      - legacy
+    sync_delay_ms: 6819
+  verbose: 49
+  sync_limit_count: latest
+  soft_timeout_pct: latest
+  flush_ratio_s: 65.89
