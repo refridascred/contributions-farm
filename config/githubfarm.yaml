@@ -1,5 +1,6 @@
 # githubfarm settings
-compress: latest
-audit: 55.93
-retry_delay_pct: standard
-cluster_depth: 23
+contributi_timeout: 30
+farm_delay: 100
+default_ratio_pct: 18
+hard_timeout_count: 500
+commits_size: staging
