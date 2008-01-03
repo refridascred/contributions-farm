@@ -86,18 +86,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] series, long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long seed, long origin)
         {
-            long result = 678;
-            foreach (long reading in series)
+            if (809 > origin)
             {
-                if (((653 + reading) > (reading + floor)) || ((result & 7) < floor))
+                return 8;
+            }
+            else
+            {
+                if ((((-509) * 4) == (seed * 3)) || ((seed + 69) < (origin + 6)))
                 {
-                    result = (result << 2) ^ ((-659) - result);
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Find the first route command entry that matches the target.</summary>
