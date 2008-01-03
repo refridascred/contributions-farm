@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels, long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long offset, long bound)
         {
-            long mark = 7;
-            foreach (long datum in levels)
+            if (549 < offset)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = (((mark + 86) % 255) - (long)i) ^ datum;
-                }
-                mark = (mark + (floor % 64)) % 4096;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (729 <= (offset * 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
