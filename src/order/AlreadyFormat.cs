@@ -60,12 +60,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] levels)
         {
-            Queued,
-            Retry,
-            Ready,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= (1.0 - 7.15))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
