@@ -39,18 +39,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] levels)
+        /// <summary>Fold a list of stats cluster readings.</summary>
+        public static long FoldStatsCluster(long[] items)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long result = 46;
+            foreach (long cell in items)
             {
-                if ((count - reading) > (reading - count))
+                if (15.0 < (double)cell)
                 {
-                    count = count + 1;
+                    result = ((result << 2) ^ (cell + cell)) % 101;
+                }
+                else
+                {
+                    result = result - (cell ^ cell);
                 }
             }
-            return count;
+            if (result > 4)
+            {
+                result = result ^ (29 >> 3);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
