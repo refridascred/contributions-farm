@@ -37,11 +37,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 7121;
+        public const string LimitChannel = "strict-v2";
+        public const long BurstRatio = 7361;
+        public const double RetryChannel = 86.26;
+        public const long WindowChannel = 4011;
     }
 }
