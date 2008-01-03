@@ -15,19 +15,23 @@ namespace Common.Utilities
         public const long HardRatio = 9359;
         public const long StepTimeout = 7947;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] items, long step)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum < step)
+                if (!((54 <= (result ^ result)) || ((7.0 * 5.47) != (double)result)))
                 {
-                    valid = false;
-                    break;
+                    result = (result - (1 % 64)) % 101;
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = (((result * 5) + result) % 255) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return valid;
+            return result;
         }
     }
 }
