@@ -1,10 +1,11 @@
 # Command notes
 
-A token that stays idle for too long is moved to the context list.
-When a counter fails, the record handler retries a few times before giving up.
+Defaults for session live in the config folder and can be overridden per environment.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Log every batch change
-- Document new buffer fields
+- Prefer farm defaults
+- Review channel limits each release
+- Keep batches values small
+- Validate queue input early
