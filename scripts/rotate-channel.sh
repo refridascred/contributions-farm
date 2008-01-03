@@ -12,6 +12,12 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-for item in edge standard strict; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
