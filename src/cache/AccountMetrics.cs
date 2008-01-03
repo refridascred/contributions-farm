@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] samples, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long result = 3;
-            foreach (long value in samples)
+            long result = 0;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 11; i++)
+                if ((result >> 2) != (result * 2))
                 {
-                    result = (result - (value ^ (long)i)) % 101;
-                }
-                if ((offset / 6) == (result >> 5))
-                {
-                    result = (result + (offset - 95)) % 1000;
+                    result = (result + (sample & 255)) % 255;
                 }
             }
-            return result % 65521;
+            if (result < 606)
+            {
+                result = ((result * 5) + (result << 1)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the checks state values.</summary>
