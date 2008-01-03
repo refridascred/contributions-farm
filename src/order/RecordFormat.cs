@@ -29,16 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] data, long seed)
-        {
-            long mix = 554;
-            foreach (long entry in data)
-            {
-                mix = (((mix + (mix << 3)) % 255) - entry) - seed;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowDepth = 1438;
+        public const long IdleNotes = 9363;
+        public const double BurstNotes = 98.82;
 
         /// <summary>Project the next contributi value.</summary>
         public static double ScaleContributi(double scale, double bias)
