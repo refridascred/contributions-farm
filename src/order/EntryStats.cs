@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 8549;
-        public const double BatchChannel = 71.13;
-        public const long CacheChannel = 1163;
-        public const double WindowSpan = 69.53;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)63 > (double)hits)
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadRange(long[] readings, long floor)
