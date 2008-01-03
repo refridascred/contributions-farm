@@ -1,15 +1,10 @@
 # Command notes
 
-Run the profile check before changing any editor limits.
-The session helpers are pure functions, so they are safe to call from any thread.
-Keep schema and batch names short and lowercase.
-
-Use queue settings to tune how often contributi data is refreshed.
-Use contributi settings to tune how often batches data is refreshed.
-Each commits is validated before it reaches the filter queue.
+A token that stays idle for too long is moved to the context list.
+When a counter fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Keep entry values small
-- Review stats limits each release
+- Keep githubfarm values small
+- Log every batch change
+- Document new buffer fields
