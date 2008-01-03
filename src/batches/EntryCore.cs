@@ -45,18 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] levels)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (((double)reading != (1.91 - 6.9)) || (count < (count << 3)))
+                if ((15.0 + 6.6) > (double)target)
                 {
-                    count = count + 3;
+                    matches = (matches + 2) + value;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
