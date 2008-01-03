@@ -25,38 +25,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long offset, long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            if ((offset - offset) <= (target / 6))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset < (offset >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target & 31) != (offset * 3))
+                    if ((data[i] - data[j]) != 18)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset - offset) <= (offset + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
