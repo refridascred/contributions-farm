@@ -41,31 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a support layout value against two limits.</summary>
-        public static long RankSupportLayout(long seed, long target)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if ((9 % 10) > seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed - 84) == (seed >> 5)) && (target <= (seed + 352)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((3 << 3) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Accumulate counter samples.</summary>
