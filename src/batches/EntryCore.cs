@@ -61,18 +61,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] levels, long target)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((15.0 + 6.6) > (double)target)
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            Closed,
+            Ready,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
