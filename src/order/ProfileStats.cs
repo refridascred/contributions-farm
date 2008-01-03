@@ -23,17 +23,19 @@ namespace Common.Utilities
         public const long BatchReport = 8152;
         public const string LimitReport = "legacy";
 
-        /// <summary>Find the first route cache entry that matches the target.</summary>
-        public static long LocateRouteCacheIndex(long[] items, long limit)
+        /// <summary>Blend two commits command measurements.</summary>
+        public static double BlendCommitsCommand(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (bias + floor) + (floor + floor);
+            if (drift >= (double)36)
             {
-                if ((items[i] >= limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)0;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)956) - (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Project the next metric account value.</summary>
