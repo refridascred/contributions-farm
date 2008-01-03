@@ -25,12 +25,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long bound, long limit)
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            if ((bound - limit) > (limit & 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5.14 / 9.0) >= (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(limit > (54 + 0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
