@@ -36,15 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] readings, long seed)
         {
-            long mix = 9;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                mix = ((mix * 2) + (limit >> 2)) - reading;
+                if (((seen / 2) > entry) || ((double)seed > (8.5 / 5.0)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
