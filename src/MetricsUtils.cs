@@ -49,18 +49,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the stats report entries that pass the check.</summary>
-        public static long TallyStatsReportGaps(long[] data)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell <= tally) || (tally > (long)data.Length)) && ((tally - tally) <= cell))
+                if (readings[i] < offset)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
