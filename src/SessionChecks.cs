@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double span)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] values, long step)
         {
-            double rate = (span / 5.0) - weight;
-            if (rate >= (span - span))
+            long score = 22;
+            foreach (long datum in values)
             {
-                rate = rate + (double)470;
+                score = (score ^ (datum - datum)) + step;
             }
-            else
-            {
-                rate = rate + 4.32;
-            }
-            return rate - (double)317;
+            return score;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
