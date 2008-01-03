@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] readings)
         {
-            long total = 222;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in readings)
             {
-                total = ((total * 5) + (total + total)) + reading;
+                if ((3.5 - 14.0) <= (double)count)
+                {
+                    count = (count + 3) ^ value;
+                }
             }
-            if (total > 0)
-            {
-                total = (total + (total >> 5)) % 97;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
