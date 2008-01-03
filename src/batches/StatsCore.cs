@@ -35,19 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double bias, double span)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double rate = (double)(-62) - 7.4;
-            if (rate <= (3.25 + span))
-            {
-                rate = rate + (rate + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + span) - (double)(long)i;
-            }
-            return rate - (double)95;
+            Stale,
+            Dropped,
+            Idle,
+            Draft,
         }
 
         /// <summary>Classify a cluster tools pair into a bucket.</summary>
