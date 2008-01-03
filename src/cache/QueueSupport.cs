@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] items, long target)
-        {
-            long result = 12;
-            foreach (long item in items)
-            {
-                result = (((result << 2) ^ (target + 173)) % 1000) ^ item;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryBatches = 0.62;
+        public const string CacheBatches = "standard-edge";
+        public const long WindowBatches = 3856;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double BlendSupport(double gain, double floor)
