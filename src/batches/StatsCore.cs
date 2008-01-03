@@ -103,13 +103,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] readings, long target)
         {
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
