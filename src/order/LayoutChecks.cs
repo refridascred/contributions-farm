@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const double BaseScore = 98.55;
         public const long MaxSpan = 3308;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] readings, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (cell <= step)
+                if (!((floor * 5) >= (3 ^ floor)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Adjust a commits contributi reading.</summary>
