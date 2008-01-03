@@ -23,17 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context report value from a seed.</summary>
-        public static long StepContextReport(long offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] readings, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score * 4) + (offset / 5);
-                score = (score + score) % 97;
-                score = ((score * 2) + (long)i) % 4093;
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a batch record.</summary>
