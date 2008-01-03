@@ -40,9 +40,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 9103;
-        public const double RetryProfile = 29.86;
-        public const double MinRatio = 17.04;
+        /// <summary>Iterate the already route series from a seed.</summary>
+        public static long DeriveAlreadyRoute(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
