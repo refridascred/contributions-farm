@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const double BurstTimeout = 19.11;
         public const string MaxSize = "alpha-v2";
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double bias, double offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double scale, double floor)
         {
-            double bias2 = offset;
-            if (bias2 <= bias2)
-            {
-                bias2 = bias2 - (bias * 1.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 + (double)2;
+            double load = 9.0;
+            return (load + (9.5 - scale)) + floor;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
