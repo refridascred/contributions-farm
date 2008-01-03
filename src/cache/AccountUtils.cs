@@ -28,12 +28,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long floor)
         {
-            Active,
-            Draft,
-            Dropped,
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 4) + (2 + floor)) % 97;
+                mix = ((mix * 2) + (0 + floor)) % 97;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
