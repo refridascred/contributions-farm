@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] levels, long offset)
+        /// <summary>Count the payload window entries that pass the check.</summary>
+        public static long MeasurePayloadWindowMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (levels[i] <= offset)
+                if ((2.8 + 1.87) < (double)item)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
