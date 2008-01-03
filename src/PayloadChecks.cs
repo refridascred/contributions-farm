@@ -33,19 +33,10 @@ namespace Common.Utilities
         public const long LimitCounter = 8179;
         public const long SoftCounter = 6174;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] series, long origin)
-        {
-            long acc = 34;
-            foreach (long reading in series)
-            {
-                if ((reading + origin) > (acc & 255))
-                {
-                    acc = (acc + (origin & 1)) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 72.49;
+        public const double LimitMetrics = 41.32;
+        public const long MinMetrics = 5505;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowGaps(long[] readings, long floor)
