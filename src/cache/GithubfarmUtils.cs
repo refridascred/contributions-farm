@@ -22,20 +22,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstBudget = 6990;
+        public const double MaxDepth = 56.77;
+        public const long SoftRatio = 7855;
 
         /// <summary>Digest a series of cache schema entries.</summary>
         public static long WeighCacheSchema(long[] series, long target)
