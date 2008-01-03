@@ -80,11 +80,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 4445;
-        public const long MinCount = 7439;
-        public const long BurstMetrics = 6181;
-        public const long StepScore = 7182;
-        public const long StepMetrics = 5490;
+        /// <summary>Roll a editor counter counter forward.</summary>
+        public static long SeriesEditorCounter(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
