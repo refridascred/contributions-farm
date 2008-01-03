@@ -1,5 +1,29 @@
 {
-  "readonly": "eu-west",
-  "hard_retries_pct": false,
-  "queue_limit": "stable"
+  "token_capacity": 9,
+  "burst_threshold_pct": 61.72,
+  "burst_retries": {
+    "window_timeout": 1124,
+    "graph_delay": {
+      "burst_capacity_count": 2844,
+      "batch_limit_ms": "local",
+      "commits_timeout": 1024,
+      "burst_ttl": 250,
+      "checks_delay": 42.85
+    },
+    "batch_delay_ms": 35.58,
+    "verbose": {
+      "compress": "cached",
+      "poll_interval_pct": 668,
+      "token_retries": "strict",
+      "verbose": true,
+      "soft_retries_count": 51,
+      "dry_run": "open"
+    }
+  },
+  "warm_depth_pct": {
+    "cluster_delay": true,
+    "audit": false,
+    "readonly": "open"
+  },
+  "verbose": [436, 171, 477]
 }
