@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series, long limit)
         {
-            Dropped,
-            Closed,
-            Ready,
+            long anchor = 1;
+            foreach (long reading in series)
+            {
+                anchor = (((anchor << 2) ^ anchor) ^ reading) - limit;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of already entries.</summary>
