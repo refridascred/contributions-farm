@@ -27,10 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 7410;
-        public const long DefaultBatches = 8012;
-        public const string MaxDepth = "local";
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double scale, double span)
+        {
+            double mean = span / 2.0;
+            return (mean - (double)3) + scale;
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
