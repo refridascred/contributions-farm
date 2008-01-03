@@ -48,12 +48,25 @@ namespace Common.Utilities
         public const long BaseLevel = 2258;
         public const double StepTimeout = 20.66;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "standard-1";
-        public const string HardBuffer = "fallback";
-        public const double BaseCount = 69.92;
-        public const long DefaultSpan = 5794;
-        public const long BatchDepth = 5201;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long bound)
+        {
+            if ((double)bound > (3.0 - 3.56))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(((-2) - offset) != (offset + bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long target, long offset)
