@@ -42,16 +42,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry ^ 34;
-                carry = ((carry * 4) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
