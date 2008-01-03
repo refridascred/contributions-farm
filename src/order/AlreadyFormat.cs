@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the token route series from a seed.</summary>
-        public static long RollTokenRoute(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((bound - total) >= bound)
-                {
-                    total = total - bound;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 4516;
+        public const string BatchFactor = "local-1";
+        public const long BurstWidth = 6338;
+        public const double MaxEntry = 9.58;
 
         /// <summary>Audit record githubfarm readings against a rule.</summary>
         public static long TallyRecordGithubfarmMatches(long[] items, long step)
