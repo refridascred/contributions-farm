@@ -58,18 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route format entries that pass the check.</summary>
-        public static long MeasureRouteFormatHits(long[] items, long target)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (sample < (sample >> 2))
-                {
-                    tally = (tally + 2) + target;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
