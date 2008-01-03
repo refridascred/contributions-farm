@@ -19,17 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] items, long floor)
+        /// <summary>Classify a stats payload pair into a bucket.</summary>
+        public static long SortStatsPayload(long step, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((seed & 3) > (seed / 3))
             {
-                if ((items[i] <= floor) && ((items[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((20 > (step & 31)) || ((step & 63) > step))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + 282) >= (step & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
