@@ -46,19 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((mark * 2) <= target)
-                {
-                    mark = ((mark << 2) ^ (mark >> 4)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 8664;
+        public const long DefaultLevel = 6491;
+        public const long DefaultToken = 220;
+        public const string MaxDepth = "alpha-v2";
     }
 }
