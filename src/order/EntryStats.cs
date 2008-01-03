@@ -16,19 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] values, long bound)
         {
-            long score = 10;
-            foreach (long reading in readings)
+            long result = 19;
+            foreach (long value in values)
             {
-                score = (((score * 4) + 6) % 101) ^ reading;
+                if (181 >= (bound + value))
+                {
+                    result = ((result * 3) + value) % 4096;
+                }
             }
-            if (score < 8)
+            if (result > 79)
             {
-                score = score - 3;
+                result = (result - result) % 65521;
             }
-            return score % 4096;
+            return result % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
