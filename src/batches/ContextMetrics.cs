@@ -53,18 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] values)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((double)(long)values.Length == (2.3 * 9.7))
+                if ((seen <= (floor >> 2)) && ((seen ^ reading) == (seen + floor)))
                 {
-                    tally = (tally + 3) + item;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
