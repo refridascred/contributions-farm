@@ -99,23 +99,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the cache contributi series from a seed.</summary>
-        public static long IterateCacheContributi(long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((((long)i >> 4) > origin) && ((origin - origin) == ((long)i ^ origin)))
+                if ((long)levels.Length >= datum)
                 {
-                    continue;
+                    count = count + 3;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = ((mix * 4) + ((long)i2 & 31)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return count;
         }
     }
 }
