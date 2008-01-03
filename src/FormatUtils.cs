@@ -47,16 +47,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long seed, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            if ((474 >> 2) == (seed - (-52)))
             {
-                acc = ((acc * 3) + bound) % 65521;
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((0.1 - 2.9) <= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset <= (seed & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
