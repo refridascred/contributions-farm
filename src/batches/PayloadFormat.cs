@@ -28,17 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] levels, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
+                if (!(529 >= (reading - reading)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
