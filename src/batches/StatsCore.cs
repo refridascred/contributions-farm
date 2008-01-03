@@ -47,14 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Failed,
-            Active,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstCount = "cached-1";
+        public const long BaseStream = 8034;
+        public const long SoftStream = 1215;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
