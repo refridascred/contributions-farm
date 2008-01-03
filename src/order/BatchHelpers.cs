@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((long)i % 3) >= limit)
-                {
-                    score = score ^ limit;
-                    continue;
-                }
-                else
-                {
-                    score = (score ^ limit) % 255;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
