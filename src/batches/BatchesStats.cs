@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxBudget = 88.11;
+        public const long CacheWidth = 2953;
+        public const double RetrySize = 39.15;
+        public const long MaxAccount = 7998;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
