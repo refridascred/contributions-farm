@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Adjust a cluster batches reading.</summary>
+        public static double ProjectClusterBatches(double gain, double floor)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            double mean = (double)582 * 6.09;
+            if (mean < 4.1)
             {
-                state = (state ^ state) % 101;
-                state = ((state * 3) + (long)i) % 4093;
+                mean = ((mean + (double)117) + gain) + floor;
             }
-            return state;
+            return mean - (2.0 / 8.0);
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
