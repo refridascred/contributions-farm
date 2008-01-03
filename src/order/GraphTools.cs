@@ -33,38 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long target)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            if ((step & 15) != (step + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step <= (93 % 64)) || ((target - target) >= (target + target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step << 2) < step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (9.4 < (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
