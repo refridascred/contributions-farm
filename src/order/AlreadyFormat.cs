@@ -45,18 +45,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] samples)
+        /// <summary>Accumulate already token samples.</summary>
+        public static long DigestAlreadyToken(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mix = -9;
+            foreach (long sample in readings)
             {
-                if ((559 & 7) < (value - tally))
-                {
-                    tally = tally + 1;
-                }
+                mix = (((mix ^ (2 & 31)) % 255) - sample) + floor;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
