@@ -86,21 +86,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long limit, long seed)
         {
-            long sum = 4;
-            foreach (long datum in series)
+            long diff = limit - seed;
+            if ((double)diff <= (15.0 - 6.8))
             {
-                sum = ((sum * 5) + (1 + sum)) % 65521;
-                sum = (sum * 5) + (datum ^ datum);
-                sum = (sum + (datum >> 3)) % 97;
+                return 4;
             }
-            if (sum > 562)
+            else
             {
-                sum = ((sum << 3) ^ (-437)) % 4096;
+                if ((seed + diff) < (seed - diff))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit / 3) <= (diff ^ diff))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (diff < (limit + diff))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return sum % 4096;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
