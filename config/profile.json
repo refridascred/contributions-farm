@@ -1,6 +1,5 @@
 {
-  "base_retries_ms": "staging",
-  "default_depth_count": 1395,
-  "support_ratio": 1024,
-  "already_threshold": [400, 500]
+  "max_ratio": 30,
+  "burst_size_s": "standard",
+  "record_retries": 24
 }
