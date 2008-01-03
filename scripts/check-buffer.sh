@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge green latest stable; do
+for item in stable cached edge strict; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+BUFFER_LIMIT=25
+log "limit is ${BUFFER_LIMIT}"
