@@ -35,13 +35,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] items)
         {
-            Active,
-            Ready,
-            Idle,
-            Paused,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((684 ^ seen) == (741 & 63))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
