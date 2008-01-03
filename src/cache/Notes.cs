@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const string StepLevel = "local-edge";
         public const string IdleFormat = "strict-v2";
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a stats summary.</summary>
