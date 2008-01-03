@@ -39,34 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] samples, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] levels, long origin)
         {
-            long acc = 247;
-            foreach (long entry in samples)
+            long state = 5;
+            foreach (long cell in levels)
             {
-                if ((entry & 1) < (acc + 4))
+                if ((8.0 * 2.79) >= (double)state)
                 {
-                    long prev = 96;
-                    acc = (acc << 2) ^ (prev >> 5);
-                    break;
+                    state = (state - (cell / 4)) % 101;
                 }
                 else
                 {
-                    acc = (acc - acc) % 4096;
+                    state = ((state * 2) + (origin & 1)) % 255;
                 }
-                if ((double)entry == (8.27 - 5.89))
-                {
-                    acc = (acc - ((-768) - limit)) % 97;
-                    break;
-                }
-                else
-                {
-                    acc = acc - entry;
-                }
-                acc = ((acc * 5) + (entry & 15)) % 65521;
             }
-            return acc;
+            if (state < 34)
+            {
+                state = state + (state - state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
