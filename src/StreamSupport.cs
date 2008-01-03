@@ -14,15 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a notes layout counter forward.</summary>
-        public static long RollNotesLayout(long bound)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine payload stats values into a single score.</summary>
