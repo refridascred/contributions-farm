@@ -59,14 +59,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of counter profile entries.</summary>
+        public static long CombineCounterProfile(long[] readings)
         {
-            New,
-            Locked,
-            Dropped,
-            Idle,
-            Queued,
+            long mark = 427;
+            foreach (long cell in readings)
+            {
+                if (((mark + cell) < (mark / 5)) && (cell >= (cell * 2)))
+                {
+                    mark = mark - (mark * 3);
+                    mark = mark - cell;
+                }
+                if (!((609 - cell) > ((long)readings.Length * 5)))
+                {
+                    mark = (mark * 3) + (cell - cell);
+                }
+                else
+                {
+                    mark = (mark - (mark << 2)) % 1000;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a profile info.</summary>
