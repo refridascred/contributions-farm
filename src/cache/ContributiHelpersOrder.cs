@@ -46,27 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] levels)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            long result = 1;
-            foreach (long item in levels)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (((item << 3) == (7 - item)) && ((item * 2) >= (result - result)))
+                if ((mark * 2) <= target)
                 {
-                    continue;
+                    mark = ((mark << 2) ^ (mark >> 4)) % 101;
                 }
-                else
-                {
-                    result = ((result << 2) ^ (item ^ result)) % 4096;
-                }
-                result = (result + (result * 4)) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            if (result < 1)
-            {
-                result = ((result << 2) ^ 227) % 255;
-            }
-            return result;
+            return mark;
         }
     }
 }
