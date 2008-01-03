@@ -1,5 +1,8 @@
 {
-  "cache_timeout": [273, 96],
-  "stats_window": true,
-  "graph_delay": false
+  "checks_timeout": 1554,
+  "max_interval_ms": 500,
+  "strict": 47.03,
+  "default_ttl_s": 4001,
+  "poll_interval_count": [200, 471],
+  "enabled": 57.67
 }
