@@ -18,15 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((double)step > (double)(long)i)
+                {
+                    carry = (carry - (step - step)) % 255;
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
