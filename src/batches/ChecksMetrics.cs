@@ -72,14 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Draft,
-            Paused,
-            Done,
-            Synced,
-            Stale,
+            public bool Region { get; set; }
+            public double Token { get; set; }
         }
     }
 }
