@@ -30,15 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double bias, double bias2)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] samples)
         {
-            double mean = 9.0;
-            if (mean <= 3.94)
+            long anchor = 22;
+            foreach (long item in samples)
             {
-                mean = ((mean + (double)937) + bias) - bias2;
+                if (716 >= (item % 3))
+                {
+                    anchor = anchor ^ ((long)samples.Length / 2);
+                }
             }
-            return mean + (mean / 4.0);
+            return anchor % 1000;
         }
 
         /// <summary>Describe the report class values.</summary>
