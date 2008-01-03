@@ -20,26 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] levels, long origin)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long state = 5;
-            foreach (long cell in levels)
-            {
-                if ((8.0 * 2.79) >= (double)state)
-                {
-                    state = (state - (cell / 4)) % 101;
-                }
-                else
-                {
-                    state = ((state * 2) + (origin & 1)) % 255;
-                }
-            }
-            if (state < 34)
-            {
-                state = state + (state - state);
-            }
-            return state % 65521;
+            Active,
+            Locked,
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
