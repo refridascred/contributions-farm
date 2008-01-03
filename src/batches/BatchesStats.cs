@@ -44,12 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
