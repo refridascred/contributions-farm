@@ -64,18 +64,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] levels, long step)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry <= (double)hits)
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Idle,
+            Stale,
         }
 
         /// <summary>Validate batch schema readings against a bound.</summary>
