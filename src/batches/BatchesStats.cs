@@ -24,23 +24,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)(long)readings.Length < (1.0 - 11.0))
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheBudget = 9680;
+        public const double RetryCount = 33.26;
+        public const long CacheFactor = 26;
+        public const long BaseRoute = 7674;
+        public const long CacheDepth = 8508;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string IdleStats = "strict-v2";
