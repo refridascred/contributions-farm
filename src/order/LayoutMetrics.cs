@@ -27,19 +27,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] items, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define report limits and defaults.</summary>
