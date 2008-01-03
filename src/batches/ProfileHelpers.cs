@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowScore = 7912;
-        public const long LimitRatio = 5450;
-        public const long WindowFactor = 7315;
-        public const long BurstFormat = 1973;
-        public const string MaxLevel = "strict-v2";
+        /// <summary>Iterate the tools stats series from a seed.</summary>
+        public static long IterateToolsStats(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 2) + (score ^ limit)) % 101;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetrySize = 9218;
