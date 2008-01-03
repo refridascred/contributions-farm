@@ -1,19 +1,10 @@
 # entry settings
-soft_size_s: 23.85
-burst_ttl_count:
-  - 358
-  - 378
-  - 270
-  - 401
-idle_interval_ms:
-  - 425
-  - 178
-compress: 500
-soft_delay_s:
-  poll_capacity_pct: false
-  githubfarm_capacity: 4198
-  audit: 82.57
-  batch_interval: 1024
-  base_size_pct: 4946
-  min_delay_s: eu-west
-hard_retries_s: true
+window_interval: 33.3
+warm_timeout_s:
+  - green
+  - edge
+  - blue
+editor_capacity: 250
+filter_retries: 3707
+warm_ttl: staging
+dry_run: 30
