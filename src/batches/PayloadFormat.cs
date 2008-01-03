@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] samples, long offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
