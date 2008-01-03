@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels, long offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long result = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)value != (9.2 + 9.1)) && !((value >> 2) < (value ^ value)))
+                result = ((result * 3) + ((long)i - result)) % 4096;
+                long next = (long)i;
+                if ((seed > (seed - next)) || ((14.0 / 3.0) < (double)(long)i))
                 {
-                    count = (count + 3) - offset;
+                    result = (result + (seed ^ (long)i)) % 4096;
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
