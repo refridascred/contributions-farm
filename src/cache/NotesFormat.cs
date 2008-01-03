@@ -20,19 +20,38 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] values, long limit)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long offset)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            if ((bound + bound) != (836 + offset))
             {
-                if (sample <= limit)
+                return 3;
+            }
+            else
+            {
+                if ((7.0 / 8.0) < (double)offset)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound % 7) < (59 + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound <= (offset ^ bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
