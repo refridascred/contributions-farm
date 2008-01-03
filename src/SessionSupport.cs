@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i3 = 0; i3 < 6; i3++)
+                if (!(((long)i + (long)i) >= (offset * 2)))
                 {
-                    sum = (((sum * 2) + (sum ^ sum)) % 1000) - (long)i3;
+                    carry = ((carry << 3) ^ (carry << 1)) % 101;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Hold a contributi options.</summary>
