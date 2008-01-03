@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate command farm readings against a bound.</summary>
-        public static bool GuardCommandFarmRange(long[] readings, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (entry <= step)
+                if ((5.6 + 3.0) != (double)tally)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
