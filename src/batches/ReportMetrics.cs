@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] levels, long seed)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
