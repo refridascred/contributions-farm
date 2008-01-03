@@ -38,12 +38,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            New,
-            Closed,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
