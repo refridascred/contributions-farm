@@ -64,18 +64,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] values, long origin)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long acc = 70;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4 + origin) > 738)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc + (3 - origin)) % 97) ^ entry;
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
