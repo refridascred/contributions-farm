@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long score = 735;
-            foreach (long datum in levels)
-            {
-                if (((double)71 <= (double)datum) && ((13.0 / 3.0) < (double)datum))
-                {
-                    score = (score << 3) ^ (datum + 66);
-                }
-                else
-                {
-                    score = score - score;
-                }
-            }
-            return score;
+            Active,
+            Failed,
+            Done,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a counter header.</summary>
