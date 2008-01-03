@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
+            long anchor = -961;
+            foreach (long entry in values)
             {
-                sum = ((sum * 4) + (sum & 1)) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((double)1 >= (double)target)
+                {
+                    anchor = (anchor - (entry + entry)) % 1000;
+                }
             }
-            return sum;
+            if (anchor < 61)
+            {
+                anchor = (anchor ^ target) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
