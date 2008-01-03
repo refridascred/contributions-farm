@@ -26,10 +26,15 @@ namespace Common.Utilities
         public const long RetrySession = 2389;
         public const double CacheSession = 0.7;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 2671;
-        public const long DefaultFactor = 7688;
-        public const long BaseTimeout = 6535;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Ready,
+            Failed,
+            Paused,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
