@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseInterval = 9120;
-        public const double RetryLayout = 79.09;
-        public const long WindowLayout = 3950;
-        public const long CacheLevel = 7193;
-        public const string CacheFactor = "staging-edge";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches - value) > (matches + value))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long bound, long bound2)
