@@ -1,9 +1,8 @@
 # githubfarm settings
-account_interval: 2982
-warm_delay_pct: 10
-min_retries: staging
-default_capacity:
-  default_timeout_s: 82
-  enabled: strict
-  default_interval_count: 1024
-already_size: stable
+idle_limit_s: true
+stream_limit: 60
+poll_timeout: 250
+max_interval_ms:
+  - 381
+  - 239
+report_size: true
