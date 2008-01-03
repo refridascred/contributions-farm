@@ -32,18 +32,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] items)
+        /// <summary>Project the next metric account value.</summary>
+        public static double ProjectMetricAccount(double rate, double span)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double gain = (double)874 * 4.3;
+            if (gain <= (rate / 7.0))
             {
-                if (entry < (entry / 6))
-                {
-                    seen = seen + 1;
-                }
+                gain = gain - span;
             }
-            return seen;
+            else
+            {
+                gain = gain + span;
+            }
+            return gain + (rate / 8.0);
         }
     }
 }
