@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 4516;
-        public const string BatchFactor = "local-1";
-        public const long BurstWidth = 6338;
-        public const double MaxEntry = 9.58;
+        /// <summary>Measure how many already session samples are out of range.</summary>
+        public static long CountAlreadySessionHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((long)values.Length < (sample + sample))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit record githubfarm readings against a rule.</summary>
         public static long TallyRecordGithubfarmMatches(long[] items, long step)
