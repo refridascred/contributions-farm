@@ -32,18 +32,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches % 3) <= (matches / 9))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinCount = 5951;
+        public const string HardSchema = "fallback-1";
+        public const long WindowSchema = 2042;
+        public const double BurstSchema = 82.27;
     }
 }
