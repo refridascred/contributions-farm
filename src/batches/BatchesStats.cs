@@ -20,11 +20,12 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheScore = 7551;
-        public const long RetryScore = 6919;
-        public const long RetrySession = 2389;
-        public const double CacheSession = 0.7;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
