@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Active,
-            Stale,
-            Ready,
             Draft,
+            Idle,
+            New,
+            Active,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
