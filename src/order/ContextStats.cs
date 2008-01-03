@@ -16,23 +16,13 @@ namespace Common.Utilities
             return weight - (double)533;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double ratio, double offset)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double mean = offset;
-            if (mean <= mean)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)82) + (double)(long)i;
-            }
-            return mean + (double)445;
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
