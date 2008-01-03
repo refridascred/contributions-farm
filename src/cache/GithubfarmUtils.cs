@@ -14,13 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Active,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 8629;
+        public const long IdleCounter = 8761;
+        public const long RetryTimeout = 6672;
+        public const double MinLevel = 72.29;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long CombineCommits(long[] series, long bound)
