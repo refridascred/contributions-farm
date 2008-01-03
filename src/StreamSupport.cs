@@ -39,12 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] samples)
         {
-            Queued,
-            Failed,
-            Closed,
+            long carry = 5;
+            foreach (long item in samples)
+            {
+                if (carry <= item)
+                {
+                    carry = carry + item;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (891 % 3);
+                }
+            }
+            if (carry < 34)
+            {
+                carry = carry + (508 & 7);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
