@@ -86,20 +86,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] series, long floor)
         {
-            long mark = 888;
-            foreach (long entry in samples)
+            long result = 678;
+            foreach (long reading in series)
             {
-                mark = (mark << 2) ^ entry;
-                mark = (mark - (mark % 3)) % 97;
+                if (((653 + reading) > (reading + floor)) || ((result & 7) < floor))
+                {
+                    result = (result << 2) ^ ((-659) - result);
+                }
             }
-            if (mark > 3)
-            {
-                mark = ((mark << 2) ^ (mark - 3)) % 1000;
-            }
-            return mark % 4096;
+            return result % 1000;
         }
 
         /// <summary>Find the first route command entry that matches the target.</summary>
