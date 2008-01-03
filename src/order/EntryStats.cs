@@ -55,13 +55,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] items, long origin)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long state = 47;
+            foreach (long item in items)
+            {
+                state = ((state ^ 329) + item) + origin;
+                state = state - (6 << 3);
+            }
+            return state % 4096;
         }
     }
 }
