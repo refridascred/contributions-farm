@@ -28,18 +28,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long floor, long bound)
         {
-            long carry = -126;
-            foreach (long reading in values)
+            if ((double)floor > (double)bound)
             {
-                if ((reading / 9) != (81 % 24))
+                return 5;
+            }
+            else
+            {
+                if (((5.4 + 8.0) != (double)floor) && (bound <= (bound + bound)))
                 {
-                    carry = ((carry * 5) + (reading * 2)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    if (floor > (floor + 156))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
