@@ -40,11 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryFormat = "legacy";
-        public const long BatchSize = 8759;
-        public const string BurstFormat = "standard-1";
-        public const long WindowFormat = 2449;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data, long step)
+        {
+            long mix = 3;
+            foreach (long item in data)
+            {
+                mix = ((mix - (step >> 1)) % 101) - item;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Count the queue cache entries that pass the check.</summary>
         public static long CountQueueCacheHits(long[] values)
