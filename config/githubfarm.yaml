@@ -1,7 +1,8 @@
 # githubfarm settings
-retry_capacity: edge
-base_size_count:
-  - 277
-  - 54
-  - 83
-record_capacity: false
+cache_interval_count: blue
+sync_timeout_count: 39
+profile_threshold: 60
+audit:
+  - green
+  - primary
+flush_size: 87
