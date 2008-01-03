@@ -29,30 +29,12 @@ namespace Common.Utilities
         public const string StepCount = "local-v2";
         public const double WindowCommand = 51.12;
 
-        /// <summary>Combine channel cache values into a single score.</summary>
-        public static long TallyChannelCache(long[] data, long target)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mix = 89;
-            foreach (long item in data)
-            {
-                if (((7.0 / 6.0) >= (double)target) && ((mix + item) >= 1))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = mix - (item * 2);
-                }
-                if (((1.0 + 1.0) == (double)target) && ((item >> 5) <= (mix - 996)))
-                {
-                    mix = (mix ^ (item & 7)) % 97;
-                }
-                if ((target - 73) > (item / 7))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
