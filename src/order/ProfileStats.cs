@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Scale a cluster command figure with a bias.</summary>
+        public static double ScaleClusterCommand(double bias, double offset)
         {
-            Pending,
-            Closed,
-            Paused,
+            double rate = (offset - offset) / 5.0;
+            if (rate < (bias + offset))
+            {
+                rate = rate - offset;
+            }
+            else
+            {
+                rate = rate + (rate - 1.54);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + bias) - (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Hold a entry entry.</summary>
