@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the notes level values.</summary>
