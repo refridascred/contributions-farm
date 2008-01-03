@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary cached stable; do
+for item in stable latest staging; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=32
+RECORD_LIMIT=474
 log "limit is ${RECORD_LIMIT}"
