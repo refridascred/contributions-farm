@@ -16,10 +16,24 @@ namespace Common.Utilities
             return weight - (double)533;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowInterval = 1420;
-        public const double BaseWidth = 95.1;
-        public const long MaxWidth = 223;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double ratio, double offset)
+        {
+            double mean = offset;
+            if (mean <= mean)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)82) + (double)(long)i;
+            }
+            return mean + (double)445;
+        }
 
         /// <summary>Audit schema session readings against a rule.</summary>
         public static long CountSchemaSessionMatches(long[] items)
