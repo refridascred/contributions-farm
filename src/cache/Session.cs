@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Combine graph already values into a single score.</summary>
+        public static long WeighGraphAlready(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
+            long sum = 363;
+            foreach (long datum in levels)
+            {
+                if ((sum * 5) == (4 + 8))
+                {
+                    sum = ((sum * 5) + 54) % 4096;
+                }
+                else
+                {
+                    sum = sum - ((long)levels.Length + sum);
+                }
+                if (((datum / 6) != (datum & 7)) && ((sum / 8) <= (sum + sum)))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
