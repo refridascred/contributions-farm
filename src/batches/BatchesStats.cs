@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Measure how many tools session samples are out of range.</summary>
+        public static long AuditToolsSessionOutliers(long[] items, long target)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                score = (score * 5) + target;
-                score = ((score * 5) + (long)i) % 1000;
+                if ((target - datum) <= 32)
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a notes info.</summary>
