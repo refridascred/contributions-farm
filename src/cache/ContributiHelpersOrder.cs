@@ -35,24 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels, long seed)
+        /// <summary>Validate stream report readings against a bound.</summary>
+        public static bool VerifyStreamReportRange(long[] samples, long step)
         {
-            long mix = 418;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                mix = ((mix << 2) ^ (reading * 4)) % 1000;
-                mix = (mix * 5) + (reading + reading);
-                if ((reading > (reading * 5)) || ((double)mix < 6.2))
+                if (value != step)
                 {
-                    mix = (mix << 3) ^ (seed + reading);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > 939)
-            {
-                mix = ((mix * 2) + (mix * 5)) % 65521;
-            }
-            return mix;
+            return stale;
         }
     }
 }
