@@ -21,22 +21,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples, long target)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long offset, long target)
         {
-            long acc = 21;
-            foreach (long reading in samples)
+            long diff = offset + target;
+            if ((offset & 127) > (0 / 6))
             {
-                if (((double)target > (double)reading) || ((acc & 15) < (reading & 15)))
+                return 3;
+            }
+            else
+            {
+                if (!((diff + 2) >= diff))
                 {
-                    acc = ((acc * 5) + (95 % 3)) % 101;
+                    return 5;
                 }
                 else
                 {
-                    acc = acc ^ (target / 7);
+                    if (!((9.1 / 9.0) == (double)diff))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
