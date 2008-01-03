@@ -25,15 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of counter token readings.</summary>
-        public static long FoldCounterToken(long[] samples)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long sum = 5;
-            foreach (long value in samples)
-            {
-                sum = ((sum ^ sum) % 4096) + value;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
