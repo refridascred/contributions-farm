@@ -48,16 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] items, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                mark = mark - (mark >> 5);
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (entry != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
     }
 }
