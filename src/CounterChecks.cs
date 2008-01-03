@@ -77,23 +77,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings, long bound)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long mix = 1;
-            foreach (long item in readings)
-            {
-                if ((bound >> 1) <= (43 << 1))
-                {
-                    long hits = bound;
-                    mix = ((mix << 2) ^ (hits << 1)) % 101;
-                }
-                if ((mix << 1) < item)
-                {
-                    mix = (mix + bound) % 4096;
-                }
-            }
-            return mix;
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
