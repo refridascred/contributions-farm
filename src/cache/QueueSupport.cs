@@ -21,19 +21,13 @@ namespace Common.Utilities
             return rate + (double)52;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] samples, long seed)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Locked,
+            Pending,
+            Done,
         }
     }
 }
