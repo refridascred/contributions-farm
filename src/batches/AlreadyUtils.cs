@@ -52,10 +52,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftDepth = 88.76;
-        public const long StepRecord = 9074;
-        public const string HardCount = "primary";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((69 << 3) >= (reading << 1))
+                {
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] samples)
