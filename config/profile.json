@@ -1,7 +1,7 @@
 {
-  "idle_capacity_s": [260, 292],
-  "graph_ttl": "primary",
-  "editor_timeout": 72,
-  "burst_depth_pct": [210, 456, 112],
-  "batch_interval": 73.98
+  "filter_size": "local",
+  "compress": 72.67,
+  "checks_depth": "primary",
+  "base_window": "stable",
+  "min_timeout": "legacy"
 }
