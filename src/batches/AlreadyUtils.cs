@@ -73,21 +73,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (5.7 * 9.4) - bias;
+            if (scale <= span)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - bias;
             }
-            return tally;
+            else
+            {
+                scale = scale + span;
+            }
+            return scale + (double)94;
         }
     }
 }
