@@ -32,11 +32,13 @@ namespace Common.Utilities
         public const long DefaultBatches = 8012;
         public const string MaxDepth = "local";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 4568;
-        public const long StepWidth = 7543;
-        public const long HardProfile = 8346;
-        public const string SoftFactor = "strict-edge";
-        public const string MinProfile = "primary-1";
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Active,
+            New,
+            Idle,
+            Queued,
+        }
     }
 }
