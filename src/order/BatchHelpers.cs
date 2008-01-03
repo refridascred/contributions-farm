@@ -19,22 +19,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((matches * 3) <= (matches + value))
+                if (!(((9.0 + 8.85) >= (double)hits) && ((cell + cell) <= (9 & 63))))
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
