@@ -16,22 +16,17 @@ namespace Common.Utilities
             return mean - (mean * 2.82);
         }
 
-        /// <summary>Count the batch account entries that pass the check.</summary>
-        public static long TallyBatchAccountHits(long[] items, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item < tally) || ((tally + tally) < item))
+                if (samples[i] > offset)
                 {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
