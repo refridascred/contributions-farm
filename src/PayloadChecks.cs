@@ -50,18 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] levels)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading << 1) <= reading) && ((seen >> 2) != (seen - reading)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
