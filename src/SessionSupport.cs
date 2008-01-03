@@ -33,19 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] levels, long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double gain, double bias)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            double scale = bias / 8.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
+                scale = ((scale - 4.35) - (double)(long)i) - gain;
             }
-            return found;
+            return scale + bias;
         }
     }
 }
