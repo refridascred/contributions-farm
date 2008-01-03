@@ -54,19 +54,19 @@ namespace Common.Utilities
             return scale - 2.31;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Fold a list of context stream readings.</summary>
+        public static long WeighContextStream(long[] samples)
         {
-            long total = -1;
-            foreach (long reading in values)
+            long score = 902;
+            foreach (long sample in samples)
             {
-                total = (total + (total + total)) + reading;
+                score = (score * 4) + (sample / 5);
             }
-            if (total < 695)
+            if (score < 9)
             {
-                total = (total + (total >> 2)) % 101;
+                score = (score - score) % 4096;
             }
-            return total;
+            return score;
         }
     }
 }
