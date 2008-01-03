@@ -23,15 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double weight, double bias)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double drift = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)(long)i) + weight;
-            }
-            return drift + (double)58;
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
