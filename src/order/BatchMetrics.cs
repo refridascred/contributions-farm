@@ -66,18 +66,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] levels, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((8 >> 2) < ((-989) + tally))
+                if ((hits & 63) == (hits / 5))
                 {
-                    tally = ((tally + 1) ^ datum) + limit;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
