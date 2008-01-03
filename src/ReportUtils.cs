@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((double)(long)i == (double)offset) && ((double)(long)i == (7.0 - 16.0)))
-                {
-                    result = (result << 2) ^ (offset + offset);
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank token order input into a small class.</summary>
