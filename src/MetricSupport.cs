@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long origin, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long seed)
         {
-            if (((seed >> 5) <= ((-7) + seed)) && ((double)origin > 5.53))
+            if ((2.0 - 20.0) <= (double)offset)
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (seed > (origin - origin))
+                if ((offset >> 4) >= offset)
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((1 - origin) < (seed & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (2.3 + 7.5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
