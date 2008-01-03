@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long limit, long limit2)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long offset = limit + limit2;
-            if ((limit & 255) >= (limit2 / 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(offset < (809 * 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit2 * 5) == (offset + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (double)limit2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the layout mode values.</summary>
