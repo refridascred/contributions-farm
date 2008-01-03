@@ -28,17 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] values, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                mix = ((mix * 4) + (2 + floor)) % 97;
-                mix = ((mix * 2) + (0 + floor)) % 97;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (cell < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
