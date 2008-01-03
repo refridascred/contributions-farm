@@ -1,6 +1,7 @@
 {
-  "payload_interval": 2.39,
-  "max_depth": "primary",
-  "retry_delay_ms": 250,
-  "min_retries_ms": 74.87
+  "retry_ratio": 500,
+  "warm_capacity": false,
+  "min_retries_pct": 3780,
+  "verbose": 46.79,
+  "stream_depth": 32.32
 }
