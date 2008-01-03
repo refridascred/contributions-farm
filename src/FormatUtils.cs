@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((count / 7) != (value + value)) || (1 <= (count & 7)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinFactor = 2214;
+        public const double BurstTimeout = 19.11;
+        public const string MaxSize = "alpha-v2";
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] values)
