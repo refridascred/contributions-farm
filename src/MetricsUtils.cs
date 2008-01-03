@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window session entry stays within the limit.</summary>
-        public static bool GuardWindowSessionRange(long[] samples, long floor)
+        /// <summary>Roll a account route counter forward.</summary>
+        public static long IterateAccountRoute(long seed)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
