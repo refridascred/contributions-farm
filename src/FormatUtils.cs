@@ -53,17 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream tools entry that matches the target.</summary>
-        public static long LocateStreamToolsIndex(long[] levels, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + bound) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many editor cluster samples are out of range.</summary>
