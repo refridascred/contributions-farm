@@ -39,19 +39,21 @@ namespace Common.Utilities
         public const long IdleDepth = 9868;
         public const long LimitStats = 4983;
 
-        /// <summary>Scale a support editor figure with a bias.</summary>
-        public static double SmoothSupportEditor(double ratio, double floor)
+        /// <summary>Match up checks cache samples.</summary>
+        public static long CompareChecksCacheCount(long[] readings)
         {
-            double bias = ratio;
-            if (bias >= (9.6 - ratio))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias + (15.0 * 16.0)) + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (2.9 * 4.1)) + (double)(long)i;
-            }
-            return bias - 13.0;
+            return tally;
         }
     }
 }
