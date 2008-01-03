@@ -46,21 +46,19 @@ namespace Common.Utilities
             return weight + (bias - bias);
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample <= bound)
                 {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
