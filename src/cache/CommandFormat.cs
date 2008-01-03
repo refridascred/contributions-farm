@@ -37,24 +37,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long bound, long floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            if ((floor + floor) < floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound < (4.9 * 0.1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Ready,
+            Draft,
         }
     }
 }
