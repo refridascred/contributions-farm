@@ -23,18 +23,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] values, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value >= (double)89)
+                if (samples[i] == target)
                 {
-                    matches = (matches + 3) + floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
