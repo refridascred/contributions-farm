@@ -27,13 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Closed,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchSpan = 4191;
+        public const long LimitScore = 276;
+        public const long LimitCounter = 8179;
+        public const long SoftCounter = 6174;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchWindow = 9445;
