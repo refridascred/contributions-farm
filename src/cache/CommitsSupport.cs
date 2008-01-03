@@ -46,18 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache already entries that pass the check.</summary>
-        public static long MeasureCacheAlreadyHits(long[] readings, long seed)
+        /// <summary>Look up the position of a support cache sample.</summary>
+        public static long LookupSupportCacheIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally >> 5) >= (seed ^ (-6)))
+                if ((data[i] > seed) && ((data[i] % 2) == 0))
                 {
-                    tally = (tally + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the metric phase values.</summary>
