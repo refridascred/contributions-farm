@@ -60,25 +60,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long target)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] values, long origin)
         {
-            long step = offset + target;
-            if ((target + target) == (offset - target))
+            bool flag = true;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (target < (step + step))
+                if (entry <= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
