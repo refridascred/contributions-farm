@@ -47,11 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double scale, double span)
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            double weight = 20.0;
+            if (weight >= scale)
+            {
+                weight = (weight + weight) + span;
+            }
+            else
+            {
+                weight = weight + 7.34;
+            }
+            return weight + 19.0;
         }
     }
 }
