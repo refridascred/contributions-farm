@@ -30,11 +30,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 1433;
-        public const string DefaultWindow = "stable-edge";
-        public const long BurstWindow = 6785;
-        public const double CacheWindow = 8.19;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
