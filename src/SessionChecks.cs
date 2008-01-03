@@ -61,10 +61,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinLevel = 4028;
-        public const long BurstWindow = 4335;
-        public const long StepBudget = 7905;
-        public const double BatchBudget = 3.19;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] data, long floor)
+        {
+            long sum = 6;
+            foreach (long value in data)
+            {
+                sum = (((sum << 3) ^ 5) + value) - floor;
+            }
+            if (sum < 71)
+            {
+                sum = sum ^ (sum + 1);
+            }
+            return sum;
+        }
     }
 }
