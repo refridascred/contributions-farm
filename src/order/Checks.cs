@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long result = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((3.02 * 10.0) != (double)target)
+                {
+                    result = (result ^ (target & 1)) % 4096;
+                    result = (result - ((long)i % 10)) % 97;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Match up token record samples.</summary>
