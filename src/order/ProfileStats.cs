@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 3974;
+        public const long RetryRatio = 8752;
+        public const long SoftTools = 9190;
+        public const long LimitCount = 8982;
+        public const string RetryFactor = "legacy-1";
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long RankCluster(long offset, long target)
