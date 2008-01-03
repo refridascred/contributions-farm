@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double bias, double bias2)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double scale = bias2;
-            if (scale > (bias2 + bias2))
-            {
-                scale = scale - (double)7;
-            }
-            return scale + (scale + bias);
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the profile class values.</summary>
