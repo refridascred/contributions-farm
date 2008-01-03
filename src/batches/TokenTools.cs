@@ -19,17 +19,22 @@ namespace Common.Utilities
         public const double BurstFactor = 95.99;
         public const long BaseFilter = 8572;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 333;
+            foreach (long cell in series)
             {
-                if ((values[i] == limit) && ((values[i] % 2) == 0))
+                if ((acc + acc) < (cell - acc))
                 {
-                    return (long)i;
+                    acc = (acc * 5) + (acc << 3);
                 }
             }
-            return -1;
+            if (acc < 348)
+            {
+                acc = (acc + (acc / 3)) % 255;
+            }
+            return acc;
         }
     }
 }
