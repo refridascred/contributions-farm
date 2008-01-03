@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the profile tools entries that pass the check.</summary>
-        public static long TallyProfileToolsHits(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (((item + 86) >= item) || ((item + seen) <= (seen - seen)))
+                if (cell < bound)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
