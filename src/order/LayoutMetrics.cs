@@ -15,14 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Closed,
-            Draft,
+            Retry,
+            Failed,
             Synced,
-            Done,
-            Idle,
+            Active,
         }
 
         /// <summary>Describe the entry phase values.</summary>
