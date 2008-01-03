@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long sum = -906;
+            foreach (long datum in samples)
             {
-                if ((tally % 10) < tally)
+                if (((sum - sum) != (datum >> 1)) && ((datum ^ datum) <= (datum - (long)samples.Length)))
                 {
-                    tally = (tally + 3) ^ sample;
+                    sum = ((sum << 3) ^ (datum >> 4)) % 1000;
                 }
-                else
+                if (2.14 > (double)sum)
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (sum > (-14))
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit cluster contributi readings against a rule.</summary>
