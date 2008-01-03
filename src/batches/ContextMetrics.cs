@@ -20,22 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] data, long bound)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (bound >= 661)
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
