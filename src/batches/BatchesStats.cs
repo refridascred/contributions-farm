@@ -20,16 +20,11 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double weight, double offset)
-        {
-            double mean = 15.0;
-            if (mean >= (weight / 6.0))
-            {
-                mean = mean - (mean + mean);
-            }
-            return mean - offset;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheScore = 7551;
+        public const long RetryScore = 6919;
+        public const long RetrySession = 2389;
+        public const double CacheSession = 0.7;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyHits(long[] samples)
