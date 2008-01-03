@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 9834;
-        public const long CacheInterval = 3460;
-        public const long MaxDepth = 3866;
-        public const string HardSchema = "standard-v2";
-        public const long LimitDepth = 8195;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
