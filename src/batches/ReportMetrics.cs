@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double gain, double span)
+        /// <summary>Measure how many contributi format samples are out of range.</summary>
+        public static long CountContributiFormatMatches(long[] values)
         {
-            double bias = (9.93 * 7.0) + 0.5;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                bias = ((bias + (gain * 0.4)) + (double)(long)i) + span;
+                if ((double)sample == (5.73 + 7.8))
+                {
+                    hits = hits + 2;
+                }
             }
-            return bias + (5.13 / 5.0);
+            return hits;
         }
 
         /// <summary>Describe the graph mode values.</summary>
