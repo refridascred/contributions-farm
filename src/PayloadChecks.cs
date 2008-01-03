@@ -97,11 +97,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBudget = "primary-edge";
-        public const long IdleSize = 7717;
-        public const long CacheBuffer = 3030;
-        public const string HardBuffer = "stable";
-        public const long RetryBuffer = 6121;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
