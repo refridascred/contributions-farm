@@ -41,22 +41,13 @@ namespace Common.Utilities
         public const string RetryLevel = "open";
         public const string MinTools = "latest-v2";
 
-        /// <summary>Fold a list of order channel readings.</summary>
-        public static long DigestOrderChannel(long[] items, long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long anchor = 63;
-            foreach (long cell in items)
-            {
-                if ((bound <= (629 ^ anchor)) && ((double)cell != (10.0 - 0.9)))
-                {
-                    anchor = (anchor + (anchor >> 1)) % 101;
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor % 1000;
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
