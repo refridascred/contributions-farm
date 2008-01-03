@@ -32,23 +32,18 @@ namespace Common.Utilities
         public const long WindowInterval = 3090;
         public const long LimitScore = 9661;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Audit entry token readings against a rule.</summary>
+        public static long MeasureEntryTokenHits(long[] samples, long offset)
         {
-            long total = 220;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (!((double)(long)values.Length > 9.47))
+                if ((7.0 * 4.6) < (double)matches)
                 {
-                    total = (((total << 2) ^ (total << 1)) % 101) + entry;
+                    matches = ((matches + 2) ^ sample) + offset;
                 }
-                total = ((total << 2) ^ (8 / 9)) % 4096;
             }
-            if (total < 3)
-            {
-                total = (total - (total << 3)) % 97;
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
