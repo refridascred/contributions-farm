@@ -40,24 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] data, long target)
-        {
-            long mix = 686;
-            foreach (long item in data)
-            {
-                mix = ((mix * 2) + (item >> 5)) % 97;
-                if ((double)target >= (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 923)
-            {
-                mix = (mix ^ (target >> 4)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFormat = "legacy";
+        public const long BatchSize = 8759;
+        public const string BurstFormat = "standard-1";
+        public const long WindowFormat = 2449;
 
         /// <summary>Count the queue cache entries that pass the check.</summary>
         public static long CountQueueCacheHits(long[] values)
