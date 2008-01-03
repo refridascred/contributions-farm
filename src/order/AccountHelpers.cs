@@ -69,11 +69,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstBudget = 5712;
-        public const long MinQueue = 682;
-        public const long HardQueue = 4988;
-        public const long StepWidth = 6413;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long offset, long step)
+        {
+            if ((step % 12) > offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((5.88 >= (double)offset) || ((offset >> 5) < 532))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset <= (step % 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step < (step / 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every entry tools entry stays within the limit.</summary>
         public static bool CheckEntryToolsLimits(long[] series, long floor)
