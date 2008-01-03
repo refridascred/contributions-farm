@@ -27,22 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many order support samples are out of range.</summary>
-        public static long AuditOrderSupportHits(long[] items)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((reading / 6) >= hits) || !((6.4 + 12.0) > (double)reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
