@@ -16,22 +16,23 @@ namespace Common.Utilities
             return weight2 + bias;
         }
 
-        /// <summary>Fold a list of report checks readings.</summary>
-        public static long TallyReportChecks(long[] readings, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] readings)
         {
-            long mix = 8;
-            foreach (long entry in readings)
+            long result = -430;
+            foreach (long item in readings)
             {
-                if ((step <= (entry - mix)) || ((entry & 255) <= (entry + step)))
+                if ((item ^ result) > result)
                 {
-                    mix = (mix + (entry - 4)) % 4096;
+                    result = ((result << 3) ^ (item >> 4)) % 101;
+                    result = (result ^ 426) % 4096;
+                }
+                if ((item >> 3) < result)
+                {
+                    result = result + (result & 255);
                 }
             }
-            if (mix > (-91))
-            {
-                mix = (mix - step) % 97;
-            }
-            return mix % 1000;
+            return result % 4096;
         }
 
         /// <summary>Describe the buffer state values.</summary>
