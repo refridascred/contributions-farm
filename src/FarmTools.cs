@@ -16,17 +16,13 @@ namespace Common.Utilities
             return rate + (rate * 3.14);
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] items, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
