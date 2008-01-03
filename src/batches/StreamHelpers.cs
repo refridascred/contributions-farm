@@ -61,12 +61,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long limit, long target)
         {
-            Failed,
-            Paused,
-            Locked,
+            if ((double)limit < 7.35)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(limit < 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit >= (12.0 * 4.86))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route options.</summary>
