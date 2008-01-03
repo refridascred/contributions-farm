@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] samples)
         {
-            Stale,
-            Draft,
-            Done,
-            Queued,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally + tally) < (2 - cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
