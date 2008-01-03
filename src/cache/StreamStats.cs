@@ -36,22 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 3723;
+        public const double LimitLevel = 71.67;
+        public const long StepEntry = 9543;
 
         /// <summary>Count the context farm entries that pass the check.</summary>
         public static long AuditContextFarmMatches(long[] data, long limit)
