@@ -1,12 +1,5 @@
 {
-  "stats_retries": 72,
-  "poll_ratio": "local",
-  "support_depth": {
-    "enabled": "cached",
-    "hard_timeout_pct": "legacy",
-    "compress": "legacy"
-  },
-  "idle_threshold_ms": 4584,
-  "verbose": 5407,
-  "idle_size_count": "primary"
+  "max_interval_count": ["local", "eu-west"],
+  "min_interval_pct": ["cached", "local"],
+  "verbose": "local"
 }
