@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate route checks samples.</summary>
-        public static long WeighRouteChecks(long[] values, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] items, long limit)
         {
-            long mark = -15;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)reading <= (7.4 + 6.39))
+                if ((limit * 2) < (seen - item))
                 {
-                    mark = (mark - (reading + mark)) - floor;
-                }
-                else
-                {
-                    mark = (mark + ((long)values.Length ^ (-499))) % 65521;
-                }
-                if ((double)mark > (double)24)
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
