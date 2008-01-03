@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftRatio = 5569;
-        public const long SoftCounter = 4410;
-        public const string SoftFactor = "legacy";
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
