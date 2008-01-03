@@ -1,4 +1,9 @@
 # githubfarm settings
-soft_interval_count: green
-flush_capacity_ms: primary
-poll_depth_pct: 30
+burst_ttl_pct:
+  audit: 100
+  verbose: 53
+  min_interval_count: 92
+  order_retries: primary
+default_size: 65.71
+persist: 60
+min_limit_ms: staging
