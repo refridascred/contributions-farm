@@ -35,23 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!((item + item) != (item - 8)))
-                {
-                    hits = (hits + 1) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitMetrics = 72.37;
+        public const long BatchFactor = 5182;
+        public const long IdleMetrics = 1107;
+        public const double SoftSpan = 52.73;
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
