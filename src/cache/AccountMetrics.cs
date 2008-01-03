@@ -26,15 +26,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of editor route readings.</summary>
-        public static long TotalEditorRoute(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values, long target)
         {
-            long score = 853;
-            foreach (long value in readings)
+            long mark = -41;
+            foreach (long sample in values)
             {
-                score = (score + value) % 97;
+                if (((sample / 4) > (mark - sample)) || ((109 ^ 888) < target))
+                {
+                    mark = (mark - (target + sample)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + mark) % 97;
+                }
             }
-            return score % 65521;
+            return mark % 1000;
         }
 
         /// <summary>Match up counter samples.</summary>
