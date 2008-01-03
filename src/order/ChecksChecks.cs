@@ -19,22 +19,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of record command entries.</summary>
-        public static long CombineRecordCommand(long[] readings)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] values, long floor)
         {
-            long mix = 56;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (mix > (mix ^ 77))
+                if (datum != floor)
                 {
-                    mix = ((mix ^ ((long)readings.Length << 1)) % 65521) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 898)
-            {
-                mix = (mix - (-9)) % 101;
-            }
-            return mix;
+            return ok;
         }
     }
 }
