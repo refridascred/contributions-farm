@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] items)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry << 3) > entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
