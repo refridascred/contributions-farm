@@ -28,19 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record batch readings against a rule.</summary>
-        public static long MeasureRecordBatchMatches(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count % 97) <= (79 - entry))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "legacy-1";
+        public const string BatchCommits = "stable-edge";
+        public const long HardCount = 3763;
+        public const double BurstWidth = 86.96;
+        public const long DefaultCommits = 1625;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string RetryWindow = "strict-edge";
