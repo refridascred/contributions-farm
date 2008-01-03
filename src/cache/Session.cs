@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const double CacheStream = 76.31;
         public const long RetryWidth = 7369;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] series, long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)limit > (6.5 * 4.61))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Synced,
+            Done,
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Rank session input into a small class.</summary>
