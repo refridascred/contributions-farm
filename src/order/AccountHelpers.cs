@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the window profile entries that pass the check.</summary>
-        public static long TallyWindowProfileOutliers(long[] items)
+        /// <summary>Grade a entry context value against two limits.</summary>
+        public static long SortEntryContext(long target, long target2)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long step = target + target2;
+            if ((step >> 4) < step)
             {
-                if (((value > ((long)items.Length + value)) || ((double)tally < (double)value)) || ((tally + (long)items.Length) >= 64))
+                return 2;
+            }
+            else
+            {
+                if ((17.0 - 3.0) != (double)step)
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (22 >= (target + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
