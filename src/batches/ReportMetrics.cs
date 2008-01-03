@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                long hits = 74 & 127;
-                score = (score << 3) ^ score;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = ((score << 3) ^ (long)i2) % 1000;
-                    score = score - hits;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            Pending,
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Scale a window payload figure with a bias.</summary>
