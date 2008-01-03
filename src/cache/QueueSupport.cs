@@ -27,9 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "cached";
-        public const string MaxSession = "staging";
-        public const long RetrySession = 2099;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data, long offset)
+        {
+            long sum = 258;
+            foreach (long entry in data)
+            {
+                sum = (sum - (entry & 1)) + offset;
+                sum = ((sum * 2) + (sum ^ sum)) % 4096;
+            }
+            return sum;
+        }
     }
 }
