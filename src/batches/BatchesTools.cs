@@ -19,13 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double gain, double span)
         {
-            Dropped,
-            Ready,
-            Active,
-            Stale,
+            double bias = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = ((bias - bias) + (double)(long)i) - span;
+            }
+            return bias - (gain * 2.1);
         }
 
         /// <summary>Digest a series of account token entries.</summary>
