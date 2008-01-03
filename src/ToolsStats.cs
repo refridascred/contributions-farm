@@ -87,18 +87,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] series, long floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double scale = (5.17 - 1.0) + weight;
+            if (scale <= (offset * 4.8))
             {
-                if ((double)hits == (7.0 / 9.0))
-                {
-                    hits = ((hits + 1) + sample) - floor;
-                }
+                scale = scale - scale;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (double)43) + (double)(long)i;
+            }
+            return scale + (double)124;
         }
     }
 }
