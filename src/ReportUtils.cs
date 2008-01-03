@@ -28,18 +28,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] data, long limit)
+        /// <summary>Rank token order input into a small class.</summary>
+        public static long GradeTokenOrder(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if ((double)seed >= (double)486)
             {
-                if (((long)data.Length * 5) >= 62)
+                return 6;
+            }
+            else
+            {
+                if ((seed % 8) < (seed * 3))
                 {
-                    tally = ((tally + 3) - cell) - limit;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor != (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate cache samples.</summary>
