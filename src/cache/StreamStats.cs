@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] data, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 0.4;
+            if (ratio <= (double)1)
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - bias) + rate;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio + (double)0;
         }
 
         /// <summary>Match up batches samples.</summary>
