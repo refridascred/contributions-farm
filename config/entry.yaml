@@ -1,20 +1,7 @@
 # entry settings
-soft_window_count:
-  order_depth:
-    - fallback
-    - edge
-    - legacy
-  default_interval_s: latest
-  base_delay: 21
-  persist: 2474
-  record_retries: 80
-  default_retries: 48.32
-persist: primary
-dry_run:
-  - blue
+soft_window_ms:
+  - edge
+  - legacy
   - primary
-format_ratio:
-  - blue
-  - strict
-  - open
-  - primary
+metrics_delay: 1155
+payload_timeout: 25.83
