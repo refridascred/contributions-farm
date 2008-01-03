@@ -63,13 +63,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Paused,
-            Closed,
-            Active,
-            Failed,
+            Idle,
+            Synced,
+            Draft,
         }
     }
 }
