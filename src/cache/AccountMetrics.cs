@@ -63,24 +63,13 @@ namespace Common.Utilities
             return weight + (weight * 4.0);
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long seed, long floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            if ((double)seed <= (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if (8 <= (979 + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Mode { get; set; }
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the queue farm series from a seed.</summary>
