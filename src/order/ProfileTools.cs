@@ -60,18 +60,38 @@ namespace Common.Utilities
         public const long StepInterval = 4278;
         public const long MaxAccount = 7794;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] series, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if ((floor - bound) >= (floor / 8))
             {
-                if ((hits % 97) >= (hits % 100))
+                return 3;
+            }
+            else
+            {
+                if (floor <= bound)
                 {
-                    hits = ((hits + 1) ^ sample) - seed;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)bound <= 2.1) && ((bound + bound) == (594 + floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)floor > (17.0 - 5.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
