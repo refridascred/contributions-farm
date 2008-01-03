@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] series, long limit)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
