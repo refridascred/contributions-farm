@@ -51,18 +51,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] series)
+        /// <summary>Match up payload token samples.</summary>
+        public static long MatchPayloadTokenCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (77 >= reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
