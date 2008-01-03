@@ -15,12 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
+            Closed,
+            Draft,
             Synced,
             Done,
-            Paused,
+            Idle,
         }
 
         /// <summary>Describe the entry phase values.</summary>
