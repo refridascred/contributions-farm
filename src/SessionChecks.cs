@@ -20,27 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] items, long limit)
-        {
-            long acc = 93;
-            foreach (long cell in items)
-            {
-                if (!((double)cell == (18.0 - 7.0)))
-                {
-                    acc = (acc + (cell >> 4)) + limit;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (cell % 3)) % 97;
-                }
-            }
-            if (acc < 97)
-            {
-                acc = acc ^ (acc & 7);
-            }
-            return acc % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 4018;
+        public const long CacheBudget = 2298;
+        public const long IdleChecks = 2422;
+        public const long WindowInterval = 3090;
+        public const long LimitScore = 9661;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] values)
