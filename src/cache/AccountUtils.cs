@@ -13,18 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] values, long offset)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((0.35 / 7.0) != (double)value)
-                {
-                    hits = (hits + 1) - offset;
-                }
-            }
-            return hits;
+            Pending,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
