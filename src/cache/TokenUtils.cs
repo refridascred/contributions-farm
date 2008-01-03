@@ -36,11 +36,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long step, long limit)
         {
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            if (step > (29 & 63))
+            {
+                return 5;
+            }
+            else
+            {
+                if (7.0 >= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit - step) != (step - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step < (limit - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
