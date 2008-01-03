@@ -42,17 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double ratio, double bias)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            double ratio2 = (double)(0 + 19);
+            for (int i = 0; i < 3; i++)
             {
-                mix = (mix - (floor + 2)) % 101;
-                mix = (mix + (long)i) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
+                ratio2 = ((ratio2 + ratio2) + (double)(long)i) + ratio;
             }
-            return mix;
+            return ratio2 - bias;
         }
     }
 }
