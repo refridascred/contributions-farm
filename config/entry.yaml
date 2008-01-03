@@ -1,29 +1,20 @@
 # entry settings
-persist:
-  - 456
-  - 188
-  - 314
-default_size_count:
-  hard_delay_s: blue
-  strict: stable
-  burst_timeout: 35.28
-  sync_capacity_count: eu-west
-verbose:
-  retry_window:
-    dry_run: 83.36
-    sync_threshold_pct: false
-    default_window_count:
-      - 422
-      - 38
-      - 152
-  warm_ttl:
-    verbose: cached
-    idle_ratio: latest
-    report_size: 818
-    burst_limit_s: 40
-    cache_retries: 1024
-  readonly: 250
-  cache_timeout:
-    - edge
-    - standard
-    - fallback
+poll_timeout_pct: 7.89
+strict:
+  strict: true
+  persist: 47.99
+  retry_ratio_count: 67.08
+readonly:
+  max_timeout_count: local
+  dry_run: 36.78
+  strict:
+    - primary
+    - blue
+  readonly: 2222
+  persist:
+    - 183
+    - 216
+    - 191
+burst_retries:
+  - stable
+  - eu-west
