@@ -33,17 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes channel value from a seed.</summary>
-        public static long IterateNotesChannel(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score ^ ((long)i / 2)) % 101;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 9039;
+        public const string BurstSize = "cached-v2";
+        public const double StepBudget = 98.19;
 
         /// <summary>Project the next contributi value.</summary>
         public static double ScaleContributi(double scale, double bias)
