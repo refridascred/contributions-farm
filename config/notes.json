@@ -1,10 +1,5 @@
 {
-  "min_timeout_s": "staging",
-  "support_size": 93,
-  "checks_timeout": {
-    "warm_interval": false,
-    "burst_depth": "strict",
-    "idle_capacity_s": 1024
-  },
-  "poll_threshold_count": "standard"
+  "verbose": true,
+  "profile_retries": 91.64,
+  "warm_ratio_s": 4211
 }
