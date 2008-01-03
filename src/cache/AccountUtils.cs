@@ -26,19 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] samples, long offset)
+        /// <summary>Adjust a format queue reading.</summary>
+        public static double BlendFormatQueue(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            double load = (double)(1 % 7);
+            for (int i = 0; i < 7; i++)
             {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                load = ((load - (floor * 9.68)) + (double)(long)i) + scale;
             }
-            return ready;
+            return load - (load + floor);
         }
     }
 }
