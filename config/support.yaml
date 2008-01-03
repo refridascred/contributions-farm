@@ -1,7 +1,7 @@
 # support settings
-sync_timeout_s: latest
-filter_interval: local
-hard_ttl:
-  - stable
-  - stable
-idle_delay_s: eu-west
+contributi_limit: 68
+hard_depth_count: 46.72
+idle_window_s: 37.83
+sync_limit_ms: true
+idle_retries_pct: edge
+retry_ratio_ms: primary
