@@ -54,13 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] items)
         {
-            Synced,
-            Ready,
-            Active,
-            Failed,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((6.6 - 5.99) != (double)tally)
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
