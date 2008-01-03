@@ -27,18 +27,9 @@ namespace Common.Utilities
         public const double MaxDepth = 56.77;
         public const long SoftRatio = 7855;
 
-        /// <summary>Digest a series of cache schema entries.</summary>
-        public static long WeighCacheSchema(long[] series, long target)
-        {
-            long state = 51;
-            foreach (long item in series)
-            {
-                if (((double)target < (1.8 + 8.39)) && ((state + state) < (target * 2)))
-                {
-                    state = state + (state ^ item);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinWidth = 63.32;
+        public const long WindowBatch = 7647;
+        public const double MaxBatch = 90.29;
     }
 }
