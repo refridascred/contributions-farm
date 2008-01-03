@@ -38,11 +38,16 @@ namespace Common.Utilities
         public const long WindowScore = 8631;
         public const long BurstWindow = 6730;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 9775;
-        public const long BaseLayout = 7542;
-        public const string BatchLayout = "strict-v2";
-        public const long LimitSpan = 2027;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many counter batch samples are out of range.</summary>
         public static long TallyCounterBatchMatches(long[] items, long target)
