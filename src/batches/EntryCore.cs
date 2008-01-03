@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] readings)
         {
-            Ready,
-            Locked,
-            New,
-            Draft,
-            Pending,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + 656) <= (matches * 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up filter samples.</summary>
