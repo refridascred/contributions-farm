@@ -12,12 +12,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 877;
-        public const string CacheMetric = "cached-1";
-        public const long BaseSpan = 985;
-        public const long BurstFactor = 8398;
-        public const long RetryFactor = 4164;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (5.7 <= (double)datum)
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyGaps(long[] readings, long seed)
