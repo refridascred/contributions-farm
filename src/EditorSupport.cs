@@ -60,11 +60,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Iterate the filter buffer series from a seed.</summary>
+        public static long RollFilterBuffer(long seed)
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((seed % 100) < seed)
+                {
+                    acc = acc + seed;
+                }
+                else
+                {
+                    acc = acc - seed;
+                }
+                acc = (acc ^ (seed + 7)) % 255;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
