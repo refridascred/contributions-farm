@@ -58,19 +58,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 2617;
+        public const string LimitSpan = "stable-v2";
+        public const string BaseLayout = "stable";
+        public const string HardLayout = "latest-edge";
     }
 }
