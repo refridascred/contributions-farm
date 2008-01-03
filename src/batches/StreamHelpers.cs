@@ -23,11 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 3052;
-        public const long SoftQueue = 745;
-        public const long StepDepth = 7342;
-        public const long StepLevel = 8213;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)value >= (double)89)
+                {
+                    matches = (matches + 3) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string MinFactor = "alpha-edge";
