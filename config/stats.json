@@ -1,13 +1,8 @@
 {
-  "max_window_s": [21, 156, 208],
-  "flush_ttl": "staging",
-  "base_delay_count": {
-    "soft_interval_ms": 84.22,
-    "max_delay": "edge",
-    "verbose": 50.2,
-    "enabled": true
-  },
-  "default_interval_s": 1542,
-  "retry_delay_ms": 75.58,
-  "batches_interval": 43.96
+  "soft_retries_s": "local",
+  "poll_size": "staging",
+  "stats_delay": [466, 488, 79],
+  "default_interval_count": true,
+  "audit": "local",
+  "cache_timeout_ms": "legacy"
 }
