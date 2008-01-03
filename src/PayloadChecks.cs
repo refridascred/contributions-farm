@@ -105,13 +105,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Stale,
-            Draft,
-            Dropped,
-            Paused,
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
     }
 }
