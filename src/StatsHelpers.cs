@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the already order series from a seed.</summary>
-        public static long StepAlreadyOrder(long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 4) + (total * 4)) % 101;
-                long hits = (-93) + (total ^ limit);
-                if (((hits % 100) >= ((long)i - limit)) && (0.97 < (double)(long)i))
-                {
-                    hits = (hits + (588 + limit)) % 97;
-                    hits = ((hits * 4) + (total + (long)i)) % 1000;
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Synced,
+            Retry,
+            Closed,
+            Stale,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
