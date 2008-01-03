@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinWidth = 2777;
-        public const long HardMetrics = 8636;
-        public const long LimitCount = 8282;
-        public const string BatchMetrics = "legacy-v2";
-        public const string CacheScore = "local-1";
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long FoldPayload(long[] values)
