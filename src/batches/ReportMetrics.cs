@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long offset, long step)
         {
-            Locked,
-            Idle,
-            Synced,
+            long cur = offset - step;
+            if ((offset & 15) == (cur & 7))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((214 - offset) == (offset >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + cur) > cur)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record kind values.</summary>
