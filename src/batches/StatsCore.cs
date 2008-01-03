@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Roll a graph metric counter forward.</summary>
+        public static long SeriesGraphMetric(long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 7; i++)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((seed - seed) != (1 ^ (long)i))
                 {
-                    sum = (((sum << 2) ^ (224 * 4)) % 97) + (long)i2;
+                    result = result + (seed - (long)i);
                 }
-                sum = ((sum * 4) + (long)i) % 97;
+                result = (result + seed) % 4096;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
