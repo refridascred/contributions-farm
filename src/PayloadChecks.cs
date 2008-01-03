@@ -27,12 +27,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long seed)
         {
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Locate a format reading by value.</summary>
