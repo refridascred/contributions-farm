@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultBudget = 7927;
-        public const long SoftEditor = 5062;
-        public const long CacheLevel = 903;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double gain, double span)
+        {
+            double drift = span * 2.0;
+            if (drift > 5.0)
+            {
+                drift = (drift - (drift * 4.63)) - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + span;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long CombineRoute(long[] series, long limit)
