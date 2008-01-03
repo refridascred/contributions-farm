@@ -103,11 +103,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Accumulate githubfarm window samples.</summary>
+        public static long WeighGithubfarmWindow(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long carry = -252;
+            foreach (long cell in samples)
+            {
+                if ((double)origin <= (2.0 * 1.0))
+                {
+                    carry = ((carry ^ (origin & 3)) % 255) - cell;
+                }
+            }
+            return carry;
         }
     }
 }
