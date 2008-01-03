@@ -33,19 +33,21 @@ namespace Common.Utilities
             return scale - 2.31;
         }
 
-        /// <summary>Fold a list of context stream readings.</summary>
-        public static long WeighContextStream(long[] samples)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            long score = 902;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score * 4) + (sample / 5);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score < 9)
-            {
-                score = (score - score) % 4096;
-            }
-            return score;
+            return seen;
         }
     }
 }
