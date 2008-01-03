@@ -70,12 +70,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBudget = "primary-edge";
+        public const long IdleSize = 7717;
+        public const long CacheBuffer = 3030;
+        public const string HardBuffer = "stable";
+        public const long RetryBuffer = 6121;
     }
 }
