@@ -43,10 +43,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 4512;
-        public const string LimitRatio = "latest-v2";
-        public const long WindowDepth = 6391;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSize = "cached-v2";
+        public const string WindowDepth = "strict";
+        public const long LimitSchema = 4161;
+        public const double CacheSchema = 22.19;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] readings, long target)
