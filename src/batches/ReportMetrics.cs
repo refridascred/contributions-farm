@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the batch schema entries that pass the check.</summary>
-        public static long AuditBatchSchemaGaps(long[] data)
+        /// <summary>Iterate the schema token series from a seed.</summary>
+        public static long DeriveSchemaToken(long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((double)count != (8.73 - 3.0)))
+                if ((long)i < (floor >> 1))
                 {
-                    count = (count + 3) - cell;
+                    total = total - total;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the support class values.</summary>
