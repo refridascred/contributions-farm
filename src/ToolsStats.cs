@@ -32,14 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Compare every pair of githubfarm layout readings.</summary>
+        public static long CompareGithubfarmLayoutCount(long[] samples)
         {
-            Stale,
-            Dropped,
-            Pending,
-            Idle,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
