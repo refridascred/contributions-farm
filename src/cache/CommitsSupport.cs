@@ -46,27 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] readings, long step)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long mix = 878;
-            foreach (long datum in readings)
-            {
-                if (!(step > (mix % 100)))
-                {
-                    mix = ((mix - (218 % 3)) % 1000) + datum;
-                }
-                if (step >= (mix & 127))
-                {
-                    mix = (mix - (mix >> 2)) % 255;
-                }
-                mix = (mix ^ mix) % 101;
-            }
-            if (mix < 6)
-            {
-                mix = (mix ^ (742 >> 4)) % 255;
-            }
-            return mix % 1000;
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the metric phase values.</summary>
