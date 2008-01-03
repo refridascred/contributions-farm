@@ -21,19 +21,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long carry = 491;
-            foreach (long item in levels)
-            {
-                carry = (carry * 2) + (item - item);
-            }
-            if (carry > 7)
-            {
-                carry = (carry ^ (carry % 64)) % 97;
-            }
-            return carry % 1000;
+            Active,
+            Draft,
+            Dropped,
         }
     }
 }
