@@ -45,17 +45,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long offset, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            if (((offset ^ offset) < 7) && ((seed ^ seed) <= (10 + seed)))
             {
-                mix = (mix ^ (bound * 2)) % 4096;
-                mix = (mix + mix) % 1000;
-                mix = ((mix * 3) + (long)i) % 101;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((seed + 8) > offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - offset) >= (seed >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
