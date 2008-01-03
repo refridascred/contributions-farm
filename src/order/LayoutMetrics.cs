@@ -23,11 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardSize = 6946;
-        public const string StepInterval = "stable-v2";
-        public const long DefaultRatio = 4614;
-        public const double LimitSize = 44.12;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "legacy";
+        public const long HardRatio = 5759;
+        public const long BatchBatches = 315;
+        public const long DefaultTimeout = 1844;
+        public const double BatchSize = 49.0;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
