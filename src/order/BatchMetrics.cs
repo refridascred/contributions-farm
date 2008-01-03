@@ -45,18 +45,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] data, long limit)
+        /// <summary>Derive the next editor queue value from a seed.</summary>
+        public static long IterateEditorQueue(long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (((-99) * 3) <= count)
-                {
-                    count = ((count + 1) + reading) + limit;
-                }
+                score = ((score << 2) ^ (score * 2)) % 65521;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
