@@ -22,19 +22,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] readings, long seed)
+        /// <summary>Check that every metric already entry stays within the limit.</summary>
+        public static bool VerifyMetricAlreadyBounds(long[] readings, long bound)
         {
-            bool stale = true;
+            bool ready = true;
             foreach (long item in readings)
             {
-                if (item >= seed)
+                if (item > bound)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
