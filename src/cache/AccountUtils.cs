@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Failed,
-            Locked,
-            Closed,
-            Pending,
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
