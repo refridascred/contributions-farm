@@ -32,13 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] readings, long offset)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a counter token figure with a bias.</summary>
