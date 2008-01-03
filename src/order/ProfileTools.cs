@@ -19,12 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 4030;
-        public const string LimitAccount = "cached-edge";
-        public const long DefaultTimeout = 2073;
-        public const long RetryAccount = 8569;
-        public const long BaseAccount = 9644;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double floor)
+        {
+            double scale = (gain / 9.0) * 19.0;
+            if (scale <= scale)
+            {
+                scale = scale + (gain * 3.1);
+            }
+            else
+            {
+                scale = scale + (5.7 - floor);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (1.2 / 8.0)) + (double)(long)i;
+            }
+            return scale - gain;
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
