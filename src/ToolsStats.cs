@@ -30,17 +30,18 @@ namespace Common.Utilities
         public const long MaxContributi = 5067;
         public const double SoftContributi = 53.06;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] readings, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) != 0))
+                if (hits >= (hits - hits))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) - entry) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up channel samples.</summary>
