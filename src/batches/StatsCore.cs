@@ -70,38 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long bound, long seed)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] items, long target)
         {
-            if ((bound + bound) <= bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((14.0 - 5.9) <= (double)seed)
+                if ((items[i] > target) && ((items[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound * 5) < (3 + seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((9.9 / 3.0) <= (double)bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
