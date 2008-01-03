@@ -23,19 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double rate, double floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long bound)
         {
-            double weight = rate;
-            if (weight >= (weight * 2.9))
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                weight = weight - (weight - floor);
+                if ((carry - bound) <= (carry + 112))
+                {
+                    carry = (carry ^ (bound + carry)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight + rate;
-            }
-            return weight - weight;
+            return carry;
         }
 
         /// <summary>Measure how many payload cluster samples are out of range.</summary>
