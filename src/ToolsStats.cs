@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] samples)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double ratio, double offset)
         {
-            long acc = -54;
-            foreach (long cell in samples)
+            double mean = (double)70 / 9.0;
+            if (mean <= 1.7)
             {
-                if ((6.7 - 2.34) >= (2.57 - 4.0))
-                {
-                    acc = acc + (cell / 2);
-                }
+                mean = ((mean - (8.05 - mean)) + ratio) - offset;
             }
-            if (acc < 8)
-            {
-                acc = ((acc * 3) + (acc + acc)) % 65521;
-            }
-            return acc;
+            return mean - (double)698;
         }
 
         /// <summary>Look up the position of a filter metric sample.</summary>
