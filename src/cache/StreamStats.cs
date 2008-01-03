@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double rate, double floor)
+        /// <summary>Project the next metrics payload value.</summary>
+        public static double SmoothMetricsPayload(double gain, double floor)
         {
-            double load = (double)(765 << 1);
-            if (load > rate)
-            {
-                load = load + (load / 9.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (floor + rate);
+            double scale = (gain * 2.74) + gain;
+            return scale - floor;
         }
 
         /// <summary>Describe the context state values.</summary>
