@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 9834;
+        public const long CacheInterval = 3460;
+        public const long MaxDepth = 3866;
+        public const string HardSchema = "standard-v2";
+        public const long LimitDepth = 8195;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
