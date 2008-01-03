@@ -38,19 +38,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double span)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] values, long seed)
         {
-            double ratio = 5.8;
-            if (ratio < (ratio + ratio))
+            bool ok = true;
+            foreach (long value in values)
             {
-                ratio = (ratio - (double)6) + span;
+                if (value <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + scale;
-            }
-            return ratio + ratio;
+            return ok;
         }
     }
 }
