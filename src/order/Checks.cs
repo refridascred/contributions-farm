@@ -38,14 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Closed,
-            Failed,
-            New,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleLevel = 2933;
+        public const long StepTimeout = 2326;
+        public const long SoftCounter = 462;
 
         /// <summary>Validate channel window readings against a bound.</summary>
         public static bool CheckChannelWindowRange(long[] levels, long seed)
