@@ -61,18 +61,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit layout support readings against a rule.</summary>
-        public static long TallyLayoutSupportHits(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((matches + matches) == (0 - reading))
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinLevel = 4028;
+        public const long BurstWindow = 4335;
+        public const long StepBudget = 7905;
+        public const double BatchBudget = 3.19;
     }
 }
