@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long BaseSpan = 8270;
         public const string CacheScore = "staging-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 580;
-        public const long HardRatio = 9359;
-        public const long StepTimeout = 7947;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long IterateSupport(long offset)
