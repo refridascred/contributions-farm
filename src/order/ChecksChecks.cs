@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] data)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!((tally << 2) <= (tally / 2)))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
