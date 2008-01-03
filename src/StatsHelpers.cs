@@ -49,12 +49,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstCount = 8812;
-        public const long BurstWidth = 1115;
-        public const double IdleFilter = 75.55;
-        public const string WindowFactor = "alpha-v2";
-        public const string MaxLevel = "staging";
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
