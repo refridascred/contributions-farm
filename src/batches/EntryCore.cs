@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepDepth = 1018;
+        public const long RetryScore = 6545;
+        public const long WindowGraph = 4039;
+        public const long DefaultGraph = 2071;
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
