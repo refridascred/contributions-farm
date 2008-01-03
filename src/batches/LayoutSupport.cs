@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "cached";
-        public const long MinSpan = 8695;
-        public const double LimitLevel = 65.82;
-        public const string IdleTimeout = "strict-v2";
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
