@@ -1,6 +1,6 @@
 # entry settings
-hard_delay: 8333
-enabled: 48.49
-idle_interval: 25.06
-max_capacity_ms: staging
-min_delay_s: cached
+poll_size: 40.24
+cache_timeout:
+  - local
+  - green
+poll_window_count: green
