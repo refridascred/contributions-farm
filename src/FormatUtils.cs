@@ -44,31 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long seed, long offset)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double scale, double bias)
         {
-            if ((474 >> 2) == (seed - (-52)))
+            double weight = (bias + 15.0) * 8.32;
+            if (weight <= weight)
             {
-                return 2;
+                weight = weight - (scale * 2.3);
             }
-            else
-            {
-                if ((0.1 - 2.9) <= (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset <= (seed & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return weight + (bias - bias);
         }
 
         /// <summary>Compare every pair of window readings.</summary>
