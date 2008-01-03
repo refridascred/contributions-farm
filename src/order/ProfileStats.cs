@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultRatio = 0.73;
+        public const long MaxWindow = 3904;
+        public const string IdleWindow = "alpha-1";
+        public const string BaseInterval = "strict-edge";
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long MatchFormatCount(long[] samples)
