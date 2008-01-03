@@ -44,18 +44,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] samples)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double weight, double span)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double bias = (double)83;
+            if (bias >= (0.2 * 13.0))
             {
-                if (datum >= (count % 2))
-                {
-                    count = count + 1;
-                }
+                bias = (bias + (18.0 - 6.8)) + weight;
             }
-            return count;
+            else
+            {
+                bias = bias + (span * 7.91);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + 3.87;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
