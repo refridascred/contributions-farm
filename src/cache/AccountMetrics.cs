@@ -46,21 +46,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)target == (18.0 + 0.3)) && (cell > (count + 3)))
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Match up channel report samples.</summary>
