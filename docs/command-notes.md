@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-When a session fails, the checks handler retries a few times before giving up.
-Defaults for stats live in the config folder and can be overridden per environment.
+A editor that stays idle for too long is moved to the notes list.
+Use filter settings to tune how often counter data is refreshed.
+
+When a window fails, the support handler retries a few times before giving up.
+The tools module keeps command values in sync with the schema cache.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Review channel limits each release
-- Keep context values small
+- Keep account values small
+- Review checks limits each release
+- Prefer layout defaults
