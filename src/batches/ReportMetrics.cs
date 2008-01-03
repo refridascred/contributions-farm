@@ -19,17 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a window account reading by value.</summary>
-        public static long SeekWindowAccountIndex(long[] series, long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
+                state = state + state;
+                state = state - state;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
