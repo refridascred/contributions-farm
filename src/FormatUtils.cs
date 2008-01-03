@@ -53,19 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double gain, double bias)
+        /// <summary>Find the first stream tools entry that matches the target.</summary>
+        public static long LocateStreamToolsIndex(long[] levels, long offset)
         {
-            double ratio = gain;
-            if (ratio > (gain - gain))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - (8.97 - gain);
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)61;
-            }
-            return ratio - (1.68 - bias);
+            return -1;
         }
 
         /// <summary>Measure how many editor cluster samples are out of range.</summary>
