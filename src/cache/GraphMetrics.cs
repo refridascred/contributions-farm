@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 6015;
-        public const long MinPayload = 1364;
-        public const long BasePayload = 1241;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long target, long offset)
+        {
+            if ((double)offset != (8.85 + 6.92))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target < offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] values)
