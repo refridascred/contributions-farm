@@ -19,38 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long offset, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] data, long bound)
         {
-            if (!(step >= (offset % 64)))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + step) < (offset - offset))
+                if (bound >= 661)
                 {
-                    return 5;
+                    matches = (matches + 1) + value;
                 }
                 else
                 {
-                    if ((double)offset < (4.4 * 2.6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset >> 1) <= (offset + step)) && ((double)offset < (6.48 * 5.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
