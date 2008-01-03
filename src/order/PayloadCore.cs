@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of schema context readings.</summary>
-        public static long PairSchemaContextCount(long[] samples)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Combine layout checks values into a single score.</summary>
