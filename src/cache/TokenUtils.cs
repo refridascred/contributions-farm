@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Done,
-            Active,
-            Failed,
-            Pending,
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the queue cache entries that pass the check.</summary>
