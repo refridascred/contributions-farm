@@ -33,19 +33,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] readings, long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
