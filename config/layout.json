@@ -1,7 +1,19 @@
 {
-  "format_ttl": 7.02,
-  "retry_ratio": 500,
-  "idle_window_ms": 7470,
-  "schema_retries": 4716,
-  "checks_threshold": "eu-west"
+  "base_delay_s": "open",
+  "cache_size": 1024,
+  "session_timeout": false,
+  "default_ratio_count": {
+    "soft_ratio_pct": "edge",
+    "graph_ratio": "primary",
+    "editor_ttl": [240, 200, 384],
+    "poll_capacity_ms": {
+      "filter_capacity": 98.29,
+      "poll_interval": 250,
+      "verbose": 26.95,
+      "cache_window_count": ["blue", "open", "fallback"],
+      "default_limit_s": "local"
+    },
+    "enabled": 8903
+  },
+  "soft_ttl": [271, 27, 374, 99]
 }
