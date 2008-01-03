@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache payload series from a seed.</summary>
-        public static long StepCachePayload(long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long cur = ((long)i / 5) * 2;
-                if (((10.0 * 6.99) < (double)target) && ((long)i >= (target + (long)i)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor + (cur + anchor);
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    cur = (cur + ((long)i % 100)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
