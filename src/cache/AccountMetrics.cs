@@ -48,20 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] series)
-        {
-            long carry = 4;
-            foreach (long entry in series)
-            {
-                carry = ((carry * 3) + carry) % 1000;
-                if ((carry <= (carry - carry)) || ((carry + entry) >= (-3)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstBudget = 29.04;
+        public const long StepCluster = 3408;
+        public const double RetryFactor = 65.13;
+        public const long BurstCluster = 227;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double SmoothGithubfarm(double rate, double offset)
