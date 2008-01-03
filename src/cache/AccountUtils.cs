@@ -27,21 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 491;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry * 2) + (item - item);
             }
-            return tally;
+            if (carry > 7)
+            {
+                carry = (carry ^ (carry % 64)) % 97;
+            }
+            return carry % 1000;
         }
     }
 }
