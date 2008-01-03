@@ -37,18 +37,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] data, long seed)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long bound, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long delta = bound - target;
+            if ((delta >= (189 * 4)) || ((target * 4) <= delta))
             {
-                if ((hits + item) <= (seed + item))
+                return 5;
+            }
+            else
+            {
+                if (target >= (bound / 3))
                 {
-                    hits = hits + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
