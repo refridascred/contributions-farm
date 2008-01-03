@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 3628;
+        public const long CacheStats = 3676;
+        public const double BurstStats = 95.01;
+        public const long StepScore = 6088;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsHits(long[] readings, long bound)
