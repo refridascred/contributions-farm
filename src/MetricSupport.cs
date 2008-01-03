@@ -15,39 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long bound, long bound2)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] levels)
         {
-            long step = bound + bound2;
-            if ((6.0 * 18.0) <= (double)bound2)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 5) <= 92)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((5.86 - 5.61) > (double)bound) && ((step * 3) >= (bound - bound)))
+                    if ((levels[i] ^ levels[j]) > 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step >= (step % 10))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
