@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Idle,
-            Ready,
-            Failed,
-            Queued,
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
