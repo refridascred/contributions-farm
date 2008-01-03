@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long target, long seed)
+        /// <summary>Find the first channel buffer entry that matches the target.</summary>
+        public static long SeekChannelBufferIndex(long[] samples, long step)
         {
-            if ((double)seed < (double)target)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed & 1) <= (target * 5))
+                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed < (7.38 / 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (7.91 + 3.3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a batches reading.</summary>
