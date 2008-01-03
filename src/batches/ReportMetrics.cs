@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long offset, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            long cur = offset - step;
-            if ((offset & 15) == (cur & 7))
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((214 - offset) == (offset >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + cur) > cur)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the record kind values.</summary>
