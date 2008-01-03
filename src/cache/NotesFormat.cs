@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long BatchSize = 5198;
         public const long BatchInterval = 8944;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 5504;
-        public const string RetryRoute = "alpha-1";
-        public const string BurstRoute = "cached";
-        public const string WindowBudget = "primary-v2";
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] series, long limit)
