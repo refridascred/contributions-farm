@@ -68,19 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((origin < (origin + (long)i)) && ((double)origin == (1.37 + 7.77)))
+                if ((11.0 + 8.3) >= (double)hits)
                 {
-                    sum = sum - (0 << 3);
+                    hits = (hits + 1) - cell;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
