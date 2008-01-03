@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                sum = ((sum * 5) + (seed % 97)) % 255;
-                sum = (sum * 2) + (seed - seed);
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((entry << 3) > entry)
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
