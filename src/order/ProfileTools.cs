@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long origin)
         {
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long result = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((double)result != (19.0 / 8.0)))
+                {
+                    result = result - result;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count account entry pairs that satisfy a relation.</summary>
