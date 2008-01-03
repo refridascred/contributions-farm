@@ -89,27 +89,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] series, long offset)
+        /// <summary>Audit command order readings against a rule.</summary>
+        public static long TallyCommandOrderOutliers(long[] data, long bound)
         {
-            long mix = 62;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                mix = (mix + (54 / 7)) % 101;
-                if ((value <= (76 + (long)series.Length)) && ((double)offset > (3.2 - 2.46)))
+                if (item >= (bound - seen))
                 {
-                    mix = (mix + (value - mix)) % 101;
-                }
-                if (804 >= value)
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (mix < 553)
-            {
-                mix = (mix << 2) ^ (offset - mix);
-            }
-            return mix % 65521;
+            return seen;
         }
     }
 }
