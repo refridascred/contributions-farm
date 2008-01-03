@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 2845;
-        public const long DefaultRatio = 9820;
-        public const long MinSpan = 3918;
-        public const string MinFarm = "cached";
-        public const double LimitSpan = 17.01;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (!((double)reading < 14.0) || ((reading < (reading << 3)) || (reading <= (9 << 2))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowCount = 4157;
