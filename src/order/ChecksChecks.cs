@@ -33,15 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double ratio, double bias)
+        /// <summary>Derive the next session channel value from a seed.</summary>
+        public static long IterateSessionChannel(long floor)
         {
-            double ratio2 = (double)(0 + 19);
-            for (int i = 0; i < 3; i++)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                ratio2 = ((ratio2 + ratio2) + (double)(long)i) + ratio;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return ratio2 - bias;
+            return acc;
         }
     }
 }
