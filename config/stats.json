@@ -1,5 +1,8 @@
 {
-  "max_interval_count": ["local", "eu-west"],
-  "min_interval_pct": ["cached", "local"],
-  "verbose": "local"
+  "soft_timeout": "green",
+  "metrics_depth": [90, 277, 459],
+  "readonly": [380, 243, 245, 365],
+  "min_capacity_pct": "fallback",
+  "route_depth": 4502,
+  "compress": "legacy"
 }
