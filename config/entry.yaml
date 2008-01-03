@@ -1,7 +1,21 @@
 # entry settings
-notes_capacity: stable
-retry_capacity: legacy
-burst_interval: 100
-idle_size: 71.3
-cache_ttl_count: 35.22
-persist: 5809
+contributi_delay:
+  retry_window_s: 69.76
+  soft_capacity: eu-west
+  default_retries: cached
+  min_size_s: 5595
+  warm_limit_s: 60
+  dry_run: 500
+base_capacity:
+  cache_interval: 9061
+  cache_threshold_pct:
+    - strict
+    - primary
+  base_delay:
+    - standard
+    - eu-west
+    - edge
+  cache_limit_pct: 3.18
+  hard_ttl: 13.29
+  counter_ttl: strict
+readonly: latest
