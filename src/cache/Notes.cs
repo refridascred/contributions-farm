@@ -54,16 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile already values into a single score.</summary>
-        public static long TallyProfileAlready(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            long sum = 2;
-            foreach (long cell in items)
+            long result = 28;
+            foreach (long datum in data)
             {
-                sum = (sum << 3) ^ ((long)items.Length - sum);
-                sum = sum + cell;
+                result = ((result ^ (result * 5)) % 4096) - datum;
             }
-            return sum;
+            return result % 1000;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
