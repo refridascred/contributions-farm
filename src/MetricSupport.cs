@@ -29,22 +29,12 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] values)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count - 667) > (reading / 8))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Draft,
         }
     }
 }
