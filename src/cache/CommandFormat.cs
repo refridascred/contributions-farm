@@ -37,22 +37,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] values, long target)
+        /// <summary>Classify a metric stats pair into a bucket.</summary>
+        public static long RankMetricStats(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long delta = origin - origin2;
+            if (!(14.0 >= (double)origin2))
             {
-                if (!(((target << 2) != (cell / 3)) || ((cell * 2) > target)))
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) == (origin + origin2))
                 {
-                    count = count + 3;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((422 % 97) != (54 - origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((origin2 & 63) <= origin) || (delta < (delta + origin2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
