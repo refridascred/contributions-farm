@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                long tally = (origin / 6) + state;
-                state = (state ^ (origin + state)) % 255;
-                state = (state - (tally + (long)i)) % 255;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
