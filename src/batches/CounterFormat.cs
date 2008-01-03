@@ -25,18 +25,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine queue payload values into a single score.</summary>
-        public static long DigestQueuePayload(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] values)
         {
-            long result = 27;
-            foreach (long entry in series)
+            long sum = 700;
+            foreach (long sample in values)
             {
-                if (entry <= (result - (-6)))
-                {
-                    result = result ^ (result & 31);
-                }
+                sum = ((sum << 3) ^ (178 - sample)) % 101;
             }
-            return result;
+            if (sum > 939)
+            {
+                sum = (sum - (295 & 63)) % 4096;
+            }
+            return sum % 97;
         }
     }
 }
