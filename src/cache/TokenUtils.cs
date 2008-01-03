@@ -15,11 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 1490;
-        public const string DefaultLevel = "alpha-1";
-        public const string MinDepth = "fallback-v2";
-        public const long CacheAccount = 5798;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Pending,
+            Dropped,
+            Done,
+            New,
+            Stale,
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleFactor = 9192;
