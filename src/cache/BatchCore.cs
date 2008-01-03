@@ -23,14 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double gain, double floor)
         {
-            Ready,
-            Dropped,
-            Draft,
-            Closed,
-            Pending,
+            double load = (gain / 5.0) - (double)909;
+            if (load > (gain * 5.79))
+            {
+                load = (load - (double)13) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load - (gain * 2.95);
         }
 
         /// <summary>Define order limits and defaults.</summary>
