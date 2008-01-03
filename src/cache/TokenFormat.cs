@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long limit, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            if ((3.39 * 5.9) > (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((floor & 255) == (limit >> 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Locate a order command reading by value.</summary>
