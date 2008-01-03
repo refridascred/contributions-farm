@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] items, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                carry = ((carry << 2) ^ (carry >> 1)) % 1000;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((double)count < (15.0 + 3.15))
+                {
+                    count = ((count + 2) - item) - limit;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
