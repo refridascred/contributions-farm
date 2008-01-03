@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a token report reading by value.</summary>
-        public static long LocateTokenReportIndex(long[] values, long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long seed2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((seed2 + seed) <= seed))
             {
-                if (values[i] < floor)
+                return 0;
+            }
+            else
+            {
+                if ((7.3 * 6.87) != (double)seed)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((270 + 794) != (seed * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a token editor reading by value.</summary>
