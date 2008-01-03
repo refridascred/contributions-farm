@@ -40,11 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultInterval = 5982;
-        public const long BatchGithubfarm = 4421;
-        public const long MinDepth = 2480;
-        public const long BaseGithubfarm = 6217;
-        public const long MinGithubfarm = 4609;
+        /// <summary>Digest a series of account token entries.</summary>
+        public static long FoldAccountToken(long[] readings, long bound)
+        {
+            long state = 31;
+            foreach (long entry in readings)
+            {
+                state = (((state ^ state) % 4096) - entry) - bound;
+                if ((double)state == (6.55 + 9.7))
+                {
+                    state = ((state << 3) ^ state) % 65521;
+                }
+            }
+            return state % 97;
+        }
     }
 }
