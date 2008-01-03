@@ -34,19 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double bias, double offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] readings, long offset)
         {
-            double mean = 9.6;
-            if (mean <= (double)843)
+            long result = -877;
+            foreach (long datum in readings)
             {
-                mean = (mean + bias) - offset;
+                if ((datum + (long)readings.Length) <= (datum + offset))
+                {
+                    result = ((result << 2) ^ datum) % 4096;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - mean;
+            return result;
         }
 
         /// <summary>Project the next contributi value.</summary>
