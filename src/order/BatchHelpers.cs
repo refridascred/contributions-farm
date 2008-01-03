@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two graph checks measurements.</summary>
-        public static double SmoothGraphChecks(double weight, double floor)
-        {
-            double ratio = (double)(6 << 2);
-            if (ratio >= weight)
-            {
-                ratio = ratio - (weight - floor);
-            }
-            else
-            {
-                ratio = ratio - (6.3 - weight);
-            }
-            return ratio - (4.9 / 4.0);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 85.88;
+        public const string BurstInterval = "latest-edge";
+        public const long BurstAlready = 5092;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
