@@ -12,11 +12,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
