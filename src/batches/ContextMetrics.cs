@@ -52,21 +52,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 709;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = (((total << 3) ^ (23 % 5)) % 97) - reading;
+                if ((4.7 - 3.25) == (double)target)
                 {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (total < 1)
+            {
+                total = (total - (target >> 1)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many context githubfarm samples are out of range.</summary>
