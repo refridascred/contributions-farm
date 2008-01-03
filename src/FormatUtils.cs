@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] levels)
         {
-            public bool Mode { get; set; }
-            public double Token { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((hits ^ hits) == ((-91) << 3)) && (831 > cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
