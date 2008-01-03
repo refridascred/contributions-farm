@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a entry context value against two limits.</summary>
-        public static long SortEntryContext(long target, long target2)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long offset, long limit)
         {
-            long step = target + target2;
-            if ((step >> 4) < step)
+            long bound = offset ^ limit;
+            if ((238 - 20) <= ((-56) + limit))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((17.0 - 3.0) != (double)step)
+                if ((bound * 5) != (3 ^ offset))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if (22 >= (target + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 4;
                 }
             }
         }
