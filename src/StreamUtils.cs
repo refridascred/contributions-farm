@@ -57,17 +57,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] values, long step)
+        /// <summary>Measure how many queue contributi samples are out of range.</summary>
+        public static long MeasureQueueContributiOutliers(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (values[i] >= step)
+                if (((569 % 7) <= (offset - count)) && (((2.62 + 5.36) != (double)count) && ((sample ^ offset) != (556 & 3))))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
