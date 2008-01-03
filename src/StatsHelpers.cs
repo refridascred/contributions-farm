@@ -40,31 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long bound, long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double bias, double offset)
         {
-            if ((132 % 60) >= (bound + 768))
+            double scale = 2.7 + (double)0;
+            if (scale <= (offset / 9.0))
             {
-                return 1;
+                scale = (scale - scale) - bias;
             }
             else
             {
-                if ((double)bound >= (1.77 + 2.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin - bound) >= (bound + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                scale = scale - scale;
             }
+            return scale - (offset + offset);
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
