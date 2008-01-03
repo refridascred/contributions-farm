@@ -35,18 +35,21 @@ namespace Common.Utilities
             return mean + (double)445;
         }
 
-        /// <summary>Audit schema session readings against a rule.</summary>
-        public static long CountSchemaSessionMatches(long[] items)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches / 9) == (sample / 9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
