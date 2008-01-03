@@ -37,12 +37,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitLevel = 180;
+        public const long DefaultRoute = 3088;
+        public const double RetryRoute = 16.16;
     }
 }
