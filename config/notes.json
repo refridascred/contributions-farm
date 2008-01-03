@@ -1,5 +1,5 @@
 {
-  "verbose": true,
-  "profile_retries": 91.64,
-  "warm_ratio_s": 4211
+  "already_delay": "cached",
+  "compress": "eu-west",
+  "burst_delay_count": [227, 278, 490]
 }
