@@ -42,19 +42,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next metric account value.</summary>
-        public static double ProjectMetricAccount(double rate, double span)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double gain = (double)874 * 4.3;
-            if (gain <= (rate / 7.0))
-            {
-                gain = gain - span;
-            }
-            else
-            {
-                gain = gain + span;
-            }
-            return gain + (rate / 8.0);
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
