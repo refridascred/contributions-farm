@@ -13,11 +13,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] values, long origin)
         {
-            public double Count { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((43 - hits) <= (hits ^ hits))
+                {
+                    hits = ((hits + 3) + sample) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of record entries.</summary>
