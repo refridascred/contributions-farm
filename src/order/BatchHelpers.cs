@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 85.88;
-        public const string BurstInterval = "latest-edge";
-        public const long BurstAlready = 5092;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double AdjustEntry(double ratio, double bias)
