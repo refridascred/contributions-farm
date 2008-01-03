@@ -1,20 +1,5 @@
 {
-  "flush_delay_count": "fallback",
-  "strict": "eu-west",
-  "batch_limit_count": {
-    "default_ttl": "staging",
-    "channel_retries": true,
-    "min_delay": {
-      "idle_ttl": 43.45,
-      "cache_interval": 34,
-      "checks_ttl": "standard",
-      "notes_threshold": "primary",
-      "format_capacity": 100,
-      "sync_depth_s": false
-    },
-    "cache_ratio": "strict",
-    "githubfarm_retries": ["strict", "fallback", "cached", "fallback"],
-    "strict": false
-  },
-  "batch_ttl_count": "staging"
+  "sync_retries_count": 57.87,
+  "cache_threshold": "blue",
+  "flush_depth_pct": "stable"
 }
