@@ -33,10 +33,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 9039;
-        public const string BurstSize = "cached-v2";
-        public const double StepBudget = 98.19;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double bias, double offset)
+        {
+            double mean = 9.6;
+            if (mean <= (double)843)
+            {
+                mean = (mean + bias) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double ScaleContributi(double scale, double bias)
