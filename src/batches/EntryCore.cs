@@ -28,12 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
