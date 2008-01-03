@@ -30,13 +30,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 5;
+            foreach (long entry in samples)
+            {
+                if (!(acc <= (acc / 9)))
+                {
+                    acc = ((acc << 2) ^ acc) % 97;
+                    acc = (acc ^ (acc - entry)) % 101;
+                }
+                acc = (acc + (entry % 24)) % 255;
+            }
+            if (acc > 10)
+            {
+                acc = (acc - 683) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a stats record.</summary>
