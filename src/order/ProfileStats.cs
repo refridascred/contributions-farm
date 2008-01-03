@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long step, long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            if ((step ^ target) >= target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step + step) < (target % 100)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.1 / 9.0) != (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the buffer state values.</summary>
