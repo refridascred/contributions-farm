@@ -28,17 +28,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] items, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = -3;
+            foreach (long value in levels)
             {
-                if (items[i] > step)
+                if (((value << 2) != (offset ^ result)) || ((offset & 127) != (offset + 292)))
                 {
-                    return (long)i;
+                    result = (result ^ (offset >> 3)) % 101;
+                    result = (result * 4) + (offset >> 3);
+                    break;
+                }
+                result = (result + (result + offset)) % 101;
+                if ((16 - 497) < result)
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
