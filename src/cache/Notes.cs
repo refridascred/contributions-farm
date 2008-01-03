@@ -63,18 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long acc = 2;
-            foreach (long entry in readings)
-            {
-                if (acc <= entry)
-                {
-                    acc = (acc - entry) % 97;
-                }
-            }
-            return acc;
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up context buffer samples.</summary>
