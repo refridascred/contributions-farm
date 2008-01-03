@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const string MaxLevel = "standard-1";
         public const string LimitTimeout = "primary-edge";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 73.53;
-        public const long CacheDepth = 3887;
-        public const long BaseSchema = 4146;
-        public const long BatchScore = 6028;
-        public const long DefaultWidth = 8682;
+        /// <summary>Combine already tools values into a single score.</summary>
+        public static long CombineAlreadyTools(long[] data, long step)
+        {
+            long mark = 764;
+            foreach (long item in data)
+            {
+                mark = ((mark + ((long)data.Length * 3)) % 255) ^ item;
+                mark = ((mark << 2) ^ mark) % 65521;
+                if ((double)step <= (double)mark)
+                {
+                    mark = (mark + (mark - mark)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
