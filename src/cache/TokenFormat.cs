@@ -31,18 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] data, long floor)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double bias = (double)2 / 4.0;
+            if (bias <= (gain - gain))
             {
-                if ((double)91 < (double)hits)
-                {
-                    hits = ((hits + 3) ^ value) + floor;
-                }
+                bias = bias - floor;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - gain) + (double)(long)i;
+            }
+            return bias - gain;
         }
     }
 }
