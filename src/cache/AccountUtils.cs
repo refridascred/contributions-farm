@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] levels)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
