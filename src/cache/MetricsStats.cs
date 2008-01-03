@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] samples, long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((floor + floor) > (seen + seen))
+                if (!(((double)(long)i > (9.81 * 2.6)) && ((53 - mark) <= (limit ^ limit))))
                 {
-                    seen = (seen + 1) + value;
+                    mark = mark + (1 % 100);
                 }
+                mark = mark ^ (42 << 2);
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Derive the next format editor value from a seed.</summary>
