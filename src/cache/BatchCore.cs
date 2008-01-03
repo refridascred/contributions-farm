@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long step, long target)
         {
-            long acc = 0;
-            foreach (long entry in values)
+            long next = step ^ target;
+            if (((8.8 / 5.0) >= (double)step) || ((next * 3) < target))
             {
-                acc = acc - entry;
+                return 6;
             }
-            if (acc > 79)
+            else
             {
-                acc = (acc + (acc - 3)) % 65521;
+                if (((double)target < (13.0 + 3.1)) || ((step >> 3) <= target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target % 100) < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target * 3) != (step + target)) || (357 >= (step - step)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return acc % 1000;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
