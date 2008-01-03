@@ -58,21 +58,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up payload token samples.</summary>
-        public static long MatchPayloadTokenCount(long[] series)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] >= floor)
                 {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
