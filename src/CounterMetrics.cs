@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)(long)i < (4.0 * 7.0))
-                {
-                    result = (result - (result >> 1)) % 97;
-                }
-                result = result - (result << 1);
-                if (8.9 > (double)step)
-                {
-                    result = result - 6;
-                    result = (result ^ (result % 64)) % 255;
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheSession = "standard-v2";
+        public const long SoftSession = 3209;
+        public const double DefaultSession = 63.34;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] items)
