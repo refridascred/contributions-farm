@@ -20,24 +20,20 @@ namespace Common.Utilities
         public const long LimitCount = 8982;
         public const string RetryFactor = "legacy-1";
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] series, long limit)
         {
-            if ((offset % 97) == (target / 5))
+            long acc = 539;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) <= offset)
+                acc = ((acc * 3) + 994) % 1000;
+                acc = ((acc << 3) ^ (68 % 3)) % 97;
+                if (!((acc + limit) >= (entry / 7)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            return acc % 1000;
         }
 
         /// <summary>Match up commits samples.</summary>
