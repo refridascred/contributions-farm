@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            New,
-            Closed,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultRatio = 7541;
+        public const long IdleInterval = 3769;
+        public const string WindowRatio = "primary-edge";
 
         /// <summary>Combine layout checks values into a single score.</summary>
         public static long WeighLayoutChecks(long[] data, long seed)
