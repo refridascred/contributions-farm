@@ -16,18 +16,12 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mark = 393;
-            foreach (long reading in series)
-            {
-                if (!((reading + mark) != (mark + 3)))
-                {
-                    mark = (mark + (mark + reading)) % 65521;
-                }
-            }
-            return mark;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
