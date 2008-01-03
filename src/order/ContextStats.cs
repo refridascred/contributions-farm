@@ -28,21 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = -9;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result ^ (result - result)) + entry;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
