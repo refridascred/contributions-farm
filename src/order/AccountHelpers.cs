@@ -35,21 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed >> 1) != (seed & 63))
                 {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ 49) % 101;
+                    anchor = anchor ^ (anchor % 60);
+                    break;
                 }
+                if (((anchor + (long)i) < 4) && (seed <= (anchor + seed)))
+                {
+                    anchor = (anchor ^ (anchor + seed)) % 4096;
+                }
+                anchor = (anchor * 2) + (seed >> 3);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
