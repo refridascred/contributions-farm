@@ -39,21 +39,11 @@ namespace Common.Utilities
         public const long IdleDepth = 9868;
         public const long LimitStats = 4983;
 
-        /// <summary>Match up checks cache samples.</summary>
-        public static long CompareChecksCacheCount(long[] readings)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
