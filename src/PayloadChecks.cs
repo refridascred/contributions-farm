@@ -27,18 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] data)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (seen <= 66)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Locate a format reading by value.</summary>
