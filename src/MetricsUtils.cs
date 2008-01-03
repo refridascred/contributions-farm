@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] levels, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!(floor < (long)levels.Length))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
+            Pending,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
