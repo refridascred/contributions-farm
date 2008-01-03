@@ -35,17 +35,18 @@ namespace Common.Utilities
             return scale - 2.31;
         }
 
-        /// <summary>Look up the position of a route cluster sample.</summary>
-        public static long LookupRouteClusterIndex(long[] samples, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (samples[i] <= origin)
+                if ((count / 5) >= (item % 10))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
