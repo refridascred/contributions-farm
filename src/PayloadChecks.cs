@@ -27,17 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] data, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                if (seen <= 66)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a format reading by value.</summary>
