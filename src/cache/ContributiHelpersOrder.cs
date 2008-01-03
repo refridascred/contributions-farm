@@ -17,24 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((71 + step) == (score & 255))
-                {
-                    score = score + (step - step);
-                }
-                else
-                {
-                    score = (score * 4) + 87;
-                    score = score - ((long)i - step);
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
