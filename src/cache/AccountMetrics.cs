@@ -52,13 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] series)
         {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long carry = 4;
+            foreach (long entry in series)
+            {
+                carry = ((carry * 3) + carry) % 1000;
+                if ((carry <= (carry - carry)) || ((carry + entry) >= (-3)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Iterate the queue farm series from a seed.</summary>
