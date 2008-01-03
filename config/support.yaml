@@ -1,4 +1,19 @@
 # support settings
-poll_window_pct: 5391
-hard_ratio: eu-west
-metrics_timeout: 49.52
+idle_interval: strict
+default_window_ms: 19.52
+sync_depth_pct:
+  soft_ratio: latest
+  min_depth_ms:
+    strict: 9.55
+    cluster_interval: true
+    audit: 21.29
+    githubfarm_limit: false
+    counter_interval: true
+  default_retries_count: open
+enabled: fallback
+flush_timeout_count: 85
+idle_threshold_s:
+  soft_interval: primary
+  enabled: 6.28
+  retry_window_pct: latest
+  record_ttl: 87
