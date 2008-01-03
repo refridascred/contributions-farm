@@ -51,19 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order batch entry stays within the limit.</summary>
-        public static bool ValidateOrderBatchRange(long[] readings, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long mark = -39;
+            foreach (long value in items)
             {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (((mark << 3) ^ mark) % 1000) ^ value;
             }
-            return ready;
+            if (mark < 3)
+            {
+                mark = ((mark << 2) ^ mark) % 4096;
+            }
+            return mark % 65521;
         }
     }
 }
