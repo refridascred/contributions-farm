@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] samples, long seed)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] data)
         {
             long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seen + item) >= (item >> 1)) || ((item % 60) < item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + seed;
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
