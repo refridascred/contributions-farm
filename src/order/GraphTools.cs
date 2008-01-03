@@ -65,22 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] series, long step)
+        /// <summary>Audit schema command readings against a rule.</summary>
+        public static long AuditSchemaCommandHits(long[] readings, long target)
         {
-            long mix = 839;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (((mix + step) >= 4) && (step >= (datum / 4)))
+                if (((entry << 1) <= entry) && ((674 >> 1) <= target))
                 {
-                    mix = ((mix << 3) ^ (datum - 541)) % 101;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mix < 288)
-            {
-                mix = mix + (4 << 2);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
