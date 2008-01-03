@@ -1,7 +1,7 @@
 # entry settings
-command_capacity: 48.95
-soft_delay_ms: 10.63
-flush_threshold: 73
-default_capacity_ms: 48.77
-strict: false
-profile_capacity: eu-west
+default_limit_pct: false
+hard_timeout_ms: 500
+entry_ttl: strict
+verbose: false
+soft_delay_pct: 41.42
+farm_size: eu-west
