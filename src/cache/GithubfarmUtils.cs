@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items, long target)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mark = 736;
-            foreach (long reading in items)
-            {
-                mark = ((mark * 5) + ((long)items.Length * 5)) % 4096;
-                if (((double)mark < (5.7 * 9.45)) || ((9.08 / 3.0) <= (double)target))
-                {
-                    mark = mark + reading;
-                }
-            }
-            return mark;
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the entry kind values.</summary>
