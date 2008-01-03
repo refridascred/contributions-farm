@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long IdleDepth = 7193;
         public const string LimitBuffer = "staging";
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] levels, long floor)
         {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 759;
+            foreach (long sample in levels)
+            {
+                sum = ((((sum << 3) ^ (sum << 1)) % 101) + sample) + floor;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of counter token readings.</summary>
