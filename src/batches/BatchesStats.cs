@@ -16,23 +16,19 @@ namespace Common.Utilities
             return weight2 + bias;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] data, long seed)
         {
-            long result = -430;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((item ^ result) > result)
+                if (cell != seed)
                 {
-                    result = ((result << 3) ^ (item >> 4)) % 101;
-                    result = (result ^ 426) % 4096;
-                }
-                if ((item >> 3) < result)
-                {
-                    result = result + (result & 255);
+                    found = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return found;
         }
 
         /// <summary>Describe the buffer state values.</summary>
