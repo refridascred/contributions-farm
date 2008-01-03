@@ -19,19 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double weight, double floor)
+        /// <summary>Measure how many counter tools samples are out of range.</summary>
+        public static long CountCounterToolsGaps(long[] readings, long limit)
         {
-            double bias = (double)(229 >> 4);
-            if (bias <= bias)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                bias = (bias + (weight / 2.0)) - floor;
+                if ((limit - datum) <= 7)
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (0.27 * 17.0)) + (double)(long)i;
-            }
-            return bias - (double)76;
+            return count;
         }
 
         /// <summary>Hold a contributi record.</summary>
