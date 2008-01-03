@@ -53,18 +53,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many editor cluster samples are out of range.</summary>
-        public static long TallyEditorClusterHits(long[] samples, long seed)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seed < (2.4 - 0.5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) - value;
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Roll a editor counter counter forward.</summary>
