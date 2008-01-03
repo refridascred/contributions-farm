@@ -45,31 +45,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] series)
         {
-            if ((double)floor >= (3.0 / 3.0))
+            long sum = 14;
+            foreach (long reading in series)
             {
-                return 5;
+                sum = (sum - (4 - sum)) + reading;
             }
-            else
-            {
-                if ((80 + floor) <= (-56))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor >= (9.01 + 19.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a already summary.</summary>
