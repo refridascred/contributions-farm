@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] samples)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double mean = 15.0;
+            if (mean >= (weight / 6.0))
             {
-                if (!(((value + hits) > hits) && ((value + hits) >= (10 / 9))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean - (mean + mean);
             }
-            return hits;
+            return mean - offset;
         }
 
         /// <summary>Describe the buffer state values.</summary>
