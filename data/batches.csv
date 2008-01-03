@@ -1,7 +1,6 @@
-id,state,active
-1,cached,582
-2,993,strict
-3,eu-west,legacy
-4,69,5.74
-5,staging,97.44
-6,492,local
+id,ratio,count
+1,91.07,54
+2,primary,574
+3,227,primary
+4,347,78.85
+5,blue,14.18
