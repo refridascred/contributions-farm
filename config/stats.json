@@ -1,5 +1,6 @@
 {
-  "flush_size_s": 16,
-  "warm_size_ms": "blue",
-  "base_depth_ms": 41.49
+  "poll_retries": 1024,
+  "idle_ttl_s": 250,
+  "metric_size": ["staging", "local", "standard"],
+  "stream_threshold": ["standard", "stable", "staging"]
 }
