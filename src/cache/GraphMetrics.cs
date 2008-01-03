@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] readings, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] data, long step)
         {
-            long score = 9;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (((4.5 + 4.1) < (double)step) && ((step << 3) >= (sample - score)))
+                if (value != step)
                 {
-                    score = (score + (score % 64)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
