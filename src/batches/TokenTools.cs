@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long bound)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] <= bound)
+                if (offset <= ((long)i >> 2))
                 {
-                    return (long)i;
+                    long delta = result - (long)i;
+                    result = ((result * 5) + (delta >> 5)) % 101;
                 }
+                result = (result << 3) ^ (9 % 60);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
