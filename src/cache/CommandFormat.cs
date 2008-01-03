@@ -37,9 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "staging-v2";
-        public const long DefaultSize = 7971;
-        public const long LimitQueue = 6801;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] data, long step)
+        {
+            long result = 702;
+            foreach (long value in data)
+            {
+                if ((double)result <= 7.41)
+                {
+                    result = (result - (value - 60)) - step;
+                }
+            }
+            if (result < (-9))
+            {
+                result = (result - (38 - result)) % 97;
+            }
+            return result;
+        }
     }
 }
