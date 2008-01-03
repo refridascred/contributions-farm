@@ -44,13 +44,14 @@ namespace Common.Utilities
             return drift - (weight * 5.6);
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
             Draft,
+            Retry,
             Ready,
-            Stale,
-            Queued,
+            Active,
+            Paused,
         }
     }
 }
