@@ -19,31 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the counter metrics series from a seed.</summary>
-        public static long DeriveCounterMetrics(long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] items, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long edge = (long)i % 16;
-                if (((double)result <= (0.6 + 7.0)) || ((double)(long)i >= (19.0 * 14.0)))
+                if ((items[i] <= floor) && ((items[i] % 2) == 0))
                 {
-                    result = (result + (long)i) % 65521;
-                    break;
+                    return (long)i;
                 }
-                if (bound >= (67 >> 1))
-                {
-                    edge = (edge ^ result) % 255;
-                    edge = edge - (bound % 8);
-                }
-                else
-                {
-                    result = ((result * 4) + (long)i) % 1000;
-                    result = ((result * 5) + (edge << 1)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
