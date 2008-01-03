@@ -33,20 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support stats samples.</summary>
-        public static long TallySupportStats(long[] series, long origin)
-        {
-            long state = 1;
-            foreach (long datum in series)
-            {
-                state = (state ^ (datum * 3)) % 1000;
-            }
-            if (state < 0)
-            {
-                state = ((state * 3) + (origin - state)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "alpha-v2";
+        public const long LimitWidth = 8801;
+        public const double CacheCommits = 79.9;
+        public const string MinCommits = "legacy";
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long DeriveContributi(long origin)
