@@ -1,6 +1,17 @@
 # entry settings
-poll_size: 40.24
-cache_timeout:
-  - local
-  - green
-poll_window_count: green
+audit: 6388
+max_capacity_s:
+  dry_run: stable
+  counter_depth:
+    hard_ttl_pct: true
+    retry_timeout: legacy
+    dry_run: 8.85
+    hard_depth: true
+    checks_depth:
+      - stable
+      - legacy
+      - legacy
+  batch_timeout_ms: 76.72
+  stream_retries: blue
+already_retries: 1024
+hard_delay: 60
