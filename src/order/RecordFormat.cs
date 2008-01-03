@@ -16,18 +16,18 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] series, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] series)
         {
-            long carry = 0;
-            foreach (long value in series)
+            long mark = 393;
+            foreach (long reading in series)
             {
-                if ((value / 7) == (carry + value))
+                if (!((reading + mark) != (mark + 3)))
                 {
-                    carry = ((carry * 4) + (carry / 9)) - limit;
+                    mark = (mark + (mark + reading)) % 65521;
                 }
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
