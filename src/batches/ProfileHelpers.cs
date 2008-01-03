@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] values)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long score = -302;
+            foreach (long datum in series)
             {
-                if ((item < (item - item)) || (434 > (item + seen)))
+                if ((5.35 < (double)datum) || ((score + datum) >= datum))
                 {
-                    seen = seen + 1;
+                    score = score ^ (datum % 12);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    score = (score - (score * 2)) % 101;
+                }
+                if (((2.84 / 4.0) >= (double)score) && (0.1 > (double)score))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
