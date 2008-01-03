@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryBatches = 0.62;
-        public const string CacheBatches = "standard-edge";
-        public const long WindowBatches = 3856;
+        /// <summary>Validate record report readings against a bound.</summary>
+        public static bool GuardRecordReportRange(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double BlendSupport(double gain, double floor)
