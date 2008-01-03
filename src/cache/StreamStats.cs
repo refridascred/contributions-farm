@@ -48,14 +48,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            New,
-            Draft,
-            Queued,
-            Closed,
-            Retry,
+            Ready,
+            Failed,
+            Dropped,
+            Done,
         }
     }
 }
