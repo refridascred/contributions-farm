@@ -41,12 +41,22 @@ namespace Common.Utilities
         public const string RetryLevel = "open";
         public const string MinTools = "latest-v2";
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of order channel readings.</summary>
+        public static long DigestOrderChannel(long[] items, long bound)
         {
-            Synced,
-            Queued,
-            Done,
+            long anchor = 63;
+            foreach (long cell in items)
+            {
+                if ((bound <= (629 ^ anchor)) && ((double)cell != (10.0 - 0.9)))
+                {
+                    anchor = (anchor + (anchor >> 1)) % 101;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor % 1000;
         }
     }
 }
