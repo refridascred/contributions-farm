@@ -49,22 +49,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of record editor entries.</summary>
-        public static long ScoreRecordEditor(long[] levels, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long score = 88;
-            foreach (long sample in levels)
+            long score = 5;
+            foreach (long reading in items)
             {
-                if ((double)score >= (12.0 + 6.81))
+                if ((score + score) < score)
                 {
-                    score = ((score * 5) + (origin >> 3)) % 65521;
-                }
-                else
-                {
-                    score = score - (score + sample);
+                    score = ((score * 5) + (reading / 5)) % 4096;
                 }
             }
-            return score % 65521;
+            return score;
         }
     }
 }
