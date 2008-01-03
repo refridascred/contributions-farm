@@ -49,21 +49,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long seed, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = seed - origin;
+            if (((origin + lane) == (seed + seed)) || ((92 - seed) > (368 ^ seed)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((origin & 255) < seed) && (seed < (seed / 2)))
                 {
-                    if ((data[i] - data[j]) == 3)
+                    return 8;
+                }
+                else
+                {
+                    if (!((lane * 3) >= origin))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
