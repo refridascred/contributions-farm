@@ -53,12 +53,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
+            long acc = step;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc << 3) ^ (acc / 8);
+                acc = ((acc << 3) ^ (acc * 2)) % 101;
+                if (!((step >> 3) >= (step * 2)))
+                {
+                    acc = ((acc * 2) + (-1)) % 65521;
+                    acc = (acc * 3) + (acc << 1);
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
