@@ -63,17 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] values, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((values[i] > limit) && ((values[i] % 3) != 0))
+                if (count <= (count + 95))
                 {
-                    return (long)i;
+                    count = ((count + 3) ^ sample) + seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
