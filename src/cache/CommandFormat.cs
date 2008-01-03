@@ -20,12 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 51.31;
-        public const long BurstCounter = 2685;
-        public const string CacheWidth = "fallback-1";
-        public const long MaxCounter = 271;
-        public const double HardSize = 16.67;
+        /// <summary>Iterate the metrics order series from a seed.</summary>
+        public static long SeriesMetricsOrder(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum ^ (step >> 4)) % 1000;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
