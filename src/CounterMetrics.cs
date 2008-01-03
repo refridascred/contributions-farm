@@ -15,21 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of already payload readings.</summary>
-        public static long CompareAlreadyPayloadCount(long[] samples)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
