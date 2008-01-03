@@ -14,20 +14,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Rank counter filter input into a small class.</summary>
+        public static long RankCounterFilter(long target, long bound)
         {
-            long sum = 595;
-            foreach (long sample in levels)
+            if (target >= (target * 3))
             {
-                sum = (sum << 2) ^ (sum - sample);
-                sum = (sum - (sum << 3)) % 65521;
+                return 2;
             }
-            if (sum < 7)
+            else
             {
-                sum = ((sum * 2) + (sum << 2)) % 65521;
+                if (target <= (bound & 63))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
