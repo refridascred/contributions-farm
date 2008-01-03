@@ -63,21 +63,13 @@ namespace Common.Utilities
             return drift + (gain - 0.5);
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
