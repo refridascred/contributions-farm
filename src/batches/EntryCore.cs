@@ -65,18 +65,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema buffer values into a single score.</summary>
-        public static long FoldSchemaBuffer(long[] items, long offset)
-        {
-            long total = 34;
-            foreach (long value in items)
-            {
-                if ((total << 2) == (total - 7))
-                {
-                    total = ((total * 5) + (value ^ total)) - offset;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchSpan = 2295;
+        public const long BurstSpan = 13;
+        public const long LimitDepth = 8045;
+        public const long BatchBudget = 4873;
     }
 }
