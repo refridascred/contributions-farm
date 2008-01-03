@@ -57,26 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] readings, long seed)
         {
-            long total = 3;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((59 + total) == (2 + (-208)))
+                if (sample >= seed)
                 {
-                    total = total ^ total;
-                }
-                if ((sample * 3) > (long)samples.Length)
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (total > 2)
-            {
-                total = (total << 3) ^ (total / 8);
-            }
-            return total % 4096;
+            return ok;
         }
     }
 }
