@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
             public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public double Count { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
