@@ -25,31 +25,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long bound, long limit)
+        /// <summary>Count cache notes pairs that satisfy a relation.</summary>
+        public static long MatchCacheNotesCount(long[] values)
         {
-            if ((bound - limit) > (limit & 7))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5.14 / 9.0) >= (double)bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(limit > (54 + 0)))
+                    if ((values[i] - values[j]) > 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
