@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultRatio = 0.73;
-        public const long MaxWindow = 3904;
-        public const string IdleWindow = "alpha-1";
-        public const string BaseInterval = "strict-edge";
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderMatches(long[] readings, long origin)
