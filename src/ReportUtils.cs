@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((5.8 / 7.0) == (double)sample) || !((324 & 127) != (target ^ sample)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepDepth = 3977;
+        public const double HardStream = 36.7;
+        public const double BaseStream = 4.93;
+        public const double IdleRatio = 51.94;
+        public const long SoftFactor = 2919;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
