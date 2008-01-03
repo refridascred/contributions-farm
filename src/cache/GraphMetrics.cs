@@ -27,13 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long floor)
         {
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = ((anchor ^ (long)i) % 1000) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
