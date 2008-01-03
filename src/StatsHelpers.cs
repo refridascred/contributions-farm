@@ -42,12 +42,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheRatio = 8334;
-        public const long RetryBudget = 2604;
-        public const long HardBudget = 1680;
-        public const long LimitContributi = 9308;
-        public const long WindowTimeout = 5974;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long bound, long origin)
+        {
+            if ((132 % 60) >= (bound + 768))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound >= (1.77 + 2.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - bound) >= (bound + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long SeriesReport(long origin)
