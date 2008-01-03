@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] levels, long floor)
-        {
-            long mark = 49;
-            foreach (long reading in levels)
-            {
-                if ((mark / 6) <= (mark + floor))
-                {
-                    mark = (mark ^ mark) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (mark - reading)) % 1000;
-                }
-            }
-            if (mark < (-79))
-            {
-                mark = (mark - (floor ^ mark)) % 97;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 9417;
+        public const long WindowBatches = 4037;
+        public const double HardBatches = 79.34;
+        public const long MinRatio = 5740;
+        public const long WindowBudget = 2860;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
