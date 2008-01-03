@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Check that every payload profile entry stays within the limit.</summary>
+        public static bool VerifyPayloadProfileLimits(long[] values, long seed)
         {
-            Dropped,
-            Failed,
-            Paused,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every batch session entry stays within the limit.</summary>
