@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] data, long bound)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardBudget = 3157;
+        public const long SoftWidth = 1386;
+        public const string MaxLevel = "standard-1";
+        public const string LimitTimeout = "primary-edge";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double MinSchema = 73.53;
