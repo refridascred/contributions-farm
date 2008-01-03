@@ -18,10 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "stable-v2";
-        public const long WindowChecks = 5806;
-        public const long StepDepth = 9608;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long offset, long target)
+        {
+            if (((offset * 2) >= (offset + offset)) && ((5.0 - 8.7) >= (double)offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target < (target + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset + target) <= 923)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((14.0 * 20.0) == (double)target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowCount = 4157;
