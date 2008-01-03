@@ -61,12 +61,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchCount = 0.93;
-        public const double CacheScore = 21.82;
-        public const long HardBatches = 7457;
-        public const long SoftSpan = 2404;
-        public const double SoftBatches = 33.03;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long offset, long floor)
+        {
+            long cur = offset + floor;
+            if (cur > (30 - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset <= (cur >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Check that every buffer already entry stays within the limit.</summary>
         public static bool VerifyBufferAlreadyRange(long[] samples, long bound)
