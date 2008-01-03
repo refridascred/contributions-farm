@@ -21,15 +21,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next format editor value from a seed.</summary>
-        public static long DeriveFormatEditor(long step)
+        /// <summary>Measure how many profile counter samples are out of range.</summary>
+        public static long MeasureProfileCounterMatches(long[] samples, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if (!((13.0 < (double)datum) && ((tally / 6) <= (130 * 2))))
+                {
+                    tally = (tally + 2) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
