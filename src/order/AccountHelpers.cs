@@ -44,27 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] items)
-        {
-            long mark = -4;
-            foreach (long item in items)
-            {
-                if (mark >= item)
-                {
-                    mark = (mark - (962 * 4)) % 65521;
-                }
-                else
-                {
-                    mark = mark ^ item;
-                }
-            }
-            if (mark < 58)
-            {
-                mark = ((mark << 2) ^ (mark + 665)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxTimeout = 8349;
+        public const long LimitScore = 1711;
+        public const long BaseLevel = 2258;
+        public const double StepTimeout = 20.66;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string IdleBuffer = "standard-1";
