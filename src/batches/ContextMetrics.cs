@@ -59,15 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] levels)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] series)
         {
             long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((matches + value) > 95) && ((matches + 149) >= (matches << 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
