@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] readings, long floor)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a support header.</summary>
