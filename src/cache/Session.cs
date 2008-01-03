@@ -48,19 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a counter report reading.</summary>
-        public static double BlendCounterReport(double ratio, double span)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] items)
         {
-            double drift = 0.39;
-            if (drift <= 7.23)
+            long acc = 6;
+            foreach (long sample in items)
             {
-                drift = drift + (span * 2.06);
+                if (((sample + sample) == (78 - sample)) && ((5.0 + 1.1) != (double)(long)items.Length))
+                {
+                    acc = ((acc * 2) + (sample + sample)) % 255;
+                }
             }
-            else
-            {
-                drift = drift - ratio;
-            }
-            return drift + (double)437;
+            return acc;
         }
     }
 }
