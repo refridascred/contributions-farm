@@ -21,21 +21,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Draft,
+            Queued,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
