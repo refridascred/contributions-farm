@@ -39,16 +39,11 @@ namespace Common.Utilities
         public const long WindowScore = 8631;
         public const long BurstWindow = 6730;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] data)
-        {
-            long anchor = 867;
-            foreach (long item in data)
-            {
-                anchor = ((anchor << 3) ^ (item ^ anchor)) % 1000;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 1410;
+        public const long IdleChannel = 7769;
+        public const string LimitTimeout = "staging-edge";
+        public const long CacheScore = 4100;
 
         /// <summary>Measure how many counter batch samples are out of range.</summary>
         public static long TallyCounterBatchMatches(long[] items, long target)
