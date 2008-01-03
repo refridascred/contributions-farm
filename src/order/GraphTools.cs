@@ -42,23 +42,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long offset, long bound)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long target)
         {
-            long prev = offset + bound;
-            if ((bound ^ offset) >= offset)
+            if ((step & 15) != (step + target))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((bound >= (offset + prev)) || ((18.0 / 8.0) != (double)offset))
+                if ((step <= (93 % 64)) || ((target - target) >= (target + target)))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    return 2;
+                    if ((step << 2) < step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (9.4 < (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
