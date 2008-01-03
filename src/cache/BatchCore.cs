@@ -11,16 +11,15 @@ namespace Common.Utilities
         public const long LimitTimeout = 398;
         public const double CacheDepth = 74.71;
 
-        /// <summary>Iterate the graph farm series from a seed.</summary>
-        public static long SeriesGraphFarm(long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            long total = -32;
+            foreach (long item in values)
             {
-                state = (state + (state / 6)) % 4096;
-                state = ((state * 2) + (long)i) % 4093;
+                total = total ^ item;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
