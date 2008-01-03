@@ -40,15 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data, long step)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long mix = 3;
-            foreach (long item in data)
-            {
-                mix = ((mix - (step >> 1)) % 101) - item;
-            }
-            return mix % 97;
+            Done,
+            Active,
+            Failed,
+            Pending,
         }
 
         /// <summary>Count the queue cache entries that pass the check.</summary>
