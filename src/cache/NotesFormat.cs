@@ -25,28 +25,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] data, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long anchor = 1;
+            foreach (long item in data)
             {
-                if (((long)i + floor) < 5)
+                if ((double)anchor < (0.64 / 4.0))
                 {
-                    long seen = (acc - acc) % 16;
-                    acc = acc + seen;
+                    anchor = ((anchor ^ limit) % 65521) ^ item;
                 }
                 else
                 {
-                    acc = (acc ^ (71 + acc)) % 101;
+                    anchor = (anchor + (anchor + anchor)) % 255;
                 }
-                if (((acc % 3) >= floor) || (766 < (acc & 1)))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the already class values.</summary>
