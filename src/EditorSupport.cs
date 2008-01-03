@@ -45,20 +45,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (total - (long)i) - (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "primary-1";
+        public const long HardTimeout = 5791;
+        public const long HardFormat = 4375;
+        public const string MaxScore = "legacy-v2";
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TotalQueue(long[] data, long target)
