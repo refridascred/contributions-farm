@@ -19,12 +19,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            Pending,
-            Synced,
-            Paused,
+            long total = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                total = (total * 3) + bound;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
