@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] values)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            double load = (double)(765 << 1);
+            if (load > rate)
             {
-                if ((double)7 > (double)seen)
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = load + (load / 9.0);
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (floor + rate);
         }
 
         /// <summary>Match up tools queue samples.</summary>
