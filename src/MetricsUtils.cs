@@ -44,26 +44,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] series, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long origin)
         {
-            long acc = 106;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (((-6) - datum) != (acc + 1))
+                if (datum >= origin)
                 {
+                    valid = false;
                     break;
                 }
-                if (!((bound + bound) < (acc * 2)))
-                {
-                    acc = acc + (datum >> 4);
-                }
             }
-            if (acc > (-885))
-            {
-                acc = (acc - (acc + bound)) % 255;
-            }
-            return acc;
+            return valid;
         }
     }
 }
