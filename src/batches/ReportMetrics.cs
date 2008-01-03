@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many contributi format samples are out of range.</summary>
-        public static long CountContributiFormatMatches(long[] values)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)sample == (5.73 + 7.8))
+                long hits = 74 & 127;
+                score = (score << 3) ^ score;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    hits = hits + 2;
+                    score = ((score << 3) ^ (long)i2) % 1000;
+                    score = score - hits;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Find the first record channel entry that matches the target.</summary>
