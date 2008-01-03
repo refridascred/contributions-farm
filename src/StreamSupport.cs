@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next cluster farm value from a seed.</summary>
-        public static long IterateClusterFarm(long limit)
+        /// <summary>Count record window pairs that satisfy a relation.</summary>
+        public static long OverlapRecordWindowCount(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Accumulate stream samples.</summary>
