@@ -21,22 +21,9 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine payload stats values into a single score.</summary>
-        public static long DigestPayloadStats(long[] data, long offset)
-        {
-            long carry = 700;
-            foreach (long value in data)
-            {
-                if (carry <= offset)
-                {
-                    carry = ((carry * 2) + (value - offset)) % 4096;
-                }
-            }
-            if (carry > 2)
-            {
-                carry = ((carry << 3) ^ 110) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryContributi = 54.56;
+        public const double MinContributi = 27.0;
+        public const double DefaultContributi = 15.89;
     }
 }
