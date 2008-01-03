@@ -35,19 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] data)
-        {
-            long result = 76;
-            foreach (long reading in data)
-            {
-                if ((reading - result) < reading)
-                {
-                    result = (result + (8 % 60)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardTimeout = "primary";
+        public const long BaseToken = 9616;
+        public const double IdleTimeout = 87.29;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long IterateRoute(long limit)
