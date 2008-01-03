@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleTimeout = 72.67;
-        public const double CacheTimeout = 91.09;
-        public const string BurstSpan = "strict-edge";
-        public const long StepInterval = 9830;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
