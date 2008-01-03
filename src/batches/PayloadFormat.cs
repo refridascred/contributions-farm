@@ -44,18 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] values, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double gain = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)count > (3.8 + 0.43))
-                {
-                    count = ((count + 1) + datum) - target;
-                }
+                gain = ((gain + 1.4) + (double)(long)i) - offset;
             }
-            return count;
+            return gain - (gain - gain);
         }
     }
 }
