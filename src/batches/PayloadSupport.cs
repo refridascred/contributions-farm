@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double weight, double bias)
-        {
-            double scale = weight * 4.45;
-            if (scale <= (double)416)
-            {
-                scale = (scale + (double)329) - bias;
-            }
-            else
-            {
-                scale = scale - (double)8;
-            }
-            return scale + (double)74;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 8044;
+        public const long BurstWidth = 8049;
+        public const long HardProfile = 3974;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LookupCounterIndex(long[] values, long step)
