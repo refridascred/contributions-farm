@@ -46,18 +46,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            long result = 9;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)levels.Length >> 1) < reading)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result << 2) ^ (result - reading)) % 4096;
+                    if ((samples[i] + samples[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return matches;
         }
     }
 }
