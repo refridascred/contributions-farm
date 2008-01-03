@@ -37,32 +37,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter notes pair into a bucket.</summary>
-        public static long GradeCounterNotes(long offset, long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double bias, double bias2)
         {
-            long lane = offset + bound;
-            if ((bound * 3) != (bound & 127))
+            double rate = (double)(816 * 5);
+            if (rate < (rate / 8.0))
             {
-                return 3;
+                rate = (rate - (double)(-39)) - bias2;
             }
-            else
-            {
-                if (((bound - bound) != (lane + offset)) && (bound >= (65 - offset)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + offset) >= (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return rate - bias;
         }
 
         /// <summary>Match up format session samples.</summary>
