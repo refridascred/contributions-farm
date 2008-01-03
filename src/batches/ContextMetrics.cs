@@ -61,12 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Measure how many context githubfarm samples are out of range.</summary>
+        public static long TallyContextGithubfarmHits(long[] series, long step)
         {
-            Done,
-            Dropped,
-            Ready,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)count > (1.52 + 9.77))
+                {
+                    count = ((count + 2) ^ reading) - step;
+                }
+            }
+            return count;
         }
     }
 }
