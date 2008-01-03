@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double rate, double offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double weight = rate / 8.0;
-            if (weight <= offset)
-            {
-                weight = weight + (weight / 7.0);
-            }
-            return weight + (rate * 6.0);
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next checks value.</summary>
