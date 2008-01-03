@@ -21,38 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a checks schema pair into a bucket.</summary>
-        public static long GradeChecksSchema(long bound, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] levels)
         {
-            if (((double)target == (9.0 * 4.2)) || ((bound & 3) > (bound - bound)))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound << 1) > (5 << 1)) || ((target + target) >= bound))
+                if ((sample + sample) < (sample % 7))
                 {
-                    return 4;
+                    count = count + 1;
                 }
                 else
                 {
-                    if (((bound & 255) == (target + bound)) || ((double)target != (9.82 + 2.27)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((3 + bound) == (target + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
