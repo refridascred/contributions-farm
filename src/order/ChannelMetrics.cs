@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryRatio = "cached-1";
+        public const long BurstScore = 2070;
+        public const long MaxWindow = 5858;
+        public const double RetryCount = 79.5;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
