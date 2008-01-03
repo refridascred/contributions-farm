@@ -40,12 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultCount = 4794;
-        public const string HardDepth = "staging-1";
-        public const string WindowEditor = "cached-1";
-        public const string MinEditor = "alpha-1";
-        public const double BatchEditor = 40.82;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
