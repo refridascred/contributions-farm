@@ -22,17 +22,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] values, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (values[i] > seed)
+                if ((matches * 3) <= (matches + value))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
