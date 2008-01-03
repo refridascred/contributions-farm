@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 5726;
-        public const long CacheSession = 598;
-        public const long RetrySession = 1419;
-        public const double LimitSession = 4.69;
-        public const string DefaultScore = "legacy-1";
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long GradeFormat(long limit, long limit2)
