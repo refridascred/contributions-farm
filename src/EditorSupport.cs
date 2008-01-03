@@ -103,18 +103,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate githubfarm window samples.</summary>
-        public static long WeighGithubfarmWindow(long[] samples, long origin)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long carry = -252;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)origin <= (2.0 * 1.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry ^ (origin & 3)) % 255) - cell;
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
