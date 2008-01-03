@@ -6,11 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=270
-log "limit is ${COMMAND_LIMIT}"
+for item in legacy eu-west; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 8); do
     total=$((total + i * 2))
 done
 log "total ${total}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
