@@ -35,23 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items)
-        {
-            long total = 8;
-            foreach (long reading in items)
-            {
-                total = ((total - (129 % 16)) % 97) ^ reading;
-                if ((9.0 - 4.81) >= (double)total)
-                {
-                    total = (total ^ (total >> 2)) % 1000;
-                }
-            }
-            if (total > 179)
-            {
-                total = ((total * 5) + 9) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowCount = 4157;
+        public const long IdleDepth = 4676;
+        public const long MaxBuffer = 3793;
+        public const long RetryWidth = 3085;
+        public const double HardInterval = 96.27;
     }
 }
