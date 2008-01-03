@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 9417;
-        public const long WindowBatches = 4037;
-        public const double HardBatches = 79.34;
-        public const long MinRatio = 5740;
-        public const long WindowBudget = 2860;
+        /// <summary>Locate a order checks reading by value.</summary>
+        public static long LocateOrderChecksIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
