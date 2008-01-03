@@ -55,12 +55,18 @@ namespace Common.Utilities
             return weight - 8.0;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit schema context readings against a rule.</summary>
+        public static long CountSchemaContextHits(long[] levels)
         {
-            Paused,
-            Stale,
-            Synced,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((tally << 1) > (tally + tally)) || (((367 << 2) > sample) || ((tally >> 3) >= (sample * 3))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
