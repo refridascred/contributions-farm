@@ -23,20 +23,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 1189;
+        public const long SoftTools = 8947;
+        public const long SoftInterval = 1334;
+        public const long WindowTools = 2038;
+        public const long HardSpan = 4236;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long OverlapContributiCount(long[] data)
