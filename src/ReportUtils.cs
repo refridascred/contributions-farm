@@ -55,22 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] values, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] data)
         {
-            long anchor = 43;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((41 >> 3) != ((long)values.Length - origin))
+                if (hits > value)
                 {
-                    anchor = (anchor - (entry % 64)) % 65521;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor - origin) % 101;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Accumulate notes samples.</summary>
