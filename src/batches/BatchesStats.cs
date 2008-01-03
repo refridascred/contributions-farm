@@ -42,11 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryLevel = 9088;
-        public const long RetryRatio = 3870;
-        public const long RetryPayload = 9359;
-        public const long LimitPayload = 2169;
-        public const long MinTimeout = 8109;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
