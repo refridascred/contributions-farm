@@ -20,19 +20,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] data, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (item > origin)
+                if ((((entry * 2) != (offset + 36)) && ((entry << 2) > matches)) && ((matches + offset) >= (offset % 97)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
