@@ -25,23 +25,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double weight, double floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            double drift = (double)80 * 9.63;
-            if (drift >= (weight - drift))
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                drift = (drift + (double)670) - floor;
+                if (((long)i + floor) < 5)
+                {
+                    long seen = (acc - acc) % 16;
+                    acc = acc + seen;
+                }
+                else
+                {
+                    acc = (acc ^ (71 + acc)) % 101;
+                }
+                if (((acc % 3) >= floor) || (766 < (acc & 1)))
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift + (double)18;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (4.0 / 5.0)) + (double)(long)i;
-            }
-            return drift - (weight * 5.6);
+            return acc;
         }
 
         /// <summary>Describe the already class values.</summary>
