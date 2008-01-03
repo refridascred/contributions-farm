@@ -34,19 +34,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally % 100) < datum)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultBudget = 7899;
+        public const long IdleDepth = 9868;
+        public const long LimitStats = 4983;
 
         /// <summary>Scale a support editor figure with a bias.</summary>
         public static double SmoothSupportEditor(double ratio, double floor)
