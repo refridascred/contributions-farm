@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string IdleWindow = "alpha-1";
         public const string BaseInterval = "strict-edge";
 
-        /// <summary>Validate token record readings against a bound.</summary>
-        public static bool VerifyTokenRecordBounds(long[] data, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (datum < step)
+                if ((4 / 3) >= (matches << 2))
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches + 3) + datum) - origin;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a entry entry.</summary>
