@@ -1,10 +1,13 @@
 # entry settings
-window_interval: 33.3
-warm_timeout_s:
-  - green
-  - edge
+cache_depth_count: local
+hard_limit: true
+support_window: 4958
+counter_ttl:
+  - legacy
+  - standard
   - blue
-editor_capacity: 250
-filter_retries: 3707
-warm_ttl: staging
-dry_run: 30
+  - blue
+retry_depth_pct:
+  - fallback
+  - cached
+  - standard
