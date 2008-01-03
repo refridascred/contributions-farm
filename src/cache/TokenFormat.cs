@@ -27,18 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data, long bound)
+        /// <summary>Iterate the githubfarm payload series from a seed.</summary>
+        public static long DeriveGithubfarmPayload(long seed)
         {
-            long result = -62;
-            foreach (long item in data)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item / 6) < bound)
-                {
-                    result = result - (bound + 7);
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return result;
+            return total;
         }
     }
 }
