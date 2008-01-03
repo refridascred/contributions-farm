@@ -73,16 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] samples, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            long carry = 586;
+            foreach (long entry in samples)
             {
-                total = (total - ((-347) >> 2)) % 255;
-                total = ((total * 3) + (long)i) % 4093;
+                carry = (((carry << 2) ^ carry) + entry) + bound;
             }
-            return total;
+            return carry;
         }
     }
 }
