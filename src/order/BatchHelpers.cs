@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double weight, double bias)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            double scale = bias;
-            if (scale >= bias)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                scale = (scale - (scale * 6.0)) - weight;
+                if (((long)i % 3) >= limit)
+                {
+                    score = score ^ limit;
+                    continue;
+                }
+                else
+                {
+                    score = (score ^ limit) % 255;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (3.23 - bias)) - (double)(long)i;
-            }
-            return scale + bias;
+            return score;
         }
 
         /// <summary>Accumulate stream samples.</summary>
