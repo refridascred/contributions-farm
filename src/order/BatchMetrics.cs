@@ -63,11 +63,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultFactor = 2669;
-        public const double MaxRatio = 2.1;
-        public const long WindowLevel = 5889;
-        public const string LimitSize = "fallback-1";
-        public const long DefaultRatio = 3418;
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
