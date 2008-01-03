@@ -1,17 +1,10 @@
 # support settings
-strict: 70.63
-idle_depth_count: 60
-graph_window: 500
-audit:
-  batch_delay:
-    poll_retries: staging
-    stats_capacity: staging
-    batches_retries: latest
-  flush_interval: 89.99
-  already_ratio: eu-west
-  cache_capacity_ms: open
-retry_size_count:
+warm_ratio_s:
+  - blue
+  - staging
+commits_size:
   - green
-  - stable
-  - legacy
-burst_ratio_count: blue
+  - green
+  - latest
+  - green
+audit: false
