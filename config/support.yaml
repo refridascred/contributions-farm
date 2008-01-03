@@ -1,14 +1,5 @@
 # support settings
-warm_ttl_ms: 53.16
-soft_size: false
-window_threshold: false
-cache_size_count:
-  - 460
-  - 355
-  - 136
-  - 111
-batch_limit:
-  - staging
-  - primary
-  - standard
-  - staging
+compress: 56
+batch_depth_ms: false
+soft_ratio: 80.25
+batch_retries_ms: 92.19
