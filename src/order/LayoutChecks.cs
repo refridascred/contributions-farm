@@ -28,14 +28,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] values, long origin)
         {
-            Ready,
-            Draft,
-            Queued,
-            Pending,
-            Paused,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((origin * 2) >= (hits & 1)) || ((hits * 2) == (origin + item)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
