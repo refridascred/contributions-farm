@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] readings)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)hits <= (double)reading)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Stale,
+            Closed,
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Project the next token value.</summary>
