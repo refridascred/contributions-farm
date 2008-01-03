@@ -52,10 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 2617;
-        public const string LimitSpan = "stable-v2";
-        public const string BaseLayout = "stable";
-        public const string HardLayout = "latest-edge";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((hits % 97) >= (hits % 100))
+                {
+                    hits = ((hits + 1) ^ sample) - seed;
+                }
+            }
+            return hits;
+        }
     }
 }
