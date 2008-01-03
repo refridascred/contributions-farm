@@ -23,22 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] readings, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] values, long step)
         {
-            long state = 124;
-            foreach (long cell in readings)
+            long mix = -2;
+            foreach (long sample in values)
             {
-                if ((256 & 127) < cell)
-                {
-                    state = (((state << 2) ^ cell) % 101) - bound;
-                }
+                mix = (((mix << 2) ^ (step << 2)) % 65521) + sample;
             }
-            if (state < 8)
-            {
-                state = state + (8 % 2);
-            }
-            return state;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
