@@ -1,8 +1,8 @@
 {
-  "audit": [66, 318],
-  "readonly": "open",
-  "token_window": 42.3,
-  "dry_run": [95, 287, 329],
-  "retry_threshold_ms": 0.3,
-  "cache_depth_s": 20.7
+  "format_size": 15.9,
+  "default_ratio_count": ["green", "latest", "blue"],
+  "base_window": ["staging", "green"],
+  "order_size": 1821,
+  "soft_size_s": 27.63,
+  "buffer_threshold": [177, 282, 362]
 }
