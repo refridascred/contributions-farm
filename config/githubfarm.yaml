@@ -1,29 +1,56 @@
 # githubfarm settings
-readonly: 4995
-idle_timeout_ms: green
-cluster_size:
-  command_interval: standard
-  buffer_limit:
-    - standard
-    - local
-  soft_depth: standard
-  base_timeout_count: 1708
-  strict: 37.02
-  stream_window:
-    - 414
-    - 90
-    - 323
-window_delay:
-  - local
-  - latest
-warm_depth_pct:
-  account_capacity: fallback
-  warm_retries_count: 7399
-  min_threshold_count: 9775
-checks_limit:
-  profile_size: strict
-  flush_ttl_pct:
-    - 252
-    - 380
-    - 305
-  base_ratio_pct: cached
+base_limit: 55.87
+soft_interval_pct: open
+retry_threshold_count: eu-west
+contributi_retries: standard
+command_capacity:
+  burst_threshold_count:
+    - legacy
+    - fallback
+  default_threshold_pct: 38.36
+  contributi_ttl: 7155
+  idle_threshold:
+    already_threshold: cached
+    verbose: 76.49
+    soft_delay_pct: 6183
+    soft_limit:
+      - 31
+      - 414
+    compress: 30
+    token_capacity:
+      - 361
+      - 374
+      - 361
+  channel_capacity: stable
+  flush_limit: 72.5
+warm_capacity_count:
+  idle_delay_pct: 250
+  verbose:
+    profile_delay:
+      - strict
+      - local
+      - primary
+      - latest
+    flush_window: 91.5
+    sync_window_pct:
+      - fallback
+      - staging
+      - edge
+      - edge
+    window_interval:
+      - 435
+      - 236
+    burst_capacity_s: 5597
+    session_capacity: eu-west
+  base_timeout_ms:
+    - 33
+    - 490
+  hard_ttl_s:
+    audit: primary
+    enabled: green
+    cache_interval_count: false
+    sync_limit_pct: 1714
+    persist: 22
+  command_depth:
+    - 117
+    - 400
