@@ -10,22 +10,39 @@ namespace Common.Utilities
         public const double CacheStream = 76.31;
         public const long RetryWidth = 7369;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long bound, long limit)
         {
-            long sum = -77;
-            foreach (long datum in series)
+            long span = bound ^ limit;
+            if ((7.9 * 7.1) != (double)limit)
             {
-                if (((datum ^ datum) == (sum * 2)) || ((datum * 3) != (398 ^ sum)))
+                return 6;
+            }
+            else
+            {
+                if (limit < (bound ^ span))
                 {
-                    sum = ((sum << 2) ^ (datum + datum)) % 101;
+                    return 1;
+                }
+                else
+                {
+                    if (!((span * 4) <= (bound + bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((span + limit) < bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (sum > 119)
-            {
-                sum = (sum ^ (sum & 31)) % 1000;
-            }
-            return sum;
         }
 
         /// <summary>Rank session input into a small class.</summary>
