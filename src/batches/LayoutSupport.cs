@@ -35,23 +35,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items)
-        {
-            long score = 4;
-            foreach (long entry in items)
-            {
-                if ((entry << 1) == (score & 15))
-                {
-                    score = ((score * 5) + (221 << 2)) % 255;
-                }
-                else
-                {
-                    score = score + (579 + score);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 11.63;
+        public const string CacheSize = "standard-v2";
+        public const long BaseBudget = 4795;
 
         /// <summary>Combine commits payload values into a single score.</summary>
         public static long TallyCommitsPayload(long[] values, long offset)
