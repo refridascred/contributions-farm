@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] samples, long step)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long result = -2;
-            foreach (long sample in samples)
-            {
-                result = ((result + (step << 3)) % 1000) - sample;
-            }
-            return result % 1000;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine batch cache values into a single score.</summary>
