@@ -45,26 +45,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of tools notes entries.</summary>
-        public static long FoldToolsNotes(long[] data)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long limit)
         {
-            long state = 137;
-            foreach (long reading in data)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)state < (3.87 * 13.0))
-                {
-                    state = state + state;
-                }
-                else
-                {
-                    state = (state - (long)data.Length) % 101;
-                }
-                if ((state / 6) < reading)
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
