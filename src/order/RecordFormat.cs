@@ -21,13 +21,15 @@ namespace Common.Utilities
         public const string DefaultChecks = "cached";
         public const long MaxChecks = 8065;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Blend two metric order measurements.</summary>
+        public static double AdjustMetricOrder(double bias, double bias2)
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            double rate = 1.05 + (bias + bias);
+            if (rate <= (double)3)
+            {
+                rate = rate - bias2;
+            }
+            return rate + bias;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
