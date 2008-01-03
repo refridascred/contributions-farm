@@ -1,5 +1,7 @@
 # githubfarm settings
-flush_retries: false
-window_size: 58.82
-report_window: 470
-sync_capacity_s: 250
+sync_size_pct:
+  - 476
+  - 313
+compress: 15
+soft_timeout: primary
+account_delay: 9639
