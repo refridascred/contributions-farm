@@ -27,19 +27,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Measure how many order support samples are out of range.</summary>
+        public static long AuditOrderSupportHits(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((step << 2) != (40 + acc))
+                if (((reading / 6) >= hits) || !((6.4 + 12.0) > (double)reading))
                 {
-                    acc = acc - (long)i;
+                    hits = hits + 2;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
