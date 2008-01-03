@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=472
+log "limit is ${CHANNEL_LIMIT}"
+
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 6); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in green staging edge stable; do
+for item in open blue fallback; do
     log "checking ${item}"
 done
