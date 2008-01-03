@@ -34,22 +34,22 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] series)
+        /// <summary>Audit payload queue readings against a rule.</summary>
+        public static long MeasurePayloadQueueHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (sample < (sample / 5))
+                if (!((reading - tally) >= (tally % 5)))
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
