@@ -15,13 +15,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long bound, long bound2)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            long step = bound + bound2;
+            if ((6.0 * 18.0) <= (double)bound2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound * 5) <= 92)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((5.86 - 5.61) > (double)bound) && ((step * 3) >= (bound - bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step >= (step % 10))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session status values.</summary>
