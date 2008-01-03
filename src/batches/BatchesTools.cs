@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 5249;
-        public const long BaseSpan = 8270;
-        public const string CacheScore = "staging-1";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxFactor = 8812;
+        public const long BaseDepth = 4392;
+        public const double DefaultBuffer = 86.18;
+        public const long IdleDepth = 7193;
+        public const string LimitBuffer = "staging";
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
