@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two session metric measurements.</summary>
-        public static double AdjustSessionMetric(double bias, double offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double weight = (double)((-495) % 5);
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight + bias) + (double)(long)i) - offset;
-            }
-            return weight - (double)533;
+            Closed,
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
