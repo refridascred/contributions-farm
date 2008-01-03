@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels, long offset)
-        {
-            long acc = 1;
-            foreach (long value in levels)
-            {
-                if ((double)acc != (15.0 - 5.6))
-                {
-                    acc = (acc + offset) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc + value)) % 65521;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "cached-v2";
+        public const long BaseInterval = 6474;
+        public const long SoftTimeout = 4873;
+        public const long SoftDepth = 6552;
+        public const string BaseDepth = "standard-v2";
 
         /// <summary>Check that every cluster session entry stays within the limit.</summary>
         public static bool CheckClusterSessionLimits(long[] items, long step)
