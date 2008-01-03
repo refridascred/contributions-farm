@@ -49,18 +49,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches checks entries that pass the check.</summary>
-        public static long TallyBatchesChecksHits(long[] readings, long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum + tally) >= tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) - seed;
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
