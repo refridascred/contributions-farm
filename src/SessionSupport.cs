@@ -22,19 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the payload window entries that pass the check.</summary>
-        public static long MeasurePayloadWindowMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((2.8 + 1.87) < (double)item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxInterval = 5770;
+        public const double MinSpan = 44.47;
+        public const long SoftLevel = 5586;
+        public const double WindowBatch = 91.43;
+        public const long WindowScore = 4753;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TotalFilter(long[] values)
