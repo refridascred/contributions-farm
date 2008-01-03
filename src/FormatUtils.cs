@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] values, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 5700;
+        public const string MaxCommand = "stable-1";
+        public const long IdleCommand = 3713;
+        public const long StepInterval = 2100;
+        public const string HardSpan = "alpha";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueGaps(long[] levels)
