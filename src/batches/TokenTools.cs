@@ -29,10 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 8082;
-        public const double BurstFactor = 95.99;
-        public const long BaseFilter = 8572;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!((value << 3) > ((-4) % 10)))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] series)
