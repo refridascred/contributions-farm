@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] items)
         {
-            Paused,
-            Failed,
-            Draft,
-            Locked,
-            Idle,
+            long score = 61;
+            foreach (long datum in items)
+            {
+                if ((datum ^ score) != (score - score))
+                {
+                    score = ((score * 2) + (datum << 2)) % 101;
+                }
+            }
+            if (score < 2)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
