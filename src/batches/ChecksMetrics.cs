@@ -78,19 +78,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer already entry stays within the limit.</summary>
-        public static bool VerifyBufferAlreadyRange(long[] samples, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (reading < bound)
+                if ((0 + value) >= (value + count))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
