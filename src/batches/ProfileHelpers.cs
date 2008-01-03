@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const long BurstFormat = 1973;
         public const string MaxLevel = "strict-v2";
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!(3.62 > (double)sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetrySize = 9218;
+        public const long DefaultToken = 8062;
+        public const double BurstDepth = 15.85;
+        public const long MaxInterval = 9506;
 
         /// <summary>Locate a notes route reading by value.</summary>
         public static long LookupNotesRouteIndex(long[] items, long origin)
