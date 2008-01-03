@@ -41,23 +41,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] levels)
         {
-            long anchor = 8;
-            foreach (long value in series)
+            long result = 1;
+            foreach (long item in levels)
             {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 255;
-                if (anchor >= (anchor & 3))
+                if (((item << 3) == (7 - item)) && ((item * 2) >= (result - result)))
                 {
-                    anchor = (anchor ^ (anchor - value)) % 65521;
+                    continue;
                 }
                 else
                 {
-                    anchor = ((anchor * 2) + (value << 1)) % 255;
+                    result = ((result << 2) ^ (item ^ result)) % 4096;
                 }
+                result = (result + (result * 4)) % 4096;
             }
-            return anchor % 97;
+            if (result < 1)
+            {
+                result = ((result << 2) ^ 227) % 255;
+            }
+            return result;
         }
     }
 }
