@@ -40,32 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload stream pair into a bucket.</summary>
-        public static long SortPayloadStream(long seed, long offset)
-        {
-            if (!((32 / 3) <= (offset + seed)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + 46) < (seed - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinFactor = "alpha-edge";
+        public const double BatchSpan = 22.75;
+        public const long BatchGraph = 7965;
+        public const long CacheGraph = 2944;
+        public const long MinGraph = 6187;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long BucketEntry(long limit, long target)
