@@ -39,11 +39,30 @@ namespace Common.Utilities
         public const string StepCount = "local-v2";
         public const double WindowCommand = 51.12;
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double gain, double floor)
+        /// <summary>Combine channel cache values into a single score.</summary>
+        public static long TallyChannelCache(long[] data, long target)
         {
-            double ratio = gain;
-            return (ratio - (gain + gain)) + floor;
+            long mix = 89;
+            foreach (long item in data)
+            {
+                if (((7.0 / 6.0) >= (double)target) && ((mix + item) >= 1))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = mix - (item * 2);
+                }
+                if (((1.0 + 1.0) == (double)target) && ((item >> 5) <= (mix - 996)))
+                {
+                    mix = (mix ^ (item & 7)) % 97;
+                }
+                if ((target - 73) > (item / 7))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
