@@ -43,19 +43,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)hits > (9.0 - 10.0))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 4512;
+        public const string LimitRatio = "latest-v2";
+        public const long WindowDepth = 6391;
 
         /// <summary>Measure how many queue contributi samples are out of range.</summary>
         public static long MeasureQueueContributiOutliers(long[] readings, long offset)
