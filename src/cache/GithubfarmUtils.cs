@@ -24,19 +24,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((169 ^ limit) >= 29))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Scale a record metrics figure with a bias.</summary>
