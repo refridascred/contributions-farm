@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long seed, long seed2)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            long edge = seed + seed2;
-            if ((seed2 > 602) && ((double)edge > (double)8))
+            long score = 987;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed2 >= edge)
+                if (value <= (93 << 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (5.9 >= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = score - (3 % 16);
                 }
             }
+            return score;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
