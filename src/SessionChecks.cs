@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] values, long step)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] items, long origin)
         {
-            long score = 22;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score ^ (datum - datum)) + step;
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
