@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Draft,
+            New,
+            Queued,
+            Closed,
             Idle,
-            Paused,
         }
 
         /// <summary>Fold a list of support readings.</summary>
