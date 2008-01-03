@@ -32,10 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryRatio = 9424;
-        public const long BatchReport = 8152;
-        public const string LimitReport = "legacy";
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Idle,
+            Closed,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long CombineMetric(long[] samples)
