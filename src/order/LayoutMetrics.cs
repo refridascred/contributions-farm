@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count cache githubfarm pairs that satisfy a relation.</summary>
+        public static long PairCacheGithubfarmCount(long[] samples)
         {
-            Locked,
-            Failed,
-            Closed,
-            Stale,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel kind values.</summary>
