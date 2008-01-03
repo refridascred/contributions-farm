@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowWidth = 70.4;
+        public const string WindowEditor = "fallback-1";
+        public const string HardCount = "primary";
+        public const double RetryEditor = 7.49;
+        public const long HardEditor = 787;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long origin, long target)
