@@ -1,19 +1,23 @@
 # entry settings
-enabled: local
-tools_limit:
-  session_retries:
-    - legacy
-    - legacy
-  burst_threshold_ms:
-    default_size_pct: 38
-    format_timeout: 8181
-    idle_capacity: 1024
-    flush_size_count: 1024
-  batches_threshold: 8351
-  queue_retries: open
-  poll_depth_count: primary
-  dry_run: 73
-batch_depth_pct:
-  max_interval_ms: 28.21
-  default_ttl: strict
-  batch_interval_ms: primary
+idle_timeout_s: false
+route_capacity: cached
+min_retries_pct:
+  base_interval: edge
+  sync_window: 51.92
+  strict:
+    sync_size: 10
+    entry_depth: true
+    soft_interval: true
+  burst_limit_ms:
+    base_depth: true
+    batch_depth_ms: 47
+    profile_window: staging
+    editor_limit: 3661
+  stats_timeout:
+    base_ratio_count: primary
+    flush_timeout_ms: false
+    burst_capacity_ms: 6986
+    editor_capacity: 8873
+  sync_retries: 82
+min_window_pct: false
+readonly: 17.79
