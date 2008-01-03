@@ -23,22 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] data)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long anchor = 68;
+            foreach (long item in series)
             {
-                if (((0 < (entry & 31)) && ((count ^ entry) <= 111)) || ((count >> 5) <= (entry / 3)))
+                if ((double)bound >= (1.2 - 9.7))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = anchor - (item + item);
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the notes phase values.</summary>
