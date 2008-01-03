@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double rate, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            double scale = (rate * 3.41) / 9.0;
+            if (scale <= scale)
+            {
+                scale = scale - (bias * 6.81);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (scale - 7.8)) - (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
