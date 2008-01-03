@@ -1,21 +1,11 @@
 {
-  "sync_interval_ms": {
-    "sync_depth_count": 250,
-    "poll_interval_pct": true,
-    "retry_depth_s": [444, 181]
+  "batch_retries_s": 250,
+  "queue_retries": {
+    "command_threshold": "stable",
+    "support_ratio": ["legacy", "legacy", "blue"],
+    "max_threshold": 75
   },
-  "flush_ratio_count": {
-    "counter_interval": "primary",
-    "audit": 44.36,
-    "base_ratio_count": 9197,
-    "payload_timeout": {
-      "strict": false,
-      "entry_delay": "latest",
-      "retry_capacity": 87.97,
-      "default_depth": "green",
-      "tools_retries": 25.68,
-      "audit": 59
-    }
-  },
-  "metrics_limit": 60.02
+  "poll_depth_s": ["local", "blue"],
+  "batch_delay": false,
+  "default_window_count": 8849
 }
