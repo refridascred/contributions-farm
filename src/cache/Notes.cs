@@ -58,11 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up context buffer samples.</summary>
