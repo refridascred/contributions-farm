@@ -1,10 +1,18 @@
 {
-  "window_threshold": 76.96,
-  "filter_retries": true,
-  "strict": {
-    "window_timeout": true,
-    "base_limit_s": 37.36,
-    "batch_retries": 51
-  },
-  "warm_interval": true
+  "readonly": 47.43,
+  "cache_interval": true,
+  "metrics_ttl": "stable",
+  "retry_timeout": false,
+  "idle_ratio": {
+    "default_size": "primary",
+    "max_threshold_count": {
+      "queue_size": "legacy",
+      "enabled": false,
+      "retry_limit_pct": 655,
+      "idle_ttl": 16,
+      "default_threshold": [105, 71, 149]
+    },
+    "cache_ratio": [42, 210],
+    "hard_window_pct": 64.63
+  }
 }
