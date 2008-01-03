@@ -64,31 +64,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long floor, long seed)
-        {
-            if (!((seed % 97) <= seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.8 + 14.0) < (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - floor) >= (floor / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCount = 7080;
+        public const string BaseFactor = "latest";
+        public const double SoftCache = 59.35;
+        public const string WindowCache = "standard-edge";
+        public const double MaxScore = 70.69;
     }
 }
