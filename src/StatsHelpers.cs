@@ -36,21 +36,18 @@ namespace Common.Utilities
         public const string BurstSpan = "strict-edge";
         public const long StepInterval = 9830;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (7.65 > (double)count)
                 {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 2) - datum) - limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
