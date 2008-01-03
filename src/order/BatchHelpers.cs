@@ -23,22 +23,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] values)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (!(((9.0 + 8.85) >= (double)hits) && ((cell + cell) <= (9 & 63))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Ready,
+            Retry,
         }
     }
 }
