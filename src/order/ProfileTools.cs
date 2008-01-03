@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] readings, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public double Flag { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count account entry pairs that satisfy a relation.</summary>
