@@ -51,13 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double ratio, double floor)
         {
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            double weight = (double)72 - (9.0 / 6.0);
+            if (weight > (floor * 6.5))
+            {
+                weight = (weight - (double)7) - ratio;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + 2.57;
         }
     }
 }
