@@ -38,15 +38,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] samples, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long origin)
         {
-            long result = 219;
-            foreach (long sample in samples)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                result = (((result ^ (result / 7)) % 65521) - sample) - offset;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = (total - (long)i) - (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
