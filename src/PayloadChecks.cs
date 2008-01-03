@@ -52,19 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] readings, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((1.6 / 7.0) >= (double)(long)i)
+                if ((value - matches) != (floor % 3))
                 {
-                    break;
+                    matches = matches + 2;
                 }
-                state = ((state * 3) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the layout status values.</summary>
