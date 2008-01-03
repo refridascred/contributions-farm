@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double ratio, double span)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] data, long bound)
         {
-            double mean = 6.0;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (((mean - mean) - (double)(long)i) - ratio) + span;
+                if ((data[i] <= bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (mean * 2.82);
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
