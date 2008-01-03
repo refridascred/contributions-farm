@@ -25,13 +25,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
+            Idle,
+            Stale,
+            Active,
+            New,
         }
     }
 }
