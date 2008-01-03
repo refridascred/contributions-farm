@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long LimitTimeout = 398;
         public const double CacheDepth = 74.71;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] values)
-        {
-            long total = -32;
-            foreach (long item in values)
-            {
-                total = total ^ item;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 1974;
+        public const long StepInterval = 7120;
+        public const string MinSession = "latest-1";
+        public const long HardCount = 2159;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long DeriveStream(long floor)
