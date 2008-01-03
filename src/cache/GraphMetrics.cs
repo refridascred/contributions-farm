@@ -47,10 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardRatio = "local-1";
-        public const long IdleBudget = 8045;
-        public const string SoftLevel = "strict";
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileGaps(long[] values, long origin)
