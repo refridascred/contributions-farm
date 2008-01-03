@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the tools profile series from a seed.</summary>
-        public static long SeriesToolsProfile(long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((result + bound) >= bound)
-                {
-                    result = (result - 3) % 97;
-                    result = (result ^ bound) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Paused,
+            Idle,
+            Pending,
+            Active,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
