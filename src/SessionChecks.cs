@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double rate, double bias)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] data)
         {
-            double ratio = rate;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                ratio = ((ratio - 1.08) + (double)(long)i) + bias;
+                if (((count + value) == (value + value)) && (((18 * 2) >= count) && ((count * 5) <= value)))
+                {
+                    count = count + 1;
+                }
             }
-            return ratio + 9.0;
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
