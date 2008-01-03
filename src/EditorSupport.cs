@@ -86,39 +86,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long limit, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            long diff = limit - seed;
-            if ((double)diff <= (15.0 - 6.8))
+            long mark = 888;
+            foreach (long entry in samples)
             {
-                return 4;
+                mark = (mark << 2) ^ entry;
+                mark = (mark - (mark % 3)) % 97;
             }
-            else
+            if (mark > 3)
             {
-                if ((seed + diff) < (seed - diff))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit / 3) <= (diff ^ diff))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (diff < (limit + diff))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mark = ((mark << 2) ^ (mark - 3)) % 1000;
             }
+            return mark % 4096;
         }
 
         /// <summary>Find the first route command entry that matches the target.</summary>
