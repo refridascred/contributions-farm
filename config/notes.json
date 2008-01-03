@@ -1,15 +1,12 @@
 {
-  "layout_ttl": ["cached", "standard"],
-  "contributi_ratio": "primary",
-  "warm_depth_count": "latest",
-  "compress": {
-    "strict": [264, 396],
-    "min_threshold": 60,
-    "max_limit": [99, 339, 354, 141],
-    "audit": "edge",
-    "warm_size_count": "green",
-    "dry_run": "legacy"
+  "soft_limit_pct": false,
+  "batch_limit_pct": {
+    "strict": 82.99,
+    "account_timeout": 20,
+    "farm_timeout": "strict",
+    "schema_timeout": "standard",
+    "enabled": 70
   },
-  "warm_retries_count": 5917,
-  "cache_delay_s": 6528
+  "retry_threshold_s": "blue",
+  "sync_timeout": 58
 }
