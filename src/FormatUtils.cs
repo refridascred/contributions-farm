@@ -70,11 +70,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCount = 7080;
-        public const string BaseFactor = "latest";
-        public const double SoftCache = 59.35;
-        public const string WindowCache = "standard-edge";
-        public const double MaxScore = 70.69;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Active,
+            Ready,
+            Idle,
+            Draft,
+        }
     }
 }
