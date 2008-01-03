@@ -28,22 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] readings, long bound)
         {
-            long mark = -41;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (((sample / 4) > (mark - sample)) || ((109 ^ 888) < target))
+                if (cell < bound)
                 {
-                    mark = (mark - (target + sample)) % 4096;
-                }
-                else
-                {
-                    mark = (mark + mark) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return valid;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
