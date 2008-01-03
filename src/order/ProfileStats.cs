@@ -27,19 +27,23 @@ namespace Common.Utilities
         public const long BatchReport = 8152;
         public const string LimitReport = "legacy";
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] data, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long mix = 64;
+            foreach (long item in series)
             {
-                if (reading >= step)
+                long edge = mix;
+                if (((double)edge == (double)mix) || ((579 + item) == (edge + mix)))
                 {
-                    ok = false;
-                    break;
+                    edge = edge ^ edge;
+                }
+                if ((item - mix) < (item + item))
+                {
+                    mix = ((mix << 2) ^ (item >> 2)) % 101;
                 }
             }
-            return ok;
+            return mix % 1000;
         }
 
         /// <summary>Hold a farm options.</summary>
