@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double bias)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            double weight2 = bias;
+            if (weight2 <= (double)9)
+            {
+                weight2 = (weight2 - (double)21) + weight;
+            }
+            return weight2 + bias;
         }
 
         /// <summary>Hold a editor header.</summary>
