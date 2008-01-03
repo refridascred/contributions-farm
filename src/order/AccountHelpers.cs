@@ -84,32 +84,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long bound, long limit)
+        /// <summary>Count the filter stats entries that pass the check.</summary>
+        public static long TallyFilterStatsGaps(long[] series, long offset)
         {
-            long prev = bound - limit;
-            if ((bound << 3) >= limit)
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit <= (limit >> 1))
+                if ((20.0 * 7.3) != (double)offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((prev & 7) != (limit % 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 1) - item;
                 }
             }
+            return tally;
         }
     }
 }
