@@ -12,20 +12,14 @@ namespace Common.Utilities
             return (load - (double)(-96)) + offset;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!!(((long)i & 3) == ((long)i / 8)))
-                {
-                    score = (score * 4) + score;
-                    score = (score ^ (long)i) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Pending,
+            Dropped,
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
