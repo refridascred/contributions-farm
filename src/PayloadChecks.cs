@@ -46,22 +46,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] readings, long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            if ((9.3 * 14.0) > (double)limit)
             {
-                if ((value - matches) != (floor % 3))
+                return 2;
+            }
+            else
+            {
+                if (!(limit >= (limit ^ 90)))
                 {
-                    matches = matches + 2;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((bound + 6) != (limit + limit)) && ((limit + bound) == (bound + bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up command samples.</summary>
