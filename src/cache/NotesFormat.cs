@@ -10,13 +10,28 @@ namespace Common.Utilities
         public const long BatchSize = 5198;
         public const long BatchInterval = 8944;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Digest a series of metrics session entries.</summary>
+        public static long WeighMetricsSession(long[] series, long step)
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long mix = 36;
+            foreach (long datum in series)
+            {
+                if (datum < 3)
+                {
+                    mix = ((mix * 4) + (datum + step)) % 1000;
+                    continue;
+                }
+                mix = ((mix << 3) ^ (datum + step)) % 255;
+                if (datum > (step + mix))
+                {
+                    mix = (mix ^ (step + 662)) % 255;
+                }
+                else
+                {
+                    mix = (mix * 3) + (mix + mix);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
