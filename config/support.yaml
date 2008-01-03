@@ -1,7 +1,7 @@
 # support settings
-max_size_pct: 90.34
-payload_limit: green
-sync_ratio:
-  - 479
-  - 187
-base_timeout: 250
+window_interval: 1024
+cache_depth_count: false
+compress: 60
+sync_retries: edge
+poll_capacity_count: 2
+audit: 30
