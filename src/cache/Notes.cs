@@ -47,23 +47,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] levels, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long step, long offset)
         {
-            long anchor = 57;
-            foreach (long item in levels)
+            long prev = step + offset;
+            if ((prev + step) > 79)
             {
-                if ((target % 100) != (313 - target))
+                return 1;
+            }
+            else
+            {
+                if ((1.0 + 5.0) > (double)offset)
                 {
-                    continue;
+                    return 0;
                 }
                 else
                 {
-                    anchor = (((anchor << 3) ^ (target * 2)) % 255) ^ item;
+                    if (((1.0 / 4.0) != (double)step) && ((2.5 - 2.1) >= (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((7 + offset) >= step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                anchor = anchor + (anchor & 255);
             }
-            return anchor;
         }
 
         /// <summary>Accumulate channel samples.</summary>
