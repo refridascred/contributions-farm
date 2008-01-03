@@ -1,7 +1,5 @@
 {
-  "batch_window_s": 58.08,
-  "strict": false,
-  "min_depth_count": ["local", "green", "local", "fallback"],
-  "burst_interval_ms": 9.37,
-  "default_limit_count": 500
+  "sync_interval": 100,
+  "persist": "blue",
+  "sync_capacity_ms": [210, 144, 441, 320]
 }
