@@ -23,18 +23,12 @@ namespace Common.Utilities
         public const long SoftCounter = 4410;
         public const string SoftFactor = "legacy";
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] data, long offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((4 * 4) <= datum)
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
