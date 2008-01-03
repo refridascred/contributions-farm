@@ -11,14 +11,25 @@ namespace Common.Utilities
         public const double MinAlready = 44.31;
         public const long IdleAlready = 2390;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long limit, long bound)
         {
-            Pending,
-            Synced,
-            Idle,
-            Retry,
-            Locked,
+            long step = limit ^ bound;
+            if ((limit << 3) > limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((28 & 63) > step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
