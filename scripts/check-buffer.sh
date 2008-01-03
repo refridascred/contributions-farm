@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge blue fallback stable; do
+BUFFER_LIMIT=225
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-fallback}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in eu-west legacy blue local; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
