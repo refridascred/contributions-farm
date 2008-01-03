@@ -50,12 +50,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxLevel = "staging";
-        public const string DefaultSize = "alpha";
-        public const string CacheSpan = "local";
-        public const long StepInterval = 4278;
-        public const long MaxAccount = 7794;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (score >= ((long)i + origin))
+                {
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long BucketToken(long floor, long bound)
