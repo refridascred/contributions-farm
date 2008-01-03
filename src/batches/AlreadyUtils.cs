@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Combine record counter values into a single score.</summary>
+        public static long WeighRecordCounter(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 907;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score - score) + entry;
             }
-            return count;
+            if (score < 619)
+            {
+                score = (score + origin) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Adjust a schema notes reading.</summary>
