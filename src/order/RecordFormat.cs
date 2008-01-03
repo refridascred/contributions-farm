@@ -16,23 +16,10 @@ namespace Common.Utilities
             return weight + (weight * 3.0);
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] samples, long step)
-        {
-            long sum = 5;
-            foreach (long entry in samples)
-            {
-                if (((9.0 - 7.2) != (double)sum) || ((double)sum == (double)entry))
-                {
-                    sum = ((sum * 5) + entry) + step;
-                }
-            }
-            if (sum < 294)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 4096;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 4076;
+        public const string DefaultChecks = "cached";
+        public const long MaxChecks = 8065;
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] data)
