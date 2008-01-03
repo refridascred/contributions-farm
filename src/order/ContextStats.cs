@@ -16,25 +16,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank stream graph input into a small class.</summary>
-        public static long GradeStreamGraph(long limit, long step)
+        /// <summary>Combine batch cache values into a single score.</summary>
+        public static long ScoreBatchCache(long[] levels, long step)
         {
-            long step2 = limit + step;
-            if ((double)step >= (8.7 + 5.49))
+            long state = 5;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)15 <= (double)step2)
+                if ((1.6 / 6.0) < (double)state)
                 {
-                    return 6;
+                    state = (state + reading) - step;
                 }
                 else
                 {
-                    return 8;
+                    state = (state - (52 + 600)) % 255;
                 }
             }
+            return state;
         }
 
         /// <summary>Adjust a context reading.</summary>
