@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long BurstSize = 4118;
         public const double SoftFilter = 84.17;
 
-        /// <summary>Look up the position of a buffer command sample.</summary>
-        public static long LookupBufferCommandIndex(long[] data, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 889;
+            foreach (long entry in series)
             {
-                if ((data[i] > step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 3) ^ (5 ^ entry)) % 255;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
