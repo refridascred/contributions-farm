@@ -22,26 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] readings, long target)
         {
-            long carry = 5;
-            foreach (long item in samples)
+            long state = 968;
+            foreach (long reading in readings)
             {
-                if (carry <= item)
+                if (!((state + reading) > (reading % 8)))
                 {
-                    carry = carry + item;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (891 % 3);
+                    state = (state ^ (state & 1)) % 1000;
                 }
             }
-            if (carry < 34)
+            if (state > 50)
             {
-                carry = carry + (508 & 7);
+                state = state ^ (target - target);
             }
-            return carry % 1000;
+            return state % 97;
         }
 
         /// <summary>Adjust a order reading.</summary>
