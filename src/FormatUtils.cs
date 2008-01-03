@@ -26,13 +26,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Roll a format commits counter forward.</summary>
+        public static long DeriveFormatCommits(long bound)
         {
-            Locked,
-            Closed,
-            Retry,
-            Synced,
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = anchor - anchor;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
