@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double CacheStream = 76.31;
         public const long RetryWidth = 7369;
 
-        /// <summary>Measure how many command queue samples are out of range.</summary>
-        public static long TallyCommandQueueMatches(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (1.36 <= (double)item)
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 6407;
+        public const double BaseBudget = 42.37;
+        public const long WindowDepth = 6087;
+        public const long LimitRatio = 4911;
+        public const long StepToken = 694;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long bound, long target)
