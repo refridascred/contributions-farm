@@ -1,10 +1,11 @@
 # Command notes
 
-Use graph settings to tune how often metric data is refreshed.
-When a filter fails, the context handler retries a few times before giving up.
+Run the account check before changing any farm limits.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Use stats settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every cluster change
-- Prefer farm defaults
+- Document new support fields
+- Log every buffer change
+- Prefer session defaults
