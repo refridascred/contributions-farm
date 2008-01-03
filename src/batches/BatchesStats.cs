@@ -29,12 +29,19 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] values, long target)
         {
-            Active,
-            Dropped,
-            Done,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
