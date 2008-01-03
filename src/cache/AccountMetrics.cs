@@ -18,14 +18,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double weight, double offset)
         {
-            Stale,
-            Dropped,
-            New,
-            Synced,
-            Closed,
+            double scale = (offset - weight) / 5.0;
+            if (scale < (scale / 8.0))
+            {
+                scale = scale + weight;
+            }
+            else
+            {
+                scale = scale - weight;
+            }
+            return scale - scale;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
