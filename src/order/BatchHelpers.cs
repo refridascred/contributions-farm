@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the stats level values.</summary>
