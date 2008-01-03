@@ -34,15 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Stale,
-            Active,
-            Done,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 95.75;
+        public const double RetryInterval = 94.66;
+        public const long BatchNotes = 9745;
+        public const long WindowBudget = 8899;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long OverlapChecksCount(long[] readings)
