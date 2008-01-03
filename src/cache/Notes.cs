@@ -41,12 +41,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            Active,
-            Failed,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats summary.</summary>
