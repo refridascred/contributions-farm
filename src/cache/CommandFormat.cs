@@ -19,18 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many counter tools samples are out of range.</summary>
-        public static long CountCounterToolsGaps(long[] readings, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] series, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((limit - datum) <= 7)
+                if (reading != target)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a contributi record.</summary>
