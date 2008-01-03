@@ -21,21 +21,13 @@ namespace Common.Utilities
         public const string DefaultChecks = "cached";
         public const long MaxChecks = 8065;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
