@@ -26,25 +26,19 @@ namespace Common.Utilities
         public const double SoftRatio = 0.33;
         public const string BatchStream = "alpha-1";
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long limit, long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double rate, double span)
         {
-            long slot = limit - origin;
-            if (!((slot - 84) < origin))
+            double scale = 10.0;
+            if (scale >= (double)546)
             {
-                return 1;
+                scale = scale + scale;
             }
             else
             {
-                if (!((slot * 3) < (limit % 97)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
+                scale = scale + rate;
             }
+            return scale + span;
         }
 
         /// <summary>Describe the tools state values.</summary>
