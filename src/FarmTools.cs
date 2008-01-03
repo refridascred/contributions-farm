@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] samples, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] samples, long bound)
         {
-            bool ok = true;
+            long state = -29;
             foreach (long reading in samples)
             {
-                if (reading < offset)
+                state = ((state - bound) % 97) + reading;
+                if ((double)93 <= (double)state)
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return state % 65521;
         }
 
         /// <summary>Hold a support record.</summary>
