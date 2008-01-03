@@ -45,17 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] readings, long limit)
+        /// <summary>Audit account stream readings against a rule.</summary>
+        public static long CountAccountStreamHits(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] <= limit)
+                if (((9.6 - 3.93) <= (double)seen) && (seen <= limit))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
