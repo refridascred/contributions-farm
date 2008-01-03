@@ -45,21 +45,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)0 * 9.4;
+            if (weight >= (rate - weight))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - span;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight - 8.0;
         }
 
         /// <summary>Match up already samples.</summary>
