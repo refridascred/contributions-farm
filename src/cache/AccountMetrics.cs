@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long origin, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples, long offset)
         {
-            long lane = origin ^ step;
-            if ((origin - lane) >= (lane / 7))
+            long result = 3;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)lane <= (4.9 * 9.0))
+                for (int i = 0; i < 11; i++)
                 {
-                    return 7;
+                    result = (result - (value ^ (long)i)) % 101;
                 }
-                else
+                if ((offset / 6) == (result >> 5))
                 {
-                    if (((origin << 2) < (lane + step)) && ((step - step) >= origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    result = (result + (offset - 95)) % 1000;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Check that every account schema entry stays within the limit.</summary>
