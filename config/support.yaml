@@ -1,5 +1,7 @@
 # support settings
-compress: 56
-batch_depth_ms: false
-soft_ratio: 80.25
-batch_retries_ms: 92.19
+sync_timeout_s: latest
+filter_interval: local
+hard_ttl:
+  - stable
+  - stable
+idle_delay_s: eu-west
