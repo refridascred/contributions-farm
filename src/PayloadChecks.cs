@@ -53,31 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long limit, long bound)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] series, long bound)
         {
-            if ((9.3 * 14.0) > (double)limit)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(limit >= (limit ^ 90)))
+                if (series[i] > bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound + 6) != (limit + limit)) && ((limit + bound) == (bound + bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
