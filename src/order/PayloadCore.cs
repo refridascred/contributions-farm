@@ -14,22 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] values)
+        /// <summary>Combine layout checks values into a single score.</summary>
+        public static long WeighLayoutChecks(long[] data, long seed)
         {
-            long score = 64;
-            foreach (long cell in values)
+            long mark = 11;
+            foreach (long value in data)
             {
-                if (40 > (cell + (long)values.Length))
+                if (value > (value + value))
                 {
-                    score = score ^ score;
+                    mark = ((mark * 3) + (value + mark)) - seed;
                 }
-                else
+                if (((39 << 2) != (value & 1)) || ((603 + value) < mark))
                 {
-                    score = ((score << 3) ^ (cell >> 4)) % 65521;
+                    break;
                 }
             }
-            return score % 97;
+            return mark % 4096;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
