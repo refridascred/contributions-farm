@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] items, long origin)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((((double)matches != (13.0 + 7.21)) && (matches > (item - origin))) && !(matches >= origin))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
