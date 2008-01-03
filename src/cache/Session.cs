@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] series, long limit)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)limit > (6.5 * 4.61))
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
