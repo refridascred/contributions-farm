@@ -98,12 +98,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Done,
-            Active,
-            Draft,
+            New,
+            Locked,
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a profile info.</summary>
