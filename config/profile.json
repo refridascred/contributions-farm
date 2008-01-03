@@ -1,11 +1,5 @@
 {
-  "notes_retries": {
-    "contributi_capacity": "edge",
-    "route_size": 11.67,
-    "metrics_retries": [29, 91],
-    "layout_threshold": 47.33
-  },
-  "max_window_ms": 1024,
-  "retry_ttl_count": "blue",
-  "counter_threshold": false
+  "idle_threshold_ms": "primary",
+  "hard_timeout_ms": "open",
+  "strict": ["open", "legacy"]
 }
