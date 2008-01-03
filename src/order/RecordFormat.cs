@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepRatio = "primary-edge";
-        public const string BatchLevel = "strict";
-        public const long StepDepth = 730;
-        public const long StepCommits = 8724;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double rate, double span)
+        {
+            double weight = rate;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (span + weight)) + (double)(long)i;
+            }
+            return weight + (weight * 3.0);
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] samples, long step)
