@@ -1,6 +1,7 @@
 {
-  "hard_delay": [403, 82],
-  "tools_interval": "primary",
-  "batch_threshold": 48.58,
-  "hard_ratio": 46.35
+  "warm_interval_pct": 100,
+  "min_delay_count": 19,
+  "burst_delay_count": 24.09,
+  "default_interval_ms": 4627,
+  "default_retries": true
 }
