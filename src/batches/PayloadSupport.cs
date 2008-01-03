@@ -36,19 +36,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] levels, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            long state = 624;
+            foreach (long datum in levels)
             {
-                if (!((limit * 3) < limit))
-                {
-                    acc = (acc << 2) ^ (limit + 62);
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                state = ((state ^ target) % 1000) + datum;
+                state = (state - (state + state)) % 101;
             }
-            return acc;
+            return state % 1000;
         }
     }
 }
