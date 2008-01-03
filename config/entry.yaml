@@ -1,18 +1,19 @@
 # entry settings
-flush_depth_count:
-  cluster_ttl: 1618
-  audit:
-    - fallback
+base_limit_s:
+  hard_depth: 30
+  strict:
+    - blue
+    - primary
     - green
-    - fallback
-    - open
-  max_size: 6657
-  filter_window: 21
-  commits_limit:
-    - 235
-    - 483
-account_retries: false
-retry_retries: local
-batch_retries_pct: 6834
-payload_capacity: 14.04
-sync_limit_count: 99
+    - local
+  poll_interval: 5
+  enabled: 982
+  batch_timeout_s: staging
+  readonly:
+    readonly: 1223
+    min_retries_ms: local
+    dry_run: fallback
+    commits_window: eu-west
+    buffer_depth: 99
+payload_retries: false
+burst_depth: false
