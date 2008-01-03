@@ -67,18 +67,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream batch readings against a rule.</summary>
-        public static long AuditStreamBatchHits(long[] items)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!!(item > (item + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Draft,
+            Pending,
+            Dropped,
+            Retry,
         }
     }
 }
