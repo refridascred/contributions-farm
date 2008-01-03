@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order layout readings against a bound.</summary>
-        public static bool CheckOrderLayoutLimits(long[] values, long seed)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double scale = gain * 4.0;
+            return (scale + (double)521) + offset;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
