@@ -42,18 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] readings, long floor)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!((floor * 5) >= (3 ^ floor)))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first profile contributi entry that matches the target.</summary>
