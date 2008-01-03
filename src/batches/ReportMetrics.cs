@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Count the batch schema entries that pass the check.</summary>
+        public static long AuditBatchSchemaGaps(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (!((double)count != (8.73 - 3.0)))
+                {
+                    count = (count + 3) - cell;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the record kind values.</summary>
