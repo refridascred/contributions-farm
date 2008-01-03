@@ -1,11 +1,17 @@
 # support settings
-graph_retries: 23.44
-audit:
-  - blue
-  - stable
-  - latest
-default_retries_count:
-  - 201
-  - 457
-  - 339
-poll_size_pct: true
+burst_retries: primary
+poll_limit_pct:
+  - legacy
+  - green
+  - open
+enabled:
+  max_size_ms: true
+  cache_timeout_pct:
+    - 464
+    - 217
+    - 19
+    - 88
+  retry_timeout_pct:
+    - 160
+    - 271
+flush_interval_count: 1703
