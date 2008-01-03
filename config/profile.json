@@ -1,7 +1,11 @@
 {
-  "readonly": "staging",
-  "enabled": [71, 408, 464, 291],
-  "soft_depth_s": 69,
-  "flush_size_pct": 43.17,
-  "warm_timeout_ms": 100
+  "notes_retries": {
+    "contributi_capacity": "edge",
+    "route_size": 11.67,
+    "metrics_retries": [29, 91],
+    "layout_threshold": 47.33
+  },
+  "max_window_ms": 1024,
+  "retry_ttl_count": "blue",
+  "counter_threshold": false
 }
