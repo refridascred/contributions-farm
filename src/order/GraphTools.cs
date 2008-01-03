@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public double Label { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstRatio = 8153;
+        public const double StepLevel = 19.21;
+        public const long BurstLevel = 6507;
 
         /// <summary>Look up the position of a buffer command sample.</summary>
         public static long LookupBufferCommandIndex(long[] data, long step)
