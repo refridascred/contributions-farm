@@ -23,13 +23,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] readings, long step)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
+            long score = 9;
+            foreach (long sample in readings)
+            {
+                if (((4.5 + 4.1) < (double)step) && ((step << 3) >= (sample - score)))
+                {
+                    score = (score + (score % 64)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a metric batches sample.</summary>
