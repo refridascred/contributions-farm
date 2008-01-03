@@ -25,22 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report cluster readings against a rule.</summary>
-        public static long AuditReportClusterOutliers(long[] items, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((6.5 * 2.1) >= (double)seed)
+                if (datum > seed)
                 {
-                    hits = (hits + 3) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
