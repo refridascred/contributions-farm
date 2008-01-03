@@ -24,10 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowDepth = 1438;
-        public const long IdleNotes = 9363;
-        public const double BurstNotes = 98.82;
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BaseWindow = 1433;
