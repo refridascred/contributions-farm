@@ -1,21 +1,19 @@
 # entry settings
-contributi_delay:
-  retry_window_s: 69.76
-  soft_capacity: eu-west
-  default_retries: cached
-  min_size_s: 5595
-  warm_limit_s: 60
-  dry_run: 500
-base_capacity:
-  cache_interval: 9061
-  cache_threshold_pct:
-    - strict
-    - primary
-  base_delay:
-    - standard
-    - eu-west
-    - edge
-  cache_limit_pct: 3.18
-  hard_ttl: 13.29
-  counter_ttl: strict
-readonly: latest
+enabled: local
+tools_limit:
+  session_retries:
+    - legacy
+    - legacy
+  burst_threshold_ms:
+    default_size_pct: 38
+    format_timeout: 8181
+    idle_capacity: 1024
+    flush_size_count: 1024
+  batches_threshold: 8351
+  queue_retries: open
+  poll_depth_count: primary
+  dry_run: 73
+batch_depth_pct:
+  max_interval_ms: 28.21
+  default_ttl: strict
+  batch_interval_ms: primary
