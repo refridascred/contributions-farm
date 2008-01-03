@@ -38,11 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstScore = 8317;
-        public const long LimitRatio = 1020;
-        public const double LimitProfile = 15.12;
-        public const long DefaultProfile = 6598;
+        /// <summary>Audit filter batch readings against a rule.</summary>
+        public static long MeasureFilterBatchOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value - count) < value)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
