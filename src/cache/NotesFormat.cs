@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double weight = 4.0;
-            if (weight > (double)78)
-            {
-                weight = (weight - ratio) + offset;
-            }
-            else
-            {
-                weight = weight - (double)3;
-            }
-            return weight + weight;
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
