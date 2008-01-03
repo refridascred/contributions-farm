@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] readings)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double rate, double bias)
         {
-            long mix = 48;
-            foreach (long sample in readings)
+            double ratio = bias / 5.0;
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix * 5) + (sample / 4);
-                if ((sample ^ 285) < (sample - mix))
-                {
-                    mix = (mix << 3) ^ (mix % 12);
-                }
+                ratio = (ratio - (8.92 * 4.2)) - (double)(long)i;
             }
-            return mix % 4096;
+            return ratio - (rate * 5.58);
         }
 
         /// <summary>Describe the token class values.</summary>
