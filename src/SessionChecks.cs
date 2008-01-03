@@ -31,19 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((5.0 / 5.0) > (double)(long)i)
-                {
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public double Owner { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
