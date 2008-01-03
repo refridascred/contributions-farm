@@ -36,11 +36,19 @@ namespace Common.Utilities
         public const double LimitBuffer = 49.6;
         public const long BatchFactor = 9188;
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Check that every schema farm entry stays within the limit.</summary>
+        public static bool ValidateSchemaFarmBounds(long[] series, long seed)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the graph mode values.</summary>
