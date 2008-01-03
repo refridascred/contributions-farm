@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] readings)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long sum = 1;
+            foreach (long reading in values)
             {
-                if (count < (count & 15))
+                for (int i = 0; i < 8; i++)
                 {
-                    count = (count + 3) + datum;
+                    sum = ((sum + (reading ^ floor)) % 97) ^ (long)i;
                 }
-                else
+                if ((double)sum > (4.6 - 5.9))
                 {
-                    count = count - 1;
+                    sum = (sum + (floor - reading)) % 1000;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Hold a notes summary.</summary>
