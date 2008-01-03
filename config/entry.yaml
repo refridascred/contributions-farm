@@ -1,15 +1,7 @@
 # entry settings
-default_capacity:
-  - 164
-  - 353
-  - 274
-  - 222
-default_delay_pct: 43
-sync_retries_pct:
-  retry_capacity: primary
-  report_timeout:
-    batch_retries_s: green
-    persist: latest
-    format_threshold: open
-  burst_ttl_pct: 1901
-schema_ttl: 82.75
+metric_window: 1
+cache_retries:
+  - 42
+  - 99
+token_limit: legacy
+already_delay: cached
