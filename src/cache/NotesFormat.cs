@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long RetryCommits = 2092;
         public const string BurstRatio = "local-1";
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (readings[i] == step)
+                if (((cell << 3) < tally) && ((tally + cell) != (tally << 3)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
