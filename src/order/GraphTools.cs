@@ -63,19 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema command readings against a rule.</summary>
-        public static long AuditSchemaCommandHits(long[] readings, long target)
+        /// <summary>Measure how many route editor samples are out of range.</summary>
+        public static long CountRouteEditorOutliers(long[] samples, long limit)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long item in samples)
             {
-                if (((entry << 1) <= entry) && ((674 >> 1) <= target))
+                if ((item << 2) < limit)
                 {
                     seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
                 }
             }
             return seen;
