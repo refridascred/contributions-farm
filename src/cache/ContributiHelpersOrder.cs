@@ -17,11 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double gain, double offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double scale = gain * 4.0;
-            return (scale + (double)521) + offset;
+            Paused,
+            Draft,
+            Queued,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
