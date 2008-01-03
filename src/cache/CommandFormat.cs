@@ -14,19 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] series, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Paused,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a contributi record.</summary>
