@@ -50,21 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up format session samples.</summary>
-        public static long MatchFormatSessionCount(long[] items)
+        /// <summary>Audit metrics payload readings against a rule.</summary>
+        public static long AuditMetricsPayloadGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)data.Length % 2) <= (sample * 2))
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
