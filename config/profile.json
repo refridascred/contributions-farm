@@ -1,5 +1,24 @@
 {
-  "hard_ttl_pct": 44.03,
-  "poll_ttl": 7422,
-  "readonly": false
+  "window_interval": 39.39,
+  "hard_delay": {
+    "cache_depth_s": false,
+    "report_ttl": "blue",
+    "persist": true,
+    "retry_depth": {
+      "min_retries": 88.08,
+      "queue_ttl": [154, 244, 282],
+      "burst_limit_count": 62.69,
+      "idle_window": 89.4,
+      "dry_run": 26.99
+    },
+    "sync_timeout_ms": 55
+  },
+  "default_timeout_pct": {
+    "enabled": "edge",
+    "poll_ratio": 59.02,
+    "notes_ratio": 1024,
+    "support_interval": 65.1,
+    "token_interval": 9718,
+    "format_ratio": true
+  }
 }
