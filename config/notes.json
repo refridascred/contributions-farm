@@ -1,14 +1,18 @@
 {
-  "route_delay": "legacy",
-  "idle_depth_pct": ["blue", "staging", "fallback", "stable"],
-  "already_timeout": 18,
-  "verbose": "primary",
-  "batches_ratio": "standard",
-  "default_retries_ms": {
-    "compress": false,
-    "default_ratio_pct": ["primary", "legacy", "latest", "standard"],
-    "flush_ratio_pct": "latest",
-    "default_limit_s": "standard",
-    "dry_run": ["fallback", "legacy", "fallback", "primary"]
-  }
+  "contributi_size": false,
+  "context_size": {
+    "min_ttl_ms": {
+      "session_ratio": 84.9,
+      "burst_limit_pct": false,
+      "audit": "stable"
+    },
+    "report_ttl": "fallback",
+    "default_capacity_ms": 1024,
+    "sync_ratio": 2,
+    "compress": true
+  },
+  "flush_interval_pct": "latest",
+  "persist": false,
+  "report_ratio": 500,
+  "flush_timeout": 18.29
 }
