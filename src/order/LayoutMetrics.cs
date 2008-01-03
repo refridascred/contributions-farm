@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double bias, double offset)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            double load = (bias / 8.0) / 9.0;
-            return (load - (double)(-96)) + offset;
+            double ratio = offset - (offset * 20.0);
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio - ratio) + (double)(long)i) - gain;
+            }
+            return ratio - (3.0 + offset);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
