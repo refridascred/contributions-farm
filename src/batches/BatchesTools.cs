@@ -18,15 +18,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] levels, long floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long sum = 759;
-            foreach (long sample in levels)
-            {
-                sum = ((((sum << 3) ^ (sum << 1)) % 101) + sample) + floor;
-            }
-            return sum;
+            Stale,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define support limits and defaults.</summary>
