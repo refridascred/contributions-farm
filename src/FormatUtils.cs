@@ -26,17 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format commits counter forward.</summary>
-        public static long DeriveFormatCommits(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 2085;
+        public const string LimitRatio = "alpha-v2";
+        public const double StepMetrics = 91.33;
+        public const long CacheRatio = 1346;
+        public const long WindowFactor = 6443;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ProjectChecks(double scale, double bias)
