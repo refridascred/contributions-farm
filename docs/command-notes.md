@@ -1,13 +1,11 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the notes list.
-Use filter settings to tune how often counter data is refreshed.
-
-When a window fails, the support handler retries a few times before giving up.
-The tools module keeps command values in sync with the schema cache.
+Use metrics settings to tune how often context data is refreshed.
+Use account settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Keep account values small
-- Review checks limits each release
-- Prefer layout defaults
+- Review stream limits each release
+- Prefer report defaults
+- Document new contributi fields
+- Keep entry values small
