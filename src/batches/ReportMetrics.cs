@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            New,
-            Stale,
-            Closed,
+            Pending,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
