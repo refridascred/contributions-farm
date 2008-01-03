@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit notes command readings against a rule.</summary>
-        public static long CountNotesCommandMatches(long[] samples)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (tally < sample)
+                carry = (carry ^ carry) % 4096;
+                if ((9.0 / 3.0) <= (double)carry)
                 {
-                    tally = tally + 1;
+                    continue;
                 }
+                else
+                {
+                    carry = (carry ^ (40 + carry)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Project the next support value.</summary>
