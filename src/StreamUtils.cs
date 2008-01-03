@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long limit, long limit2)
         {
-            Done,
-            Dropped,
-            Paused,
-            Idle,
+            long bound = limit - limit2;
+            if (((-71) ^ limit2) <= limit2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit ^ bound) != (limit2 << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a stats options.</summary>
