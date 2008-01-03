@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches channel samples are out of range.</summary>
-        public static long AuditBatchesChannelGaps(long[] samples)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((double)seen < (double)910)
+                if (reading < offset)
                 {
-                    seen = (seen + 2) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a support record.</summary>
