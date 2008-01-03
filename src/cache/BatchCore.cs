@@ -33,12 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 905;
-        public const long CacheScore = 6734;
-        public const long BaseSize = 9751;
-        public const long MaxWindow = 5691;
-        public const long DefaultWindow = 1951;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Queued,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Validate support commits readings against a bound.</summary>
         public static bool VerifySupportCommitsLimits(long[] data, long target)
