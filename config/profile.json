@@ -1,5 +1,12 @@
 {
-  "idle_window_pct": 250,
-  "strict": "blue",
-  "notes_delay": true
+  "enabled": "standard",
+  "farm_delay": {
+    "retry_timeout": false,
+    "retry_capacity_ms": "staging",
+    "record_limit": 6981,
+    "cache_ttl_s": ["fallback", "green"],
+    "persist": 9074
+  },
+  "soft_limit_ms": 3815,
+  "cache_timeout_pct": "latest"
 }
