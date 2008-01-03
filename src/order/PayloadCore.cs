@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "fallback";
+        public const long IdleGithubfarm = 4226;
+        public const long SoftGithubfarm = 2460;
+        public const string CacheDepth = "open-edge";
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] values)
