@@ -27,19 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long seed)
+        /// <summary>Locate a support counter reading by value.</summary>
+        public static long LookupSupportCounterIndex(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != seed)
+                if (data[i] == bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
