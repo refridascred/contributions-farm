@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long step, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            long next = step ^ target;
-            if (((8.8 / 5.0) >= (double)step) || ((next * 3) < target))
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
+                state = (state ^ state) % 101;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (((double)target < (13.0 + 3.1)) || ((step >> 3) <= target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target % 100) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target * 3) != (step + target)) || (357 >= (step - step)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
