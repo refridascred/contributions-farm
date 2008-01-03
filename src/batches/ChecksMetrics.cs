@@ -19,16 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitFactor = 5680;
+        public const double StepScore = 64.11;
+        public const string IdleQueue = "latest-1";
+        public const string StepCount = "cached-1";
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool ValidateCommitsRange(long[] readings, long seed)
