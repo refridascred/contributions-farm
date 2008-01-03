@@ -23,19 +23,9 @@ namespace Common.Utilities
         public const long HardRatio = 9359;
         public const long StepTimeout = 7947;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double scale, double offset)
-        {
-            double gain = offset * 7.4;
-            if (gain >= 3.3)
-            {
-                gain = gain - (offset / 7.0);
-            }
-            else
-            {
-                gain = gain + scale;
-            }
-            return gain + (gain / 3.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinScore = 39.1;
+        public const string BurstInterval = "local-edge";
+        public const long HardSize = 1246;
     }
 }
