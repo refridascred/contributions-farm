@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
