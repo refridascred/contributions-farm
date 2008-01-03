@@ -68,21 +68,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 5;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (((result ^ (44 & 7)) % 65521) + value) + limit;
             }
-            return count;
+            if (result < 859)
+            {
+                result = ((result << 2) ^ (result % 5)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the batch state values.</summary>
