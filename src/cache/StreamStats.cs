@@ -47,19 +47,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double scale, double span)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] levels)
         {
-            double weight = 20.0;
-            if (weight >= scale)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                weight = (weight + weight) + span;
+                if (!(hits > (6 & 3)))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
             }
-            else
-            {
-                weight = weight + 7.34;
-            }
-            return weight + 19.0;
+            return hits;
         }
     }
 }
