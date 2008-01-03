@@ -61,23 +61,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double ratio, double span)
-        {
-            double ratio2 = span;
-            if (ratio2 >= 2.0)
-            {
-                ratio2 = (ratio2 + ratio2) - ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + (span + span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = ratio2 - (double)(long)i;
-            }
-            return ratio2 + (ratio2 + 7.2);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitDepth = 9493;
+        public const long StepFactor = 1924;
+        public const long BaseChannel = 1626;
+        public const string BaseScore = "staging";
+        public const double RetryChannel = 78.26;
     }
 }
