@@ -50,19 +50,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double gain, double bias)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            double drift = bias;
-            if (drift < 16.0)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - drift;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift + (gain - 0.5);
+            return count;
         }
 
         /// <summary>Hold a command entry.</summary>
