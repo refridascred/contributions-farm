@@ -48,12 +48,11 @@ namespace Common.Utilities
         public const double BaseMetric = 47.55;
         public const long HardCount = 5922;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of buffer checks readings.</summary>
