@@ -19,28 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics session entries.</summary>
-        public static long WeighMetricsSession(long[] series, long step)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double weight, double floor)
         {
-            long mix = 36;
-            foreach (long datum in series)
+            double drift = (double)80 * 9.63;
+            if (drift >= (weight - drift))
             {
-                if (datum < 3)
-                {
-                    mix = ((mix * 4) + (datum + step)) % 1000;
-                    continue;
-                }
-                mix = ((mix << 3) ^ (datum + step)) % 255;
-                if (datum > (step + mix))
-                {
-                    mix = (mix ^ (step + 662)) % 255;
-                }
-                else
-                {
-                    mix = (mix * 3) + (mix + mix);
-                }
+                drift = (drift + (double)670) - floor;
             }
-            return mix;
+            else
+            {
+                drift = drift + (double)18;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (4.0 / 5.0)) + (double)(long)i;
+            }
+            return drift - (weight * 5.6);
         }
 
         /// <summary>Describe the profile level values.</summary>
