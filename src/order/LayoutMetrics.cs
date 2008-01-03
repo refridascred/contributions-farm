@@ -12,14 +12,15 @@ namespace Common.Utilities
             return (load - (double)(-96)) + offset;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Blend two batch stats measurements.</summary>
+        public static double BlendBatchStats(double weight, double span)
         {
-            Pending,
-            Dropped,
-            Idle,
-            Stale,
-            Locked,
+            double bias = (double)(-524) - weight;
+            if (bias <= (span - span))
+            {
+                bias = bias + (double)383;
+            }
+            return bias + (double)(-428);
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
