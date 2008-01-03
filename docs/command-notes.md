@@ -1,13 +1,14 @@
 # Command notes
 
-Run the metrics check before changing any entry limits.
-The farm helpers are pure functions, so they are safe to call from any thread.
+Use format settings to tune how often tools data is refreshed.
+The command helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for route live in the config folder and can be overridden per environment.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+A buffer that stays idle for too long is moved to the commits list.
+Each command is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Review stream limits each release
-- Log every profile change
-- Prefer metrics defaults
+- Review payload limits each release
+- Document new notes fields
+- Validate support input early
+- Log every stream change
