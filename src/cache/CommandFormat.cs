@@ -37,39 +37,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric stats pair into a bucket.</summary>
-        public static long RankMetricStats(long origin, long origin2)
-        {
-            long delta = origin - origin2;
-            if (!(14.0 >= (double)origin2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + origin) == (origin + origin2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((422 % 97) != (54 - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((origin2 & 63) <= origin) || (delta < (delta + origin2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "staging-v2";
+        public const long DefaultSize = 7971;
+        public const long LimitQueue = 6801;
     }
 }
