@@ -44,21 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of account metrics readings.</summary>
-        public static long MatchAccountMetricsCount(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)count > (3.8 + 0.43))
                 {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 1) + datum) - target;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
