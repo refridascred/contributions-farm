@@ -27,17 +27,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a support counter reading by value.</summary>
-        public static long LookupSupportCounterIndex(long[] data, long bound)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = floor / 2.0;
+            if (scale > (double)73)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                scale = scale + ratio;
             }
-            return -1;
+            return scale - scale;
         }
     }
 }
