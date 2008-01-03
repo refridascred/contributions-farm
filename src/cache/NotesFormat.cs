@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] data, long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = 8.42;
+            if (drift < (double)39)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (double)29) - weight;
             }
-            return -1;
+            return drift - span;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
