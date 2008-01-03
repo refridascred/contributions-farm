@@ -1,10 +1,12 @@
 # Payload notes
 
-When a layout fails, the channel handler retries a few times before giving up.
-Keep farm and graph names short and lowercase.
+A batch that stays idle for too long is moved to the already list.
+Use cache settings to tune how often stats data is refreshed.
+Run the account check before changing any profile limits.
 
 ## Guidelines
 
-- Log every stream change
-- Document new account fields
-- Keep already values small
+- Validate window input early
+- Keep report values small
+- Review order limits each release
+- Log every booking change
