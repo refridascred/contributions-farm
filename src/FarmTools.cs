@@ -25,21 +25,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long seed, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin % 12) >= (seed >> 5))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((seed - origin) == (seed * 4))
                 {
-                    if ((values[i] + values[j]) > 4)
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)origin > (9.3 + 6.9)))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
     }
 }
