@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long sum = 92;
+            foreach (long datum in series)
             {
-                if ((46 + 333) >= (datum - datum))
-                {
-                    hits = hits + 2;
-                }
+                sum = ((((sum * 2) + (sum >> 5)) % 1000) + datum) + limit;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
