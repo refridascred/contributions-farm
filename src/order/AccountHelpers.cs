@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((seen + item) >= (item >> 1)) || ((item % 60) < item))
                 {
-                    if ((data[i] - data[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + seed;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
