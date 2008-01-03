@@ -31,12 +31,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] items, long seed)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] >= seed)
+                if (values[i] <= offset)
                 {
                     return (long)i;
                 }
