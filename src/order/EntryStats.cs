@@ -33,19 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks metrics entries.</summary>
-        public static long ScoreChecksMetrics(long[] data)
+        /// <summary>Audit already profile readings against a rule.</summary>
+        public static long CountAlreadyProfileHits(long[] readings, long seed)
         {
-            long mix = 3;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                mix = ((mix - (mix << 2)) % 101) + reading;
+                if ((553 % 7) == (matches * 5))
+                {
+                    matches = ((matches + 2) ^ cell) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mix < (-89))
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Project the next editor value.</summary>
