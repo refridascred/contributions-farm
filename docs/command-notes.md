@@ -1,11 +1,10 @@
 # Command notes
 
-Use metrics settings to tune how often context data is refreshed.
-Use account settings to tune how often githubfarm data is refreshed.
+Keep editor and report names short and lowercase.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review stream limits each release
-- Prefer report defaults
-- Document new contributi fields
-- Keep entry values small
+- Review schema limits each release
+- Keep profile values small
+- Log every already change
