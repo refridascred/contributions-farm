@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] samples, long floor)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double floor)
         {
-            long anchor = 5;
-            foreach (long reading in samples)
+            double rate = ratio + 6.89;
+            if (rate > (7.0 - floor))
             {
-                if ((floor >> 3) < (anchor ^ reading))
-                {
-                    anchor = (anchor + (anchor & 255)) % 65521;
-                }
-                anchor = (anchor + (floor - reading)) % 1000;
+                rate = rate + (double)7;
             }
-            if (anchor < 463)
-            {
-                anchor = (anchor * 2) + (anchor << 1);
-            }
-            return anchor;
+            return rate - 8.44;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
