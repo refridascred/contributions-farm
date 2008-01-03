@@ -55,21 +55,12 @@ namespace Common.Utilities
             return weight - 8.0;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Stale,
+            Synced,
         }
     }
 }
