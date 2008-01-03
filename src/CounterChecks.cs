@@ -22,21 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state + ((long)i + state)) % 1000) ^ (long)i2;
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = state + (step << 1);
-                state = state ^ (state & 31);
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
