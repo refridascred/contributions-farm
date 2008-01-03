@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] items, long limit)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)count < (15.0 + 3.15))
+                if ((double)(long)i < (4.0 * 7.0))
                 {
-                    count = ((count + 2) - item) - limit;
+                    result = (result - (result >> 1)) % 97;
                 }
+                result = result - (result << 1);
+                if (8.9 > (double)step)
+                {
+                    result = result - 6;
+                    result = (result ^ (result % 64)) % 255;
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Digest a series of format entries.</summary>
