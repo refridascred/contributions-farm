@@ -33,11 +33,13 @@ namespace Common.Utilities
         public const double BatchDepth = 8.58;
         public const long HardGithubfarm = 7381;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardSize = 6498;
-        public const string WindowCache = "fallback-1";
-        public const double SoftFactor = 61.16;
-        public const double RetryCache = 48.28;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
