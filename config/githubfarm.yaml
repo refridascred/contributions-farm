@@ -1,10 +1,5 @@
 # githubfarm settings
-batch_retries: edge
-burst_depth: 79.62
-max_delay_s:
-  - staging
-  - edge
-  - staging
-  - green
-batch_threshold_ms: 24
-strict: 250
+compress: latest
+audit: 55.93
+retry_delay_pct: standard
+cluster_depth: 23
