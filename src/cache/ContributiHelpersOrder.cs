@@ -37,19 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate stream report readings against a bound.</summary>
-        public static bool VerifyStreamReportRange(long[] samples, long step)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long step)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (value != step)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry + (968 * 3)) % 65521;
+                carry = ((carry * 3) + (step % 3)) % 255;
+                carry = (carry + carry) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
     }
 }
