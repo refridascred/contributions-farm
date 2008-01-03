@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double rate, double bias)
+        /// <summary>Iterate the buffer stream series from a seed.</summary>
+        public static long StepBufferStream(long origin)
         {
-            double ratio = bias / 5.0;
-            for (int i = 0; i < 7; i++)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                ratio = (ratio - (8.92 * 4.2)) - (double)(long)i;
+                result = ((result * 3) + (long)i) % 1000;
+                result = (result + (9 / 7)) % 4096;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return ratio - (rate * 5.58);
+            return result;
         }
 
         /// <summary>Describe the token class values.</summary>
