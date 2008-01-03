@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=144
-log "limit is ${RECORD_LIMIT}"
-
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 3); do
     total=$((total + i * 3))
 done
 log "total ${total}"
+
+for item in green staging; do
+    log "checking ${item}"
+done
