@@ -31,19 +31,22 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] values, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (sample <= target)
+                if ((954 ^ 0) == (sample << 1))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
