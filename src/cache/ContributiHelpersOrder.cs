@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = mix - mix;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
