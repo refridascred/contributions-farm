@@ -21,31 +21,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank token order input into a small class.</summary>
-        public static long GradeTokenOrder(long floor, long seed)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            if ((double)seed >= (double)486)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 8) < (seed * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor != (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Pending,
+            Synced,
         }
 
         /// <summary>Match up notes samples.</summary>
