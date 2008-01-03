@@ -24,11 +24,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardScore = 5681;
-        public const long MaxCount = 8327;
-        public const long MaxContributi = 5067;
-        public const double SoftContributi = 53.06;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Stale,
+            Dropped,
+            Pending,
+            Idle,
+            Done,
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] data, long offset)
