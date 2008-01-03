@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Derive the next payload stream value from a seed.</summary>
+        public static long RollPayloadStream(long target)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)result != (19.0 / 8.0)))
-                {
-                    result = result - result;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                result = ((result * 4) + (long)i) % 97;
             }
             return result;
         }
