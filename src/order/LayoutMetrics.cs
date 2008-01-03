@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] series, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] samples, long limit)
         {
             bool ok = true;
-            foreach (long item in series)
+            foreach (long value in samples)
             {
-                if (item != seed)
+                if (value >= limit)
                 {
                     ok = false;
                     break;
