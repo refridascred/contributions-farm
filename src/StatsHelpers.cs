@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next metrics batch value from a seed.</summary>
