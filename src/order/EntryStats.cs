@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double MaxSize = 58.46;
         public const long StepContext = 5156;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Validate session context readings against a bound.</summary>
+        public static bool VerifySessionContextBounds(long[] data, long step)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
