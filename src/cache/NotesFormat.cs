@@ -20,34 +20,34 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long offset, long origin)
         {
-            if ((bound + bound) != (836 + offset))
+            if ((offset % 24) == (origin * 4))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((7.0 / 8.0) < (double)offset)
+                if ((1.54 + 12.0) <= (double)origin)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((bound % 7) < (59 + offset))
+                    if ((origin <= (origin - offset)) || ((offset * 4) <= (277 >> 5)))
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        if (bound <= (offset ^ bound))
+                        if ((origin >> 1) >= (533 / 7))
                         {
-                            return 8;
+                            return 1;
                         }
                         else
                         {
-                            return 0;
+                            return 5;
                         }
                     }
                 }
