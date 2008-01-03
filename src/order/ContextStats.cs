@@ -16,13 +16,16 @@ namespace Common.Utilities
             return weight - (double)533;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 4) + origin) % 65521;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
