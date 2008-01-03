@@ -21,12 +21,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 8166;
-        public const string MinSize = "primary-edge";
-        public const long LimitFormat = 1564;
-        public const string StepLevel = "local-edge";
-        public const string IdleFormat = "strict-v2";
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 10; i++)
+            {
+                long seen = mix & 255;
+                if (((long)i - (long)i) < (step & 255))
+                {
+                    mix = ((mix << 3) ^ (step % 97)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (mix >> 3)) % 255;
+                    mix = (mix - (step + seen)) % 65521;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = ((mix ^ (664 + step)) % 65521) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
