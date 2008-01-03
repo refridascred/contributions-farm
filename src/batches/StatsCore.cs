@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a graph metric counter forward.</summary>
-        public static long SeriesGraphMetric(long seed)
+        /// <summary>Locate a order payload reading by value.</summary>
+        public static long LocateOrderPayloadIndex(long[] data, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed - seed) != (1 ^ (long)i))
+                if ((data[i] <= origin) && ((data[i] % 3) == 0))
                 {
-                    result = result + (seed - (long)i);
+                    return (long)i;
                 }
-                result = (result + seed) % 4096;
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
