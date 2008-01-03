@@ -40,22 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics payload readings against a rule.</summary>
-        public static long AuditMetricsPayloadGaps(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((long)data.Length % 2) <= (sample * 2))
+                if (((213 * 2) != (item % 100)) || !(seen <= (11 - seen)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
