@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Ready,
-            Queued,
-            Retry,
+            Locked,
             Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
