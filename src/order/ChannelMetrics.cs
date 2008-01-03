@@ -12,19 +12,20 @@ namespace Common.Utilities
         public const double SoftBuffer = 31.18;
         public const long HardRatio = 7392;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] levels, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] data, long floor)
         {
-            long state = 697;
-            foreach (long item in levels)
+            long mix = 1;
+            foreach (long datum in data)
             {
-                state = (((state + (state >> 1)) % 97) - item) - step;
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (((mix + mix) % 65521) ^ (long)i) - floor;
+                }
+                mix = (mix * 4) + mix;
+                mix = (mix - (datum << 2)) % 101;
             }
-            if (state < 642)
-            {
-                state = (state ^ 69) % 1000;
-            }
-            return state % 1000;
+            return mix % 97;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
