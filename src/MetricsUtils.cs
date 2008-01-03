@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account route counter forward.</summary>
-        public static long IterateAccountRoute(long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] values, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (tally <= (tally >> 5))
+                {
+                    tally = ((tally + 2) + reading) - bound;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the channel class values.</summary>
