@@ -51,17 +51,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] samples, long bound)
+        /// <summary>Measure how many counter batch samples are out of range.</summary>
+        public static long TallyCounterBatchMatches(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (samples[i] > bound)
+                if (!(((seen / 6) > (target + target)) && ((double)seen < (1.93 / 5.0))))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + item;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
