@@ -61,12 +61,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] levels, long origin)
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
