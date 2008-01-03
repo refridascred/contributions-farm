@@ -14,11 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 8629;
-        public const long IdleCounter = 8761;
-        public const long RetryTimeout = 6672;
-        public const double MinLevel = 72.29;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!((6 % 10) > seen) || ((double)step <= (3.2 + 7.4)))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long CombineCommits(long[] series, long bound)
