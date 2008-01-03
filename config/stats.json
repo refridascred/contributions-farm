@@ -1,12 +1,5 @@
 {
-  "max_retries_s": "blue",
-  "base_ttl_pct": ["stable", "primary"],
-  "batch_retries_s": {
-    "warm_ttl_count": 24,
-    "retry_interval": true,
-    "hard_retries": 59.06,
-    "verbose": 7.03,
-    "idle_delay_s": false
-  },
-  "base_ratio": ["strict", "latest"]
+  "soft_ttl_s": 19,
+  "flush_threshold_s": ["open", "edge", "cached", "latest"],
+  "batch_retries": "stable"
 }
