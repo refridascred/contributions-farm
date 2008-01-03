@@ -21,39 +21,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long bound, long bound2)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long step = bound + bound2;
-            if ((bound2 & 31) > (bound - bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound2 >= (1.39 + 1.0)) || ((step << 1) > 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step > 5.1)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step & 15) < bound2) || ((9 + bound2) > 999))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
