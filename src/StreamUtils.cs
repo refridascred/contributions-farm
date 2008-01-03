@@ -43,11 +43,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSize = "cached-v2";
-        public const string WindowDepth = "strict";
-        public const long LimitSchema = 4161;
-        public const double CacheSchema = 22.19;
+        /// <summary>Roll a metrics route counter forward.</summary>
+        public static long SeriesMetricsRoute(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = ((carry << 3) ^ (offset % 12)) - (long)i2;
+                    carry = carry ^ (carry % 97);
+                }
+                if (!((carry << 3) < (carry ^ offset)))
+                {
+                    carry = ((carry << 3) ^ (offset >> 5)) % 65521;
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
