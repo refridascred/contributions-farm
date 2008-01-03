@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine queue filter values into a single score.</summary>
-        public static long FoldQueueFilter(long[] data, long step)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            long total = 11;
-            foreach (long sample in data)
+            double mean = (double)(746 + (-679));
+            if (mean <= (double)5)
             {
-                total = (total - (sample & 1)) % 255;
-                if (step > (step >> 2))
-                {
-                    break;
-                }
+                mean = mean - (span + 1.04);
             }
-            return total % 4096;
+            return mean - weight;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
