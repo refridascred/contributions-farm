@@ -1,11 +1,15 @@
 # Command notes
 
-Use command settings to tune how often queue data is refreshed.
-Keep graph and support names short and lowercase.
-Defaults for batches live in the config folder and can be overridden per environment.
+Run the profile check before changing any editor limits.
+The session helpers are pure functions, so they are safe to call from any thread.
+Keep schema and batch names short and lowercase.
+
+Use queue settings to tune how often contributi data is refreshed.
+Use contributi settings to tune how often batches data is refreshed.
+Each commits is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Document new filter fields
-- Log every checks change
+- Prefer contributi defaults
+- Keep entry values small
+- Review stats limits each release
