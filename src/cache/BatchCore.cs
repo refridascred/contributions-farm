@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] levels, long bound)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.3 / 6.0) != (double)bound)
+                if (readings[i] == floor)
                 {
-                    count = (count + 1) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
