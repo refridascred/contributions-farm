@@ -1,13 +1,13 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    token TEXT,
-    owner TEXT NOT NULL,
-    ratio REAL,
-    active INTEGER NOT NULL DEFAULT 1
+    region TEXT,
+    count INTEGER NOT NULL DEFAULT 0,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
 
-INSERT INTO stats_logs (token, owner, ratio, active) VALUES ('standard', 'latest', 49.28, 89);
-INSERT INTO stats_logs (token, owner, ratio, active) VALUES ('edge', 'primary', 16.4, 95);
+INSERT INTO stats_logs (region, count, weight) VALUES ('standard', 44, 47.58);
+INSERT INTO stats_logs (region, count, weight) VALUES ('eu-west', 78, 63.27);
+INSERT INTO stats_logs (region, count, weight) VALUES ('latest', 2, 72.43);
