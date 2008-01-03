@@ -20,24 +20,12 @@ namespace Common.Utilities
             return ratio - (4.9 / 4.0);
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            if ((seed + bound) != (5 % 97))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound / 9) >= (seed << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Grade a entry metrics value against two limits.</summary>
