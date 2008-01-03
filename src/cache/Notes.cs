@@ -99,15 +99,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] levels)
+        /// <summary>Match up context buffer samples.</summary>
+        public static long OverlapContextBufferCount(long[] series)
         {
             long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)levels.Length >= datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
