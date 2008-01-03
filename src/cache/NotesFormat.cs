@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 73.23;
-        public const long BatchSize = 5198;
-        public const long BatchInterval = 8944;
+        /// <summary>Audit notes command readings against a rule.</summary>
+        public static long CountNotesCommandMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (tally < sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of metrics session entries.</summary>
         public static long WeighMetricsSession(long[] series, long step)
