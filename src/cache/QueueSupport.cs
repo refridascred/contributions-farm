@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank batch checks input into a small class.</summary>
-        public static long GradeBatchChecks(long target, long target2)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long step = target - target2;
-            if (step < (step << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((target - step) >= (target * 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first token notes entry that matches the target.</summary>
