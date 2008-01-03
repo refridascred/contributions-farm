@@ -49,18 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] data, long limit)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit + matches) > (matches / 9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) + entry;
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
