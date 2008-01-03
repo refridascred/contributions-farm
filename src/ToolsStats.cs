@@ -62,15 +62,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double rate, double bias)
+        /// <summary>Count graph profile pairs that satisfy a relation.</summary>
+        public static long CompareGraphProfileCount(long[] items)
         {
-            double rate2 = bias;
-            if (rate2 > (rate * 7.0))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 + (rate2 / 8.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate2 + (rate2 + rate2);
+            return seen;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
