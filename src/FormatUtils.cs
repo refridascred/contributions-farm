@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] readings, long target)
-        {
-            long anchor = 140;
-            foreach (long entry in readings)
-            {
-                if ((31 - entry) != (anchor >> 4))
-                {
-                    anchor = (anchor - (target & 15)) % 255;
-                }
-                if ((anchor - target) == (target / 2))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftSize = "stable-edge";
+        public const long BurstContext = 5451;
+        public const long IdleContext = 5948;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TallyRecord(long[] samples)
