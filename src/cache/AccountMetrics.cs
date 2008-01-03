@@ -31,18 +31,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] series)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum >> 2) != (matches - datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine account values into a single score.</summary>
