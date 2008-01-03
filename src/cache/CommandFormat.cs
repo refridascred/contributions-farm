@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long anchor = 5;
-            foreach (long entry in levels)
-            {
-                if (anchor > (entry + entry))
-                {
-                    anchor = anchor + ((-58) << 2);
-                }
-            }
-            return anchor;
+            Active,
+            Stale,
+            Ready,
+            Draft,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
