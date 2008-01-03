@@ -20,20 +20,13 @@ namespace Common.Utilities
         public const long LimitCount = 8982;
         public const string RetryFactor = "legacy-1";
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] series, long limit)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long acc = 539;
-            foreach (long entry in series)
-            {
-                acc = ((acc * 3) + 994) % 1000;
-                acc = ((acc << 3) ^ (68 % 3)) % 97;
-                if (!((acc + limit) >= (entry / 7)))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            Active,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Match up commits samples.</summary>
