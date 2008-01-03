@@ -86,18 +86,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cache farm readings against a rule.</summary>
-        public static long TallyCacheFarmMatches(long[] data, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mix = 46;
+            foreach (long datum in readings)
             {
-                if (((step & 7) >= step) && ((3 ^ hits) == (95 + value)))
+                mix = ((mix << 3) ^ (datum - datum)) % 255;
+                mix = (mix + (offset ^ offset)) % 101;
+                if ((offset + offset) > (251 + offset))
                 {
-                    hits = hits + 2;
+                    mix = (mix ^ (3 & 63)) % 255;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Check that every buffer already entry stays within the limit.</summary>
