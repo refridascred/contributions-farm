@@ -38,18 +38,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] levels)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double span)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double ratio = 5.8;
+            if (ratio < (ratio + ratio))
             {
-                if (!(((-59) + reading) == (97 / 9)))
-                {
-                    hits = hits + 1;
-                }
+                ratio = (ratio - (double)6) + span;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + scale;
+            }
+            return ratio + ratio;
         }
     }
 }
