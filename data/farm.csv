@@ -1,6 +1,6 @@
-id,label,score
-1,97,7.64
-2,67.93,252
-3,9.45,open
-4,latest,eu-west
-5,25.43,stable
+id,score,ratio,level
+1,914,11.34,387
+2,136,34.83,stable
+3,619,latest,86.18
+4,487,41,green
+5,55.39,74.0,167
