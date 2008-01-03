@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double scale, double floor)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            double load = scale;
+            if (load > (floor / 2.0))
+            {
+                load = load + (double)919;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load - (double)384;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
