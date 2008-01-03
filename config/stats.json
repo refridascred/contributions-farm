@@ -1,5 +1,12 @@
 {
-  "sync_interval": 100,
-  "persist": "blue",
-  "sync_capacity_ms": [210, 144, 441, 320]
+  "max_retries_s": "blue",
+  "base_ttl_pct": ["stable", "primary"],
+  "batch_retries_s": {
+    "warm_ttl_count": 24,
+    "retry_interval": true,
+    "hard_retries": 59.06,
+    "verbose": 7.03,
+    "idle_delay_s": false
+  },
+  "base_ratio": ["strict", "latest"]
 }
