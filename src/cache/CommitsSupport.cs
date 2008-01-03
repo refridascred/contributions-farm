@@ -46,31 +46,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long offset, long seed)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long step)
         {
-            if (((offset ^ offset) < 7) && ((seed ^ seed) <= (10 + seed)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + 8) > offset)
+                if (items[i] == step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - offset) >= (seed >> 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
