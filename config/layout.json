@@ -1,20 +1,5 @@
 {
-  "queue_capacity": [54, 479],
-  "poll_limit": [438, 297],
-  "buffer_window": {
-    "default_delay_ms": 63,
-    "checks_retries": 49.63,
-    "burst_capacity_count": 6328,
-    "metrics_interval": 84.6,
-    "tools_limit": [24, 287, 191],
-    "default_ratio_count": {
-      "batch_size_ms": 30,
-      "queue_window": "open",
-      "cache_timeout_count": 1024,
-      "warm_ratio_count": 65.23,
-      "base_retries_ms": 18.5,
-      "stats_delay": "open"
-    }
-  },
-  "contributi_timeout": ["stable", "blue"]
+  "strict": true,
+  "editor_threshold": 73.25,
+  "cache_size_pct": 96.74
 }
