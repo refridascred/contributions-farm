@@ -1,11 +1,10 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Each metric is validated before it reaches the order queue.
-Use filter settings to tune how often entry data is refreshed.
+Run the farm check before changing any graph limits.
+Use counter settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Prefer format defaults
-- Keep layout values small
-- Document new profile fields
+- Log every contributi change
+- Document new commits fields
+- Review layout limits each release
