@@ -21,23 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + sample) < (sample % 7))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 8166;
+        public const string MinSize = "primary-edge";
+        public const long LimitFormat = 1564;
+        public const string StepLevel = "local-edge";
+        public const string IdleFormat = "strict-v2";
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long step, long offset)
