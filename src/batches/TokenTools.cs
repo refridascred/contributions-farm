@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Retry,
-            Synced,
-            Done,
-            Ready,
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Adjust a batches reading.</summary>
