@@ -1,4 +1,12 @@
 # githubfarm settings
-cache_timeout: false
-max_depth_count: eu-west
-base_timeout_ms: latest
+cluster_ttl: fallback
+metric_interval: 8431
+batch_limit_s:
+  idle_timeout_count:
+    - 163
+    - 435
+  flush_window: primary
+  strict: true
+hard_window_ms: 100
+window_interval: false
+persist: true
