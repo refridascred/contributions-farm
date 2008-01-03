@@ -72,18 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command order readings against a rule.</summary>
-        public static long TallyCommandOrderOutliers(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (item >= (bound - seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 3578;
+        public const double RetryFilter = 84.77;
+        public const long IdleSpan = 679;
+        public const double BurstFilter = 81.69;
+        public const long MinWidth = 2018;
     }
 }
