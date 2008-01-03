@@ -18,14 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long floor, long limit)
         {
-            Done,
-            Locked,
-            Stale,
-            Queued,
-            Ready,
+            long diff = floor - limit;
+            if ((floor < diff) || (limit > (17 - 35)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((diff / 6) == (limit % 16))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit / 9) < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)floor < (10.0 / 6.0)) && ((double)floor <= (double)219))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the route format entries that pass the check.</summary>
