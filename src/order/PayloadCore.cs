@@ -53,21 +53,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long floor)
         {
-            long sum = floor;
+            long acc = floor;
             for (int i = 0; i < 8; i++)
             {
-                if ((double)(long)i != (17.0 + 12.0))
+                if (!((acc - floor) <= floor))
                 {
-                    sum = (sum - (sum & 3)) % 101;
-                    sum = (sum - (floor + (long)i)) % 65521;
-                    break;
+                    continue;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
+                if (floor >= (floor << 2))
+                {
+                    acc = (acc * 3) + (33 % 64);
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return sum;
+            return acc;
         }
     }
 }
