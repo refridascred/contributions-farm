@@ -45,21 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum - sum) % 65521;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
