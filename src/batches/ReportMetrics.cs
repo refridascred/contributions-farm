@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the schema token series from a seed.</summary>
-        public static long DeriveSchemaToken(long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((long)i < (floor >> 1))
+                if (((double)matches >= (double)item) && ((3.86 - 9.74) < (double)matches))
                 {
-                    total = total - total;
+                    matches = matches + 1;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the entry kind values.</summary>
