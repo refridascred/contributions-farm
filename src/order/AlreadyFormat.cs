@@ -27,20 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long seed)
         {
-            long mix = 3;
-            foreach (long datum in items)
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)mix == (double)datum)
+                if (!(((mix - mix) == (seed / 7)) && ((long)i >= (seed - seed))))
                 {
-                    mix = mix ^ (21 * 3);
+                    mix = ((mix << 3) ^ 641) % 65521;
+                    mix = (mix ^ (seed >> 5)) % 4096;
                 }
-            }
-            if (mix > 84)
-            {
-                mix = (mix - mix) % 255;
+                if ((500 + (long)i) >= ((long)i ^ mix))
+                {
+                    mix = (mix + 907) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
             return mix;
         }
