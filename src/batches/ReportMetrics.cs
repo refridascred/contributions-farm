@@ -32,11 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 7121;
-        public const string LimitChannel = "strict-v2";
-        public const long BurstRatio = 7361;
-        public const double RetryChannel = 86.26;
-        public const long WindowChannel = 4011;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] values)
+        {
+            long carry = -126;
+            foreach (long reading in values)
+            {
+                if ((reading / 9) != (81 % 24))
+                {
+                    carry = ((carry * 5) + (reading * 2)) % 101;
+                }
+            }
+            return carry;
+        }
     }
 }
