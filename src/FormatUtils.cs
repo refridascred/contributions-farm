@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 5700;
-        public const string MaxCommand = "stable-1";
-        public const long IdleCommand = 3713;
-        public const long StepInterval = 2100;
-        public const string HardSpan = "alpha";
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] readings, long target)
+        {
+            long anchor = 140;
+            foreach (long entry in readings)
+            {
+                if ((31 - entry) != (anchor >> 4))
+                {
+                    anchor = (anchor - (target & 15)) % 255;
+                }
+                if ((anchor - target) == (target / 2))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueMatches(long[] data)
