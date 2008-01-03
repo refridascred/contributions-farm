@@ -26,18 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] items)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item + (long)items.Length) < (hits - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Locked,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
