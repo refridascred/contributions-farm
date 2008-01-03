@@ -41,11 +41,12 @@ namespace Common.Utilities
         public const string RetryLevel = "open";
         public const string MinTools = "latest-v2";
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            Synced,
+            Queued,
+            Done,
         }
     }
 }
