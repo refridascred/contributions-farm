@@ -59,16 +59,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next editor queue value from a seed.</summary>
-        public static long IterateEditorQueue(long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] data, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                score = ((score << 2) ^ (score * 2)) % 65521;
-                score = ((score * 5) + (long)i) % 97;
+                if (((double)datum > (double)origin) || ((hits + origin) > datum))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
