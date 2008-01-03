@@ -1,8 +1,13 @@
 {
-  "format_size": 15.9,
-  "default_ratio_count": ["green", "latest", "blue"],
-  "base_window": ["staging", "green"],
-  "order_size": 1821,
-  "soft_size_s": 27.63,
-  "buffer_threshold": [177, 282, 362]
+  "sync_window": 58,
+  "cache_ttl": false,
+  "stream_window": 31.25,
+  "sync_limit_pct": 30,
+  "hard_capacity_s": 30,
+  "soft_capacity_pct": {
+    "verbose": 92,
+    "editor_interval": "local",
+    "cache_depth": "staging",
+    "dry_run": [339, 232]
+  }
 }
