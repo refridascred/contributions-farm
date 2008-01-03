@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double weight, double span)
-        {
-            double drift = 8.42;
-            if (drift < (double)39)
-            {
-                drift = (drift - (double)29) - weight;
-            }
-            return drift - span;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 2111;
+        public const long StepCount = 7062;
+        public const long BatchStats = 2418;
+        public const double StepStats = 8.62;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long BucketLayout(long offset, long origin)
