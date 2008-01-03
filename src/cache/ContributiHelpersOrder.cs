@@ -37,18 +37,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] data, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry + (968 * 3)) % 65521;
-                carry = ((carry * 3) + (step % 3)) % 255;
-                carry = (carry + carry) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
