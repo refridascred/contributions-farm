@@ -14,23 +14,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double bias)
+        /// <summary>Count account entry pairs that satisfy a relation.</summary>
+        public static long PairAccountEntryCount(long[] items)
         {
-            double drift = rate;
-            if (drift < (double)887)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (double)775;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (bias + drift)) + (double)(long)i;
-            }
-            return drift + rate;
+            return count;
         }
 
         /// <summary>Accumulate support stats samples.</summary>
