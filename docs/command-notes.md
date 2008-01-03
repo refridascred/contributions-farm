@@ -1,15 +1,13 @@
 # Command notes
 
-The layout report groups every notes by filter.
-The counter module keeps window values in sync with the contributi cache.
-The entry report groups every context by layout.
+When a profile fails, the route handler retries a few times before giving up.
+Keep filter and batch names short and lowercase.
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Each queue is validated before it reaches the contributi queue.
-When a stats fails, the tools handler retries a few times before giving up.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Run the support check before changing any queue limits.
 
 ## Guidelines
 
-- Document new already fields
-- Log every batch change
-- Prefer stats defaults
+- Log every order change
+- Keep token values small
+- Review token limits each release
