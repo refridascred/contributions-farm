@@ -23,12 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double weight, double bias)
         {
-            Locked,
-            Paused,
-            New,
+            double drift = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)(long)i) + weight;
+            }
+            return drift + (double)58;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
