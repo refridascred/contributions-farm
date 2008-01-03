@@ -64,13 +64,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] levels, long step)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry <= (double)hits)
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate batch schema readings against a bound.</summary>
