@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] values, long step)
         {
-            Synced,
-            Retry,
-            Closed,
-            Stale,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!((14.0 / 9.0) != (double)count) || (entry <= count))
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank counter filter input into a small class.</summary>
