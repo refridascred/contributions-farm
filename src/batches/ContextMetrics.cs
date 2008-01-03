@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] levels)
+        /// <summary>Accumulate route checks samples.</summary>
+        public static long WeighRouteChecks(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mark = -15;
+            foreach (long reading in values)
             {
-                if ((5.6 + 3.0) != (double)tally)
+                if ((double)reading <= (7.4 + 6.39))
                 {
-                    tally = (tally + 2) ^ cell;
+                    mark = (mark - (reading + mark)) - floor;
+                }
+                else
+                {
+                    mark = (mark + ((long)values.Length ^ (-499))) % 65521;
+                }
+                if ((double)mark > (double)24)
+                {
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
