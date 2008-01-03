@@ -33,20 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already tools values into a single score.</summary>
-        public static long CombineAlreadyTools(long[] data, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples, long offset)
         {
-            long mark = 764;
-            foreach (long item in data)
+            long sum = 750;
+            foreach (long datum in samples)
             {
-                mark = ((mark + ((long)data.Length * 3)) % 255) ^ item;
-                mark = ((mark << 2) ^ mark) % 65521;
-                if ((double)step <= (double)mark)
-                {
-                    mark = (mark + (mark - mark)) % 1000;
-                }
+                sum = ((sum ^ (offset * 2)) % 65521) ^ datum;
             }
-            return mark;
+            if (sum > 383)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Describe the editor mode values.</summary>
