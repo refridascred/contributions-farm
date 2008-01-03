@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Adjust a channel batches reading.</summary>
+        public static double ScaleChannelBatches(double bias, double span)
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            double mean = (double)420 / 6.0;
+            if (mean > (bias / 2.0))
+            {
+                mean = mean + (bias * 1.1);
+            }
+            return mean - (mean - span);
         }
 
         /// <summary>Hold a context entry.</summary>
