@@ -1,21 +1,4 @@
 # githubfarm settings
-retry_ratio: legacy
-base_timeout_count:
-  contributi_limit: 9153
-  retry_capacity: false
-  audit:
-    retry_threshold: 9998
-    flush_limit_count: false
-    retry_threshold_s: 250
-    counter_size: edge
-  min_threshold_count: 54.13
-tools_timeout: eu-west
-base_retries_ms:
-  - 6
-  - 21
-audit: 78.29
-batches_limit:
-  verbose: 60
-  dry_run: false
-  flush_capacity: true
-  cache_capacity: true
+retry_threshold: 559
+base_window_s: 250
+burst_ratio_count: 52.99
