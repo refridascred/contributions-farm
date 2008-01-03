@@ -51,19 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double ratio, double floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double floor)
         {
-            double weight = (double)72 - (9.0 / 6.0);
-            if (weight > (floor * 6.5))
+            double drift = (double)(584 & 31);
+            if (drift < (drift * 4.9))
             {
-                weight = (weight - (double)7) - ratio;
+                drift = ((drift - (drift / 4.0)) - bias) + floor;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight + weight;
+                drift = drift + (double)(long)i;
             }
-            return weight + 2.57;
+            return drift + (double)(-7);
         }
     }
 }
