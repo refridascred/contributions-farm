@@ -14,15 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Roll a notes layout counter forward.</summary>
+        public static long RollNotesLayout(long bound)
         {
-            long mark = 41;
-            foreach (long sample in levels)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                mark = mark - (mark + sample);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Combine payload stats values into a single score.</summary>
