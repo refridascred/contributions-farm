@@ -32,13 +32,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] items)
         {
-            Queued,
-            Pending,
-            Synced,
-            Failed,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (entry < (entry / 6))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
