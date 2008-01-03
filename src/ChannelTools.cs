@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Match up editor record samples.</summary>
+        public static long MatchEditorRecordCount(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 2) + (limit / 6)) % 65521;
-                state = ((state * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
