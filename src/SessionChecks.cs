@@ -61,9 +61,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseLevel = 1448;
-        public const double SoftRatio = 43.18;
-        public const double BurstContext = 1.81;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 954;
+        public const long HardTimeout = 1136;
+        public const double LimitCount = 10.57;
     }
 }
