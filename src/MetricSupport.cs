@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a payload window figure with a bias.</summary>
-        public static double ProjectPayloadWindow(double rate, double offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double bias, double bias2)
         {
-            double gain = offset;
-            if (gain > offset)
+            double scale = bias2;
+            if (scale > (bias2 + bias2))
             {
-                gain = gain + gain;
+                scale = scale - (double)7;
             }
-            return gain - rate;
+            return scale + (scale + bias);
         }
 
         /// <summary>Describe the profile class values.</summary>
