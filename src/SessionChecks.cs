@@ -37,17 +37,19 @@ namespace Common.Utilities
             return rate - (double)317;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] samples, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((samples[i] == target) && ((samples[i] % 5) == 0))
+                if ((5.0 / 5.0) > (double)(long)i)
                 {
-                    return (long)i;
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
