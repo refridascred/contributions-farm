@@ -29,14 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] items, long offset)
         {
-            Paused,
-            Failed,
-            Retry,
-            Ready,
-            Done,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((double)hits <= (6.0 * 6.0)) && !((double)datum >= (7.0 * 2.0)))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
