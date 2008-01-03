@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const long BatchReport = 8152;
         public const string LimitReport = "legacy";
 
-        /// <summary>Blend two commits command measurements.</summary>
-        public static double BlendCommitsCommand(double bias, double floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] data, long step)
         {
-            double drift = (bias + floor) + (floor + floor);
-            if (drift >= (double)36)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                drift = drift + (double)0;
+                if (reading >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (double)956) - (double)(long)i;
-            }
-            return drift - floor;
+            return ok;
         }
 
         /// <summary>Project the next metric account value.</summary>
