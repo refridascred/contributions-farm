@@ -1,20 +1,5 @@
 {
-  "warm_threshold_pct": [415, 242, 351],
-  "poll_threshold_ms": 79.9,
-  "verbose": 45.23,
-  "schema_threshold": "standard",
-  "dry_run": {
-    "flush_window_count": 15.2,
-    "cache_limit": true,
-    "default_ratio": "eu-west",
-    "idle_ttl_count": 35.99,
-    "max_window": 96
-  },
-  "soft_size_count": {
-    "warm_ttl_s": ["standard", "open", "strict"],
-    "flush_ttl_ms": [448, 292, 235],
-    "audit": 15.33,
-    "payload_interval": 2,
-    "retry_ratio_ms": 83.19
-  }
+  "filter_interval": "blue",
+  "soft_size_s": 12.0,
+  "poll_size": 50.05
 }
