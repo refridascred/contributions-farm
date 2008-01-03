@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 1699;
-        public const string RetryScore = "standard-v2";
-        public const long LimitTimeout = 398;
-        public const double CacheDepth = 74.71;
+        /// <summary>Grade a stream graph value against two limits.</summary>
+        public static long SortStreamGraph(long target, long step)
+        {
+            long slot = target ^ step;
+            if ((slot & 7) > target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((slot << 1) >= 5)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((slot / 8) < (slot << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((1 + 712) <= (slot + 205)) && ((double)slot != (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesMatches(long[] data, long target)
