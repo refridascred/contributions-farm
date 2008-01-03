@@ -48,18 +48,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit counter batch readings against a rule.</summary>
-        public static long TallyCounterBatchGaps(long[] values)
+        /// <summary>Digest a series of tools notes entries.</summary>
+        public static long FoldToolsNotes(long[] data)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long state = 137;
+            foreach (long reading in data)
             {
-                if ((count + count) != (datum % 3))
+                if ((double)state < (3.87 * 13.0))
                 {
-                    count = count + 3;
+                    state = state + state;
+                }
+                else
+                {
+                    state = (state - (long)data.Length) % 101;
+                }
+                if ((state / 6) < reading)
+                {
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
