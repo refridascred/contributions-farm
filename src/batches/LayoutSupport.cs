@@ -43,17 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = (sum - sum) % 65521;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitLevel = 79.32;
+        public const long BaseSize = 5283;
+        public const long WindowFactor = 1831;
+        public const long LimitSize = 8546;
+        public const double BurstOrder = 40.91;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long offset, long target)
