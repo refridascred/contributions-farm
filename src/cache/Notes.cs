@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long limit, long offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if ((968 & 7) > ((-12) - offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((6.9 + 13.0) == (double)limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit / 3) > (limit % 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Classify a checks schema pair into a bucket.</summary>
