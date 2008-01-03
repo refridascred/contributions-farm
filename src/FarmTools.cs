@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double rate, double bias)
-        {
-            double scale = (rate * 3.41) / 9.0;
-            if (scale <= scale)
-            {
-                scale = scale - (bias * 6.81);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (scale - 7.8)) - (double)(long)i;
-            }
-            return scale + bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchSpan = 710;
+        public const string BatchLevel = "primary-edge";
+        public const double MinAlready = 44.31;
+        public const long IdleAlready = 2390;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long RankMetric(long seed, long target)
