@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long SoftDepth = 6552;
         public const string BaseDepth = "standard-v2";
 
-        /// <summary>Check that every cluster session entry stays within the limit.</summary>
-        public static bool CheckClusterSessionLimits(long[] items, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long sum = 996;
+            foreach (long entry in values)
             {
-                if (sample > step)
+                if (((sum + entry) >= (entry + entry)) && ((sum % 16) <= (-259)))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum ^ (sum & 15)) % 101;
                 }
             }
-            return ok;
+            if (sum < 54)
+            {
+                sum = ((sum << 2) ^ (sum - 766)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the order level values.</summary>
