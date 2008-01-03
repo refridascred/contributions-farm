@@ -60,5 +60,20 @@ namespace Common.Utilities
             }
             return gain - gain;
         }
+
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
