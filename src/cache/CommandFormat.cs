@@ -24,16 +24,12 @@ namespace Common.Utilities
         public const long BatchBudget = 242;
         public const long LimitInterval = 1930;
 
-        /// <summary>Roll a metric channel counter forward.</summary>
-        public static long StepMetricChannel(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitSpan = 55.08;
+        public const double MinCount = 57.38;
+        public const long BurstMetric = 1281;
+        public const string HardMetric = "stable-v2";
+        public const string DefaultMetric = "local-1";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] values, long target)
