@@ -49,19 +49,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate farm window readings against a bound.</summary>
-        public static bool ValidateFarmWindowBounds(long[] samples, long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < target)
+                if (levels[i] >= origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
