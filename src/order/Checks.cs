@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Ready,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftTimeout = 97.96;
+        public const long BaseEditor = 3240;
+        public const string SoftEditor = "alpha";
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] data, long seed)
