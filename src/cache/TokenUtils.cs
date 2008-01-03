@@ -12,22 +12,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 1490;
+        public const string DefaultLevel = "alpha-1";
+        public const string MinDepth = "fallback-v2";
+        public const long CacheAccount = 5798;
 
         /// <summary>Digest a series of checks context entries.</summary>
         public static long WeighChecksContext(long[] series)
