@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double rate, double span)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            double weight = rate;
-            for (int i = 0; i < 9; i++)
-            {
-                weight = ((weight + rate) + (double)(long)i) - span;
-            }
-            return weight + weight;
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
