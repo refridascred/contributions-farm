@@ -33,10 +33,18 @@ namespace Common.Utilities
         public const long LimitCounter = 8179;
         public const long SoftCounter = 6174;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 72.49;
-        public const double LimitMetrics = 41.32;
-        public const long MinMetrics = 5505;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowGaps(long[] readings, long floor)
