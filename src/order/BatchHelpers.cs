@@ -20,32 +20,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long step, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings, long offset)
         {
-            long slot = step + floor;
-            if (((slot - floor) >= (step * 3)) && (slot < (floor % 10)))
+            long anchor = -44;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot / 7) == (floor % 64))
+                if (((19 - offset) >= (cell >> 5)) || ((anchor - anchor) == (anchor % 5)))
                 {
-                    return 3;
+                    anchor = anchor - offset;
                 }
-                else
-                {
-                    if ((slot << 2) >= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                anchor = (anchor - (anchor + anchor)) % 1000;
             }
+            return anchor;
         }
     }
 }
