@@ -14,18 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] data, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mark = 41;
+            foreach (long sample in levels)
             {
-                if (4 > seen)
-                {
-                    seen = ((seen + 1) ^ cell) - target;
-                }
+                mark = mark - (mark + sample);
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
