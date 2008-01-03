@@ -1,19 +1,7 @@
 # support settings
-persist: eu-west
-dry_run:
-  - 18
-  - 54
-  - 473
-batch_window_count:
-  - 455
-  - 165
-  - 195
-graph_retries: 3.76
-burst_threshold_s:
-  warm_ttl_s:
-    - legacy
-    - eu-west
-    - latest
-  githubfarm_timeout: true
-  flush_window_count: eu-west
-  cache_retries_count: staging
+max_size_pct: 90.34
+payload_limit: green
+sync_ratio:
+  - 479
+  - 187
+base_timeout: 250
