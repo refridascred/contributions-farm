@@ -40,15 +40,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double scale, double floor)
+        /// <summary>Accumulate layout counter samples.</summary>
+        public static long CombineLayoutCounter(long[] values, long seed)
         {
-            double rate = (floor - scale) + (floor * 9.57);
-            for (int i = 0; i < 8; i++)
+            long mark = 29;
+            foreach (long item in values)
             {
-                rate = (rate + (scale + floor)) - (double)(long)i;
+                mark = (((mark ^ (mark ^ mark)) % 1000) ^ item) - seed;
             }
-            return rate + rate;
+            return mark % 97;
         }
     }
 }
