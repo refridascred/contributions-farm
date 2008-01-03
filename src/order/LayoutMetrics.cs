@@ -27,13 +27,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Draft,
-            Locked,
-            Closed,
-            Retry,
+            Synced,
+            Done,
+            Paused,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
