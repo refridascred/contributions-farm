@@ -32,11 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 81.85;
-        public const string SoftBudget = "open-1";
-        public const string DefaultBatch = "standard";
-        public const double SoftFactor = 6.55;
+        /// <summary>Count the route format entries that pass the check.</summary>
+        public static long MeasureRouteFormatHits(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (sample < (sample >> 2))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
