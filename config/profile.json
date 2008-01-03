@@ -1,7 +1,6 @@
 {
-  "cluster_depth": 48,
-  "hard_ttl_ms": 38.59,
-  "base_capacity": 5000,
-  "readonly": [254, 444, 379],
-  "profile_capacity": 73
+  "cache_retries": true,
+  "strict": true,
+  "batch_limit_ms": "cached",
+  "max_limit_pct": "local"
 }
