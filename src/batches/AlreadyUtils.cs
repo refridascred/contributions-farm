@@ -51,13 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] series, long target)
         {
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count + item) <= (item >> 5))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine context values into a single score.</summary>
