@@ -1,13 +1,29 @@
 # entry settings
-cache_depth_count: local
-hard_limit: true
-support_window: 4958
-counter_ttl:
-  - legacy
-  - standard
-  - blue
-  - blue
-retry_depth_pct:
-  - fallback
-  - cached
-  - standard
+persist:
+  - 456
+  - 188
+  - 314
+default_size_count:
+  hard_delay_s: blue
+  strict: stable
+  burst_timeout: 35.28
+  sync_capacity_count: eu-west
+verbose:
+  retry_window:
+    dry_run: 83.36
+    sync_threshold_pct: false
+    default_window_count:
+      - 422
+      - 38
+      - 152
+  warm_ttl:
+    verbose: cached
+    idle_ratio: latest
+    report_size: 818
+    burst_limit_s: 40
+    cache_retries: 1024
+  readonly: 250
+  cache_timeout:
+    - edge
+    - standard
+    - fallback
