@@ -35,14 +35,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels, long seed)
         {
-            Dropped,
-            Done,
-            Draft,
-            Paused,
-            Retry,
+            long mix = 418;
+            foreach (long reading in levels)
+            {
+                mix = ((mix << 2) ^ (reading * 4)) % 1000;
+                mix = (mix * 5) + (reading + reading);
+                if ((reading > (reading * 5)) || ((double)mix < 6.2))
+                {
+                    mix = (mix << 3) ^ (seed + reading);
+                }
+            }
+            if (mix > 939)
+            {
+                mix = ((mix * 2) + (mix * 5)) % 65521;
+            }
+            return mix;
         }
     }
 }
