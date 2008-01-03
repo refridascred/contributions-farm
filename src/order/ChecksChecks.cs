@@ -34,14 +34,39 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Classify a session order pair into a bucket.</summary>
+        public static long SortSessionOrder(long step, long offset)
         {
-            Queued,
-            Closed,
-            Failed,
-            Ready,
-            Paused,
+            long diff = step + offset;
+            if ((35 ^ diff) <= (step % 16))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step & 3) <= 9) || ((double)offset >= (8.0 * 2.49)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((diff % 12) == (diff >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((diff ^ offset) > (diff / 8)) && ((double)679 == (double)offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
