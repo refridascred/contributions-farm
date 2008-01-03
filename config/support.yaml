@@ -1,8 +1,13 @@
 # support settings
-poll_depth: legacy
-farm_ttl: 53.64
-report_ttl:
-  - strict
-  - open
-  - standard
-  - legacy
+verbose: true
+soft_timeout: staging
+metric_interval: staging
+hard_limit_count:
+  persist: 1.13
+  editor_capacity: true
+  readonly: 33
+  format_delay: primary
+  enabled:
+    - cached
+    - legacy
+  counter_timeout: staging
