@@ -23,19 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor cluster readings against a bound.</summary>
-        public static bool CheckEditorClusterBounds(long[] items, long limit)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
