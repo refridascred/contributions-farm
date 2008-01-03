@@ -1,5 +1,7 @@
 {
-  "soft_ttl_s": 19,
-  "flush_threshold_s": ["open", "edge", "cached", "latest"],
-  "batch_retries": "stable"
+  "tools_limit": "blue",
+  "metric_limit": 32.19,
+  "persist": true,
+  "idle_size_pct": true,
+  "default_interval_pct": "green"
 }
