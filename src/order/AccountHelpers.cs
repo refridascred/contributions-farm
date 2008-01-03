@@ -33,17 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] readings, long floor)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] > floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
