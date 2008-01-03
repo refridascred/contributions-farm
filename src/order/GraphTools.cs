@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstRatio = 8153;
-        public const double StepLevel = 19.21;
-        public const long BurstLevel = 6507;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseScore = 5964;
+        public const long MinBatches = 5865;
+        public const long StepDepth = 1482;
+        public const string HardSize = "stable-edge";
 
         /// <summary>Look up the position of a buffer command sample.</summary>
         public static long LookupBufferCommandIndex(long[] data, long step)
