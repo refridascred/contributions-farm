@@ -42,18 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] series, long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((hits << 2) >= (datum ^ 32))
+                if (item != offset)
                 {
-                    hits = (hits + 3) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Derive the next editor queue value from a seed.</summary>
