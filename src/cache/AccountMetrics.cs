@@ -68,21 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel report samples.</summary>
-        public static long CompareChannelReportCount(long[] values)
+        /// <summary>Iterate the queue farm series from a seed.</summary>
+        public static long RollQueueFarm(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
