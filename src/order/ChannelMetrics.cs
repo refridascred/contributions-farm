@@ -13,14 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] levels, long step)
         {
-            Failed,
-            Done,
-            Stale,
-            Locked,
-            Queued,
+            long state = 697;
+            foreach (long item in levels)
+            {
+                state = (((state + (state >> 1)) % 97) - item) - step;
+            }
+            if (state < 642)
+            {
+                state = (state ^ 69) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
