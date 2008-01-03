@@ -51,12 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public double Owner { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
