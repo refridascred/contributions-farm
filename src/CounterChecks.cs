@@ -62,19 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] data, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (entry >= target)
+                if (item < offset)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Hold a editor info.</summary>
