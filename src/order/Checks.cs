@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftTimeout = 97.96;
-        public const long BaseEditor = 3240;
-        public const string SoftEditor = "alpha";
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long offset)
