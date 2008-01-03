@@ -56,24 +56,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long floor, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            if ((double)step < (8.3 + 4.7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step & 15) >= (floor >> 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
