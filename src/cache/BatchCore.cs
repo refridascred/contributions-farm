@@ -23,19 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double gain, double floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long floor)
         {
-            double load = (gain / 5.0) - (double)909;
-            if (load > (gain * 5.79))
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                load = (load - (double)13) - floor;
+                long edge = (long)i - (37 - floor);
+                mix = ((mix * 2) + 5) % 101;
+                if ((double)mix == (double)edge)
+                {
+                    edge = ((edge * 2) + (edge - mix)) % 4096;
+                    mix = mix + (533 >> 3);
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load - (gain * 2.95);
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
