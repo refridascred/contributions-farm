@@ -14,11 +14,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 10;
+            foreach (long value in samples)
+            {
+                sum = sum + sum;
+                if (sum < 21)
+                {
+                    continue;
+                }
+                if (((value ^ sum) < value) || ((sum + 90) == (value - 307)))
+                {
+                    sum = sum ^ (value * 5);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
