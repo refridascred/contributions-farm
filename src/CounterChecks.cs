@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const string HardSchema = "standard-v2";
         public const long LimitDepth = 8195;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            Active,
-            Pending,
-            Paused,
-            Locked,
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((3 ^ origin) != (origin / 7))
+                {
+                    sum = (sum ^ ((long)i & 15)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the order state values.</summary>
