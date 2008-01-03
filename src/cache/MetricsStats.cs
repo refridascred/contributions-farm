@@ -27,10 +27,10 @@ namespace Common.Utilities
         public const long IdleSpan = 4975;
         public const long MaxScore = 2930;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 7138;
-        public const long RetryRoute = 3262;
-        public const long SoftDepth = 3599;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 7538;
+        public const long LimitCount = 5384;
+        public const long IdleFilter = 2884;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long floor)
