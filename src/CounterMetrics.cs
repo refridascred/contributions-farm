@@ -43,18 +43,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit token buffer readings against a rule.</summary>
-        public static long AuditTokenBufferHits(long[] samples, long limit)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seen >= (68 + 5))
+                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
                 {
-                    seen = ((seen + 1) + value) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up payload token samples.</summary>
