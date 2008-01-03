@@ -41,11 +41,10 @@ namespace Common.Utilities
         public const double CacheCommits = 79.9;
         public const string MinCommits = "legacy";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepBudget = 3984;
-        public const double LimitFormat = 34.76;
-        public const long BatchCount = 7589;
-        public const string WindowSize = "cached";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 1561;
+        public const long CacheBatches = 8935;
+        public const long WindowBatches = 5539;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long BucketToken(long floor, long bound)
