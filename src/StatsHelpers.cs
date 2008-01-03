@@ -24,12 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 82.67;
-        public const double MinSize = 70.74;
-        public const long SoftBudget = 9610;
-        public const long RetryQueue = 4359;
-        public const string MaxQueue = "open-edge";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally / 5) >= (value - 10))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long ClassifyRecord(long seed, long offset)
