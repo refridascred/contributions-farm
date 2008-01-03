@@ -31,13 +31,39 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long offset)
         {
-            Queued,
-            Stale,
-            Pending,
-            Synced,
+            long prev = seed ^ offset;
+            if ((seed % 100) > offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (prev > (seed / 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (4.3 >= (double)prev)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((prev + 1) < 625)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next metric value.</summary>
