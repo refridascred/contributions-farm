@@ -18,38 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long offset, long target)
+        /// <summary>Look up the position of a farm profile sample.</summary>
+        public static long LocateFarmProfileIndex(long[] items, long floor)
         {
-            if (((offset * 2) >= (offset + offset)) && ((5.0 - 8.7) >= (double)offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target < (target + offset))
+                if (items[i] < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + target) <= 923)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((14.0 * 20.0) == (double)target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
