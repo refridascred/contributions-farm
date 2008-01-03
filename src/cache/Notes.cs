@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] readings, long seed)
         {
-            Closed,
-            Dropped,
-            Queued,
+            long mix = 790;
+            foreach (long entry in readings)
+            {
+                if (mix <= (mix - seed))
+                {
+                    mix = mix ^ entry;
+                    mix = ((mix << 2) ^ (seed - seed)) % 255;
+                }
+                mix = mix ^ 99;
+            }
+            return mix;
         }
 
         /// <summary>Classify a checks schema pair into a bucket.</summary>
