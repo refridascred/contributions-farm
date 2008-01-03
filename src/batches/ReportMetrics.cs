@@ -38,10 +38,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 8155;
-        public const long LimitScore = 401;
-        public const long StepScore = 7374;
-        public const string LimitRecord = "open-1";
+        /// <summary>Measure how many payload cluster samples are out of range.</summary>
+        public static long CountPayloadClusterGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (item < (count * 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
