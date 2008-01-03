@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] values)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((datum >= (datum % 2)) || ((double)seen < (4.24 * 7.0)))
+                if (!(((matches - matches) >= ((long)readings.Length - 171)) || ((matches + matches) >= matches)))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
