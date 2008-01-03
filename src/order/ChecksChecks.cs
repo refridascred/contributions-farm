@@ -39,15 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session channel value from a seed.</summary>
-        public static long IterateSessionChannel(long floor)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Queued,
+            Closed,
+            Failed,
+            Ready,
+            Paused,
         }
     }
 }
