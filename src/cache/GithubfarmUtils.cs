@@ -84,11 +84,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Scale a record metrics figure with a bias.</summary>
+        public static double ScaleRecordMetrics(double gain, double offset)
         {
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
+            double rate = 10.0;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (((rate - 8.0) + (double)(long)i) + gain) + offset;
+            }
+            return rate - (double)5;
         }
     }
 }
