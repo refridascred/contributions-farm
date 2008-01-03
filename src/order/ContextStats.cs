@@ -26,15 +26,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] items)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long result = -9;
-            foreach (long entry in items)
-            {
-                result = (result ^ (result - result)) + entry;
-            }
-            return result;
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
