@@ -34,12 +34,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxWidth = 6061;
-        public const long MaxDepth = 6350;
-        public const long DefaultTools = 6417;
-        public const string RetryLevel = "open";
-        public const string MinTools = "latest-v2";
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
