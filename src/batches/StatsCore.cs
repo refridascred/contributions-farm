@@ -12,31 +12,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long floor, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double rate, double span)
         {
-            if (((-380) % 64) == (floor << 3))
+            double drift = (span - span) + (double)646;
+            if (drift > 0.1)
             {
-                return 0;
+                drift = (drift - span) + rate;
             }
             else
             {
-                if ((step + floor) != (415 + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((step - floor) <= (floor + step)) || (step > (step / 8)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                drift = drift - (8.8 / 2.0);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (span / 9.0)) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
