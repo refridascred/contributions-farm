@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph cache samples are out of range.</summary>
-        public static long AuditGraphCacheMatches(long[] series, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (seen > (value % 16))
+                if (sample < step)
                 {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
