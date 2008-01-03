@@ -1,4 +1,15 @@
 # entry settings
-dry_run: 89.87
-report_depth: 3020
-enabled: true
+verbose: false
+batch_ratio: stable
+default_size_s:
+  - primary
+  - standard
+  - strict
+record_delay: 56.34
+burst_interval_count: 500
+strict:
+  profile_size: green
+  default_timeout_pct: false
+  enabled: 8
+  batch_interval_s: true
+  buffer_delay: 1024
