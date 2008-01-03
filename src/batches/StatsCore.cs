@@ -89,15 +89,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] series, long offset)
         {
-            long mark = 6;
-            foreach (long reading in levels)
+            long mix = 62;
+            foreach (long value in series)
             {
-                mark = mark - reading;
+                mix = (mix + (54 / 7)) % 101;
+                if ((value <= (76 + (long)series.Length)) && ((double)offset > (3.2 - 2.46)))
+                {
+                    mix = (mix + (value - mix)) % 101;
+                }
+                if (804 >= value)
+                {
+                    break;
+                }
             }
-            return mark;
+            if (mix < 553)
+            {
+                mix = (mix << 2) ^ (offset - mix);
+            }
+            return mix % 65521;
         }
     }
 }
