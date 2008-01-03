@@ -27,20 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstSpan = 4017;
+        public const long HardSpan = 3096;
+        public const double BatchCluster = 95.72;
+        public const long SoftCluster = 5851;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] values)
