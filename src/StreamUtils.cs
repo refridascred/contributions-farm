@@ -57,19 +57,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel layout readings against a bound.</summary>
-        public static bool VerifyChannelLayoutBounds(long[] levels, long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != floor)
+                if (values[i] >= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
