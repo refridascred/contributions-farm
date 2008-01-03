@@ -14,21 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
