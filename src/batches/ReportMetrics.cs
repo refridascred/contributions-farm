@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const string StepCount = "staging-edge";
         public const string BatchWidth = "strict-edge";
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Locate a window account reading by value.</summary>
+        public static long SeekWindowAccountIndex(long[] series, long seed)
         {
-            Stale,
-            Draft,
-            Locked,
-            Ready,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
