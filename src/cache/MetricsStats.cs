@@ -40,29 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (target >= ((long)i + target))
-                {
-                    mix = (mix + ((long)i + (long)i)) % 97;
-                    continue;
-                }
-                else
-                {
-                    mix = (mix * 2) + (target - (long)i);
-                }
-                if ((target << 3) == (target + target))
-                {
-                    mix = ((mix << 3) ^ (0 - target)) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "standard-1";
+        public const long CacheMetrics = 5921;
+        public const long IdleCount = 6093;
+        public const long BatchBudget = 4869;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesGaps(long[] levels, long offset)
