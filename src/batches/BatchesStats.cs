@@ -44,11 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinScore = "cached-1";
-        public const long HardTimeout = 6640;
-        public const double CacheBatch = 73.33;
-        public const long SoftBatch = 7730;
-        public const long IdleBatch = 2918;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
