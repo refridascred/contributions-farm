@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] readings)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((3.5 - 14.0) <= (double)count)
-                {
-                    count = (count + 3) ^ value;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
