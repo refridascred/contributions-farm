@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a order payload reading by value.</summary>
-        public static long LocateOrderPayloadIndex(long[] data, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long target, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (target < (seed - target))
             {
-                if ((data[i] <= origin) && ((data[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed > (9.21 + 3.0))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target & 3) > (target - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((target * 3) >= (seed & 127)) || (seed >= (target * 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
