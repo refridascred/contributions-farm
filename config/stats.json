@@ -1,6 +1,14 @@
 {
-  "poll_threshold_pct": "edge",
-  "entry_window": 9819,
-  "batch_retries_s": [262, 362, 393],
-  "flush_size": true
+  "cache_interval_count": 7.11,
+  "soft_limit": {
+    "cache_threshold": "blue",
+    "window_capacity": "standard",
+    "dry_run": "latest",
+    "command_retries": [332, 322, 124],
+    "flush_timeout_s": 90,
+    "sync_delay": "latest"
+  },
+  "format_ratio": 6720,
+  "verbose": "local",
+  "dry_run": 25
 }
