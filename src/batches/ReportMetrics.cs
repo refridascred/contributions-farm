@@ -23,21 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] > seed)
                 {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
