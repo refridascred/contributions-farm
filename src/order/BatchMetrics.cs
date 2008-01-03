@@ -23,15 +23,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long mix = 74;
-            foreach (long cell in items)
-            {
-                mix = (((mix * 3) + mix) % 4096) + cell;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
