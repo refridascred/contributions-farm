@@ -77,12 +77,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Audit tools batch readings against a rule.</summary>
+        public static long TallyToolsBatchHits(long[] values)
         {
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)hits > (double)(-57))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
         }
     }
 }
