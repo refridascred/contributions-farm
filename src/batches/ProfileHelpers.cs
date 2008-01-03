@@ -73,19 +73,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batch schema readings against a bound.</summary>
-        public static bool GuardBatchSchemaBounds(long[] values, long target)
+        /// <summary>Measure how many route editor samples are out of range.</summary>
+        public static long AuditRouteEditorOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (entry <= target)
+                if (((double)hits < (1.18 + 5.11)) && !((hits + hits) > (163 % 100)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
