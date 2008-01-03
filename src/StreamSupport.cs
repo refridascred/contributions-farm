@@ -28,18 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] items, long target)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long mix = 2;
-            foreach (long item in items)
-            {
-                if ((target + target) <= ((-2) % 5))
-                {
-                    mix = (((mix << 2) ^ (mix & 127)) % 97) ^ item;
-                }
-            }
-            return mix % 4096;
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
     }
 }
