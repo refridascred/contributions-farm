@@ -37,23 +37,19 @@ namespace Common.Utilities
         public const long BatchReport = 8152;
         public const string LimitReport = "legacy";
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            long mix = 64;
-            foreach (long item in series)
+            long mark = 224;
+            foreach (long value in samples)
             {
-                long edge = mix;
-                if (((double)edge == (double)mix) || ((579 + item) == (edge + mix)))
-                {
-                    edge = edge ^ edge;
-                }
-                if ((item - mix) < (item + item))
-                {
-                    mix = ((mix << 2) ^ (item >> 2)) % 101;
-                }
+                mark = (mark ^ value) % 4096;
             }
-            return mix % 1000;
+            if (mark < 8)
+            {
+                mark = ((mark * 4) + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the farm level values.</summary>
