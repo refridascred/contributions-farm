@@ -72,24 +72,19 @@ namespace Common.Utilities
         public const long HardQueue = 4988;
         public const long StepWidth = 6413;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long target, long offset)
+        /// <summary>Check that every entry tools entry stays within the limit.</summary>
+        public static bool CheckEntryToolsLimits(long[] series, long floor)
         {
-            if ((target + offset) < (target * 3))
+            bool stale = true;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset - offset) != (95 / 6))
+                if (sample > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
