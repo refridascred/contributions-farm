@@ -30,15 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Failed,
-            Queued,
-            Ready,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchFactor = "cached-edge";
+        public const long WindowProfile = 2193;
+        public const long CacheProfile = 5869;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] series, long target)
