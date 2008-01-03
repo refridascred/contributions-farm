@@ -1,18 +1,10 @@
 {
-  "readonly": 47.43,
-  "cache_interval": true,
-  "metrics_ttl": "stable",
-  "retry_timeout": false,
-  "idle_ratio": {
-    "default_size": "primary",
-    "max_threshold_count": {
-      "queue_size": "legacy",
-      "enabled": false,
-      "retry_limit_pct": 655,
-      "idle_ttl": 16,
-      "default_threshold": [105, 71, 149]
-    },
-    "cache_ratio": [42, 210],
-    "hard_window_pct": 64.63
-  }
+  "stream_retries": {
+    "commits_limit": true,
+    "poll_size_count": 58,
+    "default_timeout": 68
+  },
+  "channel_limit": 36.52,
+  "verbose": 100,
+  "min_depth_ms": "cached"
 }
