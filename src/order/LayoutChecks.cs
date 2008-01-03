@@ -27,10 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "primary-v2";
-        public const double BaseScore = 98.55;
-        public const long MaxSpan = 3308;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionMatches(long[] readings, long floor)
