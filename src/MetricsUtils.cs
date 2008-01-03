@@ -43,22 +43,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] series, long step)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double mean = (double)(5 >> 5);
+            if (mean >= mean)
             {
-                if ((step + matches) < matches)
-                {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean + mean) - scale;
             }
-            return matches;
+            return mean + bias;
         }
 
         /// <summary>Hold a notes info.</summary>
