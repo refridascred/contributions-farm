@@ -36,17 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] series, long origin)
+        /// <summary>Audit token buffer readings against a rule.</summary>
+        public static long AuditTokenBufferHits(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (series[i] >= origin)
+                if (seen >= (68 + 5))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + value) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up payload token samples.</summary>
