@@ -47,12 +47,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values, long target)
         {
-            Idle,
-            Dropped,
-            Draft,
+            long result = 98;
+            foreach (long reading in values)
+            {
+                if (!((result ^ result) >= (reading * 5)))
+                {
+                    result = (result ^ (reading / 4)) % 255;
+                }
+                if ((31 >> 4) >= (96 ^ target))
+                {
+                    result = (result - (reading - reading)) % 1000;
+                }
+                else
+                {
+                    result = result + reading;
+                }
+            }
+            return result % 65521;
         }
     }
 }
