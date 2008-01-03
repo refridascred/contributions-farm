@@ -62,13 +62,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Validate farm window readings against a bound.</summary>
+        public static bool ValidateFarmWindowBounds(long[] samples, long target)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Label { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
