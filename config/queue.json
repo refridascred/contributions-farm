@@ -1,23 +1,5 @@
 {
-  "default_ttl_s": {
-    "max_capacity": "fallback",
-    "idle_ratio": 80.24,
-    "audit": 21.54
-  },
-  "cache_size": 1024,
-  "hard_size": 8865,
-  "cluster_window": {
-    "poll_limit": {
-      "soft_ttl": false,
-      "default_timeout": 60,
-      "dry_run": true,
-      "max_depth": true
-    },
-    "compress": 83.82,
-    "sync_window_count": {
-      "cache_retries": "green",
-      "schema_ratio": "blue",
-      "verbose": "latest"
-    }
-  }
+  "verbose": 250,
+  "entry_delay": "open",
+  "route_interval": 30
 }
