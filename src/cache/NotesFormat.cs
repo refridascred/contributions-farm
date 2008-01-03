@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry ^ carry) % 4096;
-                if ((9.0 / 3.0) <= (double)carry)
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry ^ (40 + carry)) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "primary-v2";
+        public const long IdleWidth = 7661;
+        public const long SoftCommits = 3692;
+        public const long RetryCommits = 2092;
+        public const string BurstRatio = "local-1";
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] data, long limit)
