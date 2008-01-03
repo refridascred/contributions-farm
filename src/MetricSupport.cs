@@ -43,18 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (!!((cell % 60) < matches))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 4568;
+        public const long StepWidth = 7543;
+        public const long HardProfile = 8346;
+        public const string SoftFactor = "strict-edge";
+        public const string MinProfile = "primary-1";
     }
 }
