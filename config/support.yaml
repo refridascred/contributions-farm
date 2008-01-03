@@ -1,30 +1,20 @@
 # support settings
-soft_capacity_count: eu-west
-persist:
-  hard_interval_ms: eu-west
-  default_interval_count: fallback
-  idle_capacity: blue
-  batch_depth: local
-base_interval_count: cached
-retry_timeout: 59.52
-audit: true
-graph_size:
-  poll_depth_ms:
-    sync_retries_ms:
-      - 7
-      - 350
-    flush_depth_pct:
-      - green
-      - eu-west
-      - blue
-      - fallback
-    default_interval: staging
-    window_size:
-      - eu-west
-      - blue
+retry_retries: 10
+persist: open
+sync_capacity: 22.26
+filter_window: local
+session_ratio: legacy
+window_timeout:
+  warm_ratio_ms:
+    base_ttl_ms: true
+    token_depth:
+      - edge
+      - latest
       - legacy
-    sync_delay_ms: 6819
-  verbose: 49
-  sync_limit_count: latest
-  soft_timeout_pct: latest
-  flush_ratio_s: 65.89
+    command_retries: 47
+  burst_timeout: fallback
+  soft_timeout_s:
+    - stable
+    - green
+  githubfarm_threshold: false
+  account_size: 10
