@@ -33,23 +33,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Audit batch payload readings against a rule.</summary>
+        public static long TallyBatchPayloadGaps(long[] readings)
         {
-            long state = 54;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                state = (state << 3) ^ ((-23) + state);
-                if (!((cell + cell) < (cell / 9)))
+                if (matches < 4)
                 {
-                    state = (state + (cell / 9)) % 255;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            if (state > 6)
-            {
-                state = (state - 862) % 101;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Grade a profile metrics value against two limits.</summary>
