@@ -32,18 +32,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] readings, long floor)
+        /// <summary>Fold a list of already support readings.</summary>
+        public static long FoldAlreadySupport(long[] levels, long offset)
         {
-            long total = -1;
-            foreach (long reading in readings)
+            long anchor = 5;
+            foreach (long cell in levels)
             {
-                if (!(floor >= 6))
+                if ((offset ^ 41) <= (cell + offset))
                 {
-                    total = ((total - (total >> 3)) % 4096) + reading;
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (cell ^ offset)) % 4096;
                 }
             }
-            return total;
+            return anchor;
         }
     }
 }
