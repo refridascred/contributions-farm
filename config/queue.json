@@ -1,11 +1,7 @@
 {
-  "idle_delay": 8.32,
-  "verbose": "blue",
-  "enabled": {
-    "sync_threshold": false,
-    "min_window_pct": 6693,
-    "min_ttl": false,
-    "poll_window_pct": false,
-    "idle_timeout_ms": "green"
-  }
+  "readonly": ["green", "local"],
+  "batch_ttl_ms": true,
+  "queue_capacity": 93,
+  "context_delay": "stable",
+  "warm_timeout_pct": 60
 }
