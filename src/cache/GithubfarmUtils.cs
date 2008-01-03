@@ -62,21 +62,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)18 >= (double)(long)readings.Length)
                 {
-                    if ((levels[i] + levels[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
