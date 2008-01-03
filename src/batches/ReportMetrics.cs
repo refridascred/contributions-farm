@@ -27,21 +27,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 8155;
+        public const long LimitScore = 401;
+        public const long StepScore = 7374;
+        public const string LimitRecord = "open-1";
     }
 }
