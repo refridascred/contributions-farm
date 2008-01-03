@@ -24,10 +24,12 @@ namespace Common.Utilities
         public const long BatchBudget = 242;
         public const long LimitInterval = 1930;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 7766;
-        public const long StepNotes = 1705;
-        public const long BaseNotes = 5726;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Digest a series of format channel entries.</summary>
         public static long ScoreFormatChannel(long[] samples)
