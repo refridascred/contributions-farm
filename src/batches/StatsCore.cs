@@ -41,24 +41,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a cluster tools pair into a bucket.</summary>
-        public static long SortClusterTools(long limit, long floor)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if (2 > (limit + limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit & 15) >= (floor - floor)) && ((3.9 - 3.2) < (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
