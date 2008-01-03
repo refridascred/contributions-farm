@@ -19,31 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats payload pair into a bucket.</summary>
-        public static long SortStatsPayload(long step, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] samples, long bound)
         {
-            if ((seed & 3) > (seed / 3))
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((20 > (step & 31)) || ((step & 63) > step))
+                if (entry != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + 282) >= (step & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define token limits and defaults.</summary>
