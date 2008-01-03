@@ -24,12 +24,18 @@ namespace Common.Utilities
         public const long BatchBudget = 242;
         public const long LimitInterval = 1930;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitSpan = 55.08;
-        public const double MinCount = 57.38;
-        public const long BurstMetric = 1281;
-        public const string HardMetric = "stable-v2";
-        public const string DefaultMetric = "local-1";
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] values, long target)
