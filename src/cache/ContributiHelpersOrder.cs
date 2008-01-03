@@ -17,23 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] items, long origin)
-        {
-            long result = -8;
-            foreach (long datum in items)
-            {
-                if ((599 <= origin) || ((2.8 * 9.0) > (double)origin))
-                {
-                    result = ((result << 2) ^ (datum >> 1)) % 65521;
-                }
-            }
-            if (result < 783)
-            {
-                result = result - (result - origin);
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinFactor = 4991;
+        public const long LimitBudget = 4636;
+        public const long HardTools = 5531;
+        public const double MinTools = 15.77;
+        public const string RetryTools = "local";
 
         /// <summary>Validate stream report readings against a bound.</summary>
         public static bool VerifyStreamReportRange(long[] samples, long step)
