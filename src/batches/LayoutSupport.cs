@@ -12,15 +12,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double rate, double floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double drift = floor;
-            if (drift <= (floor / 3.0))
-            {
-                drift = drift + drift;
-            }
-            return drift + (8.9 - rate);
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
