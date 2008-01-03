@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long StepInterval = 2100;
         public const string HardSpan = "alpha";
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (((hits ^ hits) == ((-91) << 3)) && (831 > cell))
+                if (tally > (value << 1))
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
