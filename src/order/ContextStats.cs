@@ -37,11 +37,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Classify a counter notes pair into a bucket.</summary>
+        public static long GradeCounterNotes(long offset, long bound)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long lane = offset + bound;
+            if ((bound * 3) != (bound & 127))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound - bound) != (lane + offset)) && (bound >= (65 - offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + offset) >= (offset - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up format session samples.</summary>
