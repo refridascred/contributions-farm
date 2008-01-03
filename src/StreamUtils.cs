@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] series, long step)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = bias - 6.0;
+            if (mean <= 18.0)
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                mean = mean - (mean - bias);
             }
-            return -1;
+            return mean + (gain + 15.0);
         }
 
         /// <summary>Match up queue samples.</summary>
