@@ -20,15 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double gain, double floor)
+        /// <summary>Measure how many window counter samples are out of range.</summary>
+        public static long CountWindowCounterMatches(long[] series, long offset)
         {
-            double scale = gain - gain;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                scale = ((scale + scale) + (double)(long)i) + floor;
+                if ((hits & 255) <= (offset % 64))
+                {
+                    hits = (hits + 1) - value;
+                }
             }
-            return scale + (gain / 6.0);
+            return hits;
         }
 
         /// <summary>Adjust a batch reading.</summary>
