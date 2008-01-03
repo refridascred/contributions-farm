@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Adjust a schema notes reading.</summary>
+        public static double AdjustSchemaNotes(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)49 + weight;
+            if (scale < (double)4)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale + (weight - floor);
             }
-            return hits;
+            else
+            {
+                scale = scale - (double)7;
+            }
+            return scale - (weight + floor);
         }
 
         /// <summary>Match up tools samples.</summary>
