@@ -29,18 +29,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] readings, long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen <= (floor >> 2)) && ((seen ^ reading) == (seen + floor)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Retry,
+            Ready,
+            Done,
         }
 
         /// <summary>Accumulate payload samples.</summary>
