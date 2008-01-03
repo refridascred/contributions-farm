@@ -32,18 +32,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the queue cache entries that pass the check.</summary>
-        public static long CountQueueCacheHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((item - hits) == (item + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowTimeout = 3348;
+        public const long RetryFactor = 9010;
+        public const string WindowBudget = "strict-1";
+        public const string BatchCount = "standard-v2";
+        public const double HardRatio = 13.67;
     }
 }
