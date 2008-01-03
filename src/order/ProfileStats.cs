@@ -32,20 +32,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(limit > (mix ^ mix)))
-                {
-                    mix = mix ^ (mix - 74);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 7891;
+        public const long BurstInterval = 8604;
+        public const double BaseSession = 73.57;
 
         /// <summary>Measure how many checks cluster samples are out of range.</summary>
         public static long CountChecksClusterGaps(long[] samples)
