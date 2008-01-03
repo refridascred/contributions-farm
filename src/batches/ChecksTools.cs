@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double bias, double bias2)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            double rate = (double)(64 / 6);
-            for (int i = 0; i < 8; i++)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                rate = (rate + bias2) + (double)(long)i;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return rate - (bias2 + bias);
+            return sum;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
