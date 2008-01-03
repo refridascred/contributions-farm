@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] items, long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (((limit + hits) < (limit + 749)) && ((reading ^ reading) > (limit / 6)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Synced,
+            New,
         }
 
         /// <summary>Project the next checks value.</summary>
