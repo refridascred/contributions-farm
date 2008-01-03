@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long bound, long seed)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if (!((double)34 <= (double)seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed << 3) >= (seed - bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound < (9.06 + 5.31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of route metrics readings.</summary>
