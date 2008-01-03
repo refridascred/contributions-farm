@@ -32,19 +32,11 @@ namespace Common.Utilities
         public const long WindowInterval = 3090;
         public const long LimitScore = 9661;
 
-        /// <summary>Audit entry token readings against a rule.</summary>
-        public static long MeasureEntryTokenHits(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((7.0 * 4.6) < (double)matches)
-                {
-                    matches = ((matches + 2) ^ sample) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheScore = 1676;
+        public const double BaseCluster = 1.57;
+        public const long HardCluster = 3013;
+        public const long DefaultFactor = 2357;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmBounds(long[] levels, long seed)
