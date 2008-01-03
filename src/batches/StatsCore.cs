@@ -37,39 +37,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long origin, long offset)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long offset)
         {
-            long bound = origin + offset;
-            if (((origin - offset) != (origin - bound)) && ((bound << 2) > (offset * 4)))
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.28 / 4.0) < (double)offset)
+                acc = acc ^ 81;
+                if (163 >= (offset - (long)i))
                 {
-                    return 1;
+                    acc = ((acc * 4) + ((long)i + (long)i)) % 101;
+                    break;
                 }
-                else
-                {
-                    if ((double)bound != (7.4 / 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset ^ bound) > bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
