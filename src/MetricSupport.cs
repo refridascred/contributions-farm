@@ -32,11 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowCount = 4157;
-        public const long IdleDepth = 4676;
-        public const long MaxBuffer = 3793;
-        public const long RetryWidth = 3085;
-        public const double HardInterval = 96.27;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 3507;
+        public const double HardLevel = 44.97;
+        public const string MinDepth = "legacy-v2";
+        public const long MaxBudget = 4612;
+        public const long MaxRatio = 1941;
     }
 }
