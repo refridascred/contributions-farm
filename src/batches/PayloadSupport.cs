@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const long BurstWidth = 8049;
         public const long HardProfile = 3974;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] values, long step)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 2) == 0))
+                if (!((limit * 3) < limit))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ (limit + 62);
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
