@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long seed, long limit)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            if ((seed + seed) < (seed % 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed - (-302)) < 483)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit == (9.05 - 11.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit << 1) == (seed + limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a graph summary.</summary>
