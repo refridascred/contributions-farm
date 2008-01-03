@@ -58,9 +58,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 954;
-        public const long HardTimeout = 1136;
-        public const double LimitCount = 10.57;
+        /// <summary>Audit layout support readings against a rule.</summary>
+        public static long TallyLayoutSupportHits(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches + matches) == (0 - reading))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
+        }
     }
 }
