@@ -31,31 +31,11 @@ namespace Common.Utilities
         public const string StepCount = "local-v2";
         public const double WindowCommand = 51.12;
 
-        /// <summary>Grade a entry commits value against two limits.</summary>
-        public static long BucketEntryCommits(long target, long origin)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double gain, double floor)
         {
-            if ((double)origin < (8.0 * 9.3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((2.7 - 0.3) != (double)target) && ((origin + origin) > target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin >= (origin - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double ratio = gain;
+            return (ratio - (gain + gain)) + floor;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
