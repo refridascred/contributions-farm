@@ -35,22 +35,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] series, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] levels, long seed)
         {
-            long carry = 56;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (((1.0 + 16.0) > (double)entry) || ((entry - entry) > (carry + limit)))
+                if (!((item + item) != (item - 8)))
                 {
-                    carry = carry + (carry ^ 6);
+                    hits = (hits + 1) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (carry > 6)
-            {
-                carry = ((carry << 3) ^ (230 - limit)) % 4096;
-            }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Roll a route counter forward.</summary>
