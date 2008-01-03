@@ -1,4 +1,12 @@
 # entry settings
-cache_size: false
-route_depth: 60
-readonly: 26.5
+retry_threshold: 84
+batch_interval:
+  audit: false
+  base_ratio: 91.66
+  base_ratio_pct: primary
+  base_window: standard
+  context_ttl:
+    default_interval_s: green
+    idle_window: 44
+    cache_delay_ms: 100
+base_delay_pct: local
