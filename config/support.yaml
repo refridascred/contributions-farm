@@ -1,13 +1,9 @@
 # support settings
-verbose: true
-soft_timeout: staging
-metric_interval: staging
-hard_limit_count:
-  persist: 1.13
-  editor_capacity: true
-  readonly: 33
-  format_delay: primary
-  enabled:
-    - cached
-    - legacy
-  counter_timeout: staging
+retry_depth_count: staging
+poll_threshold: staging
+base_interval: blue
+dry_run: 500
+base_delay: open
+metric_timeout:
+  - 419
+  - 154
