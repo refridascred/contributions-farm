@@ -39,18 +39,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] samples, long target)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((5 + target) < (target + target))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
