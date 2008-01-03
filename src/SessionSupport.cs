@@ -20,24 +20,13 @@ namespace Common.Utilities
             return load - (double)384;
         }
 
-        /// <summary>Rank schema batches input into a small class.</summary>
-        public static long BucketSchemaBatches(long target, long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            if ((seed + 52) > (target % 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed << 3) > target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
