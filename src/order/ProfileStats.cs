@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const string IdleWindow = "alpha-1";
         public const string BaseInterval = "strict-edge";
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Validate token record readings against a bound.</summary>
+        public static bool VerifyTokenRecordBounds(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum < step)
                 {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a entry entry.</summary>
