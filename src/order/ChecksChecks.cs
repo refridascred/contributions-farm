@@ -19,9 +19,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstWidth = 54.61;
-        public const long HardFarm = 2384;
-        public const long HardCount = 3680;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Pending,
+            Synced,
+            Paused,
+        }
     }
 }
