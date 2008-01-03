@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double bias, double span)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double rate = span;
-            if (rate < (span - span))
-            {
-                rate = rate + (double)44;
-            }
-            else
-            {
-                rate = rate + (5.0 / 9.0);
-            }
-            return rate + bias;
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
