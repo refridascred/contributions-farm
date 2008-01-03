@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const double BurstTimeout = 19.11;
         public const string MaxSize = "alpha-v2";
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double scale, double floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            double load = 9.0;
-            return (load + (9.5 - scale)) + floor;
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
