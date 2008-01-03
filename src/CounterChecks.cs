@@ -62,19 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] levels, long offset)
+        /// <summary>Audit graph githubfarm readings against a rule.</summary>
+        public static long MeasureGraphGithubfarmMatches(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (item < offset)
+                if ((origin % 3) >= (6 + 949))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) - sample;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a editor info.</summary>
