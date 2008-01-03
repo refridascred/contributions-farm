@@ -1,11 +1,18 @@
 # support settings
-min_capacity_count: primary
-soft_window_ms: blue
-max_size: 4
-soft_capacity_count:
-  max_ttl_pct: false
-  soft_threshold_s: 30
-  sync_window_count: false
-  min_depth: staging
-editor_retries: fallback
-default_window_ms: 96.94
+dry_run:
+  - eu-west
+  - cached
+  - green
+  - latest
+max_ratio:
+  - 256
+  - 474
+  - 263
+checks_depth:
+  base_ttl_ms: 60
+  soft_depth_s: 64
+  warm_limit_ms: 34.29
+  retry_window_ms: 100
+audit:
+  - 240
+  - 160
