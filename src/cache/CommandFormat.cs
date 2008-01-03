@@ -37,22 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] data, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long result = 702;
-            foreach (long value in data)
-            {
-                if ((double)result <= 7.41)
-                {
-                    result = (result - (value - 60)) - step;
-                }
-            }
-            if (result < (-9))
-            {
-                result = (result - (38 - result)) % 97;
-            }
-            return result;
+            Draft,
+            Done,
+            Failed,
+            Retry,
         }
     }
 }
