@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long floor, long floor2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = floor + floor2;
+            if (((cur % 2) <= cur) || ((floor >> 4) <= (cur << 2)))
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)floor == (9.0 / 2.0))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((cur / 2) > (floor / 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
