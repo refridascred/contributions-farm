@@ -14,39 +14,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long offset, long origin)
-        {
-            if ((offset % 24) == (origin * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.54 + 12.0) <= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin <= (origin - offset)) || ((offset * 4) <= (277 >> 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin >> 1) >= (533 / 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 5504;
+        public const string RetryRoute = "alpha-1";
+        public const string BurstRoute = "cached";
+        public const string WindowBudget = "primary-v2";
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] series, long limit)
