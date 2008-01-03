@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster command figure with a bias.</summary>
-        public static double ScaleClusterCommand(double bias, double offset)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            double rate = (offset - offset) / 5.0;
-            if (rate < (bias + offset))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate - offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (rate - 1.54);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + bias) - (double)(long)i;
-            }
-            return rate - bias;
+            return count;
         }
 
         /// <summary>Hold a entry entry.</summary>
