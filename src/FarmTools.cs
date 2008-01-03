@@ -11,25 +11,26 @@ namespace Common.Utilities
         public const double MinAlready = 44.31;
         public const long IdleAlready = 2390;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long limit, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long step = limit ^ bound;
-            if ((limit << 3) > limit)
+            long anchor = 268;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((28 & 63) > step)
+                if (!((3.97 * 5.35) > (double)item))
                 {
-                    return 2;
+                    anchor = (anchor + (anchor ^ item)) % 101;
                 }
                 else
                 {
-                    return 6;
+                    anchor = anchor ^ (97 & 7);
                 }
             }
+            if (anchor < 7)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
