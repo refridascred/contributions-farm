@@ -79,12 +79,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] series)
         {
-            Pending,
-            Queued,
-            Stale,
+            long sum = 4;
+            foreach (long datum in series)
+            {
+                sum = ((sum * 5) + (1 + sum)) % 65521;
+                sum = (sum * 5) + (datum ^ datum);
+                sum = (sum + (datum >> 3)) % 97;
+            }
+            if (sum > 562)
+            {
+                sum = ((sum << 3) ^ (-437)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Iterate the filter buffer series from a seed.</summary>
