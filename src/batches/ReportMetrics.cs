@@ -37,24 +37,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] series, long seed)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long sum = 200;
-            foreach (long datum in series)
-            {
-                if ((sum % 24) >= (sum * 5))
-                {
-                    sum = ((sum * 2) + (datum / 4)) + seed;
-                }
-                sum = (sum ^ sum) % 4096;
-                sum = (sum ^ ((long)series.Length + datum)) % 101;
-            }
-            if (sum < 41)
-            {
-                sum = (sum + sum) % 255;
-            }
-            return sum % 65521;
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
