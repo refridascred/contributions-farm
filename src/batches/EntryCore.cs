@@ -42,10 +42,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftFactor = 2529;
-        public const long SoftProfile = 2460;
-        public const string RetryProfile = "local";
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long origin, long step)
+        {
+            if ((4 / 2) >= (step + 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step < (step - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin << 1) <= (origin / 9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
