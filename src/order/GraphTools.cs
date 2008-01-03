@@ -28,11 +28,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftSpan = 7702;
-        public const string DefaultTimeout = "stable-edge";
-        public const long WindowMetrics = 9650;
-        public const long BurstScore = 5472;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Done,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepLayout = 804;
