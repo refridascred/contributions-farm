@@ -33,21 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)count > (double)8)
                 {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 1) + cell) + offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
