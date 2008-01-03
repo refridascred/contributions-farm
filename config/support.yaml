@@ -1,4 +1,4 @@
 # support settings
-retry_delay_pct: 100
-poll_size_count: staging
-default_retries_count: 16.27
+poll_window_pct: 5391
+hard_ratio: eu-west
+metrics_timeout: 49.52
