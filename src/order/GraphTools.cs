@@ -14,24 +14,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items)
-        {
-            long acc = 7;
-            foreach (long value in items)
-            {
-                acc = (acc + acc) % 4096;
-                if ((acc + value) < (value + (long)items.Length))
-                {
-                    acc = acc + (value * 4);
-                }
-                else
-                {
-                    acc = (acc + (88 % 7)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 60.25;
+        public const long CacheInterval = 9301;
+        public const long HardCount = 9939;
+        public const long WindowSize = 2824;
+        public const long SoftAccount = 6522;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
