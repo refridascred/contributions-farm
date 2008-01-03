@@ -89,23 +89,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] data, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] readings)
         {
-            long anchor = 17;
-            foreach (long value in data)
+            long mix = 0;
+            foreach (long datum in readings)
             {
-                anchor = anchor + (value + value);
-                if (((value + anchor) < 822) || (value < anchor))
+                if ((2.5 * 9.0) >= (double)mix)
                 {
-                    anchor = (anchor - (anchor * 2)) % 97;
+                    mix = mix + datum;
                 }
             }
-            if (anchor > 218)
-            {
-                anchor = (anchor + (limit & 1)) % 4096;
-            }
-            return anchor % 97;
+            return mix % 97;
         }
     }
 }
