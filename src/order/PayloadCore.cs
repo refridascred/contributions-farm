@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Compare every pair of schema context readings.</summary>
+        public static long PairSchemaContextCount(long[] samples)
         {
-            Pending,
-            Queued,
-            Ready,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine layout checks values into a single score.</summary>
