@@ -37,13 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Digest a series of format channel entries.</summary>
+        public static long ScoreFormatChannel(long[] samples)
         {
-            Draft,
-            Done,
-            Failed,
-            Retry,
+            long acc = 743;
+            foreach (long entry in samples)
+            {
+                if ((13.0 - 1.87) == (double)entry)
+                {
+                    acc = ((acc << 3) ^ (acc & 1)) % 255;
+                }
+            }
+            return acc;
         }
     }
 }
