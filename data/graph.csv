@@ -1,6 +1,8 @@
-id,count,label,state
-1,855,626,strict
-2,42.82,blue,74.81
-3,97.62,44.11,legacy
-4,802,primary,86.17
-5,503,blue,stable
+id,owner,count,level,weight
+1,625,507,333,primary
+2,317,green,67.98,852
+3,65.29,local,stable,664
+4,46.32,788,62.33,latest
+5,693,785,703,legacy
+6,edge,45,96.81,453
+7,31,47.5,local,edge
