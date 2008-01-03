@@ -1,8 +1,10 @@
 {
-  "batch_threshold_ms": 9819,
-  "poll_interval_s": "legacy",
-  "flush_interval": [199, 276],
-  "persist": "green",
-  "burst_interval_ms": ["local", "open", "legacy", "staging"],
-  "dry_run": ["blue", "eu-west", "primary", "primary"]
+  "compress": 8640,
+  "hard_timeout_count": 23.45,
+  "sync_interval": {
+    "metrics_timeout": true,
+    "enabled": 45,
+    "hard_timeout_count": [346, 287, 460, 281],
+    "batch_capacity": true
+  }
 }
