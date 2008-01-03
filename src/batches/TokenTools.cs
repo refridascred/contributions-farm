@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseWidth = 82.66;
+        public const double BurstContributi = 16.43;
+        public const double SoftContributi = 82.45;
+        public const long BatchContributi = 5802;
+        public const double MaxBudget = 65.52;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsHits(long[] data, long seed)
