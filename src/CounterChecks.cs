@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
             public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
         }
 
         /// <summary>Hold a metric stats.</summary>
