@@ -54,12 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
