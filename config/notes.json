@@ -1,11 +1,14 @@
 {
-  "notes_capacity": ["staging", "latest", "primary", "local"],
-  "tools_timeout": 34.54,
-  "idle_ttl_pct": {
-    "enabled": "edge",
-    "hard_threshold_s": "latest",
-    "command_interval": 1024,
-    "burst_retries_pct": 2652,
-    "idle_retries_count": [451, 255, 7, 279]
-  }
+  "warm_retries": true,
+  "poll_threshold_s": {
+    "retry_window": 92,
+    "max_retries_count": "strict",
+    "max_delay_s": 500,
+    "enabled": "cached",
+    "flush_ratio_ms": true,
+    "warm_timeout_s": ["primary", "blue", "standard"]
+  },
+  "hard_ratio": 7526,
+  "poll_depth": "blue",
+  "cache_window_pct": true
 }
