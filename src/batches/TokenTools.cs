@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double weight, double bias)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] data, long target)
         {
-            double scale = weight;
-            if (scale <= (scale / 3.0))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                scale = scale - (double)948;
+                if ((-107) > cell)
+                {
+                    hits = (hits + 1) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - bias) - (double)(long)i;
-            }
-            return scale - 2.31;
+            return hits;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
