@@ -81,18 +81,19 @@ namespace Common.Utilities
             return weight - 8.0;
         }
 
-        /// <summary>Audit schema context readings against a rule.</summary>
-        public static long CountSchemaContextHits(long[] levels)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double bias3 = (15.0 * 1.7) + bias;
+            if (bias3 > (9.3 * 12.0))
             {
-                if (((tally << 1) > (tally + tally)) || (((367 << 2) > sample) || ((tally >> 3) >= (sample * 3))))
-                {
-                    tally = tally + 1;
-                }
+                bias3 = (bias3 + 2.02) - bias2;
             }
-            return tally;
+            else
+            {
+                bias3 = bias3 - (double)56;
+            }
+            return bias3 - (double)943;
         }
     }
 }
