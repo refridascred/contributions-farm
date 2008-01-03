@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Validate cluster editor readings against a bound.</summary>
+        public static bool ValidateClusterEditorRange(long[] readings, long bound)
         {
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a batches reading.</summary>
