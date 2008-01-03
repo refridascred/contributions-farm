@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long WindowGraph = 4039;
         public const long DefaultGraph = 2071;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a command entry.</summary>
