@@ -46,13 +46,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Closed,
+            Synced,
         }
     }
 }
