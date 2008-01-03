@@ -38,11 +38,11 @@ namespace Common.Utilities
         public const long WindowScore = 8631;
         public const long BurstWindow = 6730;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 1410;
-        public const long IdleChannel = 7769;
-        public const string LimitTimeout = "staging-edge";
-        public const long CacheScore = 4100;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 9775;
+        public const long BaseLayout = 7542;
+        public const string BatchLayout = "strict-v2";
+        public const long LimitSpan = 2027;
 
         /// <summary>Measure how many counter batch samples are out of range.</summary>
         public static long TallyCounterBatchMatches(long[] items, long target)
