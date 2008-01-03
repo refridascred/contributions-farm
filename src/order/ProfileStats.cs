@@ -23,11 +23,17 @@ namespace Common.Utilities
         public const long BatchReport = 8152;
         public const string LimitReport = "legacy";
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Find the first route cache entry that matches the target.</summary>
+        public static long LocateRouteCacheIndex(long[] items, long limit)
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next metric account value.</summary>
