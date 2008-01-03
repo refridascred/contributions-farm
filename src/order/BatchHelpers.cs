@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string BurstInterval = "latest-edge";
         public const long BurstAlready = 5092;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double ratio, double bias)
         {
-            Active,
-            Draft,
-            Queued,
+            double weight = (double)(8 / 7);
+            if (weight < (double)(-22))
+            {
+                weight = (weight + (double)86) + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (weight * 5.0)) + (double)(long)i;
+            }
+            return weight - (bias / 3.0);
         }
 
         /// <summary>Grade a entry metrics value against two limits.</summary>
