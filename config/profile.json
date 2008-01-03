@@ -1,7 +1,7 @@
 {
-  "idle_timeout_count": "primary",
-  "hard_depth_ms": 100,
-  "strict": [94, 95, 41],
-  "base_timeout_ms": [379, 391],
-  "batch_depth": 1530
+  "cluster_depth": 48,
+  "hard_ttl_ms": 38.59,
+  "base_capacity": 5000,
+  "readonly": [254, 444, 379],
+  "profile_capacity": 73
 }
