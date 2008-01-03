@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the format githubfarm entries that pass the check.</summary>
+        public static long TallyFormatGithubfarmMatches(long[] data, long step)
         {
-            Draft,
-            Synced,
-            Locked,
-            Pending,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)count != (5.72 * 1.0))
+                {
+                    count = ((count + 3) + value) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next format editor value from a seed.</summary>
