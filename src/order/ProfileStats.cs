@@ -23,12 +23,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 3974;
-        public const long RetryRatio = 8752;
-        public const long SoftTools = 9190;
-        public const long LimitCount = 8982;
-        public const string RetryFactor = "legacy-1";
+        /// <summary>Validate editor cluster readings against a bound.</summary>
+        public static bool CheckEditorClusterBounds(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TallyMetrics(long[] items, long origin)
