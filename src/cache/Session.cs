@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "fallback-edge";
-        public const double CacheStream = 76.31;
-        public const long RetryWidth = 7369;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long WindowToken = 6407;
