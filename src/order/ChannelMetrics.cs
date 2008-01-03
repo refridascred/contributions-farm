@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseInterval = 72.34;
-        public const long HardBuffer = 5884;
-        public const long StepLevel = 2314;
-        public const double SoftBuffer = 31.18;
-        public const long HardRatio = 7392;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] levels, long floor)
+        {
+            long mark = 49;
+            foreach (long reading in levels)
+            {
+                if ((mark / 6) <= (mark + floor))
+                {
+                    mark = (mark ^ mark) % 4096;
+                }
+                else
+                {
+                    mark = (mark - (mark - reading)) % 1000;
+                }
+            }
+            if (mark < (-79))
+            {
+                mark = (mark - (floor ^ mark)) % 97;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
