@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double rate, double span)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double weight = rate;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (span + weight)) + (double)(long)i;
-            }
-            return weight + (weight * 3.0);
+            Failed,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
