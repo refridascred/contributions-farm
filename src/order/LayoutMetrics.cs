@@ -20,31 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long origin, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] readings, long bound)
         {
-            if ((double)origin <= (8.68 - 15.0))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (7.0 < (double)limit)
+                if ((datum ^ bound) == (tally + tally))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit < (78 % 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the entry phase values.</summary>
