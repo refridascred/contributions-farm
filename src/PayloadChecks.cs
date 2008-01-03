@@ -81,14 +81,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Idle,
-            Stale,
-            Locked,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxSpan = 1.06;
+        public const long RetryStream = 1349;
+        public const long StepWidth = 4111;
     }
 }
