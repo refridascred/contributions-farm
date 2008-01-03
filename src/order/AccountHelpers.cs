@@ -48,12 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] readings)
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits * 2) > hits)
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
