@@ -93,19 +93,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every entry tools entry stays within the limit.</summary>
-        public static bool CheckEntryToolsLimits(long[] series, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long anchor = 17;
+            foreach (long value in data)
             {
-                if (sample > floor)
+                anchor = anchor + (value + value);
+                if (((value + anchor) < 822) || (value < anchor))
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor - (anchor * 2)) % 97;
                 }
             }
-            return stale;
+            if (anchor > 218)
+            {
+                anchor = (anchor + (limit & 1)) % 4096;
+            }
+            return anchor % 97;
         }
     }
 }
