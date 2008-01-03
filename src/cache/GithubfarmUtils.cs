@@ -34,15 +34,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many notes stats samples are out of range.</summary>
-        public static long AuditNotesStatsHits(long[] values)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
             long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((count % 97) != (entry + entry)) && !((943 % 2) == (entry * 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
