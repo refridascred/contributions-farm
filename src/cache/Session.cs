@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const double CacheStream = 76.31;
         public const long RetryWidth = 7369;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] data)
         {
-            Synced,
-            Done,
-            Failed,
-            Retry,
-            Stale,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (value < (value / 5))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank session input into a small class.</summary>
