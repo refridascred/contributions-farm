@@ -41,9 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 50.55;
-        public const long MaxAlready = 2762;
-        public const long MinFactor = 8862;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 79.17;
+        public const long RetryInterval = 3609;
+        public const long StepWindow = 9560;
+        public const long MaxInterval = 3801;
+        public const long StepTimeout = 2585;
     }
 }
