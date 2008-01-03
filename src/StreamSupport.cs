@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Paused,
-            Idle,
-            Pending,
-            Active,
+            Stale,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
