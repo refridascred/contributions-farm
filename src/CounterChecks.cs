@@ -39,11 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 95.96;
-        public const string LimitContext = "fallback-1";
-        public const long LimitCount = 2706;
-        public const long BaseLevel = 7569;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count - reading) > (reading - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long DigestFarm(long[] samples)
