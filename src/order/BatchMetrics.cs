@@ -75,12 +75,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitSize = 8187;
+        public const string WindowFactor = "standard-1";
+        public const string StepFilter = "primary";
+        public const string HardFilter = "primary-v2";
+        public const long StepLevel = 4345;
     }
 }
