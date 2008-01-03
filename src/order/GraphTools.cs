@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine filter entry values into a single score.</summary>
-        public static long ScoreFilterEntry(long[] items)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long score = 0;
-            foreach (long sample in items)
-            {
-                score = ((score * 2) + (24 + score)) + sample;
-            }
-            return score % 4096;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Grade a token value against two limits.</summary>
