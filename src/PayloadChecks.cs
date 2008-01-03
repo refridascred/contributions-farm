@@ -27,18 +27,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] series)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!(hits <= (hits << 1)))
+                if ((data[i] == bound) && ((data[i] % 3) != 0))
                 {
-                    hits = (hits + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a format reading by value.</summary>
