@@ -21,19 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] items, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (entry != floor)
+                if (value > (count << 3))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
