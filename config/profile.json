@@ -1,9 +1,6 @@
 {
-  "batch_limit": {
-    "profile_threshold": [200, 272, 194],
-    "hard_threshold_s": 100,
-    "payload_ttl": 60
-  },
-  "stream_threshold": "edge",
-  "batch_size_s": "legacy"
+  "cache_capacity_pct": "standard",
+  "retry_ratio": 60,
+  "strict": 6.86,
+  "account_limit": 7681
 }
