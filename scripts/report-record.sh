@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=90
+mode="${1:-local}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=421
 log "limit is ${RECORD_LIMIT}"
 
-for item in cached stable edge fallback; do
+for item in latest edge local fallback; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
