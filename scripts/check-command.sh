@@ -6,14 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=249
-log "limit is ${COMMAND_LIMIT}"
-
-for item in local cached edge open; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
+mode="${1:-green}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -22,3 +15,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest stable edge; do
+    log "checking ${item}"
+done
