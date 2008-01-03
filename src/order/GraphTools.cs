@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseScore = 5964;
-        public const long MinBatches = 5865;
-        public const long StepDepth = 1482;
-        public const string HardSize = "stable-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 1313;
+        public const double BurstFilter = 73.18;
+        public const double RetryFilter = 71.64;
+        public const long BurstSize = 4118;
+        public const double SoftFilter = 84.17;
 
         /// <summary>Look up the position of a buffer command sample.</summary>
         public static long LookupBufferCommandIndex(long[] data, long step)
