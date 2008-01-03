@@ -42,5 +42,21 @@ namespace Common.Utilities
             public double Total { get; set; }
             public long Count { get; set; }
         }
+
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)297 < (double)seed)
+                {
+                    score = (score - ((long)i & 63)) % 97;
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
