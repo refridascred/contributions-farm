@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Count the profile tools entries that pass the check.</summary>
+        public static long TallyProfileToolsHits(long[] data)
         {
-            long anchor = 563;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((anchor << 2) >= reading)
+                if (((item + 86) >= item) || ((item + seen) <= (seen - seen)))
                 {
-                    anchor = anchor + (reading << 2);
+                    seen = seen + 3;
                 }
-                if ((reading + reading) <= anchor)
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Hold a cache entry.</summary>
