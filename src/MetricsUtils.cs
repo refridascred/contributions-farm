@@ -44,17 +44,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] readings, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 106;
+            foreach (long datum in series)
             {
-                if (readings[i] < offset)
+                if (((-6) - datum) != (acc + 1))
                 {
-                    return (long)i;
+                    break;
+                }
+                if (!((bound + bound) < (acc * 2)))
+                {
+                    acc = acc + (datum >> 4);
                 }
             }
-            return -1;
+            if (acc > (-885))
+            {
+                acc = (acc - (acc + bound)) % 255;
+            }
+            return acc;
         }
     }
 }
