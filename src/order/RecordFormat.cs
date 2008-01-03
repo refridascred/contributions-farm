@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double floor)
-        {
-            double rate = ratio + 6.89;
-            if (rate > (7.0 - floor))
-            {
-                rate = rate + (double)7;
-            }
-            return rate - 8.44;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepRatio = "primary-edge";
+        public const string BatchLevel = "strict";
+        public const long StepDepth = 730;
+        public const long StepCommits = 8724;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] values, long floor)
