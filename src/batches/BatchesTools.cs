@@ -19,23 +19,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Fold a list of counter token readings.</summary>
+        public static long FoldCounterToken(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            long sum = 5;
+            foreach (long value in samples)
             {
-                if (!((54 <= (result ^ result)) || ((7.0 * 5.47) != (double)result)))
-                {
-                    result = (result - (1 % 64)) % 101;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (((result * 5) + result) % 255) - (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                sum = ((sum ^ sum) % 4096) + value;
             }
-            return result;
+            return sum;
         }
     }
 }
