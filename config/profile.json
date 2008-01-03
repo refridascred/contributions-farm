@@ -1,6 +1,5 @@
 {
-  "cache_capacity_pct": "standard",
-  "retry_ratio": 60,
-  "strict": 6.86,
-  "account_limit": 7681
+  "hard_ttl_pct": 44.03,
+  "poll_ttl": 7422,
+  "readonly": false
 }
