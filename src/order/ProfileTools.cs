@@ -53,22 +53,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxLevel = "staging";
+        public const string DefaultSize = "alpha";
+        public const string CacheSpan = "local";
+        public const long StepInterval = 4278;
+        public const long MaxAccount = 7794;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutGaps(long[] series, long seed)
