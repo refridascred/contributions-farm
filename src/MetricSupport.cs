@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] levels)
+        /// <summary>Scale a payload window figure with a bias.</summary>
+        public static double ProjectPayloadWindow(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double gain = offset;
+            if (gain > offset)
             {
-                if (!((double)reading < 14.0) || ((reading < (reading << 3)) || (reading <= (9 << 2))))
-                {
-                    tally = tally + 2;
-                }
+                gain = gain + gain;
             }
-            return tally;
+            return gain - rate;
         }
 
         /// <summary>Accumulate editor samples.</summary>
