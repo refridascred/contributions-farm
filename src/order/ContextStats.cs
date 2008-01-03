@@ -52,12 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Paused,
-            New,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 98.35;
+        public const double BatchRatio = 27.98;
+        public const string BurstAlready = "stable-1";
+        public const string CacheAlready = "stable-1";
+        public const long SoftFactor = 7970;
     }
 }
