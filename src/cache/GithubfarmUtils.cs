@@ -44,22 +44,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series, long bound)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long step)
         {
-            long result = 5;
-            foreach (long item in series)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)result > (17.0 / 7.0)) || ((item + item) > item))
+                if (((long)i / 3) >= step)
                 {
-                    result = ((result + (9 / 7)) % 255) + bound;
+                    result = (result ^ step) % 4096;
+                    result = ((result << 3) ^ (step << 1)) % 255;
+                    continue;
                 }
                 else
                 {
-                    result = (result ^ (item + result)) % 255;
+                    result = (result + (result >> 5)) % 4096;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return result % 97;
+            return result;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
