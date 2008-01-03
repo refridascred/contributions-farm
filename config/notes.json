@@ -1,8 +1,12 @@
 {
-  "default_ratio": 500,
-  "base_capacity": 500,
-  "metrics_size": 12.2,
-  "compress": 44,
-  "burst_size_ms": 72.33,
-  "readonly": "staging"
+  "graph_depth": 5836,
+  "hard_threshold": {
+    "readonly": 60,
+    "batches_interval": "eu-west",
+    "max_depth_ms": 65.99,
+    "strict": [12, 380, 423],
+    "sync_ttl_ms": 21.88
+  },
+  "retry_retries_pct": 8894,
+  "sync_depth_ms": "eu-west"
 }
