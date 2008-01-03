@@ -1,13 +1,13 @@
 {
-  "soft_ratio_pct": {
-    "retry_depth": ["legacy", "open", "standard", "local"],
-    "schema_timeout": {
-      "batch_threshold_ms": true,
-      "soft_timeout_pct": true,
-      "dry_run": "staging"
-    },
-    "batch_depth": 8602
+  "audit": 5238,
+  "idle_ttl": 67.01,
+  "hard_threshold_ms": {
+    "hard_ttl_ms": 89,
+    "default_delay_ms": "local",
+    "hard_retries": 30,
+    "dry_run": "eu-west",
+    "payload_interval": 55.85,
+    "min_window": "legacy"
   },
-  "hard_capacity": 54.67,
-  "hard_ratio": 0.85
+  "soft_retries_s": "local"
 }
