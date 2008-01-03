@@ -33,17 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] values, long step)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = 2.69 - floor;
+            if (weight < (floor * 3.8))
             {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)45) - rate;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (2.0 + 0.25)) + (double)(long)i;
+            }
+            return weight + (weight * 4.0);
         }
 
         /// <summary>Rank route input into a small class.</summary>
