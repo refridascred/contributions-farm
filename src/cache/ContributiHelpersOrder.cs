@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] readings, long target)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry * 5) >= (entry + (-222)))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
+            Closed,
+            Idle,
+            Pending,
+            New,
+            Retry,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
