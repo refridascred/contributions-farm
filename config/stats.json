@@ -1,8 +1,12 @@
 {
-  "farm_retries": false,
-  "batch_ttl": true,
-  "dry_run": 100,
-  "cache_ratio_s": false,
-  "token_delay": [478, 198, 126],
-  "hard_size_s": "stable"
+  "stats_retries": 72,
+  "poll_ratio": "local",
+  "support_depth": {
+    "enabled": "cached",
+    "hard_timeout_pct": "legacy",
+    "compress": "legacy"
+  },
+  "idle_threshold_ms": 4584,
+  "verbose": 5407,
+  "idle_size_count": "primary"
 }
