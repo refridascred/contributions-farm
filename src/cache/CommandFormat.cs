@@ -43,18 +43,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of format channel entries.</summary>
-        public static long ScoreFormatChannel(long[] samples)
+        /// <summary>Iterate the commits cluster series from a seed.</summary>
+        public static long RollCommitsCluster(long seed)
         {
-            long acc = 743;
-            foreach (long entry in samples)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((13.0 - 1.87) == (double)entry)
+                if ((double)state >= (3.0 * 12.0))
                 {
-                    acc = ((acc << 3) ^ (acc & 1)) % 255;
+                    continue;
                 }
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    state = (state - ((long)i << 1)) ^ (long)i3;
+                    state = state - (99 << 2);
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return acc;
+            return state;
         }
     }
 }
