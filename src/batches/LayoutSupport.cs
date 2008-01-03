@@ -40,12 +40,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitLevel = 79.32;
-        public const long BaseSize = 5283;
-        public const long WindowFactor = 1831;
-        public const long LimitSize = 8546;
-        public const double BurstOrder = 40.91;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = (sum ^ (step << 1)) % 255;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long offset, long target)
