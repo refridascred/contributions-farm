@@ -39,9 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 9115;
-        public const long LimitTools = 2365;
-        public const string CacheDepth = "stable-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryLevel = 9088;
+        public const long RetryRatio = 3870;
+        public const long RetryPayload = 9359;
+        public const long LimitPayload = 2169;
+        public const long MinTimeout = 8109;
     }
 }
