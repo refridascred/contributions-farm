@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double bias, double bias2)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            double load = (double)((-91) + 74);
+            if (load >= bias)
+            {
+                load = (load - (bias / 3.0)) + bias2;
+            }
+            return load + 6.9;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
