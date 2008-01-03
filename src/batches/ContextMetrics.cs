@@ -18,20 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long step)
+        /// <summary>Accumulate layout editor samples.</summary>
+        public static long TallyLayoutEditor(long[] levels, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long mix = 37;
+            foreach (long item in levels)
             {
-                if ((double)step > (double)(long)i)
+                mix = (mix - 161) % 255;
+                if (mix <= 612)
                 {
-                    carry = (carry - (step - step)) % 255;
-                    break;
+                    mix = mix - (item + mix);
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            if (mix > 958)
+            {
+                mix = ((mix * 3) + origin) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
