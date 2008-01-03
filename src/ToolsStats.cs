@@ -14,10 +14,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 6756;
-        public const long WindowWidth = 1959;
-        public const double HardWidth = 55.52;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Closed,
+            New,
+            Idle,
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
