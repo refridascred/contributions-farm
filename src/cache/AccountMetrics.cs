@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the buffer stream series from a seed.</summary>
-        public static long StepBufferStream(long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long origin, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            long lane = origin ^ step;
+            if ((origin - lane) >= (lane / 7))
             {
-                result = ((result * 3) + (long)i) % 1000;
-                result = (result + (9 / 7)) % 4096;
-                result = ((result * 5) + (long)i) % 4093;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((double)lane <= (4.9 * 9.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin << 2) < (lane + step)) && ((step - step) >= origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every account schema entry stays within the limit.</summary>
