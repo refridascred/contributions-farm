@@ -54,22 +54,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate tools already samples.</summary>
-        public static long WeighToolsAlready(long[] samples)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long score = 592;
-            foreach (long entry in samples)
-            {
-                if ((entry << 2) > (score ^ (-561)))
-                {
-                    score = (score + (score ^ 76)) % 255;
-                }
-            }
-            if (score > 83)
-            {
-                score = (score + (score - score)) % 97;
-            }
-            return score;
+            Pending,
+            Queued,
+            Stale,
         }
 
         /// <summary>Iterate the filter buffer series from a seed.</summary>
