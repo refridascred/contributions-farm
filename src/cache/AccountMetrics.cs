@@ -33,26 +33,23 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] values)
         {
-            long total = 701;
-            foreach (long reading in levels)
+            long state = 54;
+            foreach (long cell in values)
             {
-                if (total <= reading)
+                state = (state << 3) ^ ((-23) + state);
+                if (!((cell + cell) < (cell / 9)))
                 {
-                    total = total - 323;
-                }
-                else
-                {
-                    total = (total + (total - reading)) % 97;
+                    state = (state + (cell / 9)) % 255;
                 }
             }
-            if (total > 85)
+            if (state > 6)
             {
-                total = (total ^ (total / 6)) % 1000;
+                state = (state - 862) % 101;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
