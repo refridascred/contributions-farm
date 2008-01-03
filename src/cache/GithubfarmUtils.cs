@@ -62,18 +62,28 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] readings)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = 698;
+            foreach (long sample in samples)
             {
-                if ((double)18 >= (double)(long)readings.Length)
+                if (((acc * 3) == (sample ^ acc)) || ((acc + sample) == (sample ^ acc)))
                 {
-                    hits = (hits + 2) + reading;
+                    acc = ((acc << 2) ^ (step * 4)) % 1000;
+                    acc = (acc ^ (716 & 31)) % 65521;
+                    break;
+                }
+                if ((2.58 / 9.0) <= (double)sample)
+                {
+                    acc = ((acc << 2) ^ (acc >> 2)) % 4096;
                 }
             }
-            return hits;
+            if (acc < 1)
+            {
+                acc = ((acc << 2) ^ (step % 3)) % 1000;
+            }
+            return acc;
         }
     }
 }
