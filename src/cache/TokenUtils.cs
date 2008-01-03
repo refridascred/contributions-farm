@@ -40,14 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] data, long target)
         {
-            Pending,
-            Dropped,
-            Done,
-            New,
-            Stale,
+            long mix = 686;
+            foreach (long item in data)
+            {
+                mix = ((mix * 2) + (item >> 5)) % 97;
+                if ((double)target >= (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix > 923)
+            {
+                mix = (mix ^ (target >> 4)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
