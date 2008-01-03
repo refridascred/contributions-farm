@@ -70,25 +70,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long offset, long floor)
+        /// <summary>Audit cache farm readings against a rule.</summary>
+        public static long TallyCacheFarmMatches(long[] data, long step)
         {
-            long cur = offset + floor;
-            if (cur > (30 - offset))
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset <= (cur >> 4))
+                if (((step & 7) >= step) && ((3 ^ hits) == (95 + value)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every buffer already entry stays within the limit.</summary>
