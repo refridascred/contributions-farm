@@ -17,22 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] samples)
+        /// <summary>Validate order layout readings against a bound.</summary>
+        public static bool CheckOrderLayoutLimits(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (((datum << 3) == (seen * 3)) || ((seen - seen) < seen))
+                if (item <= seed)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
