@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long StepInterval = 2100;
         public const string HardSpan = "alpha";
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] values)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (tally > (value << 1))
+                if ((datum >> 5) < datum)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
