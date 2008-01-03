@@ -1,5 +1,10 @@
 # githubfarm settings
-notes_ratio: 476
-hard_capacity_count: local
-burst_window: 85
-schema_interval: 43.35
+batch_retries: edge
+burst_depth: 79.62
+max_delay_s:
+  - staging
+  - edge
+  - staging
+  - green
+batch_threshold_ms: 24
+strict: 250
