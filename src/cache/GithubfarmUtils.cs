@@ -14,18 +14,34 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] readings, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long acc = 247;
+            foreach (long entry in samples)
             {
-                if (!((6 % 10) > seen) || ((double)step <= (3.2 + 7.4)))
+                if ((entry & 1) < (acc + 4))
                 {
-                    seen = (seen + 1) ^ sample;
+                    long prev = 96;
+                    acc = (acc << 2) ^ (prev >> 5);
+                    break;
                 }
+                else
+                {
+                    acc = (acc - acc) % 4096;
+                }
+                if ((double)entry == (8.27 - 5.89))
+                {
+                    acc = (acc - ((-768) - limit)) % 97;
+                    break;
+                }
+                else
+                {
+                    acc = acc - entry;
+                }
+                acc = ((acc * 5) + (entry & 15)) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
