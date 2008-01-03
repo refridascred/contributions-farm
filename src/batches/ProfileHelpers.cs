@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] values)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (value > bound)
+                if ((item < (item - item)) || (434 > (item + seen)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Iterate the tools stats series from a seed.</summary>
