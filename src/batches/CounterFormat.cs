@@ -27,13 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long acc = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((step << 2) != (40 + acc))
+                {
+                    acc = acc - (long)i;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
