@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const double SoftBuffer = 31.18;
         public const long HardRatio = 7392;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            New,
-            Pending,
-            Dropped,
-            Synced,
-            Failed,
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
