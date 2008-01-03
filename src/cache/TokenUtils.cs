@@ -32,11 +32,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowTimeout = 3348;
-        public const long RetryFactor = 9010;
-        public const string WindowBudget = "strict-1";
-        public const string BatchCount = "standard-v2";
-        public const double HardRatio = 13.67;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public bool Score { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
