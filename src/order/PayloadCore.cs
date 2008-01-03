@@ -53,23 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((acc - floor) <= floor))
-                {
-                    continue;
-                }
-                if (floor >= (floor << 2))
-                {
-                    acc = (acc * 3) + (33 % 64);
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public double Total { get; set; }
+            public bool Token { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
