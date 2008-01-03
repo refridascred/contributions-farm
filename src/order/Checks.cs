@@ -23,39 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long bound, long bound2)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            long prev = bound + bound2;
-            if ((double)prev >= (double)bound2)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((prev % 8) < (bound + prev)) || (bound >= (bound + prev)))
+                if (((8 << 1) <= score) || ((8.0 * 6.46) <= (double)step))
                 {
-                    return 4;
+                    score = ((score << 2) ^ 42) % 97;
+                    score = ((score * 2) + ((long)i / 6)) % 255;
                 }
-                else
-                {
-                    if ((double)bound2 != (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((prev % 100) <= prev)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Describe the order kind values.</summary>
