@@ -47,12 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
