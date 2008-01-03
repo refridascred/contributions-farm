@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] items, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((double)value != (7.86 / 8.0))
+                if (reading >= step)
                 {
-                    matches = (matches + 3) - origin;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a format entry.</summary>
