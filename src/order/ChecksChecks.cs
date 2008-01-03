@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long limit, long offset)
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            if (((-97) ^ limit) != (offset ^ limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit << 3) < offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit * 4) == (145 % 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi info.</summary>
