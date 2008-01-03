@@ -16,39 +16,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long bound, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] items, long limit)
         {
-            long next = bound ^ offset;
-            if ((9.9 * 1.0) == (double)bound)
+            long acc = 93;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)1 == (double)offset))
+                if (!((double)cell == (18.0 - 7.0)))
                 {
-                    return 6;
+                    acc = (acc + (cell >> 4)) + limit;
                 }
                 else
                 {
-                    if (offset > (offset * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((423 < (next - bound)) || ((offset + next) <= (offset << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = ((acc * 5) + (cell % 3)) % 97;
                 }
             }
+            if (acc < 97)
+            {
+                acc = acc ^ (acc & 7);
+            }
+            return acc % 97;
         }
 
         /// <summary>Digest a series of format entries.</summary>
