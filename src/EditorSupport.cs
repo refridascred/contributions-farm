@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first route contributi entry that matches the target.</summary>
-        public static long LookupRouteContributiIndex(long[] series, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 1;
+            foreach (long value in levels)
             {
-                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                if ((double)acc != (15.0 - 5.6))
                 {
-                    return (long)i;
+                    acc = (acc + offset) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc + value)) % 65521;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
