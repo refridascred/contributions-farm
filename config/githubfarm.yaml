@@ -1,8 +1,7 @@
 # githubfarm settings
-idle_limit_s: true
-stream_limit: 60
-poll_timeout: 250
-max_interval_ms:
-  - 381
-  - 239
-report_size: true
+persist: legacy
+soft_threshold_count: true
+command_retries: 30
+base_delay_s: primary
+stream_retries: 1263
+retry_retries_ms: false
