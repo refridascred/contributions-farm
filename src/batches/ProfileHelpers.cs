@@ -33,18 +33,11 @@ namespace Common.Utilities
         public const double BurstDepth = 15.85;
         public const long MaxInterval = 9506;
 
-        /// <summary>Locate a notes route reading by value.</summary>
-        public static long LookupNotesRouteIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 5081;
+        public const double MaxMetric = 55.63;
+        public const double BaseMetric = 47.55;
+        public const long HardCount = 5922;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] readings)
