@@ -23,18 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] samples)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches + value) > (2 + value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
