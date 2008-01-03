@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = floor;
+            if (mean < floor)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + (2.85 - rate);
             }
-            return count;
+            else
+            {
+                mean = mean - (rate / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (16.0 * 9.1)) + (double)(long)i;
+            }
+            return mean + (double)175;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
