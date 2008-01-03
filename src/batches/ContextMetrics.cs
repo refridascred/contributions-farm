@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every buffer queue entry stays within the limit.</summary>
-        public static bool ValidateBufferQueueBounds(long[] data, long step)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= step)
+                if (data[i] >= seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
