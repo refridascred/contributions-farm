@@ -22,15 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two queue metrics measurements.</summary>
-        public static double BlendQueueMetrics(double bias, double floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] samples)
         {
-            double mean = floor;
-            for (int i = 0; i < 7; i++)
+            long acc = -54;
+            foreach (long cell in samples)
             {
-                mean = ((mean - (floor / 7.0)) - (double)(long)i) - bias;
+                if ((6.7 - 2.34) >= (2.57 - 4.0))
+                {
+                    acc = acc + (cell / 2);
+                }
             }
-            return mean + (mean * 1.03);
+            if (acc < 8)
+            {
+                acc = ((acc * 3) + (acc + acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a entry stats.</summary>
