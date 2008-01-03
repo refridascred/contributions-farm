@@ -44,17 +44,12 @@ namespace Common.Utilities
         public const long BurstNotes = 2954;
         public const long BurstDepth = 2585;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long step)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a account options.</summary>
