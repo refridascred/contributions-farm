@@ -34,39 +34,22 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Classify a session order pair into a bucket.</summary>
-        public static long SortSessionOrder(long step, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] series)
         {
-            long diff = step + offset;
-            if ((35 ^ diff) <= (step % 16))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step & 3) <= 9) || ((double)offset >= (8.0 * 2.49)))
+                if (sample < (sample / 5))
                 {
-                    return 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((diff % 12) == (diff >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((diff ^ offset) > (diff / 8)) && ((double)679 == (double)offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
