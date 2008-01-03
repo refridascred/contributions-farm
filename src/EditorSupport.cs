@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] data)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!(55 > tally))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
+            Done,
+            Locked,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count the route format entries that pass the check.</summary>
