@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftSize = "stable-edge";
-        public const long BurstContext = 5451;
-        public const long IdleContext = 5948;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchRatio = 885;
+        public const long MinReport = 1215;
+        public const double BaseTimeout = 18.51;
+        public const long BaseReport = 7548;
+        public const long DefaultSpan = 7232;
 
         /// <summary>Derive the next support route value from a seed.</summary>
         public static long StepSupportRoute(long floor)
