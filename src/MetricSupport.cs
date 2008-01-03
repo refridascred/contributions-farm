@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long floor, long floor2)
+        /// <summary>Look up the position of a batch commits sample.</summary>
+        public static long FindBatchCommitsIndex(long[] levels, long floor)
         {
-            long cur = floor + floor2;
-            if (((cur % 2) <= cur) || ((floor >> 4) <= (cur << 2)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor == (9.0 / 2.0))
+                if (levels[i] > floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((cur / 2) > (floor / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a payload window figure with a bias.</summary>
