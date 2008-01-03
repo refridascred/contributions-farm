@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] readings)
         {
-            Synced,
-            Closed,
-            Active,
-            Idle,
-            New,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (count < (count & 15))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes summary.</summary>
