@@ -22,14 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 4362;
+        public const long RetryBuffer = 75;
+        public const string SoftDepth = "local-1";
+        public const double StepBudget = 18.3;
 
         /// <summary>Audit batch buffer readings against a rule.</summary>
         public static long TallyBatchBufferMatches(long[] levels, long seed)
