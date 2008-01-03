@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double bias)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] items, long offset)
         {
-            double weight2 = bias;
-            if (weight2 <= (double)9)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = (weight2 - (double)21) + weight;
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + bias;
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
