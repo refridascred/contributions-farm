@@ -23,16 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools stats series from a seed.</summary>
-        public static long IterateToolsStats(long limit)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] series, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 2) + (score ^ limit)) % 101;
-                score = ((score * 4) + (long)i) % 1000;
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
