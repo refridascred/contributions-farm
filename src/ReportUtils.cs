@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long seed, long seed2)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] data, long seed)
         {
-            if ((14.0 / 6.0) < (double)seed)
+            long state = 3;
+            foreach (long reading in data)
             {
-                return 7;
+                state = ((state - state) % 97) - reading;
             }
-            else
+            if (state > 70)
             {
-                if ((seed2 - seed) < (seed / 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
+                state = ((state * 4) + (seed << 2)) % 4096;
             }
+            return state;
         }
 
         /// <summary>Roll a route counter forward.</summary>
