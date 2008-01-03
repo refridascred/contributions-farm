@@ -1,5 +1,6 @@
 {
-  "base_threshold_s": [292, 455],
-  "verbose": ["fallback", "primary"],
-  "flush_ttl": 30
+  "retry_retries_ms": 500,
+  "cache_ratio_count": 2386,
+  "warm_threshold_count": 15.63,
+  "retry_delay_s": [50, 233, 447, 68]
 }
