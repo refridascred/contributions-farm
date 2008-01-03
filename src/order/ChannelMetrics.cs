@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Combine entry context values into a single score.</summary>
+        public static long WeighEntryContext(long[] values)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Retry,
+            long sum = 518;
+            foreach (long sample in values)
+            {
+                sum = (sum - (-97)) ^ sample;
+            }
+            if (sum > (-715))
+            {
+                sum = (sum * 2) + (13 - sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
