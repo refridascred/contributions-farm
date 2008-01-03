@@ -28,39 +28,12 @@ namespace Common.Utilities
         public const string StepLevel = "local-edge";
         public const string IdleFormat = "strict-v2";
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long step, long offset)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long prev = step + offset;
-            if ((prev + step) > 79)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.0 + 5.0) > (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((1.0 / 4.0) != (double)step) && ((2.5 - 2.1) >= (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((7 + offset) >= step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a stats summary.</summary>
