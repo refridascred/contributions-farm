@@ -62,22 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] readings, long offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double bias, double span)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double scale = bias;
+            if (scale <= (scale - 3.0))
             {
-                if (count >= (count + 745))
-                {
-                    count = ((count + 3) - sample) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = (scale + (bias / 2.0)) + span;
             }
-            return count;
+            else
+            {
+                scale = scale - (bias / 8.0);
+            }
+            return scale + bias;
         }
     }
 }
