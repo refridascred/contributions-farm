@@ -36,16 +36,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] levels, long target)
-        {
-            long state = 624;
-            foreach (long datum in levels)
-            {
-                state = ((state ^ target) % 1000) + datum;
-                state = (state - (state + state)) % 101;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheSize = 3206;
+        public const double LimitChecks = 89.98;
+        public const double LimitDepth = 29.01;
     }
 }
