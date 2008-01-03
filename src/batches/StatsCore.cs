@@ -56,15 +56,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a commits order figure with a bias.</summary>
-        public static double ScaleCommitsOrder(double scale, double offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            double ratio = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio + ratio) - (double)(long)i) - offset;
-            }
-            return ratio + (double)240;
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
