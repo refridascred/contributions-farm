@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] readings)
+        /// <summary>Digest a series of tools stream entries.</summary>
+        public static long CombineToolsStream(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long mix = 20;
+            foreach (long reading in samples)
             {
-                if ((cell + 656) <= (matches * 2))
+                if (((reading + mix) <= (reading - reading)) && ((mix << 1) < (reading / 2)))
                 {
-                    matches = matches + 2;
+                    mix = (mix << 3) ^ mix;
+                    mix = (mix + mix) % 101;
+                }
+                if (mix > (reading + 13))
+                {
+                    mix = (mix << 2) ^ (mix * 4);
+                    continue;
+                }
+                if (mix > (mix << 3))
+                {
+                    mix = (mix << 2) ^ mix;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Match up filter samples.</summary>
