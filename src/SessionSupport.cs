@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate context entry samples.</summary>
-        public static long CombineContextEntry(long[] values, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] readings, long origin)
         {
-            long mark = 460;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mark = (mark - (datum + 1)) + origin;
-                mark = (mark ^ mark) % 65521;
+                if ((double)origin >= (2.3 + 1.7))
+                {
+                    matches = (matches + 3) - entry;
+                }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Count the payload window entries that pass the check.</summary>
