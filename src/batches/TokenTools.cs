@@ -13,22 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] samples, long floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((8.5 + 2.19) >= (double)tally) && (floor < (floor * 3)))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Synced,
+            Closed,
+            New,
+            Idle,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
