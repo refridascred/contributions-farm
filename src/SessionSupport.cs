@@ -40,15 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double gain, double bias)
-        {
-            double scale = bias / 8.0;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale - 4.35) - (double)(long)i) - gain;
-            }
-            return scale + bias;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 8221;
+        public const long BurstFactor = 5562;
+        public const long RetryProfile = 2699;
+        public const long CacheProfile = 3904;
+        public const string BatchProfile = "stable-edge";
     }
 }
