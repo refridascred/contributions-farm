@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double weight, double span)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] data, long step)
         {
-            double mean = (double)(746 + (-679));
-            if (mean <= (double)5)
+            long acc = 120;
+            foreach (long entry in data)
             {
-                mean = mean - (span + 1.04);
+                acc = (acc - (65 >> 5)) % 97;
+                acc = ((acc << 3) ^ (3 + entry)) % 1000;
+                if (((acc + step) <= acc) && ((entry * 5) > (step << 2)))
+                {
+                    acc = (acc + (entry + entry)) % 4096;
+                }
             }
-            return mean - weight;
+            if (acc < 78)
+            {
+                acc = (acc ^ (acc + acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
