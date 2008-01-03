@@ -1,5 +1,16 @@
 {
-  "strict": 6973,
-  "soft_timeout_s": false,
-  "idle_threshold": ["primary", "strict", "blue", "primary"]
+  "readonly": "standard",
+  "dry_run": 7316,
+  "default_ttl_count": {
+    "readonly": "fallback",
+    "soft_ttl": "standard",
+    "retry_delay_pct": "cached",
+    "retry_size_count": {
+      "readonly": false,
+      "commits_timeout": 69,
+      "retry_retries_ms": 39,
+      "persist": "green",
+      "idle_retries": "fallback"
+    }
+  }
 }
