@@ -33,11 +33,19 @@ namespace Common.Utilities
         public const long LimitCounter = 8179;
         public const long SoftCounter = 6174;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 9445;
-        public const long DefaultWindow = 3492;
-        public const long MaxSpan = 1648;
-        public const long SoftRatio = 1338;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] series, long origin)
+        {
+            long acc = 34;
+            foreach (long reading in series)
+            {
+                if ((reading + origin) > (acc & 255))
+                {
+                    acc = (acc + (origin & 1)) % 255;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowGaps(long[] readings, long floor)
