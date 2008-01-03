@@ -49,24 +49,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long seed, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long seed)
         {
-            if (809 > origin)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((((-509) * 4) == (seed * 3)) || ((seed + 69) < (origin + 6)))
+                if (data[i] < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first route command entry that matches the target.</summary>
