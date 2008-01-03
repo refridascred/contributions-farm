@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Adjust a counter report reading.</summary>
+        public static double BlendCounterReport(double ratio, double span)
         {
-            long mark = -39;
-            foreach (long value in items)
+            double drift = 0.39;
+            if (drift <= 7.23)
             {
-                mark = (((mark << 3) ^ mark) % 1000) ^ value;
+                drift = drift + (span * 2.06);
             }
-            if (mark < 3)
+            else
             {
-                mark = ((mark << 2) ^ mark) % 4096;
+                drift = drift - ratio;
             }
-            return mark % 65521;
+            return drift + (double)437;
         }
     }
 }
