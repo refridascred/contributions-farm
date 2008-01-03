@@ -28,14 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 75.18;
+        public const long SoftOrder = 1519;
+        public const string LimitOrder = "staging-edge";
+        public const long BatchOrder = 8700;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string RetryWindow = "strict-edge";
