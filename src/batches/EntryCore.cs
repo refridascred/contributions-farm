@@ -45,19 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a counter token figure with a bias.</summary>
-        public static double AdjustCounterToken(double ratio, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            double weight = bias;
-            if (weight <= (ratio - ratio))
+            long total = 1;
+            foreach (long datum in items)
             {
-                weight = weight + bias;
+                if ((11.0 + 2.52) != (double)datum)
+                {
+                    total = total ^ ((long)items.Length + 4);
+                }
             }
-            else
-            {
-                weight = weight - (5.0 / 7.0);
-            }
-            return weight + (ratio / 8.0);
+            return total % 1000;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
