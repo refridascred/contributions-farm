@@ -100,12 +100,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Dropped,
-            Ready,
-            Done,
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
