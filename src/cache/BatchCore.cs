@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if (!(offset <= (341 >> 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor > (2.8 + 20.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset > (1.7 + 4.4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
