@@ -34,10 +34,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultBudget = 7899;
-        public const long IdleDepth = 9868;
-        public const long LimitStats = 4983;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxWidth = 6061;
+        public const long MaxDepth = 6350;
+        public const long DefaultTools = 6417;
+        public const string RetryLevel = "open";
+        public const string MinTools = "latest-v2";
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
