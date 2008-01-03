@@ -1,8 +1,7 @@
 {
-  "checks_timeout": 1554,
-  "max_interval_ms": 500,
-  "strict": 47.03,
-  "default_ttl_s": 4001,
-  "poll_interval_count": [200, 471],
-  "enabled": 57.67
+  "persist": "local",
+  "cache_interval_pct": "cached",
+  "readonly": [173, 334],
+  "idle_size": 76.2,
+  "burst_timeout_s": "blue"
 }
