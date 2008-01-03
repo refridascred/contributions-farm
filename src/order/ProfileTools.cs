@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data, long limit)
         {
-            Ready,
-            Stale,
-            Draft,
-            Done,
+            long carry = 4;
+            foreach (long item in data)
+            {
+                carry = (((carry ^ (carry * 4)) % 97) + item) + limit;
+                if ((double)carry < 18.0)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the metric phase values.</summary>
