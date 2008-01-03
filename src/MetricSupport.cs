@@ -27,21 +27,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a format window counter forward.</summary>
-        public static long RollFormatWindow(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = ((total ^ (limit % 10)) % 1000) - (long)i2;
-                    total = ((total << 3) ^ (total + (long)i)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 7410;
+        public const long DefaultBatches = 8012;
+        public const string MaxDepth = "local";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchProfile = 4568;
