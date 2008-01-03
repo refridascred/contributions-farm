@@ -45,18 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] levels)
         {
-            long total = 1;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((11.0 + 2.52) != (double)datum)
+                if (((double)reading != (1.91 - 6.9)) || (count < (count << 3)))
                 {
-                    total = total ^ ((long)items.Length + 4);
+                    count = count + 3;
                 }
             }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
