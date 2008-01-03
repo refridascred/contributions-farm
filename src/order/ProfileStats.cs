@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            long state = 846;
+            foreach (long sample in readings)
+            {
+                if (((76 - 25) >= (state % 7)) && (sample <= state))
+                {
+                    state = (state + (state % 64)) % 97;
+                }
+            }
+            if (state < 292)
+            {
+                state = ((state * 5) + (state % 60)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
