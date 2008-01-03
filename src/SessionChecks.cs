@@ -51,13 +51,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] levels, long seed)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
