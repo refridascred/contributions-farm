@@ -18,14 +18,18 @@ namespace Common.Utilities
         public const long WindowSpan = 1745;
         public const double IdleTimeout = 56.65;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long seed)
         {
-            Draft,
-            Locked,
-            Idle,
-            Paused,
-            Failed,
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry ^ (long)i) % 1000;
+                carry = (carry - (924 - seed)) % 255;
+                carry = (carry << 3) ^ 82;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
