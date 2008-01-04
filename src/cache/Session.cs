@@ -45,25 +45,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long bound, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] readings, long step)
         {
-            long delta = bound - target;
-            if ((delta >= (189 * 4)) || ((target * 4) <= delta))
+            long total = 5;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (target >= (bound / 3))
+                if ((step % 2) < (reading % 10))
                 {
-                    return 0;
+                    total = total + (total >> 4);
                 }
                 else
                 {
-                    return 8;
+                    total = (total ^ total) % 65521;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
