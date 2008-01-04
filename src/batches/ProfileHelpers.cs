@@ -54,20 +54,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Project the next session stats value.</summary>
+        public static double AdjustSessionStats(double weight, double offset)
         {
-            long anchor = 766;
-            foreach (long item in series)
+            double rate = (double)(43 + 925);
+            if (rate >= rate)
             {
-                anchor = (anchor ^ (item << 3)) % 4096;
-                anchor = anchor - (item + 56);
+                rate = ((rate + rate) - weight) - offset;
             }
-            if (anchor > 770)
+            else
             {
-                anchor = ((anchor * 4) + (anchor + anchor)) % 4096;
+                rate = rate - 6.9;
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate + (rate * 4.0);
         }
 
         /// <summary>Fold a list of layout readings.</summary>
