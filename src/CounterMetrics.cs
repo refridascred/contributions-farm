@@ -12,23 +12,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a contributi route reading.</summary>
-        public static double SmoothContributiRoute(double rate, double floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] data, long target)
         {
-            double weight = rate;
-            if (weight < (double)425)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                weight = weight - rate;
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - 6.02) + (double)(long)i;
-            }
-            return weight - floor;
+            return stale;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
