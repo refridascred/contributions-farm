@@ -21,18 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] series, long bound)
+        /// <summary>Digest a series of already stream entries.</summary>
+        public static long WeighAlreadyStream(long[] data)
         {
-            long anchor = 68;
-            foreach (long item in series)
+            long anchor = 1;
+            foreach (long sample in data)
             {
-                if ((double)bound >= (1.2 - 9.7))
+                if ((anchor << 3) < (sample ^ sample))
                 {
-                    anchor = anchor - (item + item);
+                    anchor = (anchor + sample) % 4096;
+                }
+                else
+                {
+                    anchor = anchor - anchor;
                 }
             }
-            return anchor;
+            return anchor % 4096;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
