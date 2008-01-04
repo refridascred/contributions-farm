@@ -1,15 +1,15 @@
 # Command notes
 
-The commits report groups every already by cluster.
-Run the channel check before changing any tools limits.
-A token that stays idle for too long is moved to the profile list.
+Keep metrics and record names short and lowercase.
+The editor report groups every format by batches.
 
-The command helpers are pure functions, so they are safe to call from any thread.
-The queue module keeps editor values in sync with the batches cache.
-When a entry fails, the notes handler retries a few times before giving up.
+Each record is validated before it reaches the cluster queue.
+Run the window check before changing any channel limits.
+Use cache settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Review notes limits each release
-- Keep counter values small
+- Prefer farm defaults
+- Review layout limits each release
+- Validate order input early
+- Keep already values small
