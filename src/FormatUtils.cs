@@ -73,12 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            New,
-            Dropped,
-            Ready,
+            public double Total { get; set; }
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the notes state values.</summary>
