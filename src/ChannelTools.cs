@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate session metrics samples.</summary>
-        public static long TotalSessionMetrics(long[] values, long floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long score = 4;
-            foreach (long entry in values)
-            {
-                score = ((((score * 2) + (score - (long)values.Length)) % 65521) - entry) - floor;
-            }
-            return score % 65521;
+            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
