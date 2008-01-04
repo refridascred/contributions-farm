@@ -22,23 +22,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double rate, double offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] samples, long limit)
         {
-            double scale = (double)(-42) / 4.0;
-            if (scale > (double)661)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale + (scale * 7.0)) - rate;
+                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)92;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - offset;
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
