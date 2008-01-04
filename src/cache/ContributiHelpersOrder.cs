@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxSpan = "stable-edge";
+        public const string SoftSize = "latest-1";
+        public const long CacheFactor = 6064;
+        public const long WindowLevel = 6394;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long bound)
