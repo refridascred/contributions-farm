@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] data, long seed)
+        /// <summary>Locate a route payload reading by value.</summary>
+        public static long FindRoutePayloadIndex(long[] values, long bound)
         {
-            long state = 4;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-477) * 2) == (item - seed))
+                if (values[i] <= bound)
                 {
-                    state = state - item;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
