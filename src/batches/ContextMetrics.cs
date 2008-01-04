@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the cache entry entries that pass the check.</summary>
-        public static long TallyCacheEntryHits(long[] readings)
+        /// <summary>Rank route commits input into a small class.</summary>
+        public static long ClassifyRouteCommits(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if (seed < (37 % 60))
             {
-                if ((6.9 - 0.7) == (double)tally)
+                return 1;
+            }
+            else
+            {
+                if (((4.18 / 5.0) != (double)seed) || (seed >= 3))
                 {
-                    tally = (tally + 2) ^ cell;
+                    return 2;
+                }
+                else
+                {
+                    if (((3.43 / 2.0) < (double)seed) || ((seed * 3) >= (seed << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
