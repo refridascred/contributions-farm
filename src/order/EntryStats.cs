@@ -22,23 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] series, long limit)
         {
-            long score = 2;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                score = score ^ (cell + cell);
-                if ((cell + score) < (747 >> 3))
+                if (sample > limit)
                 {
-                    score = ((score << 3) ^ (649 / 4)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (score > 8)
-            {
-                score = score - score;
-            }
-            return score % 4096;
+            return flag;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
