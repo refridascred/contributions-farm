@@ -34,18 +34,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] values)
+        /// <summary>Locate a editor stats reading by value.</summary>
+        public static long FindEditorStatsIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry / 2) >= matches)
+                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
