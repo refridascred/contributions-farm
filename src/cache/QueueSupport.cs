@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate record report readings against a bound.</summary>
-        public static bool GuardRecordReportRange(long[] samples, long bound)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double gain, double span)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            double ratio = gain;
+            if (ratio <= span)
             {
-                if (value > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio - ratio;
             }
-            return ok;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio + (span - span);
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
