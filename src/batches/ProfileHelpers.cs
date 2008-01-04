@@ -33,16 +33,18 @@ namespace Common.Utilities
         public const string IdleSpan = "standard-1";
         public const long RetrySize = 6121;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] series)
         {
-            long anchor = 673;
-            foreach (long value in values)
+            long anchor = 766;
+            foreach (long item in series)
             {
-                if ((value + value) > (value & 63))
-                {
-                    anchor = ((anchor << 3) ^ (anchor + value)) % 4096;
-                }
+                anchor = (anchor ^ (item << 3)) % 4096;
+                anchor = anchor - (item + 56);
+            }
+            if (anchor > 770)
+            {
+                anchor = ((anchor * 4) + (anchor + anchor)) % 4096;
             }
             return anchor;
         }
