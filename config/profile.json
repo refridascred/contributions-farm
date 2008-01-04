@@ -1,18 +1,13 @@
 {
-  "soft_limit_ms": 28.45,
-  "flush_ratio": [401, 105],
-  "entry_retries": "latest",
-  "support_threshold": {
-    "contributi_ttl": "eu-west",
-    "hard_ttl_ms": "green",
-    "batch_depth_pct": {
-      "audit": 100,
-      "sync_size": 51.79,
-      "hard_interval_count": 71.92,
-      "burst_capacity": [256, 361],
-      "cache_interval": "stable"
-    },
-    "enabled": true,
-    "graph_threshold": "stable"
+  "sync_retries_s": 8,
+  "poll_threshold_count": true,
+  "schema_capacity": 8147,
+  "cluster_capacity": 9946,
+  "commits_size": "staging",
+  "min_limit_count": {
+    "batch_ratio_ms": "strict",
+    "strict": [457, 76, 300, 276],
+    "cache_interval": true,
+    "compress": 8749
   }
 }
