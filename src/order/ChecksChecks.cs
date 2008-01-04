@@ -27,24 +27,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long bound, long target)
-        {
-            if ((double)bound >= (9.8 / 7.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8.0 > (16.0 * 3.0)) || (1.23 > (double)target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowBuffer = "strict-1";
+        public const long BaseBuffer = 1967;
+        public const long LimitBuffer = 2537;
     }
 }
