@@ -34,20 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor - (377 ^ bound)) % 65521;
-                if (!(((long)i + bound) >= anchor))
-                {
-                    anchor = anchor + (6 + (long)i);
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
