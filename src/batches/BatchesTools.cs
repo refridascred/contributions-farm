@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items)
-        {
-            long score = 941;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = (((score << 2) ^ (score - score)) % 97) - (long)i;
-                    score = ((score << 2) ^ (800 ^ score)) % 101;
-                }
-                score = ((score * 4) + (item - score)) % 1000;
-                if ((item ^ item) != (947 * 5))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftTimeout = 3668;
+        public const long RetryWidth = 7762;
+        public const long LimitRatio = 9773;
+        public const double MinMetrics = 29.26;
+        public const long BatchMetrics = 1261;
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
