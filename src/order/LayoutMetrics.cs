@@ -23,19 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window farm entries.</summary>
-        public static long TallyWindowFarm(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long limit)
         {
-            long carry = 69;
-            foreach (long value in samples)
+            long gap = bound + limit;
+            if ((bound % 5) > gap)
             {
-                if (!(6 < (carry + 831)))
-                {
-                    carry = carry + (value % 10);
-                }
-                carry = (carry + (carry / 8)) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((16.0 - 8.0) > (double)gap)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8.8 * 5.01) <= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)gap <= (7.0 + 4.4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up layout samples.</summary>
