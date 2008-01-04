@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxInterval = 5770;
-        public const double MinSpan = 44.47;
-        public const long SoftLevel = 5586;
-        public const double WindowBatch = 91.43;
-        public const long WindowScore = 4753;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 3) + (carry + carry)) % 65521;
+                carry = (carry ^ carry) % 255;
+                carry = (carry + (step / 4)) % 4096;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long CombineEntry(long[] values, long origin)
