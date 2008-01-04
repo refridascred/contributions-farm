@@ -75,12 +75,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
