@@ -17,5 +17,20 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
