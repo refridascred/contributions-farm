@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of batches token entries.</summary>
-        public static long CombineBatchesToken(long[] data)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long mix = 529;
-            foreach (long entry in data)
-            {
-                mix = mix - (entry << 2);
-            }
-            return mix;
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
