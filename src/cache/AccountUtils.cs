@@ -48,20 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Locate a cache stats reading by value.</summary>
+        public static long LocateCacheStatsIndex(long[] items, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.0 - 6.0) <= (double)origin)
+                if (items[i] < offset)
                 {
-                    mix = (mix + origin) % 101;
-                    mix = ((mix * 4) + origin) % 255;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
     }
 }
