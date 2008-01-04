@@ -14,11 +14,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "alpha-edge";
-        public const long RetrySize = 4685;
-        public const long MaxAlready = 6767;
-        public const long BurstAlready = 5090;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] levels, long floor)
