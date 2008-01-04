@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] readings, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long acc = 18;
+            foreach (long sample in items)
             {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc ^ 3) % 65521) - sample;
             }
-            return ready;
+            return acc % 4096;
         }
 
         /// <summary>Iterate the entry channel series from a seed.</summary>
