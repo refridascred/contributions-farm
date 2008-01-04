@@ -1,5 +1,8 @@
 {
-  "contributi_window": 63,
-  "cache_timeout": 2994,
-  "batch_timeout_pct": "open"
+  "default_limit": 870,
+  "verbose": "strict",
+  "idle_limit_pct": 63,
+  "burst_limit": true,
+  "poll_limit_count": 91,
+  "counter_ratio": 67
 }
