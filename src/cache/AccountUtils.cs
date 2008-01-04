@@ -20,12 +20,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Active,
-            Retry,
-            Draft,
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
