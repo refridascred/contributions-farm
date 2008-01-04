@@ -26,18 +26,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] series)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((count + entry) > (entry + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
