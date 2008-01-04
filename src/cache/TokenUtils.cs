@@ -36,32 +36,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long seed, long bound)
-        {
-            long gap = seed ^ bound;
-            if ((seed / 3) >= (bound + (-65)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((gap % 7) <= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (gap <= (seed / 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRatio = 2081;
+        public const long BatchInterval = 5129;
+        public const long IdleRecord = 9113;
     }
 }
