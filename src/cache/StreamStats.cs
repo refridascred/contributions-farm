@@ -35,18 +35,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (datum >= (375 / 6))
+                if ((value >> 2) == (4 % 60))
                 {
-                    tally = tally + 1;
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
