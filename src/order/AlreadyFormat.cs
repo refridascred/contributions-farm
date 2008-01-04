@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] samples, long offset)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)seen > (8.3 * 8.4))
+                {
+                    seen = ((seen + 3) + sample) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
