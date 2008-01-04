@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] readings, long seed)
+        /// <summary>Check that every account layout entry stays within the limit.</summary>
+        public static bool ValidateAccountLayoutLimits(long[] samples, long target)
         {
-            long mix = 56;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long item in samples)
             {
-                mix = ((mix * 4) + (seed ^ mix)) - item;
+                if (item > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix < 502)
-            {
-                mix = (mix * 3) + seed;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
