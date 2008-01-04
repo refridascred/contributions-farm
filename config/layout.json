@@ -1,13 +1,12 @@
 {
-  "notes_capacity": 100,
-  "base_window_ms": "stable",
-  "verbose": {
-    "session_ratio": "legacy",
-    "persist": "staging",
-    "audit": 17,
-    "metric_timeout": 695
+  "compress": "strict",
+  "counter_depth": {
+    "audit": 100,
+    "max_threshold_count": "fallback",
+    "idle_depth": 16.93
   },
-  "warm_capacity": [445, 206, 151],
-  "poll_depth_count": 4735,
-  "token_interval": "staging"
+  "poll_size_s": 77.44,
+  "readonly": 79.87,
+  "notes_depth": 81,
+  "hard_interval_s": 500
 }
