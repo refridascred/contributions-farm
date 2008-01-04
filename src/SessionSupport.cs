@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 31.62;
+        public const double MinContext = 95.73;
+        public const string StepContext = "legacy-1";
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
