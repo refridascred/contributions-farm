@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((6.62 * 0.85) != (double)matches)
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the counter mode values.</summary>
