@@ -1,29 +1,6 @@
 # entry settings
-poll_interval_ms:
-  audit: false
-  max_capacity:
-    - 246
-    - 10
-    - 345
-    - 436
-  verbose: 37.17
-retry_depth_count: 36
-batch_window_count: standard
-schema_ttl: 160
-enabled: strict
-compress:
-  session_capacity:
-    farm_depth: standard
-    strict: 100
-    min_capacity_s: latest
-    min_ttl: 60
-    commits_capacity: false
-  batch_ttl_ms: 60
-  batch_ratio_ms: false
-  batches_ttl:
-    persist: 54
-    tools_ratio: false
-    notes_timeout: 14
-    idle_capacity: 9415
-  strict: latest
-  default_limit_count: edge
+min_depth:
+  - 128
+  - 103
+poll_size_ms: false
+sync_timeout_ms: 40.58
