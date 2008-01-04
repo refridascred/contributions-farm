@@ -29,18 +29,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] items, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long limit, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if (!((0.16 * 1.61) < (double)limit))
             {
-                if (!((value << 3) > ((-4) % 10)))
+                return 4;
+            }
+            else
+            {
+                if (((double)offset >= 6.1) || ((offset + offset) < (2 + 284)))
                 {
-                    hits = (hits + 2) + step;
+                    return 0;
+                }
+                else
+                {
+                    if ((2.3 <= (2.77 - 5.1)) && ((limit + offset) <= offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit >> 2) < (offset << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
