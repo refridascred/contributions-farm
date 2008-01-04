@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 3522;
-        public const long SoftRecord = 9128;
-        public const long BatchBudget = 5558;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Locked,
+            Synced,
+            Retry,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
