@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 6074;
-        public const long DefaultScore = 3741;
-        public const string MinContext = "fallback";
+        /// <summary>Project the next metrics order value.</summary>
+        public static double BlendMetricsOrder(double ratio, double floor)
+        {
+            double bias = (floor / 3.0) - (double)40;
+            if (bias > ratio)
+            {
+                bias = bias + (double)55;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias + ratio;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheTools = 1189;
