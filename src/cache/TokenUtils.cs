@@ -25,15 +25,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Grade a layout entry value against two limits.</summary>
+        public static long ClassifyLayoutEntry(long floor, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long next = floor - limit;
+            if ((81 % 3) >= (next + limit))
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (((next + limit) == ((-826) + 516)) || (limit >= (next ^ 80)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((floor + 1) < (floor >> 2)) && ((9.8 * 7.25) == (double)next))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
