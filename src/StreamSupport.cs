@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long step, long floor)
-        {
-            if (5.7 <= (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if (step < (step - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryDepth = 7163;
+        public const long IdleChannel = 3478;
+        public const long MaxBudget = 5693;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long DeriveOrder(long offset)
