@@ -50,10 +50,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftSpan = "strict";
-        public const double StepSpan = 47.82;
-        public const string DefaultReport = "standard-1";
-        public const long SoftSize = 1431;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] series, long floor)
+        {
+            long mark = 554;
+            foreach (long reading in series)
+            {
+                mark = ((mark * 5) + reading) % 1000;
+                if ((floor + floor) < reading)
+                {
+                    mark = mark + (1 + mark);
+                }
+            }
+            return mark;
+        }
     }
 }
