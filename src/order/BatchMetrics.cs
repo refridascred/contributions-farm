@@ -54,11 +54,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxRoute = "latest";
-        public const double WindowRoute = 86.62;
-        public const long DefaultRoute = 2509;
-        public const double MaxSpan = 65.6;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (matches >= (cell + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
