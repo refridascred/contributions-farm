@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] levels)
         {
-            Ready,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((hits + hits) != (item + item)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine metric counter values into a single score.</summary>
