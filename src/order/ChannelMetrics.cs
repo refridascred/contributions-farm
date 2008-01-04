@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] values, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix + (offset - offset);
-                if ((mix + offset) <= ((long)i & 15))
+                if (values[i] < floor)
                 {
-                    mix = (mix * 4) + ((long)i - (long)i);
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
