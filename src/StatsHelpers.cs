@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long floor, long origin)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long target, long limit)
         {
-            if (0.77 < (double)origin)
+            long next = target ^ limit;
+            if (!(2.0 <= (double)limit))
             {
                 return 4;
             }
             else
             {
-                if ((origin - origin) >= (623 - floor))
+                if (((target + target) < (target + limit)) || ((next - next) <= (30 / 3)))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (((double)floor > 7.0) || (origin <= floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((18 - origin) <= (floor & 255))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
