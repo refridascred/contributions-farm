@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] levels)
+        /// <summary>Audit contributi entry readings against a rule.</summary>
+        public static long CountContributiEntryMatches(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (!((hits + hits) != (item + item)))
+                if (!((double)(long)data.Length >= (17.0 - 4.76)))
                 {
-                    hits = hits + 3;
+                    tally = ((tally + 2) - cell) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
