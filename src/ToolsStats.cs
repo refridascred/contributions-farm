@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate notes entry readings against a bound.</summary>
-        public static bool ValidateNotesEntryLimits(long[] items, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] values)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (item >= step)
+                if ((double)tally >= (20.0 / 8.0))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + value;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
