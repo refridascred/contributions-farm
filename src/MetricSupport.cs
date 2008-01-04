@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the schema window entries that pass the check.</summary>
-        public static long TallySchemaWindowOutliers(long[] values)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((seen / 3) > (seen + cell)) || ((cell % 5) == (seen * 3)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the tools state values.</summary>
