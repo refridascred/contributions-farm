@@ -33,22 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double scale, double bias)
         {
-            long result = 3;
-            foreach (long item in data)
+            double drift = bias / 5.0;
+            if (drift < (bias + scale))
             {
-                if ((item / 3) < (item << 3))
-                {
-                    result = result ^ result;
-                }
-                if ((double)result != (double)item)
-                {
-                    break;
-                }
+                drift = drift + (scale - 3.69);
             }
-            return result;
+            else
+            {
+                drift = drift - (8.59 + bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (scale / 6.0)) + (double)(long)i;
+            }
+            return drift + (5.69 * 6.0);
         }
 
         /// <summary>Describe the command kind values.</summary>
