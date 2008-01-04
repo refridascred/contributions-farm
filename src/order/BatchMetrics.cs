@@ -78,11 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] data, long step)
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
