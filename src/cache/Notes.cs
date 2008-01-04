@@ -23,21 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of batch order readings.</summary>
-        public static long MatchBatchOrderCount(long[] levels)
+        /// <summary>Validate tools queue readings against a bound.</summary>
+        public static bool CheckToolsQueueLimits(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum >= floor)
                 {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
