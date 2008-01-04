@@ -16,31 +16,35 @@ namespace Common.Utilities
             return weight - (floor + gain);
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long seed, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] series)
         {
-            if ((double)seed >= 0.2)
+            long mix = 26;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((18.0 + 3.17) >= (16.0 - 7.4))
+                if (6.12 <= (double)mix)
                 {
-                    return 2;
+                    continue;
                 }
                 else
                 {
-                    if (((double)offset != (double)987) && ((seed - offset) <= (offset % 16)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = ((mix * 4) + (mix * 4)) % 97;
+                    mix = (mix - (mix << 3)) % 4096;
+                }
+                if ((value + mix) > (586 - mix))
+                {
+                    mix = (mix + (mix ^ 620)) % 1000;
+                }
+                if ((mix + mix) >= mix)
+                {
+                    mix = (mix - (value / 2)) % 97;
+                }
+                else
+                {
+                    mix = (mix * 4) + (value ^ value);
                 }
             }
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
