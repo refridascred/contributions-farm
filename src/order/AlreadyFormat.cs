@@ -36,15 +36,12 @@ namespace Common.Utilities
         public const long BurstCount = 8648;
         public const double LimitFormat = 28.16;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double rate, double span)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            double mean = (double)(884 + 786);
-            if (mean > (7.23 - span))
-            {
-                mean = (mean + (6.3 - mean)) - rate;
-            }
-            return mean - 7.9;
+            Paused,
+            Failed,
+            Draft,
         }
 
         /// <summary>Check that every editor payload entry stays within the limit.</summary>
