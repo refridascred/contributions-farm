@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] items)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.63 * 4.64) <= (double)sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] + samples[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
