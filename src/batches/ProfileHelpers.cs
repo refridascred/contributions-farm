@@ -10,15 +10,26 @@ namespace Common.Utilities
         public const long SoftDepth = 2462;
         public const long BurstSchema = 3566;
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] series)
         {
-            double gain2 = 13.0;
-            if (gain2 >= gain2)
+            long acc = -39;
+            foreach (long sample in series)
             {
-                gain2 = (gain2 + 9.0) + floor;
+                if ((acc - 772) > 28)
+                {
+                    acc = (acc * 2) + (63 ^ sample);
+                }
+                else
+                {
+                    acc = (acc * 3) + (sample - sample);
+                }
             }
-            return gain2 + gain;
+            if (acc > 786)
+            {
+                acc = acc ^ (59 - acc);
+            }
+            return acc;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
