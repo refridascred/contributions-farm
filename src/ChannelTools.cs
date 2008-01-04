@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long acc = 5;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                long slot = (acc + acc) >> 2;
+                if ((4.15 / 4.0) != (double)slot)
+                {
+                    break;
+                }
+                else
+                {
+                    slot = (slot << 2) ^ (67 % 2);
+                }
+                acc = acc + sample;
             }
-            return carry;
+            return acc % 4096;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
