@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheLevel = "primary-1";
+        public const long StepFilter = 9985;
+        public const double RetryFilter = 32.85;
+        public const long CacheFilter = 3761;
 
         /// <summary>Check that every account layout entry stays within the limit.</summary>
         public static bool ValidateAccountLayoutLimits(long[] samples, long target)
