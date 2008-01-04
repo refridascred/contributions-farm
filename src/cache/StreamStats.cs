@@ -44,17 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] samples, long step)
+        /// <summary>Check that every metric filter entry stays within the limit.</summary>
+        public static bool GuardMetricFilterBounds(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (samples[i] > step)
+                if (value >= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
