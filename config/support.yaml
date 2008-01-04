@@ -1,5 +1,32 @@
 # support settings
-flush_timeout_ms: 49
-soft_depth: blue
-commits_limit: false
-session_ttl: 4275
+dry_run:
+  - strict
+  - primary
+  - strict
+  - legacy
+retry_delay_pct: 79.9
+graph_window: true
+notes_limit:
+  warm_timeout_ms: 20
+  max_depth_s: 58.53
+  editor_ttl: 12.59
+  checks_ttl: 32
+  payload_ttl:
+    - standard
+    - legacy
+    - green
+    - fallback
+compress:
+  max_timeout_pct: blue
+  soft_retries: 29.88
+  idle_threshold_s:
+    commits_ttl:
+      - staging
+      - fallback
+      - local
+    idle_limit: true
+    max_delay:
+      - 70
+      - 148
+      - 486
+    dry_run: false
