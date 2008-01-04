@@ -42,15 +42,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples, long limit)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long limit, long floor)
         {
-            long mark = 2;
-            foreach (long reading in samples)
+            if ((floor - floor) != (limit + limit))
             {
-                mark = (((mark - (8 << 2)) % 65521) ^ reading) - limit;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (limit > (floor + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor >= (floor % 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)floor <= (1.3 * 8.0)) && ((double)limit != (double)floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command entry.</summary>
