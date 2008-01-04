@@ -27,11 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchTimeout = "latest-v2";
-        public const string WindowFilter = "staging-v2";
-        public const string IdleSpan = "standard-1";
-        public const long RetrySize = 6121;
+        /// <summary>Measure how many contributi window samples are out of range.</summary>
+        public static long AuditContributiWindowHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (hits > (977 ^ sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long FoldMetric(long[] series)
