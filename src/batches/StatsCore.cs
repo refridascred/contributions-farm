@@ -81,11 +81,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] values, long limit)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
