@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] data, long origin)
         {
-            long sum = 996;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (((sum + entry) >= (entry + entry)) && ((sum % 16) <= (-259)))
+                if (((origin << 1) > (29 << 3)) || !((double)tally < (5.0 + 18.0)))
                 {
-                    sum = (sum ^ (sum & 15)) % 101;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            if (sum < 54)
-            {
-                sum = ((sum << 2) ^ (sum - 766)) % 4096;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the route phase values.</summary>
