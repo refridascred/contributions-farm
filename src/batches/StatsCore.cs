@@ -74,12 +74,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Grade a batch counter value against two limits.</summary>
+        public static long RankBatchCounter(long step, long limit)
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            long step2 = step - limit;
+            if ((double)step2 <= (1.6 - 1.9))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step & 15) >= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
