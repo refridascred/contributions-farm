@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long MinFactor = 14;
         public const double HardSize = 19.83;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] data, long target)
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
