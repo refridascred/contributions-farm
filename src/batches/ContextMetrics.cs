@@ -35,21 +35,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Accumulate buffer channel samples.</summary>
+        public static long DigestBufferChannel(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 775;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = anchor + (9 >> 4);
+                if (!((datum + 3) == (6 - (long)readings.Length)))
                 {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (89 ^ 111)) % 1000;
+                }
+                if (!((double)anchor >= (15.0 / 9.0)))
+                {
+                    anchor = (anchor - seed) % 65521;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
