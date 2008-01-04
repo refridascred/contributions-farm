@@ -1,7 +1,18 @@
 {
-  "poll_ratio_pct": "standard",
-  "cache_capacity_count": "latest",
-  "contributi_window": "cached",
-  "retry_delay": 2053,
-  "checks_threshold": ["eu-west", "standard", "primary", "standard"]
+  "batches_window": {
+    "payload_delay": 55.97,
+    "poll_delay": {
+      "soft_threshold_s": [185, 78],
+      "compress": 60,
+      "cluster_threshold": "blue",
+      "dry_run": "local",
+      "poll_depth_ms": "cached",
+      "window_capacity": true
+    },
+    "warm_threshold_s": 7051,
+    "readonly": 10,
+    "buffer_delay": "legacy"
+  },
+  "default_interval_ms": 21.01,
+  "flush_limit_pct": "edge"
 }
