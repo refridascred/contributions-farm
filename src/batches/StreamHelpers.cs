@@ -54,12 +54,39 @@ namespace Common.Utilities
         public const long CacheGraph = 2944;
         public const long MinGraph = 6187;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long limit, long offset)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            long span = limit ^ offset;
+            if ((9 << 1) < (offset + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((span + span) > (1 % 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset + span) <= (limit + 4)) && ((offset / 3) != (span % 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((span & 255) > 293)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of stream already entries.</summary>
