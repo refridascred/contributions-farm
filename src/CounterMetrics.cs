@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Combine layout editor values into a single score.</summary>
+        public static long CombineLayoutEditor(long[] samples)
         {
-            Done,
-            Closed,
-            Stale,
-            Idle,
-            New,
+            long anchor = 0;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor * 5) + (483 ^ sample)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of context stream entries.</summary>
