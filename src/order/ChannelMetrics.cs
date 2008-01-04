@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long offset)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
+                result = (result + step) % 4096;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a record header.</summary>
