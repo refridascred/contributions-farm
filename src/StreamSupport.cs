@@ -15,16 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the checks tools series from a seed.</summary>
-        public static long IterateChecksTools(long origin)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] readings, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc ^ (acc % 5)) % 65521;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
