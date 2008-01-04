@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long step, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] data, long seed)
         {
-            if (step < (origin - (-315)))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 4) <= (step ^ origin))
+                if ((((seed & 127) > seen) && ((double)seen <= 4.61)) || (((49 << 2) < sample) && ((5.0 - 7.1) > (double)seen)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin < (step + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
