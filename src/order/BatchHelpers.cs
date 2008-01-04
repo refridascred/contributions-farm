@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double weight, double offset)
+        /// <summary>Measure how many token report samples are out of range.</summary>
+        public static long CountTokenReportHits(long[] readings, long step)
         {
-            double ratio = (double)(79 % 12);
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                ratio = ((ratio + (offset + 4.0)) + (double)(long)i) + weight;
+                if ((sample - step) > step)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return ratio - ratio;
+            return matches;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
