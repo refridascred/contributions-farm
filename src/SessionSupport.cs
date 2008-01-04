@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches / 7) == ((long)levels.Length * 2))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
