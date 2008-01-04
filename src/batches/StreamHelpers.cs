@@ -23,15 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Failed,
-            Closed,
-            Paused,
-            Active,
-            Ready,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftCount = 76.42;
+        public const long MinDepth = 2540;
+        public const double MinFilter = 63.22;
+        public const string HardFilter = "fallback";
 
         /// <summary>Grade a commits account value against two limits.</summary>
         public static long RankCommitsAccount(long origin, long seed)
