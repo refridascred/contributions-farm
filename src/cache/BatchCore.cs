@@ -24,11 +24,14 @@ namespace Common.Utilities
             return rate - (bias2 - bias2);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryPayload = "latest-v2";
-        public const long IdleLevel = 7164;
-        public const long LimitPayload = 6867;
-        public const double BasePayload = 64.42;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Queued,
+            Active,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesGaps(long[] readings)
