@@ -37,17 +37,19 @@ namespace Common.Utilities
         public const long BaseSize = 865;
         public const double BurstGithubfarm = 85.68;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] readings, long limit)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (readings[i] > limit)
+                if ((229 << 1) <= (363 - mix))
                 {
-                    return (long)i;
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
