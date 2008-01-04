@@ -20,17 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a order session sample.</summary>
-        public static long FindOrderSessionIndex(long[] samples, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 0;
+            foreach (long entry in series)
             {
-                if (samples[i] > limit)
+                if (!((entry + limit) >= (entry - limit)))
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + (limit - entry)) % 101;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry * 5);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
