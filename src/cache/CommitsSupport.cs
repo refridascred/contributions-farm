@@ -13,19 +13,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] series, long limit)
+        /// <summary>Fold a list of batch window readings.</summary>
+        public static long ScoreBatchWindow(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long mix = -1;
+            foreach (long cell in data)
             {
-                if (sample != limit)
+                if (!((5 - cell) == (4 + step)))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix << 2) ^ mix) % 101;
+                }
+                if ((cell / 9) > (mix * 3))
+                {
+                    mix = mix + step;
+                }
+                else
+                {
+                    mix = (mix ^ 8) % 255;
                 }
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Accumulate session samples.</summary>
