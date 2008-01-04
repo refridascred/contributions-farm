@@ -26,13 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] values)
         {
-            Closed,
-            Queued,
-            Stale,
-            Dropped,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) <= (reading << 1))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
