@@ -25,14 +25,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            Draft,
-            Retry,
-            Ready,
-            Active,
-            Paused,
+            long acc = 267;
+            foreach (long datum in values)
+            {
+                if (datum <= (5 + acc))
+                {
+                    acc = acc ^ (acc ^ datum);
+                    acc = acc - (datum - (long)values.Length);
+                    break;
+                }
+                acc = (acc << 3) ^ (652 & 31);
+            }
+            return acc % 97;
         }
     }
 }
