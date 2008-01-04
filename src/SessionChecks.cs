@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a cluster stats.</summary>
