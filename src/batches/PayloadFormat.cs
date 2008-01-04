@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long SoftReport = 9718;
         public const long MinReport = 8522;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] levels, long origin)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Failed,
+            Synced,
+            Paused,
+            Ready,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
