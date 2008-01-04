@@ -46,12 +46,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Grade a metrics session value against two limits.</summary>
+        public static long SortMetricsSession(long step, long step2)
         {
-            New,
-            Idle,
-            Retry,
+            if ((step & 1) >= step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step & 127) >= step2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
