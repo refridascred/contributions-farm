@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many editor already samples are out of range.</summary>
+        public static long TallyEditorAlreadyHits(long[] items, long bound)
         {
-            Pending,
-            New,
-            Failed,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((bound % 24) < (tally * 4))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
