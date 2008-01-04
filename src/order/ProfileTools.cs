@@ -53,17 +53,31 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long limit, long limit2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (limit2 < (limit ^ limit2))
             {
-                if ((items[i] < offset) && ((items[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if (((limit2 - limit2) <= (limit2 * 5)) && ((limit2 ^ limit2) != (limit % 12)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit > (13.0 - 9.4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
