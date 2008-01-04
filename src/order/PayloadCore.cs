@@ -41,19 +41,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many already session samples are out of range.</summary>
-        public static long AuditAlreadySessionHits(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (76 >= (datum & 7))
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinScore = 428;
+        public const long BatchFactor = 4476;
+        public const long BurstEntry = 6821;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TotalGraph(long[] values, long seed)
