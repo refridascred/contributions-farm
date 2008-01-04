@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] series, long target)
+        /// <summary>Project the next queue farm value.</summary>
+        public static double AdjustQueueFarm(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load + (double)98) + (double)(long)i;
             }
-            return -1;
+            return load - span;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
