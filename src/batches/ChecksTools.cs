@@ -74,18 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] series, long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((453 > (67 + value)) && ((hits << 1) > (85 + hits)))
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
