@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long SoftReport = 9718;
         public const long MinReport = 8522;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count ^ count) >= item)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
