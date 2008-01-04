@@ -27,17 +27,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Locate a format metrics reading by value.</summary>
-        public static long FindFormatMetricsIndex(long[] data, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the layout phase values.</summary>
