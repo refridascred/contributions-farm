@@ -79,20 +79,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] levels, long origin)
         {
-            long result = 92;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                result = (result << 2) ^ (result & 255);
-                result = (result << 3) ^ (entry + result);
+                if (4.0 < (double)matches)
+                {
+                    matches = ((matches + 1) + datum) + origin;
+                }
             }
-            if (result > 4)
-            {
-                result = result - (6 >> 2);
-            }
-            return result % 97;
+            return matches;
         }
     }
 }
