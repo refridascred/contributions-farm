@@ -26,27 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] series, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] values)
         {
-            long carry = 13;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((double)reading >= 16.0)
+                if ((double)entry == (1.0 - 11.0))
                 {
-                    carry = (carry * 3) + (bound + 469);
-                    carry = (carry - (bound / 2)) % 65521;
-                }
-                if ((7.71 + 2.7) > (double)carry)
-                {
-                    carry = ((carry * 4) + (carry % 64)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ 1) % 4096;
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
