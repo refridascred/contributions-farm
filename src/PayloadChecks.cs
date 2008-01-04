@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data, long seed)
+        /// <summary>Look up the position of a buffer farm sample.</summary>
+        public static long FindBufferFarmIndex(long[] samples, long offset)
         {
-            long mark = -713;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (5.68 > (double)mark)
+                if (samples[i] == offset)
                 {
-                    mark = ((mark + (cell << 1)) % 255) + seed;
+                    return (long)i;
                 }
             }
-            if (mark < 7)
-            {
-                mark = (mark + (941 - 291)) % 4096;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the entry channel series from a seed.</summary>
