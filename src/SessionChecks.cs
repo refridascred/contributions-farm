@@ -21,31 +21,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate profile record samples.</summary>
-        public static long TotalProfileRecord(long[] levels, long step)
-        {
-            long sum = 12;
-            foreach (long datum in levels)
-            {
-                if ((step * 2) >= (datum >> 3))
-                {
-                    sum = ((sum << 3) ^ step) % 101;
-                }
-                if ((datum / 2) >= (6 + datum))
-                {
-                    sum = (sum + (datum - sum)) % 97;
-                }
-                else
-                {
-                    sum = sum ^ (datum + datum);
-                }
-            }
-            if (sum < 58)
-            {
-                sum = (sum << 2) ^ (step - (-7));
-            }
-            return sum % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseLevel = 6636;
+        public const long MinSize = 1059;
+        public const double CacheBuffer = 12.68;
+        public const long IdleRatio = 9128;
+        public const long IdleBuffer = 4607;
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double scale, double bias)
