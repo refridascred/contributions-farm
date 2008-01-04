@@ -1,6 +1,10 @@
 {
-  "enabled": 87.02,
-  "min_retries": "blue",
-  "batch_capacity": "edge",
-  "token_capacity": 179
+  "hard_capacity_pct": ["edge", "fallback", "primary"],
+  "idle_timeout_s": "eu-west",
+  "soft_delay_count": {
+    "flush_delay_count": "primary",
+    "graph_ratio": 4603,
+    "buffer_timeout": "cached"
+  },
+  "hard_depth": [224, 43]
 }
