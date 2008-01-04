@@ -27,18 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] values)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (!((11.0 / 4.0) < (double)reading) && ((4.31 / 4.0) == (double)reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a token options.</summary>
