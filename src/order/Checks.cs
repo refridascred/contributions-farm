@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            if ((double)limit2 > 20.0)
             {
-                if ((matches - value) > (matches + value))
+                return 8;
+            }
+            else
+            {
+                if ((limit / 8) >= 46)
                 {
-                    matches = matches + 1;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((18 - limit2) < limit2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
