@@ -33,11 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double weight, double bias)
+        /// <summary>Roll a githubfarm schema counter forward.</summary>
+        public static long StepGithubfarmSchema(long target)
         {
-            double bias2 = (double)(48 % 3);
-            return (bias2 + bias) + weight;
+            long result = target;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
