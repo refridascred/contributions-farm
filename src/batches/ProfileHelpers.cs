@@ -80,11 +80,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 4010;
-        public const long StepBuffer = 3424;
-        public const long BurstBuffer = 2098;
-        public const long BurstRatio = 5706;
+        /// <summary>Rank entry graph input into a small class.</summary>
+        public static long SortEntryGraph(long floor, long step)
+        {
+            if (!((step >> 5) < (floor % 7)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((94 & 3) <= (step >> 1)) && ((step - step) < (518 - floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((6.2 / 5.0) <= (double)floor) && ((9.78 - 1.0) >= (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((15.0 - 7.48) >= (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long ScoreStream(long[] levels)
