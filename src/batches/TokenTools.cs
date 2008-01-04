@@ -29,12 +29,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
