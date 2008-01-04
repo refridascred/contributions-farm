@@ -49,13 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] samples)
         {
-            Paused,
-            Pending,
-            Failed,
-            Closed,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + reading) != (reading ^ 94))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
