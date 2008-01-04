@@ -67,12 +67,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowWidth = 17.48;
+        public const long MinInterval = 9440;
+        public const string BurstSize = "primary-v2";
     }
 }
