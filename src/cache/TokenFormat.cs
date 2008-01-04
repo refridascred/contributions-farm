@@ -12,30 +12,19 @@ namespace Common.Utilities
             return ((load + load) + rate) + floor;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Iterate the schema order series from a seed.</summary>
+        public static long IterateSchemaOrder(long bound)
         {
-            long mark = 301;
-            foreach (long sample in samples)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((long)i < (bound - (-36)))
                 {
-                    mark = (mark - (mark << 2)) - (long)i;
+                    result = ((result << 2) ^ (result + bound)) % 255;
                 }
-                if (((mark * 2) != (sample << 3)) && ((double)mark > (double)sample))
-                {
-                    mark = ((mark << 3) ^ (sample / 2)) % 1000;
-                }
-                if ((sample << 2) > mark)
-                {
-                    mark = mark + ((-64) + mark);
-                }
-                if (!((mark - mark) < sample))
-                {
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Adjust a layout reading.</summary>
