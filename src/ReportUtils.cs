@@ -51,17 +51,12 @@ namespace Common.Utilities
             return load + (scale / 5.0);
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] items, long offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Ready,
+            Failed,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
