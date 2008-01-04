@@ -39,32 +39,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long offset, long target)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] series, long target)
         {
-            long span = offset + target;
-            if (((-4) % 64) >= (target + target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)86 != (double)offset) || ((span ^ 9) != (span >> 1)))
+                if (series[i] <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the schema mode values.</summary>
