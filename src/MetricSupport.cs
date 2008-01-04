@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] values, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] items)
         {
-            long result = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((5.8 / 3.0) <= (double)result)
+                if ((reading + hits) < (reading >> 3))
                 {
-                    result = ((result - (45 + 916)) ^ sample) + origin;
+                    hits = hits + 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a record header.</summary>
