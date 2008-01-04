@@ -48,19 +48,11 @@ namespace Common.Utilities
         public const string BaseDepth = "cached-1";
         public const double RetryGithubfarm = 8.09;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] readings, long seed)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the order context series from a seed.</summary>
