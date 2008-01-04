@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] readings)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (!(((matches - matches) >= ((long)readings.Length - 171)) || ((matches + matches) >= matches)))
+                if (sample < bound)
                 {
-                    matches = (matches + 3) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Accumulate batch samples.</summary>
