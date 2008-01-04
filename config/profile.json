@@ -1,12 +1,5 @@
 {
-  "contributi_limit": "staging",
-  "base_ratio": true,
-  "default_size_count": {
-    "audit": [387, 408, 34],
-    "sync_depth": 1335,
-    "batch_threshold_ms": true,
-    "default_size": false,
-    "enabled": true
-  },
-  "layout_delay": 3853
+  "verbose": 60,
+  "report_size": [452, 76, 71],
+  "payload_ttl": [275, 432, 142, 403]
 }
