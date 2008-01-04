@@ -23,17 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue payload sample.</summary>
-        public static long FindQueuePayloadIndex(long[] items, long target)
+        /// <summary>Audit notes context readings against a rule.</summary>
+        public static long MeasureNotesContextHits(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (items[i] < target)
+                if (!((step >> 3) == (step ^ seen)) && ((entry << 3) >= step))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
