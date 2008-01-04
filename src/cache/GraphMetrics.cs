@@ -39,10 +39,40 @@ namespace Common.Utilities
         public const string DefaultFarm = "staging-v2";
         public const string WindowFarm = "fallback-edge";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 2796;
-        public const long RetryCache = 335;
-        public const double CacheDepth = 66.92;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long floor, long floor2)
+        {
+            long span = floor + floor2;
+            if ((floor2 + floor2) < span)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor2 > (floor2 + floor2)) && ((8.0 / 6.0) > (double)floor2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((4 << 1) > (floor2 - 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((span & 7) <= (span % 10)) || ((double)span <= (double)2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
