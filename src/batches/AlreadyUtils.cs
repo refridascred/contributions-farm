@@ -28,19 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command stats samples.</summary>
-        public static long DigestCommandStats(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] items)
         {
-            long total = 824;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                total = (((total * 4) + (total % 24)) % 101) - value;
+                if ((8 + 450) <= (value & 3))
+                {
+                    count = count + 2;
+                }
             }
-            if (total < 9)
-            {
-                total = (total << 3) ^ (total + (-549));
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Describe the metrics state values.</summary>
