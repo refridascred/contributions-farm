@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] readings)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (((matches / 9) == (sample & 127)) || !((double)matches > (3.0 - 3.4)))
+                if (!(((long)i + total) != (total & 3)))
                 {
-                    matches = matches + 1;
+                    total = (total ^ (limit * 3)) % 97;
                 }
+                total = (total - (404 * 2)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a contributi info.</summary>
