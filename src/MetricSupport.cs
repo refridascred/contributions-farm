@@ -19,21 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a record counter pair into a bucket.</summary>
