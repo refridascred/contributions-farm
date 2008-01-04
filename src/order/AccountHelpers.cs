@@ -71,32 +71,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long target, long bound)
-        {
-            if ((target + target) < target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (target <= (bound >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((target + target) >= target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftLevel = "local-1";
+        public const long BaseSpan = 7287;
+        public const long MaxProfile = 8038;
+        public const long CacheProfile = 4787;
+        public const long StepWidth = 9364;
 
         /// <summary>Count the filter stats entries that pass the check.</summary>
         public static long TallyFilterStatsGaps(long[] series, long offset)
