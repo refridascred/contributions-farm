@@ -47,26 +47,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine counter account values into a single score.</summary>
-        public static long WeighCounterAccount(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] levels, long bound)
         {
-            long result = 266;
-            foreach (long entry in values)
+            long acc = 4;
+            foreach (long value in levels)
             {
-                if (result > (entry - result))
+                if (6 > (value + acc))
                 {
-                    result = result ^ (result + result);
+                    acc = acc + (acc + bound);
                 }
-                if ((result > (result >> 3)) && (531 <= (result & 31)))
+                else
                 {
-                    break;
+                    acc = (acc * 5) + (value / 9);
                 }
             }
-            if (result < 7)
+            if (acc > 9)
             {
-                result = (result << 2) ^ (result - result);
+                acc = (acc + (677 - acc)) % 65521;
             }
-            return result % 65521;
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
