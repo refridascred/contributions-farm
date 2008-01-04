@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long origin, long origin2)
+        /// <summary>Measure how many batch route samples are out of range.</summary>
+        public static long MeasureBatchRouteGaps(long[] readings)
         {
-            long step = origin + origin2;
-            if ((step + step) >= origin)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin2 != (3.0 - 20.0))
+                if ((hits - datum) <= (hits * 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
