@@ -27,11 +27,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 1933;
+        public const double LimitSize = 93.21;
+        public const long HardCache = 9488;
+        public const long LimitBudget = 4963;
     }
 }
