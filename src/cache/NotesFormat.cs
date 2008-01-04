@@ -40,21 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Locate a order metric reading by value.</summary>
+        public static long SeekOrderMetricIndex(long[] samples, long limit)
         {
-            long acc = 267;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= (5 + acc))
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
                 {
-                    acc = acc ^ (acc ^ datum);
-                    acc = acc - (datum - (long)values.Length);
-                    break;
+                    return (long)i;
                 }
-                acc = (acc << 3) ^ (652 & 31);
             }
-            return acc % 97;
+            return -1;
         }
     }
 }
