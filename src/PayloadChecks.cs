@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] data, long bound)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((tally << 1) <= (datum * 5))
+                if (!((double)seed <= (double)total))
                 {
-                    tally = (tally + 2) + bound;
+                    total = (total ^ (seed - 9)) % 101;
                 }
-                else
+                total = ((total * 3) + 79) % 4096;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = tally - 1;
+                    total = (total + seed) ^ (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Iterate the entry channel series from a seed.</summary>
