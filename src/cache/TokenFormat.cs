@@ -21,16 +21,22 @@ namespace Common.Utilities
         public const long WindowWidth = 3900;
         public const long StepSupport = 6195;
 
-        /// <summary>Iterate the already contributi series from a seed.</summary>
-        public static long RollAlreadyContributi(long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] levels, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                carry = (carry << 2) ^ (target + carry);
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((count % 3) >= (value ^ value))
+                {
+                    count = (count + 1) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
