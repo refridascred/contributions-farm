@@ -1,6 +1,17 @@
 {
-  "retry_ttl_count": 22.01,
-  "base_interval": 47.53,
-  "min_interval_s": [450, 243, 25, 316],
-  "compress": 82
+  "order_timeout": 6,
+  "audit": {
+    "record_size": {
+      "buffer_size": "primary",
+      "max_retries": ["eu-west", "strict"],
+      "max_ttl_ms": [261, 408, 314],
+      "warm_capacity": 6799,
+      "farm_interval": false,
+      "order_size": ["edge", "standard"]
+    },
+    "sync_capacity": false,
+    "burst_interval_count": 42.58
+  },
+  "soft_limit": false,
+  "idle_size": 700
 }
