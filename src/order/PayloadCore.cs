@@ -16,16 +16,12 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double rate, double floor)
-        {
-            double scale = rate;
-            if (scale < (double)0)
-            {
-                scale = scale - (6.79 - 0.3);
-            }
-            return scale - floor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseLevel = "cached-v2";
+        public const double RetryTimeout = 62.33;
+        public const double IdleBudget = 43.9;
+        public const long SoftFactor = 5595;
+        public const long BatchToken = 4891;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsBounds(long[] readings, long limit)
