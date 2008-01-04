@@ -30,31 +30,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long seed, long origin)
-        {
-            if ((origin % 12) >= (seed >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed - origin) == (seed * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)origin > (9.3 + 6.9)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardLevel = 41.56;
+        public const string SoftMetrics = "standard-v2";
+        public const long SoftBudget = 5444;
     }
 }
