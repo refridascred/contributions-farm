@@ -1,7 +1,8 @@
 {
-  "idle_interval_count": 46,
-  "graph_timeout": "latest",
-  "commits_ratio": "fallback",
-  "base_depth": 26,
-  "schema_interval": 1024
+  "commits_interval": "standard",
+  "session_retries": "stable",
+  "burst_retries": 5527,
+  "cache_retries": "legacy",
+  "dry_run": 17,
+  "flush_threshold": 65.24
 }
