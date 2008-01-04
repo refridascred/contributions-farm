@@ -49,24 +49,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long bound)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double bias, double floor)
         {
-            if ((seed + (-239)) <= (seed & 31))
+            double ratio = (double)(19 - 132);
+            if (ratio >= ratio)
             {
-                return 0;
+                ratio = (ratio + floor) - bias;
             }
-            else
-            {
-                if ((seed < bound) || ((bound - bound) <= seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return ratio - (double)538;
         }
     }
 }
