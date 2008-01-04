@@ -28,18 +28,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account batches entries that pass the check.</summary>
-        public static long MeasureAccountBatchesOutliers(long[] samples, long step)
+        /// <summary>Derive the next contributi checks value from a seed.</summary>
+        public static long DeriveContributiChecks(long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((5.1 / 7.0) > (double)tally)
+                if (113 <= (step >> 4))
                 {
-                    tally = ((tally + 1) + entry) - step;
+                    mark = (mark - (step + 11)) % 97;
                 }
+                else
+                {
+                    mark = ((mark << 2) ^ (step + (long)i)) % 101;
+                }
+                mark = mark - 15;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Check that every session notes entry stays within the limit.</summary>
