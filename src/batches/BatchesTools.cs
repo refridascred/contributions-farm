@@ -23,11 +23,16 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 5939;
         public const double HardLevel = 44.27;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double gain, double span)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long origin)
         {
-            double load = span;
-            return (load - span) + gain;
+            long total = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 5) + (total << 1)) % 101;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
