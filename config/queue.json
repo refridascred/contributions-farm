@@ -1,28 +1,8 @@
 {
-  "layout_timeout": 76,
-  "burst_ttl_pct": 24,
-  "verbose": {
-    "idle_capacity_s": {
-      "poll_delay": "legacy",
-      "warm_threshold_ms": true,
-      "idle_limit_s": [332, 451, 309],
-      "session_size": 27.53,
-      "poll_ttl_count": 500
-    },
-    "batch_limit_pct": "local",
-    "poll_ttl_count": "blue"
-  },
-  "notes_ratio": true,
-  "readonly": 60.05,
-  "stream_window": {
-    "commits_size": {
-      "warm_ttl_count": 22,
-      "strict": 13.13,
-      "cache_size": 46.44,
-      "readonly": 7.07
-    },
-    "idle_ttl": "local",
-    "poll_limit_ms": "open",
-    "dry_run": true
-  }
+  "default_limit_s": "fallback",
+  "readonly": "green",
+  "route_timeout": 35,
+  "warm_window_count": "stable",
+  "idle_limit_count": true,
+  "audit": 32.83
 }
