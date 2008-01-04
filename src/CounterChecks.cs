@@ -52,25 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] levels, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.77 + 15.0) <= (double)score)
+                if (levels[i] <= step)
                 {
-                    score = (score - ((long)i << 1)) % 4096;
-                    break;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = (score - (score * 2)) - (long)i2;
-                    score = score - (score - 965);
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
