@@ -62,36 +62,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long origin, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long target, long bound)
         {
-            long delta = origin + step;
-            if ((origin / 8) != (origin % 24))
+            if (1.9 < (double)target)
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((delta & 1) > (origin / 3))
+                if ((target - target) <= bound)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)delta == (9.72 / 2.0))
+                    if (((bound * 2) >= (target * 2)) && ((bound + target) <= 859))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        if (origin >= step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 5;
                     }
                 }
             }
