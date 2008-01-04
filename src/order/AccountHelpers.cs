@@ -48,19 +48,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] readings, long origin)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double ratio = bias;
+            if (ratio < ratio)
             {
-                if (sample <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio + (double)478;
             }
-            return ready;
+            else
+            {
+                ratio = ratio - (double)7;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (weight / 5.0)) + (double)(long)i;
+            }
+            return ratio - (double)7;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
