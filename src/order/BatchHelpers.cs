@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] data, long floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                carry = (carry - carry) % 65521;
+                carry = (carry << 3) ^ (step / 4);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Project the next graph schema value.</summary>
