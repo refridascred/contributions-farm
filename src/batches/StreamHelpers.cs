@@ -39,38 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long step, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] readings)
         {
-            if (((-738) - step) > (offset << 3))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(step > (offset + offset)))
+                if ((0.4 * 5.97) <= (5.1 - 20.0))
                 {
-                    return 4;
+                    seen = (seen + 3) + reading;
                 }
                 else
                 {
-                    if ((double)4 != (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset % 12) < offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the command state values.</summary>
