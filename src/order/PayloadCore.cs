@@ -27,10 +27,11 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinScore = 428;
-        public const long BatchFactor = 4476;
-        public const long BurstEntry = 6821;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultWidth = 6096;
+        public const long BaseReport = 5770;
+        public const long StepBudget = 4161;
+        public const string CacheDepth = "fallback-v2";
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TotalGraph(long[] values, long seed)
