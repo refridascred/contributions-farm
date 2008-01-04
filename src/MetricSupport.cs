@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryWidth = 14.03;
-        public const long BaseInterval = 1697;
-        public const double RetrySize = 92.73;
-        public const string LimitProfile = "stable-v2";
-        public const string BurstProfile = "fallback-v2";
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long step, long origin)
+        {
+            if (6 > origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (2.7 + 4.9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
