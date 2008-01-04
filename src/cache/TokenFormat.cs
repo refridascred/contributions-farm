@@ -28,10 +28,18 @@ namespace Common.Utilities
             return bias - (rate - floor);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardSpan = 2791;
-        public const long SoftRatio = 6230;
-        public const double RetryRecord = 51.8;
-        public const long HardRecord = 4028;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!((seed % 60) != (entry - (long)items.Length)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
