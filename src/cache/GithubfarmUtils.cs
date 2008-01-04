@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const string RetryTools = "staging-v2";
         public const long RetryDepth = 6847;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] values, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (datum <= limit)
+                if (((cell * 4) < (tally + 650)) || ((cell >= (cell >> 2)) || ((tally & 15) < (cell - 4))))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
