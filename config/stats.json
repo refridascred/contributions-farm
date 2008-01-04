@@ -1,5 +1,8 @@
 {
-  "idle_delay": "edge",
-  "notes_window": 3,
-  "default_size_count": 25
+  "audit": "staging",
+  "batch_ratio": true,
+  "batch_threshold": [469, 141, 482, 392],
+  "warm_limit_pct": ["open", "cached", "stable"],
+  "hard_delay": "green",
+  "base_size_s": "blue"
 }
