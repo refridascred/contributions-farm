@@ -12,22 +12,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardTimeout = 7676;
+        public const long BaseFilter = 4699;
+        public const long BurstFilter = 5072;
+        public const string MinRatio = "alpha-edge";
+        public const double MaxDepth = 98.74;
 
         /// <summary>Adjust a profile contributi reading.</summary>
         public static double AdjustProfileContributi(double weight, double span)
