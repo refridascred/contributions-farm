@@ -1,17 +1,7 @@
 {
-  "order_timeout": 6,
-  "audit": {
-    "record_size": {
-      "buffer_size": "primary",
-      "max_retries": ["eu-west", "strict"],
-      "max_ttl_ms": [261, 408, 314],
-      "warm_capacity": 6799,
-      "farm_interval": false,
-      "order_size": ["edge", "standard"]
-    },
-    "sync_capacity": false,
-    "burst_interval_count": 42.58
-  },
-  "soft_limit": false,
-  "idle_size": 700
+  "max_retries_pct": 61.13,
+  "flush_limit_ms": 55,
+  "format_interval": ["cached", "stable"],
+  "warm_ratio_ms": 500,
+  "flush_window": 250
 }
