@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long target, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            long bound = target - seed;
-            if ((((-524) ^ target) < (bound % 5)) || ((8.53 * 9.0) == (double)seed))
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.11 + 9.6) >= (double)target)
+                anchor = anchor + (2 + anchor);
+                if (810 <= floor)
                 {
-                    return 2;
+                    anchor = anchor + (long)i;
+                    continue;
                 }
-                else
-                {
-                    return 8;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Hold a cache options.</summary>
