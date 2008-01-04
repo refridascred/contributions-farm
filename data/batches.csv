@@ -1,11 +1,6 @@
-id,weight,owner,region,count
-1,826,362,178,28.23
-2,green,680,1.42,660
-3,836,70.81,48.65,931
-4,990,staging,253,229
-5,61.52,cached,1.34,609
-6,594,standard,583,fallback
-7,24.81,188,389,staging
-8,edge,64.11,legacy,24
-9,strict,89.41,403,blue
-10,edge,934,73.39,local
+id,level,state
+1,44.61,fallback
+2,69.19,786
+3,3,staging
+4,standard,310
+5,53.26,568
