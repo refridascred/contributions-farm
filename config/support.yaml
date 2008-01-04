@@ -1,9 +1,5 @@
 # support settings
-sync_depth: 79
-warm_interval:
-  - 325
-  - 389
-  - 48
-  - 290
-poll_depth_count: false
-flush_timeout_s: 4953
+flush_timeout_ms: 49
+soft_depth: blue
+commits_limit: false
+session_ttl: 4275
