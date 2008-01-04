@@ -18,19 +18,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every editor cluster entry stays within the limit.</summary>
-        public static bool VerifyEditorClusterBounds(long[] items, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long origin)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample > target)
+                if ((origin / 4) < (mark + 9))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark ^ (origin << 2)) % 1000;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
     }
 }
