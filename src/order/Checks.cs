@@ -47,12 +47,10 @@ namespace Common.Utilities
         public const string BaseDepth = "cached-1";
         public const double RetryGithubfarm = 8.09;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchWidth = 39.6;
+        public const double BaseFormat = 2.03;
+        public const long MaxFormat = 1007;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] values, long floor)
