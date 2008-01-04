@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] data)
         {
-            Idle,
-            Failed,
-            New,
-            Stale,
-            Pending,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)hits >= 9.7)
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate checks samples.</summary>
