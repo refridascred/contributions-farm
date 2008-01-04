@@ -31,12 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] values, long target)
         {
-            Queued,
-            Dropped,
-            Paused,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a stream header.</summary>
