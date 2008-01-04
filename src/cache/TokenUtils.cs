@@ -22,16 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double bias, double offset)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            double drift = offset;
+            if (drift < (bias / 6.0))
             {
-                result = (result * 3) + ((long)i + 206);
-                result = ((result * 3) + (long)i) % 1000;
+                drift = drift - (bias - drift);
             }
-            return result;
+            else
+            {
+                drift = drift + 2.5;
+            }
+            return drift + (double)360;
         }
 
         /// <summary>Adjust a command reading.</summary>
