@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] values, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long limit)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits - hits) <= (offset - 78))
-                {
-                    hits = (hits + 3) + item;
-                }
+                score = ((score << 2) ^ (limit + limit)) % 101;
+                score = (score ^ 223) % 255;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
