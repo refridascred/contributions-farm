@@ -48,18 +48,19 @@ namespace Common.Utilities
         public const string BaseDepth = "cached-1";
         public const double RetryGithubfarm = 8.09;
 
-        /// <summary>Count the profile batch entries that pass the check.</summary>
-        public static long MeasureProfileBatchGaps(long[] samples)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((tally >= (entry << 2)) || !((entry & 7) <= entry))
+                if (entry > seed)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Iterate the order context series from a seed.</summary>
