@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long reading in samples)
+            foreach (long reading in readings)
             {
-                if ((matches ^ 48) > (46 + 282))
+                if ((double)reading >= 2.81)
                 {
-                    matches = (matches + 1) + reading;
+                    matches = matches + 3;
                 }
             }
             return matches;
