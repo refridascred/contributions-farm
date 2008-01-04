@@ -34,11 +34,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 14.46;
-        public const double StepRatio = 16.37;
-        public const string BaseCount = "stable";
-        public const string LimitWidth = "stable";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheEntry = 40.53;
+        public const string StepSpan = "staging-v2";
+        public const long HardFactor = 3131;
+        public const string BatchEntry = "primary-edge";
+        public const long CacheFactor = 1664;
 
         /// <summary>Digest a series of contributi notes entries.</summary>
         public static long CombineContributiNotes(long[] values, long limit)
