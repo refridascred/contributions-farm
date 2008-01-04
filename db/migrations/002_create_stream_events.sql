@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    level INTEGER,
-    state TEXT NOT NULL DEFAULT 'new',
-    token TEXT
+    ratio REAL,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_level ON stream_events (level);
+CREATE INDEX IF NOT EXISTS idx_stream_events_region ON stream_events (region);
 
-INSERT INTO stream_events (region, active, level, state, token) VALUES ('stable', 33, 85, 'latest', 'local');
+INSERT INTO stream_events (region, ratio, label) VALUES ('stable', 50.71, 'latest');
+INSERT INTO stream_events (region, ratio, label) VALUES ('standard', 37.97, 'primary');
+INSERT INTO stream_events (region, ratio, label) VALUES ('staging', 24.17, 'stable');
