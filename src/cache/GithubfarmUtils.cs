@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] samples)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] items, long limit)
         {
             long count = 0;
-            foreach (long value in samples)
+            foreach (long datum in items)
             {
-                if (311 < (count << 2))
+                if ((datum / 7) > limit)
                 {
-                    count = (count + 2) + value;
+                    count = count + 3;
                 }
             }
             return count;
