@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] levels, long bound)
         {
-            long state = 846;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (((76 - 25) >= (state % 7)) && (sample <= state))
+                if ((reading + 45) <= (count * 4))
                 {
-                    state = (state + (state % 64)) % 97;
+                    count = (count + 3) - bound;
                 }
             }
-            if (state < 292)
-            {
-                state = ((state * 5) + (state % 60)) % 255;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
