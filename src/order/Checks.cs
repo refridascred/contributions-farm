@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double ratio, double floor)
         {
-            double weight = (floor - 7.0) + (gain * 8.3);
-            if (weight > (floor - 0.2))
+            double drift = floor + (ratio * 7.3);
+            if (drift >= (ratio * 8.0))
             {
-                weight = weight + (double)(-789);
+                drift = drift - drift;
             }
-            return weight - (floor + gain);
+            else
+            {
+                drift = drift - (double)158;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (ratio - ratio)) + (double)(long)i;
+            }
+            return drift + (double)98;
         }
 
         /// <summary>Combine context values into a single score.</summary>
