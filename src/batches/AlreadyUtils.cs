@@ -45,19 +45,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] samples, long bound)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            long result = 3;
-            foreach (long cell in samples)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                result = (result - (899 & 7)) + cell;
+                if ((anchor % 7) < (limit ^ limit))
+                {
+                    anchor = anchor - (anchor >> 5);
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (result > 9)
-            {
-                result = ((result * 4) + bound) % 255;
-            }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
