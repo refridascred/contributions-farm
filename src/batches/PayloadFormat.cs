@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double bias, double offset)
         {
-            Idle,
-            Failed,
-            Pending,
-            Ready,
+            double drift = (double)87 / 3.0;
+            if (drift < (double)4)
+            {
+                drift = (drift + drift) - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Digest a series of metric entry entries.</summary>
