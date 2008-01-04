@@ -94,14 +94,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Match up profile context samples.</summary>
+        public static long MatchProfileContextCount(long[] samples)
         {
-            Dropped,
-            Retry,
-            Draft,
-            Paused,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already summary.</summary>
