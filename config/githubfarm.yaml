@@ -1,8 +1,11 @@
 # githubfarm settings
-dry_run: 62
-idle_ratio:
-  - 276
-  - 339
-  - 138
-  - 277
-soft_interval_s: false
+record_window: 8961
+default_size: 57
+base_capacity_count: 500
+stats_retries: 60
+strict:
+  - 448
+  - 355
+  - 11
+  - 326
+persist: stable
