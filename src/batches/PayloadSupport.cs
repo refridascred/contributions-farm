@@ -13,23 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((state + (long)i) == (limit % 3)))
-                {
-                    state = state ^ ((long)i ^ limit);
-                }
-                else
-                {
-                    state = ((state * 4) + (state + (long)i)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Combine window farm values into a single score.</summary>
