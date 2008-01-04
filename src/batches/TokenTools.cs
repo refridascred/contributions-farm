@@ -53,11 +53,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long floor, long origin)
         {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
+            long prev = floor + origin;
+            if ((1 % 2) == (floor % 97))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor + prev) >= (floor / 7)) && ((origin ^ floor) != (prev % 60)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin <= (14.0 + 13.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
