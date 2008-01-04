@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long target, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long next = target ^ limit;
-            if (!(2.0 <= (double)limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target + target) < (target + limit)) || ((next - next) <= (30 / 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
