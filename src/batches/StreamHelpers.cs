@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] items, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = span;
+            if (mean > (mean * 6.0))
             {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (mean + span)) + ratio;
             }
-            return -1;
+            return mean + (double)5;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
