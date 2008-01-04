@@ -61,31 +61,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long limit, long limit2)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] data)
         {
-            if (limit2 < (limit ^ limit2))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit2 - limit2) <= (limit2 * 5)) && ((limit2 ^ limit2) != (limit % 12)))
+                if (((2.29 + 8.5) < (double)cell) || ((tally ^ tally) > (tally & 3)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit > (13.0 - 9.4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
