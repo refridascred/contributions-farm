@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long MaxSize = 8378;
         public const long HardSize = 4010;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] readings, long offset)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a cluster stats.</summary>
