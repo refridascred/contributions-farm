@@ -23,11 +23,26 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] data, long step)
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
+            long mix = 9;
+            foreach (long item in data)
+            {
+                if ((item - step) > ((long)data.Length * 4))
+                {
+                    mix = mix + (item % 3);
+                }
+                if ((491 << 1) != (step & 7))
+                {
+                    mix = (mix ^ (item + 2)) % 97;
+                }
+            }
+            if (mix < 21)
+            {
+                mix = ((mix * 5) + (48 << 3)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
