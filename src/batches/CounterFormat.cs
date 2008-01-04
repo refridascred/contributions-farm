@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const double CacheLevel = 82.36;
         public const long DefaultRoute = 5663;
 
-        /// <summary>Audit contributi entry readings against a rule.</summary>
-        public static long CountContributiEntryMatches(long[] data, long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)(long)data.Length >= (17.0 - 4.76)))
-                {
-                    tally = ((tally + 2) - cell) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
