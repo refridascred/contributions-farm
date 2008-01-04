@@ -38,15 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double scale, double offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] items, long step)
         {
-            double gain = scale;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = ((gain + 1.4) + (double)(long)i) - offset;
+                if ((items[i] < step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - (gain - gain);
+            return -1;
         }
     }
 }
