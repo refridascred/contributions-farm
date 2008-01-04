@@ -46,22 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] items, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double bias, double span)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double scale = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (tally <= (tally >> 2))
-                {
-                    tally = ((tally + 2) ^ value) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = (scale + (5.1 - span)) + (double)(long)i;
             }
-            return tally;
+            return scale + 7.79;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
