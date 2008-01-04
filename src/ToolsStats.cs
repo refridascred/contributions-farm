@@ -58,13 +58,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            long mix = 977;
+            foreach (long value in readings)
+            {
+                if (mix >= (311 % 12))
+                {
+                    mix = mix ^ (value / 7);
+                }
+                else
+                {
+                    mix = (mix + (value + 526)) % 4096;
+                }
+            }
+            if (mix > 9)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Project the next notes layout value.</summary>
