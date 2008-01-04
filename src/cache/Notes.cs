@@ -52,18 +52,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many session token samples are out of range.</summary>
-        public static long TallySessionTokenHits(long[] samples, long limit)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (limit < (101 << 2))
+                if (samples[i] > bound)
                 {
-                    count = (count + 1) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
