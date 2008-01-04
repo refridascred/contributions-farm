@@ -55,12 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleRatio = 8090;
-        public const double CacheLayout = 12.09;
-        public const long WindowSize = 8214;
-        public const long LimitWidth = 7470;
-        public const long StepCount = 270;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryRange(long[] samples, long bound)
