@@ -58,15 +58,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double ratio, double floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double drift = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (ratio / 4.0)) - (double)(long)i;
-            }
-            return drift + floor;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Match up layout samples.</summary>
