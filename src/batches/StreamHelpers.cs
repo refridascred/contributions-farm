@@ -27,12 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 78.35;
-        public const long LimitSupport = 9062;
-        public const double DefaultInterval = 24.84;
-        public const string SoftTimeout = "stable-1";
-        public const string StepFactor = "latest-v2";
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Idle,
+            Active,
+            Draft,
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
