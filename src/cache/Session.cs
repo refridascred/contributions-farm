@@ -31,31 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a metric githubfarm value against two limits.</summary>
-        public static long GradeMetricGithubfarm(long offset, long offset2)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            if ((offset2 - 69) <= offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((-896) & 1) > offset2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 ^ 0) <= (offset ^ 820))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Ready,
+            Done,
         }
     }
 }
