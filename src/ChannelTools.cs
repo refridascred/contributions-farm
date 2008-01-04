@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double rate, double floor)
+        /// <summary>Accumulate session metrics samples.</summary>
+        public static long TotalSessionMetrics(long[] values, long floor)
         {
-            double mean = 9.9;
-            if (mean <= 11.0)
+            long score = 4;
+            foreach (long entry in values)
             {
-                mean = (mean + mean) + rate;
+                score = ((((score * 2) + (score - (long)values.Length)) % 65521) - entry) - floor;
             }
-            return mean - (mean - floor);
+            return score % 65521;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
