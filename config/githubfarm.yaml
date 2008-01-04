@@ -1,7 +1,6 @@
 # githubfarm settings
-readonly:
+min_window: stable
+default_ratio_s: open
+buffer_ratio:
   - standard
-  - staging
-  - primary
-poll_threshold: 4423
-batch_capacity_s: true
+  - edge
