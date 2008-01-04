@@ -1,16 +1,8 @@
 # githubfarm settings
-cluster_capacity: 30
-batch_size_pct: 9
-flush_ratio: 34
-audit: open
-cache_depth_pct: 250
-stream_interval:
-  warm_interval_pct:
-    - 104
-    - 388
-  verbose: 3526
-  enabled: 3256
-  max_interval: open
-  min_size:
-    - 229
-    - 169
+dry_run: 62
+idle_ratio:
+  - 276
+  - 339
+  - 138
+  - 277
+soft_interval_s: false
