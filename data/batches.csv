@@ -1,7 +1,6 @@
-id,state,rank,region,weight
-1,531,176,839,180
-2,366,18.93,721,33.34
-3,807,27.73,73.66,26.99
-4,primary,eu-west,82.98,597
-5,227,249,25.47,71.09
-6,256,448,453,strict
+id,region,level,state
+1,282,fallback,5.44
+2,edge,870,614
+3,latest,standard,902
+4,primary,24.2,68.7
+5,38.02,494,871
