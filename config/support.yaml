@@ -1,43 +1,20 @@
 # support settings
-flush_delay_count:
-  min_interval_s: 70
-  githubfarm_ratio: standard
-  retry_depth_count: 47
-  dry_run: cached
-  enabled: 32.77
-layout_timeout: cached
-batch_ratio:
-  graph_interval:
-    sync_threshold_ms: cached
-    account_ratio: strict
-    default_ratio_pct: latest
-    graph_ratio: staging
-    retry_interval_count: true
-    cache_depth: open
-  burst_timeout_s: green
-  warm_limit:
-    warm_interval: 250
-    min_capacity_pct: 22.28
-    persist: 21.03
-    min_interval_s: cached
-    hard_timeout: latest
-  session_timeout: 68.48
-  compress: 30
-  dry_run: true
-strict:
-  commits_window:
-    hard_threshold: false
-    audit: false
-    commits_timeout: false
-    min_limit_ms: true
-    layout_window: true
-  strict:
-    - edge
-    - standard
-    - latest
-    - latest
-  max_timeout_ms:
-    - edge
-    - standard
-    - strict
-    - green
+enabled:
+  max_interval_pct: 80.79
+  readonly:
+    verbose: edge
+    base_ttl_ms: 500
+    account_timeout: 6227
+    batches_depth: local
+    burst_limit_pct:
+      - latest
+      - standard
+      - primary
+      - cached
+  compress: staging
+  max_capacity_s: 60
+audit:
+  - 460
+  - 99
+  - 389
+burst_capacity: staging
