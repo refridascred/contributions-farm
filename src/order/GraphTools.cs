@@ -33,10 +33,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardBudget = 3932;
-        public const string HardFormat = "alpha-v2";
-        public const string SoftLevel = "strict-edge";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)hits == (double)cell))
+                {
+                    hits = (hits + 3) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionBounds(long[] levels, long offset)
