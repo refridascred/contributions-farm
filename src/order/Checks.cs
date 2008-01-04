@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Grade a order value against two limits.</summary>
