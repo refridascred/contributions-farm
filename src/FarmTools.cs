@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] series, long step)
+        /// <summary>Digest a series of session commits entries.</summary>
+        public static long ScoreSessionCommits(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long state = 73;
+            foreach (long item in levels)
             {
-                if (item != step)
+                if (((long)levels.Length / 7) < (offset + offset))
                 {
-                    ready = false;
-                    break;
+                    state = ((state - (3 + state)) % 255) - item;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
