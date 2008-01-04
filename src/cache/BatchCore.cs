@@ -15,39 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long limit, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long edge = limit ^ origin;
-            if ((89 / 4) == (limit + edge))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((edge + edge) <= limit) || ((9.14 * 0.85) < (double)limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge + limit) > (edge & 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit < (edge * 3)) && ((edge / 6) < 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
