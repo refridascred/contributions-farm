@@ -34,12 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
