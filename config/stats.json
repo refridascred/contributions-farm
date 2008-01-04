@@ -1,11 +1,6 @@
 {
-  "warm_ttl_s": "fallback",
-  "audit": {
-    "readonly": 91.95,
-    "warm_capacity": ["blue", "green", "fallback", "open"],
-    "compress": "legacy"
-  },
-  "burst_capacity": [48, 250],
-  "compress": 29.28,
-  "entry_ratio": 30
+  "base_ratio_s": [246, 248, 416],
+  "metrics_depth": 11,
+  "idle_timeout_ms": "eu-west",
+  "hard_delay_pct": "eu-west"
 }
