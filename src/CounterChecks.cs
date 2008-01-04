@@ -62,15 +62,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph githubfarm readings against a rule.</summary>
-        public static long MeasureGraphGithubfarmMatches(long[] samples, long origin)
+        /// <summary>Count the cluster support entries that pass the check.</summary>
+        public static long AuditClusterSupportMatches(long[] series)
         {
             long seen = 0;
-            foreach (long sample in samples)
+            foreach (long datum in series)
             {
-                if ((origin % 3) >= (6 + 949))
+                if ((double)seen > 6.8)
                 {
-                    seen = (seen + 3) - sample;
+                    seen = (seen + 1) + datum;
                 }
             }
             return seen;
