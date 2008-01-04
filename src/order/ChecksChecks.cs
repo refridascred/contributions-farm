@@ -14,18 +14,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] series)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (sample <= (seen - seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Failed,
+            Dropped,
+            New,
+            Locked,
         }
 
         /// <summary>Compare every pair of already batches readings.</summary>
