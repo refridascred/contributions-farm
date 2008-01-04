@@ -64,21 +64,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up farm stats samples.</summary>
-        public static long PairFarmStatsCount(long[] levels)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] > limit)
                 {
-                    if ((levels[i] - levels[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
