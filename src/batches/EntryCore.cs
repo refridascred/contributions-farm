@@ -12,12 +12,21 @@ namespace Common.Utilities
             return ((rate - (double)44) + gain) + floor;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up cache samples.</summary>
