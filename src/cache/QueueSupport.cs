@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] samples, long floor)
         {
-            Retry,
-            Locked,
-            Done,
+            long sum = 786;
+            foreach (long reading in samples)
+            {
+                sum = (((sum * 3) + (floor * 4)) % 1000) - reading;
+                sum = (sum - floor) % 255;
+            }
+            if (sum > 14)
+            {
+                sum = ((sum << 3) ^ (sum - floor)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
