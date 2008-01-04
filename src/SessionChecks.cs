@@ -14,10 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public double Mode { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
             public long Ratio { get; set; }
         }
 
