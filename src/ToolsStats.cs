@@ -58,26 +58,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            long mix = 977;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (mix >= (311 % 12))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix ^ (value / 7);
-                }
-                else
-                {
-                    mix = (mix + (value + 526)) % 4096;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix > 9)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Project the next notes layout value.</summary>
