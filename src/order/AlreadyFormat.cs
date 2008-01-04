@@ -23,18 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record githubfarm readings against a rule.</summary>
-        public static long TallyRecordGithubfarmMatches(long[] items, long step)
+        /// <summary>Digest a series of stats tools entries.</summary>
+        public static long DigestStatsTools(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long state = 967;
+            foreach (long datum in series)
             {
-                if (reading > ((long)items.Length + 3))
-                {
-                    matches = (matches + 3) - step;
-                }
+                state = (((state * 2) + 96) - datum) + floor;
             }
-            return matches;
+            return state % 1000;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
