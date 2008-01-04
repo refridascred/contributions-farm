@@ -29,13 +29,15 @@ namespace Common.Utilities
             return mean - (double)3;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine graph stream values into a single score.</summary>
+        public static long TotalGraphStream(long[] values)
         {
-            Stale,
-            Draft,
-            Failed,
-            Ready,
+            long sum = 613;
+            foreach (long sample in values)
+            {
+                sum = ((sum * 2) + (sum % 97)) + sample;
+            }
+            return sum;
         }
     }
 }
