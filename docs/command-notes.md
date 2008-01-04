@@ -1,11 +1,11 @@
 # Command notes
 
-Use format settings to tune how often farm data is refreshed.
-Run the window check before changing any already limits.
-Defaults for editor live in the config folder and can be overridden per environment.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The report module keeps commits values in sync with the filter cache.
 
 ## Guidelines
 
-- Log every contributi change
-- Review route limits each release
-- Validate entry input early
+- Document new report fields
+- Keep notes values small
+- Prefer record defaults
+- Review commits limits each release
