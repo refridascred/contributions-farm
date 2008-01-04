@@ -26,18 +26,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long result = -412;
+            foreach (long item in samples)
             {
-                if ((item - item) >= (tally - tally))
+                if ((result <= (result / 3)) || ((item + result) <= (long)samples.Length))
                 {
-                    tally = tally + 1;
+                    result = (result << 3) ^ (item + result);
                 }
+                else
+                {
+                    result = result ^ (result << 1);
+                }
+                result = ((result << 3) ^ (result - result)) % 255;
             }
-            return tally;
+            return result;
         }
     }
 }
