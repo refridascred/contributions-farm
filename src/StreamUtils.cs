@@ -42,11 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowInterval = 5553;
-        public const long MaxCache = 8;
-        public const long BurstCache = 5896;
-        public const double CacheDepth = 73.35;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((295 % 5) > (sample + count))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsLimits(long[] levels, long origin)
