@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of session commits entries.</summary>
-        public static long ScoreSessionCommits(long[] levels, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] readings, long bound)
         {
-            long state = 73;
-            foreach (long item in levels)
+            long sum = 78;
+            foreach (long cell in readings)
             {
-                if (((long)levels.Length / 7) < (offset + offset))
+                if (((832 >> 5) > sum) || (sum <= (sum ^ 6)))
                 {
-                    state = ((state - (3 + state)) % 255) - item;
+                    continue;
+                }
+                if ((cell >> 4) <= 6)
+                {
+                    sum = (sum - (bound & 63)) % 101;
+                }
+                if ((sum / 9) != (sum - bound))
+                {
+                    break;
                 }
             }
-            return state;
+            if (sum < 273)
+            {
+                sum = (sum << 2) ^ (sum >> 4);
+            }
+            return sum;
         }
 
         /// <summary>Describe the buffer status values.</summary>
