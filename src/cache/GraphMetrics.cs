@@ -45,13 +45,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Idle,
-            Draft,
-            Dropped,
-            Locked,
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
