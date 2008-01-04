@@ -35,32 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long step, long bound)
+        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
+        public static bool GuardToolsBufferRange(long[] samples, long offset)
         {
-            long bound2 = step - bound;
-            if (bound2 > (step * 3))
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((3.6 + 5.91) == (double)step) || (bound < (bound * 3)))
+                if (sample > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - bound2) == (bound + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
