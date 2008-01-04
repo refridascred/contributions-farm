@@ -67,17 +67,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] levels, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
