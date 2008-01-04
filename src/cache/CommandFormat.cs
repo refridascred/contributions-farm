@@ -31,15 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Dropped,
-            Retry,
-            Idle,
-            New,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstStats = 98.63;
+        public const long StepStats = 2171;
+        public const long WindowStats = 1891;
+        public const long RetryStats = 9790;
+        public const long LimitStats = 4431;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BatchSupport = 9705;
