@@ -41,17 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout batch entry that matches the target.</summary>
-        public static long LookupLayoutBatchIndex(long[] values, long floor)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = scale - 5.0;
+            if (load >= (4.0 / 2.0))
             {
-                if ((values[i] <= floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - (scale * 6.1);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (span * 12.0)) + (double)(long)i;
+            }
+            return load + (scale / 5.0);
         }
 
         /// <summary>Describe the buffer level values.</summary>
