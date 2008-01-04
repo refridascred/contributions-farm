@@ -23,11 +23,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "standard-edge";
-        public const long BatchFarm = 6540;
-        public const string LimitLevel = "alpha";
-        public const double StepWidth = 27.63;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] values)
+        {
+            long state = 9;
+            foreach (long sample in values)
+            {
+                state = ((state - (85 + 6)) % 65521) ^ sample;
+            }
+            return state;
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
