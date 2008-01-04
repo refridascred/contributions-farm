@@ -55,20 +55,22 @@ namespace Common.Utilities
         public const long SoftDepth = 3983;
         public const long WindowScore = 3754;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] readings)
         {
-            long anchor = 9;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                anchor = anchor - (500 >> 4);
-                anchor = (anchor + (anchor - anchor)) % 97;
-                if (((cell % 24) <= (anchor * 3)) || (6.4 < (double)(long)values.Length))
+                if ((sample & 3) > (matches * 5))
                 {
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
