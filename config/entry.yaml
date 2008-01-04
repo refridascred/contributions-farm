@@ -1,13 +1,6 @@
 # entry settings
-warm_retries_s: edge
-strict:
-  - 479
-  - 473
-persist:
-  - edge
-  - standard
-  - latest
-default_limit_s:
-  - standard
-  - primary
-  - latest
+enabled: local
+max_threshold_s: 100
+route_interval: true
+sync_window_pct: latest
+format_delay: false
