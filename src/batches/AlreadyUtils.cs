@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] values)
         {
-            Paused,
-            Idle,
-            Locked,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (tally > entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a context reading by value.</summary>
