@@ -1,5 +1,6 @@
 {
-  "farm_size": ["primary", "cached", "cached"],
-  "batch_limit_s": 73,
-  "retry_ttl_s": 52
+  "flush_depth_pct": 61.44,
+  "hard_threshold": 58.99,
+  "flush_ratio_ms": "standard",
+  "warm_capacity_count": false
 }
