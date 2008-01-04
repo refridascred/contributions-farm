@@ -38,23 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            long mix = 752;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = mix - cell;
-                if (((mix + 1) == (cell << 2)) && ((double)mix <= 14.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix << 2) ^ (mix << 1);
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 310)
-            {
-                mix = (mix + (mix / 7)) % 97;
-            }
-            return mix;
+            return hits;
         }
     }
 }
