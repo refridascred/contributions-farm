@@ -1,7 +1,8 @@
 {
-  "max_retries_pct": 61.13,
-  "flush_limit_ms": 55,
-  "format_interval": ["cached", "stable"],
-  "warm_ratio_ms": 500,
-  "flush_window": 250
+  "stats_delay": "latest",
+  "readonly": 78,
+  "report_limit": true,
+  "cache_window": 10,
+  "soft_threshold_pct": "primary",
+  "enabled": "cached"
 }
