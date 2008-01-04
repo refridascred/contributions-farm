@@ -38,19 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((double)count >= (double)sample) || ((count + 877) < (count + count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 78.35;
+        public const long LimitSupport = 9062;
+        public const double DefaultInterval = 24.84;
+        public const string SoftTimeout = "stable-1";
+        public const string StepFactor = "latest-v2";
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
