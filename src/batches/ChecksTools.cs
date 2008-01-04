@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            long slot = floor + bound;
+            if (!((bound ^ floor) == (slot - bound)))
             {
-                if ((result << 3) != ((long)i + (long)i))
-                {
-                    result = result - ((long)i + result);
-                }
-                result = ((result * 2) + (long)i) % 97;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((double)(-515) >= (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor > (slot & 63))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((slot >> 2) < (slot / 7)) || (bound <= (bound * 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
