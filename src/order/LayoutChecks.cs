@@ -40,14 +40,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long floor)
         {
-            Closed,
-            Draft,
-            Pending,
-            Stale,
-            Failed,
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor + (floor >> 5)) % 101;
+                if (((floor & 1) <= (anchor - (long)i)) && (floor < (floor << 3)))
+                {
+                    anchor = ((anchor << 2) ^ ((long)i / 6)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a profile info.</summary>
