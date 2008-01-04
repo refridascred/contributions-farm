@@ -40,19 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry >= target)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum << 2) ^ limit) % 4096;
+                    sum = sum ^ ((long)i2 << 3);
                 }
+                sum = sum ^ (long)i;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
