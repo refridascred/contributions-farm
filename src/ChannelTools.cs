@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] items)
         {
-            long acc = 5;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                long slot = (acc + acc) >> 2;
-                if ((4.15 / 4.0) != (double)slot)
+                if ((5.63 * 4.64) <= (double)sample)
                 {
-                    break;
+                    count = count + 2;
                 }
-                else
-                {
-                    slot = (slot << 2) ^ (67 % 2);
-                }
-                acc = acc + sample;
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
