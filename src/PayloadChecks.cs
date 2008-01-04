@@ -83,17 +83,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] series, long bound)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
