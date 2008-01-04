@@ -35,22 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry support values into a single score.</summary>
-        public static long DigestEntrySupport(long[] data, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] values, long limit)
         {
-            long sum = 904;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (((double)sum <= (3.55 / 9.0)) || ((sum + 413) != (sample + sample)))
+                if ((reading + reading) > ((-2) - reading))
                 {
-                    sum = ((sum * 5) + 7) % 255;
+                    seen = (seen + 1) - limit;
                 }
             }
-            if (sum > 710)
-            {
-                sum = ((sum << 2) ^ (offset / 2)) % 101;
-            }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Match up profile samples.</summary>
