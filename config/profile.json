@@ -1,5 +1,6 @@
 {
-  "cache_ratio_ms": 250,
-  "strict": false,
-  "flush_threshold": 1646
+  "enabled": 87.02,
+  "min_retries": "blue",
+  "batch_capacity": "edge",
+  "token_capacity": 179
 }
