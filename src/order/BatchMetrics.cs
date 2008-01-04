@@ -72,9 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchWidth = 95.75;
-        public const double StepOrder = 75.37;
-        public const long RetryOrder = 94;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Draft,
+            Active,
+            Done,
+        }
     }
 }
