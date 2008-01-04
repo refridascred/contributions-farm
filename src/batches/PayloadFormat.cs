@@ -14,11 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] series, long seed)
         {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((hits & 15) < entry) || ((4 >= (seed & 127)) && (entry <= (hits / 8))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
