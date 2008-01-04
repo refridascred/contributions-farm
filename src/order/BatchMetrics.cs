@@ -44,34 +44,35 @@ namespace Common.Utilities
         public const long HardGithubfarm = 5635;
         public const long WindowSize = 2833;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long step, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long origin, long limit)
         {
-            if ((limit << 2) <= (step % 5))
+            long next = origin ^ limit;
+            if ((double)origin < (8.0 * 2.1))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (((limit / 3) < 2) && ((2.97 * 18.0) != (double)limit))
+                if (!(((-8) + origin) < (next + (-40))))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (((6.4 - 5.0) <= (double)step) || (0 < (step >> 5)))
+                    if ((26 + limit) < (limit ^ origin))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        if ((6.0 / 2.0) != (double)step)
+                        if (!((7.9 * 3.6) > (double)origin))
                         {
                             return 0;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
