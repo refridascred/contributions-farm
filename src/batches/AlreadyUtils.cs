@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] values)
+        /// <summary>Count the checks report entries that pass the check.</summary>
+        public static long TallyChecksReportHits(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (tally > entry)
+                if ((floor < (count * 4)) && (((floor % 12) >= (floor + (-83))) && ((4 + count) != (floor * 2))))
                 {
-                    tally = tally + 2;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a context reading by value.</summary>
