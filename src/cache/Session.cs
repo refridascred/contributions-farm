@@ -27,18 +27,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] data, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (5 >= count)
-                {
-                    count = ((count + 3) ^ entry) + offset;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
