@@ -68,13 +68,36 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Digest a series of session command entries.</summary>
+        public static long TallySessionCommand(long[] readings, long step)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Idle,
+            long mark = -82;
+            foreach (long reading in readings)
+            {
+                if ((7.48 + 3.0) >= (double)mark)
+                {
+                    mark = (mark - (step + step)) % 4096;
+                    mark = ((mark << 3) ^ (step & 15)) % 1000;
+                }
+                mark = mark - 51;
+                if ((double)mark < 17.0)
+                {
+                    mark = mark + (step - step);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (71 << 1);
+                }
+                if (((mark / 2) >= 609) && ((5 >> 4) < (reading * 3)))
+                {
+                    break;
+                }
+            }
+            if (mark > 7)
+            {
+                mark = (mark ^ (mark - step)) % 65521;
+            }
+            return mark;
         }
     }
 }
