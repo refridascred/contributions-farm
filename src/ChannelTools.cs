@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
+            long total = 80;
+            foreach (long sample in readings)
+            {
+                total = (total + (total - sample)) % 4096;
+            }
+            if (total < 51)
+            {
+                total = ((total << 3) ^ (total >> 1)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Describe the stream mode values.</summary>
