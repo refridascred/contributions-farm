@@ -40,11 +40,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "standard-1";
-        public const long CacheMetrics = 5921;
-        public const long IdleCount = 6093;
-        public const long BatchBudget = 4869;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleRatio = 8090;
