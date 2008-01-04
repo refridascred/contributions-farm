@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] data)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)count >= (7.7 + 6.2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
