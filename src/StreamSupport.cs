@@ -32,10 +32,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardLevel = 5756;
-        public const long StepInterval = 8020;
-        public const long StepNotes = 2263;
-        public const long BaseBudget = 4102;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
