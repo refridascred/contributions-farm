@@ -38,21 +38,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = target - floor;
+            if ((68 - target) == (span ^ target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((360 + span) > target)
                 {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
