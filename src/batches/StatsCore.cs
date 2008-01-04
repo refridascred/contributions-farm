@@ -85,25 +85,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch counter value against two limits.</summary>
-        public static long RankBatchCounter(long step, long limit)
+        /// <summary>Find the first format route entry that matches the target.</summary>
+        public static long LookupFormatRouteIndex(long[] samples, long step)
         {
-            long step2 = step - limit;
-            if ((double)step2 <= (1.6 - 1.9))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step & 15) >= limit)
+                if (samples[i] >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a filter header.</summary>
