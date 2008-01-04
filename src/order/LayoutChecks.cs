@@ -29,21 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count format metric pairs that satisfy a relation.</summary>
-        public static long OverlapFormatMetricCount(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((1.03 + 11.0) < (double)sample)
                 {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a profile info.</summary>
