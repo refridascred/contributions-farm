@@ -38,10 +38,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryChecks = 41.72;
-        public const long BatchRatio = 5984;
-        public const string BurstChecks = "fallback-v2";
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public double Region { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long GradeGithubfarm(long floor, long offset)
