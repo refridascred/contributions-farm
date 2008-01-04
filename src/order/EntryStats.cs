@@ -70,19 +70,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] series, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long offset)
         {
-            long mark = 554;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mark = ((mark * 5) + reading) % 1000;
-                if ((floor + floor) < reading)
+                if ((tally - tally) != (offset >> 5))
                 {
-                    mark = mark + (1 + mark);
+                    tally = (tally + 1) + item;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
