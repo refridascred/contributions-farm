@@ -1,11 +1,4 @@
 # githubfarm settings
-hard_capacity: false
-base_interval_s: false
-max_capacity: 30.28
-min_limit_s: primary
-burst_ttl_pct:
-  - 4
-  - 43
-  - 222
-  - 95
-support_threshold: 100
+sync_threshold_pct: 60
+soft_threshold: primary
+burst_retries_pct: 100
