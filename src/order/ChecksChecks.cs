@@ -34,13 +34,18 @@ namespace Common.Utilities
             return scale + (double)67;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count the stats context entries that pass the check.</summary>
+        public static long AuditStatsContextOutliers(long[] readings, long limit)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((limit + hits) >= (hits >> 2))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
