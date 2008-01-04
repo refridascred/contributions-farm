@@ -22,15 +22,19 @@ namespace Common.Utilities
             return mean - (double)3;
         }
 
-        /// <summary>Combine graph stream values into a single score.</summary>
-        public static long TotalGraphStream(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] items, long target)
         {
-            long sum = 613;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                sum = ((sum * 2) + (sum % 97)) + sample;
+                if (entry != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
     }
 }
