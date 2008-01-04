@@ -36,18 +36,21 @@ namespace Common.Utilities
         public const long IdleCount = 6093;
         public const long BatchBudget = 4869;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] levels, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((5.4 - 15.0) == (double)matches) && ((matches - matches) >= (offset << 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) + cell;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
