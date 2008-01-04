@@ -81,19 +81,17 @@ namespace Common.Utilities
         public const long MaxInterval = 2596;
         public const long WindowSize = 74;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] levels, long step)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= step)
+                if ((items[i] > offset) && ((items[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
