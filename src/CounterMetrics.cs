@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseTimeout = 10.51;
+        public const long StepGithubfarm = 9630;
+        public const long IdleGithubfarm = 8005;
+        public const string MinRatio = "cached-edge";
+        public const long BaseGithubfarm = 5706;
 
         /// <summary>Digest a series of context stream entries.</summary>
         public static long TallyContextStream(long[] items)
