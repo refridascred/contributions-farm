@@ -1,8 +1,6 @@
 # entry settings
-metric_delay: fallback
-profile_ratio:
-  - 384
-  - 105
-  - 335
-  - 87
-max_timeout_pct: 6256
+compress:
+  - latest
+  - primary
+hard_interval_pct: green
+cache_interval: latest
