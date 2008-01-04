@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream cluster measurements.</summary>
-        public static double BlendStreamCluster(double bias, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] levels, long floor)
         {
-            double scale = offset;
-            if (scale < (double)89)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                scale = (scale - offset) - bias;
+                if ((double)tally <= (5.0 / 6.0))
+                {
+                    tally = ((tally + 1) + value) - floor;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + 3.0;
+            return tally;
         }
 
         /// <summary>Hold a farm entry.</summary>
