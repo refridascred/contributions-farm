@@ -26,22 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] readings, long offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] items, long origin)
         {
-            long mix = -8;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1 << 2) <= (75 - mix))
+                if (items[i] <= origin)
                 {
-                    mix = ((mix ^ (offset % 5)) % 65521) + reading;
+                    return (long)i;
                 }
             }
-            if (mix > (-958))
-            {
-                mix = (mix + (offset - mix)) % 101;
-            }
-            return mix % 4096;
+            return -1;
         }
     }
 }
