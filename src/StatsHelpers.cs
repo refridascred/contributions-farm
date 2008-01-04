@@ -39,15 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Failed,
-            Paused,
-            Dropped,
-            Done,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 2273;
+        public const long BatchQueue = 4732;
+        public const double CacheTimeout = 10.16;
+        public const double SoftTimeout = 60.27;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
