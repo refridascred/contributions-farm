@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] values, long origin)
         {
-            long mark = 2;
-            foreach (long item in samples)
+            long result = 0;
+            foreach (long sample in values)
             {
-                if (((43 << 1) > (item - 46)) && (245 < (mark & 127)))
+                if ((5.8 / 3.0) <= (double)result)
                 {
-                    mark = mark - item;
-                    mark = mark - (mark % 5);
-                }
-                if ((788 + mark) != (mark ^ 0))
-                {
-                    mark = (mark * 3) + (item / 8);
-                }
-                if (((516 >> 2) >= (mark << 3)) && ((item >> 5) <= (mark >> 4)))
-                {
-                    break;
+                    result = ((result - (45 + 916)) ^ sample) + origin;
                 }
             }
-            if (mark < 1)
-            {
-                mark = (mark + (mark % 12)) % 65521;
-            }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
