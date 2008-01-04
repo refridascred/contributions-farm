@@ -47,11 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftScore = 4683;
-        public const long BatchTimeout = 1473;
-        public const long BurstBatch = 7119;
-        public const long BaseDepth = 3559;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftScore = 4727;
+        public const double HardScore = 22.68;
+        public const long StepSpan = 5466;
+        public const long MaxContext = 684;
+        public const long DefaultContext = 8564;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultContributi = 1839;
