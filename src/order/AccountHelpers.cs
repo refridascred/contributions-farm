@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxCommits = "latest-1";
-        public const double LimitScore = 98.98;
-        public const long BurstScore = 7444;
-        public const long StepRatio = 3309;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((7 - tally) <= tally)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsGaps(long[] values)
