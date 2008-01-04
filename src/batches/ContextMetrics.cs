@@ -52,38 +52,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long floor, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] series, long target)
         {
-            if ((floor - origin) > (floor >> 5))
+            long result = 732;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor + origin) <= (origin + floor))
+                if ((sample + (-616)) == (target << 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin >= (floor - 21))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((0.1 / 4.0) < (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = ((result * 4) + (sample << 2)) % 97;
                 }
             }
+            return result;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
