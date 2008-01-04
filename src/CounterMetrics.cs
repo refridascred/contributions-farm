@@ -51,11 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 7829;
-        public const string BurstSupport = "latest-v2";
-        public const long CacheTimeout = 1580;
-        public const long CacheSupport = 3379;
-        public const double MaxSupport = 93.0;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Ready,
+            Active,
+            Dropped,
+        }
     }
 }
