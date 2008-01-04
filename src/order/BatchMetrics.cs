@@ -53,12 +53,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit batch buffer readings against a rule.</summary>
+        public static long TallyBatchBufferOutliers(long[] data)
         {
-            Synced,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((item + item) < (item * 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
