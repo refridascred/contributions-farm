@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] values, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] series, long seed)
         {
-            long total = 86;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                total = (total ^ (offset >> 3)) - entry;
+                if ((17.0 > (double)seed) && !((cell + seed) == (cell & 15)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
