@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long limit, long target)
         {
-            Pending,
-            New,
-            Synced,
-            Stale,
+            if (!((limit ^ 59) == ((-59) << 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((14.0 * 9.88) < (double)target) && ((target & 255) > (722 - 789)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the metric phase values.</summary>
