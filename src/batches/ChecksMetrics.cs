@@ -58,11 +58,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two payload commits measurements.</summary>
-        public static double ScalePayloadCommits(double ratio, double offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double ratio, double floor)
         {
-            double load = offset;
-            return load + (ratio + 9.88);
+            double drift = ratio;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (ratio / 4.0)) - (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Match up layout samples.</summary>
