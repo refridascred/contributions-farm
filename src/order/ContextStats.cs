@@ -18,10 +18,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinWidth = "fallback-v2";
-        public const double MinFactor = 60.81;
-        public const long DefaultStats = 489;
+        /// <summary>Scale a cluster support figure with a bias.</summary>
+        public static double BlendClusterSupport(double weight, double bias)
+        {
+            double gain = (1.0 / 6.0) - bias;
+            if (gain <= (double)8)
+            {
+                gain = gain + (weight * 7.2);
+            }
+            else
+            {
+                gain = gain - (gain - 0.11);
+            }
+            return gain - (bias + 1.0);
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ScaleTools(double ratio, double offset)
