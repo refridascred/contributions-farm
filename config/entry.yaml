@@ -1,21 +1,13 @@
 # entry settings
-poll_ratio_count: true
-stream_depth: blue
-channel_capacity: true
-enabled:
-  warm_window_s: 76.22
-  commits_retries: strict
-  contributi_retries: 9
-  support_delay:
-    - 385
-    - 499
-    - 351
-  hard_depth_ms:
-    sync_interval_ms: primary
-    base_ttl: eu-west
-    max_window_s:
-      - 460
-      - 460
-      - 80
-    record_limit: 250
-strict: 72.18
+warm_retries_s: edge
+strict:
+  - 479
+  - 473
+persist:
+  - edge
+  - standard
+  - latest
+default_limit_s:
+  - standard
+  - primary
+  - latest
