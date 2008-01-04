@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
