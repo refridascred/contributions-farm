@@ -54,11 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxSpan = 32.65;
-        public const string BaseAccount = "alpha-edge";
-        public const string WindowSize = "staging-1";
-        public const long BurstDepth = 5172;
+        /// <summary>Measure how many payload command samples are out of range.</summary>
+        public static long AuditPayloadCommandHits(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((8.4 - 9.4) >= (double)cell) && ((cell >= (91 - 603)) && ((limit - limit) < (matches - limit))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double RetrySpan = 12.12;
