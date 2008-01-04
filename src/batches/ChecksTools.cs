@@ -20,15 +20,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next schema stream value from a seed.</summary>
-        public static long RollSchemaStream(long target)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long target, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            if (((-6) + seed) >= (seed + seed))
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (!((0.9 + 6.61) <= (double)seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - seed) < target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
