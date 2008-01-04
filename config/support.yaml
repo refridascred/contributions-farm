@@ -1,22 +1,13 @@
 # support settings
-dry_run: 2991
-githubfarm_size:
-  - cached
-  - edge
-  - green
-  - local
-batch_size:
-  - 443
-  - 361
-flush_threshold_count:
-  batches_capacity: 85
-  session_interval: 325
-  soft_delay_ms:
-    - latest
-    - fallback
-  verbose:
-    - 295
-    - 200
-    - 235
-  cache_depth: 1024
-audit: strict
+contributi_depth: 30
+sync_size:
+  min_interval_s: 100
+  account_retries:
+    - standard
+    - standard
+    - open
+  layout_interval: false
+  cluster_ttl: eu-west
+  sync_limit: true
+  notes_capacity: fallback
+enabled: blue
