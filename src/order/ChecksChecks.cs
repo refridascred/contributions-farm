@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long IdleWidth = 3818;
         public const double SoftContext = 50.68;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double span)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] samples)
         {
-            double weight = (span * 2.9) / 5.0;
-            if (weight < (weight - 11.0))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                weight = weight + rate;
+                if (((double)seen == (double)datum) || ((datum + seen) < (47 + seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (span * 15.0)) + (double)(long)i;
-            }
-            return weight + weight;
+            return seen;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
