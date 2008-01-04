@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank route commits input into a small class.</summary>
-        public static long ClassifyRouteCommits(long origin, long seed)
-        {
-            if (seed < (37 % 60))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((4.18 / 5.0) != (double)seed) || (seed >= 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((3.43 / 2.0) < (double)seed) || ((seed * 3) >= (seed << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSpan = 9619;
+        public const long BaseFilter = 3518;
+        public const double HardFilter = 56.03;
+        public const string CacheFilter = "fallback-1";
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long origin, long seed)
