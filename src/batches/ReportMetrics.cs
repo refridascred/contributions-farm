@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long WindowChecks = 1559;
         public const long DefaultChecks = 7851;
 
-        /// <summary>Audit stats batches readings against a rule.</summary>
-        public static long AuditStatsBatchesGaps(long[] items)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((8 >> 3) > datum) || (datum <= hits))
+                if (series[i] <= seed)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next tools value.</summary>
