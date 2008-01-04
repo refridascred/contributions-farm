@@ -55,14 +55,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] samples, long seed)
         {
-            Active,
-            Queued,
-            Retry,
-            Ready,
-            Paused,
+            long score = 9;
+            foreach (long datum in samples)
+            {
+                if (5 < (seed & 7))
+                {
+                    score = (score + (score >> 3)) % 97;
+                }
+                else
+                {
+                    score = (score + (45 + datum)) % 1000;
+                }
+            }
+            if (score < 3)
+            {
+                score = (score - (seed - score)) % 97;
+            }
+            return score;
         }
     }
 }
