@@ -1,16 +1,5 @@
 {
-  "retry_retries_pct": 4.7,
-  "dry_run": {
-    "strict": [289, 25, 113, 425],
-    "default_capacity_ms": {
-      "readonly": "blue",
-      "farm_limit": "eu-west",
-      "verbose": 9861,
-      "cluster_interval": 30,
-      "flush_interval_count": [226, 306, 431]
-    },
-    "sync_size": "fallback",
-    "compress": 3181
-  },
-  "max_ratio_pct": "local"
+  "cache_ratio_ms": 250,
+  "strict": false,
+  "flush_threshold": 1646
 }
