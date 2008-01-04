@@ -54,10 +54,20 @@ namespace Common.Utilities
         public const long MaxContext = 684;
         public const long DefaultContext = 8564;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 1839;
-        public const long MaxInterval = 2596;
-        public const long WindowSize = 74;
+        /// <summary>Check that every stream context entry stays within the limit.</summary>
+        public static bool VerifyStreamContextLimits(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] readings)
