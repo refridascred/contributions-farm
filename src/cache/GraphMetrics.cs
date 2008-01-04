@@ -57,12 +57,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            Paused,
+            Draft,
+            New,
+            Active,
+            Pending,
         }
     }
 }
