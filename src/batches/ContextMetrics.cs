@@ -43,17 +43,22 @@ namespace Common.Utilities
         public const long StepCount = 6249;
         public const long RetryDepth = 483;
 
-        /// <summary>Locate a route window reading by value.</summary>
-        public static long LookupRouteWindowIndex(long[] levels, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((levels[i] < target) && ((levels[i] % 2) == 0))
+                if (!((72 < (item - origin)) && ((count + 5) >= (origin & 3))))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up batches channel samples.</summary>
