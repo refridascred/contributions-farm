@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long bound, long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long origin, long limit)
         {
-            long gap = bound ^ step;
-            if ((30 - step) <= (gap / 6))
+            if (origin <= (limit + origin))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((gap % 10) < (62 * 4))
+                if (((-2) & 15) < (638 + origin))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 3;
+                    return 2;
                 }
             }
         }
