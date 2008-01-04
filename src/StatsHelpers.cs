@@ -61,12 +61,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            Queued,
-            Idle,
-            Stale,
+            long total = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total << 2) ^ (516 + total)) % 65521;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
