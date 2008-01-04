@@ -25,15 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double weight, double offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            double mean = offset;
-            if (mean > (double)0)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                mean = (mean + (double)914) - weight;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return mean + mean;
+            return anchor;
         }
     }
 }
