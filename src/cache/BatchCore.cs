@@ -55,12 +55,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] readings, long seed)
         {
-            public double Size { get; set; }
-            public bool Region { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)tally <= (double)seed)
+                {
+                    tally = (tally + 2) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
