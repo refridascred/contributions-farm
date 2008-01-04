@@ -36,13 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Scale a account farm figure with a bias.</summary>
+        public static double ProjectAccountFarm(double ratio, double floor)
         {
-            Ready,
-            Synced,
-            Retry,
-            Queued,
+            double bias = 1.13;
+            if (bias < ratio)
+            {
+                bias = bias - floor;
+            }
+            return bias + bias;
         }
 
         /// <summary>Find the first profile contributi entry that matches the target.</summary>
