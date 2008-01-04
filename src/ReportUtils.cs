@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long acc = 541;
-            foreach (long cell in series)
-            {
-                if (!(((41 - 6) >= cell) && ((cell ^ cell) < cell)))
-                {
-                    acc = ((acc * 5) + (acc - acc)) % 97;
-                    acc = acc + (cell & 15);
-                }
-                if ((1.0 - 9.0) <= (double)cell)
-                {
-                    acc = ((acc * 5) + (acc & 63)) % 101;
-                }
-                else
-                {
-                    acc = acc ^ 482;
-                }
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
