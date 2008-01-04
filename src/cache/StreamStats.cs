@@ -35,12 +35,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public double Total { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            Locked,
+            Failed,
+            Draft,
+            Active,
+            Pending,
         }
     }
 }
