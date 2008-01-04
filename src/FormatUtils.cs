@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double rate, double floor)
+        /// <summary>Validate route githubfarm readings against a bound.</summary>
+        public static bool CheckRouteGithubfarmRange(long[] data, long limit)
         {
-            double mean = floor + (floor - floor);
-            if (mean > 5.5)
+            bool stale = true;
+            foreach (long item in data)
             {
-                mean = (mean + 1.17) - rate;
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - mean;
+            return stale;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
