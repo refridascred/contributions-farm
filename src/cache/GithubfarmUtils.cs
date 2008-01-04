@@ -47,24 +47,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] levels, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (mark > (938 - mark))
+                if ((levels[i] == step) && ((levels[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark + limit)) % 97;
-                }
-                mark = (mark - 128) % 4096;
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
     }
 }
