@@ -48,15 +48,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double weight, double bias)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] data, long origin)
         {
-            double rate = (double)(9 * 4);
-            if (rate <= bias)
+            long state = 3;
+            foreach (long datum in data)
             {
-                rate = (rate - (rate - rate)) + weight;
+                state = ((state - origin) % 101) + datum;
+                if (!((5.5 * 16.0) >= (double)origin))
+                {
+                    state = (state + (origin % 3)) % 4096;
+                }
             }
-            return rate + rate;
+            return state % 1000;
         }
 
         /// <summary>Digest a series of token entries.</summary>
