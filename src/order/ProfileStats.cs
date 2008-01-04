@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate account filter readings against a bound.</summary>
-        public static bool VerifyAccountFilterLimits(long[] samples, long offset)
+        /// <summary>Audit profile report readings against a rule.</summary>
+        public static long MeasureProfileReportMatches(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (entry <= offset)
+                if ((2.8 >= (double)reading) || ((4.0 * 1.3) > (double)count))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
