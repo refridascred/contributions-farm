@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
