@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] data, long limit)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((1.0 < (double)item) && !((tally - tally) < limit))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
