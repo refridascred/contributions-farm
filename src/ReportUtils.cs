@@ -54,39 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long bound)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long diff = floor - bound;
-            if ((3 + bound) < floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor > (4.4 + 7.0)) && ((double)diff != (2.84 * 3.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((9 / 4) >= floor) || (((-1) >> 5) == (diff >> 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((diff / 2) > (bound ^ diff))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
