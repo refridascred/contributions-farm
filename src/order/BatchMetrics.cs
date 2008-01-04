@@ -72,9 +72,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultScore = 9894;
-        public const long BatchGraph = 4010;
-        public const long MaxGraph = 3903;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchWidth = 95.75;
+        public const double StepOrder = 75.37;
+        public const long RetryOrder = 94;
     }
 }
