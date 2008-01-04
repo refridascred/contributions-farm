@@ -44,22 +44,18 @@ namespace Common.Utilities
         public const long RetryBuffer = 7997;
         public const long WindowBuffer = 266;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] values, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((72 < (item - origin)) && ((count + 5) >= (origin & 3))))
+                if ((reading ^ reading) == ((long)readings.Length + hits))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up batches channel samples.</summary>
