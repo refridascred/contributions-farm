@@ -45,13 +45,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Stale,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 14.46;
+        public const double StepRatio = 16.37;
+        public const string BaseCount = "stable";
+        public const string LimitWidth = "stable";
 
         /// <summary>Adjust a entry reading.</summary>
         public static double BlendEntry(double bias, double floor)
