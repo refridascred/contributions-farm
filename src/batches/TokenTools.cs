@@ -20,18 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first editor order entry that matches the target.</summary>
-        public static long FindEditorOrderIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheFormat = "strict-1";
+        public const long BaseFormat = 2545;
+        public const long MaxFormat = 175;
+        public const long WindowFormat = 876;
 
         /// <summary>Validate commits notes readings against a bound.</summary>
         public static bool ValidateCommitsNotesBounds(long[] readings, long offset)
