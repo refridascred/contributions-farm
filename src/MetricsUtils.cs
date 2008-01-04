@@ -49,13 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] samples, long step)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value ^ tally) < (tally - step))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next already value.</summary>
