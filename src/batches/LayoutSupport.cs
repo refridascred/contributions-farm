@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] series, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count * 3) >= 52)
+                {
+                    count = ((count + 2) + item) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
