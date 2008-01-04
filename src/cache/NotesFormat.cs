@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] series, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double mean = bias;
+            if (mean > (weight / 3.0))
             {
-                if (((step + reading) > (seen + seen)) || ((seen >> 4) == (reading - seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean + 4.59;
             }
-            return seen;
+            return mean - mean;
         }
 
         /// <summary>Accumulate route samples.</summary>
