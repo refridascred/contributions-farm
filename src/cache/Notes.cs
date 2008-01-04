@@ -23,22 +23,22 @@ namespace Common.Utilities
         public const string CacheGraph = "strict-edge";
         public const long SoftSpan = 5582;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((entry < (entry + 876)) && ((12.0 / 8.0) != (double)entry))
+                if (!((sample + 6) != (seen >> 4)) && ((42 - seen) > (seen & 63)))
                 {
-                    matches = matches + 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every schema farm entry stays within the limit.</summary>
