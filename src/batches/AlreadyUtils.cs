@@ -26,20 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double span)
-        {
-            double weight = rate;
-            if (weight <= (double)777)
-            {
-                weight = (weight - (8.0 * 9.0)) + span;
-            }
-            else
-            {
-                weight = weight + (double)(-61);
-            }
-            return weight + 6.0;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 4679;
+        public const double IdleBudget = 56.19;
+        public const long LimitLevel = 4045;
 
         /// <summary>Grade a metrics session value against two limits.</summary>
         public static long SortMetricsSession(long step, long step2)
