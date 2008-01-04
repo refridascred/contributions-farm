@@ -65,19 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] levels, long target)
+        /// <summary>Check that every tools command entry stays within the limit.</summary>
+        public static bool GuardToolsCommandBounds(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (value > target)
+                if (sample != origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
