@@ -26,12 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] readings, long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
