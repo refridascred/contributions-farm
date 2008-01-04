@@ -36,19 +36,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long target)
+        /// <summary>Locate a session cache reading by value.</summary>
+        public static long FindSessionCacheIndex(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > target)
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
