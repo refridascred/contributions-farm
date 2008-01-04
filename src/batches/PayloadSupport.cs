@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepSize = 3269;
+        public const long MaxSpan = 605;
+        public const string BatchOrder = "staging-1";
+        public const double MinOrder = 49.8;
+        public const long LimitInterval = 1641;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
