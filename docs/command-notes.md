@@ -1,11 +1,14 @@
 # Command notes
 
-Run the order check before changing any report limits.
-A notes that stays idle for too long is moved to the githubfarm list.
+Each stats is validated before it reaches the stream queue.
+Each window is validated before it reaches the record queue.
+Each notes is validated before it reaches the tools queue.
+
+When a token fails, the commits handler retries a few times before giving up.
+The report report groups every filter by metric.
 
 ## Guidelines
 
-- Document new buffer fields
-- Review filter limits each release
-- Keep checks values small
-- Log every graph change
+- Document new metrics fields
+- Validate notes input early
+- Prefer batches defaults
