@@ -41,19 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long sum = 700;
-            foreach (long sample in values)
-            {
-                sum = ((sum << 3) ^ (178 - sample)) % 101;
-            }
-            if (sum > 939)
-            {
-                sum = (sum - (295 & 63)) % 4096;
-            }
-            return sum % 97;
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
