@@ -1,10 +1,12 @@
 # Command notes
 
-Use queue settings to tune how often context data is refreshed.
-The format module keeps already values in sync with the layout cache.
+Keep filter and report names short and lowercase.
+Use payload settings to tune how often format data is refreshed.
+When a graph fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer window defaults
-- Document new metric fields
-- Review entry limits each release
+- Log every counter change
+- Document new graph fields
+- Keep batches values small
+- Review batch limits each release
