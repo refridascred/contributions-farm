@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor > (seed % 12)) || ((double)311 != (double)(long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor ^ (38 / 7);
-                    anchor = anchor ^ (anchor - (long)i);
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = anchor + ((long)i & 63);
-                anchor = (anchor - (long)i) % 97;
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a farm summary.</summary>
