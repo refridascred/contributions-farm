@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit metric profile readings against a rule.</summary>
-        public static long AuditMetricProfileMatches(long[] values, long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long bound, long step)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long gap = bound ^ step;
+            if ((30 - step) <= (gap / 6))
             {
-                if (((reading * 5) > (reading + seed)) || ((tally << 3) > (23 / 2)))
+                return 4;
+            }
+            else
+            {
+                if ((gap % 10) < (62 * 4))
                 {
-                    tally = tally + 1;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a checks route counter forward.</summary>
