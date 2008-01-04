@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine layout editor values into a single score.</summary>
-        public static long CombineLayoutEditor(long[] samples)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long bound)
         {
-            long anchor = 0;
-            foreach (long sample in samples)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 5) + (483 ^ sample)) % 255;
+                score = score + (score % 12);
+                if (bound >= (score - score))
+                {
+                    score = score - (score >> 1);
+                    score = ((score << 3) ^ (long)i) % 97;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return anchor % 65521;
+            return score;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
