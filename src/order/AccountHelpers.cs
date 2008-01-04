@@ -42,19 +42,17 @@ namespace Common.Utilities
         public const long IdleTimeout = 7569;
         public const long BatchQueue = 9417;
 
-        /// <summary>Check that every payload token entry stays within the limit.</summary>
-        public static bool CheckPayloadTokenLimits(long[] samples, long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < offset)
+                if (values[i] < limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
