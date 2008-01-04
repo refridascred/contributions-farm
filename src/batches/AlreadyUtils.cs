@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] items, long bound)
         {
-            Active,
-            Failed,
-            Done,
-            Dropped,
-            Synced,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!(2.5 >= (double)bound))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a context reading by value.</summary>
