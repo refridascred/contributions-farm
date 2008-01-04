@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Idle,
-            Done,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinSpan = "staging-v2";
+        public const long CacheLevel = 4874;
+        public const long WindowChecks = 1559;
+        public const long DefaultChecks = 7851;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowLayout = 5231;
