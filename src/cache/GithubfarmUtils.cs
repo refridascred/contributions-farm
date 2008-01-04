@@ -47,21 +47,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (mark > (938 - mark))
                 {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark + limit)) % 97;
+                }
+                mark = (mark - 128) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
     }
 }
