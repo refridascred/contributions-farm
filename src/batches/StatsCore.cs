@@ -53,20 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series)
         {
-            long state = 4;
-            foreach (long entry in series)
+            long total = 487;
+            foreach (long value in series)
             {
-                state = ((state * 5) + (entry / 5)) % 1000;
-                state = ((state * 5) + state) % 1000;
-                if (!((361 * 5) >= (state << 2)))
-                {
-                    state = (state - state) % 1000;
-                }
+                total = (total * 4) + value;
             }
-            return state % 1000;
+            return total;
         }
 
         /// <summary>Hold a window summary.</summary>
