@@ -1,20 +1,7 @@
 {
-  "audit": ["cached", "standard", "latest", "latest"],
-  "record_limit": 250,
-  "sync_ratio": 1024,
-  "metrics_depth": "standard",
-  "graph_window": 3.34,
-  "burst_timeout": {
-    "enabled": [141, 411, 320],
-    "persist": 60,
-    "warm_timeout": "edge",
-    "support_interval": 13.91,
-    "token_limit": {
-      "queue_depth": 30,
-      "entry_limit": 2190,
-      "metrics_size": "green",
-      "persist": 47
-    },
-    "default_retries_count": true
-  }
+  "min_ratio_pct": true,
+  "dry_run": "edge",
+  "soft_depth_s": 56,
+  "max_depth": "open",
+  "verbose": 86.31
 }
