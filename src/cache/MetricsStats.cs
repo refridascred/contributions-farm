@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] readings, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] series, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long mix = 980;
+            foreach (long value in series)
             {
-                if ((double)target != (double)count)
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix + (198 & 127)) - value) - target;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a window record.</summary>
