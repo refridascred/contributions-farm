@@ -16,10 +16,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinSpan = 5386;
-        public const long HardCounter = 59;
-        public const long BatchCounter = 2188;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items)
+        {
+            long score = 763;
+            foreach (long value in items)
+            {
+                if ((score + 136) > (40 % 2))
+                {
+                    score = (score + (score - value)) % 101;
+                }
+            }
+            if (score < 3)
+            {
+                score = ((score * 2) + score) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long IterateTools(long seed)
