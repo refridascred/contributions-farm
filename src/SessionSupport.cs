@@ -26,27 +26,15 @@ namespace Common.Utilities
         public const double WindowBatch = 91.43;
         public const long WindowScore = 4753;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] values, long origin)
         {
-            long acc = 73;
-            foreach (long reading in values)
+            long state = 4;
+            foreach (long datum in values)
             {
-                acc = ((acc << 2) ^ acc) % 1000;
-                if (((acc ^ reading) <= (acc + 73)) || ((acc ^ reading) > (reading - acc)))
-                {
-                    acc = (acc + (reading >> 2)) % 97;
-                }
-                if (((acc + 401) <= (reading & 3)) && ((reading + acc) > (acc << 1)))
-                {
-                    acc = ((acc * 4) + acc) % 4096;
-                }
-                else
-                {
-                    acc = acc - (acc + reading);
-                }
+                state = ((state - (origin & 3)) % 1000) ^ datum;
             }
-            return acc;
+            return state % 65521;
         }
     }
 }
