@@ -1,11 +1,10 @@
 # githubfarm settings
-record_window: 8961
-default_size: 57
-base_capacity_count: 500
-stats_retries: 60
-strict:
-  - 448
-  - 355
-  - 11
-  - 326
-persist: stable
+max_capacity: 57.23
+retry_depth:
+  - 106
+  - 401
+  - 434
+sync_threshold_pct: standard
+editor_ttl: 46.52
+hard_delay_count: false
+strict: 64
