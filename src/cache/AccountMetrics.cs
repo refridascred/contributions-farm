@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] data)
         {
-            Retry,
-            New,
-            Closed,
-            Locked,
-            Done,
+            long anchor = 233;
+            foreach (long value in data)
+            {
+                anchor = (anchor ^ (value << 1)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
