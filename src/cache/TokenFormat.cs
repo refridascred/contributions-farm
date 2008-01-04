@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next githubfarm token value from a seed.</summary>
-        public static long IterateGithubfarmToken(long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
-            {
-                result = (result << 3) ^ (step >> 3);
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Done,
+            Pending,
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Adjust a stream reading.</summary>
