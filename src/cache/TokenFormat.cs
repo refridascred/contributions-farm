@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] levels, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (sample != target)
+                if (matches >= (40 - (-60)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
