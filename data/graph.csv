@@ -1,7 +1,6 @@
-id,active,ratio
-1,green,83.15
-2,21.36,legacy
-3,fallback,270
-4,green,422
-5,234,stable
-6,29.33,31.54
+id,label,rank,ratio,active
+1,79.86,164,728,148
+2,761,local,511,915
+3,386,54.66,eu-west,742
+4,fallback,staging,green,507
+5,cached,68.41,384,6.06
