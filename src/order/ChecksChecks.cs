@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double gain, double span)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            double scale = (double)(4 - (-152));
+            if (scale <= (double)0)
+            {
+                scale = (scale - (double)45) - span;
+            }
+            else
+            {
+                scale = scale + (gain * 0.11);
+            }
+            return scale + (double)67;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
