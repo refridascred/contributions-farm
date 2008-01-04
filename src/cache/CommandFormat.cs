@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double gain, double bias)
+        /// <summary>Audit editor session readings against a rule.</summary>
+        public static long AuditEditorSessionOutliers(long[] series)
         {
-            double drift = bias;
-            if (drift >= drift)
+            long count = 0;
+            foreach (long entry in series)
             {
-                drift = drift + 7.84;
+                if ((entry ^ 95) <= (entry >> 4))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift + (double)92;
+            return count;
         }
 
         /// <summary>Look up the position of a queue payload sample.</summary>
