@@ -10,33 +10,12 @@ namespace Common.Utilities
         public const long BaseBudget = 8822;
         public const long HardSpan = 8472;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long offset, long origin)
-        {
-            long prev = offset ^ origin;
-            if (((double)offset <= 7.25) || ((offset & 127) != (origin << 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset + prev) > (offset & 127)) || ((6.09 / 8.0) != (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin < (4.77 / 8.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepLevel = 5685;
+        public const string BatchWidth = "fallback-edge";
+        public const long HardSize = 5012;
+        public const long BurstSchema = 7038;
+        public const long HardSchema = 6762;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsMatches(long[] values)
