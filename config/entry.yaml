@@ -1,7 +1,5 @@
 # entry settings
-flush_capacity: false
-cache_timeout: open
-poll_capacity_s: true
-schema_timeout: edge
-hard_delay_pct: true
-compress: 9022
+format_size: 76.14
+batch_interval_pct: 79.25
+poll_delay_ms: 3.66
+cache_size_s: 59.71
