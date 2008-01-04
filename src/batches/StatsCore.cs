@@ -91,22 +91,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items, long bound)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long score = 0;
-            foreach (long item in items)
-            {
-                if ((score >> 2) != (bound % 7))
-                {
-                    score = ((score << 3) ^ 8) + item;
-                }
-            }
-            if (score < 7)
-            {
-                score = (score ^ (bound / 8)) % 97;
-            }
-            return score % 4096;
+            Locked,
+            Dropped,
+            Draft,
+            Paused,
+            Synced,
         }
     }
 }
