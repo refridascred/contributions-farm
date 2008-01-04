@@ -70,18 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] levels, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (4.0 < (double)matches)
+                if (entry <= seed)
                 {
-                    matches = ((matches + 1) + datum) + origin;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
