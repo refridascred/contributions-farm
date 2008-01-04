@@ -47,10 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstCount = "cached-1";
-        public const long BaseStream = 8034;
-        public const long SoftStream = 1215;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitBudget = "local-edge";
+        public const long WindowQueue = 9716;
+        public const long LimitQueue = 9293;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
