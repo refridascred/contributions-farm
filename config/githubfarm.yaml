@@ -1,10 +1,7 @@
 # githubfarm settings
-max_capacity: 57.23
-retry_depth:
-  - 106
-  - 401
-  - 434
-sync_threshold_pct: standard
-editor_ttl: 46.52
-hard_delay_count: false
-strict: 64
+max_delay_ms: edge
+compress: edge
+min_timeout_pct: green
+flush_ttl_pct: 6739
+counter_delay: latest
+hard_ttl_ms: false
