@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 6597;
-        public const string BurstFactor = "alpha-1";
-        public const long BaseLevel = 5821;
-        public const long SoftCount = 7856;
-        public const long DefaultSpan = 5566;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Locked,
+            Idle,
+            Active,
+            Stale,
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long PairProfileCount(long[] items)
