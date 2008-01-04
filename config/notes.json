@@ -1,11 +1,5 @@
 {
-  "batch_interval": {
-    "soft_ttl_s": 33,
-    "batch_limit_pct": 92.83,
-    "profile_timeout": "standard",
-    "stats_ttl": 28
-  },
-  "stream_delay": ["eu-west", "eu-west"],
-  "idle_interval_ms": ["open", "latest"],
-  "batch_threshold_pct": true
+  "route_retries": 500,
+  "poll_window_ms": false,
+  "batches_limit": ["staging", "edge", "open", "legacy"]
 }
