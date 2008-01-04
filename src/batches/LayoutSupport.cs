@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the stream report entries that pass the check.</summary>
-        public static long CountStreamReportHits(long[] items, long limit)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)reading == (double)limit) || (((reading * 2) <= 189) || ((matches - (long)items.Length) >= (reading * 2))))
+                if (readings[i] == floor)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a route payload reading by value.</summary>
