@@ -1,7 +1,10 @@
 # githubfarm settings
-metrics_size: staging
-default_ttl_s: green
-channel_timeout: 68.38
-cluster_window: true
-default_ttl: stable
-strict: 26.37
+batch_size_ms:
+  - 419
+  - 355
+  - 487
+batch_interval_s: 6.45
+session_interval:
+  - 352
+  - 435
+  - 131
