@@ -47,10 +47,19 @@ namespace Common.Utilities
         public const string BaseDepth = "cached-1";
         public const double RetryGithubfarm = 8.09;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchWidth = 39.6;
-        public const double BaseFormat = 2.03;
-        public const long MaxFormat = 1007;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values, long step)
+        {
+            long carry = 5;
+            foreach (long datum in values)
+            {
+                if (datum < (carry - step))
+                {
+                    carry = ((carry << 3) ^ (3 - carry)) % 65521;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Iterate the order context series from a seed.</summary>
         public static long IterateOrderContext(long target)
