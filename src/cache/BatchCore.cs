@@ -19,16 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long carry = 584;
+            foreach (long datum in series)
             {
-                acc = (acc + (long)i) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
+                carry = (carry ^ (55 % 3)) + datum;
+                if (2.0 <= (double)carry)
+                {
+                    carry = carry ^ carry;
+                }
             }
-            return acc;
+            if (carry > 81)
+            {
+                carry = (carry - (carry - carry)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
