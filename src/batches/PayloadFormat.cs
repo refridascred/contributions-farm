@@ -51,18 +51,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] series, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((8 + step) > (hits % 10)) || ((step >> 5) == (hits - step)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - cell;
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
