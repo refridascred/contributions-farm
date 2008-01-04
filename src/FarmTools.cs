@@ -16,15 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the format kind values.</summary>
