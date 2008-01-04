@@ -62,12 +62,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardInterval = 2353;
-        public const string WindowSpan = "standard";
-        public const string RetryRoute = "open-edge";
-        public const long MaxSize = 203;
-        public const double IdleSize = 94.24;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Done,
+            Idle,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long BucketMetrics(long target, long bound)
