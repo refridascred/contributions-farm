@@ -19,18 +19,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((sample * 2) > (seen * 2)))
-                {
-                    seen = (seen + 2) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryFactor = 9402;
+        public const long IdleLevel = 3158;
+        public const string HardChecks = "local-1";
+        public const long HardSpan = 2951;
     }
 }
