@@ -21,18 +21,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many filter contributi samples are out of range.</summary>
-        public static long MeasureFilterContributiHits(long[] series, long seed)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (hits > (14 ^ hits))
-                {
-                    hits = ((hits + 3) + cell) + seed;
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Queued,
         }
     }
 }
