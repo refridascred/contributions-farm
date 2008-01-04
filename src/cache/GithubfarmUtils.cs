@@ -32,11 +32,40 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinFactor = 2910;
-        public const long StepTools = 7397;
-        public const string RetryTools = "staging-v2";
-        public const long RetryDepth = 6847;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long target, long origin)
+        {
+            long step = target - origin;
+            if ((0.57 * 9.57) > (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target - origin) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (3 >= (step / 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin & 1) < 53) || ((step + target) > (0 << 1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a route schema pair into a bucket.</summary>
         public static long BucketRouteSchema(long target, long bound)
