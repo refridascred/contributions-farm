@@ -1,8 +1,6 @@
 {
-  "default_limit": 870,
-  "verbose": "strict",
-  "idle_limit_pct": 63,
-  "burst_limit": true,
-  "poll_limit_count": 91,
-  "counter_ratio": 67
+  "soft_limit_count": "local",
+  "soft_ttl_s": 60,
+  "burst_timeout_ms": ["local", "standard", "blue", "legacy"],
+  "schema_capacity": [87, 102, 280]
 }
