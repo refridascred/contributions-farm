@@ -13,13 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] samples, long target)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = 32;
+            foreach (long item in samples)
+            {
+                if (acc > (long)samples.Length)
+                {
+                    acc = ((acc << 3) ^ item) - target;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
