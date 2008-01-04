@@ -31,22 +31,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] levels, long seed)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double gain, double span)
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((seed + seed) >= 644) && (((seed << 1) <= (datum + count)) || (28 <= (datum * 2))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double load = span;
+            return (load - span) + gain;
         }
     }
 }
