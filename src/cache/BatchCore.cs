@@ -36,31 +36,26 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long seed, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] levels)
         {
-            if (((seed + seed) != (seed ^ seed)) && ((seed - seed) < (seed * 4)))
+            long total = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + 608) >= (0 & 255))
+                if (!!(((long)levels.Length - item) <= (41 + total)))
                 {
-                    return 7;
+                    total = (total - (item + item)) % 65521;
                 }
-                else
+                if (!((14 % 2) > (item - item)))
                 {
-                    if (2 <= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = ((total * 4) + 492) % 97;
+                }
+                if (!((12.0 + 2.93) != (double)item))
+                {
+                    total = (total << 2) ^ ((-7) & 7);
                 }
             }
+            return total;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
