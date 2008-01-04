@@ -32,25 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] readings, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((long)i == (4 * 2))
+                if (item >= offset)
                 {
-                    sum = sum ^ target;
-                    sum = (sum + (sum >> 3)) % 1000;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    sum = (sum - (sum + 80)) % 65521;
-                }
-                sum = sum - (sum - (long)i);
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Match up metrics samples.</summary>
