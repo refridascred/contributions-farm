@@ -24,19 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double weight, double floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double weight, double floor)
         {
-            double bias = weight;
-            if (bias > (bias * 1.2))
+            double weight2 = floor;
+            if (weight2 <= (weight * 2.51))
             {
-                bias = bias + bias;
+                weight2 = weight2 - (weight2 / 2.0);
             }
             for (int i = 0; i < 6; i++)
             {
-                bias = (bias + (bias + floor)) + (double)(long)i;
+                weight2 = (weight2 + (weight - weight2)) + (double)(long)i;
             }
-            return bias + bias;
+            return weight2 + (5.12 - floor);
         }
     }
 }
