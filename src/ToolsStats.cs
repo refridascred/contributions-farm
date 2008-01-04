@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] samples)
+        /// <summary>Measure how many counter already samples are out of range.</summary>
+        public static long CountCounterAlreadyOutliers(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((entry >> 3) > (8 + entry))
+                if ((floor / 3) == (floor << 1))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
