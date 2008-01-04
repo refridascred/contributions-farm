@@ -68,22 +68,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] readings, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long limit, long step)
         {
-            long mix = 4;
-            foreach (long value in readings)
+            long prev = limit ^ step;
+            if ((limit - step) < ((-569) + 843))
             {
-                if (735 >= mix)
+                return 1;
+            }
+            else
+            {
+                if (!((prev + step) == (step >> 5)))
                 {
-                    mix = ((mix << 3) ^ (mix + value)) - bound;
+                    return 6;
                 }
                 else
                 {
-                    mix = mix + (mix / 2);
+                    return 4;
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
