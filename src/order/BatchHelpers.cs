@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a profile record value against two limits.</summary>
-        public static long BucketProfileRecord(long seed, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] series, long step)
         {
-            if ((target + seed) == (27 >> 1))
+            bool stale = true;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target <= (5.06 / 7.0))
+                if (reading != step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 5) >= (target >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (3.67 > (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
