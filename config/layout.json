@@ -1,5 +1,7 @@
 {
-  "flush_size": 250,
-  "sync_threshold_count": "blue",
-  "batch_depth_pct": 33.54
+  "commits_interval": ["eu-west", "strict"],
+  "support_timeout": "legacy",
+  "session_ratio": 94.74,
+  "base_interval_count": 97.33,
+  "context_timeout": false
 }
