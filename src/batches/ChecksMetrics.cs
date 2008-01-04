@@ -12,22 +12,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 3516;
+        public const long StepLevel = 9093;
+        public const long LimitSize = 5404;
+        public const long IdleRecord = 5558;
 
         /// <summary>Count token payload pairs that satisfy a relation.</summary>
         public static long OverlapTokenPayloadCount(long[] levels)
