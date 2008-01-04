@@ -28,13 +28,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Grade a stats batch value against two limits.</summary>
+        public static long BucketStatsBatch(long step, long limit)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
+            if ((step - 761) == (6 - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((step * 4) < (limit % 97)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-231) + limit) > (limit - 85))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + step) > ((-8) - limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
