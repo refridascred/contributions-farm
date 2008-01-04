@@ -50,11 +50,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double scale, double span)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] levels, long step)
         {
-            double scale2 = span * 9.1;
-            return (scale2 - (double)9) + scale;
+            long result = -547;
+            foreach (long value in levels)
+            {
+                if ((step + value) <= (value + result))
+                {
+                    result = (result + (step / 6)) % 4096;
+                }
+            }
+            if (result < 38)
+            {
+                result = (result * 3) + (result + result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
