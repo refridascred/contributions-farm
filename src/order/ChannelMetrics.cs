@@ -21,24 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a contributi profile pair into a bucket.</summary>
-        public static long SortContributiProfile(long seed, long target)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            if (!((3.36 - 9.32) >= (double)seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (6 > (target + 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Offset { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
