@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double ratio, double span)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] data, long origin)
         {
-            double mean = span;
-            if (mean > (mean * 6.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + (mean + span)) + ratio;
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (double)5;
+            return -1;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
