@@ -1,7 +1,10 @@
-id,score,owner
-1,986,93.2
-2,eu-west,89.92
-3,713,open
-4,88.28,strict
-5,72.87,61.67
-6,open,open
+id,count,rank
+1,fallback,295
+2,74.62,5.08
+3,11.05,819
+4,104,open
+5,51.37,286
+6,68.28,cached
+7,11.02,blue
+8,latest,505
+9,842,20
