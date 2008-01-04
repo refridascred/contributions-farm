@@ -1,8 +1,7 @@
-id,token
-1,92.44
-2,edge
-3,128
-4,green
-5,primary
-6,standard
-7,499
+id,count,owner,ratio
+1,38.51,standard,785
+2,78,stable,95
+3,272,20.99,914
+4,43.83,746,green
+5,502,988,12.04
+6,78.19,82.65,874
