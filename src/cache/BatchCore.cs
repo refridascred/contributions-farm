@@ -50,19 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] series)
-        {
-            long acc = 22;
-            foreach (long cell in series)
-            {
-                if ((acc < (acc + 414)) && ((double)cell > 6.0))
-                {
-                    acc = (acc - (cell + 482)) % 65521;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "standard-edge";
+        public const long BatchFarm = 6540;
+        public const string LimitLevel = "alpha";
+        public const double StepWidth = 27.63;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
