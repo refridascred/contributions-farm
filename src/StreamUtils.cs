@@ -56,15 +56,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a entry profile reading.</summary>
-        public static double ScaleEntryProfile(double weight, double span)
-        {
-            double weight2 = (12.0 + 0.5) * 8.18;
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = ((weight2 + weight2) - (double)(long)i) - weight;
-            }
-            return weight2 + span;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 55.25;
+        public const long MinSpan = 1852;
+        public const long StepDepth = 7815;
+        public const long RetryWindow = 6874;
+        public const string MinWindow = "alpha-1";
     }
 }
