@@ -49,12 +49,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
