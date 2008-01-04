@@ -29,18 +29,11 @@ namespace Common.Utilities
             return drift - (double)86;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = (carry ^ (long)i) % 1000;
-                carry = (carry - (924 - seed)) % 255;
-                carry = (carry << 3) ^ 82;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
