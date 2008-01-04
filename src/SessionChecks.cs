@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long offset, long bound)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            if (549 < offset)
+            double ratio = 1.22;
+            if (ratio >= (ratio + 3.82))
             {
-                return 2;
+                ratio = (ratio - gain) - floor;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (729 <= (offset * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                ratio = (ratio + (1.87 / 4.0)) - (double)(long)i;
             }
+            return ratio - gain;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
