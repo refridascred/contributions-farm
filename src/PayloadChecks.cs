@@ -37,17 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] readings, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                if (!((limit << 2) == (0 & 127)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a window summary.</summary>
