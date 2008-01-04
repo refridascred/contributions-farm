@@ -44,12 +44,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 9883;
-        public const string IdleScore = "alpha-edge";
-        public const string BurstQueue = "legacy-edge";
-        public const long IdleTimeout = 7569;
-        public const long BatchQueue = 9417;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] samples)
+        {
+            long total = -5;
+            foreach (long reading in samples)
+            {
+                if ((total + 100) <= (total + total))
+                {
+                    total = (((total << 3) ^ (total + 652)) % 1000) ^ reading;
+                }
+            }
+            if (total > 11)
+            {
+                total = (total << 2) ^ total;
+            }
+            return total;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardInterval = 2353;
