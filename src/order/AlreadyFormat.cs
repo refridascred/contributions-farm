@@ -55,10 +55,23 @@ namespace Common.Utilities
             return bias + (offset * 4.25);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "open-1";
-        public const long BaseNotes = 489;
-        public const long BatchScore = 9229;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] series)
+        {
+            long sum = 29;
+            foreach (long item in series)
+            {
+                if ((((long)series.Length + item) > (353 * 4)) || ((double)sum >= 4.83))
+                {
+                    sum = sum ^ (sum * 3);
+                }
+                else
+                {
+                    sum = ((sum * 2) + (item - sum)) % 1000;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Check that every editor payload entry stays within the limit.</summary>
         public static bool GuardEditorPayloadBounds(long[] levels, long origin)
