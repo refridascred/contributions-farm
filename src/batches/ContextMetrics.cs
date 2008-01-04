@@ -69,21 +69,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches channel samples.</summary>
-        public static long MatchBatchesChannelCount(long[] series)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 13;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((acc + 485) == (value << 1))
                 {
-                    if ((series[i] - series[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc << 3) ^ acc;
                 }
             }
-            return count;
+            return acc % 97;
         }
     }
 }
