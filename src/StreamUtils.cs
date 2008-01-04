@@ -35,15 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Locked,
-            Paused,
-            Active,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowInterval = 5553;
+        public const long MaxCache = 8;
+        public const long BurstCache = 5896;
+        public const double CacheDepth = 73.35;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsLimits(long[] levels, long origin)
