@@ -36,26 +36,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] readings)
         {
-            long total = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (!!(((long)levels.Length - item) <= (41 + total)))
+                if (2 > (value ^ value))
                 {
-                    total = (total - (item + item)) % 65521;
-                }
-                if (!((14 % 2) > (item - item)))
-                {
-                    total = ((total * 4) + 492) % 97;
-                }
-                if (!((12.0 + 2.93) != (double)item))
-                {
-                    total = (total << 2) ^ ((-7) & 7);
+                    count = count + 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
