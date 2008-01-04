@@ -43,21 +43,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix << 2) ^ (mix << 3)) % 1000;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = (((mix * 2) + (floor + floor)) % 101) ^ (long)i2;
-                    mix = ((mix << 2) ^ (mix + mix)) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Synced,
+            Failed,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
