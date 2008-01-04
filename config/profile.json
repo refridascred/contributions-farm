@@ -1,21 +1,6 @@
 {
-  "soft_delay_ms": {
-    "default_delay": [200, 480],
-    "enabled": {
-      "warm_limit_pct": ["cached", "fallback", "legacy"],
-      "session_delay": false,
-      "base_size_ms": false,
-      "session_interval": false,
-      "soft_timeout_pct": true
-    },
-    "soft_retries_count": "blue",
-    "notes_interval": true,
-    "session_retries": 30,
-    "retry_interval_s": "standard"
-  },
-  "max_retries": "latest",
-  "batch_threshold_s": 2429,
-  "min_threshold_count": true,
-  "warm_window_count": 41.43,
-  "retry_threshold_count": false
+  "dry_run": true,
+  "cache_window_ms": 77.65,
+  "verbose": 79,
+  "soft_size_s": "legacy"
 }
