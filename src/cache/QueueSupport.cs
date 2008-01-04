@@ -28,13 +28,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardDepth = "stable";
+        public const double SoftTimeout = 26.76;
+        public const long LimitTimeout = 6010;
+        public const double MinMetric = 50.05;
+        public const string BaseWidth = "open-1";
     }
 }
