@@ -37,18 +37,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftScore = 7332;
+        public const long BurstCount = 8648;
+        public const double LimitFormat = 28.16;
 
         /// <summary>Project the next tools value.</summary>
         public static double AdjustTools(double rate, double span)
