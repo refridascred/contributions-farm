@@ -60,18 +60,12 @@ namespace Common.Utilities
         public const string BaseDepth = "cached-1";
         public const double RetryGithubfarm = 8.09;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardRatio = 48.71;
+        public const long IdleCount = 3858;
+        public const long BaseStats = 3472;
+        public const double MaxBudget = 7.54;
+        public const long LimitStats = 4630;
 
         /// <summary>Iterate the order context series from a seed.</summary>
         public static long IterateOrderContext(long target)
