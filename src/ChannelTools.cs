@@ -25,21 +25,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)count == (double)offset))
                 {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) - cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Blend two tools measurements.</summary>
