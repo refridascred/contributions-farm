@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (bias - 4.0) * 8.7;
+            if (drift > (5.6 / 7.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - (drift - rate);
             }
-            return seen;
+            return drift + 3.0;
         }
 
         /// <summary>Digest a series of schema account entries.</summary>
