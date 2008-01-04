@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 3788;
-        public const string DefaultContext = "primary-v2";
-        public const long IdleWidth = 3818;
-        public const double SoftContext = 50.68;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] series, long seed)
