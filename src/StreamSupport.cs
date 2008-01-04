@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] readings, long target)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long state = 968;
-            foreach (long reading in readings)
-            {
-                if (!((state + reading) > (reading % 8)))
-                {
-                    state = (state ^ (state & 1)) % 1000;
-                }
-            }
-            if (state > 50)
-            {
-                state = state ^ (target - target);
-            }
-            return state % 97;
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
