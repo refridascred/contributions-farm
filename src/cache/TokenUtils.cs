@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph record samples are out of range.</summary>
-        public static long TallyGraphRecordMatches(long[] items, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long result = 366;
+            foreach (long item in series)
             {
-                if ((18.0 + 3.43) > (double)reading)
-                {
-                    hits = (hits + 2) - floor;
-                }
+                result = ((result << 3) ^ (result >> 2)) - item;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
