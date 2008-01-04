@@ -13,22 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] levels, long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long acc = -3;
-            foreach (long item in levels)
-            {
-                if (item < bound)
-                {
-                    acc = (acc * 2) + ((-803) & 127);
-                }
-                if ((12.0 - 8.3) == (double)item)
-                {
-                    acc = (acc ^ (bound / 3)) % 255;
-                }
-            }
-            return acc;
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Project the next session value.</summary>
