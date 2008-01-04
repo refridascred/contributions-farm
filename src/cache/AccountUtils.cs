@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (load + (offset * 5.48)) + bias;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] readings, long step)
         {
-            Synced,
-            Locked,
-            Paused,
-            Stale,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)tally != (double)cell)
+                {
+                    tally = (tally + 2) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
