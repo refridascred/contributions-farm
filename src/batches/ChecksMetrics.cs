@@ -68,15 +68,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of cache order readings.</summary>
