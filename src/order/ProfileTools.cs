@@ -51,21 +51,11 @@ namespace Common.Utilities
         public const long CacheBatches = 8935;
         public const long WindowBatches = 5539;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
