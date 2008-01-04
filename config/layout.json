@@ -1,5 +1,7 @@
 {
-  "retry_interval_count": "legacy",
-  "githubfarm_ratio": 500,
-  "notes_ttl": 34
+  "flush_retries": 79,
+  "burst_interval_ms": 75,
+  "burst_threshold": "stable",
+  "default_window_pct": false,
+  "idle_timeout": 100
 }
