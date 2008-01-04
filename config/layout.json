@@ -1,6 +1,5 @@
 {
-  "hard_capacity_count": 707,
-  "stats_interval": "fallback",
-  "notes_ratio": [357, 44],
-  "sync_timeout": 1024
+  "farm_size": ["primary", "cached", "cached"],
+  "batch_limit_s": 73,
+  "retry_ttl_s": 52
 }
