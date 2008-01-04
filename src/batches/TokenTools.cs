@@ -27,16 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] levels, long step)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] data)
         {
-            long carry = 78;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry << 3) ^ carry) + step;
-                carry = (carry ^ (reading - carry)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry % 1000;
+            return matches;
         }
     }
 }
