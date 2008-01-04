@@ -46,12 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            New,
-            Retry,
-            Queued,
+            public double Size { get; set; }
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Combine commits payload values into a single score.</summary>
