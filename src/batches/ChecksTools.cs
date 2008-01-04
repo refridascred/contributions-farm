@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long seed)
         {
-            Draft,
-            Ready,
-            Dropped,
-            Retry,
+            long result = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((result << 3) != ((long)i + (long)i))
+                {
+                    result = result - ((long)i + result);
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
