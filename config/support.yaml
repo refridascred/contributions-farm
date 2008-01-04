@@ -1,8 +1,10 @@
 # support settings
-hard_depth_count: fallback
-compress:
-  - 8
-  - 433
-  - 265
-enabled: false
-payload_ratio: 9109
+default_threshold_ms: 96
+persist: 500
+readonly:
+  sync_ttl_s: cached
+  sync_retries: 58.52
+  poll_window_ms:
+    - 233
+    - 427
+default_interval_s: true
