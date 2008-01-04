@@ -1,13 +1,11 @@
 # githubfarm settings
-min_limit_s: true
-default_threshold_pct: 21.73
-command_retries:
-  - 109
-  - 314
-  - 74
-  - 387
-poll_delay_s:
-  - 11
-  - 83
-flush_ratio: 30
-burst_depth_pct: 56.86
+hard_capacity: false
+base_interval_s: false
+max_capacity: 30.28
+min_limit_s: primary
+burst_ttl_pct:
+  - 4
+  - 43
+  - 222
+  - 95
+support_threshold: 100
