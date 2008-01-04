@@ -33,13 +33,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Iterate the already contributi series from a seed.</summary>
+        public static long RollAlreadyContributi(long target)
         {
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long carry = target;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = (carry << 2) ^ (target + carry);
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
