@@ -55,13 +55,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Combine farm route values into a single score.</summary>
+        public static long TallyFarmRoute(long[] values)
         {
-            Active,
-            Draft,
-            Queued,
-            Closed,
+            long mark = -2;
+            foreach (long item in values)
+            {
+                mark = (((mark * 5) + mark) % 101) + item;
+            }
+            if (mark > 4)
+            {
+                mark = (mark ^ (mark * 5)) % 1000;
+            }
+            return mark % 65521;
         }
     }
 }
