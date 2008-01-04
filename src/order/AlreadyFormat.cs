@@ -60,31 +60,22 @@ namespace Common.Utilities
             return mean - 7.9;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] series)
         {
-            long sum = 8;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((reading / 9) <= (sum + sum))
+                if (((value * 4) == (tally - 805)) || ((8.3 * 4.1) == (double)tally))
                 {
-                    sum = sum - (reading + 30);
-                    continue;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = ((sum + (reading - sum)) % 255) - (long)i;
-                }
-                if (reading > (reading + reading))
-                {
-                    sum = ((sum << 3) ^ (sum << 3)) % 1000;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    sum = (sum - (3 + reading)) % 101;
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
