@@ -57,19 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] readings, long target)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long reading in readings)
             {
-                if ((reading << 1) == ((long)series.Length - reading))
+                if ((seen - 93) == (reading + reading))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) - target;
                 }
             }
             return seen;
