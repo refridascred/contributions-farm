@@ -1,21 +1,5 @@
 {
-  "flush_ratio_ms": ["latest", "staging", "cached"],
-  "farm_ratio": true,
-  "strict": true,
-  "cache_threshold": [143, 256, 351],
-  "hard_interval_count": {
-    "verbose": [217, 255],
-    "tools_ttl": ["edge", "standard"],
-    "idle_size_s": {
-      "max_ttl_pct": false,
-      "payload_ratio": 30,
-      "commits_delay": [70, 167, 435],
-      "default_interval_pct": 6233,
-      "default_timeout_ms": 63,
-      "min_depth_s": 57.07
-    },
-    "notes_depth": 100,
-    "cache_size": ["green", "stable", "blue"],
-    "warm_limit_s": 67.87
-  }
+  "contributi_window": 63,
+  "cache_timeout": 2994,
+  "batch_timeout_pct": "open"
 }
