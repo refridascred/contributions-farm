@@ -29,10 +29,21 @@ namespace Common.Utilities
             return bias + (rate - 6.4);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "fallback-1";
-        public const double MinOrder = 77.89;
-        public const string HardSize = "fallback-1";
-        public const long LimitOrder = 6321;
+        /// <summary>Match up command record samples.</summary>
+        public static long OverlapCommandRecordCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
