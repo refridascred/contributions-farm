@@ -30,31 +30,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long floor, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] samples)
         {
-            if ((double)13 <= (double)floor)
+            long sum = 59;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor < (floor >> 3))
+                for (int i = 0; i < 9; i++)
                 {
-                    return 1;
+                    sum = ((sum ^ (sum ^ sum)) % 4096) ^ (long)i;
                 }
-                else
+                if (((double)item > (double)8) && ((item + item) >= 3))
                 {
-                    if (floor < (77 / 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = (sum ^ item) % 65521;
+                }
+                if (((item & 255) > item) && ((double)item < 20.0))
+                {
+                    break;
                 }
             }
+            if (sum > 3)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
     }
 }
