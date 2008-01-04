@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Draft,
-            Locked,
-            Dropped,
+            Idle,
             Failed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Digest a series of metric entry entries.</summary>
