@@ -1,15 +1,21 @@
 # entry settings
-metrics_window:
-  - open
-  - legacy
-batch_depth_s: 57.96
-enabled: 10
-max_limit_s:
-  farm_size:
-    - standard
-    - fallback
-  max_threshold_ms: 8242
-  max_threshold_s: 74
-  dry_run: 83.57
-  min_retries: local
-  sync_delay: 35.18
+poll_ratio_count: true
+stream_depth: blue
+channel_capacity: true
+enabled:
+  warm_window_s: 76.22
+  commits_retries: strict
+  contributi_retries: 9
+  support_delay:
+    - 385
+    - 499
+    - 351
+  hard_depth_ms:
+    sync_interval_ms: primary
+    base_ttl: eu-west
+    max_window_s:
+      - 460
+      - 460
+      - 80
+    record_limit: 250
+strict: 72.18
