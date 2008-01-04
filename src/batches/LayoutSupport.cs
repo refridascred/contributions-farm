@@ -36,19 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] values, long seed)
+        /// <summary>Check that every channel batch entry stays within the limit.</summary>
+        public static bool GuardChannelBatchLimits(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (datum > seed)
+                if (item > floor)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Hold a route entry.</summary>
