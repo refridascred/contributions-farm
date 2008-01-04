@@ -19,19 +19,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] series, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long mark = 301;
+            foreach (long sample in samples)
             {
-                if (sample > bound)
+                for (int i = 0; i < 9; i++)
                 {
-                    ok = false;
+                    mark = (mark - (mark << 2)) - (long)i;
+                }
+                if (((mark * 2) != (sample << 3)) && ((double)mark > (double)sample))
+                {
+                    mark = ((mark << 3) ^ (sample / 2)) % 1000;
+                }
+                if ((sample << 2) > mark)
+                {
+                    mark = mark + ((-64) + mark);
+                }
+                if (!((mark - mark) < sample))
+                {
                     break;
                 }
             }
-            return ok;
+            return mark % 65521;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
