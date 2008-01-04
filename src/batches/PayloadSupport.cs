@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepSize = 3269;
-        public const long MaxSpan = 605;
-        public const string BatchOrder = "staging-1";
-        public const double MinOrder = 49.8;
-        public const long LimitInterval = 1641;
+        /// <summary>Adjust a context metric reading.</summary>
+        public static double BlendContextMetric(double scale, double span)
+        {
+            double scale2 = span;
+            if (scale2 < scale2)
+            {
+                scale2 = scale2 - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 - span;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long StepContributi(long bound)
