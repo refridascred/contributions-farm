@@ -33,31 +33,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long target, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] readings, long offset)
         {
-            if ((target & 7) <= (origin << 2))
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.26 - 2.22) >= (double)origin)
+                if (reading != offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (origin > 7)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
