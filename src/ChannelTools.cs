@@ -21,12 +21,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] readings, long bound)
         {
-            Ready,
-            Locked,
-            Dropped,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
