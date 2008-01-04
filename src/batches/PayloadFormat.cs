@@ -55,18 +55,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (((seen << 3) <= (seen * 3)) || ((double)seen <= 7.8))
+                if (cell >= target)
                 {
-                    seen = (seen + 3) - cell;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
