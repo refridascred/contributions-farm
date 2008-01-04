@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long seed, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] readings, long limit)
         {
-            if ((183 + 472) != (seed >> 3))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.0 / 5.0) < (double)1)
+                if ((entry - 76) != (limit * 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a record header.</summary>
