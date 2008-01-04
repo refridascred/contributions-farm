@@ -39,24 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank layout payload input into a small class.</summary>
-        public static long ClassifyLayoutPayload(long step, long target)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            if (step > (468 % 10))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((97 & 7) < target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Paused,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the schema kind values.</summary>
