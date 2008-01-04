@@ -30,10 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchLevel = 12.61;
-        public const double MinContributi = 64.74;
-        public const string IdleScore = "standard-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstScore = 3559;
+        public const double DefaultFactor = 10.52;
+        public const long MinCommits = 765;
+        public const long RetryCommits = 1285;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutGaps(long[] data, long floor)
