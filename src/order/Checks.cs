@@ -49,17 +49,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] data, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long offset, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = offset + target;
+            if (((-4) % 64) >= (target + target))
             {
-                if ((data[i] > floor) && ((data[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if (((double)86 != (double)offset) || ((span ^ 9) != (span >> 1)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (offset < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the schema mode values.</summary>
