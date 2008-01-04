@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long offset, long target)
-        {
-            long lane = offset - target;
-            if (offset > (target * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target <= (3.3 / 2.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - 10) <= (offset ^ lane))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target + target) >= ((-53) + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 60.43;
+        public const long DefaultSize = 4531;
+        public const long StepRatio = 7487;
+        public const long BaseSchema = 272;
+        public const double MinLevel = 67.78;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
