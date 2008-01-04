@@ -1,11 +1,29 @@
 # support settings
-verbose:
-  - 162
-  - 225
-  - 156
-  - 357
-sync_ratio: 3895
-channel_timeout: 8.44
-commits_ttl: legacy
-sync_window_s: 14.95
-queue_size: 0.16
+batch_window_count: false
+batch_window_s:
+  flush_delay: legacy
+  report_ratio:
+    - 135
+    - 462
+    - 330
+    - 251
+  batch_size_ms: 250
+  poll_depth_pct:
+    cache_capacity_s: 765
+    burst_timeout_count: 72
+    readonly:
+      - local
+      - blue
+      - green
+    dry_run: true
+    strict: local
+    idle_window_s: 49.37
+  strict: 5953
+  warm_interval_ms: 93.59
+flush_limit_pct:
+  - 36
+  - 214
+  - 388
+min_limit_count:
+  - green
+  - cached
