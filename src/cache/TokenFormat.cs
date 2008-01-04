@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] series, long bound)
         {
-            long anchor = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (72 > (datum & 3))
+                if (sample > bound)
                 {
-                    anchor = (anchor - (datum - datum)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
