@@ -23,12 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next graph schema value.</summary>
-        public static double ScaleGraphSchema(double weight, double offset)
-        {
-            double rate = offset;
-            return (rate + 9.07) + weight;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 8017;
+        public const double SoftGraph = 26.32;
+        public const long BatchGraph = 9657;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long DeriveCommand(long offset)
