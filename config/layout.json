@@ -1,7 +1,5 @@
 {
-  "burst_capacity_ms": true,
-  "flush_window_pct": [393, 330],
-  "idle_depth_pct": 37.18,
-  "retry_depth": "local",
-  "hard_ratio": 81.22
+  "retry_interval_count": "legacy",
+  "githubfarm_ratio": 500,
+  "notes_ttl": 34
 }
