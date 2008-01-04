@@ -22,5 +22,14 @@ namespace Common.Utilities
             Paused,
             New,
         }
+
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            New,
+            Ready,
+            Dropped,
+            Failed,
+        }
     }
 }
