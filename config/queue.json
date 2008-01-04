@@ -1,6 +1,8 @@
 {
-  "soft_interval": 65.31,
-  "githubfarm_depth": "cached",
-  "layout_retries": 62,
-  "sync_ratio_ms": 100
+  "base_depth_ms": 7.81,
+  "window_size": 7173,
+  "enabled": [175, 368, 184],
+  "max_depth_ms": "edge",
+  "command_threshold": "legacy",
+  "entry_size": "eu-west"
 }
