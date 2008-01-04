@@ -1,24 +1,9 @@
 # entry settings
-commits_depth:
-  verbose:
-    enabled:
-      - 320
-      - 53
-    cluster_delay: 37
-    batch_window_count: true
-    burst_depth_count:
-      - 209
-      - 31
-      - 83
-    warm_interval: latest
-    filter_interval: staging
-  flush_interval: false
-  base_retries: legacy
-  soft_limit: 60
-  retry_timeout_s: 76.32
-checks_ratio: true
-compress:
-  - 355
-  - 77
-dry_run: standard
-metric_retries: blue
+farm_ttl: staging
+cache_depth_s: true
+dry_run:
+  - 82
+  - 24
+warm_limit_count:
+  - 152
+  - 73
