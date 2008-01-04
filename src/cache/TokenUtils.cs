@@ -14,15 +14,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Look up the position of a session queue sample.</summary>
+        public static long LocateSessionQueueIndex(long[] readings, long origin)
         {
-            long result = 366;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result << 3) ^ (result >> 2)) - item;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
