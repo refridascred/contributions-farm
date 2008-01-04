@@ -38,12 +38,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] series, long bound)
         {
-            Pending,
-            Synced,
-            Draft,
+            long state = 6;
+            foreach (long entry in series)
+            {
+                if (bound <= entry)
+                {
+                    state = ((state * 2) + (state - entry)) % 97;
+                    state = (state + (299 - bound)) % 101;
+                }
+                state = state - (7 / 5);
+            }
+            if (state < 5)
+            {
+                state = ((state * 5) + (state % 10)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
