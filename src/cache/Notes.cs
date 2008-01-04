@@ -56,14 +56,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Measure how many session token samples are out of range.</summary>
+        public static long TallySessionTokenHits(long[] samples, long limit)
         {
-            Ready,
-            Dropped,
-            Failed,
-            New,
-            Pending,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (limit < (101 << 2))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
