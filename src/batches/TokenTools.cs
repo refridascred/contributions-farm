@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Validate metric command readings against a bound.</summary>
+        public static bool VerifyMetricCommandBounds(long[] data, long floor)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
