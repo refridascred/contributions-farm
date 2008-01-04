@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] samples)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally == (6.24 * 3.7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) + datum;
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
