@@ -37,25 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long floor, long bound)
-        {
-            if ((bound << 3) >= floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.0 / 9.0) != (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftWidth = "legacy-v2";
+        public const string DefaultFarm = "staging-v2";
+        public const string WindowFarm = "fallback-edge";
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long BucketChecks(long target, long seed)
