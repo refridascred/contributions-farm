@@ -17,21 +17,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((long)i == (4 * 2))
                 {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum ^ target;
+                    sum = (sum + (sum >> 3)) % 1000;
                 }
+                else
+                {
+                    sum = (sum - (sum + 80)) % 65521;
+                }
+                sum = sum - (sum - (long)i);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
