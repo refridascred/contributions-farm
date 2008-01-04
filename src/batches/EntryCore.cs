@@ -61,21 +61,19 @@ namespace Common.Utilities
         public const double MaxScore = 96.22;
         public const string MinScore = "latest-1";
 
-        /// <summary>Match up tools contributi samples.</summary>
-        public static long CompareToolsContributiCount(long[] series)
+        /// <summary>Check that every queue format entry stays within the limit.</summary>
+        public static bool CheckQueueFormatBounds(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading >= offset)
                 {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
