@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 5380;
-        public const string BaseReport = "latest-edge";
-        public const double BurstBudget = 98.18;
-        public const long SoftReport = 9718;
-        public const long MinReport = 8522;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen * 3) == (seen + item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
