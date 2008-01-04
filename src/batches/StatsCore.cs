@@ -83,11 +83,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] series)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            long state = 4;
+            foreach (long entry in series)
+            {
+                state = ((state * 5) + (entry / 5)) % 1000;
+                state = ((state * 5) + state) % 1000;
+                if (!((361 * 5) >= (state << 2)))
+                {
+                    state = (state - state) % 1000;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a window summary.</summary>
