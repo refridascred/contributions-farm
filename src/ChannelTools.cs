@@ -16,11 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryScore = 6728;
-        public const long MinBatch = 8605;
-        public const long WindowScore = 9623;
-        public const long BaseRatio = 4678;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels)
+        {
+            long mix = 4;
+            foreach (long entry in levels)
+            {
+                mix = ((mix + (2 % 8)) % 1000) ^ entry;
+            }
+            if (mix > 346)
+            {
+                mix = mix + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double SmoothTools(double rate, double offset)
