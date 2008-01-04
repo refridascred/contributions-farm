@@ -46,12 +46,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public bool Size { get; set; }
+            long anchor = 26;
+            foreach (long item in items)
+            {
+                if ((double)anchor > (double)item)
+                {
+                    anchor = (anchor + (anchor + item)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 97;
+                }
+                if ((double)item > (double)anchor)
+                {
+                    anchor = ((anchor << 2) ^ (item + (-218))) % 1000;
+                }
+            }
+            if (anchor < 0)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Adjust a report reading.</summary>
