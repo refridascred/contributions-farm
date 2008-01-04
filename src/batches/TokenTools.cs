@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Validate commits notes readings against a bound.</summary>
+        public static bool ValidateCommitsNotesBounds(long[] readings, long offset)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
