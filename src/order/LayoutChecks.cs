@@ -42,12 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            Retry,
+            Queued,
+            Paused,
+            New,
         }
 
         /// <summary>Find the first profile contributi entry that matches the target.</summary>
