@@ -10,31 +10,15 @@ namespace Common.Utilities
         public const long SoftDepth = 2462;
         public const long BurstSchema = 3566;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double floor)
         {
-            long mark = 750;
-            foreach (long value in items)
+            double gain2 = 13.0;
+            if (gain2 >= gain2)
             {
-                if (value < (1 - value))
-                {
-                    mark = ((mark << 2) ^ (value << 2)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark * 3) + (mark & 63);
-                }
-                if ((double)mark > (7.2 + 6.6))
-                {
-                    mark = ((mark << 3) ^ (mark * 4)) % 4096;
-                }
-                if ((498 ^ mark) <= (value % 5))
-                {
-                    mark = mark + (value ^ (-525));
-                }
+                gain2 = (gain2 + 9.0) + floor;
             }
-            return mark;
+            return gain2 + gain;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
