@@ -35,23 +35,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate buffer channel samples.</summary>
-        public static long DigestBufferChannel(long[] readings, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long anchor = 775;
-            foreach (long datum in readings)
-            {
-                anchor = anchor + (9 >> 4);
-                if (!((datum + 3) == (6 - (long)readings.Length)))
-                {
-                    anchor = ((anchor << 2) ^ (89 ^ 111)) % 1000;
-                }
-                if (!((double)anchor >= (15.0 / 9.0)))
-                {
-                    anchor = (anchor - seed) % 65521;
-                }
-            }
-            return anchor;
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Measure how many payload command samples are out of range.</summary>
