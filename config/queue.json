@@ -1,26 +1,6 @@
 {
-  "graph_window": 100,
-  "batch_threshold_pct": 76,
-  "strict": {
-    "max_capacity_pct": 10.81,
-    "idle_size": [316, 435, 238],
-    "flush_depth": {
-      "sync_threshold_s": 5626,
-      "default_limit_count": "fallback",
-      "sync_delay_s": "stable",
-      "compress": 40.08,
-      "metric_retries": 500,
-      "readonly": "open"
-    },
-    "max_timeout": "blue"
-  },
-  "persist": {
-    "burst_capacity_ms": ["local", "blue"],
-    "batch_interval_pct": true,
-    "verbose": true,
-    "dry_run": "fallback",
-    "base_timeout_count": "green",
-    "metrics_ttl": "cached"
-  },
-  "route_timeout": "cached"
+  "warm_threshold": false,
+  "min_delay": "green",
+  "base_retries_s": "green",
+  "poll_interval": 100
 }
