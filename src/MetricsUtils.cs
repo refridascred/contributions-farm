@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] levels, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (item <= bound)
+                if ((entry / 2) >= matches)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
