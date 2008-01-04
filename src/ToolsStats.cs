@@ -66,22 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstCount = 5155;
+        public const long MinEditor = 3806;
+        public const double RetryEditor = 34.92;
+        public const long RetryBudget = 3918;
+        public const long RetryCount = 1007;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long FindLayoutIndex(long[] series, long offset)
