@@ -1,20 +1,8 @@
 {
-  "cache_threshold_ms": {
-    "default_interval_ms": {
-      "graph_ratio": "latest",
-      "max_depth_pct": "staging",
-      "dry_run": "strict",
-      "report_retries": 407
-    },
-    "order_ratio": 15.88,
-    "support_delay": false,
-    "farm_timeout": 94.25,
-    "compress": ["eu-west", "cached"]
-  },
-  "enabled": {
-    "retry_size_pct": 3907,
-    "flush_interval": 46.57,
-    "sync_ttl": 28.65
-  },
-  "cache_limit_s": 86.41
+  "account_threshold": "primary",
+  "strict": 7131,
+  "session_capacity": 4246,
+  "readonly": 40.43,
+  "default_retries": false,
+  "enabled": false
 }
