@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] items)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((double)seen > (double)item) && (item < (958 & 255)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
