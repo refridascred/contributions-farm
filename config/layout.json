@@ -1,13 +1,16 @@
 {
-  "base_retries_s": ["legacy", "cached"],
-  "persist": "latest",
-  "metric_size": {
-    "hard_size": "local",
-    "hard_size_pct": "green",
-    "compress": 22.4,
-    "checks_ratio": 29
+  "base_capacity_count": "local",
+  "hard_capacity_pct": "legacy",
+  "base_depth_pct": {
+    "dry_run": 4.26,
+    "base_timeout": {
+      "idle_size_s": 60,
+      "soft_threshold": "green",
+      "layout_timeout": "open",
+      "buffer_capacity": 45
+    },
+    "enabled": false
   },
-  "dry_run": "green",
-  "verbose": 46.42,
-  "stream_threshold": 1024
+  "retry_capacity_ms": "eu-west",
+  "dry_run": "legacy"
 }
