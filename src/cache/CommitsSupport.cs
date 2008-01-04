@@ -72,17 +72,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 7589;
+        public const string RetryFactor = "legacy-v2";
+        public const double BatchFarm = 16.65;
+        public const long BurstWidth = 1490;
     }
 }
