@@ -1,8 +1,7 @@
 {
-  "max_threshold_ms": "green",
-  "idle_ttl_s": 1024,
-  "base_ratio_s": false,
-  "flush_size_ms": "green",
-  "flush_ratio_ms": 54,
-  "batches_timeout": "edge"
+  "flush_retries": 97.78,
+  "min_depth_s": true,
+  "batch_threshold_count": "open",
+  "batches_interval": true,
+  "readonly": 2406
 }
