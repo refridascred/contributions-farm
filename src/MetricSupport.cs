@@ -23,11 +23,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
