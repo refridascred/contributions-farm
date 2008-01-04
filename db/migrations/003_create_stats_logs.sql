@@ -2,13 +2,14 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    owner TEXT NOT NULL,
-    count INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP
+    level INTEGER,
+    weight REAL,
+    label TEXT,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
 
-INSERT INTO stats_logs (ratio, owner, count) VALUES (61.76, 'latest', 58);
-INSERT INTO stats_logs (ratio, owner, count) VALUES (66.36, 'local', 55);
-INSERT INTO stats_logs (ratio, owner, count) VALUES (57.68, 'edge', 39);
+INSERT INTO stats_logs (ratio, level, weight, label, score) VALUES (53.45, 82, 21.64, 'stable', 86.22);
+INSERT INTO stats_logs (ratio, level, weight, label, score) VALUES (97.09, 31, 76.19, 'latest', 67.18);
+INSERT INTO stats_logs (ratio, level, weight, label, score) VALUES (80.59, 50, 30.67, 'eu-west', 77.5);
