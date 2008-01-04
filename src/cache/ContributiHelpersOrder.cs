@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxSpan = "stable-edge";
-        public const string SoftSize = "latest-1";
-        public const long CacheFactor = 6064;
-        public const long WindowLevel = 6394;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseFactor = 4128;
+        public const string WindowLevel = "staging-1";
+        public const double SoftLevel = 42.96;
+        public const long MinCount = 3796;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long bound)
