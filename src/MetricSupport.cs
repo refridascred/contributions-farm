@@ -23,13 +23,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double rate, double offset)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            double gain = offset;
+            return gain - rate;
         }
     }
 }
