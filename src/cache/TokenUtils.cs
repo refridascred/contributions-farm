@@ -19,32 +19,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a layout entry value against two limits.</summary>
-        public static long ClassifyLayoutEntry(long floor, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long offset)
         {
-            long next = floor - limit;
-            if ((81 % 3) >= (next + limit))
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
+                long matches = acc;
+                matches = (matches - (long)i) % 255;
+                acc = (acc + (matches + offset)) % 97;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((next + limit) == ((-826) + 516)) || (limit >= (next ^ 80)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor + 1) < (floor >> 2)) && ((9.8 * 7.25) == (double)next))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
