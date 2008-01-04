@@ -23,18 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] values)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((9.98 / 6.0) < (double)hits)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Stale,
         }
     }
 }
