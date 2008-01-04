@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "cached-v2";
-        public const long BaseInterval = 6474;
-        public const long SoftTimeout = 4873;
-        public const long SoftDepth = 6552;
-        public const string BaseDepth = "standard-v2";
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double ratio, double offset)
+        {
+            double load = offset / 7.0;
+            if (load > (double)128)
+            {
+                load = load - (offset * 5.46);
+            }
+            return load + ratio;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TallyRecord(long[] values)
