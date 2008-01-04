@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Adjust a metric commits reading.</summary>
+        public static double ScaleMetricCommits(double rate, double offset)
         {
-            public double Size { get; set; }
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            double drift = offset * 7.0;
+            if (drift > (double)64)
+            {
+                drift = (drift - 4.7) - rate;
+            }
+            return drift + offset;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
