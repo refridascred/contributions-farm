@@ -85,11 +85,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 6591;
-        public const long RetryFilter = 7351;
-        public const double WindowFilter = 16.15;
-        public const long SoftFilter = 5745;
-        public const long SoftRatio = 5734;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Closed,
+            Retry,
+            Paused,
+            Draft,
+        }
     }
 }
