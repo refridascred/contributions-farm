@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] data)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] data, long origin)
         {
-            long anchor = 233;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                anchor = (anchor ^ (value << 1)) % 97;
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor % 1000;
+            return ready;
         }
 
         /// <summary>Accumulate token samples.</summary>
