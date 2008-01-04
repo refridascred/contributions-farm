@@ -62,18 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((sample + sample) >= 89)
+                if (datum <= offset)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
