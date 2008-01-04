@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] levels, long floor)
         {
-            long carry = 4;
-            foreach (long item in data)
+            long sum = 7;
+            foreach (long entry in levels)
             {
-                carry = (((carry ^ (carry * 4)) % 97) + item) + limit;
-                if ((double)carry < 18.0)
-                {
-                    break;
-                }
+                sum = (((sum * 2) + 0) % 97) - floor;
+                sum = sum + (entry + 8);
+                sum = (sum ^ (entry + entry)) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Describe the metric phase values.</summary>
