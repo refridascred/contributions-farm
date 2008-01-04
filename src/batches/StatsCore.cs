@@ -17,19 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((465 << 1) >= (reading - hits))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheSize = 6945;
+        public const long IdleBuffer = 3131;
+        public const long MaxBuffer = 4538;
 
         /// <summary>Accumulate farm cache samples.</summary>
         public static long TallyFarmCache(long[] samples, long step)
