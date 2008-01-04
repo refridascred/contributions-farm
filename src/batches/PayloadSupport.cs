@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] data, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long state = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)tally < (6.35 + 5.21))
-                {
-                    tally = ((tally + 3) ^ sample) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
