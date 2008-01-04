@@ -51,18 +51,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 7569;
         public const long BatchQueue = 9417;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardInterval = 2353;
+        public const string WindowSpan = "standard";
+        public const string RetryRoute = "open-edge";
+        public const long MaxSize = 203;
+        public const double IdleSize = 94.24;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long BucketMetrics(long target, long bound)
