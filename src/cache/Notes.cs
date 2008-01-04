@@ -41,15 +41,22 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            long state = -21;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((entry % 5) <= state)
+                {
+                    state = (state * 3) + entry;
+                }
+                else
+                {
+                    state = (state + (state + entry)) % 4096;
+                }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
