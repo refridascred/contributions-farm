@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFactor = 3773;
-        public const long LimitCount = 7631;
-        public const long MinFactor = 8750;
-        public const double LimitFormat = 89.27;
+        /// <summary>Classify a route stream pair into a bucket.</summary>
+        public static long BucketRouteStream(long target, long seed)
+        {
+            if (!((seed + seed) >= (seed + target)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)(-7) < (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + 461) <= (seed + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
