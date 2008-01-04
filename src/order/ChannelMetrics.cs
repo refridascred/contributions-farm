@@ -25,19 +25,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] levels, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((origin / 4) < (mark + 9))
+                if (reading <= target)
                 {
-                    mark = (mark ^ (origin << 2)) % 1000;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return flag;
         }
     }
 }
