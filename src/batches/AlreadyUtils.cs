@@ -30,12 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] readings)
         {
-            Dropped,
-            Retry,
-            New,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!!((double)value > 7.6))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of context readings.</summary>
