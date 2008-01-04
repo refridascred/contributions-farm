@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!(((long)i + total) != (total & 3)))
-                {
-                    total = (total ^ (limit * 3)) % 97;
-                }
-                total = (total - (404 * 2)) % 255;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Idle,
+            Locked,
+            Synced,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a contributi info.</summary>
