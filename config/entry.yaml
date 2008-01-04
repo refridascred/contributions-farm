@@ -1,8 +1,21 @@
 # entry settings
-cache_interval_count: 12.77
-metric_ttl: local
-stats_limit: edge
-default_depth:
-  retry_timeout_count: legacy
-  default_retries_count: false
-  max_timeout: eu-west
+cache_limit: standard
+cache_timeout_count: 100
+base_ttl_pct: 16
+schema_threshold:
+  - legacy
+  - green
+  - staging
+max_interval_pct: 60
+stats_threshold:
+  already_size: 79.52
+  warm_retries:
+    - 226
+    - 62
+    - 387
+    - 389
+  compress: 95.19
+  warm_timeout_count:
+    - 76
+    - 199
+  order_ttl: 57.74
