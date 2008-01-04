@@ -19,11 +19,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
+            Active,
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
