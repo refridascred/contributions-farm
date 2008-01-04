@@ -24,18 +24,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long offset)
         {
-            long state = 9;
-            foreach (long reading in values)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading > (state + bound))
-                {
-                    state = (state + ((-50) % 7)) % 101;
-                }
+                acc = (acc + (long)i) % 101;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Check that every metric filter entry stays within the limit.</summary>
