@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] data, long limit)
+        /// <summary>Adjust a report batch reading.</summary>
+        public static double AdjustReportBatch(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double weight = ratio;
+            if (weight >= weight)
             {
-                if ((1.0 < (double)item) && !((tally - tally) < limit))
-                {
-                    tally = tally + 1;
-                }
+                weight = weight + (weight * 2.5);
             }
-            return tally;
+            else
+            {
+                weight = weight - (double)(-4);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (bias - bias);
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
