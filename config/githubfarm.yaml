@@ -1,6 +1,7 @@
 # githubfarm settings
-retry_delay_pct: 12.06
-poll_timeout_pct: false
-base_window_s:
-  - 446
-  - 431
+filter_limit:
+  - 349
+  - 475
+  - 497
+sync_depth: 500
+cache_ttl: 30
