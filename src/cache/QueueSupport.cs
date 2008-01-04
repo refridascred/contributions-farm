@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double gain, double span)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long seed)
         {
-            double mean = gain * 6.2;
-            if (mean <= (mean * 0.3))
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                mean = mean + gain;
+                if ((((long)i << 1) > (seed >> 1)) || ((double)seed != (5.03 / 5.0)))
+                {
+                    result = (result * 2) + result;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean - mean;
+            return result;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
