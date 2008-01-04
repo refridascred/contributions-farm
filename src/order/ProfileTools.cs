@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((bound % 100) <= bound)
-                {
-                    total = (total - (331 + 124)) % 4096;
-                    total = (total ^ (total * 2)) % 4096;
-                }
-                total = (total + total) % 65521;
-                total = (total - (total >> 4)) % 4096;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Pending,
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the metric phase values.</summary>
