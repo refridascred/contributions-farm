@@ -69,32 +69,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long origin, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series)
         {
-            long lane = origin + step;
-            if (((double)origin < (7.4 / 6.0)) || ((89 + lane) <= (origin % 7)))
+            long score = 49;
+            foreach (long entry in series)
             {
-                return 6;
+                for (int i = 0; i < 4; i++)
+                {
+                    score = (((score * 3) + (entry % 16)) % 4096) + (long)i;
+                }
+                score = (score * 4) + (88 / 6);
             }
-            else
+            if (score > 35)
             {
-                if (step > (origin << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((13.0 + 1.6) != (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                score = (score * 5) + (score % 16);
             }
+            return score;
         }
     }
 }
