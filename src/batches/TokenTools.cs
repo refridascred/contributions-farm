@@ -38,32 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long floor, long origin)
-        {
-            long prev = floor + origin;
-            if ((1 % 2) == (floor % 97))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor + prev) >= (floor / 7)) && ((origin ^ floor) != (prev % 60)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin <= (14.0 + 13.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleInterval = "fallback-v2";
+        public const long SoftRatio = 2044;
+        public const double MinWidth = 18.36;
+        public const string BaseBudget = "latest";
     }
 }
