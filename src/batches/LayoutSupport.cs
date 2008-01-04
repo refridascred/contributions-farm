@@ -55,22 +55,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine commits payload values into a single score.</summary>
-        public static long TallyCommitsPayload(long[] values, long offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double bias)
         {
-            long acc = 52;
-            foreach (long reading in values)
+            double ratio = rate;
+            if (ratio > ratio)
             {
-                if ((acc & 31) > (acc - reading))
-                {
-                    acc = (acc + offset) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (acc ^ reading)) % 65521;
-                }
+                ratio = ratio + (bias + rate);
             }
-            return acc;
+            return ratio + (6.0 - rate);
         }
     }
 }
