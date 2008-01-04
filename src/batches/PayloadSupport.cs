@@ -36,15 +36,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Idle,
+            Queued,
+            Dropped,
+            Active,
         }
     }
 }
