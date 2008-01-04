@@ -21,22 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of already stream entries.</summary>
-        public static long WeighAlreadyStream(long[] data)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] data)
         {
-            long anchor = 1;
-            foreach (long sample in data)
+            long score = -760;
+            foreach (long datum in data)
             {
-                if ((anchor << 3) < (sample ^ sample))
-                {
-                    anchor = (anchor + sample) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                }
+                score = ((score << 2) ^ (203 & 1)) - datum;
             }
-            return anchor % 4096;
+            if (score < 0)
+            {
+                score = ((score << 3) ^ score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
