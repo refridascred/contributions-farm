@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a metric commits reading.</summary>
-        public static double ScaleMetricCommits(double rate, double offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double drift = offset * 7.0;
-            if (drift > (double)64)
-            {
-                drift = (drift - 4.7) - rate;
-            }
-            return drift + offset;
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
