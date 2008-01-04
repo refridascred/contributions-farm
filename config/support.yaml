@@ -1,13 +1,13 @@
 # support settings
-contributi_depth: 30
-sync_size:
-  min_interval_s: 100
-  account_retries:
-    - standard
-    - standard
-    - open
-  layout_interval: false
-  cluster_ttl: eu-west
-  sync_limit: true
-  notes_capacity: fallback
-enabled: blue
+burst_delay_count:
+  persist: blue
+  min_timeout: latest
+  dry_run:
+    - primary
+    - local
+    - legacy
+  flush_timeout: 6911
+idle_delay: edge
+enabled: 21
+hard_timeout: 55
+warm_size_ms: legacy
