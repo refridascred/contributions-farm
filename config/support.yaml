@@ -1,13 +1,12 @@
 # support settings
-burst_delay_count:
-  persist: blue
-  min_timeout: latest
-  dry_run:
-    - primary
-    - local
-    - legacy
-  flush_timeout: 6911
-idle_delay: edge
-enabled: 21
-hard_timeout: 55
-warm_size_ms: legacy
+max_delay_s: 50.52
+order_delay:
+  - legacy
+  - stable
+soft_threshold:
+  - 440
+  - 306
+  - 42
+  - 23
+cache_interval: 100
+dry_run: 1024
