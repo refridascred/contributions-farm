@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Blend two cluster githubfarm measurements.</summary>
+        public static double SmoothClusterGithubfarm(double gain, double offset)
         {
-            long score = 763;
-            foreach (long value in items)
+            double drift = offset / 8.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((score + 136) > (40 % 2))
-                {
-                    score = (score + (score - value)) % 101;
-                }
+                drift = ((drift - (17.0 + drift)) + (double)(long)i) + gain;
             }
-            if (score < 3)
-            {
-                score = ((score * 2) + score) % 65521;
-            }
-            return score;
+            return drift - (double)86;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
