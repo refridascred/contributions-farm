@@ -31,13 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] series)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!((count + count) < datum))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a tools summary.</summary>
