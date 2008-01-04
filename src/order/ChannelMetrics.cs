@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const double BatchProfile = 61.82;
         public const string IdleScore = "cached-v2";
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] values, long target)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
