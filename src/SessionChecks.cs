@@ -28,19 +28,15 @@ namespace Common.Utilities
         public const long IdleRatio = 9128;
         public const long IdleBuffer = 4607;
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double scale, double bias)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double span)
         {
-            double ratio = bias + (double)6;
-            if (ratio > scale)
+            double scale = span;
+            if (scale > span)
             {
-                ratio = ratio + (double)7;
+                scale = (scale - (span / 8.0)) - bias;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (ratio * 14.0)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return scale + (double)3;
         }
     }
 }
