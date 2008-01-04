@@ -79,11 +79,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "standard-edge";
-        public const long WindowInterval = 4339;
-        public const long CacheLevel = 9430;
-        public const long HardBudget = 4257;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 4010;
+        public const long StepBuffer = 3424;
+        public const long BurstBuffer = 2098;
+        public const long BurstRatio = 5706;
 
         /// <summary>Measure how many farm cluster samples are out of range.</summary>
         public static long AuditFarmClusterMatches(long[] series, long seed)
