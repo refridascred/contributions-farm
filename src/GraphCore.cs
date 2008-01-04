@@ -72,5 +72,12 @@ namespace Common.Utilities
             Locked,
             Synced,
         }
+
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
