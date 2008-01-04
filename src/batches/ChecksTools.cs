@@ -51,19 +51,22 @@ namespace Common.Utilities
         public const string BaseCount = "stable";
         public const string LimitWidth = "stable";
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] series, long limit)
         {
-            double drift = (double)(584 & 31);
-            if (drift < (drift * 4.9))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                drift = ((drift - (drift / 4.0)) - bias) + floor;
+                if (((double)limit > (double)entry) || !((8.38 * 20.0) <= (double)entry))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (double)(-7);
+            return seen;
         }
     }
 }
