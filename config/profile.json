@@ -1,7 +1,9 @@
 {
-  "verbose": 89.22,
-  "metrics_ttl": 14.7,
-  "audit": "edge",
-  "default_window_count": 77.64,
-  "batch_threshold_count": ["standard", "edge", "strict", "green"]
+  "payload_delay": 4863,
+  "batch_size": 5906,
+  "stream_size": {
+    "persist": "cached",
+    "cluster_limit": "stable",
+    "default_timeout_pct": 60.92
+  }
 }
