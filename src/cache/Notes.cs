@@ -52,19 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every schema farm entry stays within the limit.</summary>
-        public static bool ValidateSchemaFarmBounds(long[] series, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (value >= seed)
+                if ((6.55 + 5.0) >= (double)sample)
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
