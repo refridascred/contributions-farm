@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            New,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepSpan = 9441;
+        public const string DefaultSpan = "open-1";
+        public const long LimitCount = 6337;
+        public const long CacheFactor = 2909;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long step, long step2)
