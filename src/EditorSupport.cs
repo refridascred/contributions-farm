@@ -91,19 +91,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] items, long origin)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Active,
+            Synced,
         }
     }
 }
