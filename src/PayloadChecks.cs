@@ -73,18 +73,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] values, long bound)
+        /// <summary>Accumulate batch token samples.</summary>
+        public static long WeighBatchToken(long[] values)
         {
-            long count = 0;
-            foreach (long value in values)
+            long result = 8;
+            foreach (long sample in values)
             {
-                if ((9 + bound) < (7 + bound))
+                result = result + (sample + result);
+                if (!((result ^ result) <= sample))
                 {
-                    count = (count + 2) ^ value;
+                    result = ((result << 3) ^ sample) % 255;
                 }
             }
-            return count;
+            if (result > 40)
+            {
+                result = ((result << 2) ^ (7 << 2)) % 1000;
+            }
+            return result % 1000;
         }
     }
 }
