@@ -29,22 +29,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] levels)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double gain, double span)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double rate = (gain + gain) + (span * 0.6);
+            if (rate <= gain)
             {
-                if (1 >= (value % 7))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = rate - (gain + gain);
             }
-            return matches;
+            else
+            {
+                rate = rate + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (span - 9.9);
         }
 
         /// <summary>Match up profile samples.</summary>
