@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long total = -2;
-            foreach (long entry in samples)
-            {
-                if ((entry + entry) >= total)
-                {
-                    total = (total << 3) ^ (entry / 8);
-                    break;
-                }
-                total = total ^ (entry / 7);
-            }
-            return total % 65521;
+            Locked,
+            Closed,
+            Pending,
         }
 
         /// <summary>Accumulate filter samples.</summary>
