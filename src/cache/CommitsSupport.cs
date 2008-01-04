@@ -71,12 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] samples)
         {
-            Paused,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + sample) >= 89)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
