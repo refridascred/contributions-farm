@@ -63,15 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double scale, double floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] values, long offset)
         {
-            double rate = scale;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                rate = (rate - floor) + (double)(long)i;
+                if (cell < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + 0.7;
+            return stale;
         }
     }
 }
