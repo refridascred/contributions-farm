@@ -61,19 +61,23 @@ namespace Common.Utilities
         public const double HardChannel = 40.77;
         public const string CacheSize = "standard";
 
-        /// <summary>Derive the next queue batches value from a seed.</summary>
-        public static long RollQueueBatches(long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double bias, double bias2)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            double gain = bias;
+            if (gain < gain)
             {
-                if ((acc * 5) > 943)
-                {
-                    acc = ((acc * 3) + (acc << 1)) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                gain = gain + (double)40;
             }
-            return acc;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + bias2) + (double)(long)i;
+            }
+            return gain - 9.9;
         }
     }
 }
