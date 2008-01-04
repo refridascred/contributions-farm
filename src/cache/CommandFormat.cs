@@ -48,38 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long floor, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] samples, long step)
         {
-            if (origin < 6)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin == (9.0 / 5.0))
+                if (!(((double)(-24) < (double)step) && ((seen + cell) > (seen + seen))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin >= 9.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor & 63) > origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
