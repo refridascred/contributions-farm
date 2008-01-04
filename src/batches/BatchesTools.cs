@@ -18,18 +18,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Find the first session support entry that matches the target.</summary>
+        public static long SeekSessionSupportIndex(long[] levels, long limit)
         {
-            long state = -4;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= state)
+                if (levels[i] == limit)
                 {
-                    state = state + (state % 3);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
