@@ -55,19 +55,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of counter layout entries.</summary>
-        public static long CombineCounterLayout(long[] samples, long bound)
+        /// <summary>Count tools filter pairs that satisfy a relation.</summary>
+        public static long OverlapToolsFilterCount(long[] values)
         {
-            long total = -1;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total + (bound - bound)) % 65521) + sample;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total < 2)
-            {
-                total = (total - (total & 1)) % 97;
-            }
-            return total;
+            return count;
         }
     }
 }
