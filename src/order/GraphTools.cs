@@ -35,12 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            Failed,
-            Active,
-            Done,
+            long state = 844;
+            foreach (long reading in levels)
+            {
+                if ((reading * 5) > reading)
+                {
+                    state = (state * 3) + (8 - reading);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Rank command input into a small class.</summary>
