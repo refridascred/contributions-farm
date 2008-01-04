@@ -30,10 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 2621;
-        public const long BurstCount = 1751;
-        public const string DefaultCount = "standard-edge";
-        public const long RetryCache = 7177;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((0 + step) > total)
+                {
+                    total = (total - total) % 4096;
+                    break;
+                }
+                else
+                {
+                    total = (total - (long)i) % 1000;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
