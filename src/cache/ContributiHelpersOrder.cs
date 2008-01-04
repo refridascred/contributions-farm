@@ -12,18 +12,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit batches cluster readings against a rule.</summary>
-        public static long CountBatchesClusterMatches(long[] data)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((-8) <= matches)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) ^ value;
+                    if ((data[i] ^ data[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Adjust a profile contributi reading.</summary>
