@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double gain, double offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] values)
         {
-            double bias = offset + gain;
-            if (bias >= 6.81)
+            long mark = 818;
+            foreach (long sample in values)
             {
-                bias = bias + bias;
+                if ((mark << 2) <= sample)
+                {
+                    mark = (mark << 2) ^ (mark ^ mark);
+                }
+                if ((sample >> 5) < 0)
+                {
+                    mark = mark ^ (sample & 15);
+                }
+                else
+                {
+                    mark = mark ^ (sample & 255);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (mark < 96)
             {
-                bias = (bias + offset) + (double)(long)i;
+                mark = (mark + mark) % 65521;
             }
-            return bias - (double)83;
+            return mark % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
