@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryDepth = 7163;
-        public const long IdleChannel = 3478;
-        public const long MaxBudget = 5693;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long DeriveOrder(long offset)
