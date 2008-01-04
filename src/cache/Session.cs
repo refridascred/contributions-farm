@@ -21,19 +21,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double scale, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] readings, long step)
         {
-            double load = 20.0;
-            if (load < (8.74 / 4.0))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                load = ((load - load) - scale) - floor;
+                if ((count + reading) <= (reading / 4))
+                {
+                    count = (count + 1) + step;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (double)(-722);
+            return count;
         }
 
         /// <summary>Describe the token state values.</summary>
