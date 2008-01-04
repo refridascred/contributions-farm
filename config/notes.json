@@ -1,5 +1,15 @@
 {
-  "max_retries_ms": 2.48,
-  "profile_size": 9304,
-  "window_timeout": 99
+  "burst_ttl_ms": {
+    "soft_retries_s": "primary",
+    "verbose": ["cached", "green"],
+    "stats_window": 2030,
+    "persist": {
+      "dry_run": 500,
+      "compress": 61.48,
+      "record_capacity": "staging"
+    }
+  },
+  "min_limit": true,
+  "flush_delay": 12,
+  "warm_size": false
 }
