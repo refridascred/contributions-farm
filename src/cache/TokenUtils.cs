@@ -24,17 +24,18 @@ namespace Common.Utilities
             return load - (double)843;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] samples, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (samples[i] <= floor)
+                if (offset <= count)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a command reading.</summary>
