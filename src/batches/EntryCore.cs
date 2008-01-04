@@ -65,11 +65,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseTimeout = "legacy";
+        public const long RetryCommits = 685;
+        public const long DefaultBudget = 980;
     }
 }
