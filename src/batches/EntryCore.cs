@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a editor cluster reading.</summary>
-        public static double BlendEditorCluster(double scale, double bias)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            double bias2 = (8.23 * 12.0) / 6.0;
-            if (bias2 < 0.06)
-            {
-                bias2 = ((bias2 + bias2) - scale) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 - bias2;
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
