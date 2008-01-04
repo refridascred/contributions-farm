@@ -11,22 +11,31 @@ namespace Common.Utilities
         public const double BurstStats = 95.01;
         public const long StepScore = 6088;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] levels, long offset)
+        /// <summary>Classify a order entry pair into a bucket.</summary>
+        public static long RankOrderEntry(long limit, long seed)
         {
-            long result = -137;
-            foreach (long entry in levels)
+            if ((double)limit == (0.1 - 7.8))
             {
-                if ((entry >> 3) != (offset - result))
+                return 3;
+            }
+            else
+            {
+                if (((double)seed >= (4.5 - 6.4)) && ((limit + seed) != (seed + seed)))
                 {
-                    result = (result << 3) ^ 46;
+                    return 5;
                 }
                 else
                 {
-                    result = (result - (result ^ offset)) % 101;
+                    if (!((limit ^ limit) >= seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Hold a batches info.</summary>
