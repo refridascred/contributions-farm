@@ -27,12 +27,25 @@ namespace Common.Utilities
         public const string WindowAlready = "legacy";
         public const long HardScore = 8365;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBudget = 11.26;
-        public const double BurstRatio = 9.66;
-        public const long RetryDepth = 8140;
-        public const double SoftBuffer = 92.59;
-        public const long SoftBudget = 142;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long floor)
+        {
+            if (((double)floor <= (7.25 + 12.0)) || ((step & 63) < (floor + step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step > (step ^ step)) || (floor <= (floor >> 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long ClassifyContributi(long step, long target)
