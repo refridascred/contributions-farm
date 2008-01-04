@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the context batch entries that pass the check.</summary>
-        public static long CountContextBatchMatches(long[] samples, long floor)
+        /// <summary>Combine farm batch values into a single score.</summary>
+        public static long TotalFarmBatch(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mark = 343;
+            foreach (long entry in data)
             {
-                if (((18.0 + 1.0) > (double)floor) && ((double)sample <= (4.8 * 0.31)))
+                for (int i = 0; i < 6; i++)
                 {
-                    hits = hits + 3;
+                    mark = ((mark << 3) ^ (floor * 3)) + (long)i;
+                    mark = (mark << 2) ^ mark;
                 }
+                mark = mark - (entry << 2);
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
