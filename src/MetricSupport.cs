@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] values, long target)
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)hits < 20.0)
+                {
+                    hits = ((hits + 1) + item) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a context entry.</summary>
