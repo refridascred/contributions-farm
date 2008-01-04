@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] levels)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((6.62 * 0.85) != (double)matches)
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
