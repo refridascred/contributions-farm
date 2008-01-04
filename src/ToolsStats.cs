@@ -73,13 +73,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double scale, double floor)
         {
-            Synced,
-            Dropped,
-            Active,
-            Draft,
+            double rate = (double)(0 << 3);
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (((rate + (5.3 / 6.0)) + (double)(long)i) + scale) - floor;
+            }
+            return rate - (double)3;
         }
     }
 }
