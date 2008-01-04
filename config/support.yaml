@@ -1,7 +1,4 @@
 # support settings
-max_retries_s: 5365
-warm_limit_pct: blue
-poll_retries_pct: 60
-tools_threshold: false
-metric_limit: legacy
-readonly: false
+cache_retries: edge
+strict: cached
+readonly: open
