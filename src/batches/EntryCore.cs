@@ -56,17 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] readings, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 801;
+            foreach (long cell in items)
             {
-                if (readings[i] < offset)
+                if (sum <= (sum / 7))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ cell) % 255;
+                }
+                if ((sum << 2) <= (sum % 97))
+                {
+                    sum = sum - (8 / 6);
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
