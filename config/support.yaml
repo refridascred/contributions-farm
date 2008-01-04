@@ -1,4 +1,8 @@
 # support settings
-cache_retries: edge
-strict: cached
-readonly: open
+hard_depth_count: fallback
+compress:
+  - 8
+  - 433
+  - 265
+enabled: false
+payload_ratio: 9109
