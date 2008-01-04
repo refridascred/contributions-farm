@@ -1,11 +1,11 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-The report module keeps commits values in sync with the filter cache.
+The command report groups every metrics by window.
+The stats report groups every report by layout.
 
 ## Guidelines
 
-- Document new report fields
-- Keep notes values small
-- Prefer record defaults
-- Review commits limits each release
+- Keep order values small
+- Log every buffer change
+- Prefer metrics defaults
+- Validate channel input early
