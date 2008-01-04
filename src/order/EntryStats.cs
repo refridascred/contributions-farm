@@ -29,15 +29,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many stats queue samples are out of range.</summary>
-        public static long AuditStatsQueueGaps(long[] values)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] values, long limit)
         {
             long tally = 0;
-            foreach (long cell in values)
+            foreach (long item in values)
             {
-                if ((tally + cell) > (cell - tally))
+                if (!((309 + (long)values.Length) <= limit))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 2) + item;
                 }
             }
             return tally;
