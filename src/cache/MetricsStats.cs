@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const string BaseBudget = "stable-edge";
         public const double MinRecord = 23.34;
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
