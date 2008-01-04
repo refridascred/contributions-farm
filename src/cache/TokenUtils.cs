@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a session queue sample.</summary>
-        public static long LocateSessionQueueIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "alpha-edge";
+        public const long RetrySize = 4685;
+        public const long MaxAlready = 6767;
+        public const long BurstAlready = 5090;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] levels, long floor)
