@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long BurstTimeout = 2701;
         public const string RetryCache = "strict-edge";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetrySpan = 3329;
-        public const long SoftStats = 2809;
-        public const long IdleRatio = 2379;
-        public const long BaseCount = 5558;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Queued,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] series)
