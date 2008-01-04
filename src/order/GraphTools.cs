@@ -36,18 +36,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long target, long bound)
         {
-            long state = 844;
-            foreach (long reading in levels)
+            long offset = target + bound;
+            if ((20.0 >= (double)target) && ((offset / 3) < bound))
             {
-                if ((reading * 5) > reading)
+                return 3;
+            }
+            else
+            {
+                if (target >= (offset + target))
                 {
-                    state = (state * 3) + (8 - reading);
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + bound) < (offset + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset < (bound / 2)) || ((4.0 + 1.39) <= (double)target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Describe the commits state values.</summary>
