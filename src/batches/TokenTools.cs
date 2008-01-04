@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate metric command readings against a bound.</summary>
-        public static bool VerifyMetricCommandBounds(long[] data, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long diff = limit + origin;
+            if (((limit % 2) != (diff & 3)) && ((double)limit >= (7.8 - 2.8)))
             {
-                if (entry >= floor)
+                return 6;
+            }
+            else
+            {
+                if (!(diff <= (limit ^ limit)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((769 << 1) >= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
