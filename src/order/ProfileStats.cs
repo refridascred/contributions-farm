@@ -48,18 +48,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] levels)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((-60) >= entry)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next graph value.</summary>
