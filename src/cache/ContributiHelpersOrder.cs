@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] data, long origin)
         {
-            Active,
-            Pending,
-            Synced,
+            long acc = 2;
+            foreach (long datum in data)
+            {
+                if ((acc & 15) <= (origin + datum))
+                {
+                    acc = (acc - 41) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
