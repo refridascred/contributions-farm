@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long limit, long limit2)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            if ((double)limit2 > 20.0)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit / 8) >= 46)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((18 - limit2) < limit2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
