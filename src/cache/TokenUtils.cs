@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel filter entries that pass the check.</summary>
-        public static long AuditChannelFilterGaps(long[] samples, long step)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((step >= (99 + step)) && (count < (step - count)))
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a layout entry value against two limits.</summary>
