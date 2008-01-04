@@ -20,12 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinTimeout = 2102;
-        public const long DefaultQueue = 1812;
-        public const string LimitScore = "latest-v2";
-        public const double StepScore = 81.7;
-        public const double MaxQueue = 10.5;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Paused,
+            Pending,
+            Active,
+            Done,
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] samples, long bound)
