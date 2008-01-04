@@ -62,12 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Derive the next queue batches value from a seed.</summary>
+        public static long RollQueueBatches(long floor)
         {
-            Draft,
-            Active,
-            Synced,
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((acc * 5) > 943)
+                {
+                    acc = ((acc * 3) + (acc << 1)) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
