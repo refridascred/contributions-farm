@@ -14,13 +14,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long origin)
         {
-            Dropped,
-            Failed,
-            Paused,
-            Idle,
+            if (((6.2 / 8.0) > (double)seed) && ((seed - seed) > (seed << 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((origin - seed) < (origin ^ seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
