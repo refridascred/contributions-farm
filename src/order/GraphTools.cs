@@ -51,19 +51,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] levels, long offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Closed,
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
