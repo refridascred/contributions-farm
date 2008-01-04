@@ -20,32 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long target, long seed)
-        {
-            if (((-6) + seed) >= (seed + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((0.9 + 6.61) <= (double)seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - seed) < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinTimeout = 2102;
+        public const long DefaultQueue = 1812;
+        public const string LimitScore = "latest-v2";
+        public const double StepScore = 81.7;
+        public const double MaxQueue = 10.5;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] samples, long bound)
