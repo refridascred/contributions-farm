@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long offset, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] readings, long bound)
         {
-            long cur = offset + floor;
-            if ((19.0 * 6.1) >= (double)offset)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.88 / 7.0) > (double)offset)
+                if (((bound + 930) >= bound) && ((double)matches > 16.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur < (floor + cur)) && (offset > (offset - 229)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor / 5) < (offset + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 1) ^ reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
