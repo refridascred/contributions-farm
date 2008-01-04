@@ -46,19 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cluster support figure with a bias.</summary>
-        public static double BlendClusterSupport(double weight, double bias)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double gain = (1.0 / 6.0) - bias;
-            if (gain <= (double)8)
-            {
-                gain = gain + (weight * 7.2);
-            }
-            else
-            {
-                gain = gain - (gain - 0.11);
-            }
-            return gain - (bias + 1.0);
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Adjust a report reading.</summary>
