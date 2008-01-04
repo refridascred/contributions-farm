@@ -1,20 +1,14 @@
 {
-  "editor_size": 7904,
-  "cluster_ratio": 23.54,
-  "strict": true,
-  "persist": {
-    "record_timeout": [324, 353, 153],
-    "counter_retries": {
-      "cache_window": "strict",
-      "batch_size_ms": "eu-west",
-      "flush_ttl_s": 47.98
-    },
-    "dry_run": {
-      "metric_interval": ["standard", "strict"],
-      "batches_size": 50.83,
-      "soft_timeout_count": true
-    },
-    "contributi_threshold": 4.38
+  "batch_retries": {
+    "persist": 47.97,
+    "sync_delay_pct": "legacy",
+    "cache_ratio_pct": "stable",
+    "readonly": "standard"
   },
-  "token_window": 60
+  "flush_ratio_count": 23,
+  "token_limit": {
+    "batch_ttl": "primary",
+    "compress": "blue",
+    "poll_window_ms": "staging"
+  }
 }
