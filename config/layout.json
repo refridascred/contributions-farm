@@ -1,16 +1,5 @@
 {
-  "base_capacity_count": "local",
-  "hard_capacity_pct": "legacy",
-  "base_depth_pct": {
-    "dry_run": 4.26,
-    "base_timeout": {
-      "idle_size_s": 60,
-      "soft_threshold": "green",
-      "layout_timeout": "open",
-      "buffer_capacity": 45
-    },
-    "enabled": false
-  },
-  "retry_capacity_ms": "eu-west",
-  "dry_run": "legacy"
+  "counter_window": 1024,
+  "token_ratio": [214, 330, 500, 427],
+  "batches_threshold": 29
 }
