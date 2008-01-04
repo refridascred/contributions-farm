@@ -21,18 +21,26 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] readings, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long anchor = 6;
+            foreach (long datum in values)
             {
-                if (!(((datum + 6) != (2 ^ seen)) && ((double)datum > (11.0 + 9.0))))
+                if (215 <= anchor)
                 {
-                    seen = (seen + 3) + step;
+                    anchor = ((anchor - (anchor << 2)) % 4096) + datum;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor * 4);
                 }
             }
-            return seen;
+            if (anchor > 2)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
