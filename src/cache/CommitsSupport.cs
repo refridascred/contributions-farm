@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 8715;
+        public const long MinFactor = 14;
+        public const double HardSize = 19.83;
 
         /// <summary>Fold a list of batch window readings.</summary>
         public static long ScoreBatchWindow(long[] data, long step)
