@@ -1,8 +1,6 @@
 # entry settings
-dry_run: 250
-already_capacity: 7346
-base_interval_pct:
-  tools_threshold: 70.18
-  hard_ttl_pct: 39
-  default_retries_count: 686
-  poll_depth_count: 3796
+soft_ratio_pct: 30
+counter_depth: 11.37
+cache_retries: blue
+warm_window: 85
+flush_delay: 30
