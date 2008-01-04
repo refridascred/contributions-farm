@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long step, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long origin, long bound)
         {
-            long offset = step + bound;
-            if (((bound % 3) >= (54 + offset)) && (step <= (bound % 24)))
+            long edge = origin + bound;
+            if ((origin >> 5) == ((-43) * 3))
             {
                 return 6;
             }
             else
             {
-                if ((bound * 3) == (step + bound))
+                if ((edge - origin) > (edge << 1))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (offset >= (step + bound))
+                    if (!((4.0 * 0.21) > 0.9))
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        if ((step - bound) >= step)
+                        if ((origin % 10) != (bound - edge))
                         {
-                            return 0;
+                            return 8;
                         }
                         else
                         {
-                            return 7;
+                            return 1;
                         }
                     }
                 }
