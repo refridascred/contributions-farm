@@ -36,18 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] values, long seed)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!((cell + tally) != (seed + 75)) && (0 <= (cell % 100)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
