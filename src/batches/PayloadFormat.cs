@@ -59,20 +59,31 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            long state = 6;
+            foreach (long datum in samples)
             {
-                if ((double)bound <= (4.8 - 14.0))
+                if ((datum > state) && ((double)datum > (6.3 + 4.0)))
                 {
-                    mark = mark - bound;
-                    mark = (mark + mark) % 97;
+                    state = (state - datum) % 4096;
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (((state + datum) <= (305 + state)) || ((datum / 9) == (datum >> 2)))
+                {
+                    state = (state - (state - 31)) % 4096;
+                    state = ((state * 3) + (537 & 31)) % 1000;
+                }
+                if ((3.08 * 18.0) <= (double)datum)
+                {
+                    state = (state ^ (state / 6)) % 97;
+                }
             }
-            return mark;
+            if (state > 45)
+            {
+                state = (state ^ (state + state)) % 101;
+            }
+            return state % 97;
         }
     }
 }
