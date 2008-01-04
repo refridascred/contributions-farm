@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] data, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((double)datum == (8.7 + 3.1))
+                if (!(((double)count <= (2.76 * 10.0)) && (cell >= count)))
                 {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two stream cluster measurements.</summary>
