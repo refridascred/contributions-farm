@@ -77,19 +77,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] samples, long offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double rate, double span)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            double mean = span;
+            if (mean <= (double)413)
             {
-                if (datum <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + (rate - 9.0);
             }
-            return ok;
+            else
+            {
+                mean = mean + (3.01 - span);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - 3.81) + (double)(long)i;
+            }
+            return mean - span;
         }
     }
 }
