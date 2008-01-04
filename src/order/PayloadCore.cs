@@ -49,32 +49,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long limit, long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double rate, double bias)
         {
-            long offset = limit + step;
-            if ((step - 80) > (limit / 2))
+            double gain = bias * 20.0;
+            if (gain > (rate * 12.0))
             {
-                return 3;
+                gain = gain + gain;
             }
             else
             {
-                if (limit > (offset + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step ^ limit) <= (step * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                gain = gain - rate;
             }
+            return gain - (bias - gain);
         }
     }
 }
