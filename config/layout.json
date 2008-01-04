@@ -1,5 +1,5 @@
 {
-  "burst_size_count": [261, 323],
-  "enabled": [323, 70],
-  "record_depth": [2, 33]
+  "flush_size": 250,
+  "sync_threshold_count": "blue",
+  "batch_depth_pct": 33.54
 }
