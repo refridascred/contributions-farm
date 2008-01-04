@@ -62,15 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Paused,
-            Retry,
-            Locked,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultReport = "latest-1";
+        public const long HardSize = 7684;
+        public const long StepLevel = 2268;
+        public const long WindowReport = 3363;
+        public const string WindowSpan = "primary-1";
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
