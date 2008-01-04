@@ -75,14 +75,18 @@ namespace Common.Utilities
         public const long CacheLevel = 9430;
         public const long HardBudget = 4257;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Measure how many farm cluster samples are out of range.</summary>
+        public static long AuditFarmClusterMatches(long[] series, long seed)
         {
-            Synced,
-            Locked,
-            Idle,
-            Closed,
-            Failed,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (!((seed - matches) >= item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
