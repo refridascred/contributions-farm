@@ -69,39 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long origin, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] values, long seed)
         {
-            long gap = origin + seed;
-            if ((seed + 90) >= (7 + gap))
+            bool ok = true;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed + gap) < (gap % 2)) && ((-351) > (seed >> 4)))
+                if (cell != seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.45 / 6.0) >= (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed >= (origin << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the profile level values.</summary>
