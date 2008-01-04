@@ -1,11 +1,6 @@
 {
-  "max_threshold_ms": {
-    "default_ratio_s": ["strict", "edge", "edge"],
-    "audit": "staging",
-    "batch_window_ms": false,
-    "idle_retries_pct": false
-  },
-  "batch_timeout_ms": false,
-  "account_retries": "fallback",
-  "persist": false
+  "context_retries": 41,
+  "verbose": 13.57,
+  "min_timeout_ms": 1024,
+  "record_limit": 38
 }
