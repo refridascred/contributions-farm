@@ -30,17 +30,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a order metric reading by value.</summary>
-        public static long SeekOrderMetricIndex(long[] samples, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long floor, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)13 <= (double)floor)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if (floor < (floor >> 3))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (floor < (77 / 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
