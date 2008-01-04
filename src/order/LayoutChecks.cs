@@ -40,18 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] series, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((1.03 + 11.0) < (double)sample)
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a profile info.</summary>
