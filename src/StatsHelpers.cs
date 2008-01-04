@@ -30,12 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] levels, long origin)
         {
-            Closed,
-            Draft,
-            New,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((origin / 7) <= matches)
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
