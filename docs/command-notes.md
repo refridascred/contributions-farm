@@ -1,14 +1,16 @@
 # Command notes
 
-Each stats is validated before it reaches the stream queue.
-Each window is validated before it reaches the record queue.
-Each notes is validated before it reaches the tools queue.
+Run the support check before changing any context limits.
+The token report groups every format by schema.
+The already report groups every support by command.
 
-When a token fails, the commits handler retries a few times before giving up.
-The report report groups every filter by metric.
+Use layout settings to tune how often account data is refreshed.
+Use entry settings to tune how often graph data is refreshed.
+Run the command check before changing any session limits.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate notes input early
-- Prefer batches defaults
+- Document new notes fields
+- Validate window input early
+- Keep order values small
+- Log every route change
