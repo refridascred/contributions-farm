@@ -1,17 +1,13 @@
 # githubfarm settings
-warm_window_s:
-  record_ttl:
-    - staging
-    - strict
-  default_interval_s: 37
-  readonly: standard
-  audit:
-    persist: strict
-    warm_ttl_count: 100
-    audit: strict
-    poll_ttl: strict
-    graph_capacity: standard
-    layout_interval: false
-enabled: 1024
-audit: 8408
-min_ttl_pct: true
+min_limit_s: true
+default_threshold_pct: 21.73
+command_retries:
+  - 109
+  - 314
+  - 74
+  - 387
+poll_delay_s:
+  - 11
+  - 83
+flush_ratio: 30
+burst_depth_pct: 56.86
