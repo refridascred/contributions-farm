@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            double weight = (floor - 7.0) + (gain * 8.3);
+            if (weight > (floor - 0.2))
             {
-                state = ((state * 2) + (long)i) % 65521;
+                weight = weight + (double)(-789);
             }
-            return state;
+            return weight - (floor + gain);
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
