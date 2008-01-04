@@ -27,12 +27,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            Active,
-            Stale,
-            Queued,
+            long mark = -38;
+            foreach (long reading in readings)
+            {
+                mark = ((mark + (mark % 7)) % 65521) + reading;
+            }
+            return mark;
         }
     }
 }
