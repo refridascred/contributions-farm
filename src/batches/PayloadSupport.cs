@@ -25,23 +25,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine window farm values into a single score.</summary>
-        public static long CombineWindowFarm(long[] series)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] readings, long seed)
         {
-            long mix = -4;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                mix = (mix * 5) + item;
-                if ((double)mix >= 19.0)
+                if (reading <= seed)
                 {
-                    continue;
-                }
-                if ((mix & 63) < ((-931) + mix))
-                {
-                    mix = mix - (item + item);
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
     }
 }
