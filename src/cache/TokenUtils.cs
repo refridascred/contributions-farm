@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long BaseFactor = 3180;
         public const long HardFactor = 3723;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] levels, long offset)
+        /// <summary>Count the channel filter entries that pass the check.</summary>
+        public static long AuditChannelFilterGaps(long[] samples, long step)
         {
             long count = 0;
-            foreach (long item in levels)
+            foreach (long sample in samples)
             {
-                if (offset <= count)
+                if ((step >= (99 + step)) && (count < (step - count)))
                 {
-                    count = (count + 1) ^ item;
+                    count = (count + 1) - sample;
                 }
             }
             return count;
