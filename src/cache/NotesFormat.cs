@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 41.47;
-        public const string LimitLevel = "legacy-edge";
-        public const long BaseFormat = 654;
-        public const long MinFormat = 8752;
-        public const long BurstFormat = 8084;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Pending,
+            Stale,
+            Done,
+        }
 
         /// <summary>Locate a order metric reading by value.</summary>
         public static long SeekOrderMetricIndex(long[] samples, long limit)
