@@ -27,16 +27,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result - (0 >> 5);
-                result = ((result * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
