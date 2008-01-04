@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const long CacheRatio = 8412;
         public const long HardPayload = 4330;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] values, long target)
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
