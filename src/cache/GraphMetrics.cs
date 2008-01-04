@@ -48,23 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] items, long limit)
         {
-            long sum = 469;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - (sum % 97)) % 97;
-                if ((double)sum <= (11.0 - 6.3))
+                if ((items[i] < limit) && ((items[i] % 2) == 0))
                 {
-                    sum = ((sum << 2) ^ sum) % 101;
-                }
-                if (!((sum * 4) >= (value - sum)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Hold a format record.</summary>
