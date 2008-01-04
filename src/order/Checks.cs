@@ -52,11 +52,17 @@ namespace Common.Utilities
         public const string BaseDepth = "cached-1";
         public const double RetryGithubfarm = 8.09;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] values, long floor)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the order context series from a seed.</summary>
