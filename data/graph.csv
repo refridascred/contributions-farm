@@ -1,7 +1,8 @@
-id,state,score,owner
-1,green,staging,98.2
-2,75,73.96,local
-3,fallback,501,335
-4,69.13,74.96,336
-5,69.33,243,214
-6,944,764,149
+id,state,owner,ratio
+1,132,26.38,latest
+2,176,staging,green
+3,blue,latest,910
+4,368,59.23,561
+5,stable,latest,682
+6,green,22.19,primary
+7,latest,772,51.25
