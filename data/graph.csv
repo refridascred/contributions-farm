@@ -1,10 +1,7 @@
-id,label,rank,region,score
-1,1,884,staging,staging
-2,32.56,61.35,92.09,blue
-3,25,blue,50.71,67.37
-4,stable,262,859,40.63
-5,997,cached,906,fallback
-6,9.3,22,642,344
-7,912,92.05,stable,strict
-8,11.02,521,821,49.67
-9,164,345,623,856
+id,rank,level,ratio,label
+1,33,19,92.86,757
+2,98.1,8.01,32.28,edge
+3,907,55.41,798,41.14
+4,blue,local,40.77,fallback
+5,67.58,66,9.35,94.29
+6,421,56,566,edge
