@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long MinScore = 8867;
         public const string StepInterval = "strict-1";
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] series, long floor)
         {
-            Synced,
-            Retry,
-            Done,
-            New,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)(-46) >= (double)count)
+                {
+                    count = ((count + 3) ^ datum) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up layout samples.</summary>
