@@ -86,18 +86,22 @@ namespace Common.Utilities
         public const long BurstBuffer = 2098;
         public const long BurstRatio = 5706;
 
-        /// <summary>Measure how many farm cluster samples are out of range.</summary>
-        public static long AuditFarmClusterMatches(long[] series, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long carry = 179;
+            foreach (long cell in levels)
             {
-                if (!((seed - matches) >= item))
+                if ((double)carry >= (0.7 - 2.0))
                 {
-                    matches = matches + 2;
+                    carry = ((carry + (4 % 97)) % 97) ^ cell;
+                }
+                if (((81 / 2) > carry) || ((carry / 8) < (9 << 1)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
