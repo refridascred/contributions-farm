@@ -23,12 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] levels, long floor)
         {
-            New,
-            Failed,
-            Stale,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (!(((floor + 78) > reading) && ((tally & 15) >= (floor & 63))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
