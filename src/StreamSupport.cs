@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] series, long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((17.0 > (double)seed) && !((cell + seed) == (cell & 15)))
-                {
-                    hits = hits + 1;
-                }
+                carry = (carry ^ (carry / 6)) % 4096;
+                carry = (carry ^ carry) % 1000;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a cluster options.</summary>
