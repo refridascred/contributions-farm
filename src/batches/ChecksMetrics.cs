@@ -54,21 +54,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count token payload pairs that satisfy a relation.</summary>
-        public static long OverlapTokenPayloadCount(long[] levels)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] == seed)
                 {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
