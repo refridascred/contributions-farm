@@ -1,6 +1,16 @@
 {
-  "warm_threshold": false,
-  "min_delay": "green",
-  "base_retries_s": "green",
-  "poll_interval": 100
+  "dry_run": [355, 471, 125],
+  "audit": 71.08,
+  "default_limit_count": {
+    "dry_run": "eu-west",
+    "flush_timeout_ms": "eu-west",
+    "batches_depth": true
+  },
+  "hard_threshold_pct": "primary",
+  "persist": {
+    "entry_ttl": 661,
+    "strict": [369, 52],
+    "queue_ttl": true
+  },
+  "batches_threshold": 26.86
 }
