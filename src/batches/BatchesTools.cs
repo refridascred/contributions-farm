@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] values, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                sum = (sum - (limit ^ 0)) % 255;
-                sum = ((sum << 3) ^ (limit - sum)) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (reading != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the record mode values.</summary>
