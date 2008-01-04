@@ -62,19 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] values, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (cell < offset)
+                if (datum <= step)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
