@@ -50,17 +50,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 1;
+            foreach (long sample in values)
             {
-                if (values[i] > target)
+                if (!(((double)seed >= (4.7 / 3.0)) || (5 <= seed)))
                 {
-                    return (long)i;
+                    anchor = (anchor + (seed - seed)) % 65521;
+                }
+                anchor = (anchor << 2) ^ (seed + seed);
+                if ((sample - sample) != (sample & 127))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 95)
+            {
+                anchor = ((anchor << 2) ^ seed) % 255;
+            }
+            return anchor;
         }
     }
 }
