@@ -46,21 +46,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = offset ^ floor;
+            if ((offset + span) > (844 + floor))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (floor <= offset)
                 {
-                    if ((samples[i] + samples[j]) < 13)
+                    return 0;
+                }
+                else
+                {
+                    if ((1.0 / 3.0) > (double)span)
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a channel header.</summary>
