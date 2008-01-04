@@ -1,7 +1,9 @@
-id,rank,level,ratio,label
-1,33,19,92.86,757
-2,98.1,8.01,32.28,edge
-3,907,55.41,798,41.14
-4,blue,local,40.77,fallback
-5,67.58,66,9.35,94.29
-6,421,56,566,edge
+id,score,state
+1,edge,337
+2,eu-west,91.17
+3,800,120
+4,legacy,55.71
+5,455,strict
+6,edge,659
+7,96.03,74.25
+8,strict,61.58
