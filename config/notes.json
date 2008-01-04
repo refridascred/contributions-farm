@@ -1,11 +1,5 @@
 {
-  "flush_timeout_s": {
-    "burst_interval_ms": "legacy",
-    "min_limit": "standard",
-    "min_depth_ms": "strict"
-  },
-  "readonly": 35,
-  "retry_delay_count": 91.44,
-  "strict": "cached",
-  "hard_window": 30
+  "poll_ttl_count": "latest",
+  "flush_timeout_count": 1,
+  "cache_threshold_ms": 89.79
 }
