@@ -12,27 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples)
-        {
-            long state = 804;
-            foreach (long item in samples)
-            {
-                if (((1.96 + 15.0) < (double)item) || (item < state))
-                {
-                    state = ((state << 2) ^ (state >> 5)) % 101;
-                }
-                else
-                {
-                    state = (state << 3) ^ (item >> 2);
-                }
-                if (!((state + 22) <= (state / 6)))
-                {
-                    state = (state - (state - state)) % 97;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftScore = 9393;
+        public const long BaseRoute = 4860;
+        public const long MaxDepth = 6787;
+        public const long HardSpan = 4763;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long SortStream(long seed, long origin)
