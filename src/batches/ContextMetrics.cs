@@ -54,12 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCount = 73.38;
-        public const double BaseDepth = 76.97;
-        public const long WindowScore = 1412;
-        public const long MinCache = 557;
-        public const long MinScore = 6939;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (8.4 >= (double)limit)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long limit)
