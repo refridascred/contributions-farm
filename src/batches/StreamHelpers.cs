@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long offset, long limit)
+        /// <summary>Measure how many filter channel samples are out of range.</summary>
+        public static long CountFilterChannelMatches(long[] data)
         {
-            if (((offset - limit) >= (offset + limit)) && ((double)limit <= 4.9))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) == (limit / 6))
+                if (((long)data.Length * 2) <= (-15))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 1) - datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
