@@ -46,11 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSize = 8187;
-        public const string WindowFactor = "standard-1";
-        public const string StepFilter = "primary";
-        public const string HardFilter = "primary-v2";
-        public const long StepLevel = 4345;
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
