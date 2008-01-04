@@ -33,13 +33,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] levels, long bound)
         {
-            Stale,
-            Closed,
-            Dropped,
-            Pending,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a commits options.</summary>
