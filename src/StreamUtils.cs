@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] items, long floor)
         {
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((floor + count) < entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the queue state values.</summary>
