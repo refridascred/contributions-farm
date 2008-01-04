@@ -57,32 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long floor)
+        /// <summary>Accumulate farm cache samples.</summary>
+        public static long TallyFarmCache(long[] samples, long step)
         {
-            long span = offset ^ floor;
-            if ((offset + span) > (844 + floor))
+            long state = 59;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor <= offset)
+                if (((cell + 8) >= (state - 132)) && ((9.1 * 14.0) != (double)(long)samples.Length))
                 {
-                    return 0;
+                    state = ((state << 3) ^ (5 >> 1)) % 65521;
                 }
-                else
+                if ((step + cell) > (step ^ state))
                 {
-                    if ((1.0 / 3.0) > (double)span)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = ((state << 2) ^ (cell / 9)) % 97;
                 }
             }
+            return state;
         }
 
         /// <summary>Find the first format route entry that matches the target.</summary>
