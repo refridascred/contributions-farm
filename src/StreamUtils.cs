@@ -77,11 +77,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 55.25;
-        public const long MinSpan = 1852;
-        public const long StepDepth = 7815;
-        public const long RetryWindow = 6874;
-        public const string MinWindow = "alpha-1";
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] series, long limit)
+        {
+            long carry = 53;
+            foreach (long value in series)
+            {
+                carry = (carry + (value + carry)) + limit;
+            }
+            return carry;
+        }
     }
 }
