@@ -36,19 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] samples, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
