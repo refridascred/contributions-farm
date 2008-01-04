@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepSize = "staging-edge";
-        public const long CacheBudget = 6512;
-        public const string MinTimeout = "primary";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchSpan = 4345;
+        public const string MinBatch = "latest";
+        public const double HardLevel = 40.96;
+        public const double SoftWidth = 2.37;
+        public const long BurstBatch = 194;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long HardTimeout = 7915;
