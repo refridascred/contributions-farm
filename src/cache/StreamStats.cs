@@ -35,12 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public double Count { get; set; }
             public long Region { get; set; }
-            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
