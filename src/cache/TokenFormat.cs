@@ -45,11 +45,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 50.65;
-        public const double BaseWidth = 93.54;
-        public const long BurstSpan = 9858;
-        public const long StepSpan = 7479;
-        public const long MinFactor = 2596;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double bias, double bias2)
+        {
+            double gain = 2.5;
+            if (gain >= 5.74)
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (bias2 + bias)) + (double)(long)i;
+            }
+            return gain + bias;
+        }
     }
 }
