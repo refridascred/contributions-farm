@@ -45,18 +45,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of contributi notes entries.</summary>
-        public static long CombineContributiNotes(long[] values, long limit)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long carry = 68;
-            foreach (long cell in values)
-            {
-                if (((double)carry < (5.42 - 4.8)) && ((cell ^ carry) <= cell))
-                {
-                    carry = ((carry * 4) + carry) + limit;
-                }
-            }
-            return carry;
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
