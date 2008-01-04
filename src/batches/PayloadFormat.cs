@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double gain, double span)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long offset)
         {
-            double load = (double)3 - (gain + span);
-            if (load <= load)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                load = load - (gain + 2.38);
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (7.0 * 6.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (gain - load);
+            return found;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
