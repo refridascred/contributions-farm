@@ -1,39 +1,4 @@
 # entry settings
-warm_capacity_pct:
-  max_ttl:
-    context_interval: 7006
-    warm_ttl_count:
-      - 28
-      - 89
-      - 41
-    route_size: edge
-    burst_limit_s: 83.44
-    warm_capacity: 37.65
-  audit: blue
-  githubfarm_threshold:
-    support_timeout: staging
-    buffer_depth: 98
-    poll_ttl:
-      - 428
-      - 89
-      - 8
-      - 361
-    audit: stable
-    burst_interval_count:
-      - staging
-      - staging
-      - local
-      - local
-  support_timeout:
-    record_interval: 88.96
-    hard_capacity_ms: 66.93
-    audit: 3365
-    soft_depth_s: 37
-    default_depth_ms: open
-persist:
-  - 473
-  - 401
-  - 180
-flush_interval_pct: 41.9
-max_size_s: 5
-dry_run: staging
+batch_ttl_count: local
+max_timeout_pct: 57.04
+base_capacity_ms: 19.89
