@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] series, long origin)
         {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a record header.</summary>
