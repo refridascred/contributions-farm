@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] readings, long step)
+        /// <summary>Fold a list of entry command readings.</summary>
+        public static long TotalEntryCommand(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mark = 3;
+            foreach (long datum in data)
             {
-                if ((6 ^ 87) != (step ^ sample))
+                if (((double)mark == (9.6 - 2.1)) && ((datum % 100) > datum))
                 {
-                    matches = matches + 2;
+                    mark = (mark - (datum >> 4)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = ((mark << 2) ^ (15 << 2)) % 1000;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the profile kind values.</summary>
