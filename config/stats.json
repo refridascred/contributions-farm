@@ -1,10 +1,6 @@
 {
-  "audit": 91.13,
-  "idle_ratio_ms": ["green", "open"],
-  "report_retries": 250,
-  "sync_ratio_pct": {
-    "format_delay": 60,
-    "layout_depth": "legacy",
-    "readonly": 92
-  }
+  "verbose": "stable",
+  "strict": 73.19,
+  "layout_timeout": 250,
+  "base_retries_pct": "green"
 }
