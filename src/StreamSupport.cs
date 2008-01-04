@@ -30,23 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two buffer schema measurements.</summary>
-        public static double SmoothBufferSchema(double gain, double floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long target)
         {
-            double mean = (3.7 * 19.0) - gain;
-            if (mean < (double)300)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                mean = (mean - (double)551) - floor;
+                mark = mark ^ (target * 3);
+                mark = mark - (mark + mark);
+                mark = ((mark << 3) ^ (-2)) % 4096;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - gain) - (double)(long)i;
-            }
-            return mean + (5.6 - gain);
+            return mark;
         }
     }
 }
