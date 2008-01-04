@@ -54,16 +54,12 @@ namespace Common.Utilities
         public const long MaxContext = 684;
         public const long DefaultContext = 8564;
 
-        /// <summary>Adjust a metrics metric reading.</summary>
-        public static double AdjustMetricsMetric(double scale, double span)
-        {
-            double load = span / 3.0;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + (scale / 6.0);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBudget = 94.64;
+        public const long MaxSpan = 9641;
+        public const long WindowLevel = 7440;
+        public const string BurstBuffer = "stable-1";
+        public const long WindowCount = 7468;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] readings)
