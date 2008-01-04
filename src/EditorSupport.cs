@@ -45,22 +45,11 @@ namespace Common.Utilities
         public const string IdleMetric = "latest-v2";
         public const long BaseScore = 670;
 
-        /// <summary>Count cache context pairs that satisfy a relation.</summary>
-        public static long PairCacheContextCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 2371;
+        public const long MaxChannel = 7066;
+        public const double HardChannel = 40.77;
+        public const string CacheSize = "standard";
 
         /// <summary>Derive the next queue batches value from a seed.</summary>
         public static long RollQueueBatches(long floor)
