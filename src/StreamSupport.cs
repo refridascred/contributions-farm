@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long step, long floor)
         {
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            if (5.7 <= (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if (step < (step - step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate batch samples.</summary>
