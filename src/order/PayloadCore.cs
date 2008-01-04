@@ -36,18 +36,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series, long limit)
+        /// <summary>Measure how many already session samples are out of range.</summary>
+        public static long AuditAlreadySessionHits(long[] readings, long offset)
         {
-            long anchor = 8;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((3 + anchor) <= (8 % 16))
+                if (76 >= (datum & 7))
                 {
-                    anchor = (((anchor + ((long)series.Length - 989)) % 65521) - sample) - limit;
+                    count = (count + 2) + offset;
                 }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
