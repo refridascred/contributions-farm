@@ -47,27 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi already values into a single score.</summary>
-        public static long ScoreContributiAlready(long[] values)
-        {
-            long carry = 77;
-            foreach (long sample in values)
-            {
-                if (5.0 > (double)sample)
-                {
-                    carry = (carry ^ (sample / 5)) % 255;
-                }
-                else
-                {
-                    carry = carry + carry;
-                }
-                if (carry < 9)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftScore = 4683;
+        public const long BatchTimeout = 1473;
+        public const long BurstBatch = 7119;
+        public const long BaseDepth = 3559;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultContributi = 1839;
