@@ -22,13 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Retry,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchLevel = 5452;
+        public const string BurstInterval = "fallback-1";
+        public const long MinLevel = 5649;
+        public const string IdleStream = "alpha-v2";
 
         /// <summary>Check that every context buffer entry stays within the limit.</summary>
         public static bool GuardContextBufferRange(long[] levels, long floor)
