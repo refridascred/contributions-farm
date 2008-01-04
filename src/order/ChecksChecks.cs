@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long IdleWidth = 3818;
         public const double SoftContext = 50.68;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] samples)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)seen == (double)datum) || ((datum + seen) < (47 + seen)))
+                if ((series[i] <= seed) && ((series[i] % 2) != 0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
