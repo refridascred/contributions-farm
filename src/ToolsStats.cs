@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] values)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (0.3 <= (double)matches)
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
