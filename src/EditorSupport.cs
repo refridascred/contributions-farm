@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleScore = 7432;
-        public const double WindowSize = 89.41;
-        public const double MaxCache = 68.71;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TallyRecord(long[] values)
