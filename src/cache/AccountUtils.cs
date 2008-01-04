@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items, long limit)
-        {
-            long score = -1;
-            foreach (long value in items)
-            {
-                score = ((score - (score / 3)) + value) - limit;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 70.22;
+        public const long MinInterval = 1320;
+        public const long RetryContributi = 2219;
+        public const long MaxContributi = 9486;
+        public const double WindowSpan = 83.95;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
