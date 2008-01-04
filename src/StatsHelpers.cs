@@ -55,15 +55,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many command stream samples are out of range.</summary>
-        public static long AuditCommandStreamOutliers(long[] readings, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] values)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long cell in values)
             {
-                if ((matches * 4) == (origin + origin))
+                if (((cell % 2) > (matches << 1)) || ((double)cell == (10.0 - 0.95)))
                 {
-                    matches = (matches + 1) - value;
+                    matches = matches + 2;
                 }
             }
             return matches;
