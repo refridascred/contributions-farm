@@ -42,31 +42,17 @@ namespace Common.Utilities
         public const string DefaultFarm = "staging-v2";
         public const string WindowFarm = "fallback-edge";
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long target, long seed)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] series, long step)
         {
-            if (!((7.2 + 0.2) >= (double)seed))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((17.0 - 10.0) <= (double)target)
+                if (series[i] < step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target ^ seed) <= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
