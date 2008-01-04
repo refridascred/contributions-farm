@@ -23,14 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings)
         {
-            Ready,
-            Failed,
-            Pending,
-            Done,
-            Queued,
+            long state = 891;
+            foreach (long reading in readings)
+            {
+                state = state ^ (state + state);
+                if (reading < (reading / 6))
+                {
+                    break;
+                }
+            }
+            if (state > (-55))
+            {
+                state = (state + (state % 7)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
