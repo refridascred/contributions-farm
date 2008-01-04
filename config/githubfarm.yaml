@@ -1,7 +1,7 @@
 # githubfarm settings
-verbose: 100
-retry_depth: 2638
-batch_window: strict
-flush_ttl_ms: open
-soft_depth: 54.46
-batch_capacity_pct: 6
+readonly:
+  - standard
+  - staging
+  - primary
+poll_threshold: 4423
+batch_capacity_s: true
