@@ -1,6 +1,11 @@
-id,rank,label,ratio,count
-1,78.05,580,stable,fallback
-2,staging,92.61,866,76
-3,816,87.31,cached,297
-4,12,88.19,eu-west,green
-5,open,82.04,latest,strict
+id,score,ratio,state,weight
+1,15.88,25.42,42.59,613
+2,open,12.91,727,592
+3,826,legacy,local,standard
+4,728,69.0,primary,389
+5,standard,11.23,local,80
+6,green,197,blue,304
+7,84,425,56.76,14.83
+8,strict,63.27,138,19.6
+9,18,887,63.59,22.15
+10,standard,238,912,922
