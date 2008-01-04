@@ -1,6 +1,6 @@
 # entry settings
-compress:
-  - latest
-  - primary
-hard_interval_pct: green
-cache_interval: latest
+route_window: 87.39
+enabled: 60
+warm_size_pct: 25
+poll_size_count: true
+audit: latest
