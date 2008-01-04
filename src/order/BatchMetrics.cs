@@ -38,12 +38,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleDepth = 638;
-        public const long MinDepth = 5368;
-        public const double LimitInterval = 88.17;
-        public const long SoftFormat = 3543;
-        public const string SoftInterval = "strict-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryChecks = 41.72;
+        public const long BatchRatio = 5984;
+        public const string BurstChecks = "fallback-v2";
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long origin, long limit)
