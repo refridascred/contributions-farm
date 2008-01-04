@@ -67,19 +67,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi channel readings against a bound.</summary>
-        public static bool GuardContributiChannelBounds(long[] data, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long next = limit + bound;
+            if ((double)limit < (16.0 - 2.0))
             {
-                if (entry >= bound)
+                return 8;
+            }
+            else
+            {
+                if (((-49) + next) >= (bound / 4))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit == (double)4)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the notes state values.</summary>
