@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Combine stats token values into a single score.</summary>
+        public static long DigestStatsToken(long[] data, long floor)
         {
-            Closed,
-            Pending,
-            Active,
-            Ready,
+            long mark = 0;
+            foreach (long item in data)
+            {
+                mark = ((mark ^ (item << 3)) % 1000) - floor;
+            }
+            if (mark < 7)
+            {
+                mark = ((mark << 3) ^ (57 - mark)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the channel class values.</summary>
