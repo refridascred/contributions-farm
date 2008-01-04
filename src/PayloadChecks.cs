@@ -69,15 +69,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items, long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] series, long bound)
         {
-            long result = -34;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (((result << 2) ^ step) % 97) - sample;
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
