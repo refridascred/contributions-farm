@@ -43,5 +43,20 @@ namespace Common.Utilities
             }
             return total % 4096;
         }
+
+        /// <summary>Check that every githubfarm metric entry stays within the limit.</summary>
+        public static bool GuardGithubfarmMetricBounds(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
