@@ -25,19 +25,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] items, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (matches < (sample >> 1))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 83.83;
+        public const long MaxLevel = 5934;
+        public const double WindowContext = 63.72;
+        public const string BaseInterval = "open";
 
         /// <summary>Blend two tools measurements.</summary>
         public static double AdjustTools(double weight, double floor)
