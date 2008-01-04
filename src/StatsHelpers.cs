@@ -13,20 +13,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate editor token samples.</summary>
-        public static long DigestEditorToken(long[] items, long target)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long target)
         {
-            long anchor = 23;
-            foreach (long cell in items)
+            long gap = origin - target;
+            if (!((origin + gap) >= target))
             {
-                anchor = anchor + cell;
-                anchor = (anchor + (anchor << 1)) % 65521;
+                return 2;
             }
-            if (anchor < 375)
+            else
             {
-                anchor = anchor - (target << 3);
+                if ((target + target) <= (gap + 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
