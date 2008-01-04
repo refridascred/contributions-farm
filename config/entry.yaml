@@ -1,4 +1,14 @@
 # entry settings
-batch_ttl_count: local
-max_timeout_pct: 57.04
-base_capacity_ms: 19.89
+session_delay: staging
+idle_interval_count:
+  poll_ratio: 8653
+  warm_ratio_count:
+    - 52
+    - 385
+  verbose: 1024
+  metrics_interval:
+    - 294
+    - 345
+    - 322
+    - 80
+verbose: 98
