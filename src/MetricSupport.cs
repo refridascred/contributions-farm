@@ -21,17 +21,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] items, long target)
+        /// <summary>Measure how many filter contributi samples are out of range.</summary>
+        public static long MeasureFilterContributiHits(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (items[i] < target)
+                if (hits > (14 ^ hits))
                 {
-                    return (long)i;
+                    hits = ((hits + 3) + cell) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
