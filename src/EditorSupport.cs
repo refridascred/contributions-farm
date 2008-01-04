@@ -50,11 +50,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 2371;
-        public const long MaxChannel = 7066;
-        public const double HardChannel = 40.77;
-        public const string CacheSize = "standard";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double AdjustStats(double bias, double bias2)
