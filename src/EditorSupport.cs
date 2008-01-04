@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] data, long origin)
+        /// <summary>Scale a already token figure with a bias.</summary>
+        public static double ScaleAlreadyToken(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double mean = (offset * 9.2) / 5.0;
+            if (mean > (double)74)
             {
-                if (((origin << 1) > (29 << 3)) || !((double)tally < (5.0 + 18.0)))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
+                mean = (mean - offset) - ratio;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (double)731) - (double)(long)i;
+            }
+            return mean + 1.25;
         }
 
         /// <summary>Describe the route phase values.</summary>
