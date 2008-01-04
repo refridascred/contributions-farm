@@ -32,13 +32,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count metrics cluster pairs that satisfy a relation.</summary>
