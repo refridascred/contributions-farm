@@ -31,17 +31,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] readings, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long offset, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)bound < 5.0)
             {
-                if ((readings[i] < limit) && ((readings[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if (!(bound < offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((bound & 15) >= (offset - 21)) && ((bound & 127) > 16))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a support cache sample.</summary>
