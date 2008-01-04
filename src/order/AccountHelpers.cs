@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] samples)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7 - tally) <= tally)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + reading;
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a account options.</summary>
