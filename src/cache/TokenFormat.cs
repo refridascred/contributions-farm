@@ -12,19 +12,18 @@ namespace Common.Utilities
             return ((load + load) + rate) + floor;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] data, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((state - state) != (state * 4)) || ((double)limit < (double)state))
+                if ((46 % 97) >= matches)
                 {
-                    continue;
+                    matches = ((matches + 1) + sample) - step;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
