@@ -15,13 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] data, long target)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate command stats samples.</summary>
