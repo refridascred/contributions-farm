@@ -1,10 +1,17 @@
 # support settings
-warm_interval_ms: 76.72
-already_size: legacy
-audit: 30.16
-cache_ratio: 75.68
-idle_threshold_s: 78
-counter_window:
-  batch_timeout_count: latest
-  flush_interval_count: false
-  queue_capacity: legacy
+buffer_threshold: local
+batch_threshold: 1
+soft_limit:
+  default_limit_ms: 1
+  min_ratio: 250
+  warm_depth_ms:
+    retry_window_count: 87.79
+    strict:
+      - 36
+      - 389
+      - 222
+      - 210
+    tools_depth: green
+batch_interval: false
+burst_window_s: 12
+counter_capacity: 570
