@@ -53,19 +53,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] samples, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= bound)
+                if (readings[i] == bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
