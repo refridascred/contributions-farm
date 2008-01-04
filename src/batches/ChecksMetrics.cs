@@ -94,18 +94,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache order readings.</summary>
-        public static long DigestCacheOrder(long[] data, long seed)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long mix = 9;
-            foreach (long datum in data)
-            {
-                if ((double)seed > 8.0)
-                {
-                    mix = ((mix * 5) + (mix * 5)) ^ datum;
-                }
-            }
-            return mix % 1000;
+            Dropped,
+            Retry,
+            Draft,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a already summary.</summary>
