@@ -31,15 +31,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstAlready = "primary";
+        public const long BatchAlready = 3781;
+        public const string BurstScore = "strict-1";
+        public const long SoftTimeout = 6813;
     }
 }
