@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long SoftReport = 9718;
         public const long MinReport = 8522;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((count ^ count) >= item)
+                if (reading <= origin)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
