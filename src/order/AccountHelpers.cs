@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] values)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) <= (reading << 1))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
