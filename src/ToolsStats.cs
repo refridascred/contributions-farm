@@ -60,12 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstCount = 5155;
-        public const long MinEditor = 3806;
-        public const double RetryEditor = 34.92;
-        public const long RetryBudget = 3918;
-        public const long RetryCount = 1007;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public long Region { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long FindLayoutIndex(long[] series, long offset)
