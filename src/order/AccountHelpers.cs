@@ -48,22 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] readings)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((hits * 2) > hits)
+                if (sample <= origin)
                 {
-                    hits = (hits + 1) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
