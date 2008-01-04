@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in strict stable standard staging; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-BUFFER_LIMIT=463
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-latest}"
+mode="${1:-blue}"
 case "${mode}" in
-    legacy)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=498
+log "limit is ${BUFFER_LIMIT}"
