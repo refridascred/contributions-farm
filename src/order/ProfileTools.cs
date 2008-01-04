@@ -29,21 +29,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long target, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset = target ^ limit;
+            if ((target + 5) <= (target - limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((843 % 7) >= (target % 5))
                 {
-                    if ((samples[i] - samples[j]) != 14)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset == (double)target)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
