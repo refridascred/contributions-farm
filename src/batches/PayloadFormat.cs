@@ -19,14 +19,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] readings, long step)
         {
-            Done,
-            Failed,
-            Synced,
-            Paused,
-            Ready,
+            long sum = 83;
+            foreach (long reading in readings)
+            {
+                if (1.37 <= (double)sum)
+                {
+                    sum = ((sum << 3) ^ reading) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 1000;
+                }
+                if ((double)sum != (0.8 * 15.0))
+                {
+                    break;
+                }
+            }
+            if (sum > 616)
+            {
+                sum = (sum * 3) + step;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate contributi format samples.</summary>
