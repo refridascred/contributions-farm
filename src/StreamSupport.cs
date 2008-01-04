@@ -27,18 +27,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] items)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((seen % 10) >= (datum + seen)) || (((seen * 3) <= 5) || ((seen & 63) > datum)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
