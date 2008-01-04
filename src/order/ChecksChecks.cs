@@ -12,18 +12,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Audit editor context readings against a rule.</summary>
+        public static long CountEditorContextHits(long[] series, long seed)
         {
-            long mix = 57;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((mix << 3) <= (mix - entry))
+                if (!((double)matches == (1.42 - 9.6)) && ((seed ^ item) != (matches + item)))
                 {
-                    mix = mix ^ (mix >> 4);
+                    matches = matches + 2;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate farm samples.</summary>
