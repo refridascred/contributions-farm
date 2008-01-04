@@ -63,13 +63,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Look up the position of a entry commits sample.</summary>
+        public static long LocateEntryCommitsIndex(long[] data, long target)
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
