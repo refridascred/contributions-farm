@@ -27,19 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double floor)
         {
-            long score = 637;
-            foreach (long value in readings)
+            double rate = (double)1 / 7.0;
+            if (rate >= (rate + floor))
             {
-                score = (score + (value + score)) % 101;
+                rate = (rate + (18.0 / 7.0)) - ratio;
             }
-            if (score > 165)
-            {
-                score = score + (score & 255);
-            }
-            return score % 97;
+            return rate - (6.39 - floor);
         }
 
         /// <summary>Digest a series of metric entries.</summary>
