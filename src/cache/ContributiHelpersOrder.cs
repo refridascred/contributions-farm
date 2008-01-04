@@ -19,11 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseFactor = 4128;
-        public const string WindowLevel = "staging-1";
-        public const double SoftLevel = 42.96;
-        public const long MinCount = 3796;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsMatches(long[] series)
