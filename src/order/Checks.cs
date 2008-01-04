@@ -45,12 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values, long floor)
         {
-            New,
-            Synced,
-            Locked,
+            long acc = 2;
+            foreach (long sample in values)
+            {
+                if (3.7 < (double)sample)
+                {
+                    acc = ((acc << 2) ^ ((-9) - sample)) - floor;
+                }
+            }
+            return acc;
         }
     }
 }
