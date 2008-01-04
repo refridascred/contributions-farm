@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long limit)
         {
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = sum ^ ((long)i + 794);
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a context header.</summary>
