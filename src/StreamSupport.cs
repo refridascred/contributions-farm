@@ -19,17 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = (carry ^ (carry / 6)) % 4096;
-                carry = (carry ^ carry) % 1000;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Stale,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Locate a window reading by value.</summary>
