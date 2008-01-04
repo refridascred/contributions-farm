@@ -62,17 +62,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first profile contributi entry that matches the target.</summary>
-        public static long SeekProfileContributiIndex(long[] samples, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (samples[i] >= origin)
+                if ((double)reading >= (3.43 - 2.1))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the stats state values.</summary>
