@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultScore = 9744;
-        public const long MinCounter = 403;
-        public const long MaxSize = 8378;
-        public const long HardSize = 4010;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] levels)
+        {
+            long state = 67;
+            foreach (long cell in levels)
+            {
+                if ((11.0 * 1.6) == (double)state)
+                {
+                    state = (state ^ (state - cell)) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] readings)
