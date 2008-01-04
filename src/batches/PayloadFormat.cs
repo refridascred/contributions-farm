@@ -46,13 +46,31 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] data, long seed)
         {
-            Dropped,
-            New,
-            Closed,
-            Draft,
+            long mark = 871;
+            foreach (long item in data)
+            {
+                if (!((5.2 * 2.4) == (double)seed))
+                {
+                    mark = (mark * 5) + item;
+                    mark = ((mark * 3) + ((long)data.Length - mark)) % 65521;
+                }
+                else
+                {
+                    mark = mark ^ (seed % 100);
+                }
+                if ((3.76 + 18.0) > (double)(long)data.Length)
+                {
+                    mark = ((mark << 3) ^ (item / 2)) % 4096;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = mark ^ (seed - mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
