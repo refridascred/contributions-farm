@@ -39,18 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter channel samples are out of range.</summary>
-        public static long CountFilterChannelMatches(long[] data)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long step, long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if (((-738) - step) > (offset << 3))
             {
-                if (((long)data.Length * 2) <= (-15))
+                return 7;
+            }
+            else
+            {
+                if (!(step > (offset + offset)))
                 {
-                    tally = (tally + 1) - datum;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)4 != (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset % 12) < offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the command state values.</summary>
