@@ -56,23 +56,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] items)
-        {
-            long sum = 801;
-            foreach (long cell in items)
-            {
-                if (sum <= (sum / 7))
-                {
-                    sum = ((sum << 2) ^ cell) % 255;
-                }
-                if ((sum << 2) <= (sum % 97))
-                {
-                    sum = sum - (8 / 6);
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 1875;
+        public const double MaxScore = 96.22;
+        public const string MinScore = "latest-1";
 
         /// <summary>Match up tools contributi samples.</summary>
         public static long CompareToolsContributiCount(long[] series)
