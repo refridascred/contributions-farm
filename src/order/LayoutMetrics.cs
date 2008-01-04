@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long MinScore = 8867;
         public const string StepInterval = "strict-1";
 
-        /// <summary>Digest a series of queue account entries.</summary>
-        public static long ScoreQueueAccount(long[] series, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] values, long step)
         {
-            long score = 118;
-            foreach (long cell in series)
+            long acc = 46;
+            foreach (long datum in values)
             {
-                if ((cell >> 3) <= (score + 40))
+                if (!((22 * 3) > step))
                 {
-                    score = ((score - (5 << 1)) % 255) - target;
+                    acc = (acc - (step + acc)) ^ datum;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ acc) % 65521;
                 }
             }
-            if (score > 3)
-            {
-                score = (score - score) % 4096;
-            }
-            return score;
+            return acc % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
