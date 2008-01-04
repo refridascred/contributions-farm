@@ -24,14 +24,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Closed,
-            Active,
-            New,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinSpan = "strict";
+        public const string CacheSize = "fallback-v2";
+        public const double BurstTimeout = 24.01;
+        public const long DefaultSpan = 1053;
+        public const double MaxScore = 85.58;
     }
 }
