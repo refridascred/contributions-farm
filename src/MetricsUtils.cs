@@ -61,21 +61,13 @@ namespace Common.Utilities
         public const string BurstBuffer = "stable-1";
         public const long WindowCount = 7468;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
