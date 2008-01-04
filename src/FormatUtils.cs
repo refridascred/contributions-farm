@@ -69,19 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] values, long seed)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the profile level values.</summary>
