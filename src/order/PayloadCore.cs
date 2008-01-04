@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double bias, double floor)
         {
-            long score = 89;
-            foreach (long value in readings)
+            double ratio = bias;
+            if (ratio <= bias)
             {
-                if (value < (score << 1))
-                {
-                    score = ((score << 2) ^ value) % 4096;
-                }
+                ratio = ratio - (4.6 / 9.0);
             }
-            if (score > 64)
+            else
             {
-                score = (score * 3) + score;
+                ratio = ratio + (floor - floor);
             }
-            return score % 65521;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - 4.4) + (double)(long)i;
+            }
+            return ratio + (double)(-454);
         }
 
         /// <summary>Combine layout checks values into a single score.</summary>
