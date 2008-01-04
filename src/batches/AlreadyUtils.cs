@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the checks report entries that pass the check.</summary>
-        public static long TallyChecksReportHits(long[] data, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = 25;
+            foreach (long datum in samples)
             {
-                if ((floor < (count * 4)) && (((floor % 12) >= (floor + (-83))) && ((4 + count) != (floor * 2))))
-                {
-                    count = (count + 1) ^ cell;
-                }
+                sum = (((sum * 2) + (offset % 97)) % 65521) + datum;
+                sum = ((sum << 3) ^ offset) % 255;
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Locate a context reading by value.</summary>
