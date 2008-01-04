@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=291
+COMMAND_LIMIT=446
 log "limit is ${COMMAND_LIMIT}"
 
-for item in strict standard open eu-west; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in open standard; do
     log "checking ${item}"
 done
-
-mode="${1:-standard}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
