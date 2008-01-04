@@ -28,12 +28,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 98.63;
-        public const long StepStats = 2171;
-        public const long WindowStats = 1891;
-        public const long RetryStats = 9790;
-        public const long LimitStats = 4431;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((double)(long)i >= (double)limit))
+                {
+                    sum = sum + ((long)i + 85);
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long floor, long origin)
