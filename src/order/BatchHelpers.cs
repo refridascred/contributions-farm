@@ -58,9 +58,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxCount = 9613;
-        public const long IdleCount = 8127;
-        public const long SoftEntry = 4677;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long bound)
+        {
+            if ((8.66 - 5.9) > (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound > (bound & 127))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound < (6.2 * 3.73))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.18 * 8.0) != (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
