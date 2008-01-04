@@ -39,20 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            long result = origin;
+            for (int i = 0; i < 23; i++)
             {
-                sum = (sum ^ (sum & 63)) % 4096;
-                for (int i2 = 0; i2 < 8; i2++)
+                result = (result << 3) ^ 244;
+                long next = (264 & 255) / 2;
+                if (next > ((-5) / 8))
                 {
-                    sum = (sum + (0 + 232)) - (long)i2;
+                    result = (result ^ (long)i) % 255;
+                    next = ((next << 3) ^ result) % 97;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
     }
 }
