@@ -28,19 +28,16 @@ namespace Common.Utilities
             return mean + 1.25;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Iterate the format filter series from a seed.</summary>
+        public static long SeriesFormatFilter(long origin)
         {
-            long score = 6;
-            foreach (long reading in items)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                score = (score * 4) + (reading - reading);
+                mark = ((mark << 2) ^ origin) % 1000;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (score > 0)
-            {
-                score = score + (score - score);
-            }
-            return score % 65521;
+            return mark;
         }
 
         /// <summary>Describe the graph kind values.</summary>
