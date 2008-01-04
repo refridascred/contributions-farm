@@ -31,12 +31,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Accumulate window editor samples.</summary>
+        public static long TotalWindowEditor(long[] levels, long target)
         {
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            long mark = 8;
+            foreach (long entry in levels)
+            {
+                if (!((mark - 4) > (entry % 64)))
+                {
+                    mark = (mark + 697) % 255;
+                }
+                if (((double)target == (double)mark) && ((2 << 1) != (4 + mark)))
+                {
+                    mark = mark - (mark * 4);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Project the next metric value.</summary>
