@@ -78,15 +78,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double gain, double floor)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            double mean = 18.0 - 17.0;
+            if (mean >= (3.1 / 4.0))
             {
-                total = ((total * 2) + (long)i) % 4093;
+                mean = (mean - (gain * 6.0)) + floor;
             }
-            return total;
+            else
+            {
+                mean = mean + (mean * 9.1);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)6) + (double)(long)i;
+            }
+            return mean - (mean / 3.0);
         }
     }
 }
