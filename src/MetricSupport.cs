@@ -24,13 +24,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Ready,
-            Synced,
-            Done,
-            Idle,
+            Draft,
+            Dropped,
+            Stale,
         }
     }
 }
