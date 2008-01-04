@@ -47,30 +47,22 @@ namespace Common.Utilities
             return (rate + 9.07) + weight;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] readings, long offset)
         {
-            long mark = 70;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (((mark - 1) == (sample * 5)) || (14.0 > (double)mark))
+                if ((cell < (31 - offset)) && !((offset << 3) != (6 << 1)))
                 {
-                    mark = (mark ^ mark) % 255;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    mark = (mark - mark) % 255;
-                }
-                if ((double)65 <= (double)(long)samples.Length)
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (mark > (-49))
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark % 97;
+            return hits;
         }
     }
 }
