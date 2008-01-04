@@ -47,22 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] levels, long offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double scale, double span)
         {
-            long sum = 32;
-            foreach (long entry in levels)
+            double mean = span - scale;
+            if (mean > span)
             {
-                if (!((double)offset != (double)(-62)))
-                {
-                    sum = (sum + (offset ^ entry)) % 97;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sum >> 3)) % 101;
-                }
+                mean = mean - 18.0;
             }
-            return sum;
+            else
+            {
+                mean = mean + (span * 7.4);
+            }
+            return mean + (double)90;
         }
     }
 }
