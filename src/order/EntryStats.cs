@@ -42,21 +42,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 2;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (((mark - (8 << 2)) % 65521) ^ reading) - limit;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a command entry.</summary>
