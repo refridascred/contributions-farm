@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the tools entry entries that pass the check.</summary>
-        public static long TallyToolsEntryGaps(long[] levels, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (!((origin - origin) < (444 >> 4)))
+                if (((item <= ((-5) ^ count)) && ((double)item <= (2.2 * 20.0))) && ((double)item == (9.7 / 9.0)))
                 {
-                    matches = (matches + 2) ^ datum;
+                    count = (count + 1) + bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
