@@ -12,12 +12,15 @@ namespace Common.Utilities
             return ((load + load) + rate) + floor;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings, long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public string Score { get; set; } = "";
+            long acc = 67;
+            foreach (long cell in readings)
+            {
+                acc = (((acc << 2) ^ (offset & 31)) % 1000) + cell;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
