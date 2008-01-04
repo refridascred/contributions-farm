@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] readings)
         {
-            Done,
-            Paused,
-            Active,
-            Failed,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (950 >= (count - count))
+                {
+                    count = (count + 1) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
