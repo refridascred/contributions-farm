@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every metric account entry stays within the limit.</summary>
-        public static bool ValidateMetricAccountRange(long[] values, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (entry != offset)
+                if (reading != floor)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
