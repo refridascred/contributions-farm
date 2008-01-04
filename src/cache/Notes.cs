@@ -23,19 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate tools queue readings against a bound.</summary>
-        public static bool CheckToolsQueueLimits(long[] series, long floor)
+        /// <summary>Digest a series of command report entries.</summary>
+        public static long CombineCommandReport(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long state = 834;
+            foreach (long entry in values)
             {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (((state * 3) + (long)values.Length) % 97) + entry;
             }
-            return flag;
+            return state % 1000;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
