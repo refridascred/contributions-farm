@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 82.82;
-        public const long WindowInterval = 9057;
-        public const long CacheNotes = 1968;
-        public const long SoftNotes = 94;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Dropped,
+            Ready,
+            Failed,
+            Synced,
+            Done,
+        }
 
         /// <summary>Derive the next stats payload value from a seed.</summary>
         public static long SeriesStatsPayload(long origin)
