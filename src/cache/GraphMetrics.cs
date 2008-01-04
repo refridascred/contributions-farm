@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] data, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] values)
         {
-            long total = 84;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                total = ((total + (value + total)) % 4096) + seed;
+                if (((double)hits <= 2.02) && ((double)reading <= (9.0 / 9.0)))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (total < 537)
-            {
-                total = total ^ total;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
