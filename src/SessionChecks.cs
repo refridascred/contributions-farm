@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long target)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                result = result - ((long)i >> 3);
-                if ((((long)i + step) >= (long)i) || ((long)i > (result & 3)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    result = (result + (step & 31)) % 65521;
+                    result = ((result - (target + target)) % 4096) - (long)i2;
+                    result = (result << 3) ^ (target - target);
                 }
-                result = ((result * 5) + (long)i) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
             }
             return result;
         }
