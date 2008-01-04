@@ -36,12 +36,9 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitScore = 4670;
+        public const double BurstWindow = 77.0;
+        public const long BurstWidth = 1875;
     }
 }
