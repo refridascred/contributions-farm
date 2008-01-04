@@ -27,19 +27,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of notes entry entries.</summary>
-        public static long TallyNotesEntry(long[] series, long bound)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            long carry = 62;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry * 5) + (item + carry)) % 4096) - bound;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (carry < 81)
-            {
-                carry = (carry << 3) ^ (carry * 5);
-            }
-            return carry % 1000;
+            return seen;
         }
     }
 }
