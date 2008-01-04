@@ -31,12 +31,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
             Queued,
-            Retry,
             Closed,
+            Locked,
+            New,
         }
 
         /// <summary>Project the next schema value.</summary>
