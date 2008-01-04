@@ -68,24 +68,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a counter cache value against two limits.</summary>
-        public static long GradeCounterCache(long limit, long origin)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] samples, long floor)
         {
-            if (((-6) + limit) > (origin - limit))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (limit * 3))
+                if (samples[i] > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
