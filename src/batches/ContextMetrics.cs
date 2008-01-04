@@ -56,38 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long floor, long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double bias, double offset)
         {
-            if ((779 % 100) <= (floor % 100))
+            double bias2 = bias;
+            if (bias2 < bias2)
             {
-                return 5;
+                bias2 = (bias2 - (bias / 7.0)) + offset;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((target + floor) >= (target & 255))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((12.0 + 20.0) >= (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3 ^ 12) > target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                bias2 = (bias2 - bias) + (double)(long)i;
             }
+            return bias2 + bias2;
         }
     }
 }
