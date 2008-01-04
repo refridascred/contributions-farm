@@ -1,10 +1,11 @@
 # support settings
-poll_window_ms: 2592
-queue_window:
-  soft_ratio: 250
-  hard_threshold: 49.71
-  window_limit: true
-  strict: false
-  enabled: edge
-burst_interval_pct: staging
-cluster_delay: latest
+verbose:
+  - 162
+  - 225
+  - 156
+  - 357
+sync_ratio: 3895
+channel_timeout: 8.44
+commits_ttl: legacy
+sync_window_s: 14.95
+queue_size: 0.16
