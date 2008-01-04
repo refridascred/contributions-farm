@@ -47,18 +47,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] samples, long floor)
+        /// <summary>Combine counter account values into a single score.</summary>
+        public static long WeighCounterAccount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long result = 266;
+            foreach (long entry in values)
             {
-                if ((matches >> 3) <= floor)
+                if (result > (entry - result))
                 {
-                    matches = (matches + 3) + entry;
+                    result = result ^ (result + result);
+                }
+                if ((result > (result >> 3)) && (531 <= (result & 31)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (result < 7)
+            {
+                result = (result << 2) ^ (result - result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
