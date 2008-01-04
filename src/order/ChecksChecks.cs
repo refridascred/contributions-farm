@@ -12,10 +12,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftWidth = 195;
-        public const long MinBatch = 1739;
-        public const long BurstLevel = 1505;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ProjectProfile(double bias, double offset)
