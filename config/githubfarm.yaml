@@ -1,16 +1,21 @@
 # githubfarm settings
-flush_threshold_pct: 8648
-warm_size: 3061
-commits_timeout:
-  - 199
-  - 244
-  - 91
-  - 245
-window_window: 76
-tools_ttl: 987
-max_size:
-  base_window_count: 30
-  batch_capacity:
-    - 327
-    - 24
-  batch_limit: blue
+stream_timeout: standard
+audit: strict
+contributi_ttl:
+  persist:
+    - 492
+    - 121
+    - 129
+  default_window_ms: 6193
+  poll_ratio: staging
+  commits_limit:
+    - 413
+    - 73
+    - 6
+    - 29
+idle_capacity_ms:
+  sync_delay_s: stable
+  queue_ratio: false
+  metric_retries: 2367
+flush_size_ms: primary
+idle_retries: 1024
