@@ -59,13 +59,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score * 5) + (score ^ 174);
+                score = score ^ (long)i;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a support entry.</summary>
