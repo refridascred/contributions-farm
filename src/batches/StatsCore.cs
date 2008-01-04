@@ -90,24 +90,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long floor, long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            if (!((double)6 < (double)offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor + floor) < (offset - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
