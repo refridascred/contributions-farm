@@ -51,19 +51,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate filter already readings against a bound.</summary>
-        public static bool CheckFilterAlreadyBounds(long[] items, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (datum != origin)
+                if (sample > floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
