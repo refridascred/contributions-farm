@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultDepth = 74.07;
-        public const long MaxSpan = 3819;
-        public const long RetryChannel = 8410;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "legacy-edge";
+        public const double IdleStats = 28.32;
+        public const long HardFactor = 4247;
+        public const long SoftInterval = 401;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksBounds(long[] readings, long offset)
