@@ -31,22 +31,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 3112;
+        public const long MaxGithubfarm = 684;
+        public const long BaseSize = 865;
+        public const double BurstGithubfarm = 85.68;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] readings, long limit)
