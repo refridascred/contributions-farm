@@ -1,5 +1,5 @@
 {
-  "route_retries": 500,
-  "poll_window_ms": false,
-  "batches_limit": ["staging", "edge", "open", "legacy"]
+  "max_retries_ms": 2.48,
+  "profile_size": 9304,
+  "window_timeout": 99
 }
