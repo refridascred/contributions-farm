@@ -28,24 +28,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a batches filter value against two limits.</summary>
-        public static long BucketBatchesFilter(long origin, long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            if ((6.0 / 7.0) < (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target != (3.38 + 9.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
