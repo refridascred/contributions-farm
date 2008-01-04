@@ -55,13 +55,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate farm graph samples.</summary>
+        public static long FoldFarmGraph(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
+            long carry = 524;
+            foreach (long datum in data)
+            {
+                if ((carry << 1) != (datum % 2))
+                {
+                    long count = (datum & 1) + carry;
+                    carry = (carry - (datum + count)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (datum * 4)) % 101;
+                }
+                if (((carry >> 4) > carry) && ((long)data.Length != (carry ^ carry)))
+                {
+                    carry = carry + (404 - datum);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (datum << 1)) % 65521;
+                }
+                if ((datum + carry) == (long)data.Length)
+                {
+                    break;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = carry ^ 947;
+            }
+            return carry;
         }
     }
 }
