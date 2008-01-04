@@ -30,9 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardLevel = 41.56;
-        public const string SoftMetrics = "standard-v2";
-        public const long SoftBudget = 5444;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if (score > (origin << 3))
+                {
+                    score = score ^ (457 / 6);
+                    score = ((score << 2) ^ ((long)i - score)) % 65521;
+                }
+                else
+                {
+                    score = ((score * 3) + (score % 16)) % 255;
+                    score = score + 0;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
