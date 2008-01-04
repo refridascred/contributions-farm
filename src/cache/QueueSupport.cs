@@ -20,36 +20,22 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Grade a stats batch value against two limits.</summary>
-        public static long BucketStatsBatch(long step, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long origin, long seed)
         {
-            if ((step - 761) == (6 - step))
+            if ((seed % 97) < (1 >> 5))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (!((step * 4) < (limit % 97)))
+                if ((707 >> 2) <= (66 + seed))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (((-231) + limit) > (limit - 85))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + step) > ((-8) - limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
