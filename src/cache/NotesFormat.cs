@@ -25,18 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats session readings against a rule.</summary>
-        public static long MeasureStatsSessionMatches(long[] items, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((double)bound < (16.0 + 17.0))
+                if ((7.0 / 9.0) > (double)target)
                 {
-                    tally = (tally + 2) ^ item;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
