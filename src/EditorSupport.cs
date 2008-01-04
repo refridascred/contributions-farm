@@ -90,25 +90,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long seed, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] items, long origin)
         {
-            long gap = seed - bound;
-            if ((1 - gap) >= (gap * 3))
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (gap < (gap - gap))
+                if (reading >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
