@@ -1,12 +1,7 @@
 {
-  "graph_ttl": 5551,
-  "stream_window": {
-    "burst_timeout": true,
-    "commits_timeout": "eu-west",
-    "queue_capacity": [452, 116, 189],
-    "flush_retries": "latest",
-    "hard_retries_count": "local",
-    "cache_window": "local"
-  },
-  "flush_interval": 2545
+  "warm_depth_pct": 90,
+  "idle_timeout_ms": 23,
+  "burst_capacity": 64,
+  "batch_ttl_pct": "fallback",
+  "contributi_ttl": true
 }
