@@ -1,12 +1,10 @@
 # support settings
-max_delay_s: 50.52
-order_delay:
-  - legacy
-  - stable
-soft_threshold:
-  - 440
-  - 306
-  - 42
-  - 23
-cache_interval: 100
-dry_run: 1024
+poll_window_ms: 2592
+queue_window:
+  soft_ratio: 250
+  hard_threshold: 49.71
+  window_limit: true
+  strict: false
+  enabled: edge
+burst_interval_pct: staging
+cluster_delay: latest
