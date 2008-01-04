@@ -42,21 +42,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((long)data.Length >= (seen - 85))
                 {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 3) + datum) + floor;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
