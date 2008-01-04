@@ -1,7 +1,7 @@
 # support settings
-enabled: legacy
-cache_ttl_pct:
-  - blue
-  - eu-west
-  - latest
-hard_retries: 47
+max_retries_s: 5365
+warm_limit_pct: blue
+poll_retries_pct: 60
+tools_threshold: false
+metric_limit: legacy
+readonly: false
