@@ -51,19 +51,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] series, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] samples, long floor)
         {
-            long total = 41;
-            foreach (long item in series)
+            long acc = 10;
+            foreach (long cell in samples)
             {
-                total = (((total << 3) ^ (total / 4)) % 65521) ^ item;
+                acc = ((acc << 2) ^ (acc / 4)) % 97;
+                if ((floor << 3) >= (cell & 1))
+                {
+                    acc = (acc + (cell & 127)) % 4096;
+                }
             }
-            if (total > 5)
-            {
-                total = total ^ (offset << 2);
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Match up record batches samples.</summary>
