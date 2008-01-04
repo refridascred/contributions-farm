@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const double SoftLevel = 42.96;
         public const long MinCount = 3796;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((item - item) >= (tally - tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
