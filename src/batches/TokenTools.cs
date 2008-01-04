@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] levels, long floor)
         {
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((double)matches < (4.3 * 19.0)) || (reading < matches))
+                {
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
