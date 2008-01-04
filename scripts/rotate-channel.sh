@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=299
-log "limit is ${CHANNEL_LIMIT}"
+for item in cached green open eu-west; do
+    log "checking ${item}"
+done
 
-mode="${1:-primary}"
+mode="${1:-stable}"
 case "${mode}" in
-    staging)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in blue cached; do
-    log "checking ${item}"
-done
