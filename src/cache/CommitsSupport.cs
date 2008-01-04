@@ -46,17 +46,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a support cache sample.</summary>
-        public static long LookupSupportCacheIndex(long[] data, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long bound, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = bound ^ offset;
+            if (((span >> 2) <= (span + bound)) || (offset >= (span ^ bound)))
             {
-                if ((data[i] > seed) && ((data[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((bound << 3) <= (span & 7))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a counter cache value against two limits.</summary>
