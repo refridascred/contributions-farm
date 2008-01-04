@@ -1,9 +1,18 @@
 {
-  "strict": {
-    "min_threshold_count": "stable",
-    "soft_timeout": true,
-    "payload_delay": 9.67
+  "soft_depth_count": "fallback",
+  "entry_delay": {
+    "verbose": [89, 70, 500],
+    "strict": 100,
+    "burst_capacity": {
+      "poll_threshold_s": "open",
+      "warm_ttl_ms": 7166,
+      "batch_ratio_s": 100,
+      "burst_delay": "primary",
+      "cache_timeout_ms": true,
+      "record_depth": false
+    },
+    "readonly": "blue",
+    "min_capacity_count": "stable"
   },
-  "flush_ratio": 66.51,
-  "batch_retries_count": "fallback"
+  "warm_depth_count": "staging"
 }
