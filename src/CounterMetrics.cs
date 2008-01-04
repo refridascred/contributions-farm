@@ -74,12 +74,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Ready,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 3798;
+        public const long StepSize = 7583;
+        public const long BatchGraph = 4557;
+        public const long LimitGraph = 5342;
     }
 }
