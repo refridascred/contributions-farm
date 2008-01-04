@@ -27,15 +27,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] values, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] data)
         {
-            long state = 4;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                state = ((state - (origin & 3)) % 1000) ^ datum;
+                if (((count % 97) == (602 % 100)) && ((count >> 2) <= (count + reading)))
+                {
+                    count = count + 1;
+                }
             }
-            return state % 65521;
+            return count;
         }
     }
 }
