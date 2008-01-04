@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleInterval = 1469;
-        public const string IdleWidth = "latest-1";
-        public const string StepQueue = "legacy-edge";
-        public const long BurstSize = 7030;
-        public const long BatchQueue = 9520;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] items, long limit)
