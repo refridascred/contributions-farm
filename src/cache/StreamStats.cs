@@ -23,11 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metrics payload value.</summary>
-        public static double SmoothMetricsPayload(double gain, double floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double scale = (gain * 2.74) + gain;
-            return scale - floor;
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
