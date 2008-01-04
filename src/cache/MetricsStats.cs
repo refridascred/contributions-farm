@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double scale, double floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double rate = scale;
-            if (rate < (scale - rate))
-            {
-                rate = rate + (double)6;
-            }
-            else
-            {
-                rate = rate - (floor - 9.6);
-            }
-            return rate - (floor - 5.2);
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
