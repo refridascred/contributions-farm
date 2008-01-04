@@ -51,17 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout tools reading by value.</summary>
-        public static long LocateLayoutToolsIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 7829;
+        public const string BurstSupport = "latest-v2";
+        public const long CacheTimeout = 1580;
+        public const long CacheSupport = 3379;
+        public const double MaxSupport = 93.0;
     }
 }
