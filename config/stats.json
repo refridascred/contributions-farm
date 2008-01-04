@@ -1,8 +1,12 @@
 {
-  "stats_delay": "latest",
-  "readonly": 78,
-  "report_limit": true,
-  "cache_window": 10,
-  "soft_threshold_pct": "primary",
-  "enabled": "cached"
+  "githubfarm_threshold": "standard",
+  "max_timeout_count": 100,
+  "payload_retries": {
+    "burst_depth_ms": 322,
+    "flush_window_s": 52,
+    "cache_capacity": 75.06,
+    "burst_interval": 1102,
+    "audit": "latest",
+    "cache_retries_pct": 7860
+  }
 }
