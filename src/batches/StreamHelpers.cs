@@ -29,31 +29,12 @@ namespace Common.Utilities
         public const double MinFilter = 63.22;
         public const string HardFilter = "fallback";
 
-        /// <summary>Grade a commits account value against two limits.</summary>
-        public static long RankCommitsAccount(long origin, long seed)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            if (((seed + seed) == (origin + origin)) && ((double)origin != (9.9 * 6.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin / 2) <= (seed + origin)) || ((8.66 / 9.0) != (double)origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (7 >= (origin * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
