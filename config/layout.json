@@ -1,7 +1,8 @@
 {
-  "flush_retries": 97.78,
-  "min_depth_s": true,
-  "batch_threshold_count": "open",
-  "batches_interval": true,
-  "readonly": 2406
+  "idle_retries": 4933,
+  "counter_interval": 30.96,
+  "burst_interval_pct": 97.63,
+  "hard_depth_pct": 54.32,
+  "retry_ttl_count": 24.37,
+  "retry_retries": 11.76
 }
