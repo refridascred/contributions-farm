@@ -46,14 +46,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Match up payload format samples.</summary>
+        public static long MatchPayloadFormatCount(long[] items)
         {
-            New,
-            Dropped,
-            Retry,
-            Closed,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a counter cache value against two limits.</summary>
