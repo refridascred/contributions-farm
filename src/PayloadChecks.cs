@@ -33,12 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
