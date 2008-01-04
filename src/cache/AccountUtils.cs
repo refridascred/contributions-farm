@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 70.22;
-        public const long MinInterval = 1320;
-        public const long RetryContributi = 2219;
-        public const long MaxContributi = 9486;
-        public const double WindowSpan = 83.95;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetrySpan = 3329;
+        public const long SoftStats = 2809;
+        public const long IdleRatio = 2379;
+        public const long BaseCount = 5558;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] series)
