@@ -53,17 +53,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] readings, long bound)
+        /// <summary>Roll a githubfarm contributi counter forward.</summary>
+        public static long DeriveGithubfarmContributi(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                sum = (sum * 4) + (sum ^ floor);
+                sum = sum ^ (floor + (long)i);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
