@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Queued,
-            Synced,
-            Pending,
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of batch window readings.</summary>
