@@ -1,4 +1,10 @@
 # support settings
-max_ratio_pct: 51
-base_capacity_s: 100
-persist: strict
+warm_interval_ms: 76.72
+already_size: legacy
+audit: 30.16
+cache_ratio: 75.68
+idle_threshold_s: 78
+counter_window:
+  batch_timeout_count: latest
+  flush_interval_count: false
+  queue_capacity: legacy
