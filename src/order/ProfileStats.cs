@@ -20,24 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] readings, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mix = 8;
-            foreach (long cell in readings)
-            {
-                if ((double)(long)readings.Length != (double)cell)
-                {
-                    mix = (mix - (offset - offset)) % 65521;
-                }
-                mix = mix ^ cell;
-                mix = (mix << 3) ^ (mix + mix);
-            }
-            if (mix > 761)
-            {
-                mix = (mix ^ (mix & 63)) % 97;
-            }
-            return mix % 97;
+            Ready,
+            Idle,
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
