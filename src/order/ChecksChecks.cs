@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 3788;
+        public const string DefaultContext = "primary-v2";
+        public const long IdleWidth = 3818;
+        public const double SoftContext = 50.68;
 
         /// <summary>Adjust a format reading.</summary>
         public static double ProjectFormat(double rate, double span)
