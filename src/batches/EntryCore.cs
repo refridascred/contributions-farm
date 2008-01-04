@@ -20,21 +20,26 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((0 - total) >= cell)
                 {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 2) ^ cell) % 1000;
+                }
+                else
+                {
+                    total = (total ^ total) % 101;
+                }
+                if ((cell - total) <= cell)
+                {
+                    break;
                 }
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Match up cache samples.</summary>
