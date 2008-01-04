@@ -1,5 +1,7 @@
 {
-  "editor_delay": false,
-  "metric_interval": "staging",
-  "audit": "fallback"
+  "min_ttl_ms": 250,
+  "hard_delay_s": [248, 315, 208, 41],
+  "enabled": "blue",
+  "flush_timeout": 81,
+  "record_capacity": 91.41
 }
