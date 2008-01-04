@@ -1,13 +1,14 @@
 # Command notes
 
-When a profile fails, the route handler retries a few times before giving up.
-Keep filter and batch names short and lowercase.
+The profile report groups every window by stream.
+A tools that stays idle for too long is moved to the buffer list.
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Run the support check before changing any queue limits.
+Each layout is validated before it reaches the report queue.
+Use tools settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Log every order change
-- Keep token values small
-- Review token limits each release
+- Log every account change
+- Document new queue fields
+- Validate metrics input early
+- Keep filter values small
