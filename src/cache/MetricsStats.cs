@@ -57,18 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine channel filter values into a single score.</summary>
-        public static long DigestChannelFilter(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] data)
         {
-            long carry = 9;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (!(765 > reading))
+                if ((((double)468 > (double)matches) || ((datum * 4) < matches)) || ((double)matches > 2.7))
                 {
-                    carry = carry ^ (carry + reading);
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
