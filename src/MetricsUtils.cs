@@ -76,19 +76,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value ^ tally) < (tally - step))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 1839;
+        public const long MaxInterval = 2596;
+        public const long WindowSize = 74;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandRange(long[] levels, long step)
