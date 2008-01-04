@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] series, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
