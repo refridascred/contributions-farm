@@ -22,21 +22,21 @@ namespace Common.Utilities
         public const long DefaultCommits = 5937;
         public const long BatchCommits = 3572;
 
-        /// <summary>Match up command record samples.</summary>
-        public static long OverlapCommandRecordCount(long[] samples)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            long tally = 0;
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) < 15)
+                    if ((samples[i] ^ samples[j]) > 9)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
