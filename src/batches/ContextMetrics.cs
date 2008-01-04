@@ -38,10 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowSpan = 53.1;
-        public const long StepCount = 6249;
-        public const long RetryDepth = 483;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 39.35;
+        public const long HardRatio = 258;
+        public const long RetryBuffer = 7997;
+        public const long WindowBuffer = 266;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiMatches(long[] values, long origin)
