@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route payload reading by value.</summary>
-        public static long FindRoutePayloadIndex(long[] values, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (values[i] <= bound)
+                if (matches > (cell << 3))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
