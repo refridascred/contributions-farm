@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of account stats readings.</summary>
-        public static long TotalAccountStats(long[] data, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long mark = 2;
-            foreach (long datum in data)
-            {
-                if ((limit >> 3) == (mark + datum))
-                {
-                    mark = ((mark * 2) + (datum << 2)) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ (mark << 2);
-                }
-            }
-            if (mark < 4)
-            {
-                mark = (mark * 4) + (20 >> 3);
-            }
-            return mark;
+            Draft,
+            Ready,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a layout info.</summary>
