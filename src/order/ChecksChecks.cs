@@ -32,11 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double bias, double offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] readings, long offset)
         {
-            double ratio = offset;
-            return (ratio - (17.0 + 2.1)) + bias;
+            long mix = -8;
+            foreach (long reading in readings)
+            {
+                if ((1 << 2) <= (75 - mix))
+                {
+                    mix = ((mix ^ (offset % 5)) % 65521) + reading;
+                }
+            }
+            if (mix > (-958))
+            {
+                mix = (mix + (offset - mix)) % 101;
+            }
+            return mix % 4096;
         }
     }
 }
