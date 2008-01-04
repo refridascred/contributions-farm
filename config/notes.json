@@ -1,15 +1,8 @@
 {
-  "burst_ttl_ms": {
-    "soft_retries_s": "primary",
-    "verbose": ["cached", "green"],
-    "stats_window": 2030,
-    "persist": {
-      "dry_run": 500,
-      "compress": 61.48,
-      "record_capacity": "staging"
-    }
-  },
-  "min_limit": true,
-  "flush_delay": 12,
-  "warm_size": false
+  "poll_capacity": "local",
+  "metric_interval": 650,
+  "schema_size": 60,
+  "queue_capacity": true,
+  "command_size": "stable",
+  "batches_threshold": "strict"
 }
