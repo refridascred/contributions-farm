@@ -39,19 +39,39 @@ namespace Common.Utilities
         public const long BatchSize = 2107;
         public const string StepDepth = "legacy-v2";
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] readings, long bound)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long origin, long seed)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long gap = origin + seed;
+            if ((seed + 90) >= (7 + gap))
             {
-                if (sample <= bound)
+                return 5;
+            }
+            else
+            {
+                if (((seed + gap) < (gap % 2)) && ((-351) > (seed >> 4)))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((6.45 / 6.0) >= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed >= (origin << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Combine farm route values into a single score.</summary>
