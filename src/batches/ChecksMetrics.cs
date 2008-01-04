@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Grade a context notes value against two limits.</summary>
+        public static long GradeContextNotes(long floor, long target)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            long bound = floor + target;
+            if (floor < (474 + target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4.19 - 6.8) == (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound > (57 * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((15.0 / 2.0) <= (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
