@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result - ((long)i - result)) % 4096) - (long)i2;
-                    result = (result * 2) + result;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
