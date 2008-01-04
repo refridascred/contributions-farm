@@ -28,14 +28,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Locked,
-            Stale,
-            Paused,
-            Done,
-            Pending,
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
