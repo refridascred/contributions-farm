@@ -49,19 +49,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double rate, double bias)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] samples, long target)
         {
-            double gain = bias * 20.0;
-            if (gain > (rate * 12.0))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                gain = gain + gain;
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            return gain - (bias - gain);
+            return ok;
         }
     }
 }
