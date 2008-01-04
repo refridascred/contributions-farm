@@ -20,19 +20,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] items, long limit)
         {
-            long state = 1;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                state = (state << 2) ^ (cell << 3);
+                if (((1.3 + 1.95) > (double)datum) || (((double)(long)items.Length == (10.0 - 1.7)) && ((limit * 5) > datum)))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (state < 2)
-            {
-                state = ((state * 3) + (state / 8)) % 97;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
