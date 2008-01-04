@@ -43,13 +43,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Check that every session notes entry stays within the limit.</summary>
+        public static bool VerifySessionNotesLimits(long[] items, long target)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
