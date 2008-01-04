@@ -1,8 +1,6 @@
 {
-  "commits_interval": "standard",
-  "session_retries": "stable",
-  "burst_retries": 5527,
-  "cache_retries": "legacy",
-  "dry_run": 17,
-  "flush_threshold": 65.24
+  "tools_ttl": 8252,
+  "checks_retries": [252, 41],
+  "default_interval": "eu-west",
+  "tools_size": "latest"
 }
