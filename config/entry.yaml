@@ -1,11 +1,24 @@
 # entry settings
-enabled: 60
-audit:
-  - 397
-  - 246
-poll_ttl_s: 60
-batch_threshold_pct: strict
-persist:
-  - 126
-  - 483
-  - 223
+commits_depth:
+  verbose:
+    enabled:
+      - 320
+      - 53
+    cluster_delay: 37
+    batch_window_count: true
+    burst_depth_count:
+      - 209
+      - 31
+      - 83
+    warm_interval: latest
+    filter_interval: staging
+  flush_interval: false
+  base_retries: legacy
+  soft_limit: 60
+  retry_timeout_s: 76.32
+checks_ratio: true
+compress:
+  - 355
+  - 77
+dry_run: standard
+metric_retries: blue
