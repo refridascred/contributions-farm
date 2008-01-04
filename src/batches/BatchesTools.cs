@@ -18,18 +18,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
+            long state = -4;
+            foreach (long reading in samples)
             {
-                long next = (seed & 127) + (seed + score);
-                score = score - (next + score);
-                score = (score ^ (seed + (-877))) % 65521;
-                score = ((score * 3) + (long)i) % 101;
+                if (reading >= state)
+                {
+                    state = state + (state % 3);
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the notes level values.</summary>
