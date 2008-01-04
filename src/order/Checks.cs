@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)matches <= 8.0)
-                {
-                    matches = ((matches + 3) + sample) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 3522;
+        public const long SoftRecord = 9128;
+        public const long BatchBudget = 5558;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
