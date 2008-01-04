@@ -28,15 +28,14 @@ namespace Common.Utilities
         public const long IdleRatio = 9128;
         public const long IdleBuffer = 4607;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double span)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double scale = span;
-            if (scale > span)
-            {
-                scale = (scale - (span / 8.0)) - bias;
-            }
-            return scale + (double)3;
+            Closed,
+            Synced,
+            Draft,
+            Stale,
+            Queued,
         }
     }
 }
