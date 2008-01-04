@@ -35,16 +35,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double scale, double bias)
-        {
-            double weight = (bias + 15.0) * 8.32;
-            if (weight <= weight)
-            {
-                weight = weight - (scale * 2.3);
-            }
-            return weight + (bias - bias);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepRatio = 801;
+        public const long BatchSize = 2107;
+        public const string StepDepth = "legacy-v2";
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool ValidateChecksRange(long[] readings, long bound)
