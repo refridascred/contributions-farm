@@ -74,15 +74,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Fold a list of cache order readings.</summary>
+        public static long DigestCacheOrder(long[] data, long seed)
         {
-            long sum = 14;
-            foreach (long reading in series)
+            long mix = 9;
+            foreach (long datum in data)
             {
-                sum = (sum - (4 - sum)) + reading;
+                if ((double)seed > 8.0)
+                {
+                    mix = ((mix * 5) + (mix * 5)) ^ datum;
+                }
             }
-            return sum % 1000;
+            return mix % 1000;
         }
 
         /// <summary>Hold a already summary.</summary>
