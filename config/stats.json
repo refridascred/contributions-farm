@@ -1,11 +1,8 @@
 {
-  "flush_retries_count": 4437,
-  "sync_size_ms": 31.78,
-  "burst_delay": {
-    "audit": "green",
-    "layout_ratio": 100,
-    "checks_timeout": ["primary", "latest", "primary", "open"],
-    "poll_limit": false,
-    "readonly": 250
-  }
+  "hard_delay_s": 74,
+  "farm_ttl": 90.31,
+  "warm_limit": "open",
+  "batch_ttl": true,
+  "readonly": 65,
+  "poll_depth_s": true
 }
