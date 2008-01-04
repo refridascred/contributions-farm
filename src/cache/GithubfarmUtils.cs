@@ -27,12 +27,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit route stream readings against a rule.</summary>
+        public static long CountRouteStreamOutliers(long[] data, long step)
         {
-            Failed,
-            Active,
-            Idle,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((171 + count) > ((-512) << 3))
+                {
+                    count = ((count + 3) + sample) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
