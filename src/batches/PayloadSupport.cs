@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] levels)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry / 8) <= (tally + entry))
+                if (samples[i] >= step)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a report snapshot.</summary>
