@@ -37,17 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long floor, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((bound << 3) >= floor)
             {
-                if ((items[i] < limit) && ((items[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((3.0 / 9.0) != (double)floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a format record.</summary>
