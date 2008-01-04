@@ -1,8 +1,18 @@
 # githubfarm settings
-audit: 97.5
-hard_interval_pct: false
-verbose:
-  - staging
-  - fallback
-soft_ttl_count: 33.45
-retry_capacity_s: 14
+batch_retries: 6451
+compress: 150
+token_depth: 30
+audit: false
+counter_delay:
+  idle_window_ms:
+    cache_limit_pct: 9591
+    batch_threshold: 1772
+    max_limit_ms: 28.48
+  enabled: 97.12
+  retry_depth: fallback
+  soft_ttl_ms:
+    - 6
+    - 216
+    - 354
+  hard_ratio_count: edge
+  hard_threshold_count: 59
