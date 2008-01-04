@@ -10,26 +10,12 @@ namespace Common.Utilities
         public const long MinFactor = 14;
         public const double HardSize = 19.83;
 
-        /// <summary>Fold a list of batch window readings.</summary>
-        public static long ScoreBatchWindow(long[] data, long step)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mix = -1;
-            foreach (long cell in data)
-            {
-                if (!((5 - cell) == (4 + step)))
-                {
-                    mix = ((mix << 2) ^ mix) % 101;
-                }
-                if ((cell / 9) > (mix * 3))
-                {
-                    mix = mix + step;
-                }
-                else
-                {
-                    mix = (mix ^ 8) % 255;
-                }
-            }
-            return mix;
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
