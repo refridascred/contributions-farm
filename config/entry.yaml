@@ -1,9 +1,4 @@
 # entry settings
-farm_ttl: staging
-cache_depth_s: true
-dry_run:
-  - 82
-  - 24
-warm_limit_count:
-  - 152
-  - 73
+checks_threshold: 0.74
+idle_delay: true
+sync_capacity_s: open
