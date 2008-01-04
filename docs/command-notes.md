@@ -1,11 +1,14 @@
 # Command notes
 
-Each farm is validated before it reaches the githubfarm queue.
-Keep format and window names short and lowercase.
-A batch that stays idle for too long is moved to the schema list.
+The order report groups every stream by githubfarm.
+The cluster report groups every already by window.
+
+When a farm fails, the channel handler retries a few times before giving up.
+Defaults for support live in the config folder and can be overridden per environment.
+Keep schema and queue names short and lowercase.
 
 ## Guidelines
 
-- Prefer context defaults
-- Keep token values small
-- Log every command change
+- Document new window fields
+- Review editor limits each release
+- Validate profile input early
