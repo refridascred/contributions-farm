@@ -69,19 +69,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] values, long seed)
+        /// <summary>Audit session report readings against a rule.</summary>
+        public static long CountSessionReportHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (entry <= seed)
+                if ((item & 15) > (item * 3))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
