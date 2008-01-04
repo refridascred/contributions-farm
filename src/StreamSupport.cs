@@ -38,13 +38,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardLevel = 5756;
+        public const long StepInterval = 8020;
+        public const long StepNotes = 2263;
+        public const long BaseBudget = 4102;
     }
 }
