@@ -17,24 +17,14 @@ namespace Common.Utilities
         public const string WindowAlready = "legacy";
         public const long HardScore = 8365;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if (((double)floor <= (7.25 + 12.0)) || ((step & 63) < (floor + step)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step > (step ^ step)) || (floor <= (floor >> 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Locked,
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
