@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] samples, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long offset)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading >= step)
-                {
-                    found = false;
-                    break;
-                }
+                mark = mark - (mark + mark);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Hold a format entry.</summary>
