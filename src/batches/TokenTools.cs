@@ -20,17 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Measure how many editor stream samples are out of range.</summary>
+        public static long MeasureEditorStreamHits(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                score = ((score << 2) ^ (limit + limit)) % 101;
-                score = (score ^ 223) % 255;
-                score = ((score * 3) + (long)i) % 4093;
+                if (datum > (datum >> 4))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
