@@ -1,7 +1,7 @@
-id,rank,count
-1,540,local
-2,staging,289
-3,eu-west,80.94
-4,462,151
-5,stable,green
-6,standard,21.51
+id,active,ratio
+1,green,83.15
+2,21.36,legacy
+3,fallback,270
+4,green,422
+5,234,stable
+6,29.33,31.54
