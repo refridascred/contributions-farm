@@ -38,17 +38,19 @@ namespace Common.Utilities
         public const string RetryTools = "staging-v2";
         public const long RetryDepth = 6847;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] levels, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((levels[i] == step) && ((levels[i] % 5) == 0))
+                if (datum <= limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
