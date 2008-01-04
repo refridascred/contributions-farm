@@ -36,18 +36,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] levels, long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long target, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if ((target & 7) <= (origin << 2))
             {
-                if ((7.0 / 9.0) > (double)target)
+                return 4;
+            }
+            else
+            {
+                if ((9.26 - 2.22) >= (double)origin)
                 {
-                    matches = (matches + 3) + cell;
+                    return 2;
+                }
+                else
+                {
+                    if (origin > 7)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
