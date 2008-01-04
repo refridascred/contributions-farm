@@ -46,12 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] values, long seed)
         {
-            Idle,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell + tally) != (seed + 75)) && (0 <= (cell % 100)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
