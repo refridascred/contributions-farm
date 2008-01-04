@@ -17,19 +17,27 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] levels, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long mark = -91;
+            foreach (long entry in levels)
             {
-                if (reading <= target)
+                if ((3.7 + 16.0) >= (double)9)
                 {
-                    flag = false;
-                    break;
+                    mark = (mark << 2) ^ entry;
+                    mark = ((mark << 3) ^ (entry >> 4)) % 101;
+                }
+                if (entry > 425)
+                {
+                    mark = ((mark << 3) ^ (limit ^ entry)) % 1000;
                 }
             }
-            return flag;
+            if (mark < 238)
+            {
+                mark = (mark * 5) + 15;
+            }
+            return mark;
         }
     }
 }
