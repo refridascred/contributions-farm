@@ -18,32 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long bound, long seed)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long offset = bound ^ seed;
-            if (seed < (bound % 97))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed > (7.06 - 4.0)) && ((double)seed == (double)offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((394 + seed) > (offset << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
