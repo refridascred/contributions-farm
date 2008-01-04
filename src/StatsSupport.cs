@@ -12,5 +12,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
             public bool Label { get; set; }
         }
+
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Queued,
+            Pending,
+            Failed,
+            Paused,
+            New,
+        }
     }
 }
