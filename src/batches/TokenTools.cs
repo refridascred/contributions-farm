@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] samples, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (samples[i] >= limit)
+                if (!(seen > (datum + seen)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate filter samples.</summary>
