@@ -73,19 +73,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] readings, long bound)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Synced,
+            Pending,
+            Failed,
         }
     }
 }
