@@ -1,18 +1,24 @@
 # githubfarm settings
-poll_ratio_pct:
-  - green
-  - blue
-  - local
-soft_interval_pct:
-  - primary
-  - edge
-  - fallback
-compress:
-  - edge
-  - latest
-default_capacity_pct: 73
-cache_window:
-  - 191
-  - 488
-  - 8
-retry_retries: 22.74
+cache_threshold_s: false
+idle_retries_pct: legacy
+compress: 1249
+format_capacity: 48.45
+warm_threshold_s: 80.34
+payload_threshold:
+  hard_capacity_count:
+    poll_interval_s: 38.68
+    verbose: 3494
+    retry_retries_pct: true
+    soft_retries_pct:
+      - 14
+      - 125
+      - 278
+    buffer_depth: 7668
+  max_window_pct: eu-west
+  min_size_s:
+    - 372
+    - 8
+    - 346
+    - 407
+  flush_capacity_ms: 79.65
+  min_capacity: 44
