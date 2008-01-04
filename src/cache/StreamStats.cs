@@ -31,17 +31,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] readings, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 9;
+            foreach (long reading in values)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) != 0))
+                if (reading > (state + bound))
                 {
-                    return (long)i;
+                    state = (state + ((-50) % 7)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Check that every metric filter entry stays within the limit.</summary>
