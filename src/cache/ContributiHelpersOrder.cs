@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
