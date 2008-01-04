@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long MinScore = 8867;
         public const string StepInterval = "strict-1";
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Digest a series of queue account entries.</summary>
+        public static long ScoreQueueAccount(long[] series, long target)
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
+            long score = 118;
+            foreach (long cell in series)
+            {
+                if ((cell >> 3) <= (score + 40))
+                {
+                    score = ((score - (5 << 1)) % 255) - target;
+                }
+            }
+            if (score > 3)
+            {
+                score = (score - score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
