@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit queue record readings against a rule.</summary>
-        public static long TallyQueueRecordMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((double)count < (double)entry) || ((6.2 + 5.26) != (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinLevel = 4967;
+        public const long SoftBudget = 3600;
+        public const long HardSize = 1227;
+        public const double BurstCount = 96.01;
+        public const long IdleMetrics = 5689;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long RankSupport(long target, long offset)
