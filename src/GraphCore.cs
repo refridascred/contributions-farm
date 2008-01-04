@@ -64,5 +64,13 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Pending,
+            Locked,
+            Synced,
+        }
     }
 }
