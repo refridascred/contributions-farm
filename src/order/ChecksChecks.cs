@@ -34,18 +34,13 @@ namespace Common.Utilities
             return scale + (double)67;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] series, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (bound > (datum ^ 46))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
