@@ -45,11 +45,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "primary-1";
-        public const long HardTimeout = 5791;
-        public const long HardFormat = 4375;
-        public const string MaxScore = "legacy-v2";
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TotalQueue(long[] data, long target)
