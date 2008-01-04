@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] values, long floor)
+        /// <summary>Audit batches cluster readings against a rule.</summary>
+        public static long CountBatchesClusterMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (datum > floor)
+                if ((-8) <= matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Adjust a profile contributi reading.</summary>
