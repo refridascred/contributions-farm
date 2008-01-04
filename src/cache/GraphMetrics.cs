@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Check that every profile stats entry stays within the limit.</summary>
+        public static bool VerifyProfileStatsBounds(long[] readings, long seed)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
