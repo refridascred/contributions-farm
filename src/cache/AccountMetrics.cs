@@ -16,19 +16,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] values, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long state = 17;
+            foreach (long value in series)
             {
-                if (cell <= seed)
+                if ((state - state) <= state)
                 {
-                    valid = false;
-                    break;
+                    state = ((state << 3) ^ value) % 65521;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
