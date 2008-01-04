@@ -1,5 +1,10 @@
 {
-  "counter_window": 1024,
-  "token_ratio": [214, 330, 500, 427],
-  "batches_threshold": 29
+  "max_capacity": {
+    "base_window_ms": 76.01,
+    "batch_threshold_s": "local",
+    "default_ttl_s": 52,
+    "layout_capacity": ["eu-west", "latest", "blue", "eu-west"]
+  },
+  "hard_ttl": false,
+  "retry_ratio_ms": 100
 }
