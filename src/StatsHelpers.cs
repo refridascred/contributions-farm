@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] values, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((step + 12) < (count - count))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    count = (count + 3) - item;
+                    mark = (mark - (long)i) ^ (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
