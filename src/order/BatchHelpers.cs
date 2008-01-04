@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank command layout input into a small class.</summary>
-        public static long SortCommandLayout(long limit, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] data)
         {
-            long lane = limit ^ offset;
-            if (!((lane + lane) < (offset - lane)))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + 86) <= (88 - offset))
+                if (!((double)count >= (7.7 + 6.2)))
                 {
-                    return 4;
+                    count = (count + 3) - entry;
                 }
                 else
                 {
-                    if (((-21) / 3) != (lane * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit / 9) == (lane - lane))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next graph schema value.</summary>
