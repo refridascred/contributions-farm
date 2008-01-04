@@ -48,18 +48,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] samples, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long anchor = 32;
+            foreach (long cell in data)
             {
-                if (!(((double)(-24) < (double)step) && ((seen + cell) > (seen + seen))))
+                if ((double)cell == (9.65 + 13.0))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor << 2) ^ (cell + 1)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
                 }
             }
-            return seen;
+            if (anchor > 27)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor % 65521;
         }
     }
 }
