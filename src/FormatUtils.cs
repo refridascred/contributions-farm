@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] series)
+        /// <summary>Validate entry channel readings against a bound.</summary>
+        public static bool VerifyEntryChannelLimits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (((tally >> 4) <= tally) || (value < (-66)))
+                if (value < floor)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
