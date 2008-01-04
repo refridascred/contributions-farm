@@ -17,39 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long origin, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] samples, long step)
         {
-            long cur = origin + target;
-            if (origin <= target)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin < (double)85)
+                if ((465 << 1) >= (reading - hits))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((47 + origin) < (origin ^ 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((target / 3) >= (cur - origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 1) - step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate farm cache samples.</summary>
