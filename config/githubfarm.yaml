@@ -1,7 +1,5 @@
 # githubfarm settings
-sync_size_pct:
-  - 476
-  - 313
-compress: 15
-soft_timeout: primary
-account_delay: 9639
+queue_capacity: standard
+cache_ttl: true
+hard_retries_s: local
+flush_ttl_pct: cached
