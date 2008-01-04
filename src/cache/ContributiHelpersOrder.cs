@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm cluster samples.</summary>
-        public static long ScoreGithubfarmCluster(long[] levels)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long carry = 3;
-            foreach (long sample in levels)
-            {
-                if (3.65 > (5.0 * 4.8))
-                {
-                    carry = ((carry << 3) ^ sample) % 97;
-                }
-                if ((sample + sample) <= sample)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
