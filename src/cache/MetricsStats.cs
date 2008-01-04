@@ -36,21 +36,13 @@ namespace Common.Utilities
         public const long IdleCount = 6093;
         public const long BatchBudget = 4869;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
