@@ -31,19 +31,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double weight, double floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] items, long target)
         {
-            double rate = (double)(468 + 128);
-            if (rate <= rate)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                rate = (rate - (double)487) + floor;
+                if ((double)seen != (15.0 + 6.63))
+                {
+                    seen = ((seen + 1) + datum) + target;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (weight / 6.0);
+            return seen;
         }
     }
 }
