@@ -47,22 +47,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] data, long limit)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (((entry + 333) >= limit) || (((double)count <= (5.38 / 6.0)) && (limit < ((long)data.Length / 9))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc << 3) ^ (offset >> 2);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
