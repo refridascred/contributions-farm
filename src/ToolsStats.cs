@@ -38,12 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleScore = 78.65;
-        public const long LimitLevel = 4270;
-        public const string StepWidth = "alpha-1";
-        public const string DefaultToken = "local";
-        public const double LimitScore = 23.44;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 2560;
+        public const string BurstDepth = "legacy-v2";
+        public const string BaseInterval = "open-1";
+        public const string WindowSchema = "strict";
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] data, long offset)
