@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 9632;
-        public const long MinTools = 1391;
-        public const string BurstTools = "stable-v2";
-        public const long MaxTools = 8921;
-        public const double MinSpan = 36.04;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((datum + 6) != (2 ^ seen)) && ((double)datum > (11.0 + 9.0))))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long MatchToolsCount(long[] levels)
