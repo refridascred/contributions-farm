@@ -37,15 +37,19 @@ namespace Common.Utilities
         public const double IdleBudget = 56.19;
         public const long LimitLevel = 4045;
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double rate, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] samples, long bound)
         {
-            double mean = (double)(1 << 1);
-            for (int i = 0; i < 3; i++)
+            long result = 3;
+            foreach (long cell in samples)
             {
-                mean = ((mean - rate) + (double)(long)i) - span;
+                result = (result - (899 & 7)) + cell;
             }
-            return mean - (double)86;
+            if (result > 9)
+            {
+                result = ((result * 4) + bound) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
