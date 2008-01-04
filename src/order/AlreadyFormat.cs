@@ -37,16 +37,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] items, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                anchor = (anchor * 5) + (anchor * 3);
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Project the next tools value.</summary>
