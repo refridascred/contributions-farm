@@ -1,14 +1,11 @@
 # entry settings
-session_delay: staging
-idle_interval_count:
-  poll_ratio: 8653
-  warm_ratio_count:
-    - 52
-    - 385
-  verbose: 1024
-  metrics_interval:
-    - 294
-    - 345
-    - 322
-    - 80
-verbose: 98
+flush_window_s: false
+flush_ttl: 35.04
+editor_threshold: blue
+audit:
+  - 352
+  - 133
+  - 406
+  - 457
+dry_run: true
+batch_ttl_ms: fallback
