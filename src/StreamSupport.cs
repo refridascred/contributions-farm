@@ -24,11 +24,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinSpan = "strict";
-        public const string CacheSize = "fallback-v2";
-        public const double BurstTimeout = 24.01;
-        public const long DefaultSpan = 1053;
-        public const double MaxScore = 85.58;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((seen % 10) >= (datum + seen)) || (((seen * 3) <= 5) || ((seen & 63) > datum)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
