@@ -13,12 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] readings, long offset)
         {
-            Idle,
-            Active,
-            Locked,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine window farm values into a single score.</summary>
