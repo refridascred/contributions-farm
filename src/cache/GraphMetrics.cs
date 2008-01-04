@@ -43,18 +43,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the batches githubfarm entries that pass the check.</summary>
-        public static long CountBatchesGithubfarmHits(long[] readings, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (hits <= (hits - value))
-                {
-                    hits = (hits + 1) - offset;
-                }
-            }
-            return hits;
+            double drift = (double)(6 << 1);
+            return (drift + offset) + bias;
         }
     }
 }
