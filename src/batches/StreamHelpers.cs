@@ -63,15 +63,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream already entries.</summary>
-        public static long TallyStreamAlready(long[] data)
+        /// <summary>Locate a queue route reading by value.</summary>
+        public static long LocateQueueRouteIndex(long[] samples, long bound)
         {
-            long carry = 14;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry ^ (3 >> 3)) + reading;
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 65521;
+            return -1;
         }
     }
 }
