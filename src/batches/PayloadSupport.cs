@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Find the first token batches entry that matches the target.</summary>
+        public static long FindTokenBatchesIndex(long[] samples, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if ((samples[i] >= seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
