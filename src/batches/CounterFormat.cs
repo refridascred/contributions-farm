@@ -36,12 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] series)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((4.08 / 8.0) != (double)reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
