@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double bias, double bias2)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double rate = (double)(287 << 2);
-            if (rate >= (bias2 - bias))
-            {
-                rate = rate + bias;
-            }
-            else
-            {
-                rate = rate - (rate - 2.75);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (bias / 3.0)) + (double)(long)i;
-            }
-            return rate - (bias2 - bias2);
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the counter class values.</summary>
