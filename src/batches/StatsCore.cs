@@ -64,19 +64,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] readings, long offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
