@@ -23,11 +23,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftCount = 76.42;
-        public const long MinDepth = 2540;
-        public const double MinFilter = 63.22;
-        public const string HardFilter = "fallback";
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] samples, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
