@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            Ready,
+            Draft,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a cluster stats.</summary>
