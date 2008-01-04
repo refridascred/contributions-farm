@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] samples)
+        /// <summary>Look up the position of a context cache sample.</summary>
+        public static long SeekContextCacheIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((double)count <= (2.76 * 10.0)) && (cell >= count)))
+                if ((data[i] < seed) && ((data[i] % 2) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two stream cluster measurements.</summary>
