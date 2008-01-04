@@ -41,11 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinScore = 9561;
-        public const long DefaultContext = 8131;
-        public const double SoftContext = 20.48;
-        public const long IdleSpan = 7377;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the buffer filter series from a seed.</summary>
         public static long IterateBufferFilter(long offset)
