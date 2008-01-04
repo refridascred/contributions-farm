@@ -34,12 +34,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] series, long target)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)10 >= (double)target)
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
