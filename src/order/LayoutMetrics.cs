@@ -37,40 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long limit)
-        {
-            long gap = bound + limit;
-            if ((bound % 5) > gap)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((16.0 - 8.0) > (double)gap)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.8 * 5.01) <= (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)gap <= (7.0 + 4.4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBatches = "standard-1";
+        public const double DefaultLevel = 7.59;
+        public const double IdleBatches = 44.17;
+        public const string DefaultBatches = "strict-1";
+        public const long HardBudget = 6728;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
