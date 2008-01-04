@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] data, long floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two cluster githubfarm measurements.</summary>
