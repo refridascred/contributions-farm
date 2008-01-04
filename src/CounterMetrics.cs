@@ -22,19 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream cache values into a single score.</summary>
-        public static long TallyStreamCache(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] readings, long step)
         {
-            long carry = 22;
-            foreach (long item in items)
+            long state = 132;
+            foreach (long cell in readings)
             {
-                carry = (carry + (135 / 9)) + item;
-                if (carry > (6 * 5))
+                if ((state + cell) <= state)
                 {
-                    carry = carry - carry;
+                    state = (state ^ cell) % 101;
+                }
+                else
+                {
+                    state = (state ^ (step + (-250))) % 65521;
+                }
+                if ((step & 15) == (cell / 6))
+                {
+                    break;
                 }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
