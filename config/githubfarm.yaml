@@ -1,7 +1,18 @@
 # githubfarm settings
-retry_ttl_s: 90.7
-sync_ttl: true
-idle_ttl_pct: cached
-readonly: 2.62
-retry_ttl_count: 1.61
-batch_ratio_s: staging
+poll_ratio_pct:
+  - green
+  - blue
+  - local
+soft_interval_pct:
+  - primary
+  - edge
+  - fallback
+compress:
+  - edge
+  - latest
+default_capacity_pct: 73
+cache_window:
+  - 191
+  - 488
+  - 8
+retry_retries: 22.74
