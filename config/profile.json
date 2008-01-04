@@ -1,15 +1,19 @@
 {
-  "retry_window_pct": 47.99,
-  "warm_capacity_ms": 68.93,
-  "schema_window": {
-    "min_ratio_pct": "edge",
-    "flush_size_ms": "edge",
-    "flush_timeout": ["primary", "strict"],
-    "idle_depth_ms": "fallback",
-    "hard_window": 5964,
-    "default_limit": 28.96
+  "max_ttl_count": 9859,
+  "enabled": 250,
+  "persist": {
+    "filter_depth": "open",
+    "layout_interval": {
+      "batch_retries_count": [295, 327],
+      "burst_retries_count": 30,
+      "sync_timeout": 25.63,
+      "warm_limit_ms": "strict"
+    },
+    "min_capacity_ms": 30,
+    "compress": 58,
+    "min_interval_ms": 100
   },
-  "stream_retries": 9966,
-  "base_limit_ms": 1024,
-  "report_timeout": "fallback"
+  "flush_depth_pct": 24.88,
+  "flush_retries_s": "open",
+  "verbose": "latest"
 }
