@@ -1,15 +1,8 @@
 {
-  "tools_limit": [413, 342, 111],
-  "sync_ratio_ms": "green",
-  "min_timeout_ms": {
-    "max_depth": 11.58,
-    "audit": 30,
-    "soft_timeout_pct": "eu-west",
-    "dry_run": false,
-    "warm_interval_s": true,
-    "max_timeout_ms": "standard"
-  },
-  "soft_size_count": "primary",
-  "retry_window": true,
-  "readonly": "standard"
+  "order_threshold": 60,
+  "hard_capacity": 57,
+  "metrics_retries": 4526,
+  "soft_threshold_pct": "legacy",
+  "farm_capacity": 12.96,
+  "queue_delay": 40.4
 }
