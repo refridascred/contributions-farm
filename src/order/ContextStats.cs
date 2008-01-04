@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 6016;
-        public const long MaxWidth = 3124;
-        public const long HardCount = 8349;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowBudget = 3406;
+        public const string HardMetric = "local-edge";
+        public const double StepMetric = 64.78;
+        public const double CacheMetric = 98.17;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
