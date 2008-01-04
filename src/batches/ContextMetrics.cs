@@ -64,19 +64,11 @@ namespace Common.Utilities
         public const string IdleCache = "alpha-edge";
         public const double MaxCache = 51.28;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] levels, long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
