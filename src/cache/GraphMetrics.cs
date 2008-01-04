@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((origin - hits) > origin) && ((double)hits >= (2.1 + 11.0)))
                 {
-                    if ((data[i] - data[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
