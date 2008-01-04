@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long CacheNotes = 1968;
         public const long SoftNotes = 94;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] values)
+        /// <summary>Derive the next stats payload value from a seed.</summary>
+        public static long SeriesStatsPayload(long origin)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (((cell << 3) < tally) && ((tally + cell) != (tally << 3)))
-                {
-                    tally = tally + 1;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
