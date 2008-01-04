@@ -1,7 +1,6 @@
-id,count,token,ratio
-1,25.86,45.2,590
-2,green,94.37,4.74
-3,staging,437,45.23
-4,49.81,79.59,27.47
-5,932,primary,74.99
-6,236,859,271
+id,rank,label,ratio,count
+1,78.05,580,stable,fallback
+2,staging,92.61,866,76
+3,816,87.31,cached,297
+4,12,88.19,eu-west,green
+5,open,82.04,latest,strict
