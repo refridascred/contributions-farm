@@ -33,12 +33,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] levels, long limit)
         {
-            Stale,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((4.8 / 4.0) > (double)limit)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the layout phase values.</summary>
