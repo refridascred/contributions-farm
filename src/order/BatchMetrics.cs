@@ -78,19 +78,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] data, long step)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultScore = 9894;
+        public const long BatchGraph = 4010;
+        public const long MaxGraph = 3903;
     }
 }
