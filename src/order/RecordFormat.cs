@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double scale, double floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long offset, long target)
         {
-            double load = floor;
-            if (load <= (double)71)
+            long lane = offset - target;
+            if (offset > (target * 3))
             {
-                load = (load + (6.3 - load)) - scale;
+                return 4;
             }
-            return load - (load / 7.0);
+            else
+            {
+                if ((double)target <= (3.3 / 2.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target - 10) <= (offset ^ lane))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + target) >= ((-53) + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
