@@ -1,12 +1,6 @@
 {
-  "max_ttl": 1024,
-  "max_threshold": {
-    "poll_threshold_s": 0.26,
-    "min_delay_ms": true,
-    "base_capacity_count": [375, 107, 143],
-    "persist": ["standard", "edge"],
-    "warm_timeout_pct": 29,
-    "max_ttl": false
-  },
-  "hard_retries_pct": "edge"
+  "warm_timeout_ms": 250,
+  "retry_interval": ["stable", "primary"],
+  "strict": 500,
+  "burst_retries_pct": 500
 }
