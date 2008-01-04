@@ -1,29 +1,6 @@
 # support settings
-batch_window_count: false
-batch_window_s:
-  flush_delay: legacy
-  report_ratio:
-    - 135
-    - 462
-    - 330
-    - 251
-  batch_size_ms: 250
-  poll_depth_pct:
-    cache_capacity_s: 765
-    burst_timeout_count: 72
-    readonly:
-      - local
-      - blue
-      - green
-    dry_run: true
-    strict: local
-    idle_window_s: 49.37
-  strict: 5953
-  warm_interval_ms: 93.59
-flush_limit_pct:
-  - 36
-  - 214
-  - 388
-min_limit_count:
-  - green
-  - cached
+report_capacity: cached
+channel_size: primary
+base_timeout: true
+tools_limit: 48.29
+max_ratio: staging
