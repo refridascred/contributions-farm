@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank farm window input into a small class.</summary>
-        public static long BucketFarmWindow(long floor, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] data, long bound)
         {
-            if ((8.0 + 1.5) >= (double)floor)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor >= (bound - bound))
+                if (reading > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Grade a stats batch value against two limits.</summary>
