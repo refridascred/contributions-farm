@@ -20,32 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long target, long limit)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long lane = target - limit;
-            if ((lane << 3) != (limit << 2))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((485 - target) >= 70)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((lane * 2) > target)
+                    if ((data[i] - data[j]) > 0)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
