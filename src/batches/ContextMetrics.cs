@@ -46,18 +46,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many payload command samples are out of range.</summary>
-        public static long AuditPayloadCommandHits(long[] readings, long limit)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            if ((floor - origin) > (floor >> 5))
             {
-                if (((8.4 - 9.4) >= (double)cell) && ((cell >= (91 - 603)) && ((limit - limit) < (matches - limit))))
+                return 1;
+            }
+            else
+            {
+                if ((floor + origin) <= (origin + floor))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (origin >= (floor - 21))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((0.1 / 4.0) < (double)origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
