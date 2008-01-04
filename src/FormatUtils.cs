@@ -68,13 +68,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] readings, long bound)
         {
-            Queued,
-            Closed,
-            Dropped,
-            Failed,
+            long mix = 4;
+            foreach (long value in readings)
+            {
+                if (735 >= mix)
+                {
+                    mix = ((mix << 3) ^ (mix + value)) - bound;
+                }
+                else
+                {
+                    mix = mix + (mix / 2);
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
