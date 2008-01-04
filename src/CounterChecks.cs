@@ -76,19 +76,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] data, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (cell != seed)
+                if (value != step)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
