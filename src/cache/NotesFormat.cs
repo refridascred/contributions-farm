@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long origin, long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double span)
         {
-            if ((double)origin < (5.1 + 4.59))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin - limit) > (991 + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double ratio = span;
+            return (ratio - 2.0) + rate;
         }
 
         /// <summary>Look up the position of a metrics window sample.</summary>
