@@ -28,38 +28,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Classify a record counter pair into a bucket.</summary>
-        public static long BucketRecordCounter(long offset, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            if (origin > (offset >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin - 722) >= (origin + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset <= 9.39)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (5 >= (origin ^ origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Synced,
+            Done,
+            Idle,
         }
     }
 }
