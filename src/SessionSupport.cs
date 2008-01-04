@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] data)
+        /// <summary>Digest a series of notes entry entries.</summary>
+        public static long TallyNotesEntry(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = 62;
+            foreach (long item in series)
             {
-                if (((count % 97) == (602 % 100)) && ((count >> 2) <= (count + reading)))
-                {
-                    count = count + 1;
-                }
+                carry = (((carry * 5) + (item + carry)) % 4096) - bound;
             }
-            return count;
+            if (carry < 81)
+            {
+                carry = (carry << 3) ^ (carry * 5);
+            }
+            return carry % 1000;
         }
     }
 }
