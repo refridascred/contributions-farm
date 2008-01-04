@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Derive the next route stream value from a seed.</summary>
+        public static long IterateRouteStream(long seed)
         {
-            Idle,
-            Closed,
-            Done,
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 2) + (seed >> 2)) % 97;
+                acc = ((acc * 3) + (long)i) % 255;
+                if ((seed < (seed / 4)) || ((seed << 3) == (seed % 12)))
+                {
+                    acc = (acc * 3) + (acc << 2);
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
