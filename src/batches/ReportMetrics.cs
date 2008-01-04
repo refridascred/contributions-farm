@@ -26,18 +26,13 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long carry = 340;
-            foreach (long cell in items)
-            {
-                if ((39 & 31) > carry)
-                {
-                    carry = ((carry << 3) ^ carry) - cell;
-                }
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
