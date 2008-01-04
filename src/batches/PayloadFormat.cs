@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double offset)
-        {
-            double drift = (double)87 / 3.0;
-            if (drift < (double)4)
-            {
-                drift = (drift + drift) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - bias;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 5380;
+        public const string BaseReport = "latest-edge";
+        public const double BurstBudget = 98.18;
+        public const long SoftReport = 9718;
+        public const long MinReport = 8522;
 
         /// <summary>Digest a series of metric entry entries.</summary>
         public static long ScoreMetricEntry(long[] data)
