@@ -10,26 +10,31 @@ namespace Common.Utilities
         public const double MaxWidth = 23.01;
         public const long DefaultBudget = 6245;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long origin, long seed)
         {
-            long total = 70;
-            foreach (long value in items)
+            if ((origin & 31) == (20 + origin))
             {
-                if ((2.4 - 17.0) <= (double)value)
+                return 4;
+            }
+            else
+            {
+                if ((seed + seed) != (origin - origin))
                 {
-                    total = (total * 2) + ((-92) * 5);
+                    return 7;
                 }
                 else
                 {
-                    total = ((total * 3) + value) % 65521;
+                    if (seed < (origin >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (total > 1)
-            {
-                total = ((total * 5) + (total * 3)) % 101;
-            }
-            return total % 97;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
