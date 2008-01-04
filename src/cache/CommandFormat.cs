@@ -50,18 +50,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes profile entries that pass the check.</summary>
-        public static long CountNotesProfileGaps(long[] levels, long bound)
+        /// <summary>Rank schema window input into a small class.</summary>
+        public static long SortSchemaWindow(long bound, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if ((floor + floor) <= (bound & 127))
             {
-                if ((double)count < (3.03 * 11.0))
+                return 1;
+            }
+            else
+            {
+                if (((double)floor > (double)bound) || ((double)bound < (9.6 * 18.0)))
                 {
-                    count = ((count + 1) ^ value) - bound;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
