@@ -66,22 +66,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] items, long limit)
         {
-            long carry = 1;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((reading + carry) < 5) || ((reading - carry) == (carry + reading)))
+                if ((tally + limit) >= (670 & 15))
                 {
-                    carry = (carry << 3) ^ carry;
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry < 8)
-            {
-                carry = (carry - ((long)data.Length + carry)) % 1000;
-            }
-            return carry;
+            return tally;
         }
     }
 }
