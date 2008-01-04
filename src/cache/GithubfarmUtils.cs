@@ -22,18 +22,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] levels, long step)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double gain = (double)72;
+            if (gain <= 0.2)
             {
-                if ((matches << 1) < 162)
-                {
-                    matches = ((matches + 1) + sample) - step;
-                }
+                gain = (gain - rate) + floor;
             }
-            return matches;
+            return gain - (rate * 9.4);
         }
 
         /// <summary>Hold a farm options.</summary>
