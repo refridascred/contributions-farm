@@ -21,19 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long score = -760;
-            foreach (long datum in data)
-            {
-                score = ((score << 2) ^ (203 & 1)) - datum;
-            }
-            if (score < 0)
-            {
-                score = ((score << 3) ^ score) % 65521;
-            }
-            return score;
+            Failed,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
