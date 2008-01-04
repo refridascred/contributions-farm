@@ -31,22 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context notes readings against a rule.</summary>
-        public static long MeasureContextNotesOutliers(long[] series)
+        /// <summary>Measure how many route queue samples are out of range.</summary>
+        public static long MeasureRouteQueueMatches(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (matches <= (matches << 3))
+                if ((49 + offset) > offset)
                 {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
