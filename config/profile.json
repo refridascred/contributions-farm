@@ -1,12 +1,18 @@
 {
-  "context_threshold": {
-    "min_threshold_count": "fallback",
-    "base_ratio_count": "fallback",
-    "hard_timeout": 9789
+  "min_depth_count": {
+    "checks_timeout": [137, 313, 199],
+    "verbose": [477, 154],
+    "format_window": "blue"
   },
-  "min_timeout_ms": "legacy",
-  "default_retries_pct": "eu-west",
-  "max_window": "blue",
-  "checks_ratio": "staging",
-  "idle_timeout_ms": false
+  "verbose": {
+    "poll_interval_count": [161, 424],
+    "route_limit": ["eu-west", "blue", "green"],
+    "idle_size_s": ["fallback", "staging"],
+    "tools_size": 11.82,
+    "sync_timeout_pct": 250,
+    "min_threshold_s": true
+  },
+  "buffer_size": true,
+  "flush_ttl_s": "open",
+  "cluster_capacity": "edge"
 }
