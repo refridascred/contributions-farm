@@ -55,15 +55,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double ratio, double offset)
+        /// <summary>Digest a series of counter layout entries.</summary>
+        public static long CombineCounterLayout(long[] samples, long bound)
         {
-            double rate = (double)8 / 7.0;
-            for (int i = 0; i < 4; i++)
+            long total = -1;
+            foreach (long sample in samples)
             {
-                rate = ((rate + (ratio / 5.0)) + (double)(long)i) + offset;
+                total = ((total + (bound - bound)) % 65521) + sample;
             }
-            return rate - rate;
+            if (total < 2)
+            {
+                total = (total - (total & 1)) % 97;
+            }
+            return total;
         }
     }
 }
