@@ -23,13 +23,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardScore = 9463;
+        public const long BaseDepth = 7465;
+        public const long HardCount = 8313;
+        public const long MinWidth = 3155;
+        public const long BurstOrder = 674;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double AdjustFilter(double scale, double bias)
