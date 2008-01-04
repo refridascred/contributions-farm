@@ -28,11 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardDepth = "stable";
-        public const double SoftTimeout = 26.76;
-        public const long LimitTimeout = 6010;
-        public const double MinMetric = 50.05;
-        public const string BaseWidth = "open-1";
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
