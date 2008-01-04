@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels, long step)
+        /// <summary>Accumulate record payload samples.</summary>
+        public static long CombineRecordPayload(long[] series, long step)
         {
-            long state = 6;
-            foreach (long sample in levels)
+            long total = 254;
+            foreach (long sample in series)
             {
-                state = ((state * 4) + (sample & 15)) % 97;
-                if ((sample & 15) != (step - 10))
+                if ((5.1 * 15.0) >= (double)step)
                 {
-                    break;
+                    total = total ^ (sample - (-459));
                 }
             }
-            return state % 65521;
+            return total;
         }
 
         /// <summary>Fold a list of account readings.</summary>
