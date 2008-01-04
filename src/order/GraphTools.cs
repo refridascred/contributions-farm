@@ -42,39 +42,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long target, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] levels, long offset)
         {
-            long offset = target + bound;
-            if ((20.0 >= (double)target) && ((offset / 3) < bound))
+            bool found = true;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (target >= (offset + target))
+                if (cell > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + bound) < (offset + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset < (bound / 2)) || ((4.0 + 1.39) <= (double)target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the metric phase values.</summary>
