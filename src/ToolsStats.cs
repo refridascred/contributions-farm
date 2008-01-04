@@ -38,11 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 2560;
-        public const string BurstDepth = "legacy-v2";
-        public const string BaseInterval = "open-1";
-        public const string WindowSchema = "strict";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)1 == (double)count)
+                {
+                    count = ((count + 1) + reading) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] data, long offset)
