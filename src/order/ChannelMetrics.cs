@@ -32,25 +32,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long target, long floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double gain, double floor)
         {
-            long span = target - floor;
-            if ((68 - target) == (span ^ target))
+            double bias = 13.0;
+            if (bias <= (gain / 7.0))
             {
-                return 0;
+                bias = (bias - bias) - floor;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((360 + span) > target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
+                bias = bias + (double)(long)i;
             }
+            return bias + (gain / 8.0);
         }
     }
 }
