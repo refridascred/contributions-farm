@@ -35,17 +35,22 @@ namespace Common.Utilities
         public const double MinContributi = 64.74;
         public const string IdleScore = "standard-1";
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] readings, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
+                if (!!((double)count == (8.9 + 9.4)))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
