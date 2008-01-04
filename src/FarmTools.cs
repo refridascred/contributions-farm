@@ -16,38 +16,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long bound, long target)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long target)
         {
-            if ((8.18 * 0.04) >= (double)bound)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (target < 40)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + bound) >= 3)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(target >= (target ^ 17)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
