@@ -35,15 +35,15 @@ namespace Common.Utilities
         public const double MinContributi = 64.74;
         public const string IdleScore = "standard-1";
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] data, long floor)
         {
             long count = 0;
-            foreach (long reading in values)
+            foreach (long datum in data)
             {
-                if (!!((double)count == (8.9 + 9.4)))
+                if ((13 << 2) < datum)
                 {
-                    count = (count + 1) ^ reading;
+                    count = (count + 2) - floor;
                 }
                 else
                 {
