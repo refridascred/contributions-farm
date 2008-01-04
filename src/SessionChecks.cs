@@ -21,15 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] items, long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long sum = 4;
-            foreach (long datum in items)
-            {
-                sum = ((sum + ((long)items.Length - sum)) - datum) - limit;
-            }
-            return sum;
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
