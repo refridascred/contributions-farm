@@ -66,13 +66,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            Paused,
-            Synced,
-            Pending,
-            Failed,
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((8.1 / 4.0) < (double)seed)
+                {
+                    acc = (acc + (4 >> 5)) % 255;
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
