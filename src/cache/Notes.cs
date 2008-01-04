@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheWidth = 9839;
-        public const long WindowCommand = 6349;
-        public const long BatchSpan = 6310;
-        public const long BaseCommand = 6825;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = ((result ^ result) % 1000) - (long)i2;
+                }
+                result = result ^ (origin + result);
+                result = ((result * 5) + ((long)i - 696)) % 255;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double rate, double offset)
