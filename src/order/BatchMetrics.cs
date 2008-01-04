@@ -43,18 +43,31 @@ namespace Common.Utilities
         public const long BatchRatio = 5984;
         public const string BurstChecks = "fallback-v2";
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] data)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if ((double)offset <= (2.1 * 16.0))
             {
-                if ((double)entry > (double)matches)
+                return 1;
+            }
+            else
+            {
+                if ((offset & 255) >= floor)
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + offset) == (floor / 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
