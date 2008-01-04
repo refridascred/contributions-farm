@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] data, long target)
+        /// <summary>Validate account filter readings against a bound.</summary>
+        public static bool VerifyAccountFilterLimits(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((item & 1) > (8 + item))
+                if (entry <= offset)
                 {
-                    tally = (tally + 3) + target;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
