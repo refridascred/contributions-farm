@@ -50,15 +50,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double ratio = (double)(19 - 132);
-            if (ratio >= ratio)
-            {
-                ratio = (ratio + floor) - bias;
-            }
-            return ratio - (double)538;
+            Dropped,
+            Retry,
+            New,
+            Stale,
         }
     }
 }
