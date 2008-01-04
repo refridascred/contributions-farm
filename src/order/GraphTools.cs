@@ -77,13 +77,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Dropped,
-            Retry,
             New,
-            Stale,
+            Queued,
+            Pending,
+            Locked,
+            Synced,
         }
     }
 }
