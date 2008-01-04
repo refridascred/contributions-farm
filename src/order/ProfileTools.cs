@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] samples, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor + (2 + anchor);
-                if (810 <= floor)
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
                 {
-                    anchor = anchor + (long)i;
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
