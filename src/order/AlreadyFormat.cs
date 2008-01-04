@@ -36,10 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftScore = 7332;
-        public const long BurstCount = 8648;
-        public const double LimitFormat = 28.16;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double gain, double offset)
+        {
+            double bias = offset;
+            if (bias < (bias * 19.0))
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias - (gain - offset);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (offset * 4.25);
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BurstNotes = "open-1";
