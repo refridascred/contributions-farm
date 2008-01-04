@@ -50,15 +50,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double weight, double floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double weight2 = (3.0 - floor) + (weight - 3.8);
-            if (weight2 > (double)86)
-            {
-                weight2 = weight2 - (floor - floor);
-            }
-            return weight2 + (floor - weight);
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
