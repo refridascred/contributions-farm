@@ -22,22 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel notes samples.</summary>
-        public static long ScoreChannelNotes(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values)
         {
-            long acc = -95;
-            foreach (long value in samples)
+            long acc = 96;
+            foreach (long datum in values)
             {
-                if ((acc > (61 % 10)) && ((double)acc == (1.0 * 8.02)))
+                if ((58 - acc) > (datum & 15))
                 {
-                    acc = ((acc - (acc * 5)) % 1000) - value;
+                    acc = acc ^ acc;
+                }
+                if ((acc + 3) <= (datum * 2))
+                {
+                    acc = ((acc * 2) + datum) % 255;
                 }
             }
-            if (acc > 278)
+            if (acc > 455)
             {
-                acc = acc - acc;
+                acc = (acc + (acc * 3)) % 1000;
             }
-            return acc % 1000;
+            return acc;
         }
 
         /// <summary>Describe the metric status values.</summary>
