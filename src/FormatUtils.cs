@@ -46,25 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long limit, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long bound)
         {
-            long prev = limit ^ step;
-            if ((limit - step) < ((-569) + 843))
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((prev + step) == (step >> 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return total;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
