@@ -46,25 +46,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a route account value against two limits.</summary>
-        public static long RankRouteAccount(long step, long step2)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long next = step ^ step2;
-            if ((step + step2) < step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((next << 2) <= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
