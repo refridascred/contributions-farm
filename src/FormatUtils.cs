@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long BaseReport = 7548;
         public const long DefaultSpan = 7232;
 
-        /// <summary>Derive the next support route value from a seed.</summary>
-        public static long StepSupportRoute(long floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long sum = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = (((sum << 2) ^ (sum / 8)) % 1000) + (long)i2;
-                }
-                sum = sum - (floor + floor);
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Pending,
+            Idle,
+            Active,
         }
 
         /// <summary>Accumulate notes samples.</summary>
