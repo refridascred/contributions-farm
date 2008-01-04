@@ -71,17 +71,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 92;
+            foreach (long entry in readings)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result << 2) ^ (result & 255);
+                result = (result << 3) ^ (entry + result);
             }
-            return -1;
+            if (result > 4)
+            {
+                result = result - (6 >> 2);
+            }
+            return result % 97;
         }
     }
 }
