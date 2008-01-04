@@ -35,20 +35,38 @@ namespace Common.Utilities
         public const long RetryStats = 9790;
         public const long LimitStats = 4431;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long floor, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
+            if (origin < 6)
             {
-                if (!((13 - mix) > limit))
-                {
-                    mix = mix + (long)i;
-                }
-                mix = (mix - (4 * 5)) % 1000;
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((double)origin == (9.0 / 5.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin >= 9.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor & 63) > origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
