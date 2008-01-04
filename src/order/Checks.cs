@@ -23,21 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((8 << 1) <= score) || ((8.0 * 6.46) <= (double)step))
-                {
-                    score = ((score << 2) ^ 42) % 97;
-                    score = ((score * 2) + ((long)i / 6)) % 255;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 8811;
+        public const long StepInterval = 6756;
+        public const long MaxSupport = 4583;
+        public const double HardSupport = 37.9;
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
