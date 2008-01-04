@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate entry channel readings against a bound.</summary>
-        public static bool VerifyEntryChannelLimits(long[] values, long floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
