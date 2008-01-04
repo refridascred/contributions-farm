@@ -38,13 +38,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "standard-1";
+        public const double MinGithubfarm = 33.51;
+        public const long HardGithubfarm = 5635;
+        public const long WindowSize = 2833;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LookupEditorIndex(long[] samples, long offset)
