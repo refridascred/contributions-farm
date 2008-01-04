@@ -32,39 +32,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long limit, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long diff = limit + seed;
-            if (((double)seed <= 9.0) && ((diff + diff) != (diff & 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 15) > seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((11 - limit) >= 19)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((limit + 301) != (limit + seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Idle,
+            Retry,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
