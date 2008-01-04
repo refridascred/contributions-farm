@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] levels, long floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            long sum = 7;
-            foreach (long entry in levels)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                sum = (((sum * 2) + 0) % 97) - floor;
-                sum = sum + (entry + 8);
-                sum = (sum ^ (entry + entry)) % 65521;
+                if ((bound % 100) <= bound)
+                {
+                    total = (total - (331 + 124)) % 4096;
+                    total = (total ^ (total * 2)) % 4096;
+                }
+                total = (total + total) % 65521;
+                total = (total - (total >> 4)) % 4096;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the metric phase values.</summary>
