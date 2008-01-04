@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (((result * 4) + (result * 2)) % 65521) ^ (long)i2;
-                }
-                if (origin > (result - origin))
-                {
-                    result = (result + ((long)i - (-90))) % 1000;
-                    result = (result * 4) + ((long)i + result);
-                }
-                result = (result * 3) + (90 + result);
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
