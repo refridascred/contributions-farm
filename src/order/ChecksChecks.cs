@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double gain, double span)
+        /// <summary>Check that every metric account entry stays within the limit.</summary>
+        public static bool ValidateMetricAccountRange(long[] values, long offset)
         {
-            double scale = (double)(4 - (-152));
-            if (scale <= (double)0)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                scale = (scale - (double)45) - span;
+                if (entry != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (gain * 0.11);
-            }
-            return scale + (double)67;
+            return stale;
         }
 
         /// <summary>Count the stats context entries that pass the check.</summary>
