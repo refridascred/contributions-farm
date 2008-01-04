@@ -1,8 +1,19 @@
 {
-  "verbose": "legacy",
-  "readonly": 33.84,
-  "cluster_size": 62.77,
-  "default_ttl": "edge",
-  "stream_delay": 7.67,
-  "burst_size": false
+  "route_size": [389, 402, 130],
+  "strict": 500,
+  "flush_size_ms": {
+    "enabled": 35,
+    "audit": {
+      "max_delay_ms": "cached",
+      "enabled": "local",
+      "min_limit_pct": 81,
+      "hard_window": 35,
+      "tools_ratio": 49,
+      "flush_capacity": ["eu-west", "standard", "fallback"]
+    },
+    "contributi_depth": 1024
+  },
+  "cache_window": "stable",
+  "sync_ttl": [285, 367, 238],
+  "checks_window": 22.79
 }
