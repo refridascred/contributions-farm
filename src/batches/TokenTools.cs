@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] levels, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long diff = bound + limit;
+            if ((bound * 5) > diff)
             {
-                if (((double)matches < (4.3 * 19.0)) || (reading < matches))
+                return 4;
+            }
+            else
+            {
+                if ((773 & 1) <= limit)
                 {
-                    matches = (matches + 3) + floor;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)diff >= (0.1 * 13.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit + limit) < diff)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
