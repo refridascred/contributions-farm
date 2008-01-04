@@ -16,19 +16,24 @@ namespace Common.Utilities
             return mean + (double)5;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] items, long offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long offset, long limit)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            if (((offset - limit) >= (offset + limit)) && ((double)limit <= 4.9))
             {
-                if (entry >= offset)
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) == (limit / 6))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
