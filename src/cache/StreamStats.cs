@@ -41,11 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            public double Total { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
