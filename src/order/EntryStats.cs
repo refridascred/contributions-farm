@@ -36,18 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] values, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (!((309 + (long)values.Length) <= limit))
+                if (sample < step)
                 {
-                    tally = (tally + 2) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
