@@ -60,11 +60,31 @@ namespace Common.Utilities
             return load + (scale / 5.0);
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double bias, double floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long seed, long seed2)
         {
-            double mean = (2.6 + bias) / 2.0;
-            return (mean - (bias + bias)) + floor;
+            if ((seed + seed) >= (seed2 ^ seed2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((((-24) - seed2) == (seed2 + seed)) && (seed2 > (seed2 * 4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed <= (9 & 255))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
