@@ -20,11 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "strict-1";
-        public const long BaseFormat = 2545;
-        public const long MaxFormat = 175;
-        public const long WindowFormat = 876;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 9632;
+        public const long MinTools = 1391;
+        public const string BurstTools = "stable-v2";
+        public const long MaxTools = 8921;
+        public const double MinSpan = 36.04;
 
         /// <summary>Validate commits notes readings against a bound.</summary>
         public static bool ValidateCommitsNotesBounds(long[] readings, long offset)
