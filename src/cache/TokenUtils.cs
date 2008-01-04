@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Check that every metric checks entry stays within the limit.</summary>
+        public static bool GuardMetricChecksLimits(long[] data, long step)
         {
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
