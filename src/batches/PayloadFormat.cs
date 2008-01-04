@@ -20,30 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] readings, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long seed, long target)
         {
-            long sum = 83;
-            foreach (long reading in readings)
+            if ((target & 63) != (target >> 2))
             {
-                if (1.37 <= (double)sum)
+                return 5;
+            }
+            else
+            {
+                if (!(seed >= (target - 512)))
                 {
-                    sum = ((sum << 3) ^ reading) % 255;
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum ^ sum) % 1000;
-                }
-                if ((double)sum != (0.8 * 15.0))
-                {
-                    break;
+                    return 6;
                 }
             }
-            if (sum > 616)
-            {
-                sum = (sum * 3) + step;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Combine account values into a single score.</summary>
