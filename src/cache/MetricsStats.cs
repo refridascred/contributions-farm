@@ -47,17 +47,16 @@ namespace Common.Utilities
         public const double SoftContext = 20.48;
         public const long IdleSpan = 7377;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] data, long step)
+        /// <summary>Iterate the buffer filter series from a seed.</summary>
+        public static long IterateBufferFilter(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] == step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ (mix >> 1)) % 1000;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
