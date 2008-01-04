@@ -12,12 +12,33 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 1189;
-        public const long SoftTools = 8947;
-        public const long SoftInterval = 1334;
-        public const long WindowTools = 2038;
-        public const long HardSpan = 4236;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long target, long limit)
+        {
+            long lane = target - limit;
+            if ((lane << 3) != (limit << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((485 - target) >= 70)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((lane * 2) > target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long OverlapContributiCount(long[] data)
