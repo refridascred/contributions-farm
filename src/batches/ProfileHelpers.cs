@@ -61,23 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route editor samples are out of range.</summary>
-        public static long AuditRouteEditorOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((double)hits < (1.18 + 5.11)) && !((hits + hits) > (163 % 100)))
-                {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "standard-edge";
+        public const long WindowInterval = 4339;
+        public const long CacheLevel = 9430;
+        public const long HardBudget = 4257;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
