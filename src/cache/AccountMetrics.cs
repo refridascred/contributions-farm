@@ -30,19 +30,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((2.0 / 5.0) < (double)reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchLevel = 12.61;
+        public const double MinContributi = 64.74;
+        public const string IdleScore = "standard-1";
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LocateGraphIndex(long[] readings, long offset)
