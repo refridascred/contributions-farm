@@ -28,19 +28,21 @@ namespace Common.Utilities
         public const long MinLevel = 5649;
         public const string IdleStream = "alpha-v2";
 
-        /// <summary>Check that every context buffer entry stays within the limit.</summary>
-        public static bool GuardContextBufferRange(long[] levels, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Digest a series of session token entries.</summary>
