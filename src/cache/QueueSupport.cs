@@ -49,18 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] samples)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading + reading) != (reading ^ 94))
+                if (data[i] < step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
