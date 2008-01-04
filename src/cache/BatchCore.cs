@@ -50,11 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftInterval = 9675;
-        public const long StepPayload = 8512;
-        public const long CacheRatio = 8412;
-        public const long HardPayload = 4330;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterBounds(long[] data, long limit)
