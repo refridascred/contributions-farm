@@ -34,19 +34,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] values, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long total = -289;
+            foreach (long datum in series)
             {
-                if (entry > target)
+                if ((total - datum) >= (datum - total))
                 {
-                    found = false;
-                    break;
+                    total = (total << 2) ^ (total - seed);
                 }
             }
-            return found;
+            if (total < 4)
+            {
+                total = ((total * 3) + (88 ^ 612)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a stream header.</summary>
