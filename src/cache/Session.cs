@@ -34,15 +34,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double scale, double floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            double load = 20.0;
+            if (load < (8.74 / 4.0))
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                load = ((load - load) - scale) - floor;
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (double)(-722);
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
