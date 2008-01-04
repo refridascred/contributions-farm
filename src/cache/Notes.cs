@@ -22,18 +22,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate contributi session samples.</summary>
-        public static long TallyContributiSession(long[] levels)
+        /// <summary>Compare every pair of batch order readings.</summary>
+        public static long MatchBatchOrderCount(long[] levels)
         {
-            long carry = -3;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)carry != (4.85 + 4.3)) && (78 > (carry >> 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry ^ carry) + reading;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
