@@ -23,22 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] series, long seed)
+        /// <summary>Digest a series of window farm entries.</summary>
+        public static long TallyWindowFarm(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long carry = 69;
+            foreach (long value in samples)
             {
-                if (((cell << 1) <= (4 << 1)) && (((matches >> 5) == (matches - matches)) && ((matches + cell) > matches)))
+                if (!(6 < (carry + 831)))
                 {
-                    matches = (matches + 2) + seed;
+                    carry = carry + (value % 10);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (carry + (carry / 8)) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Match up layout samples.</summary>
