@@ -20,15 +20,22 @@ namespace Common.Utilities
         public const string MinRatio = "alpha-edge";
         public const double MaxDepth = 98.74;
 
-        /// <summary>Adjust a profile contributi reading.</summary>
-        public static double AdjustProfileContributi(double weight, double span)
+        /// <summary>Audit channel checks readings against a rule.</summary>
+        public static long CountChannelChecksGaps(long[] items)
         {
-            double gain = (double)(-45) + (weight + weight);
-            if (gain <= (gain * 3.0))
+            long count = 0;
+            foreach (long datum in items)
             {
-                gain = (gain + (gain * 2.0)) - span;
+                if ((datum + datum) >= (count >> 3))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return gain + (double)771;
+            return count;
         }
     }
 }
