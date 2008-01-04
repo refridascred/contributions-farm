@@ -42,13 +42,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Locate a layout tools reading by value.</summary>
+        public static long LocateLayoutToolsIndex(long[] items, long seed)
         {
-            Failed,
-            Paused,
-            Synced,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
