@@ -55,22 +55,19 @@ namespace Common.Utilities
         public const long SoftDepth = 3983;
         public const long WindowScore = 3754;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((sample & 3) > (matches * 5))
+                if (entry >= bound)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
