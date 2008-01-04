@@ -1,7 +1,13 @@
 {
-  "min_ttl_ms": 250,
-  "hard_delay_s": [248, 315, 208, 41],
-  "enabled": "blue",
-  "flush_timeout": 81,
-  "record_capacity": 91.41
+  "enabled": 76.95,
+  "flush_depth": 54.55,
+  "queue_delay": 500,
+  "cache_size": {
+    "hard_threshold_count": false,
+    "format_limit": 27,
+    "burst_delay": "edge",
+    "base_threshold_pct": false,
+    "base_interval_ms": "eu-west",
+    "readonly": 4582
+  }
 }
