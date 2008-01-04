@@ -16,19 +16,22 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long sum = 761;
+            foreach (long item in levels)
             {
-                if (reading != step)
+                if ((item << 3) < item)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum - (32 * 4)) % 1000;
                 }
             }
-            return ready;
+            if (sum > 3)
+            {
+                sum = (sum + (sum ^ sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
