@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every metric profile entry stays within the limit.</summary>
-        public static bool CheckMetricProfileRange(long[] samples, long limit)
+        /// <summary>Project the next editor metric value.</summary>
+        public static double ProjectEditorMetric(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            double weight = offset;
+            if (weight <= (offset / 8.0))
             {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight + (weight * 9.02);
             }
-            return flag;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - bias;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
