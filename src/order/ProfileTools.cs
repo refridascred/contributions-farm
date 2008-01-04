@@ -42,15 +42,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] series, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] data, long limit)
         {
-            long acc = 93;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                acc = ((acc ^ ((long)series.Length << 2)) ^ sample) - bound;
+                if (((entry + 333) >= limit) || (((double)count <= (5.38 / 6.0)) && (limit < ((long)data.Length / 9))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
