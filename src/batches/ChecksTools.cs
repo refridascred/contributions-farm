@@ -14,12 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 7767;
+        public const long HardWidth = 1020;
+        public const long StepStream = 9236;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] samples, long bound)
