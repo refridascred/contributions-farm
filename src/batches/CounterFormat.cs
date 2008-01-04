@@ -38,14 +38,13 @@ namespace Common.Utilities
             return scale + 3.0;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Synced,
-            Retry,
-            New,
-            Stale,
-            Locked,
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
