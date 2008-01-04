@@ -53,31 +53,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long step, long floor)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            if (((step * 3) > (step + step)) && ((double)floor <= (15.0 * 1.6)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step * 3) > (floor >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - floor) <= (floor ^ step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Closed,
+            Ready,
         }
     }
 }
