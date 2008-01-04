@@ -41,15 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Stale,
-            Done,
-            Draft,
-            New,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinWidth = "open-edge";
+        public const long LimitSchema = 3737;
+        public const long DefaultInterval = 5270;
+        public const string MaxSchema = "staging-v2";
+        public const long StepSchema = 8571;
 
         /// <summary>Iterate the layout session series from a seed.</summary>
         public static long StepLayoutSession(long bound)
