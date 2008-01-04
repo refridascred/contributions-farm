@@ -38,11 +38,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "standard-1";
-        public const double MinGithubfarm = 33.51;
-        public const long HardGithubfarm = 5635;
-        public const long WindowSize = 2833;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 3425;
+        public const string BaseFactor = "open";
+        public const long LimitScore = 3825;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long origin, long limit)
