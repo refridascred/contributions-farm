@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Locked,
-            Synced,
-            Retry,
-            Ready,
-            Paused,
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
