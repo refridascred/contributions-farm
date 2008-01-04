@@ -38,9 +38,20 @@ namespace Common.Utilities
         public const long RetryStats = 9790;
         public const long LimitStats = 4431;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 9705;
-        public const long DefaultSupport = 9650;
-        public const long HardSpan = 1849;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((13 - mix) > limit))
+                {
+                    mix = mix + (long)i;
+                }
+                mix = (mix - (4 * 5)) % 1000;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
