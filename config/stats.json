@@ -1,18 +1,5 @@
 {
-  "soft_depth_count": "fallback",
-  "entry_delay": {
-    "verbose": [89, 70, 500],
-    "strict": 100,
-    "burst_capacity": {
-      "poll_threshold_s": "open",
-      "warm_ttl_ms": 7166,
-      "batch_ratio_s": 100,
-      "burst_delay": "primary",
-      "cache_timeout_ms": true,
-      "record_depth": false
-    },
-    "readonly": "blue",
-    "min_capacity_count": "stable"
-  },
-  "warm_depth_count": "staging"
+  "idle_ttl_ms": true,
+  "warm_timeout": 34,
+  "poll_retries_s": ["blue", "open"]
 }
