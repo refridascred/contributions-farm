@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            Retry,
-            Failed,
-            Done,
-            Ready,
-            Draft,
+            long result = step;
+            for (int i = 0; i < 8; i++)
+            {
+                result = result - ((long)i >> 3);
+                if ((((long)i + step) >= (long)i) || ((long)i > (result & 3)))
+                {
+                    result = (result + (step & 31)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
