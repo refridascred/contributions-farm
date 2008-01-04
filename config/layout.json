@@ -1,6 +1,11 @@
 {
-  "min_timeout": "open",
-  "cache_limit_s": 85,
-  "hard_limit": "legacy",
-  "burst_window": "green"
+  "hard_limit": false,
+  "schema_retries": {
+    "persist": ["local", "primary"],
+    "checks_interval": "staging",
+    "burst_ttl": 15.85
+  },
+  "idle_delay": "local",
+  "idle_delay_s": 81.11,
+  "sync_timeout_s": false
 }
