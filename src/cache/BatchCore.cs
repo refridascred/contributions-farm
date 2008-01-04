@@ -67,22 +67,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] readings, long seed)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)tally <= (double)seed)
-                {
-                    tally = (tally + 2) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
