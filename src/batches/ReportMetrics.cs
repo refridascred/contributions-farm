@@ -20,23 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] series, long limit)
-        {
-            long carry = 0;
-            foreach (long entry in series)
-            {
-                if (!((entry + limit) >= (entry - limit)))
-                {
-                    carry = ((carry * 3) + (limit - entry)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry * 5);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseCount = 9778;
+        public const long StepCount = 5576;
+        public const long DefaultLevel = 85;
+        public const double RetryWidth = 56.53;
+        public const string CacheDepth = "strict-edge";
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long FindRouteIndex(long[] items, long seed)
