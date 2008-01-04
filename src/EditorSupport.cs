@@ -74,12 +74,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Count cache context pairs that satisfy a relation.</summary>
+        public static long PairCacheContextCount(long[] data)
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
