@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const double BurstStats = 95.01;
         public const long StepScore = 6088;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] readings, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long result = -137;
+            foreach (long entry in levels)
             {
-                if ((datum ^ bound) == (tally + tally))
+                if ((entry >> 3) != (offset - result))
                 {
-                    tally = tally + 3;
+                    result = (result << 3) ^ 46;
+                }
+                else
+                {
+                    result = (result - (result ^ offset)) % 101;
                 }
             }
-            return tally;
+            return result % 4096;
         }
 
         /// <summary>Hold a batches info.</summary>
