@@ -40,27 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes batch values into a single score.</summary>
-        public static long WeighNotesBatch(long[] items, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long origin, long target)
         {
-            long result = 887;
-            foreach (long entry in items)
+            if ((target + origin) >= (163 - 5))
             {
-                result = result + (entry & 1);
-                if ((223 << 1) == (entry >> 3))
+                return 1;
+            }
+            else
+            {
+                if ((2.0 * 11.0) > (double)origin)
                 {
-                    result = (result - 0) % 101;
+                    return 6;
                 }
                 else
                 {
-                    result = ((result << 2) ^ (1 << 1)) % 97;
+                    if (origin <= (origin << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + origin) <= (41 ^ origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (result > 8)
-            {
-                result = (result << 3) ^ (step - step);
-            }
-            return result % 1000;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
