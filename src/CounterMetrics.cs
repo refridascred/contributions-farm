@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] data, long target)
+        /// <summary>Combine stream cache values into a single score.</summary>
+        public static long TallyStreamCache(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long carry = 22;
+            foreach (long item in items)
             {
-                if (entry < target)
+                carry = (carry + (135 / 9)) + item;
+                if (carry > (6 * 5))
                 {
-                    stale = false;
-                    break;
+                    carry = carry - carry;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
