@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long BaseBudget = 8822;
         public const long HardSpan = 8472;
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            Retry,
-            Idle,
-            Pending,
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
