@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long slot = floor ^ step;
-            if ((double)slot == (7.96 * 6.1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 2) >= (step >> 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
