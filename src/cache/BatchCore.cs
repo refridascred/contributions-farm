@@ -52,12 +52,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
             public long Region { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
