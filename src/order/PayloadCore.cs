@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of token graph readings.</summary>
-        public static long ScoreTokenGraph(long[] data, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] series, long target)
         {
-            long state = 22;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state * 5) + ((-228) + 2)) % 97) ^ entry;
-                state = (state + (limit << 3)) % 1000;
+                if ((series[i] < target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
