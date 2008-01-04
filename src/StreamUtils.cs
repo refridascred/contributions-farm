@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheLevel = "primary-1";
-        public const long StepFilter = 9985;
-        public const double RetryFilter = 32.85;
-        public const long CacheFilter = 3761;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstSize = 55.0;
+        public const string MaxLevel = "cached-1";
+        public const long MaxSpan = 8644;
+        public const string IdleFactor = "staging";
 
         /// <summary>Check that every account layout entry stays within the limit.</summary>
         public static bool ValidateAccountLayoutLimits(long[] samples, long target)
