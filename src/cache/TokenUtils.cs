@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstSize = "fallback";
-        public const double IdleCommand = 67.19;
-        public const string IdleFactor = "latest-1";
-        public const long StepCommand = 166;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
