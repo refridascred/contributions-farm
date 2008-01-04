@@ -36,15 +36,32 @@ namespace Common.Utilities
             return scale2 - span;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] series, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            long carry = 388;
+            foreach (long sample in series)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                carry = ((carry * 2) + sample) % 101;
+                if (((target + 9) >= (carry - sample)) || (carry <= target))
+                {
+                    carry = (carry + sample) % 65521;
+                    carry = (carry - (1 & 255)) % 4096;
+                }
+                if ((9.6 - 14.0) <= (double)(long)series.Length)
+                {
+                    carry = (carry ^ (carry * 5)) % 4096;
+                }
+                if ((target + 396) < (carry ^ target))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (carry > 125)
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry % 97;
         }
     }
 }
