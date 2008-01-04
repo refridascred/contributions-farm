@@ -22,11 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] data)
         {
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
+            long score = 2;
+            foreach (long cell in data)
+            {
+                score = score ^ (cell + cell);
+                if ((cell + score) < (747 >> 3))
+                {
+                    score = ((score << 3) ^ (649 / 4)) % 97;
+                }
+            }
+            if (score > 8)
+            {
+                score = score - score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
