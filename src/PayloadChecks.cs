@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long mark = -713;
+            foreach (long cell in data)
             {
-                if (!((double)seed <= (double)total))
+                if (5.68 > (double)mark)
                 {
-                    total = (total ^ (seed - 9)) % 101;
+                    mark = ((mark + (cell << 1)) % 255) + seed;
                 }
-                total = ((total * 3) + 79) % 4096;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = (total + seed) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            if (mark < 7)
+            {
+                mark = (mark + (941 - 291)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the entry channel series from a seed.</summary>
