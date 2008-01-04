@@ -20,22 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many editor stream samples are out of range.</summary>
-        public static long MeasureEditorStreamHits(long[] values)
+        /// <summary>Find the first editor order entry that matches the target.</summary>
+        public static long FindEditorOrderIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum > (datum >> 4))
+                if (items[i] >= origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
