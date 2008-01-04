@@ -36,15 +36,14 @@ namespace Common.Utilities
             return load + (double)(-722);
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double bias = weight;
-            if (bias > (double)4)
-            {
-                bias = bias - offset;
-            }
-            return bias - 2.8;
+            Ready,
+            Synced,
+            Draft,
+            Active,
+            Done,
         }
     }
 }
