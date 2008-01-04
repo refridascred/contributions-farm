@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (seed >= entry)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 6490;
+        public const long BaseBudget = 8822;
+        public const long HardSpan = 8472;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
