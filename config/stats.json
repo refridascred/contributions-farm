@@ -1,6 +1,7 @@
 {
-  "batch_timeout_ms": 500,
-  "route_limit": "latest",
-  "entry_size": true,
-  "verbose": "edge"
+  "poll_threshold_count": 42.35,
+  "max_retries_pct": 89.51,
+  "metrics_limit": 3.84,
+  "warm_threshold_count": 100,
+  "enabled": 3.8
 }
