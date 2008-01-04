@@ -47,25 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long step, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] items, long seed)
         {
-            long slot = step + target;
-            if (target > (step + target))
+            bool valid = true;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((slot >> 5) != (slot & 1))
+                if (datum != seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
