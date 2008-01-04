@@ -1,12 +1,11 @@
 {
-  "min_depth_s": {
-    "max_interval_s": 9219,
-    "max_ratio_s": 18.63,
-    "strict": 1024,
-    "retry_retries_s": "fallback"
+  "max_threshold_ms": {
+    "default_ratio_s": ["strict", "edge", "edge"],
+    "audit": "staging",
+    "batch_window_ms": false,
+    "idle_retries_pct": false
   },
-  "strict": "fallback",
-  "poll_timeout_count": 50.07,
-  "farm_window": "standard",
-  "cache_size": 44.98
+  "batch_timeout_ms": false,
+  "account_retries": "fallback",
+  "persist": false
 }
