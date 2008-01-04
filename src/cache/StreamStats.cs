@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] items, long step)
+        /// <summary>Fold a list of format schema readings.</summary>
+        public static long FoldFormatSchema(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long total = -92;
+            foreach (long entry in series)
             {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (((total - (9 * 3)) % 97) + entry) - seed;
             }
-            return ready;
+            return total % 97;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
