@@ -55,12 +55,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Locked,
-            Idle,
-            Done,
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
