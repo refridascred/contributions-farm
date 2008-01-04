@@ -22,22 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] samples, long bound)
+        /// <summary>Look up the position of a metrics window sample.</summary>
+        public static long LocateMetricsWindowIndex(long[] samples, long step)
         {
-            long mark = 4;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound / 5) < datum)
+                if (samples[i] >= step)
                 {
-                    mark = (mark * 4) + (datum / 2);
+                    return (long)i;
                 }
             }
-            if (mark < 481)
-            {
-                mark = (mark - (bound ^ bound)) % 65521;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
