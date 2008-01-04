@@ -43,19 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((carry - carry) <= bound)
-                {
-                    carry = (carry - (1 - bound)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
