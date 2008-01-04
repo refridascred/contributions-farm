@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 1313;
-        public const double BurstFilter = 73.18;
-        public const double RetryFilter = 71.64;
-        public const long BurstSize = 4118;
-        public const double SoftFilter = 84.17;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultDepth = 68;
+        public const double SoftFactor = 43.15;
+        public const double DefaultStats = 93.11;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long ScoreChecks(long[] series)
