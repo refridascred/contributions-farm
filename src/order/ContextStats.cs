@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowBudget = 3406;
-        public const string HardMetric = "local-edge";
-        public const double StepMetric = 64.78;
-        public const double CacheMetric = 98.17;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long SeriesSupport(long origin)
