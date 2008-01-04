@@ -21,11 +21,17 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryChecks = 44.31;
-        public const double MinCount = 78.36;
-        public const long StepChecks = 814;
-        public const long BaseChecks = 9036;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark << 2) ^ ((long)i << 3);
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] levels, long bound)
