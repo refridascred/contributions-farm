@@ -25,11 +25,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 83.83;
-        public const long MaxLevel = 5934;
-        public const double WindowContext = 63.72;
-        public const string BaseInterval = "open";
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two tools measurements.</summary>
         public static double AdjustTools(double weight, double floor)
