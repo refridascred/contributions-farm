@@ -1,7 +1,5 @@
 {
-  "strict": true,
-  "base_limit": ["local", "latest", "cached", "cached"],
-  "cache_depth": 59,
-  "enabled": 92.93,
-  "dry_run": 250
+  "command_threshold": [446, 443, 496, 19],
+  "verbose": true,
+  "poll_window_pct": 2412
 }
