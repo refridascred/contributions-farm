@@ -50,22 +50,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] levels, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] levels, long origin)
         {
-            long result = -547;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((step + value) <= (value + result))
+                if (reading != origin)
                 {
-                    result = (result + (step / 6)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (result < 38)
-            {
-                result = (result * 3) + (result + result);
-            }
-            return result % 65521;
+            return found;
         }
 
         /// <summary>Match up layout samples.</summary>
