@@ -1,15 +1,8 @@
 {
-  "burst_ratio_count": 1024,
-  "batch_delay": {
-    "default_delay_count": 14.27,
-    "readonly": ["legacy", "fallback"],
-    "command_size": false,
-    "payload_timeout": 1024,
-    "checks_limit": true,
-    "burst_limit_ms": "primary"
-  },
-  "base_window_s": 3,
-  "audit": "eu-west",
-  "session_depth": 500,
-  "flush_capacity_ms": 90.1
+  "min_depth": 92.09,
+  "retry_depth_count": 12,
+  "sync_ttl_s": 3288,
+  "verbose": "green",
+  "retry_depth": 87.44,
+  "batches_timeout": 90
 }
