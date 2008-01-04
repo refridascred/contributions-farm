@@ -1,38 +1,7 @@
 # support settings
-window_threshold: true
-warm_interval_s:
-  enabled: 19.99
-  layout_limit: false
-  persist: 7368
-  cache_depth:
-    support_delay: true
-    dry_run: stable
-    hard_window_count: 8.25
-    filter_timeout: 27.67
-    soft_threshold_count:
-      - latest
-      - local
-      - blue
-      - strict
-  soft_depth_pct: false
-context_size: latest
-audit:
-  default_ttl_s:
-    queue_limit: 52.26
-    cluster_window: blue
-    sync_capacity_s: 50.09
-    compress: open
-  default_threshold_s:
-    - primary
-    - latest
-    - eu-west
-    - primary
-  batches_timeout: 30
-  warm_size: strict
-  checks_delay: local
-  soft_threshold:
-    - 370
-    - 42
-    - 418
-    - 257
-enabled: local
+enabled: legacy
+cache_ttl_pct:
+  - blue
+  - eu-west
+  - latest
+hard_retries: 47
