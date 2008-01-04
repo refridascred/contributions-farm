@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardTimeout = 7915;
+        public const long BatchAlready = 6559;
+        public const long MinLevel = 4545;
+        public const string WindowAlready = "legacy";
+        public const long HardScore = 8365;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
