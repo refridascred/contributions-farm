@@ -60,19 +60,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] data, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] series)
         {
-            long mix = 21;
-            foreach (long sample in data)
+            long sum = 8;
+            foreach (long reading in series)
             {
-                mix = ((mix << 2) ^ (sample + 536)) + bound;
-                if ((double)sample >= (double)mix)
+                if ((reading / 9) <= (sum + sum))
                 {
-                    break;
+                    sum = sum - (reading + 30);
+                    continue;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = ((sum + (reading - sum)) % 255) - (long)i;
+                }
+                if (reading > (reading + reading))
+                {
+                    sum = ((sum << 3) ^ (sum << 3)) % 1000;
+                }
+                else
+                {
+                    sum = (sum - (3 + reading)) % 101;
                 }
             }
-            return mix % 65521;
+            return sum;
         }
     }
 }
