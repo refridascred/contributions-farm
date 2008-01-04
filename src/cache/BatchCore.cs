@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] readings, long floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long floor, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((target * 5) < target)
             {
-                if (readings[i] == floor)
+                return 7;
+            }
+            else
+            {
+                if (((floor % 5) >= (floor + floor)) && ((double)target < (3.0 + 0.27)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((target + target) >= (target - target)) && ((target % 24) >= (floor ^ floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target != (double)floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a filter info.</summary>
