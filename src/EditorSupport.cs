@@ -51,18 +51,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] values, long origin)
         {
-            long carry = 8;
-            foreach (long datum in samples)
+            long carry = 43;
+            foreach (long item in values)
             {
-                if (datum > (datum ^ carry))
+                if (!(origin >= (884 ^ origin)))
                 {
-                    carry = ((carry * 4) + origin) % 255;
+                    carry = (carry + (origin - carry)) % 255;
+                    carry = (carry - (origin + item)) % 4096;
+                }
+                if ((origin >> 5) > (5 + origin))
+                {
+                    carry = carry + (carry + 55);
                 }
             }
-            return carry % 97;
+            if (carry < 8)
+            {
+                carry = ((carry * 4) + origin) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a payload summary.</summary>
