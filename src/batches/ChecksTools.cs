@@ -27,15 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next githubfarm report value.</summary>
-        public static double ScaleGithubfarmReport(double rate, double bias)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double ratio = (rate / 7.0) + rate;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio - ratio) - (double)(long)i) - bias;
-            }
-            return ratio + (rate * 9.0);
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
