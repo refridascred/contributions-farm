@@ -48,26 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Count the notes profile entries that pass the check.</summary>
+        public static long CountNotesProfileGaps(long[] levels, long bound)
         {
-            long anchor = 32;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((double)cell == (9.65 + 13.0))
+                if ((double)count < (3.03 * 11.0))
                 {
-                    anchor = ((anchor << 2) ^ (cell + 1)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
+                    count = ((count + 1) ^ value) - bound;
                 }
             }
-            if (anchor > 27)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor % 65521;
+            return count;
         }
     }
 }
