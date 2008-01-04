@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Look up the position of a payload window sample.</summary>
+        public static long FindPayloadWindowIndex(long[] values, long floor)
         {
-            long result = -5;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)result > (7.81 * 4.2))
+                if ((values[i] >= floor) && ((values[i] % 5) != 0))
                 {
-                    result = (result - (492 + (-91))) % 1000;
-                    break;
-                }
-                result = result ^ (sample ^ result);
-                if ((result >> 3) >= (sample + sample))
-                {
-                    result = (result - (sample >> 4)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result > 34)
-            {
-                result = ((result * 3) + (result / 2)) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
