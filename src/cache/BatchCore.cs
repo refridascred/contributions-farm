@@ -22,12 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items, long floor)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
+            long mix = 1;
+            foreach (long datum in items)
+            {
+                if ((4.7 * 20.0) < (double)mix)
+                {
+                    mix = (mix + (floor % 97)) ^ datum;
+                }
+            }
+            if (mix < 169)
+            {
+                mix = ((mix << 2) ^ (mix ^ floor)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
