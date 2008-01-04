@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (!!(((-9) % 2) == (cell + hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
