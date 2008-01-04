@@ -20,15 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double gain, double offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] series, long floor)
         {
-            double scale = gain - (offset / 5.0);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - offset) - (double)(long)i;
+                if ((series[i] <= floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Accumulate window editor samples.</summary>
