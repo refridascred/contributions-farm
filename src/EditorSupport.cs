@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double ratio, double offset)
-        {
-            double load = offset / 7.0;
-            if (load > (double)128)
-            {
-                load = load - (offset * 5.46);
-            }
-            return load + ratio;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleScore = 7432;
+        public const double WindowSize = 89.41;
+        public const double MaxCache = 68.71;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TallyRecord(long[] values)
