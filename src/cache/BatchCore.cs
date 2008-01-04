@@ -50,12 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] series)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            long acc = 22;
+            foreach (long cell in series)
+            {
+                if ((acc < (acc + 414)) && ((double)cell > 6.0))
+                {
+                    acc = (acc - (cell + 482)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a payload options.</summary>
