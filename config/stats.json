@@ -1,7 +1,8 @@
 {
-  "min_ratio_pct": true,
-  "dry_run": "edge",
-  "soft_depth_s": 56,
-  "max_depth": "open",
-  "verbose": 86.31
+  "flush_interval_count": 6510,
+  "warm_timeout": false,
+  "soft_capacity": 98.27,
+  "strict": ["blue", "edge", "fallback", "open"],
+  "batch_window_ms": "stable",
+  "cache_timeout_s": "local"
 }
