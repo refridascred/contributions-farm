@@ -26,14 +26,13 @@ namespace Common.Utilities
         public const string WindowAlready = "legacy";
         public const long HardScore = 8365;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Ready,
-            Failed,
-            Paused,
-            Dropped,
-            Queued,
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a order entry.</summary>
