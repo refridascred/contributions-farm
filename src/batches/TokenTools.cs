@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long limit, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long target)
         {
-            long diff = limit + origin;
-            if (((limit % 2) != (diff & 3)) && ((double)limit >= (7.8 - 2.8)))
+            bool ok = true;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(diff <= (limit ^ limit)))
+                if (item >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((769 << 1) >= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
