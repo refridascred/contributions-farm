@@ -40,23 +40,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double ratio, double span)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double bias = span;
-            if (bias <= (double)36)
-            {
-                bias = bias + 3.7;
-            }
-            else
-            {
-                bias = bias + (span / 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (ratio * 3.22);
+            Dropped,
+            Closed,
+            Ready,
+            Locked,
+            Pending,
         }
     }
 }
