@@ -27,12 +27,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 6407;
-        public const double BaseBudget = 42.37;
-        public const long WindowDepth = 6087;
-        public const long LimitRatio = 4911;
-        public const long StepToken = 694;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items)
+        {
+            long mix = 53;
+            foreach (long datum in items)
+            {
+                if (!((2.7 - 18.0) >= (double)datum))
+                {
+                    mix = (mix - (datum % 7)) % 65521;
+                }
+            }
+            if (mix < 692)
+            {
+                mix = ((mix * 2) + (mix / 2)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long bound, long target)
