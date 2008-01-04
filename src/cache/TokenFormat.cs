@@ -15,23 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit token counter readings against a rule.</summary>
-        public static long MeasureTokenCounterGaps(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count + target) > 45)
-                {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 9442;
+        public const long RetrySupport = 3759;
+        public const long WindowWidth = 3900;
+        public const long StepSupport = 6195;
 
         /// <summary>Iterate the already contributi series from a seed.</summary>
         public static long RollAlreadyContributi(long target)
