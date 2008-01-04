@@ -40,14 +40,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data)
         {
-            Synced,
-            Failed,
-            Paused,
-            Retry,
-            New,
+            long score = 108;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    score = (((score * 3) + score) ^ (long)i) - item;
+                }
+                score = score + score;
+            }
+            if (score > 1)
+            {
+                score = score - (946 + score);
+            }
+            return score;
         }
 
         /// <summary>Hold a cluster stats.</summary>
