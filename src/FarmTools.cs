@@ -29,12 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Roll a metrics buffer counter forward.</summary>
+        public static long RollMetricsBuffer(long limit)
         {
-            Synced,
-            Failed,
-            Idle,
+            long state = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state ^ (limit + (long)i)) % 97;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = ((state - 7) % 101) + (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
