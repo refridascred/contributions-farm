@@ -50,22 +50,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] values, long target)
         {
-            long state = 84;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum < 3) && ((state + state) <= state))
+                if (values[i] > target)
                 {
-                    state = state ^ (state - 2);
+                    return (long)i;
                 }
             }
-            if (state < 95)
-            {
-                state = (state - (state ^ state)) % 1000;
-            }
-            return state;
+            return -1;
         }
     }
 }
