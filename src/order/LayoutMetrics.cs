@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] series, long seed)
         {
-            New,
-            Failed,
-            Idle,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((seed - hits) != (value + hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
