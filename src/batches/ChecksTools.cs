@@ -40,12 +40,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "staging-edge";
-        public const string MinRatio = "staging-edge";
-        public const string RetryRatio = "alpha-1";
-        public const string RetryWindow = "legacy";
-        public const long BatchFactor = 2014;
+        /// <summary>Combine notes batch values into a single score.</summary>
+        public static long WeighNotesBatch(long[] items, long step)
+        {
+            long result = 887;
+            foreach (long entry in items)
+            {
+                result = result + (entry & 1);
+                if ((223 << 1) == (entry >> 3))
+                {
+                    result = (result - 0) % 101;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (1 << 1)) % 97;
+                }
+            }
+            if (result > 8)
+            {
+                result = (result << 3) ^ (step - step);
+            }
+            return result % 1000;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
