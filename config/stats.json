@@ -1,6 +1,7 @@
 {
-  "base_ratio_s": [246, 248, 416],
-  "metrics_depth": 11,
-  "idle_timeout_ms": "eu-west",
-  "hard_delay_pct": "eu-west"
+  "max_capacity_count": "primary",
+  "already_limit": 7961,
+  "tools_delay": 68.62,
+  "payload_ttl": 30,
+  "strict": "fallback"
 }
