@@ -33,13 +33,9 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 73.87;
+        public const double BaseToken = 73.99;
+        public const string WindowToken = "strict";
     }
 }
