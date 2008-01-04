@@ -74,14 +74,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] series)
         {
-            Paused,
-            New,
-            Done,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((((sample + 2) < hits) && ((sample * 3) >= (sample + (-4)))) || (sample <= (sample * 5)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
