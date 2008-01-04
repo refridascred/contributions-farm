@@ -27,18 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] values, long origin)
+        /// <summary>Digest a series of already metrics entries.</summary>
+        public static long ScoreAlreadyMetrics(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = 8;
+            foreach (long cell in items)
             {
-                if (((origin * 2) >= (hits & 1)) || ((hits * 2) == (origin + item)))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor << 3) ^ (anchor % 10)) - cell;
             }
-            return hits;
+            if (anchor > 5)
+            {
+                anchor = anchor - (717 + (long)items.Length);
+            }
+            return anchor;
         }
 
         /// <summary>Scale a account farm figure with a bias.</summary>
