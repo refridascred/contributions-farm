@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Iterate the format checks series from a seed.</summary>
+        public static long SeriesFormatChecks(long floor)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = ((mix ^ (mix * 2)) % 255) ^ (long)i2;
+                }
+                mix = (mix << 3) ^ mix;
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    mix = ((mix * 3) + mix) ^ (long)i3;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
