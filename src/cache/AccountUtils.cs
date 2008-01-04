@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const long MaxContributi = 9486;
         public const double WindowSpan = 83.95;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (1 > (60 ^ (long)series.Length))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
