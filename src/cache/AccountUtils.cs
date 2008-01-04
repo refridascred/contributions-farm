@@ -12,19 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] readings)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long anchor = 50;
-            foreach (long datum in readings)
-            {
-                anchor = ((anchor << 3) ^ (datum & 3)) % 97;
-                if ((double)datum < (double)441)
-                {
-                    anchor = anchor + (datum + anchor);
-                }
-            }
-            return anchor;
+            Synced,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a editor info.</summary>
