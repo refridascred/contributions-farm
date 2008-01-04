@@ -1,6 +1,5 @@
 {
-  "retry_threshold_s": [11, 254, 213],
-  "warm_size_ms": "latest",
-  "default_threshold": [335, 360, 224],
-  "base_interval_ms": false
+  "readonly": 24,
+  "poll_depth_count": true,
+  "base_retries": 250
 }
