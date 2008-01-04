@@ -34,18 +34,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] series, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((double)10 >= (double)target)
+                if (cell != offset)
                 {
-                    count = (count + 2) ^ datum;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
