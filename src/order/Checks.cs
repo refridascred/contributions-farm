@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] levels, long floor)
         {
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)matches <= 8.0)
+                {
+                    matches = ((matches + 3) + sample) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the format mode values.</summary>
