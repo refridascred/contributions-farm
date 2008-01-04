@@ -1,15 +1,21 @@
 # support settings
-counter_interval: edge
-audit:
-  - 309
-  - 29
-  - 410
-  - 136
-batch_depth_pct:
-  - primary
-  - eu-west
-base_ratio_ms: 6829
-hard_limit_s: standard
-retry_capacity:
-  - 217
-  - 206
+poll_retries:
+  warm_timeout_ms: false
+  entry_threshold: green
+  filter_window: 1024
+  sync_delay: 30
+  cache_depth: 43
+  sync_ratio:
+    default_limit:
+      - latest
+      - stable
+      - green
+      - eu-west
+    persist: green
+    idle_size_pct: 94
+    compress: eu-west
+    default_timeout: 1
+poll_ratio_pct:
+  - standard
+  - staging
+sync_timeout_pct: 62.65
