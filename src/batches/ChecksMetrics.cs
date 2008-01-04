@@ -40,14 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            Failed,
-            Dropped,
-            Queued,
-            Stale,
-            New,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a stream batches value against two limits.</summary>
