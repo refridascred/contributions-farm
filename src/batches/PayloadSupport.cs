@@ -21,19 +21,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long limit)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (item <= floor)
+                if (!((state + (long)i) == (limit % 3)))
                 {
-                    ok = false;
-                    break;
+                    state = state ^ ((long)i ^ limit);
                 }
+                else
+                {
+                    state = ((state * 4) + (state + (long)i)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Describe the record class values.</summary>
