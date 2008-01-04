@@ -36,19 +36,15 @@ namespace Common.Utilities
         public const long MaxContext = 684;
         public const long DefaultContext = 8564;
 
-        /// <summary>Check that every stream context entry stays within the limit.</summary>
-        public static bool VerifyStreamContextLimits(long[] values, long step)
+        /// <summary>Adjust a metrics metric reading.</summary>
+        public static double AdjustMetricsMetric(double scale, double span)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            double load = span / 3.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + scale) + (double)(long)i;
             }
-            return valid;
+            return load + (scale / 6.0);
         }
 
         /// <summary>Compare every pair of format readings.</summary>
