@@ -1,13 +1,6 @@
 {
-  "route_window": "standard",
-  "readonly": 51.78,
-  "base_retries": [227, 414, 421],
-  "poll_size_count": {
-    "cache_ttl_ms": ["strict", "open"],
-    "retry_depth_pct": 72.24,
-    "persist": "local",
-    "burst_threshold_count": 66.91,
-    "support_size": 500,
-    "warm_capacity": 16.94
-  }
+  "idle_ttl": "blue",
+  "payload_size": "staging",
+  "record_threshold": true,
+  "token_capacity": 250
 }
