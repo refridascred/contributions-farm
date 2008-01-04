@@ -22,18 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] levels)
+        /// <summary>Roll a report editor counter forward.</summary>
+        public static long RollReportEditor(long offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((matches / 7) == ((long)levels.Length * 2))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
+                sum = sum + sum;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
