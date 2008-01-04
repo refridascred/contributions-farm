@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of command stream readings.</summary>
-        public static long TallyCommandStream(long[] series, long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            long total = -41;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5.37 / 8.0) != (double)total)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total + total) - entry) + bound;
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a cluster summary.</summary>
