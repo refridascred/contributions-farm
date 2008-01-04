@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] series)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(65 & 31);
+            if (scale <= span)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - scale;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Roll a checks route counter forward.</summary>
