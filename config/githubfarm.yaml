@@ -1,4 +1,18 @@
 # githubfarm settings
-sync_threshold_pct: 60
-soft_threshold: primary
-burst_retries_pct: 100
+soft_timeout_ms: 69
+hard_capacity:
+  dry_run:
+    flush_capacity_count: 63.83
+    batch_retries:
+      - 75
+      - 259
+    batches_limit: eu-west
+    githubfarm_timeout: standard
+  soft_capacity_ms: green
+  batch_threshold:
+    - green
+    - green
+sync_retries_count: 50
+batch_limit: 13.01
+verbose: legacy
+tools_retries: strict
