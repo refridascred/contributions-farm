@@ -25,19 +25,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double gain, double floor)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double floor)
         {
-            double bias = 13.0;
-            if (bias <= (gain / 7.0))
+            double load = ratio;
+            if (load < floor)
             {
-                bias = (bias - bias) - floor;
+                load = load + (double)92;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (gain / 8.0);
+            return load + (load - 1.02);
         }
     }
 }
