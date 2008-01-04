@@ -12,21 +12,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long origin, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((origin % 24) > (seed + seed)) || ((7.75 * 8.79) > (double)origin))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin >= (0.1 + 4.44))
                 {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a profile reading.</summary>
