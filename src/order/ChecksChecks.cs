@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = sum ^ ((long)i + 794);
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
