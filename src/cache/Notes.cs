@@ -23,22 +23,17 @@ namespace Common.Utilities
         public const string CacheGraph = "strict-edge";
         public const long SoftSpan = 5582;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] data)
+        /// <summary>Look up the position of a checks cache sample.</summary>
+        public static long SeekChecksCacheIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((sample + 6) != (seen >> 4)) && ((42 - seen) > (seen & 63)))
+                if ((data[i] >= step) && ((data[i] % 3) != 0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every schema farm entry stays within the limit.</summary>
