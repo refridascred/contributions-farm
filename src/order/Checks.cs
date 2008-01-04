@@ -15,14 +15,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] levels, long step)
         {
-            Queued,
-            Dropped,
-            Idle,
-            Done,
-            Synced,
+            long result = -4;
+            foreach (long datum in levels)
+            {
+                if ((result % 10) != (datum * 3))
+                {
+                    result = (result + (datum >> 3)) % 1000;
+                }
+                if (!((result + 63) > (step + step)))
+                {
+                    result = (result << 2) ^ datum;
+                }
+                else
+                {
+                    result = result ^ step;
+                }
+                if (2 < (datum * 3))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a notes header.</summary>
