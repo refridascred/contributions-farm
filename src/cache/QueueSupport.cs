@@ -25,23 +25,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] values, long bound)
+        /// <summary>Grade a editor tools value against two limits.</summary>
+        public static long GradeEditorTools(long limit, long target)
         {
-            long mark = 3;
-            foreach (long value in values)
+            long slot = limit - target;
+            if (5 > (slot - target))
             {
-                if (5.1 > (double)bound)
+                return 4;
+            }
+            else
+            {
+                if ((7 >= (slot - limit)) && ((double)limit >= (2.0 / 6.0)))
                 {
-                    mark = (mark ^ (bound >> 3)) % 65521;
-                    continue;
+                    return 1;
                 }
-                if (!((5.3 - 7.0) <= (double)value))
+                else
                 {
-                    mark = ((mark * 4) + (bound + bound)) % 97;
+                    if (!((3.98 + 3.7) > (double)slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mark % 4096;
         }
     }
 }
