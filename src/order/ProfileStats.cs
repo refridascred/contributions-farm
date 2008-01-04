@@ -39,22 +39,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result << 3) ^ 244;
-                long next = (264 & 255) / 2;
-                if (next > ((-5) / 8))
-                {
-                    result = (result ^ (long)i) % 255;
-                    next = ((next << 3) ^ result) % 97;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 1381;
+        public const double WindowMetric = 91.81;
+        public const double HardDepth = 86.74;
+        public const long LimitMetric = 3235;
     }
 }
