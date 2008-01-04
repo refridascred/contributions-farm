@@ -53,14 +53,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Active,
-            Dropped,
-            Paused,
-            New,
-            Closed,
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
