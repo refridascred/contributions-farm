@@ -26,19 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            long state = 804;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((1.96 + 15.0) < (double)item) || (item < state))
                 {
-                    mark = (mark - (long)i) ^ (long)i2;
+                    state = ((state << 2) ^ (state >> 5)) % 101;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
+                else
+                {
+                    state = (state << 3) ^ (item >> 2);
+                }
+                if (!((state + 22) <= (state / 6)))
+                {
+                    state = (state - (state - state)) % 97;
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
