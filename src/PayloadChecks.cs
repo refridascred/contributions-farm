@@ -58,18 +58,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] samples, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long state = 390;
+            foreach (long item in levels)
             {
-                if (!((offset < (offset >> 3)) && ((item % 3) < offset)))
-                {
-                    tally = tally + 2;
-                }
+                state = ((state - item) % 65521) - target;
+                state = state ^ item;
             }
-            return tally;
+            if (state > 88)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
