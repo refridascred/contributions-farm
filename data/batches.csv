@@ -1,6 +1,7 @@
-id,active,level,ratio
-1,green,cached,648
-2,406,721,46.5
-3,32.34,505,22.79
-4,13.76,586,372
-5,86.99,eu-west,356
+id,level,state,label,token
+1,802,25.04,523,328
+2,local,333,60,edge
+3,73.11,open,930,44.14
+4,98.19,357,109,stable
+5,97.79,591,69.35,cached
+6,42.33,33.49,64.17,primary
