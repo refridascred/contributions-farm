@@ -41,23 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] data)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long score = 674;
-            foreach (long cell in data)
-            {
-                score = (((score * 4) + 1) % 255) ^ cell;
-                if ((score + 4) >= (score % 3))
-                {
-                    score = ((score << 2) ^ (score & 1)) % 1000;
-                }
-                else
-                {
-                    score = ((score * 5) + (score & 255)) % 97;
-                }
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine commits payload values into a single score.</summary>
