@@ -36,18 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] series)
+        /// <summary>Validate order command readings against a bound.</summary>
+        public static bool CheckOrderCommandRange(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((4.08 / 8.0) != (double)reading)
+                if (reading < bound)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
