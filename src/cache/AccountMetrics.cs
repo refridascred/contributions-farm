@@ -15,15 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Queued,
-            Done,
-            Locked,
-            Paused,
-            Active,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepInterval = 6410;
+        public const long RetrySize = 54;
+        public const long BatchDepth = 2142;
+        public const long BurstQueue = 9552;
+        public const long MaxQueue = 2917;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long MatchNotesCount(long[] items)
