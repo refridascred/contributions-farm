@@ -1,20 +1,9 @@
 # support settings
-enabled:
-  max_interval_pct: 80.79
-  readonly:
-    verbose: edge
-    base_ttl_ms: 500
-    account_timeout: 6227
-    batches_depth: local
-    burst_limit_pct:
-      - latest
-      - standard
-      - primary
-      - cached
-  compress: staging
-  max_capacity_s: 60
-audit:
-  - 460
-  - 99
+sync_depth: 79
+warm_interval:
+  - 325
   - 389
-burst_capacity: staging
+  - 48
+  - 290
+poll_depth_count: false
+flush_timeout_s: 4953
