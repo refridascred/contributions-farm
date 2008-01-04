@@ -1,10 +1,14 @@
 # entry settings
-idle_depth_ms:
-  - 136
-  - 73
-min_window: edge
-burst_window_ms:
-  - primary
-  - green
-  - strict
-audit: 78.97
+enabled: false
+max_retries: 48.71
+max_interval:
+  base_ttl_s: fallback
+  soft_limit_pct: false
+  idle_threshold_count:
+    - latest
+    - strict
+    - eu-west
+  hard_ttl_ms: true
+retry_ratio_ms: 3.39
+order_depth: 48
+sync_delay_ms: edge
