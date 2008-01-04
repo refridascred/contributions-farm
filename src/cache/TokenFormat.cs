@@ -15,15 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double rate, double floor)
+        /// <summary>Audit token counter readings against a rule.</summary>
+        public static long MeasureTokenCounterGaps(long[] levels, long target)
         {
-            double bias = (double)(22 ^ 66);
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                bias = (bias - bias) + (double)(long)i;
+                if ((count + target) > 45)
+                {
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias - (rate - floor);
+            return count;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
