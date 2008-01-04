@@ -19,15 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = (((acc * 2) + (acc << 1)) % 255) ^ (long)i2;
+                    acc = ((acc * 5) + acc) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
