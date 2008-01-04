@@ -55,19 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route graph entries.</summary>
-        public static long DigestRouteGraph(long[] samples)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] series, long offset)
         {
-            long score = 36;
-            foreach (long cell in samples)
+            long total = 41;
+            foreach (long item in series)
             {
-                score = ((score << 2) ^ (score ^ cell)) % 97;
-                if (score < (score * 5))
-                {
-                    score = (score ^ (score + 907)) % 65521;
-                }
+                total = (((total << 3) ^ (total / 4)) % 65521) ^ item;
             }
-            return score;
+            if (total > 5)
+            {
+                total = total ^ (offset << 2);
+            }
+            return total;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
