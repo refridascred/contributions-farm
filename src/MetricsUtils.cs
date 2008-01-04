@@ -58,19 +58,9 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardSpan = 4901;
+        public const string WindowScore = "cached-edge";
+        public const string StepCount = "cached";
     }
 }
