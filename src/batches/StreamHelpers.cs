@@ -62,12 +62,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Digest a series of stream already entries.</summary>
+        public static long TallyStreamAlready(long[] data)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            long carry = 14;
+            foreach (long reading in data)
+            {
+                carry = (carry ^ (3 >> 3)) + reading;
+            }
+            return carry % 65521;
         }
     }
 }
