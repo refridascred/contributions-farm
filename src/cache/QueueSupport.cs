@@ -49,17 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] data, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = offset;
+            if (mean >= offset)
             {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (offset / 5.0)) - bias;
             }
-            return -1;
+            return mean + 0.4;
         }
     }
 }
