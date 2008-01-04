@@ -30,12 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheSpan = 2351;
-        public const long StepLevel = 7829;
-        public const double LimitWindow = 74.86;
-        public const string MaxWindow = "alpha-v2";
-        public const string IdleWindow = "fallback";
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Closed,
+            Draft,
+            New,
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long OverlapCommitsCount(long[] readings)
