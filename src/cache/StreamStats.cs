@@ -35,11 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] values)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (datum >= (375 / 6))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
