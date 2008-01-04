@@ -1,6 +1,7 @@
 {
-  "compress": "cached",
-  "verbose": 82.52,
-  "flush_capacity": 78.24,
-  "poll_window_s": 44.52
+  "idle_interval_count": 46,
+  "graph_timeout": "latest",
+  "commits_ratio": "fallback",
+  "base_depth": 26,
+  "schema_interval": 1024
 }
