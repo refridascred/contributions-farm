@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
+            long sum = 115;
+            foreach (long value in data)
             {
-                mark = mark - (mark + mark);
-                mark = ((mark * 4) + (long)i) % 97;
+                sum = ((sum * 4) + (sum + value)) % 255;
+                sum = (sum ^ (value >> 1)) % 1000;
+                if ((85 & 15) < (sum + sum))
+                {
+                    sum = ((sum * 3) + (value & 31)) % 4096;
+                }
             }
-            return mark;
+            return sum % 97;
         }
 
         /// <summary>Project the next batch value.</summary>
