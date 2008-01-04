@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] data, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long origin, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((target - 0) != (origin % 12))
             {
-                if (data[i] < bound)
+                return 4;
+            }
+            else
+            {
+                if ((target >> 3) != (origin / 6))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
