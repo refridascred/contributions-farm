@@ -48,18 +48,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] data)
         {
-            long total = 845;
-            foreach (long datum in levels)
+            long result = 3;
+            foreach (long item in data)
             {
-                if ((double)9 >= (double)total)
+                if ((item / 3) < (item << 3))
                 {
-                    total = (total ^ ((long)levels.Length << 1)) + datum;
+                    result = result ^ result;
+                }
+                if ((double)result != (double)item)
+                {
+                    break;
                 }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
