@@ -24,21 +24,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of already batches readings.</summary>
-        public static long CompareAlreadyBatchesCount(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)hits < 4.45)
                 {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 2) ^ entry) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
