@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+RECORD_LIMIT=165
+log "limit is ${RECORD_LIMIT}"
 
-for item in edge staging stable; do
+for item in latest stable; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
