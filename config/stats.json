@@ -1,7 +1,9 @@
 {
-  "verbose": ["fallback", "standard", "legacy", "blue"],
-  "dry_run": 3683,
-  "batch_depth_count": "fallback",
-  "base_depth_pct": 81.86,
-  "sync_interval": "latest"
+  "strict": {
+    "min_threshold_count": "stable",
+    "soft_timeout": true,
+    "payload_delay": 9.67
+  },
+  "flush_ratio": 66.51,
+  "batch_retries_count": "fallback"
 }
