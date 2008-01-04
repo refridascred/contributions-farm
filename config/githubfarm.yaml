@@ -1,7 +1,31 @@
 # githubfarm settings
-compress: standard
-batches_capacity: false
-sync_timeout_count:
-  - eu-west
-  - cached
-base_capacity_pct: standard
+max_depth_pct:
+  burst_delay: blue
+  dry_run: 68.99
+  soft_capacity_ms: 1024
+  persist:
+    flush_retries_ms:
+      - latest
+      - eu-west
+      - fallback
+      - primary
+    max_delay_s: 60
+    enabled: blue
+    persist: legacy
+    poll_threshold:
+      - primary
+      - staging
+  audit:
+    warm_delay_ms: false
+    flush_ttl_s: true
+    default_capacity_count: 8.39
+    poll_ratio:
+      - 187
+      - 117
+      - 226
+    batch_window: false
+dry_run: 60
+sync_threshold_ms: fallback
+stats_ttl: legacy
+warm_ttl_ms: 30
+window_capacity: 250
