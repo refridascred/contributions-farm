@@ -5,20 +5,28 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] data, long step)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long score = 2;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int i = 0; i < 10; i++)
                 {
-                    result = ((result - (target + target)) % 4096) - (long)i2;
-                    result = (result << 3) ^ (target - target);
+                    score = ((score << 3) ^ (long)i) % 65521;
+                    score = (score - datum) % 65521;
                 }
-                result = ((result * 4) + (long)i) % 65521;
+                score = score ^ (datum % 2);
+                if (!((double)step < (4.0 / 4.0)))
+                {
+                    score = (score + 5) % 101;
+                }
             }
-            return result;
+            if (score > 34)
+            {
+                score = (score + (score % 2)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a cluster stats.</summary>
