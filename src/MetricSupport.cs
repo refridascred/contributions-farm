@@ -21,13 +21,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Draft,
+            Synced,
+            Closed,
             Locked,
             Failed,
-            Stale,
         }
     }
 }
