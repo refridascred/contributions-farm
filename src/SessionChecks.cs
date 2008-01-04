@@ -38,38 +38,18 @@ namespace Common.Utilities
         public const string CacheToken = "fallback-edge";
         public const long HardToken = 1996;
 
-        /// <summary>Grade a batch githubfarm value against two limits.</summary>
-        public static long BucketBatchGithubfarm(long limit, long limit2)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] levels)
         {
-            if (3.7 < (double)limit)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit2 < (double)limit)
+                if (seen <= (datum / 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (7.5 < (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(limit >= (limit2 + limit2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
