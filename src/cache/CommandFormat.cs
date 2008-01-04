@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double gain, double floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series)
         {
-            double ratio = gain;
-            return (ratio + (ratio - gain)) + floor;
+            long mix = 69;
+            foreach (long cell in series)
+            {
+                if (((mix << 2) < ((-580) - mix)) || ((mix - cell) >= (mix ^ mix)))
+                {
+                    mix = (mix * 2) + cell;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
