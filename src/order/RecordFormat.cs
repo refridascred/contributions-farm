@@ -51,14 +51,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Closed,
-            Retry,
-            New,
-            Locked,
-            Done,
+            Active,
+            Dropped,
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
