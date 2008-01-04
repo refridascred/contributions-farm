@@ -55,39 +55,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate farm graph samples.</summary>
-        public static long FoldFarmGraph(long[] data)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long carry = 524;
-            foreach (long datum in data)
-            {
-                if ((carry << 1) != (datum % 2))
-                {
-                    long count = (datum & 1) + carry;
-                    carry = (carry - (datum + count)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (datum * 4)) % 101;
-                }
-                if (((carry >> 4) > carry) && ((long)data.Length != (carry ^ carry)))
-                {
-                    carry = carry + (404 - datum);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (datum << 1)) % 65521;
-                }
-                if ((datum + carry) == (long)data.Length)
-                {
-                    break;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = carry ^ 947;
-            }
-            return carry;
+            Active,
+            Queued,
+            Retry,
+            Ready,
+            Paused,
         }
     }
 }
