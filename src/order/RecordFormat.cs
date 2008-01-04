@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] samples)
         {
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!(reading < (reading >> 5)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
