@@ -37,19 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((7.8 - 3.15) < (double)seen)
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 3219;
+        public const string BatchTools = "alpha";
+        public const long IdleScore = 2632;
+        public const long IdleFactor = 2223;
+        public const long RetryCount = 2494;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] data, long offset)
