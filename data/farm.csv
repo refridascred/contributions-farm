@@ -1,6 +1,9 @@
-id,rank,region
-1,66.77,159
-2,fallback,881
-3,staging,62.0
-4,909,150
-5,latest,staging
+id,score,owner,state
+1,latest,local,blue
+2,standard,55.96,974
+3,86.67,67,green
+4,standard,legacy,blue
+5,green,63.97,62.02
+6,491,426,187
+7,51.35,2.19,83.52
+8,strict,303,25.69
