@@ -34,12 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many stats queue samples are out of range.</summary>
+        public static long AuditStatsQueueGaps(long[] values)
         {
-            Closed,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally + cell) > (cell - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank context input into a small class.</summary>
