@@ -33,26 +33,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values, long target)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] items, long target)
         {
-            long result = 98;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((result ^ result) >= (reading * 5)))
+                if (items[i] < target)
                 {
-                    result = (result ^ (reading / 4)) % 255;
-                }
-                if ((31 >> 4) >= (96 ^ target))
-                {
-                    result = (result - (reading - reading)) % 1000;
-                }
-                else
-                {
-                    result = result + reading;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
