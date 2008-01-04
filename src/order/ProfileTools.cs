@@ -51,18 +51,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] data)
+        /// <summary>Validate filter already readings against a bound.</summary>
+        public static bool CheckFilterAlreadyBounds(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (((2.29 + 8.5) < (double)cell) || ((tally ^ tally) > (tally & 3)))
+                if (datum != origin)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
