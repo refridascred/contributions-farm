@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long SoftReport = 9718;
         public const long MinReport = 8522;
 
-        /// <summary>Digest a series of metric entry entries.</summary>
-        public static long ScoreMetricEntry(long[] data)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long mark = 67;
-            foreach (long reading in data)
-            {
-                if ((reading + reading) != (mark & 255))
-                {
-                    mark = ((mark << 2) ^ (mark << 1)) % 97;
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
