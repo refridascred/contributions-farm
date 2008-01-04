@@ -24,5 +24,11 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 43.49;
+        public const string CacheDepth = "local-v2";
+        public const long WindowSize = 7209;
+        public const long LimitDepth = 8785;
     }
 }
