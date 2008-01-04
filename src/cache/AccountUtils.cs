@@ -48,22 +48,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Grade a cluster buffer value against two limits.</summary>
+        public static long SortClusterBuffer(long limit, long offset)
         {
-            long result = 78;
-            foreach (long reading in series)
+            if (!((offset / 4) == (limit ^ 225)))
             {
-                if ((result * 4) > reading)
+                return 2;
+            }
+            else
+            {
+                if ((double)limit > (5.8 - 5.0))
                 {
-                    result = (result - result) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset * 4) > (limit + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit >= (offset % 16))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (result < 476)
-            {
-                result = result ^ (result * 5);
-            }
-            return result;
         }
     }
 }
