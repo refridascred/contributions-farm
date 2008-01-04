@@ -17,13 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long floor)
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
