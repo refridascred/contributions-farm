@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const double BaseFactor = 16.52;
         public const long MaxFactor = 5488;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepLevel = 5685;
-        public const string BatchWidth = "fallback-edge";
-        public const long HardSize = 5012;
-        public const long BurstSchema = 7038;
-        public const long HardSchema = 6762;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsMatches(long[] values)
