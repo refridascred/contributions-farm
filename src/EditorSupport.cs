@@ -41,28 +41,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] values, long origin)
-        {
-            long carry = 43;
-            foreach (long item in values)
-            {
-                if (!(origin >= (884 ^ origin)))
-                {
-                    carry = (carry + (origin - carry)) % 255;
-                    carry = (carry - (origin + item)) % 4096;
-                }
-                if ((origin >> 5) > (5 + origin))
-                {
-                    carry = carry + (carry + 55);
-                }
-            }
-            if (carry < 8)
-            {
-                carry = ((carry * 4) + origin) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitSize = 4430;
+        public const string BatchMetric = "standard";
+        public const long StepBudget = 370;
+        public const string IdleMetric = "latest-v2";
+        public const long BaseScore = 670;
 
         /// <summary>Count cache context pairs that satisfy a relation.</summary>
         public static long PairCacheContextCount(long[] data)
