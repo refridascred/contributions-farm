@@ -57,19 +57,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] series, long target)
-        {
-            long result = 732;
-            foreach (long sample in series)
-            {
-                if ((sample + (-616)) == (target << 3))
-                {
-                    result = ((result * 4) + (sample << 2)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "stable-v2";
+        public const long MinWidth = 9580;
+        public const double StepScore = 49.78;
+        public const string IdleCache = "alpha-edge";
+        public const double MaxCache = 51.28;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterLimits(long[] levels, long limit)
