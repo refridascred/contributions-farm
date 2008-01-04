@@ -55,15 +55,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double rate, double bias)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            double ratio = rate;
-            if (ratio > ratio)
-            {
-                ratio = ratio + (bias + rate);
-            }
-            return ratio + (6.0 - rate);
+            Active,
+            Draft,
+            Locked,
+            Paused,
         }
     }
 }
