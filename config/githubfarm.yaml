@@ -1,17 +1,6 @@
 # githubfarm settings
-soft_interval:
-  account_size:
-    - green
-    - green
-  hard_retries: 32
-  soft_ttl_s: true
-  notes_capacity: 33.16
-hard_capacity_count:
-  - 295
-  - 327
-entry_ratio:
-  - 456
-  - 175
-persist: primary
-burst_timeout: stable
-batch_retries_pct: 46.81
+retry_delay_pct: 12.06
+poll_timeout_pct: false
+base_window_s:
+  - 446
+  - 431
