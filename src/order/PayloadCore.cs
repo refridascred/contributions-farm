@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long floor)
+        /// <summary>Fold a list of token graph readings.</summary>
+        public static long ScoreTokenGraph(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 22;
+            foreach (long entry in data)
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                state = (((state * 5) + ((-228) + 2)) % 97) ^ entry;
+                state = (state + (limit << 3)) % 1000;
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
