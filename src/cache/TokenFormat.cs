@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Queued,
+            Idle,
             Failed,
-            Ready,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Audit token counter readings against a rule.</summary>
