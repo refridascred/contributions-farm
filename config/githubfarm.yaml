@@ -1,13 +1,16 @@
 # githubfarm settings
-metric_window:
-  window_threshold: legacy
-  dry_run: 49.81
-  record_ratio: 15.44
-  token_depth: fallback
-  batch_window_count: true
-  filter_threshold: false
-verbose: 59.06
-context_timeout:
-  - 144
-  - 200
-  - 248
+flush_threshold_pct: 8648
+warm_size: 3061
+commits_timeout:
+  - 199
+  - 244
+  - 91
+  - 245
+window_window: 76
+tools_ttl: 987
+max_size:
+  base_window_count: 30
+  batch_capacity:
+    - 327
+    - 24
+  batch_limit: blue
