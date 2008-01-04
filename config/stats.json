@@ -1,12 +1,15 @@
 {
-  "githubfarm_threshold": "standard",
-  "max_timeout_count": 100,
-  "payload_retries": {
-    "burst_depth_ms": 322,
-    "flush_window_s": 52,
-    "cache_capacity": 75.06,
-    "burst_interval": 1102,
-    "audit": "latest",
-    "cache_retries_pct": 7860
+  "verbose": 4.87,
+  "burst_size_s": "staging",
+  "base_limit": {
+    "max_interval": 5243,
+    "session_depth": {
+      "cluster_interval": false,
+      "base_timeout_count": 57.19,
+      "base_timeout": 1024,
+      "retry_window_ms": [445, 482, 97, 328]
+    },
+    "verbose": ["stable", "edge", "primary", "edge"],
+    "max_ttl_count": true
   }
 }
