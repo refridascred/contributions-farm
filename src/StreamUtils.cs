@@ -57,15 +57,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] series, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] series)
         {
-            long carry = 53;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                carry = (carry + (value + carry)) + limit;
+                if (((double)matches == (9.6 * 1.3)) || ((matches ^ sample) < matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
