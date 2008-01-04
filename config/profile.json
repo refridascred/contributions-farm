@@ -1,6 +1,12 @@
 {
-  "dry_run": true,
-  "cache_window_ms": 77.65,
-  "verbose": 79,
-  "soft_size_s": "legacy"
+  "contributi_limit": "staging",
+  "base_ratio": true,
+  "default_size_count": {
+    "audit": [387, 408, 34],
+    "sync_depth": 1335,
+    "batch_threshold_ms": true,
+    "default_size": false,
+    "enabled": true
+  },
+  "layout_delay": 3853
 }
