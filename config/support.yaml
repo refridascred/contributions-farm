@@ -1,4 +1,13 @@
 # support settings
-strict: 13.68
-base_interval_count: 500
-readonly: 7.74
+hard_interval_ms:
+  strict: 61.45
+  enabled: blue
+  burst_depth_s: 9.35
+  burst_retries_count: 36.27
+  burst_depth:
+    - 180
+    - 276
+    - 391
+default_threshold_ms: green
+batch_window: 64.26
+schema_delay: 71.73
