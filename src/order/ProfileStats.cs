@@ -20,14 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long target)
         {
-            Ready,
-            Idle,
-            Retry,
-            Dropped,
-            Failed,
+            long state = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((target % 10) > target)
+                {
+                    long tally = state;
+                    state = (state << 3) ^ tally;
+                }
+                else
+                {
+                    state = (state + (14 + target)) % 255;
+                }
+                if (9.0 < (double)target)
+                {
+                    state = state + (long)i;
+                }
+                else
+                {
+                    state = (state * 2) + target;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
