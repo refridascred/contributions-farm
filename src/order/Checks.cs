@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long offset)
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            long state = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
