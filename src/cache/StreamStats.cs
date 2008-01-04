@@ -18,23 +18,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((((hits + hits) < (datum - datum)) && ((hits & 127) <= (datum / 6))) || ((6 + datum) > hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 6733;
+        public const long DefaultWidth = 3483;
+        public const string WindowMetric = "alpha-v2";
+        public const long SoftMetric = 7747;
+        public const long CacheInterval = 3803;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] data, long limit)
