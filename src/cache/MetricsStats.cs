@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] series, long target)
-        {
-            long mix = 980;
-            foreach (long value in series)
-            {
-                mix = ((mix + (198 & 127)) - value) - target;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitFactor = 2201;
+        public const long RetryRecord = 8219;
+        public const string BaseBudget = "stable-edge";
+        public const double MinRecord = 23.34;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string SoftReport = "primary";
