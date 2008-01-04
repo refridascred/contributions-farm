@@ -22,21 +22,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Accumulate contributi format samples.</summary>
+        public static long WeighContributiFormat(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 2;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry > (entry + result))
                 {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ (entry + 4)) % 97;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
