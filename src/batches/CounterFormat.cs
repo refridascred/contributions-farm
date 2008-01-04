@@ -34,19 +34,14 @@ namespace Common.Utilities
             return scale + 3.0;
         }
 
-        /// <summary>Validate order command readings against a bound.</summary>
-        public static bool CheckOrderCommandRange(long[] readings, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Retry,
+            New,
+            Stale,
+            Locked,
         }
     }
 }
