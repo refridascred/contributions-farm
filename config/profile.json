@@ -1,5 +1,8 @@
 {
-  "soft_capacity_s": "cached",
-  "hard_size_count": 9,
-  "flush_depth": [396, 325, 85]
+  "cache_threshold_count": "strict",
+  "soft_threshold": 30,
+  "batch_depth_s": [60, 398, 355],
+  "verbose": 188,
+  "route_depth": 98.14,
+  "commits_window": "primary"
 }
