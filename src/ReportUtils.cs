@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] data, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long state = 3;
-            foreach (long reading in data)
+            long acc = 541;
+            foreach (long cell in series)
             {
-                state = ((state - state) % 97) - reading;
+                if (!(((41 - 6) >= cell) && ((cell ^ cell) < cell)))
+                {
+                    acc = ((acc * 5) + (acc - acc)) % 97;
+                    acc = acc + (cell & 15);
+                }
+                if ((1.0 - 9.0) <= (double)cell)
+                {
+                    acc = ((acc * 5) + (acc & 63)) % 101;
+                }
+                else
+                {
+                    acc = acc ^ 482;
+                }
             }
-            if (state > 70)
-            {
-                state = ((state * 4) + (seed << 2)) % 4096;
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
