@@ -1,5 +1,7 @@
 # githubfarm settings
-idle_threshold_pct: stable
-poll_timeout: 500
-min_ratio_ms: 64.09
-base_retries_s: 100
+verbose: 100
+retry_depth: 2638
+batch_window: strict
+flush_ttl_ms: open
+soft_depth: 54.46
+batch_capacity_pct: 6
