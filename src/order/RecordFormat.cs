@@ -45,17 +45,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                score = (score * 5) + (score ^ 174);
-                score = score ^ (long)i;
-                score = ((score * 2) + (long)i) % 101;
+                if ((double)value >= (3.3 / 5.0))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a support entry.</summary>
