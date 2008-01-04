@@ -15,23 +15,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long limit, long origin)
         {
-            long carry = 584;
-            foreach (long datum in series)
+            long edge = limit ^ origin;
+            if ((89 / 4) == (limit + edge))
             {
-                carry = (carry ^ (55 % 3)) + datum;
-                if (2.0 <= (double)carry)
+                return 7;
+            }
+            else
+            {
+                if (((edge + edge) <= limit) || ((9.14 * 0.85) < (double)limit))
                 {
-                    carry = carry ^ carry;
+                    return 0;
+                }
+                else
+                {
+                    if ((edge + limit) > (edge & 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit < (edge * 3)) && ((edge / 6) < 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (carry > 81)
-            {
-                carry = (carry - (carry - carry)) % 101;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
