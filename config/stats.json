@@ -1,29 +1,10 @@
 {
-  "soft_size_ms": "local",
-  "counter_depth": {
-    "sync_limit_s": 29.8,
-    "verbose": [95, 10, 286],
-    "soft_delay_s": {
-      "entry_timeout": "eu-west",
-      "compress": 3155,
-      "hard_depth": 6495,
-      "poll_ratio_pct": 9918,
-      "route_size": "fallback"
-    },
-    "farm_interval": "fallback"
-  },
-  "audit": ["latest", "eu-west", "latest", "blue"],
-  "persist": {
-    "schema_window": {
-      "format_window": "primary",
-      "flush_depth_ms": "blue",
-      "cache_size": 3675,
-      "persist": "legacy"
-    },
-    "payload_size": [293, 192, 144, 135],
-    "token_depth": false,
-    "channel_ratio": [75, 425],
-    "retry_delay_count": "fallback",
-    "cache_capacity_pct": "fallback"
+  "audit": 91.13,
+  "idle_ratio_ms": ["green", "open"],
+  "report_retries": 250,
+  "sync_ratio_pct": {
+    "format_delay": 60,
+    "layout_depth": "legacy",
+    "readonly": 92
   }
 }
