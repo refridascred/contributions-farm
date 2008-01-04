@@ -47,13 +47,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Done,
-            Idle,
             Locked,
-            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
