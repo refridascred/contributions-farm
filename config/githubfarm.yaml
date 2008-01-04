@@ -1,10 +1,9 @@
 # githubfarm settings
-batch_size_ms:
-  - 419
-  - 355
-  - 487
-batch_interval_s: 6.45
-session_interval:
-  - 352
-  - 435
-  - 131
+graph_limit: false
+flush_threshold_count: 52.06
+batches_retries:
+  - legacy
+  - legacy
+cluster_retries: 6177
+sync_capacity_count: latest
+queue_threshold: 1460
