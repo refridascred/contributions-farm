@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] readings, long floor)
+        /// <summary>Iterate the format metric series from a seed.</summary>
+        public static long IterateFormatMetric(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
