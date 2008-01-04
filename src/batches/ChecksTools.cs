@@ -27,22 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] readings, long offset)
+        /// <summary>Project the next githubfarm report value.</summary>
+        public static double ScaleGithubfarmReport(double rate, double bias)
         {
-            long carry = 36;
-            foreach (long value in readings)
+            double ratio = (rate / 7.0) + rate;
+            for (int i = 0; i < 8; i++)
             {
-                if (((value / 5) != (2 + carry)) && (value >= (value & 255)))
-                {
-                    break;
-                }
-                if ((offset - offset) < ((long)readings.Length + carry))
-                {
-                    carry = carry ^ 971;
-                }
+                ratio = ((ratio - ratio) - (double)(long)i) - bias;
             }
-            return carry % 65521;
+            return ratio + (rate * 9.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
