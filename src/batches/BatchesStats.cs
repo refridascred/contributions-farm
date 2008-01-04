@@ -12,11 +12,32 @@ namespace Common.Utilities
         public const double SoftWidth = 2.37;
         public const long BurstBatch = 194;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardAlready = 15.07;
-        public const long MinAlready = 6787;
-        public const long WindowSpan = 1745;
-        public const double IdleTimeout = 56.65;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long offset, long bound)
+        {
+            if (!((offset - offset) == (offset >> 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound != (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)offset > 6.08))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long IterateTools(long seed)
