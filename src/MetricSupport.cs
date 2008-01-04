@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the schema window entries that pass the check.</summary>
+        public static long TallySchemaWindowOutliers(long[] values)
         {
-            Done,
-            Synced,
-            Active,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((seen / 3) > (seen + cell)) || ((cell % 5) == (seen * 3)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the editor phase values.</summary>
