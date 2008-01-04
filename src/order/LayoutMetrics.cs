@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long MinScore = 8867;
         public const string StepInterval = "strict-1";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] series, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)(-46) >= (double)count)
+                if (((cell << 1) <= (4 << 1)) && (((matches >> 5) == (matches - matches)) && ((matches + cell) > matches)))
                 {
-                    count = ((count + 3) ^ datum) + floor;
+                    matches = (matches + 2) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up layout samples.</summary>
