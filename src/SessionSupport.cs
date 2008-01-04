@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 3) + (carry + carry)) % 65521;
-                carry = (carry ^ carry) % 255;
-                carry = (carry + (step / 4)) % 4096;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
