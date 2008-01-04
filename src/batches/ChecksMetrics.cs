@@ -57,31 +57,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stream batches value against two limits.</summary>
-        public static long SortStreamBatches(long floor, long seed)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] values, long target)
         {
-            if (seed <= (floor + floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed << 3) <= 68)
+                if (values[i] <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (335 << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up layout samples.</summary>
