@@ -13,11 +13,33 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 8811;
-        public const long StepInterval = 6756;
-        public const long MaxSupport = 4583;
-        public const double HardSupport = 37.9;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long target, long target2)
+        {
+            long slot = target - target2;
+            if (slot < (target2 & 15))
+            {
+                return 5;
+            }
+            else
+            {
+                if (0 > target2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((slot >> 4) < 284) || (target2 < (target2 + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
