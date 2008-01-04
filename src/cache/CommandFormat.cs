@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate metric report readings against a bound.</summary>
-        public static bool CheckMetricReportLimits(long[] data, long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            double drift = bias;
+            if (drift >= drift)
             {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift + 7.84;
             }
-            return valid;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift + (double)92;
         }
 
         /// <summary>Hold a account info.</summary>
