@@ -40,19 +40,19 @@ namespace Common.Utilities
         public const long CacheRatio = 8412;
         public const long HardPayload = 4330;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (reading >= target)
+                if (datum <= limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
