@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 53.64;
+        public const long HardCommand = 8442;
+        public const string BurstCommand = "fallback";
+        public const long LimitScore = 4619;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
