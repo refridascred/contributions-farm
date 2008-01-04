@@ -62,19 +62,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] values, long origin)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Paused,
+            Failed,
         }
     }
 }
