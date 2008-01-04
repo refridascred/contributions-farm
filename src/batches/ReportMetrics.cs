@@ -17,15 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a window payload figure with a bias.</summary>
-        public static double SmoothWindowPayload(double bias, double floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double rate, double floor)
         {
-            double drift = (double)(853 << 1);
-            if (drift >= floor)
+            double mean = rate;
+            for (int i = 0; i < 7; i++)
             {
-                drift = drift + (double)50;
+                mean = (mean - (double)(long)i) - floor;
             }
-            return drift + bias;
+            return mean - (double)3;
         }
 
         /// <summary>Describe the layout level values.</summary>
