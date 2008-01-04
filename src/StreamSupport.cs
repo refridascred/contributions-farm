@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] values, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (reading < origin)
+                if (((matches / 9) == (sample & 127)) || !((double)matches > (3.0 - 3.4)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
