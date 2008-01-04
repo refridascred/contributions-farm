@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long target)
         {
-            public double Rank { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long carry = target;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
