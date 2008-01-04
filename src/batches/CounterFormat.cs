@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftBudget = 30.02;
+        public const long SoftDepth = 8112;
+        public const long StepCounter = 6454;
+        public const long WindowInterval = 2212;
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] levels)
