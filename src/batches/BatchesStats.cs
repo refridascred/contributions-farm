@@ -30,11 +30,18 @@ namespace Common.Utilities
             return drift - (double)86;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches & 63) != (352 & 15))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
