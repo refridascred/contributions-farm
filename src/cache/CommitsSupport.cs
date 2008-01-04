@@ -59,19 +59,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] samples, long offset)
+        /// <summary>Grade a counter cache value against two limits.</summary>
+        public static long GradeCounterCache(long limit, long origin)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            if (((-6) + limit) > (origin - limit))
             {
-                if (datum <= offset)
+                return 0;
+            }
+            else
+            {
+                if (origin <= (limit * 3))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
