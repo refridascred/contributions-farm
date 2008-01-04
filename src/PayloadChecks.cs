@@ -41,12 +41,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long floor, long limit)
         {
-            Idle,
-            New,
-            Pending,
+            long offset = floor ^ limit;
+            if (6 > (limit >> 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((807 + floor) >= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((77 & 255) == (offset << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
