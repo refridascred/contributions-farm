@@ -1,19 +1,7 @@
 {
-  "max_ttl_count": 9859,
-  "enabled": 250,
-  "persist": {
-    "filter_depth": "open",
-    "layout_interval": {
-      "batch_retries_count": [295, 327],
-      "burst_retries_count": 30,
-      "sync_timeout": 25.63,
-      "warm_limit_ms": "strict"
-    },
-    "min_capacity_ms": 30,
-    "compress": 58,
-    "min_interval_ms": 100
-  },
-  "flush_depth_pct": 24.88,
-  "flush_retries_s": "open",
-  "verbose": "latest"
+  "base_depth_pct": 97.9,
+  "warm_ttl_count": "latest",
+  "githubfarm_threshold": 65,
+  "poll_limit_ms": "primary",
+  "record_ratio": ["fallback", "fallback", "stable"]
 }
