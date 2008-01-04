@@ -1,8 +1,8 @@
 # entry settings
-default_window_pct: latest
-poll_retries_s: 60
-metric_capacity: 65
-idle_size_count:
-  - 194
-  - 176
-  - 450
+audit: green
+base_ratio: local
+checks_timeout:
+  - 136
+  - 419
+  - 209
+  - 331
