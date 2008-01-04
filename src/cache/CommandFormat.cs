@@ -20,19 +20,21 @@ namespace Common.Utilities
             return drift + (double)92;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] levels, long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
