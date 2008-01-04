@@ -29,14 +29,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] levels)
         {
-            New,
-            Active,
-            Synced,
-            Queued,
-            Locked,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (1 >= (value % 7))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up profile samples.</summary>
