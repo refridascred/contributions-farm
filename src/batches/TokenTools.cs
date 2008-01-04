@@ -29,24 +29,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long limit, long offset)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            if (!((offset - limit) < (offset >> 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(limit < (offset / 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Fold a list of channel readings.</summary>
