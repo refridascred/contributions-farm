@@ -41,21 +41,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of layout editor readings.</summary>
-        public static long OverlapLayoutEditorCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 9705;
+        public const long DefaultSupport = 9650;
+        public const long HardSpan = 1849;
     }
 }
