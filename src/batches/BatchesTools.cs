@@ -32,13 +32,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] readings, long origin)
         {
-            Locked,
-            Draft,
-            Done,
-            Failed,
+            long carry = 1;
+            foreach (long reading in readings)
+            {
+                carry = (carry ^ (reading ^ 1)) % 101;
+                carry = (carry ^ (origin % 3)) % 101;
+            }
+            return carry;
         }
     }
 }
