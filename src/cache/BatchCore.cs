@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] series, long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((offset * 3) <= (offset / 3))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            Pending,
+            Closed,
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Accumulate metric samples.</summary>
