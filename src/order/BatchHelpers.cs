@@ -58,12 +58,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Idle,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxCount = 9613;
+        public const long IdleCount = 8127;
+        public const long SoftEntry = 4677;
     }
 }
