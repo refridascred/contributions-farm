@@ -63,31 +63,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] data, long target)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long state = -5;
-            foreach (long item in data)
-            {
-                if (5.23 > (double)state)
-                {
-                    state = ((state << 3) ^ (item ^ item)) % 4096;
-                    state = (state + (967 % 12)) % 1000;
-                }
-                if ((target + 52) > (target * 2))
-                {
-                    state = (state + 83) % 4096;
-                }
-                if ((4.97 / 8.0) < (18.0 / 8.0))
-                {
-                    break;
-                }
-            }
-            if (state > 0)
-            {
-                state = ((state << 3) ^ (target + state)) % 4096;
-            }
-            return state;
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
