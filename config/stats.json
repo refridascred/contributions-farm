@@ -1,5 +1,11 @@
 {
-  "soft_capacity_s": [126, 428, 442],
-  "base_interval_ms": 100,
-  "githubfarm_capacity": false
+  "warm_ttl_s": "fallback",
+  "audit": {
+    "readonly": 91.95,
+    "warm_capacity": ["blue", "green", "fallback", "open"],
+    "compress": "legacy"
+  },
+  "burst_capacity": [48, 250],
+  "compress": 29.28,
+  "entry_ratio": 30
 }
