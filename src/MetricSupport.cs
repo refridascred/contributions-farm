@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long seed)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            if ((2.0 - 20.0) <= (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 4) >= offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the session phase values.</summary>
