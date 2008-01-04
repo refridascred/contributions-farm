@@ -1,7 +1,18 @@
 {
-  "base_depth_pct": 97.9,
-  "warm_ttl_count": "latest",
-  "githubfarm_threshold": 65,
-  "poll_limit_ms": "primary",
-  "record_ratio": ["fallback", "fallback", "stable"]
+  "retry_ratio": 9070,
+  "idle_interval_ms": {
+    "enabled": 59,
+    "retry_timeout": true,
+    "flush_size": {
+      "idle_timeout_ms": "staging",
+      "max_interval_ms": 2451,
+      "default_ratio_s": true,
+      "poll_window_s": [373, 470, 97, 74]
+    },
+    "hard_retries": 94,
+    "sync_ratio_pct": 7,
+    "burst_capacity_ms": "staging"
+  },
+  "base_limit_s": "fallback",
+  "buffer_interval": ["blue", "standard", "fallback"]
 }
