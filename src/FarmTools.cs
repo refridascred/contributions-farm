@@ -50,25 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (score > (origin << 3))
+                if ((9.98 / 6.0) < (double)hits)
                 {
-                    score = score ^ (457 / 6);
-                    score = ((score << 2) ^ ((long)i - score)) % 65521;
+                    hits = (hits + 1) + item;
                 }
-                else
-                {
-                    score = ((score * 3) + (score % 16)) % 255;
-                    score = score + 0;
-                }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
     }
 }
