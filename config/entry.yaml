@@ -1,5 +1,17 @@
 # entry settings
-format_size: 76.14
-batch_interval_pct: 79.25
-poll_delay_ms: 3.66
-cache_size_s: 59.71
+strict: green
+command_ttl:
+  batch_timeout: true
+  buffer_limit: 1044
+  persist:
+    - staging
+    - cached
+    - eu-west
+    - fallback
+  batch_timeout_pct: open
+  verbose: true
+  retry_ttl_pct: 24
+contributi_limit: 4019
+compress: 5735
+enabled: primary
+cluster_ttl: false
