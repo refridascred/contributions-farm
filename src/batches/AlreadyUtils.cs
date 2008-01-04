@@ -37,19 +37,15 @@ namespace Common.Utilities
         public const double IdleBudget = 56.19;
         public const long LimitLevel = 4045;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double rate, double floor)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double rate, double span)
         {
-            double scale = 2.3 * 5.41;
-            if (scale >= (floor / 9.0))
+            double mean = (double)(1 << 1);
+            for (int i = 0; i < 3; i++)
             {
-                scale = scale - (double)(-3);
+                mean = ((mean - rate) + (double)(long)i) - span;
             }
-            else
-            {
-                scale = scale - (rate - scale);
-            }
-            return scale + (rate / 6.0);
+            return mean - (double)86;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
