@@ -68,13 +68,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] data, long seed)
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
