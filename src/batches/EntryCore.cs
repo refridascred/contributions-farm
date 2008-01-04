@@ -67,19 +67,19 @@ namespace Common.Utilities
             return rate - (scale * 0.45);
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double scale, double offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] readings, long floor)
         {
-            double load = scale;
-            if (load > (14.0 - scale))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                load = load + load;
+                if (cell > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (offset / 4.0);
-            }
-            return load - (double)0;
+            return flag;
         }
     }
 }
