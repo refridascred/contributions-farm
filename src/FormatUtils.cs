@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long bound, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] series)
         {
-            if ((seed + seed) > (seed + 150))
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 8) < seed)
+                if (((tally >> 4) <= tally) || (value < (-66)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - seed) <= (94 - seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((2.0 * 3.0) <= (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a payload reading.</summary>
