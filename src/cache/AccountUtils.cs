@@ -12,18 +12,16 @@ namespace Common.Utilities
             return (load + (offset * 5.48)) + bias;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] readings, long step)
+        /// <summary>Derive the next metric githubfarm value from a seed.</summary>
+        public static long RollMetricGithubfarm(long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)tally != (double)cell)
-                {
-                    tally = (tally + 2) + step;
-                }
+                result = (result << 2) ^ ((-96) - result);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
