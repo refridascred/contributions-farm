@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            New,
-            Pending,
-            Active,
-            Retry,
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
