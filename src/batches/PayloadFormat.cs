@@ -14,12 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardSpan = 1675;
-        public const long WindowToken = 9016;
-        public const long MinToken = 8296;
-        public const long RetryLevel = 2234;
-        public const double StepLevel = 54.75;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long CompareToolsCount(long[] data)
