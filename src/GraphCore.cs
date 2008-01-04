@@ -30,5 +30,39 @@ namespace Common.Utilities
         public const string CacheDepth = "local-v2";
         public const long WindowSize = 7209;
         public const long LimitDepth = 8785;
+
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long step, long limit)
+        {
+            if (((8 / 6) <= (limit - limit)) && ((871 + limit) == (step << 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (18.0 <= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit >= (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step * 3) == (81 >> 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
