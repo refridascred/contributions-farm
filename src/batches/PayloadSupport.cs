@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "legacy-edge";
-        public const double IdleStats = 28.32;
-        public const long HardFactor = 4247;
-        public const long SoftInterval = 401;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultScore = 9744;
+        public const long MinCounter = 403;
+        public const long MaxSize = 8378;
+        public const long HardSize = 4010;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksBounds(long[] readings, long offset)
