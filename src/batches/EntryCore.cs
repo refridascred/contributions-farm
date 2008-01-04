@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Count the context batch entries that pass the check.</summary>
+        public static long CountContextBatchMatches(long[] samples, long floor)
         {
-            Ready,
-            Synced,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((18.0 + 1.0) > (double)floor) && ((double)sample <= (4.8 * 0.31)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
