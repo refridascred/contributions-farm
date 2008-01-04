@@ -1,15 +1,5 @@
 {
-  "verbose": 4.87,
-  "burst_size_s": "staging",
-  "base_limit": {
-    "max_interval": 5243,
-    "session_depth": {
-      "cluster_interval": false,
-      "base_timeout_count": 57.19,
-      "base_timeout": 1024,
-      "retry_window_ms": [445, 482, 97, 328]
-    },
-    "verbose": ["stable", "edge", "primary", "edge"],
-    "max_ttl_count": true
-  }
+  "token_threshold": "latest",
+  "metric_ttl": 34.54,
+  "batch_size": 4766
 }
