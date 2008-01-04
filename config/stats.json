@@ -1,7 +1,7 @@
 {
-  "poll_threshold_count": 42.35,
-  "max_retries_pct": 89.51,
-  "metrics_limit": 3.84,
-  "warm_threshold_count": 100,
-  "enabled": 3.8
+  "strict": true,
+  "base_limit": ["local", "latest", "cached", "cached"],
+  "cache_depth": 59,
+  "enabled": 92.93,
+  "dry_run": 250
 }
