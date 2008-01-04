@@ -1,7 +1,7 @@
 {
-  "commits_interval": ["eu-west", "strict"],
-  "support_timeout": "legacy",
-  "session_ratio": 94.74,
-  "base_interval_count": 97.33,
-  "context_timeout": false
+  "burst_capacity_ms": true,
+  "flush_window_pct": [393, 330],
+  "idle_depth_pct": 37.18,
+  "retry_depth": "local",
+  "hard_ratio": 81.22
 }
