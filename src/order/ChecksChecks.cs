@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] values, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two notes measurements.</summary>
