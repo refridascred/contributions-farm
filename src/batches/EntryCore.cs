@@ -40,22 +40,23 @@ namespace Common.Utilities
         public const string StepTools = "fallback";
         public const double RetryTimeout = 74.26;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double scale, double bias)
         {
-            long score = 9;
-            foreach (long entry in samples)
+            double rate = (bias / 7.0) / 7.0;
+            if (rate <= (double)63)
             {
-                if (entry >= (score / 9))
-                {
-                    score = ((score * 2) + score) % 101;
-                }
-                else
-                {
-                    score = score ^ score;
-                }
+                rate = rate - (bias + bias);
             }
-            return score;
+            else
+            {
+                rate = rate + (rate * 0.61);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (13.0 - bias)) + (double)(long)i;
+            }
+            return rate - (scale * 0.45);
         }
 
         /// <summary>Check that every queue format entry stays within the limit.</summary>
