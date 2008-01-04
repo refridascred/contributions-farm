@@ -36,9 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRatio = 2081;
-        public const long BatchInterval = 5129;
-        public const long IdleRecord = 9113;
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double weight, double offset)
+        {
+            double mean = offset;
+            if (mean > (double)0)
+            {
+                mean = (mean + (double)914) - weight;
+            }
+            return mean + mean;
+        }
     }
 }
