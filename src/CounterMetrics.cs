@@ -44,15 +44,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] readings)
+        /// <summary>Count cache context pairs that satisfy a relation.</summary>
+        public static long OverlapCacheContextCount(long[] series)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample + sample) >= (matches + matches))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] - series[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
