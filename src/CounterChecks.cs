@@ -29,12 +29,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 668;
-        public const string BurstBudget = "local-v2";
-        public const double MaxReport = 57.8;
-        public const long HardReport = 4421;
-        public const long SoftScore = 1695;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 7373;
+        public const double BatchDepth = 27.92;
+        public const long HardScore = 5721;
+        public const long DefaultBudget = 9787;
 
         /// <summary>Match up profile samples.</summary>
         public static long PairProfileCount(long[] readings)
