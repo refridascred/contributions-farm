@@ -21,26 +21,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine schema context values into a single score.</summary>
-        public static long WeighSchemaContext(long[] items)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long acc = 75;
-            foreach (long value in items)
-            {
-                if ((acc % 8) != (acc % 64))
-                {
-                    acc = (acc - (acc - acc)) % 65521;
-                }
-                if ((value + acc) >= (acc + acc))
-                {
-                    acc = (acc + (acc & 3)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (value / 4)) % 101;
-                }
-            }
-            return acc % 97;
+            Ready,
+            Locked,
+            Dropped,
         }
     }
 }
