@@ -37,24 +37,19 @@ namespace Common.Utilities
         public const double IdleBudget = 56.19;
         public const long LimitLevel = 4045;
 
-        /// <summary>Grade a metrics session value against two limits.</summary>
-        public static long SortMetricsSession(long step, long step2)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double rate, double floor)
         {
-            if ((step & 1) >= step)
+            double scale = 2.3 * 5.41;
+            if (scale >= (floor / 9.0))
             {
-                return 6;
+                scale = scale - (double)(-3);
             }
             else
             {
-                if ((step & 127) >= step2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
+                scale = scale - (rate - scale);
             }
+            return scale + (rate / 6.0);
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
