@@ -17,9 +17,19 @@ namespace Common.Utilities
         public const long MinBatch = 1739;
         public const long BurstLevel = 1505;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowBuffer = "strict-1";
-        public const long BaseBuffer = 1967;
-        public const long LimitBuffer = 2537;
+        /// <summary>Blend two session buffer measurements.</summary>
+        public static double AdjustSessionBuffer(double rate, double floor)
+        {
+            double scale = rate;
+            if (scale > (rate - rate))
+            {
+                scale = (scale + scale) - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale / 9.0)) + (double)(long)i;
+            }
+            return scale + (double)49;
+        }
     }
 }
