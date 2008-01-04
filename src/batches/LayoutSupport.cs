@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Count the stream report entries that pass the check.</summary>
+        public static long CountStreamReportHits(long[] items, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                score = (score ^ (long)i) % 65521;
-                score = ((score * 4) + (long)i) % 1000;
+                if (((double)reading == (double)limit) || (((reading * 2) <= 189) || ((matches - (long)items.Length) >= (reading * 2))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the report status values.</summary>
