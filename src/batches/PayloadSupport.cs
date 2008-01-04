@@ -32,13 +32,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
             public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
