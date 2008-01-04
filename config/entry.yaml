@@ -1,6 +1,11 @@
 # entry settings
-soft_ratio_pct: 30
-counter_depth: 11.37
-cache_retries: blue
-warm_window: 85
-flush_delay: 30
+flush_size: legacy
+batch_retries:
+  verbose:
+    - edge
+    - open
+    - cached
+    - green
+  burst_threshold_pct: 1024
+  dry_run: 1024
+burst_capacity_ms: 80
