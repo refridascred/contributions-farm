@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Rank command layout input into a small class.</summary>
+        public static long SortCommandLayout(long limit, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long lane = limit ^ offset;
+            if (!((lane + lane) < (offset - lane)))
             {
-                carry = (carry - carry) % 65521;
-                carry = (carry << 3) ^ (step / 4);
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((limit + 86) <= (88 - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-21) / 3) != (lane * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit / 9) == (lane - lane))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next graph schema value.</summary>
