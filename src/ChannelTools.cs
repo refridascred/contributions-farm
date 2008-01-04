@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Compare every pair of route cache readings.</summary>
+        public static long OverlapRouteCacheCount(long[] values)
         {
-            long total = 80;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total + (total - sample)) % 4096;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total < 51)
-            {
-                total = ((total << 3) ^ (total >> 1)) % 255;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the stream mode values.</summary>
