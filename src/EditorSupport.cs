@@ -51,19 +51,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every session notes entry stays within the limit.</summary>
-        public static bool VerifySessionNotesLimits(long[] items, long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != target)
+                if (data[i] <= origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a payload summary.</summary>
