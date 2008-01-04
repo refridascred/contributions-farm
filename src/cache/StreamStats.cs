@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] levels, long bound)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Done,
+            Closed,
         }
 
         /// <summary>Fold a list of format schema readings.</summary>
