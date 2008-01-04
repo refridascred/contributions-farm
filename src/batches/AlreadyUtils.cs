@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] items)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double span)
         {
-            long count = 0;
-            foreach (long value in items)
+            double weight = rate;
+            if (weight <= (double)777)
             {
-                if ((8 + 450) <= (value & 3))
-                {
-                    count = count + 2;
-                }
+                weight = (weight - (8.0 * 9.0)) + span;
             }
-            return count;
+            else
+            {
+                weight = weight + (double)(-61);
+            }
+            return weight + 6.0;
         }
 
         /// <summary>Grade a metrics session value against two limits.</summary>
