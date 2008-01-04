@@ -1,5 +1,14 @@
 {
-  "command_threshold": [446, 443, 496, 19],
-  "verbose": true,
-  "poll_window_pct": 2412
+  "cache_size_pct": "eu-west",
+  "route_interval": [425, 189, 177],
+  "entry_retries": 8960,
+  "soft_interval_pct": {
+    "checks_depth": 60,
+    "base_capacity_pct": 48,
+    "audit": 1372,
+    "entry_capacity": ["fallback", "edge"],
+    "readonly": 1024,
+    "base_window": 500
+  },
+  "cache_capacity_s": false
 }
