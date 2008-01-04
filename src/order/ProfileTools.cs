@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long MinFactor = 8750;
         public const double LimitFormat = 89.27;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] items, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((entry - origin) > (entry << 1)) && ((seen * 3) != (entry ^ seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a session stats.</summary>
