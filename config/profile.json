@@ -1,14 +1,5 @@
 {
-  "batch_retries": {
-    "persist": 47.97,
-    "sync_delay_pct": "legacy",
-    "cache_ratio_pct": "stable",
-    "readonly": "standard"
-  },
-  "flush_ratio_count": 23,
-  "token_limit": {
-    "batch_ttl": "primary",
-    "compress": "blue",
-    "poll_window_ms": "staging"
-  }
+  "editor_delay": false,
+  "metric_interval": "staging",
+  "audit": "fallback"
 }
