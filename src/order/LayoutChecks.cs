@@ -15,18 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] samples, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] readings)
         {
-            long acc = 32;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (acc > (long)samples.Length)
+                if ((hits ^ value) == (hits * 3))
                 {
-                    acc = ((acc << 3) ^ item) - target;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
