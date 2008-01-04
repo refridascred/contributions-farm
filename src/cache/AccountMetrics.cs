@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long anchor = 4;
-            foreach (long datum in readings)
-            {
-                anchor = ((anchor + (anchor ^ (-9))) % 97) - datum;
-            }
-            if (anchor > 430)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 4096;
-            }
-            return anchor % 1000;
+            Retry,
+            New,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the batch mode values.</summary>
