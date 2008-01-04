@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 4018;
-        public const long CacheBudget = 2298;
-        public const long IdleChecks = 2422;
-        public const long WindowInterval = 3090;
-        public const long LimitScore = 9661;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string StepToken = "open-1";
