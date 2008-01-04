@@ -16,27 +16,15 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] items, long target)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double rate, double floor)
         {
-            long acc = 436;
-            foreach (long reading in items)
+            double scale = rate;
+            if (scale < (double)0)
             {
-                if (reading >= (reading & 7))
-                {
-                    acc = (acc + (125 & 7)) % 255;
-                    acc = (acc << 3) ^ (acc + 77);
-                }
-                else
-                {
-                    acc = acc - (49 + 13);
-                }
-                if ((double)target <= (3.92 + 6.4))
-                {
-                    acc = ((acc * 5) + (target ^ reading)) % 255;
-                }
+                scale = scale - (6.79 - 0.3);
             }
-            return acc % 4096;
+            return scale - floor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
