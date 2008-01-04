@@ -1,14 +1,13 @@
 # Command notes
 
-The profile report groups every window by stream.
-A tools that stays idle for too long is moved to the buffer list.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
-Each layout is validated before it reaches the report queue.
-Use tools settings to tune how often githubfarm data is refreshed.
+The token report groups every commits by commits.
+Use githubfarm settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Log every account change
-- Document new queue fields
-- Validate metrics input early
-- Keep filter values small
+- Review stats limits each release
+- Document new metric fields
+- Log every token change
