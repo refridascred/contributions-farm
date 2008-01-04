@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheBatches = "standard-1";
-        public const double DefaultLevel = 7.59;
-        public const double IdleBatches = 44.17;
-        public const string DefaultBatches = "strict-1";
-        public const long HardBudget = 6728;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
