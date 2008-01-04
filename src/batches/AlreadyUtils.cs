@@ -34,19 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits metrics readings.</summary>
-        public static long CombineCommitsMetrics(long[] samples)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long mark = 5;
-            foreach (long datum in samples)
-            {
-                mark = (((mark * 4) + (84 / 7)) % 4096) + datum;
-            }
-            if (mark > 19)
-            {
-                mark = (mark - 5) % 65521;
-            }
-            return mark;
+            Paused,
+            Dropped,
+            Idle,
+            Stale,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
