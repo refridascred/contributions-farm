@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double gain, double span)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] items, long floor)
         {
-            double ratio = gain;
-            if (ratio <= span)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - ratio;
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio + (span - span);
+            return -1;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
