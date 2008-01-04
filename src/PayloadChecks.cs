@@ -71,39 +71,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a contributi checks value against two limits.</summary>
-        public static long GradeContributiChecks(long bound, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] levels, long origin)
         {
-            long next = bound - offset;
-            if (next >= (bound + bound))
+            bool flag = true;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((95 % 8) == (bound - offset))
+                if (value > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(next > 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)next > (double)offset) || (bound < 9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
