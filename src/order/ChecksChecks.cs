@@ -22,17 +22,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] items, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (items[i] <= origin)
+                if (cell != target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
