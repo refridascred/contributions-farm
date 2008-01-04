@@ -37,22 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long total = -5;
-            foreach (long reading in samples)
-            {
-                if ((total + 100) <= (total + total))
-                {
-                    total = (((total << 3) ^ (total + 652)) % 1000) ^ reading;
-                }
-            }
-            if (total > 11)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total;
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Hold a filter options.</summary>
