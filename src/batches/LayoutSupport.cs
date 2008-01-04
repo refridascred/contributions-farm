@@ -43,13 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double gain, double bias)
         {
-            public double Size { get; set; }
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            double rate = (double)(36 / 5);
+            if (rate > 6.5)
+            {
+                rate = rate - (double)9;
+            }
+            else
+            {
+                rate = rate + (bias * 7.3);
+            }
+            return rate + (rate - gain);
         }
 
         /// <summary>Describe the report mode values.</summary>
