@@ -34,12 +34,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 40.53;
-        public const string StepSpan = "staging-v2";
-        public const long HardFactor = 3131;
-        public const string BatchEntry = "primary-edge";
-        public const long CacheFactor = 1664;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] samples, long bound)
+        {
+            long mix = 10;
+            foreach (long item in samples)
+            {
+                if ((4.0 * 5.8) < (double)mix)
+                {
+                    mix = (((mix + (52 >> 5)) % 97) ^ item) - bound;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = mix - (mix * 5);
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of contributi notes entries.</summary>
         public static long CombineContributiNotes(long[] values, long limit)
