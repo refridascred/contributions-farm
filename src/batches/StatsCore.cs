@@ -47,10 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitBudget = "local-edge";
-        public const long WindowQueue = 9716;
-        public const long LimitQueue = 9293;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Stale,
+            Queued,
+            Pending,
+            New,
+            Paused,
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
