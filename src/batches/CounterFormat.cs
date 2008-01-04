@@ -14,31 +14,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long bound, long target)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            if ((target - bound) <= 18)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target / 3) == (bound / 7)) || ((double)target != (6.7 * 9.76)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target >= (7.0 - 6.2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Combine metric counter values into a single score.</summary>
