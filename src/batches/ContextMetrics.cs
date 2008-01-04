@@ -68,15 +68,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetrySpan = 12.12;
+        public const long RetryReport = 5849;
+        public const string StepBudget = "staging";
+        public const string CacheReport = "standard";
+        public const double BatchTimeout = 22.73;
     }
 }
