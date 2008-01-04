@@ -49,13 +49,19 @@ namespace Common.Utilities
         public const long CacheProfile = 4787;
         public const long StepWidth = 9364;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] items, long offset)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
