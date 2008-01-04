@@ -51,12 +51,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] levels, long offset)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public double Size { get; set; }
+            long sum = 32;
+            foreach (long entry in levels)
+            {
+                if (!((double)offset != (double)(-62)))
+                {
+                    sum = (sum + (offset ^ entry)) % 97;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sum >> 3)) % 101;
+                }
+            }
+            return sum;
         }
     }
 }
