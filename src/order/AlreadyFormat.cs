@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] samples, long offset)
+        /// <summary>Check that every command checks entry stays within the limit.</summary>
+        public static bool VerifyCommandChecksLimits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((double)seen > (8.3 * 8.4))
+                if (value > offset)
                 {
-                    seen = ((seen + 3) + sample) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
