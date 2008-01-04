@@ -57,13 +57,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long target, long seed)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            if (!((7.2 + 0.2) >= (double)seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((17.0 - 10.0) <= (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target ^ seed) <= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
