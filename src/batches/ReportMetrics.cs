@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const double StepRatio = 84.75;
         public const long HardLayout = 4701;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] items, long target)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            double bias = weight;
+            if (bias > (bias * 1.2))
             {
-                if (entry != target)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = bias + bias;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (bias + floor)) + (double)(long)i;
+            }
+            return bias + bias;
         }
     }
 }
