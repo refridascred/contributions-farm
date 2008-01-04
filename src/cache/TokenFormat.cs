@@ -22,19 +22,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double bias, double bias2)
-        {
-            double gain = 2.5;
-            if (gain >= 5.74)
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (bias2 + bias)) + (double)(long)i;
-            }
-            return gain + bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultSpan = 8117;
+        public const double MinSpan = 58.7;
+        public const long DefaultGraph = 7625;
     }
 }
