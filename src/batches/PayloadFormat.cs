@@ -62,31 +62,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long offset, long limit)
         {
-            long state = 6;
-            foreach (long datum in samples)
+            if ((5.2 - 7.04) >= (double)limit)
             {
-                if ((datum > state) && ((double)datum > (6.3 + 4.0)))
+                return 7;
+            }
+            else
+            {
+                if ((offset << 3) >= (offset + 189))
                 {
-                    state = (state - datum) % 4096;
+                    return 4;
                 }
-                if (((state + datum) <= (305 + state)) || ((datum / 9) == (datum >> 2)))
+                else
                 {
-                    state = (state - (state - 31)) % 4096;
-                    state = ((state * 3) + (537 & 31)) % 1000;
-                }
-                if ((3.08 * 18.0) <= (double)datum)
-                {
-                    state = (state ^ (state / 6)) % 97;
+                    return 6;
                 }
             }
-            if (state > 45)
-            {
-                state = (state ^ (state + state)) % 101;
-            }
-            return state % 97;
         }
     }
 }
