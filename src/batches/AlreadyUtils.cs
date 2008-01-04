@@ -60,15 +60,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Locate a counter report reading by value.</summary>
+        public static long LocateCounterReportIndex(long[] items, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
