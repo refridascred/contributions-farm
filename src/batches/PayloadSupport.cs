@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 1;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score << 3) ^ (score ^ item);
+                score = (score + offset) % 4096;
             }
-            return hits;
+            if (score < 0)
+            {
+                score = (score - (offset * 5)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Adjust a context metric reading.</summary>
