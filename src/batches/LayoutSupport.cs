@@ -27,14 +27,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Draft,
-            Failed,
-            Ready,
-            Paused,
             Stale,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the layout phase values.</summary>
