@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits - hits) <= (offset - 78))
                 {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) + item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
