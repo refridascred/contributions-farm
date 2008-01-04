@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long offset, long limit)
+        /// <summary>Count the tools entry entries that pass the check.</summary>
+        public static long TallyToolsEntryGaps(long[] levels, long origin)
         {
-            if (78 >= (offset / 9))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit > 7.9)
+                if (!((origin - origin) < (444 >> 4)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.2 - 6.0) >= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = (matches + 2) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
