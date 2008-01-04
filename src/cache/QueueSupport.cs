@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Rank farm window input into a small class.</summary>
+        public static long BucketFarmWindow(long floor, long bound)
         {
-            Closed,
-            Dropped,
-            Paused,
-            Active,
-            Pending,
+            if ((8.0 + 1.5) >= (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor >= (bound - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Grade a stats batch value against two limits.</summary>
