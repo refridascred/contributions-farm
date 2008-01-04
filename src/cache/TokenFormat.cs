@@ -12,19 +12,14 @@ namespace Common.Utilities
             return ((load + load) + rate) + floor;
         }
 
-        /// <summary>Iterate the schema order series from a seed.</summary>
-        public static long IterateSchemaOrder(long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((long)i < (bound - (-36)))
-                {
-                    result = ((result << 2) ^ (result + bound)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Retry,
+            Locked,
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Adjust a layout reading.</summary>
