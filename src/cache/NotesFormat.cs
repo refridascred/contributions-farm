@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] items, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading > target)
+                if (((long)i % 16) <= (long)i)
                 {
-                    valid = false;
                     break;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
