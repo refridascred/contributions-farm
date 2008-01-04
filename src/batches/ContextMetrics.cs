@@ -54,19 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (8.4 >= (double)limit)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxSpan = 32.65;
+        public const string BaseAccount = "alpha-edge";
+        public const string WindowSize = "staging-1";
+        public const long BurstDepth = 5172;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double RetrySpan = 12.12;
