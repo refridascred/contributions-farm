@@ -42,18 +42,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] items, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((seed * 2) < seed) && !((reading / 9) != (60 >> 2)))
+                if (cell != offset)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Match up farm stats samples.</summary>
