@@ -1,6 +1,6 @@
 {
-  "warm_timeout_ms": 250,
-  "retry_interval": ["stable", "primary"],
-  "strict": 500,
-  "burst_retries_pct": 500
+  "soft_interval": 65.31,
+  "githubfarm_depth": "cached",
+  "layout_retries": 62,
+  "sync_ratio_ms": 100
 }
