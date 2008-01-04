@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 1811;
-        public const long HardMetric = 9393;
-        public const long BatchMetric = 5178;
-        public const double BurstMetric = 81.3;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Idle,
+            Done,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowLayout = 5231;
