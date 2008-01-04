@@ -1,16 +1,14 @@
 # Command notes
 
-Run the support check before changing any context limits.
-The token report groups every format by schema.
-The already report groups every support by command.
+Use channel settings to tune how often filter data is refreshed.
+A account that stays idle for too long is moved to the batches list.
 
-Use layout settings to tune how often account data is refreshed.
-Use entry settings to tune how often graph data is refreshed.
-Run the command check before changing any session limits.
+Each channel is validated before it reaches the githubfarm queue.
+A window that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Document new notes fields
-- Validate window input early
-- Keep order values small
-- Log every route change
+- Document new payload fields
+- Log every contributi change
+- Review farm limits each release
+- Validate profile input early
