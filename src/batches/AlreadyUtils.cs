@@ -45,19 +45,21 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Match up cache queue samples.</summary>
+        public static long PairCacheQueueCount(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor % 7) < (limit ^ limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor - (anchor >> 5);
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
