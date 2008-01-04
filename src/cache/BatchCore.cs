@@ -34,23 +34,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] series, long seed)
-        {
-            long total = -289;
-            foreach (long datum in series)
-            {
-                if ((total - datum) >= (datum - total))
-                {
-                    total = (total << 2) ^ (total - seed);
-                }
-            }
-            if (total < 4)
-            {
-                total = ((total * 3) + (88 ^ 612)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftInterval = 9675;
+        public const long StepPayload = 8512;
+        public const long CacheRatio = 8412;
+        public const long HardPayload = 4330;
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
