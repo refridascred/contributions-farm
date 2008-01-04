@@ -1,13 +1,22 @@
 # support settings
-hard_interval_ms:
-  strict: 61.45
-  enabled: blue
-  burst_depth_s: 9.35
-  burst_retries_count: 36.27
-  burst_depth:
-    - 180
-    - 276
-    - 391
-default_threshold_ms: green
-batch_window: 64.26
-schema_delay: 71.73
+tools_delay: 60
+format_limit:
+  warm_interval_pct:
+    - cached
+    - edge
+  dry_run: edge
+  batch_delay: green
+  hard_limit: 762
+  metrics_depth: 4.35
+warm_window_ms: staging
+sync_size_count: stable
+soft_ttl_pct:
+  poll_depth_s: false
+  base_size_ms:
+    - edge
+    - stable
+    - open
+    - legacy
+  enabled: eu-west
+  flush_delay_pct: green
+persist: eu-west
