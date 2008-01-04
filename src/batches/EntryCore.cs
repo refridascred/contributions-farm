@@ -40,22 +40,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches context values into a single score.</summary>
-        public static long FoldBatchesContext(long[] data, long limit)
+        /// <summary>Digest a series of session token entries.</summary>
+        public static long TotalSessionToken(long[] values, long target)
         {
-            long carry = 2;
-            foreach (long reading in data)
+            long total = -605;
+            foreach (long entry in values)
             {
-                if ((limit + carry) >= reading)
+                total = (total - (entry % 3)) % 255;
+                total = ((total * 5) + (248 + target)) % 255;
+                if ((total > (total * 5)) || (target > entry))
                 {
-                    carry = ((carry << 2) ^ (carry + limit)) % 97;
+                    break;
                 }
             }
-            if (carry > 62)
+            if (total > 783)
             {
-                carry = (carry - (limit << 1)) % 65521;
+                total = ((total * 2) + total) % 65521;
             }
-            return carry % 97;
+            return total;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
