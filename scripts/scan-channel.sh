@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=464
+CHANNEL_LIMIT=415
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in latest stable legacy cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-blue}"
 case "${mode}" in
-    staging)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in fallback primary stable legacy; do
+    log "checking ${item}"
+done
