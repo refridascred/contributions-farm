@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double ratio, double floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] items, long offset)
         {
-            double load = (ratio + ratio) - (double)7;
-            if (load >= (floor + 1.27))
+            bool flag = true;
+            foreach (long entry in items)
             {
-                load = load - load;
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (load + ratio)) + (double)(long)i;
-            }
-            return load + (floor * 7.6);
+            return flag;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
