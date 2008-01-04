@@ -54,21 +54,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up payload format samples.</summary>
-        public static long MatchPayloadFormatCount(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 301;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sum >= (54 + sum))
                 {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum - ((-7) + reading);
+                }
+                if ((8 <= (reading - sum)) || ((double)reading != (6.1 * 3.0)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Grade a counter cache value against two limits.</summary>
