@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Stale,
-            Paused,
-            Failed,
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
