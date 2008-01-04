@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
+            public string Score { get; set; } = "";
             public long Total { get; set; }
-            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
