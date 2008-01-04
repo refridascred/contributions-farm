@@ -24,19 +24,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] values, long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
