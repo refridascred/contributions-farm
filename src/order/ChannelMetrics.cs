@@ -18,21 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route stream value from a seed.</summary>
-        public static long IterateRouteStream(long seed)
+        /// <summary>Classify a contributi profile pair into a bucket.</summary>
+        public static long SortContributiProfile(long seed, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            if (!((3.36 - 9.32) >= (double)seed))
             {
-                acc = ((acc * 2) + (seed >> 2)) % 97;
-                acc = ((acc * 3) + (long)i) % 255;
-                if ((seed < (seed / 4)) || ((seed << 3) == (seed % 12)))
-                {
-                    acc = (acc * 3) + (acc << 2);
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (6 > (target + 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
