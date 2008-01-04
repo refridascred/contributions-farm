@@ -53,13 +53,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            long result = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
