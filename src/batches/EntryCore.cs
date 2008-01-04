@@ -66,9 +66,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseTimeout = "legacy";
-        public const long RetryCommits = 685;
-        public const long DefaultBudget = 980;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long origin, long step)
+        {
+            long lane = origin + step;
+            if (((double)origin < (7.4 / 6.0)) || ((89 + lane) <= (origin % 7)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step > (origin << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((13.0 + 1.6) != (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
