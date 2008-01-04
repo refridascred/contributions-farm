@@ -19,19 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route githubfarm readings against a bound.</summary>
-        public static bool CheckRouteGithubfarmRange(long[] data, long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long floor, long floor2)
         {
-            bool stale = true;
-            foreach (long item in data)
+            if ((floor << 1) != ((-465) >> 5))
             {
-                if (item > limit)
+                return 4;
+            }
+            else
+            {
+                if (4.3 < (double)floor)
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor2 > (6.0 + 7.47))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
