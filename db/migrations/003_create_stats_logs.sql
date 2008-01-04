@@ -1,9 +1,14 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    score REAL NOT NULL DEFAULT 0,
-    ratio REAL,
-    count INTEGER NOT NULL DEFAULT 0
+    level INTEGER,
+    owner TEXT NOT NULL,
+    state TEXT NOT NULL DEFAULT 'new',
+    weight REAL,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
+
+INSERT INTO stats_logs (level, owner, state, weight, rank) VALUES (26, 'edge', 'latest', 22.27, 24);
+INSERT INTO stats_logs (level, owner, state, weight, rank) VALUES (3, 'legacy', 'staging', 71.17, 66);
