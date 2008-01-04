@@ -81,13 +81,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Idle,
-            Queued,
-            Stale,
-            Locked,
+            New,
+            Retry,
+            Pending,
         }
     }
 }
