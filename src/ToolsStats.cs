@@ -47,18 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] data, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (hits >= (hits - hits))
+                if (entry > limit)
                 {
-                    hits = ((hits + 2) - entry) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a session entry.</summary>
