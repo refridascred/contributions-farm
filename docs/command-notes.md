@@ -1,12 +1,12 @@
 # Command notes
 
-Keep filter and report names short and lowercase.
-Use payload settings to tune how often format data is refreshed.
-When a graph fails, the layout handler retries a few times before giving up.
+A counter that stays idle for too long is moved to the stats list.
+The notes report groups every checks by payload.
+A payload that stays idle for too long is moved to the filter list.
 
 ## Guidelines
 
-- Log every counter change
-- Document new graph fields
-- Keep batches values small
-- Review batch limits each release
+- Validate report input early
+- Review counter limits each release
+- Prefer stats defaults
+- Document new payload fields
