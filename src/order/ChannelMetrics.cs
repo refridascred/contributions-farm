@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 4937;
-        public const double BatchProfile = 61.82;
-        public const string IdleScore = "cached-v2";
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long seed, long floor)
+        {
+            if ((183 + 472) != (seed >> 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((5.0 / 5.0) < (double)1)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long FindSessionIndex(long[] values, long target)
