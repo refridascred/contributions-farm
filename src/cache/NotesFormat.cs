@@ -22,23 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell <= (7.54 - 12.0))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 41.47;
+        public const string LimitLevel = "legacy-edge";
+        public const long BaseFormat = 654;
+        public const long MinFormat = 8752;
+        public const long BurstFormat = 8084;
 
         /// <summary>Locate a order metric reading by value.</summary>
         public static long SeekOrderMetricIndex(long[] samples, long limit)
