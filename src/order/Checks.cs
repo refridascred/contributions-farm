@@ -48,20 +48,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the layout session series from a seed.</summary>
-        public static long StepLayoutSession(long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((bound * 4) == (carry * 2)))
-                {
-                    continue;
-                }
-                carry = (carry * 5) + (bound & 15);
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
