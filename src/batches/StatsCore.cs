@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 5573;
-        public const long StepMetric = 8377;
-        public const double CacheWidth = 63.37;
-        public const long RetryBudget = 1579;
+        /// <summary>Match up schema layout samples.</summary>
+        public static long OverlapSchemaLayoutCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long origin, long target)
