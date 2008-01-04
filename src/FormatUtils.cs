@@ -74,19 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm route values into a single score.</summary>
-        public static long TallyFarmRoute(long[] values)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mark = -2;
-            foreach (long item in values)
-            {
-                mark = (((mark * 5) + mark) % 101) + item;
-            }
-            if (mark > 4)
-            {
-                mark = (mark ^ (mark * 5)) % 1000;
-            }
-            return mark % 65521;
+            Idle,
+            Queued,
+            Stale,
+            Locked,
         }
     }
 }
