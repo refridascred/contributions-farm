@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] samples)
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches ^ 48) > (46 + 282))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two cluster githubfarm measurements.</summary>
