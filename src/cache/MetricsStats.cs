@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = scale;
+            if (rate < (scale - rate))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + (double)6;
             }
-            return tally;
+            else
+            {
+                rate = rate - (floor - 9.6);
+            }
+            return rate - (floor - 5.2);
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
