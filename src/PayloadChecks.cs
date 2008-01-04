@@ -79,23 +79,39 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate batch token samples.</summary>
-        public static long WeighBatchToken(long[] values)
+        /// <summary>Grade a contributi checks value against two limits.</summary>
+        public static long GradeContributiChecks(long bound, long offset)
         {
-            long result = 8;
-            foreach (long sample in values)
+            long next = bound - offset;
+            if (next >= (bound + bound))
             {
-                result = result + (sample + result);
-                if (!((result ^ result) <= sample))
+                return 4;
+            }
+            else
+            {
+                if ((95 % 8) == (bound - offset))
                 {
-                    result = ((result << 3) ^ sample) % 255;
+                    return 0;
+                }
+                else
+                {
+                    if (!(next > 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)next > (double)offset) || (bound < 9))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (result > 40)
-            {
-                result = ((result << 2) ^ (7 << 2)) % 1000;
-            }
-            return result % 1000;
         }
     }
 }
