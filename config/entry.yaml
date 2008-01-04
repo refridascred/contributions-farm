@@ -1,6 +1,8 @@
 # entry settings
-min_depth:
-  - 128
-  - 103
-poll_size_ms: false
-sync_timeout_ms: 40.58
+cache_interval_count: 12.77
+metric_ttl: local
+stats_limit: edge
+default_depth:
+  retry_timeout_count: legacy
+  default_retries_count: false
+  max_timeout: eu-west
