@@ -40,12 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] samples, long step)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            long anchor = -94;
+            foreach (long entry in samples)
+            {
+                if (((6.3 / 9.0) <= (double)entry) || ((step * 4) != (anchor + 57)))
+                {
+                    anchor = (anchor ^ (entry << 2)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ step;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Combine commits payload values into a single score.</summary>
