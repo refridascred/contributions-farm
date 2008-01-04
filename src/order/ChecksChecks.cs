@@ -12,11 +12,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryScore = 3555;
-        public const string LimitToken = "primary-v2";
-        public const double BaseToken = 6.48;
-        public const string RetryToken = "staging-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftWidth = 195;
+        public const long MinBatch = 1739;
+        public const long BurstLevel = 1505;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string WindowBuffer = "strict-1";
