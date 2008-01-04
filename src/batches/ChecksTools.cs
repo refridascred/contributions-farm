@@ -63,13 +63,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] series, long target)
         {
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((453 > (67 + value)) && ((hits << 1) > (85 + hits)))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
