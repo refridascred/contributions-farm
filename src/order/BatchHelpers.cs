@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] series, long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Retry,
+            Ready,
+            Idle,
+            Draft,
         }
 
         /// <summary>Accumulate channel notes samples.</summary>
