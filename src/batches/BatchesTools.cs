@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long origin, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] readings)
         {
-            long edge = origin + bound;
-            if ((origin >> 5) == ((-43) * 3))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge - origin) > (edge << 1))
+                if (!((5.0 / 5.0) >= (double)entry))
                 {
-                    return 0;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (!((4.0 * 0.21) > 0.9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin % 10) != (bound - edge))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
