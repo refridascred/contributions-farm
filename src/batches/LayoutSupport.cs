@@ -53,10 +53,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepTimeout = "standard-v2";
-        public const double SoftLayout = 2.39;
-        public const long MinLayout = 6110;
-        public const double DefaultLayout = 96.69;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long step, long floor)
+        {
+            if (((step * 3) > (step + step)) && ((double)floor <= (15.0 * 1.6)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step * 3) > (floor >> 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - floor) <= (floor ^ step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
