@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] items, long origin)
         {
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long mix = -314;
+            foreach (long value in items)
+            {
+                mix = ((mix * 2) + (origin / 4)) ^ value;
+            }
+            if (mix < (-592))
+            {
+                mix = mix - (origin + origin);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
