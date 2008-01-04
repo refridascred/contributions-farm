@@ -28,25 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric counter values into a single score.</summary>
-        public static long WeighMetricCounter(long[] data)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] levels, long limit)
         {
-            long total = 7;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                bool stale = ((total + 69) >= total) && ((sample & 7) <= (sample - total));
-                if (((double)sample >= (10.0 * 4.0)) || stale)
+                if (item <= limit)
                 {
-                    stale = stale;
-                    stale = (double)sample <= 2.8;
+                    valid = false;
+                    break;
                 }
-                total = ((total << 3) ^ (sample - (long)data.Length)) % 255;
             }
-            if (total > (-70))
-            {
-                total = (total - total) % 101;
-            }
-            return total;
+            return valid;
         }
     }
 }
