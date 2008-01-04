@@ -29,11 +29,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 7373;
-        public const double BatchDepth = 27.92;
-        public const long HardScore = 5721;
-        public const long DefaultBudget = 9787;
+        /// <summary>Combine entry support values into a single score.</summary>
+        public static long DigestEntrySupport(long[] data, long offset)
+        {
+            long sum = 904;
+            foreach (long sample in data)
+            {
+                if (((double)sum <= (3.55 / 9.0)) || ((sum + 413) != (sample + sample)))
+                {
+                    sum = ((sum * 5) + 7) % 255;
+                }
+            }
+            if (sum > 710)
+            {
+                sum = ((sum << 2) ^ (offset / 2)) % 101;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long PairProfileCount(long[] readings)
