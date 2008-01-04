@@ -46,14 +46,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] levels, long bound)
         {
-            Failed,
-            Closed,
-            Draft,
-            New,
-            Locked,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((bound >> 1) != (count + bound)) && ((((long)levels.Length << 1) < (2 - count)) && ((bound + count) == (bound + bound))))
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
         }
     }
 }
