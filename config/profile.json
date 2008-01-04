@@ -1,7 +1,7 @@
 {
-  "strict": ["latest", "eu-west", "blue", "open"],
-  "min_ratio_s": 9070,
-  "compress": "primary",
-  "channel_window": ["local", "latest"],
-  "burst_threshold_pct": 250
+  "min_threshold_count": "blue",
+  "soft_capacity_s": 63.01,
+  "poll_window": 6443,
+  "min_ratio": [347, 301, 400],
+  "idle_depth_ms": true
 }
