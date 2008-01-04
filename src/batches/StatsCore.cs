@@ -104,21 +104,24 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long floor, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((double)6 < (double)offset))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor + floor) < (offset - offset))
                 {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
