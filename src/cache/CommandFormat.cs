@@ -20,15 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double gain, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            double ratio = gain;
+            return (ratio + (ratio - gain)) + floor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
