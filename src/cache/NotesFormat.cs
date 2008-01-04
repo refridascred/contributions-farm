@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
-        public static bool GuardToolsBufferRange(long[] samples, long offset)
+        /// <summary>Audit stats session readings against a rule.</summary>
+        public static long MeasureStatsSessionMatches(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (sample > offset)
+                if ((double)bound < (16.0 + 17.0))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
