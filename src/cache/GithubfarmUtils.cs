@@ -12,18 +12,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] items, long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum / 7) > limit)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Dropped,
+            Ready,
+            Idle,
+            Locked,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
