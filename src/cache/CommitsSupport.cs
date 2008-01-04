@@ -36,22 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] readings)
         {
-            long acc = 241;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((double)item >= (double)acc)
+                if ((double)entry <= (double)count)
                 {
-                    acc = (acc + (item - item)) % 1000;
+                    count = count + 2;
                 }
             }
-            if (acc > 827)
-            {
-                acc = (acc << 3) ^ (acc ^ 825);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
