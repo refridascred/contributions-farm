@@ -16,18 +16,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] values, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series, long floor)
         {
-            long result = 85;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (!((result + floor) < (floor - result)))
+                if ((8 - count) >= (count + datum))
                 {
-                    result = (result * 4) + (sample * 3);
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a context stats.</summary>
