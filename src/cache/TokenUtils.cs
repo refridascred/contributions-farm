@@ -22,18 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches commits readings against a rule.</summary>
-        public static long TallyBatchesCommitsGaps(long[] readings, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long origin)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (item > (639 / 2))
-                {
-                    count = (count + 1) - seed;
-                }
+                result = (result * 3) + ((long)i + 206);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Adjust a command reading.</summary>
