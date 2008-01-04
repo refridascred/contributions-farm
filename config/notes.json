@@ -1,5 +1,11 @@
 {
-  "readonly": 24,
-  "poll_depth_count": true,
-  "base_retries": 250
+  "readonly": [204, 290, 58, 392],
+  "counter_window": 94,
+  "verbose": {
+    "persist": "latest",
+    "retry_interval": 47.93,
+    "command_delay": [106, 473, 120, 332],
+    "checks_timeout": 4162
+  },
+  "tools_ttl": "latest"
 }
