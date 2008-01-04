@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 1811;
+        public const long HardMetric = 9393;
+        public const long BatchMetric = 5178;
+        public const double BurstMetric = 81.3;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double rate, double floor)
