@@ -33,14 +33,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Failed,
-            Draft,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardBudget = 3932;
+        public const string HardFormat = "alpha-v2";
+        public const string SoftLevel = "strict-edge";
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionBounds(long[] levels, long offset)
