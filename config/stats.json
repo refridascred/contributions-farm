@@ -1,5 +1,10 @@
 {
-  "token_threshold": "latest",
-  "metric_ttl": 34.54,
-  "batch_size": 4766
+  "burst_ratio_s": "eu-west",
+  "base_capacity": 8537,
+  "warm_timeout_ms": {
+    "verbose": "fallback",
+    "commits_interval": 500,
+    "base_timeout_count": false
+  },
+  "warm_timeout": 5634
 }
