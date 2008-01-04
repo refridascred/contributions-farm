@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double gain, double floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double rate = (double)((-6) & 127);
-            return ((rate - (double)44) + gain) + floor;
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
