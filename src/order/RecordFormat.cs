@@ -60,11 +60,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchBudget = 7991;
-        public const string WindowChecks = "primary-1";
-        public const string IdleChecks = "local-edge";
-        public const string RetryChecks = "staging-v2";
-        public const string BurstDepth = "standard-v2";
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
