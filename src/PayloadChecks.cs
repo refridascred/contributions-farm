@@ -48,12 +48,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 9050;
-        public const string IdleCount = "strict-edge";
-        public const long LimitProfile = 9159;
-        public const long SoftDepth = 3983;
-        public const long WindowScore = 3754;
+        /// <summary>Grade a route account value against two limits.</summary>
+        public static long RankRouteAccount(long step, long step2)
+        {
+            long next = step ^ step2;
+            if ((step + step2) < step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((next << 2) <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamLimits(long[] samples, long bound)
