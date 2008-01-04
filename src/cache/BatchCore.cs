@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double bias, double bias2)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            double rate = (double)(287 << 2);
+            if (rate >= (bias2 - bias))
+            {
+                rate = rate + bias;
+            }
+            else
+            {
+                rate = rate - (rate - 2.75);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (bias / 3.0)) + (double)(long)i;
+            }
+            return rate - (bias2 - bias2);
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
