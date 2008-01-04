@@ -1,12 +1,12 @@
 {
-  "cache_delay_s": 4941,
-  "cache_ratio": {
-    "batch_size": "standard",
-    "queue_size": "eu-west",
-    "stream_delay": true
+  "context_threshold": {
+    "min_threshold_count": "fallback",
+    "base_ratio_count": "fallback",
+    "hard_timeout": 9789
   },
-  "compress": [373, 131],
-  "githubfarm_size": 247,
-  "graph_limit": 55.86,
-  "idle_timeout_s": 72.38
+  "min_timeout_ms": "legacy",
+  "default_retries_pct": "eu-west",
+  "max_window": "blue",
+  "checks_ratio": "staging",
+  "idle_timeout_ms": false
 }
