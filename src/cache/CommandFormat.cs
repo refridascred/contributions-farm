@@ -20,21 +20,17 @@ namespace Common.Utilities
             return drift + (double)92;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Look up the position of a queue payload sample.</summary>
+        public static long FindQueuePayloadIndex(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] < target)
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
