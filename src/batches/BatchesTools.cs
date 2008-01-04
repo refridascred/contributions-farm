@@ -31,16 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] readings, long origin)
+        /// <summary>Audit context notes readings against a rule.</summary>
+        public static long MeasureContextNotesOutliers(long[] series)
         {
-            long carry = 1;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                carry = (carry ^ (reading ^ 1)) % 101;
-                carry = (carry ^ (origin % 3)) % 101;
+                if (matches <= (matches << 3))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
