@@ -1,18 +1,7 @@
 # githubfarm settings
-batch_retries: 6451
-compress: 150
-token_depth: 30
-audit: false
-counter_delay:
-  idle_window_ms:
-    cache_limit_pct: 9591
-    batch_threshold: 1772
-    max_limit_ms: 28.48
-  enabled: 97.12
-  retry_depth: fallback
-  soft_ttl_ms:
-    - 6
-    - 216
-    - 354
-  hard_ratio_count: edge
-  hard_threshold_count: 59
+compress: standard
+batches_capacity: false
+sync_timeout_count:
+  - eu-west
+  - cached
+base_capacity_pct: standard
