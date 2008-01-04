@@ -50,17 +50,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale2 = span * 9.1;
+            return (scale2 - (double)9) + scale;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
