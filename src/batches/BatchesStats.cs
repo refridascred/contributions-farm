@@ -34,19 +34,25 @@ namespace Common.Utilities
         public const double SoftBuffer = 92.59;
         public const long SoftBudget = 142;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] samples, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long step, long target)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long slot = step + target;
+            if (target > (step + target))
             {
-                if (entry > floor)
+                return 0;
+            }
+            else
+            {
+                if ((slot >> 5) != (slot & 1))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
     }
 }
