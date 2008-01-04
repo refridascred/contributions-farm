@@ -68,17 +68,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] samples, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (samples[i] > floor)
+                if (sample < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
