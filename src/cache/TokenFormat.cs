@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] series, long step)
         {
-            Done,
-            Ready,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
