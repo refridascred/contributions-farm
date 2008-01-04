@@ -1,6 +1,9 @@
-id,weight,active,score,count
-1,latest,585,9.03,50.78
-2,62.89,58.64,42.43,737
-3,763,blue,edge,fallback
-4,latest,663,edge,71.2
-5,83,23.48,latest,606
+id,count,state,token,level
+1,62.43,394,legacy,439
+2,671,320,460,596
+3,green,primary,73.07,131
+4,primary,6.68,6,38.65
+5,cached,413,standard,82.05
+6,21.92,974,960,eu-west
+7,35.36,latest,333,open
+8,814,primary,643,717
