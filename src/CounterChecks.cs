@@ -35,18 +35,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] values, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) > ((-2) - reading))
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
+            Done,
+            Stale,
+            Dropped,
+            Pending,
+            New,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
