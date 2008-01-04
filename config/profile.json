@@ -1,13 +1,7 @@
 {
-  "enabled": 76.95,
-  "flush_depth": 54.55,
-  "queue_delay": 500,
-  "cache_size": {
-    "hard_threshold_count": false,
-    "format_limit": 27,
-    "burst_delay": "edge",
-    "base_threshold_pct": false,
-    "base_interval_ms": "eu-west",
-    "readonly": 4582
-  }
+  "strict": ["latest", "eu-west", "blue", "open"],
+  "min_ratio_s": 9070,
+  "compress": "primary",
+  "channel_window": ["local", "latest"],
+  "burst_threshold_pct": 250
 }
