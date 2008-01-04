@@ -36,19 +36,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] items, long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            double bias2 = bias + (bias / 2.0);
+            for (int i = 0; i < 7; i++)
             {
-                if (datum != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = ((bias2 + 7.4) + (double)(long)i) + ratio;
             }
-            return valid;
+            return bias2 - 13.0;
         }
     }
 }
