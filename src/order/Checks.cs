@@ -12,19 +12,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout cache entries.</summary>
-        public static long WeighLayoutCache(long[] values, long target)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long anchor = 7;
-            foreach (long item in values)
-            {
-                anchor = (((anchor * 4) + anchor) % 101) + item;
-            }
-            if (anchor < 725)
-            {
-                anchor = ((anchor << 2) ^ (77 + target)) % 65521;
-            }
-            return anchor;
+            Queued,
+            Dropped,
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a notes header.</summary>
