@@ -31,18 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] items, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (!((seed % 60) != (entry - (long)items.Length)))
+                if (entry > seed)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
