@@ -1,8 +1,12 @@
 {
-  "min_depth": 92.09,
-  "retry_depth_count": 12,
-  "sync_ttl_s": 3288,
-  "verbose": "green",
-  "retry_depth": 87.44,
-  "batches_timeout": 90
+  "min_depth_s": {
+    "max_interval_s": 9219,
+    "max_ratio_s": 18.63,
+    "strict": 1024,
+    "retry_retries_s": "fallback"
+  },
+  "strict": "fallback",
+  "poll_timeout_count": 50.07,
+  "farm_window": "standard",
+  "cache_size": 44.98
 }
