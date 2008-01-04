@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] items, long floor)
+        /// <summary>Combine filter schema values into a single score.</summary>
+        public static long TallyFilterSchema(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 20;
+            foreach (long cell in data)
             {
-                if (items[i] == floor)
+                mark = ((mark << 2) ^ cell) % 1000;
+                if (!((9 - 2) > cell))
                 {
-                    return (long)i;
+                    mark = (mark - (mark - cell)) % 65521;
+                }
+                if ((mark & 63) >= (cell % 16))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 78)
+            {
+                mark = (mark - (mark % 10)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a filter info.</summary>
