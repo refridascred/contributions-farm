@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long MinScore = 8867;
         public const string StepInterval = "strict-1";
 
-        /// <summary>Look up the position of a token cluster sample.</summary>
-        public static long FindTokenClusterIndex(long[] readings, long limit)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
