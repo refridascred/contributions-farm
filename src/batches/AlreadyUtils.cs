@@ -32,10 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 4679;
-        public const double IdleBudget = 56.19;
-        public const long LimitLevel = 4045;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Dropped,
+            Retry,
+            New,
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] samples, long bound)
