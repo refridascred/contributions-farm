@@ -20,16 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the metrics order series from a seed.</summary>
-        public static long SeriesMetricsOrder(long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                sum = (sum ^ (step >> 4)) % 1000;
-                sum = ((sum * 2) + (long)i) % 101;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Describe the editor status values.</summary>
