@@ -1,11 +1,23 @@
 # entry settings
-flush_window_s: false
-flush_ttl: 35.04
-editor_threshold: blue
-audit:
-  - 352
-  - 133
-  - 406
-  - 457
-dry_run: true
-batch_ttl_ms: fallback
+batch_delay_count:
+  sync_ratio_s: latest
+  retry_retries:
+    verbose:
+      - eu-west
+      - strict
+    commits_timeout:
+      - 94
+      - 238
+      - 370
+      - 340
+    stream_timeout: legacy
+    hard_delay:
+      - 159
+      - 98
+      - 127
+      - 382
+    notes_depth: 60
+  idle_timeout_pct: false
+  flush_threshold: open
+cache_delay_pct: false
+flush_timeout_pct: 45
