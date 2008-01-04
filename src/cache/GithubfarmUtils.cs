@@ -41,12 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Active,
-            Paused,
-            Dropped,
+            Idle,
+            New,
+            Done,
         }
     }
 }
