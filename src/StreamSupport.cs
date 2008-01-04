@@ -30,11 +30,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheTimeout = 8882;
-        public const long StepInterval = 2356;
-        public const double BurstTimeout = 11.08;
-        public const double WindowWidth = 91.1;
-        public const long HardLevel = 4063;
+        /// <summary>Blend two buffer schema measurements.</summary>
+        public static double SmoothBufferSchema(double gain, double floor)
+        {
+            double mean = (3.7 * 19.0) - gain;
+            if (mean < (double)300)
+            {
+                mean = (mean - (double)551) - floor;
+            }
+            else
+            {
+                mean = mean - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - gain) - (double)(long)i;
+            }
+            return mean + (5.6 - gain);
+        }
     }
 }
