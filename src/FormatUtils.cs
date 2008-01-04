@@ -19,31 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long floor, long floor2)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] series)
         {
-            if ((floor << 1) != ((-465) >> 5))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (4.3 < (double)floor)
+                if ((((5.4 / 2.0) == (double)cell) && (772 <= (matches << 3))) && (matches > (cell << 1)))
                 {
-                    return 6;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((double)floor2 > (6.0 + 7.47))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
