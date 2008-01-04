@@ -28,13 +28,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Grade a batches filter value against two limits.</summary>
+        public static long BucketBatchesFilter(long origin, long target)
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            if ((6.0 / 7.0) < (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target != (3.38 + 9.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
