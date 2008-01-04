@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double gain, double offset)
         {
-            Ready,
-            Closed,
-            Dropped,
-            Idle,
-            Retry,
+            double bias = offset + gain;
+            if (bias >= 6.81)
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - (double)83;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
