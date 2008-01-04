@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine schema support values into a single score.</summary>
-        public static long TallySchemaSupport(long[] values)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] samples)
         {
-            long score = 91;
-            foreach (long datum in values)
+            long score = 45;
+            foreach (long item in samples)
             {
-                if (!((824 + 970) >= score))
-                {
-                    score = ((score << 3) ^ (score - datum)) % 101;
-                }
-                score = (score ^ score) % 97;
-                if ((5.0 - 3.0) != (double)score)
-                {
-                    break;
-                }
+                score = (score + ((long)samples.Length + 1)) - item;
             }
-            if (score < 94)
-            {
-                score = ((score * 5) + (score & 7)) % 65521;
-            }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Hold a stats record.</summary>
