@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples, long offset)
-        {
-            long total = 40;
-            foreach (long value in samples)
-            {
-                total = ((total << 2) ^ (total + offset)) + value;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 94.12;
+        public const long StepSize = 9653;
+        public const long LimitTimeout = 2236;
+        public const long RetryTools = 625;
+        public const long BaseTools = 8725;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long StepRoute(long target)
