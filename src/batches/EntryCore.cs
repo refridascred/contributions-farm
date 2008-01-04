@@ -74,23 +74,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Match up tools contributi samples.</summary>
+        public static long CompareToolsContributiCount(long[] series)
         {
-            long score = 49;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (((score * 3) + (entry % 16)) % 4096) + (long)i;
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = (score * 4) + (88 / 6);
             }
-            if (score > 35)
-            {
-                score = (score * 5) + (score % 16);
-            }
-            return score;
+            return hits;
         }
     }
 }
