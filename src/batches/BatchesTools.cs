@@ -23,16 +23,19 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 5939;
         public const double HardLevel = 44.27;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double scale, double bias)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            double gain = (double)(591 + 99);
+            if (gain < (bias + bias))
             {
-                total = ((total * 5) + (total << 1)) % 101;
-                total = ((total * 2) + (long)i) % 65521;
+                gain = (gain - gain) - scale;
             }
-            return total;
+            else
+            {
+                gain = gain - 6.0;
+            }
+            return gain - (7.3 / 8.0);
         }
     }
 }
