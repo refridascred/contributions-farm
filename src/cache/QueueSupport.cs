@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine filter schema values into a single score.</summary>
-        public static long TallyFilterSchema(long[] data)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long mark = 20;
-            foreach (long cell in data)
-            {
-                mark = ((mark << 2) ^ cell) % 1000;
-                if (!((9 - 2) > cell))
-                {
-                    mark = (mark - (mark - cell)) % 65521;
-                }
-                if ((mark & 63) >= (cell % 16))
-                {
-                    break;
-                }
-            }
-            if (mark < 78)
-            {
-                mark = (mark - (mark % 10)) % 4096;
-            }
-            return mark;
+            Closed,
+            Dropped,
+            Paused,
+            Active,
+            Pending,
         }
 
         /// <summary>Grade a stats batch value against two limits.</summary>
