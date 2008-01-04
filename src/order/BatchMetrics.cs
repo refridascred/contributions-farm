@@ -22,21 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Measure how many commits support samples are out of range.</summary>
+        public static long MeasureCommitsSupportOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (8 < (offset << 3))
                 {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) + entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
