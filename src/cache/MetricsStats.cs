@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const string BaseBudget = "stable-edge";
         public const double MinRecord = 23.34;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "primary";
-        public const long BaseReport = 4453;
-        public const long DefaultCount = 5264;
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long PairBatchCount(long[] items)
