@@ -20,24 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long origin)
+        /// <summary>Derive the next schema stream value from a seed.</summary>
+        public static long RollSchemaStream(long target)
         {
-            if (((6.2 / 8.0) > (double)seed) && ((seed - seed) > (seed << 1)))
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((origin - seed) < (origin ^ seed)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
