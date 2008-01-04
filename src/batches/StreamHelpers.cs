@@ -47,12 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinFactor = "alpha-edge";
-        public const double BatchSpan = 22.75;
-        public const long BatchGraph = 7965;
-        public const long CacheGraph = 2944;
-        public const long MinGraph = 6187;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Locked,
+            Synced,
+            Failed,
+            Done,
+            Stale,
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long BucketCommand(long limit, long offset)
