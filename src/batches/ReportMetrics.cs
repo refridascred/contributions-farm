@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinSpan = "staging-v2";
-        public const long CacheLevel = 4874;
-        public const long WindowChecks = 1559;
-        public const long DefaultChecks = 7851;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Look up the position of a order session sample.</summary>
         public static long FindOrderSessionIndex(long[] samples, long limit)
