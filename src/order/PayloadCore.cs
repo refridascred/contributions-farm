@@ -18,21 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 436;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= (reading & 7))
                 {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + (125 & 7)) % 255;
+                    acc = (acc << 3) ^ (acc + 77);
+                }
+                else
+                {
+                    acc = acc - (49 + 13);
+                }
+                if ((double)target <= (3.92 + 6.4))
+                {
+                    acc = ((acc * 5) + (target ^ reading)) % 255;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Measure how many already session samples are out of range.</summary>
