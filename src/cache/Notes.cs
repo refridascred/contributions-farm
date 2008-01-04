@@ -56,18 +56,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] data)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((6.55 + 5.0) >= (double)sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Dropped,
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the checks phase values.</summary>
