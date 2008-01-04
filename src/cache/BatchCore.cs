@@ -19,24 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long origin, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            if (!(72 < (floor - 586)))
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
+                acc = (acc + (long)i) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((451 + (-88)) < (231 - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the commits phase values.</summary>
