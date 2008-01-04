@@ -1,13 +1,20 @@
 {
-  "sync_retries_s": 8,
-  "poll_threshold_count": true,
-  "schema_capacity": 8147,
-  "cluster_capacity": 9946,
-  "commits_size": "staging",
-  "min_limit_count": {
-    "batch_ratio_ms": "strict",
-    "strict": [457, 76, 300, 276],
-    "cache_interval": true,
-    "compress": 8749
-  }
+  "editor_size": 7904,
+  "cluster_ratio": 23.54,
+  "strict": true,
+  "persist": {
+    "record_timeout": [324, 353, 153],
+    "counter_retries": {
+      "cache_window": "strict",
+      "batch_size_ms": "eu-west",
+      "flush_ttl_s": 47.98
+    },
+    "dry_run": {
+      "metric_interval": ["standard", "strict"],
+      "batches_size": 50.83,
+      "soft_timeout_count": true
+    },
+    "contributi_threshold": 4.38
+  },
+  "token_window": 60
 }
