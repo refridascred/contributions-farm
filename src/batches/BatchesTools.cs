@@ -32,19 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double scale, double bias)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double gain = (double)(591 + 99);
-            if (gain < (bias + bias))
-            {
-                gain = (gain - gain) - scale;
-            }
-            else
-            {
-                gain = gain - 6.0;
-            }
-            return gain - (7.3 / 8.0);
+            Locked,
+            Draft,
+            Done,
+            Failed,
         }
     }
 }
