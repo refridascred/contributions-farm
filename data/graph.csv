@@ -1,7 +1,8 @@
-id,count,owner,ratio
-1,38.51,standard,785
-2,78,stable,95
-3,272,20.99,914
-4,43.83,746,green
-5,502,988,12.04
-6,78.19,82.65,874
+id,owner,weight,ratio,label
+1,latest,157,726,24.85
+2,local,207,634,724
+3,eu-west,60.06,eu-west,66.45
+4,12.2,standard,90.63,green
+5,699,40.48,legacy,strict
+6,9.51,85,48.34,413
+7,primary,18,444,staging
