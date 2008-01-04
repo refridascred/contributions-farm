@@ -36,21 +36,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metrics cluster pairs that satisfy a relation.</summary>
-        public static long PairMetricsClusterCount(long[] levels)
+        /// <summary>Classify a record counter pair into a bucket.</summary>
+        public static long BucketRecordCounter(long offset, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (origin > (offset >> 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((origin - 722) >= (origin + offset))
                 {
-                    if ((levels[i] ^ levels[j]) < 6)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset <= 9.39)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (5 >= (origin ^ origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
