@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double rate, double bias)
-        {
-            double ratio = (5.5 / 7.0) - (0.3 / 2.0);
-            if (ratio >= (ratio * 12.0))
-            {
-                ratio = (ratio - ratio) + bias;
-            }
-            return ratio + (rate * 3.8);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 14.52;
+        public const double MaxWidth = 23.01;
+        public const long DefaultBudget = 6245;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] items)
