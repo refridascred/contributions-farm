@@ -46,14 +46,12 @@ namespace Common.Utilities
         public const long IdleCount = 6093;
         public const long BatchBudget = 4869;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Stale,
-            Paused,
-            Active,
-            Ready,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleRatio = 8090;
+        public const double CacheLayout = 12.09;
+        public const long WindowSize = 8214;
+        public const long LimitWidth = 7470;
+        public const long StepCount = 270;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long SeriesMetric(long offset)
