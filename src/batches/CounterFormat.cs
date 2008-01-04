@@ -36,24 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long step)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((0 + step) > total)
-                {
-                    total = (total - total) % 4096;
-                    break;
-                }
-                else
-                {
-                    total = (total - (long)i) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
