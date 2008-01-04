@@ -61,23 +61,15 @@ namespace Common.Utilities
             return gain - (bias + 1.0);
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double ratio, double offset)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double weight, double floor)
         {
-            double gain = offset;
-            if (gain <= offset)
+            double weight2 = (3.0 - floor) + (weight - 3.8);
+            if (weight2 > (double)86)
             {
-                gain = (gain + offset) + ratio;
+                weight2 = weight2 - (floor - floor);
             }
-            else
-            {
-                gain = gain + (double)(-6);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (double)(-7);
+            return weight2 + (floor - weight);
         }
     }
 }
