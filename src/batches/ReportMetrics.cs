@@ -24,19 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double weight, double floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long seed)
         {
-            double weight2 = floor;
-            if (weight2 <= (weight * 2.51))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = weight2 - (weight2 / 2.0);
+                if ((items[i] > seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + (weight - weight2)) + (double)(long)i;
-            }
-            return weight2 + (5.12 - floor);
+            return -1;
         }
     }
 }
