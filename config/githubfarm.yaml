@@ -1,7 +1,6 @@
 # githubfarm settings
-filter_limit:
-  - 349
-  - 475
-  - 497
-sync_depth: 500
-cache_ttl: 30
+warm_ttl: 4302
+notes_capacity: 82
+editor_ratio: 60
+retry_retries_pct: 55.37
+sync_capacity_pct: 2071
