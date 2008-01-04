@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
