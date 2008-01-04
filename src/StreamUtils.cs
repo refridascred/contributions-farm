@@ -56,24 +56,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long floor, long step)
+        /// <summary>Adjust a entry profile reading.</summary>
+        public static double ScaleEntryProfile(double weight, double span)
         {
-            if ((step % 5) != (floor + 6))
+            double weight2 = (12.0 + 0.5) * 8.18;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                weight2 = ((weight2 + weight2) - (double)(long)i) - weight;
             }
-            else
-            {
-                if ((step >> 3) > floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return weight2 + span;
         }
     }
 }
