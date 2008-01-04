@@ -31,12 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Count the record checks entries that pass the check.</summary>
+        public static long MeasureRecordChecksMatches(long[] items, long floor)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((1.05 * 6.0) != (double)sample)
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
         }
     }
 }
