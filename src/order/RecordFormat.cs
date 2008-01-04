@@ -67,9 +67,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryFactor = "standard-1";
-        public const long StepTimeout = 4204;
-        public const long RetryPayload = 6057;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
