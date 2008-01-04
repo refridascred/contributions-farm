@@ -15,15 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double bias, double floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double drift = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift + bias;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
