@@ -28,14 +28,19 @@ namespace Common.Utilities
             return mean + 1.25;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] items)
         {
-            Closed,
-            Done,
-            Draft,
-            Pending,
-            Active,
+            long score = 6;
+            foreach (long reading in items)
+            {
+                score = (score * 4) + (reading - reading);
+            }
+            if (score > 0)
+            {
+                score = score + (score - score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
