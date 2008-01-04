@@ -27,12 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Active,
-            Done,
-            Queued,
+            Draft,
+            Locked,
+            Failed,
+            Stale,
         }
     }
 }
