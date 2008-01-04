@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const long MinBatch = 1739;
         public const long BurstLevel = 1505;
 
-        /// <summary>Blend two session buffer measurements.</summary>
-        public static double AdjustSessionBuffer(double rate, double floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double bias, double offset)
         {
-            double scale = rate;
-            if (scale > (rate - rate))
-            {
-                scale = (scale + scale) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale / 9.0)) + (double)(long)i;
-            }
-            return scale + (double)49;
+            double ratio = offset;
+            return (ratio - (17.0 + 2.1)) + bias;
         }
     }
 }
