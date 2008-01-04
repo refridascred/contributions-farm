@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Audit metric profile readings against a rule.</summary>
+        public static long AuditMetricProfileMatches(long[] values, long seed)
         {
-            double scale = (double)(65 & 31);
-            if (scale <= span)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                scale = scale - scale;
+                if (((reading * 5) > (reading + seed)) || ((tally << 3) > (23 / 2)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + bias;
+            return tally;
         }
 
         /// <summary>Roll a checks route counter forward.</summary>
