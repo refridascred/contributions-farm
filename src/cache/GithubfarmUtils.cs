@@ -32,15 +32,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double rate, double floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long limit, long seed)
         {
-            double gain = (double)72;
-            if (gain <= 0.2)
+            long diff = limit + seed;
+            if (((double)seed <= 9.0) && ((diff + diff) != (diff & 3)))
             {
-                gain = (gain - rate) + floor;
+                return 1;
             }
-            return gain - (rate * 9.4);
+            else
+            {
+                if ((limit & 15) > seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((11 - limit) >= 19)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((limit + 301) != (limit + seed)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm options.</summary>
