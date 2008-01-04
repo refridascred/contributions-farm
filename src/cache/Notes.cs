@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] series, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            long mix = 742;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((mix / 4) >= mix) && (70 > mix))
                 {
-                    result = ((result ^ result) % 1000) - (long)i2;
+                    mix = (mix + (reading - step)) % 4096;
                 }
-                result = result ^ (origin + result);
-                result = ((result * 5) + ((long)i - 696)) % 255;
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            if (mix > 0)
+            {
+                mix = (mix ^ (step + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of batch order readings.</summary>
