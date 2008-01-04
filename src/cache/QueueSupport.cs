@@ -28,17 +28,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] values, long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long origin, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = origin + step;
+            if ((origin / 8) != (origin % 24))
             {
-                if (values[i] >= step)
+                return 8;
+            }
+            else
+            {
+                if ((delta & 1) > (origin / 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)delta == (9.72 / 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin >= step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
