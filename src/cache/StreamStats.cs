@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 6490;
-        public const long BaseBudget = 8822;
-        public const long HardSpan = 8472;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleSize = 1.05;
+        public const double IdleMetrics = 83.02;
+        public const long MinSize = 3712;
+        public const double BaseFactor = 16.52;
+        public const long MaxFactor = 5488;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepLevel = 5685;
