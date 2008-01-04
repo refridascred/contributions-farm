@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double gain, double bias)
-        {
-            double weight = 9.3 + (gain - bias);
-            if (weight <= bias)
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight + (gain + bias);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 3439;
+        public const long MaxBatches = 576;
+        public const string RetryBatches = "standard-edge";
+        public const double HardBatches = 13.25;
     }
 }
