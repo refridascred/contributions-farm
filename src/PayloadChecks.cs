@@ -52,11 +52,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 9;
+            foreach (long cell in values)
+            {
+                anchor = anchor - (500 >> 4);
+                anchor = (anchor + (anchor - anchor)) % 97;
+                if (((cell % 24) <= (anchor * 3)) || (6.4 < (double)(long)values.Length))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
