@@ -31,38 +31,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long step, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] items, long offset)
         {
-            if (step > (29 & 63))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (7.0 >= (double)limit)
+                if (items[i] <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - step) != (step - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step < (limit - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
