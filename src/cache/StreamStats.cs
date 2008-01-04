@@ -31,22 +31,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] items, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value >> 2) == (4 % 60))
+                if ((readings[i] > target) && ((readings[i] % 3) != 0))
                 {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
