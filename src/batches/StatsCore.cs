@@ -91,19 +91,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] values, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long score = 0;
+            foreach (long item in items)
             {
-                if (datum <= limit)
+                if ((score >> 2) != (bound % 7))
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 3) ^ 8) + item;
                 }
             }
-            return stale;
+            if (score < 7)
+            {
+                score = (score ^ (bound / 8)) % 97;
+            }
+            return score % 4096;
         }
     }
 }
