@@ -23,15 +23,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Match up report payload samples.</summary>
+        public static long CompareReportPayloadCount(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 4)
+                    if ((data[i] - data[j]) != 18)
                     {
                         matches = matches + 1;
                     }
