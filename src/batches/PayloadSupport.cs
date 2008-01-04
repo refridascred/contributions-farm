@@ -33,13 +33,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Combine window farm values into a single score.</summary>
+        public static long CombineWindowFarm(long[] series)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Active,
+            long mix = -4;
+            foreach (long item in series)
+            {
+                mix = (mix * 5) + item;
+                if ((double)mix >= 19.0)
+                {
+                    continue;
+                }
+                if ((mix & 63) < ((-931) + mix))
+                {
+                    mix = mix - (item + item);
+                }
+            }
+            return mix;
         }
     }
 }
