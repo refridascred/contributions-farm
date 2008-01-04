@@ -39,12 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long origin, long floor)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
+            if (!(72 < (floor - 586)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((451 + (-88)) < (231 - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the commits phase values.</summary>
