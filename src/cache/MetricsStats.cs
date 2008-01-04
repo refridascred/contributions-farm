@@ -16,13 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "primary";
+        public const long BaseReport = 4453;
+        public const long DefaultCount = 5264;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long PairBatchCount(long[] items)
