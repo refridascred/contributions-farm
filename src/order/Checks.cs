@@ -52,16 +52,22 @@ namespace Common.Utilities
         public const double BaseFormat = 2.03;
         public const long MaxFormat = 1007;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values, long floor)
+        /// <summary>Iterate the order context series from a seed.</summary>
+        public static long IterateOrderContext(long target)
         {
-            long acc = 2;
-            foreach (long sample in values)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (3.7 < (double)sample)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    acc = ((acc << 2) ^ ((-9) - sample)) - floor;
+                    acc = ((acc + (target + target)) % 255) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    acc = (acc ^ (target + acc)) ^ (long)i3;
+                }
+                acc = acc ^ (target + acc);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
             return acc;
         }
