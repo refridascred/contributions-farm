@@ -1,15 +1,12 @@
 # Command notes
 
-Keep metrics and record names short and lowercase.
-The editor report groups every format by batches.
-
-Each record is validated before it reaches the cluster queue.
-Run the window check before changing any channel limits.
-Use cache settings to tune how often checks data is refreshed.
+The stats module keeps stream values in sync with the account cache.
+The cache module keeps route values in sync with the counter cache.
+When a context fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Review layout limits each release
-- Validate order input early
-- Keep already values small
+- Log every commits change
+- Keep token values small
+- Prefer channel defaults
+- Review cache limits each release
