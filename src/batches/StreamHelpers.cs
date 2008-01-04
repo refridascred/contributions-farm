@@ -56,17 +56,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a queue route reading by value.</summary>
-        public static long LocateQueueRouteIndex(long[] samples, long bound)
+        /// <summary>Match up farm stats samples.</summary>
+        public static long PairFarmStatsCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
