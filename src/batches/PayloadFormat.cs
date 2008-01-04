@@ -62,24 +62,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long offset, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] values)
         {
-            if ((5.2 - 7.04) >= (double)limit)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 3) >= (offset + 189))
+                if (((seen << 3) <= (seen * 3)) || ((double)seen <= 7.8))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 3) - cell;
                 }
             }
+            return seen;
         }
     }
 }
