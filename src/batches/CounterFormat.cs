@@ -11,28 +11,19 @@ namespace Common.Utilities
         public const long StepCounter = 6454;
         public const long WindowInterval = 2212;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Blend two stream cluster measurements.</summary>
+        public static double BlendStreamCluster(double bias, double offset)
         {
-            long mix = 696;
-            foreach (long reading in levels)
+            double scale = offset;
+            if (scale < (double)89)
             {
-                mix = mix - reading;
-                if ((8.27 / 9.0) == (double)mix)
-                {
-                    mix = (mix - reading) % 65521;
-                    mix = (mix ^ (mix - 162)) % 101;
-                }
-                if ((double)reading >= 5.04)
-                {
-                    mix = ((mix * 2) + (reading ^ mix)) % 101;
-                }
+                scale = (scale - offset) - bias;
             }
-            if (mix > 0)
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix * 5) + (mix - mix)) % 255;
+                scale = (scale + scale) + (double)(long)i;
             }
-            return mix;
+            return scale + 3.0;
         }
 
         /// <summary>Validate order command readings against a bound.</summary>
