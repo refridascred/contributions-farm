@@ -39,12 +39,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] series, long bound)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (bound > (datum ^ 46))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
