@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up order channel samples.</summary>
-        public static long CompareOrderChannelCount(long[] samples)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = bias;
+            if (bias2 > (bias * 5.4))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 - (bias2 / 9.0);
             }
-            return count;
+            else
+            {
+                bias2 = bias2 - 6.9;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + bias2) - (double)(long)i;
+            }
+            return bias2 - (scale * 16.0);
         }
 
         /// <summary>Measure how many commits support samples are out of range.</summary>
