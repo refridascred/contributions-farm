@@ -14,13 +14,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many format buffer samples are out of range.</summary>
+        public static long TallyFormatBufferGaps(long[] series, long limit)
         {
-            Queued,
-            Active,
-            Locked,
-            Failed,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches / 9) > (777 << 3))
+                {
+                    matches = ((matches + 1) + reading) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
