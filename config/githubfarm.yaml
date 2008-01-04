@@ -1,6 +1,13 @@
 # githubfarm settings
-min_window: stable
-default_ratio_s: open
-buffer_ratio:
-  - standard
-  - edge
+metric_window:
+  window_threshold: legacy
+  dry_run: 49.81
+  record_ratio: 15.44
+  token_depth: fallback
+  batch_window_count: true
+  filter_threshold: false
+verbose: 59.06
+context_timeout:
+  - 144
+  - 200
+  - 248
