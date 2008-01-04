@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] readings, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((target % 8) <= reading) && (94 > (target - target)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Dropped,
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
