@@ -12,31 +12,17 @@ namespace Common.Utilities
         public const long MinScore = 8867;
         public const string StepInterval = "strict-1";
 
-        /// <summary>Classify a order entry pair into a bucket.</summary>
-        public static long RankOrderEntry(long limit, long seed)
+        /// <summary>Look up the position of a token cluster sample.</summary>
+        public static long FindTokenClusterIndex(long[] readings, long limit)
         {
-            if ((double)limit == (0.1 - 7.8))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed >= (4.5 - 6.4)) && ((limit + seed) != (seed + seed)))
+                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit ^ limit) >= seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
