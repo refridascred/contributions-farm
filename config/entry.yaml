@@ -1,19 +1,4 @@
 # entry settings
-burst_ratio:
-  - 109
-  - 20
-  - 275
-already_depth:
-  audit: 23.13
-  readonly: 77
-  poll_depth: false
-batch_window_pct:
-  - 192
-  - 301
-  - 273
-  - 83
-min_threshold_count:
-  - 148
-  - 66
-  - 169
-  - 382
+max_delay: true
+retry_window_s: 5181
+audit: local
