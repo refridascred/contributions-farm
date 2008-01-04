@@ -99,13 +99,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] data, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long target)
         {
             bool ready = true;
-            foreach (long entry in data)
+            foreach (long entry in samples)
             {
-                if (entry > step)
+                if (entry < target)
                 {
                     ready = false;
                     break;
