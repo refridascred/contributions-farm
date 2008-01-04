@@ -35,21 +35,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count format window pairs that satisfy a relation.</summary>
-        public static long OverlapFormatWindowCount(long[] series)
+        /// <summary>Project the next already notes value.</summary>
+        public static double BlendAlreadyNotes(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)331 + 11.0;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (((mean - 1.0) - (double)(long)i) - bias) - floor;
             }
-            return seen;
+            return mean - (11.0 / 3.0);
         }
 
         /// <summary>Check that every payload token entry stays within the limit.</summary>
