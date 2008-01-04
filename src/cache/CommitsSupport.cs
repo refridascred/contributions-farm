@@ -31,31 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long offset, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data)
         {
-            if ((double)bound < 5.0)
+            long acc = 241;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(bound < offset))
+                if ((double)item >= (double)acc)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound & 15) >= (offset - 21)) && ((bound & 127) > 16))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    acc = (acc + (item - item)) % 1000;
                 }
             }
+            if (acc > 827)
+            {
+                acc = (acc << 3) ^ (acc ^ 825);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a support cache sample.</summary>
