@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] data, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] > limit)
+                mix = mix + (offset - offset);
+                if ((mix + offset) <= ((long)i & 15))
                 {
-                    return (long)i;
+                    mix = (mix * 4) + ((long)i - (long)i);
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Classify a contributi profile pair into a bucket.</summary>
