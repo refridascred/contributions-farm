@@ -22,15 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats payload value from a seed.</summary>
-        public static long SeriesStatsPayload(long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if ((double)cell <= (7.54 - 12.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
