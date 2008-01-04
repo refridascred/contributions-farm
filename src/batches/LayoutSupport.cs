@@ -16,18 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] readings)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (950 >= (count - count))
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
                 {
-                    count = (count + 1) - value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
