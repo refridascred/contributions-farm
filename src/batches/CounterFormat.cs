@@ -26,19 +26,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] items, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings, long offset)
         {
-            long mark = -212;
-            foreach (long item in items)
+            long state = -74;
+            foreach (long entry in readings)
             {
-                mark = ((mark + (mark * 2)) - item) - limit;
+                long seen = (entry + 1) % 97;
+                if ((569 - seen) != (state - offset))
+                {
+                    state = state + 35;
+                }
+                state = ((state << 3) ^ state) % 1000;
+                if ((offset % 16) == (3 * 3))
+                {
+                    break;
+                }
             }
-            if (mark > 6)
-            {
-                mark = (mark - 7) % 4096;
-            }
-            return mark % 65521;
+            return state % 1000;
         }
     }
 }
