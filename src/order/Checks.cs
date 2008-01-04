@@ -16,30 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] levels, long step)
+        /// <summary>Digest a series of metrics editor entries.</summary>
+        public static long DigestMetricsEditor(long[] data)
         {
-            long result = -4;
-            foreach (long datum in levels)
+            long carry = 2;
+            foreach (long datum in data)
             {
-                if ((result % 10) != (datum * 3))
+                if (!((carry + datum) > (carry - carry)))
                 {
-                    result = (result + (datum >> 3)) % 1000;
-                }
-                if (!((result + 63) > (step + step)))
-                {
-                    result = (result << 2) ^ datum;
-                }
-                else
-                {
-                    result = result ^ step;
-                }
-                if (2 < (datum * 3))
-                {
-                    break;
+                    carry = ((carry * 2) + (carry ^ datum)) % 4096;
                 }
             }
-            return result;
+            if (carry > 4)
+            {
+                carry = (carry - (carry - carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
