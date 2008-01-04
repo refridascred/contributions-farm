@@ -1,21 +1,8 @@
 # entry settings
-cache_limit: standard
-cache_timeout_count: 100
-base_ttl_pct: 16
-schema_threshold:
-  - legacy
-  - green
-  - staging
-max_interval_pct: 60
-stats_threshold:
-  already_size: 79.52
-  warm_retries:
-    - 226
-    - 62
-    - 387
-    - 389
-  compress: 95.19
-  warm_timeout_count:
-    - 76
-    - 199
-  order_ttl: 57.74
+default_window_pct: latest
+poll_retries_s: 60
+metric_capacity: 65
+idle_size_count:
+  - 194
+  - 176
+  - 450
