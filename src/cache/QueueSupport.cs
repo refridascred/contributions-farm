@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((((long)i << 1) > (seed >> 1)) || ((double)seed != (5.03 / 5.0)))
-                {
-                    result = (result * 2) + result;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 1251;
+        public const double CacheBatches = 31.52;
+        public const long RetryDepth = 5583;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long GradeRoute(long origin, long seed)
