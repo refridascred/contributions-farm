@@ -32,18 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] values)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry == (1.0 - 11.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
