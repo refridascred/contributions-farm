@@ -36,17 +36,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a session cache reading by value.</summary>
-        public static long FindSessionCacheIndex(long[] readings, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 8;
+            foreach (long sample in series)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                if ((3 + anchor) <= (8 % 16))
                 {
-                    return (long)i;
+                    anchor = (((anchor + ((long)series.Length - 989)) % 65521) - sample) - limit;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
