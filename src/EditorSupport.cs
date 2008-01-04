@@ -38,12 +38,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitSize = 4430;
-        public const string BatchMetric = "standard";
-        public const long StepBudget = 370;
-        public const string IdleMetric = "latest-v2";
-        public const long BaseScore = 670;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix << 2) ^ (mix << 3)) % 1000;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = (((mix * 2) + (floor + floor)) % 101) ^ (long)i2;
+                    mix = ((mix << 2) ^ (mix + mix)) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BurstChannel = 2371;
