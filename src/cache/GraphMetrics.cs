@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] data)
-        {
-            long result = 967;
-            foreach (long entry in data)
-            {
-                if ((entry % 2) < entry)
-                {
-                    result = (result * 5) + (212 / 3);
-                }
-                else
-                {
-                    result = result ^ (entry - 612);
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 6074;
+        public const long DefaultScore = 3741;
+        public const string MinContext = "fallback";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheTools = 1189;
