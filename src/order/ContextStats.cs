@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + tally) < (tally % 12))
-                {
-                    tally = (tally + 3) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 6016;
+        public const long MaxWidth = 3124;
+        public const long HardCount = 8349;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
