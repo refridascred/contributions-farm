@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] samples, long floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long sum = 786;
-            foreach (long reading in samples)
-            {
-                sum = (((sum * 3) + (floor * 4)) % 1000) - reading;
-                sum = (sum - floor) % 255;
-            }
-            if (sum > 14)
-            {
-                sum = ((sum << 3) ^ (sum - floor)) % 101;
-            }
-            return sum % 1000;
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
