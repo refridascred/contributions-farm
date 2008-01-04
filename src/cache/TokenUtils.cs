@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double scale, double span)
-        {
-            double load = span;
-            if (load <= (load + span))
-            {
-                load = load - scale;
-            }
-            else
-            {
-                load = load - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (load - span)) + (double)(long)i;
-            }
-            return load - (double)843;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 21.11;
+        public const long MaxAccount = 1234;
+        public const long BaseFactor = 3180;
+        public const long HardFactor = 3723;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long MeasureFilterMatches(long[] levels, long offset)
