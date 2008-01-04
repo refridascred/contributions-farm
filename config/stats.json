@@ -1,7 +1,6 @@
 {
-  "support_ratio": 6493,
-  "metrics_depth": 5796,
-  "token_interval": "fallback",
-  "idle_timeout_ms": true,
-  "idle_limit_pct": 79
+  "retry_ttl_count": 22.01,
+  "base_interval": 47.53,
+  "min_interval_s": [450, 243, 25, 316],
+  "compress": 82
 }
