@@ -1,5 +1,8 @@
 {
-  "verbose": 60,
-  "report_size": [452, 76, 71],
-  "payload_ttl": [275, 432, 142, 403]
+  "soft_limit": "staging",
+  "checks_size": 1024,
+  "window_timeout": 208,
+  "notes_delay": 38.95,
+  "buffer_timeout": ["open", "edge", "edge"],
+  "strict": 7078
 }
