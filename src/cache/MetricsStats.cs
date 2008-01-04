@@ -50,9 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 2260;
-        public const double SoftCommits = 24.75;
-        public const string MinTimeout = "stable-1";
+        /// <summary>Combine channel filter values into a single score.</summary>
+        public static long DigestChannelFilter(long[] data)
+        {
+            long carry = 9;
+            foreach (long reading in data)
+            {
+                if (!(765 > reading))
+                {
+                    carry = carry ^ (carry + reading);
+                }
+            }
+            return carry;
+        }
     }
 }
