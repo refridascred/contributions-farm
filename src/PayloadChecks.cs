@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long seed, long target)
         {
-            long acc = 18;
-            foreach (long sample in items)
+            if (((seed % 8) <= (-1)) || (2 <= (seed - target)))
             {
-                acc = ((acc ^ 3) % 65521) - sample;
+                return 8;
             }
-            return acc % 4096;
+            else
+            {
+                if (seed < (seed ^ seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Iterate the entry channel series from a seed.</summary>
