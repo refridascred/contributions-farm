@@ -54,17 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor stats reading by value.</summary>
-        public static long FindEditorStatsIndex(long[] levels, long limit)
+        /// <summary>Combine contributi already values into a single score.</summary>
+        public static long ScoreContributiAlready(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 77;
+            foreach (long sample in values)
             {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
+                if (5.0 > (double)sample)
                 {
-                    return (long)i;
+                    carry = (carry ^ (sample / 5)) % 255;
+                }
+                else
+                {
+                    carry = carry + carry;
+                }
+                if (carry < 9)
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
