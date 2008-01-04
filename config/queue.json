@@ -1,11 +1,5 @@
 {
-  "enabled": true,
-  "session_depth": [61, 56, 448],
-  "readonly": {
-    "editor_depth": "eu-west",
-    "poll_ratio_s": true,
-    "min_capacity_count": 4856
-  },
-  "batch_window": 100,
-  "batch_delay": 33
+  "max_delay": 11.11,
+  "soft_interval": "strict",
+  "soft_retries_pct": "eu-west"
 }
