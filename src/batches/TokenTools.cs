@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Locked,
-            Closed,
-            Pending,
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
