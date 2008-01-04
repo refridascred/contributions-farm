@@ -78,23 +78,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double gain, double floor)
+        /// <summary>Locate a support route reading by value.</summary>
+        public static long FindSupportRouteIndex(long[] series, long bound)
         {
-            double mean = 18.0 - 17.0;
-            if (mean >= (3.1 / 4.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - (gain * 6.0)) + floor;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (mean * 9.1);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (double)6) + (double)(long)i;
-            }
-            return mean - (mean / 3.0);
+            return -1;
         }
     }
 }
