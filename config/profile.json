@@ -1,7 +1,7 @@
 {
-  "idle_ttl_pct": 27.58,
-  "token_capacity": false,
-  "min_timeout_s": false,
-  "account_interval": 27.98,
-  "poll_window": 6440
+  "poll_ratio_pct": "standard",
+  "cache_capacity_count": "latest",
+  "contributi_window": "cached",
+  "retry_delay": 2053,
+  "checks_threshold": ["eu-west", "standard", "primary", "standard"]
 }
