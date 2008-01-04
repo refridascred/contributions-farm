@@ -31,17 +31,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a checks window sample.</summary>
-        public static long FindChecksWindowIndex(long[] samples, long seed)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
