@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Locked,
-            Idle,
-            Active,
-            Stale,
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Match up profile samples.</summary>
