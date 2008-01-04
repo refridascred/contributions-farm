@@ -14,10 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 7767;
-        public const long HardWidth = 1020;
-        public const long StepStream = 9236;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Dropped,
+            Failed,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] samples, long bound)
