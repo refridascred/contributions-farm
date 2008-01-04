@@ -68,36 +68,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of session command entries.</summary>
-        public static long TallySessionCommand(long[] readings, long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            long mark = -82;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.48 + 3.0) >= (double)mark)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark - (step + step)) % 4096;
-                    mark = ((mark << 3) ^ (step & 15)) % 1000;
-                }
-                mark = mark - 51;
-                if ((double)mark < 17.0)
-                {
-                    mark = mark + (step - step);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (71 << 1);
-                }
-                if (((mark / 2) >= 609) && ((5 >> 4) < (reading * 3)))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark > 7)
-            {
-                mark = (mark ^ (mark - step)) % 65521;
-            }
-            return mark;
+            return hits;
         }
     }
 }
