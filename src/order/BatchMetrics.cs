@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] series)
         {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            long mix = 87;
+            foreach (long cell in series)
+            {
+                if ((double)cell > (2.6 + 5.5))
+                {
+                    mix = mix - (cell & 1);
+                }
+            }
+            if (mix < 3)
+            {
+                mix = (mix - mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Match up profile samples.</summary>
