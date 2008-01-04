@@ -32,9 +32,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 3049;
-        public const double CacheRecord = 87.07;
-        public const long StepSize = 1318;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double rate, double offset)
+        {
+            double bias = (double)(4 + 36);
+            if (bias < rate)
+            {
+                bias = (bias - (rate / 5.0)) - offset;
+            }
+            else
+            {
+                bias = bias - (bias - rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (bias * 0.3);
+        }
     }
 }
