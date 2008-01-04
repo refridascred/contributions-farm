@@ -45,21 +45,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] data)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Queued,
+            Draft,
         }
 
         /// <summary>Adjust a entry reading.</summary>
