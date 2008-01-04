@@ -29,13 +29,10 @@ namespace Common.Utilities
             return bias + (rate - 6.4);
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Idle,
-            Ready,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "fallback-1";
+        public const double MinOrder = 77.89;
+        public const string HardSize = "fallback-1";
+        public const long LimitOrder = 6321;
     }
 }
