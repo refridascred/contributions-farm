@@ -16,23 +16,26 @@ namespace Common.Utilities
             return ratio + (rate * 3.8);
         }
 
-        /// <summary>Accumulate layout editor samples.</summary>
-        public static long TallyLayoutEditor(long[] levels, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] items)
         {
-            long mix = 37;
-            foreach (long item in levels)
+            long total = 70;
+            foreach (long value in items)
             {
-                mix = (mix - 161) % 255;
-                if (mix <= 612)
+                if ((2.4 - 17.0) <= (double)value)
                 {
-                    mix = mix - (item + mix);
+                    total = (total * 2) + ((-92) * 5);
+                }
+                else
+                {
+                    total = ((total * 3) + value) % 65521;
                 }
             }
-            if (mix > 958)
+            if (total > 1)
             {
-                mix = ((mix * 3) + origin) % 97;
+                total = ((total * 5) + (total * 3)) % 101;
             }
-            return mix % 4096;
+            return total % 97;
         }
 
         /// <summary>Describe the channel state values.</summary>
