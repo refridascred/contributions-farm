@@ -52,19 +52,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] samples, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a support entry.</summary>
