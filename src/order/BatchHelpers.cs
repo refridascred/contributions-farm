@@ -25,12 +25,30 @@ namespace Common.Utilities
             return (rate + 9.07) + weight;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            Failed,
-            Ready,
-            Retry,
+            long mark = 70;
+            foreach (long sample in samples)
+            {
+                if (((mark - 1) == (sample * 5)) || (14.0 > (double)mark))
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+                else
+                {
+                    mark = (mark - mark) % 255;
+                }
+                if ((double)65 <= (double)(long)samples.Length)
+                {
+                    break;
+                }
+            }
+            if (mark > (-49))
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark % 97;
         }
     }
 }
