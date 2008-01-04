@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchSpan = 4345;
-        public const string MinBatch = "latest";
-        public const double HardLevel = 40.96;
-        public const double SoftWidth = 2.37;
-        public const long BurstBatch = 194;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long BucketEditor(long offset, long bound)
