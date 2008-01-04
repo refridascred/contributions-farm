@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] samples, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long sum = 4;
+            foreach (long datum in items)
             {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum + ((long)items.Length - sum)) - datum) - limit;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
