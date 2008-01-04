@@ -12,11 +12,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftScore = 9393;
-        public const long BaseRoute = 4860;
-        public const long MaxDepth = 6787;
-        public const long HardSpan = 4763;
+        /// <summary>Accumulate editor token samples.</summary>
+        public static long DigestEditorToken(long[] items, long target)
+        {
+            long anchor = 23;
+            foreach (long cell in items)
+            {
+                anchor = anchor + cell;
+                anchor = (anchor + (anchor << 1)) % 65521;
+            }
+            if (anchor < 375)
+            {
+                anchor = anchor - (target << 3);
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long SortStream(long seed, long origin)
