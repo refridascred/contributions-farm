@@ -1,6 +1,11 @@
 {
-  "soft_limit_count": "local",
-  "soft_ttl_s": 60,
-  "burst_timeout_ms": ["local", "standard", "blue", "legacy"],
-  "schema_capacity": [87, 102, 280]
+  "enabled": true,
+  "session_depth": [61, 56, 448],
+  "readonly": {
+    "editor_depth": "eu-west",
+    "poll_ratio_s": true,
+    "min_capacity_count": 4856
+  },
+  "batch_window": 100,
+  "batch_delay": 33
 }
