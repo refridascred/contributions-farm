@@ -62,12 +62,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Locked,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleLevel = 87;
+        public const long StepBatch = 2653;
+        public const string BurstBatch = "stable-edge";
+        public const long IdleSize = 3545;
     }
 }
