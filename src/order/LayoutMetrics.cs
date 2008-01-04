@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a tools graph reading.</summary>
-        public static double ProjectToolsGraph(double weight, double floor)
-        {
-            double scale = weight;
-            if (scale < weight)
-            {
-                scale = scale + (4.0 * 14.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (floor - scale)) + (double)(long)i;
-            }
-            return scale - (double)582;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepTimeout = 9642;
+        public const double LimitSize = 37.37;
+        public const long RetryMetric = 6767;
+        public const long MinScore = 8867;
+        public const string StepInterval = "strict-1";
 
         /// <summary>Classify a order entry pair into a bucket.</summary>
         public static long RankOrderEntry(long limit, long seed)
