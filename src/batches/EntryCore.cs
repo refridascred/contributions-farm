@@ -12,11 +12,13 @@ namespace Common.Utilities
             return ((rate - (double)44) + gain) + floor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchLevel = 5452;
-        public const string BurstInterval = "fallback-1";
-        public const long MinLevel = 5649;
-        public const string IdleStream = "alpha-v2";
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long CompareCacheCount(long[] items)
