@@ -28,15 +28,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the githubfarm payload series from a seed.</summary>
-        public static long DeriveGithubfarmPayload(long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double weight, double bias)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            double bias2 = (double)(48 % 3);
+            return (bias2 + bias) + weight;
         }
     }
 }
