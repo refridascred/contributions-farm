@@ -50,19 +50,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] levels, long origin)
+        /// <summary>Grade a stream batches value against two limits.</summary>
+        public static long SortStreamBatches(long floor, long seed)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            if (seed <= (floor + floor))
             {
-                if (reading != origin)
+                return 8;
+            }
+            else
+            {
+                if ((seed << 3) <= 68)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (floor >= (335 << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Match up layout samples.</summary>
