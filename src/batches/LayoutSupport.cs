@@ -53,13 +53,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Active,
-            Draft,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepTimeout = "standard-v2";
+        public const double SoftLayout = 2.39;
+        public const long MinLayout = 6110;
+        public const double DefaultLayout = 96.69;
     }
 }
