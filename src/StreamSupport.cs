@@ -15,13 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Iterate the checks tools series from a seed.</summary>
+        public static long IterateChecksTools(long origin)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = (acc ^ (acc % 5)) % 65521;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
