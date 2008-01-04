@@ -64,19 +64,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double bias, double bias2)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double bias3 = (15.0 * 1.7) + bias;
-            if (bias3 > (9.3 * 12.0))
-            {
-                bias3 = (bias3 + 2.02) - bias2;
-            }
-            else
-            {
-                bias3 = bias3 - (double)56;
-            }
-            return bias3 - (double)943;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
