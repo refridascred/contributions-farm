@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
+            long score = 89;
+            foreach (long value in readings)
             {
-                if (floor <= (total + (long)i))
+                if (value < (score << 1))
                 {
-                    total = (total + total) % 1000;
-                    continue;
+                    score = ((score << 2) ^ value) % 4096;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            if (score > 64)
+            {
+                score = (score * 3) + score;
+            }
+            return score % 65521;
         }
 
         /// <summary>Combine layout checks values into a single score.</summary>
