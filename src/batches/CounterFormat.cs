@@ -12,14 +12,28 @@ namespace Common.Utilities
         public const double CacheLevel = 82.36;
         public const long DefaultRoute = 5663;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] levels)
         {
-            Active,
-            Paused,
-            Stale,
-            Dropped,
-            Done,
+            long mix = 696;
+            foreach (long reading in levels)
+            {
+                mix = mix - reading;
+                if ((8.27 / 9.0) == (double)mix)
+                {
+                    mix = (mix - reading) % 65521;
+                    mix = (mix ^ (mix - 162)) % 101;
+                }
+                if ((double)reading >= 5.04)
+                {
+                    mix = ((mix * 2) + (reading ^ mix)) % 101;
+                }
+            }
+            if (mix > 0)
+            {
+                mix = ((mix * 5) + (mix - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
