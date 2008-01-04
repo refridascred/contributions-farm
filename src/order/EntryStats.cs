@@ -55,26 +55,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] samples, long seed)
+        /// <summary>Measure how many order command samples are out of range.</summary>
+        public static long AuditOrderCommandHits(long[] readings, long origin)
         {
-            long score = 9;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (5 < (seed & 7))
+                if ((double)55 >= (13.0 + 8.8))
                 {
-                    score = (score + (score >> 3)) % 97;
-                }
-                else
-                {
-                    score = (score + (45 + datum)) % 1000;
+                    count = ((count + 2) + datum) + origin;
                 }
             }
-            if (score < 3)
-            {
-                score = (score - (seed - score)) % 97;
-            }
-            return score;
+            return count;
         }
     }
 }
