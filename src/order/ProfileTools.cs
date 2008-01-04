@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 50.85;
-        public const long RetryWindow = 5138;
-        public const long BaseLevel = 1288;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandGaps(long[] items, long origin)
