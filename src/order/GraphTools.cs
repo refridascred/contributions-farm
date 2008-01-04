@@ -22,15 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Compare every pair of filter editor readings.</summary>
+        public static long MatchFilterEditorCount(long[] series)
         {
-            long mix = 889;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix << 3) ^ (5 ^ entry)) % 255;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
