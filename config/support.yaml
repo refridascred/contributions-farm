@@ -1,25 +1,7 @@
 # support settings
-token_size:
-  warm_ttl_count:
-    - 202
-    - 414
-    - 24
-  editor_capacity: 60
-  idle_limit_ms: 7585
-  idle_retries: green
-  metrics_delay: 100
-  cache_size_ms: 76.48
-idle_delay:
-  - eu-west
-  - cached
-  - open
-  - fallback
-schema_ratio: legacy
-compress:
-  - 249
-  - 434
-  - 3
-  - 72
-queue_retries:
-  - 489
-  - 26
+cache_limit_pct: 95.04
+farm_limit:
+  audit: true
+  idle_threshold_s: staging
+  sync_interval: false
+order_limit: latest
