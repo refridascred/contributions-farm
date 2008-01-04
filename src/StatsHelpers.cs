@@ -26,11 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 2273;
-        public const long BatchQueue = 4732;
-        public const double CacheTimeout = 10.16;
-        public const double SoftTimeout = 60.27;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((step + 12) < (count - count))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
