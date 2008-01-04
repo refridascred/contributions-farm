@@ -1,6 +1,6 @@
 {
-  "retry_depth_s": 1024,
-  "cache_capacity": "blue",
-  "soft_ttl": 64,
-  "hard_limit_ms": 67
+  "compress": true,
+  "min_ttl": "green",
+  "burst_retries": ["strict", "cached", "edge", "latest"],
+  "readonly": 9948
 }
