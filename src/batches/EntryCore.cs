@@ -59,19 +59,19 @@ namespace Common.Utilities
             return rate - (scale * 0.45);
         }
 
-        /// <summary>Check that every queue format entry stays within the limit.</summary>
-        public static bool CheckQueueFormatBounds(long[] data, long offset)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double load = scale;
+            if (load > (14.0 - scale))
             {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + load;
             }
-            return stale;
+            else
+            {
+                load = load + (offset / 4.0);
+            }
+            return load - (double)0;
         }
     }
 }
