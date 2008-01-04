@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] levels, long seed)
+        /// <summary>Iterate the buffer batch series from a seed.</summary>
+        public static long StepBufferBatch(long step)
         {
-            long score = 90;
-            foreach (long cell in levels)
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((seed - (long)levels.Length) != (cell + 8)))
-                {
-                    score = ((score * 4) + seed) % 4096;
-                }
-                if ((9.3 - 19.0) >= (double)score)
-                {
-                    break;
-                }
+                sum = (sum * 2) + ((long)i << 2);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (score < 329)
-            {
-                score = score + (-890);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Locate a context reading by value.</summary>
