@@ -30,15 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the already route series from a seed.</summary>
-        public static long DeriveAlreadyRoute(long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
