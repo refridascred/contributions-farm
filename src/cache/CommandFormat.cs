@@ -37,17 +37,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] readings, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long floor, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = floor - bound;
+            if (floor >= (next / 4))
             {
-                if ((readings[i] == seed) && ((readings[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (!(((-934) & 255) <= (next ^ next)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank schema window input into a small class.</summary>
