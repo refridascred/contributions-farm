@@ -1,7 +1,17 @@
 # support settings
-cache_limit_pct: 95.04
-farm_limit:
-  audit: true
-  idle_threshold_s: staging
-  sync_interval: false
-order_limit: latest
+sync_threshold_ms: 90
+warm_interval_pct: 500
+schema_capacity:
+  - 481
+  - 176
+  - 500
+idle_timeout: 65
+burst_window:
+  - 419
+  - 405
+hard_retries:
+  order_timeout: standard
+  dry_run: 94
+  sync_timeout_count: 77
+  stats_window: 63
+  session_limit: 30
