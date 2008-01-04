@@ -69,19 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] samples, long bound)
+        /// <summary>Count the payload record entries that pass the check.</summary>
+        public static long MeasurePayloadRecordMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (entry >= bound)
+                if ((((666 + matches) == (cell % 7)) || ((matches - cell) <= cell)) && ((cell + (-6)) >= (42 + cell)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
