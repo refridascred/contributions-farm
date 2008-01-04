@@ -34,22 +34,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] readings, long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long total = 5;
-            foreach (long reading in readings)
-            {
-                if ((step % 2) < (reading % 10))
-                {
-                    total = total + (total >> 4);
-                }
-                else
-                {
-                    total = (total ^ total) % 65521;
-                }
-            }
-            return total % 1000;
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
