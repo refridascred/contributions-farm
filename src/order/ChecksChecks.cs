@@ -12,20 +12,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryScore = 3555;
+        public const string LimitToken = "primary-v2";
+        public const double BaseToken = 6.48;
+        public const string RetryToken = "staging-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string WindowBuffer = "strict-1";
