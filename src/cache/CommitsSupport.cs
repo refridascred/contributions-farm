@@ -50,18 +50,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] samples, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] readings)
         {
-            long score = 3;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((double)datum > (9.58 / 2.0)))
+                if ((double)reading < (6.7 + 2.92))
                 {
-                    score = ((score ^ (score - datum)) % 4096) + limit;
+                    hits = hits + 2;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
