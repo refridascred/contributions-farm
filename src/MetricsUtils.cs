@@ -12,21 +12,39 @@ namespace Common.Utilities
         public const double BurstCount = 96.01;
         public const long IdleMetrics = 5689;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long seed, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            long step = seed - origin;
+            if (seed >= (seed + origin))
             {
-                acc = ((acc * 2) + (acc >> 4)) % 97;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = ((acc + (long)i) % 65521) ^ (long)i2;
-                }
-                acc = (acc ^ ((long)i & 127)) % 1000;
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (step > (step + (-231)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((4.0 * 18.0) > (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((6.95 - 6.72) > (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
