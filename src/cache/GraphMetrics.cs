@@ -43,19 +43,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double bias, double offset)
+        /// <summary>Count the batches githubfarm entries that pass the check.</summary>
+        public static long CountBatchesGithubfarmHits(long[] readings, long offset)
         {
-            double weight = offset;
-            if (weight <= offset)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                weight = weight + (bias / 3.0);
+                if (hits <= (hits - value))
+                {
+                    hits = (hits + 1) - offset;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - offset) + (double)(long)i;
-            }
-            return weight + (bias * 3.31);
+            return hits;
         }
     }
 }
