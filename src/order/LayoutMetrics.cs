@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double gain, double bias)
         {
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
+            double weight = 9.3 + (gain - bias);
+            if (weight <= bias)
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight + (gain + bias);
         }
     }
 }
