@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long MinScore = 8867;
         public const string StepInterval = "strict-1";
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] values, long step)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long acc = 46;
-            foreach (long datum in values)
-            {
-                if (!((22 * 3) > step))
-                {
-                    acc = (acc - (step + acc)) ^ datum;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ acc) % 65521;
-                }
-            }
-            return acc % 4096;
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Match up channel samples.</summary>
