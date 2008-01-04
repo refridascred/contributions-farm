@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] items, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
+            long sum = 265;
+            foreach (long datum in items)
             {
-                mix = mix - mix;
-                mix = ((mix * 2) + (long)i) % 65521;
+                sum = (((sum ^ sum) % 97) - datum) - seed;
             }
-            return mix;
+            return sum % 65521;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
