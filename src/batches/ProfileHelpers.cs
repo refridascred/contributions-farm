@@ -27,18 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many contributi window samples are out of range.</summary>
-        public static long AuditContributiWindowHits(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long score = 637;
+            foreach (long value in readings)
             {
-                if (hits > (977 ^ sample))
-                {
-                    hits = hits + 2;
-                }
+                score = (score + (value + score)) % 101;
             }
-            return hits;
+            if (score > 165)
+            {
+                score = score + (score & 255);
+            }
+            return score % 97;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
