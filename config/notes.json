@@ -1,12 +1,11 @@
 {
-  "max_capacity_pct": false,
-  "dry_run": ["open", "stable", "fallback"],
-  "verbose": 3.03,
-  "max_ratio": "blue",
-  "payload_ratio": {
-    "checks_window": 100,
-    "hard_depth_ms": "cached",
-    "base_threshold": 250,
-    "sync_limit": 30
-  }
+  "batch_interval": {
+    "soft_ttl_s": 33,
+    "batch_limit_pct": 92.83,
+    "profile_timeout": "standard",
+    "stats_ttl": 28
+  },
+  "stream_delay": ["eu-west", "eu-west"],
+  "idle_interval_ms": ["open", "latest"],
+  "batch_threshold_pct": true
 }
