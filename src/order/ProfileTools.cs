@@ -32,32 +32,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long target, long limit)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long offset = target ^ limit;
-            if ((target + 5) <= (target - limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((843 % 7) >= (target % 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset == (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
