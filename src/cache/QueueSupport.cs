@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const double CacheBatches = 31.52;
         public const long RetryDepth = 5583;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long origin, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] values, long bound)
         {
-            if ((seed % 97) < (1 >> 5))
+            bool flag = true;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((707 >> 2) <= (66 + seed))
+                if (item >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
