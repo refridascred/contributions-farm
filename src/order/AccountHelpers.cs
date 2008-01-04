@@ -37,14 +37,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 2027;
+        public const long MaxReport = 3753;
+        public const double WindowReport = 1.02;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string SoftLevel = "local-1";
