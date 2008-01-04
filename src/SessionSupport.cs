@@ -23,16 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a report editor counter forward.</summary>
-        public static long RollReportEditor(long offset)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum + sum;
-                sum = ((sum * 3) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
