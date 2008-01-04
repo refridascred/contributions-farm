@@ -32,14 +32,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the command report entries that pass the check.</summary>
+        public static long TallyCommandReportHits(long[] values, long offset)
         {
-            Synced,
-            Idle,
-            Retry,
-            Closed,
-            Dropped,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (((double)offset > (4.0 / 5.0)) || !((6 % 16) < value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
