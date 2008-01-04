@@ -23,17 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a metrics window sample.</summary>
-        public static long LocateMetricsWindowIndex(long[] samples, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Pending,
+            Done,
+            Queued,
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
