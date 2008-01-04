@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Stale,
-            Done,
-            Synced,
-            Active,
-            Pending,
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a record header.</summary>
