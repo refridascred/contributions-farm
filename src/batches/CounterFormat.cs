@@ -26,22 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long bound, long target)
         {
-            long sum = 761;
-            foreach (long item in levels)
+            if ((target - bound) <= 18)
             {
-                if ((item << 3) < item)
+                return 4;
+            }
+            else
+            {
+                if (((target / 3) == (bound / 7)) || ((double)target != (6.7 * 9.76)))
                 {
-                    sum = (sum - (32 * 4)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target >= (7.0 - 6.2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (sum > 3)
-            {
-                sum = (sum + (sum ^ sum)) % 1000;
-            }
-            return sum;
         }
 
         /// <summary>Hold a editor record.</summary>
