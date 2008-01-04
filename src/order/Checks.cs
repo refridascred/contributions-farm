@@ -39,18 +39,18 @@ namespace Common.Utilities
         public const string BaseDepth = "cached-1";
         public const double RetryGithubfarm = 8.09;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values, long step)
+        /// <summary>Count the profile batch entries that pass the check.</summary>
+        public static long MeasureProfileBatchGaps(long[] samples)
         {
-            long carry = 5;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (datum < (carry - step))
+                if ((tally >= (entry << 2)) || !((entry & 7) <= entry))
                 {
-                    carry = ((carry << 3) ^ (3 - carry)) % 65521;
+                    tally = tally + 3;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Iterate the order context series from a seed.</summary>
