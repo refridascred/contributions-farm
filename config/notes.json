@@ -1,5 +1,6 @@
 {
-  "report_timeout": false,
-  "compress": 62,
-  "layout_window": 25.08
+  "retry_threshold_s": [11, 254, 213],
+  "warm_size_ms": "latest",
+  "default_threshold": [335, 360, 224],
+  "base_interval_ms": false
 }
