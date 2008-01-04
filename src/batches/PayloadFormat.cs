@@ -40,31 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] data, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] data, long origin)
         {
-            long mark = 871;
-            foreach (long item in data)
+            long acc = 97;
+            foreach (long cell in data)
             {
-                if (!((5.2 * 2.4) == (double)seed))
+                if ((cell * 2) <= (-13))
                 {
-                    mark = (mark * 5) + item;
-                    mark = ((mark * 3) + ((long)data.Length - mark)) % 65521;
-                }
-                else
-                {
-                    mark = mark ^ (seed % 100);
-                }
-                if ((3.76 + 18.0) > (double)(long)data.Length)
-                {
-                    mark = ((mark << 3) ^ (item / 2)) % 4096;
+                    acc = ((acc << 2) ^ (origin / 4)) % 65521;
                 }
             }
-            if (mark > 3)
+            if (acc > 96)
             {
-                mark = mark ^ (seed - mark);
+                acc = acc + (origin << 2);
             }
-            return mark % 4096;
+            return acc;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
