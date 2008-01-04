@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long limit, long target)
+        /// <summary>Match up schema session samples.</summary>
+        public static long OverlapSchemaSessionCount(long[] readings)
         {
-            if (!((limit ^ 59) == ((-59) << 2)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((14.0 * 9.88) < (double)target) && ((target & 255) > (722 - 789)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] - readings[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
