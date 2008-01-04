@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record payload samples.</summary>
-        public static long CombineRecordPayload(long[] series, long step)
-        {
-            long total = 254;
-            foreach (long sample in series)
-            {
-                if ((5.1 * 15.0) >= (double)step)
-                {
-                    total = total ^ (sample - (-459));
-                }
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxTimeout = 629;
+        public const long IdleSize = 3882;
+        public const double LimitBudget = 6.98;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TallyAccount(long[] items)
