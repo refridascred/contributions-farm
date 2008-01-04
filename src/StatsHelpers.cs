@@ -40,14 +40,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long seed, long origin)
         {
-            Dropped,
-            Failed,
-            Pending,
-            Queued,
-            Paused,
+            long lane = seed - origin;
+            if (((double)origin != (1.86 * 1.41)) && ((seed >> 1) <= origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8.0 / 7.0) == (double)lane)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((lane + 1) < (lane - 489))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((lane + seed) <= (0 >> 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
