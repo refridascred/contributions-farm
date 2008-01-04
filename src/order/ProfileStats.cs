@@ -28,12 +28,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long origin)
         {
-            Active,
-            Synced,
-            Queued,
+            long result = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                result = result - (0 >> 5);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
