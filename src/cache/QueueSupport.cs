@@ -49,31 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long target, long bound)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            if (1.9 < (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target - target) <= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound * 2) >= (target * 2)) && ((bound + target) <= 859))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Paused,
+            Pending,
+            Failed,
+            Closed,
         }
     }
 }
