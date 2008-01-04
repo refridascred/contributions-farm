@@ -42,13 +42,10 @@ namespace Common.Utilities
         public const long BurstCount = 8648;
         public const double LimitFormat = 28.16;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Paused,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "open-1";
+        public const long BaseNotes = 489;
+        public const long BatchScore = 9229;
 
         /// <summary>Check that every editor payload entry stays within the limit.</summary>
         public static bool GuardEditorPayloadBounds(long[] levels, long origin)
