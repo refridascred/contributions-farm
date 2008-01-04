@@ -28,17 +28,18 @@ namespace Common.Utilities
             return load + (floor * 7.6);
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] samples, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (samples[i] == target)
+                if (((double)count >= (double)sample) || ((count + 877) < (count + count)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
