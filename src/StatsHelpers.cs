@@ -13,25 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long origin, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long gap = origin - target;
-            if (!((origin + gap) >= target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + target) <= (gap + 6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
