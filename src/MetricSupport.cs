@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] series, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            bool found = true;
-            foreach (long value in series)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Hold a route stats.</summary>
