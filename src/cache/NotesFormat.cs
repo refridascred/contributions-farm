@@ -30,30 +30,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long bound)
         {
-            long sum = 59;
-            foreach (long item in samples)
+            long bound2 = step - bound;
+            if (bound2 > (step * 3))
             {
-                for (int i = 0; i < 9; i++)
+                return 6;
+            }
+            else
+            {
+                if (((3.6 + 5.91) == (double)step) || (bound < (bound * 3)))
                 {
-                    sum = ((sum ^ (sum ^ sum)) % 4096) ^ (long)i;
+                    return 7;
                 }
-                if (((double)item > (double)8) && ((item + item) >= 3))
+                else
                 {
-                    sum = (sum ^ item) % 65521;
-                }
-                if (((item & 255) > item) && ((double)item < 20.0))
-                {
-                    break;
+                    if ((step - bound2) == (bound + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (sum > 3)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
         }
     }
 }
