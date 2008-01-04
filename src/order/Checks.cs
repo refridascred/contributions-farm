@@ -41,12 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinWidth = "open-edge";
-        public const long LimitSchema = 3737;
-        public const long DefaultInterval = 5270;
-        public const string MaxSchema = "staging-v2";
-        public const long StepSchema = 8571;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Iterate the layout session series from a seed.</summary>
         public static long StepLayoutSession(long bound)
