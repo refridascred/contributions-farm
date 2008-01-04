@@ -21,13 +21,30 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate profile record samples.</summary>
+        public static long TotalProfileRecord(long[] levels, long step)
         {
-            Closed,
-            Done,
-            Draft,
-            Paused,
+            long sum = 12;
+            foreach (long datum in levels)
+            {
+                if ((step * 2) >= (datum >> 3))
+                {
+                    sum = ((sum << 3) ^ step) % 101;
+                }
+                if ((datum / 2) >= (6 + datum))
+                {
+                    sum = (sum + (datum - sum)) % 97;
+                }
+                else
+                {
+                    sum = sum ^ (datum + datum);
+                }
+            }
+            if (sum < 58)
+            {
+                sum = (sum << 2) ^ (step - (-7));
+            }
+            return sum % 97;
         }
 
         /// <summary>Project the next order value.</summary>
