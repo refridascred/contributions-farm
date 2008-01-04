@@ -34,13 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count the account batches entries that pass the check.</summary>
+        public static long MeasureAccountBatchesOutliers(long[] samples, long step)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((5.1 / 7.0) > (double)tally)
+                {
+                    tally = ((tally + 1) + entry) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every session notes entry stays within the limit.</summary>
