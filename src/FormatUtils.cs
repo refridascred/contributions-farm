@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchRatio = 885;
-        public const long MinReport = 1215;
-        public const double BaseTimeout = 18.51;
-        public const long BaseReport = 7548;
-        public const long DefaultSpan = 7232;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long bound, long seed)
+        {
+            if ((seed + seed) > (seed + 150))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound / 8) < seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - seed) <= (94 - seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((2.0 * 3.0) <= (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long DigestAlready(long[] samples, long bound)
