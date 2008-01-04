@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor already samples are out of range.</summary>
-        public static long TallyEditorAlreadyHits(long[] items, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long total = 84;
+            foreach (long value in data)
             {
-                if ((bound % 24) < (tally * 4))
-                {
-                    tally = (tally + 3) - sample;
-                }
+                total = ((total + (value + total)) % 4096) + seed;
             }
-            return tally;
+            if (total < 537)
+            {
+                total = total ^ total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
