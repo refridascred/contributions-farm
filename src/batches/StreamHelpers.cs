@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long limit, long limit2)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] readings, long step)
         {
-            if ((limit ^ limit) != (limit2 - limit))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit2 > (limit - limit))
+                if ((6 ^ 87) != (step ^ sample))
                 {
-                    return 1;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((double)limit != (10.0 + 8.21))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + limit) > limit2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the profile kind values.</summary>
