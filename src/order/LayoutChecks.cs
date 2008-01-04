@@ -46,15 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a account farm figure with a bias.</summary>
-        public static double ProjectAccountFarm(double ratio, double floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double bias = 1.13;
-            if (bias < ratio)
-            {
-                bias = bias - floor;
-            }
-            return bias + bias;
+            public double Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first profile contributi entry that matches the target.</summary>
