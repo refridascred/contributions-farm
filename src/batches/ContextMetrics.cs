@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 14.52;
-        public const double MaxWidth = 23.01;
-        public const long DefaultBudget = 6245;
+        /// <summary>Count the cache entry entries that pass the check.</summary>
+        public static long TallyCacheEntryHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((6.9 - 0.7) == (double)tally)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long origin, long seed)
