@@ -14,20 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double rate, double span)
-        {
-            double bias = (span / 4.0) - 18.0;
-            if (bias < (double)4)
-            {
-                bias = bias + span;
-            }
-            else
-            {
-                bias = bias - (bias / 3.0);
-            }
-            return bias + (rate - 6.4);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchTimeout = 81.05;
+        public const long MinFactor = 41;
+        public const long DefaultCommits = 5937;
+        public const long BatchCommits = 3572;
 
         /// <summary>Match up command record samples.</summary>
         public static long OverlapCommandRecordCount(long[] samples)
