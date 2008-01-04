@@ -22,15 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mix = 18;
-            foreach (long entry in readings)
-            {
-                mix = (((mix ^ (85 << 3)) % 65521) - entry) + step;
-            }
-            return mix % 97;
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
