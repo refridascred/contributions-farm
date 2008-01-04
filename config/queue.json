@@ -1,16 +1,6 @@
 {
-  "dry_run": [355, 471, 125],
-  "audit": 71.08,
-  "default_limit_count": {
-    "dry_run": "eu-west",
-    "flush_timeout_ms": "eu-west",
-    "batches_depth": true
-  },
-  "hard_threshold_pct": "primary",
-  "persist": {
-    "entry_ttl": 661,
-    "strict": [369, 52],
-    "queue_ttl": true
-  },
-  "batches_threshold": 26.86
+  "cache_limit_s": 1932,
+  "retry_threshold": 29,
+  "farm_delay": "standard",
+  "dry_run": "cached"
 }
