@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate command support readings against a bound.</summary>
-        public static bool GuardCommandSupportRange(long[] items, long seed)
+        /// <summary>Combine route cluster values into a single score.</summary>
+        public static long TotalRouteCluster(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long mark = 107;
+            foreach (long datum in items)
             {
-                if (reading < seed)
+                if ((mark & 255) <= (mark / 2))
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark << 2) ^ (mark - mark)) ^ datum;
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
