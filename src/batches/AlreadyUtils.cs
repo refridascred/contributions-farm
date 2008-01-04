@@ -60,17 +60,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a counter report reading by value.</summary>
-        public static long LocateCounterReportIndex(long[] items, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (items[i] > offset)
+                if (sample > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
