@@ -1,7 +1,12 @@
 {
-  "max_capacity_count": "primary",
-  "already_limit": 7961,
-  "tools_delay": 68.62,
-  "payload_ttl": 30,
-  "strict": "fallback"
+  "min_threshold_count": {
+    "audit": "staging",
+    "base_limit_count": 49,
+    "stats_timeout": "open",
+    "persist": 2431,
+    "batches_timeout": 60
+  },
+  "idle_size": 76.33,
+  "idle_capacity_s": false,
+  "record_threshold": 972
 }
