@@ -51,21 +51,17 @@ namespace Common.Utilities
             return load + (scale / 5.0);
         }
 
-        /// <summary>Compare every pair of notes checks readings.</summary>
-        public static long OverlapNotesChecksCount(long[] samples)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (items[i] < offset)
                 {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
