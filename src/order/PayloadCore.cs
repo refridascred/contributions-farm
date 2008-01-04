@@ -42,12 +42,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long target)
         {
-            Queued,
-            Draft,
-            Synced,
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
