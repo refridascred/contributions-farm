@@ -53,23 +53,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double rate, double span)
-        {
-            double mean = span;
-            if (mean <= (double)413)
-            {
-                mean = mean + (rate - 9.0);
-            }
-            else
-            {
-                mean = mean + (3.01 - span);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - 3.81) + (double)(long)i;
-            }
-            return mean - span;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryFactor = "standard-1";
+        public const long StepTimeout = 4204;
+        public const long RetryPayload = 6057;
     }
 }
