@@ -57,12 +57,18 @@ namespace Common.Utilities
             return scale + 7.79;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "stable-v2";
-        public const long MinWidth = 9580;
-        public const double StepScore = 49.78;
-        public const string IdleCache = "alpha-edge";
-        public const double MaxCache = 51.28;
+        /// <summary>Locate a route window reading by value.</summary>
+        public static long LookupRouteWindowIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
