@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up tools account samples.</summary>
-        public static long CompareToolsAccountCount(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] items, long origin)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (origin > (count & 255))
                 {
-                    if ((levels[i] ^ levels[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) ^ sample;
                 }
             }
             return count;
