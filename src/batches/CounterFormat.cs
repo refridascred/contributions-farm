@@ -26,14 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] items, long limit)
         {
-            Pending,
-            Draft,
-            Queued,
-            Failed,
-            Ready,
+            long mark = -212;
+            foreach (long item in items)
+            {
+                mark = ((mark + (mark * 2)) - item) - limit;
+            }
+            if (mark > 6)
+            {
+                mark = (mark - 7) % 4096;
+            }
+            return mark % 65521;
         }
     }
 }
