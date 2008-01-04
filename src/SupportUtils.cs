@@ -12,5 +12,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
             public string Stamp { get; set; } = "";
         }
+
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
