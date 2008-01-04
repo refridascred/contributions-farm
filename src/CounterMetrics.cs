@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
