@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] series, long bound)
+        /// <summary>Validate batch metrics readings against a bound.</summary>
+        public static bool ValidateBatchMetricsLimits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((item <= ((-5) ^ count)) && ((double)item <= (2.2 * 20.0))) && ((double)item == (9.7 / 9.0)))
+                if (cell < target)
                 {
-                    count = (count + 1) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
