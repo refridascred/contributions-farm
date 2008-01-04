@@ -1,8 +1,15 @@
 {
-  "cache_threshold_count": "strict",
-  "soft_threshold": 30,
-  "batch_depth_s": [60, 398, 355],
-  "verbose": 188,
-  "route_depth": 98.14,
-  "commits_window": "primary"
+  "retry_window_pct": 47.99,
+  "warm_capacity_ms": 68.93,
+  "schema_window": {
+    "min_ratio_pct": "edge",
+    "flush_size_ms": "edge",
+    "flush_timeout": ["primary", "strict"],
+    "idle_depth_ms": "fallback",
+    "hard_window": 5964,
+    "default_limit": 28.96
+  },
+  "stream_retries": 9966,
+  "base_limit_ms": 1024,
+  "report_timeout": "fallback"
 }
