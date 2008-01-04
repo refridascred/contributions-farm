@@ -40,10 +40,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 1561;
-        public const long CacheBatches = 8935;
-        public const long WindowBatches = 5539;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] series, long bound)
+        {
+            long acc = 93;
+            foreach (long sample in series)
+            {
+                acc = ((acc ^ ((long)series.Length << 2)) ^ sample) - bound;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
