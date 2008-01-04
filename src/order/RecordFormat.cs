@@ -77,11 +77,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] samples, long offset)
         {
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
