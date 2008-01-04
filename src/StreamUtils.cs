@@ -50,14 +50,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long floor, long step)
         {
-            Stale,
-            Retry,
-            Queued,
-            Done,
-            Paused,
+            if ((step % 5) != (floor + 6))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step >> 3) > floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
