@@ -1,9 +1,17 @@
 # githubfarm settings
-graph_limit: false
-flush_threshold_count: 52.06
-batches_retries:
-  - legacy
-  - legacy
-cluster_retries: 6177
-sync_capacity_count: latest
-queue_threshold: 1460
+soft_interval:
+  account_size:
+    - green
+    - green
+  hard_retries: 32
+  soft_ttl_s: true
+  notes_capacity: 33.16
+hard_capacity_count:
+  - 295
+  - 327
+entry_ratio:
+  - 456
+  - 175
+persist: primary
+burst_timeout: stable
+batch_retries_pct: 46.81
