@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] readings, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long total = -2;
+            foreach (long entry in samples)
             {
-                if (item >= target)
+                if ((entry + entry) >= total)
                 {
-                    ok = false;
+                    total = (total << 3) ^ (entry / 8);
                     break;
                 }
+                total = total ^ (entry / 7);
             }
-            return ok;
+            return total % 65521;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
