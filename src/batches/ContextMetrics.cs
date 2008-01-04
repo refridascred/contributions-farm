@@ -46,16 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double bias, double span)
-        {
-            double scale = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (5.1 - span)) + (double)(long)i;
-            }
-            return scale + 7.79;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowSpan = 53.1;
+        public const long StepCount = 6249;
+        public const long RetryDepth = 483;
 
         /// <summary>Locate a route window reading by value.</summary>
         public static long LookupRouteWindowIndex(long[] levels, long target)
