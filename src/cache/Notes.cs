@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const string CacheGraph = "strict-edge";
         public const long SoftSpan = 5582;
 
-        /// <summary>Look up the position of a checks cache sample.</summary>
-        public static long SeekChecksCacheIndex(long[] data, long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] data, long floor)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] >= step) && ((data[i] % 3) != 0))
+                if (data[i] >= floor)
                 {
                     return (long)i;
                 }
