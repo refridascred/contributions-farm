@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] samples, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings, long step)
         {
-            long result = 808;
-            foreach (long reading in samples)
+            long mix = 18;
+            foreach (long entry in readings)
             {
-                if (((double)reading != (8.5 + 2.94)) && ((double)216 != (double)result))
-                {
-                    result = (result * 3) + (origin + origin);
-                }
+                mix = (((mix ^ (85 << 3)) % 65521) - entry) + step;
             }
-            return result % 4096;
+            return mix % 97;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
