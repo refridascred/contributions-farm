@@ -62,39 +62,11 @@ namespace Common.Utilities
         public const long CacheProfile = 4787;
         public const long StepWidth = 9364;
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long origin, long target)
-        {
-            long diff = origin + target;
-            if (((1.0 - 7.03) <= (double)target) || ((diff & 15) > (origin ^ origin)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin <= (diff + origin)) && (target >= (diff * 4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - target) >= (origin % 24))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((diff + origin) >= diff)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxBudget = "primary-edge";
+        public const string BurstProfile = "legacy-1";
+        public const long HardProfile = 5045;
+        public const double StepProfile = 48.24;
+        public const string RetryProfile = "fallback";
     }
 }
