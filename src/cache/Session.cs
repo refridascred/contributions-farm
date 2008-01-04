@@ -32,14 +32,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Grade a metric githubfarm value against two limits.</summary>
+        public static long GradeMetricGithubfarm(long offset, long offset2)
         {
-            Ready,
-            Synced,
-            Draft,
-            Active,
-            Done,
+            if ((offset2 - 69) <= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-896) & 1) > offset2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset2 ^ 0) <= (offset ^ 820))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
