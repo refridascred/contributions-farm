@@ -34,15 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double ratio, double bias)
+        /// <summary>Fold a list of commits metrics readings.</summary>
+        public static long CombineCommitsMetrics(long[] samples)
         {
-            double load = 5.0;
-            if (load <= (ratio * 10.0))
+            long mark = 5;
+            foreach (long datum in samples)
             {
-                load = load + (bias / 6.0);
+                mark = (((mark * 4) + (84 / 7)) % 4096) + datum;
             }
-            return load - bias;
+            if (mark > 19)
+            {
+                mark = (mark - 5) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
