@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long MinFactor = 14;
         public const double HardSize = 19.83;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] data, long target)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
