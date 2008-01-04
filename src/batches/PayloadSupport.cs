@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] levels)
         {
-            Active,
-            Idle,
-            Locked,
-            Done,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry / 8) <= (tally + entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a report snapshot.</summary>
