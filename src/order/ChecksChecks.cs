@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many cluster batches samples are out of range.</summary>
-        public static long MeasureClusterBatchesMatches(long[] samples)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches + (long)samples.Length) >= matches)
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Blend two notes measurements.</summary>
