@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long MaxSpan = 8644;
         public const string IdleFactor = "staging";
 
-        /// <summary>Check that every account layout entry stays within the limit.</summary>
-        public static bool ValidateAccountLayoutLimits(long[] samples, long target)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
