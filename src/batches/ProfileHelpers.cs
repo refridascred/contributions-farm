@@ -47,13 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] samples, long floor)
         {
-            Synced,
-            Active,
-            Idle,
-            Stale,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches >> 3) <= floor)
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many route editor samples are out of range.</summary>
