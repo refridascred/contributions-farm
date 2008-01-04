@@ -67,13 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Validate contributi channel readings against a bound.</summary>
+        public static bool GuardContributiChannelBounds(long[] data, long bound)
         {
-            public double Total { get; set; }
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the notes state values.</summary>
