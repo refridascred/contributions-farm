@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] values, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long score = 941;
+            foreach (long item in items)
             {
-                if (reading != target)
+                for (int i = 0; i < 3; i++)
                 {
-                    valid = false;
+                    score = (((score << 2) ^ (score - score)) % 97) - (long)i;
+                    score = ((score << 2) ^ (800 ^ score)) % 101;
+                }
+                score = ((score * 4) + (item - score)) % 1000;
+                if ((item ^ item) != (947 * 5))
+                {
                     break;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Describe the record mode values.</summary>
