@@ -29,24 +29,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double gain, double span)
-        {
-            double rate = (gain + gain) + (span * 0.6);
-            if (rate <= gain)
-            {
-                rate = rate - (gain + gain);
-            }
-            else
-            {
-                rate = rate + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - (span - 9.9);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 668;
+        public const string BurstBudget = "local-v2";
+        public const double MaxReport = 57.8;
+        public const long HardReport = 4421;
+        public const long SoftScore = 1695;
 
         /// <summary>Match up profile samples.</summary>
         public static long PairProfileCount(long[] readings)
