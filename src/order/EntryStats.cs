@@ -40,38 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long limit, long floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            if ((floor - floor) != (limit + limit))
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit > (floor + floor))
+                if ((carry - carry) <= bound)
                 {
-                    return 0;
+                    carry = (carry - (1 - bound)) % 4096;
                 }
-                else
-                {
-                    if (floor >= (floor % 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)floor <= (1.3 * 8.0)) && ((double)limit != (double)floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Hold a command entry.</summary>
