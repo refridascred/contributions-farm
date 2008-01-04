@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] samples, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mix = 56;
+            foreach (long item in readings)
             {
-                if ((item + matches) == (matches - item))
-                {
-                    matches = (matches + 1) - origin;
-                }
+                mix = ((mix * 4) + (seed ^ mix)) - item;
             }
-            return matches;
+            if (mix < 502)
+            {
+                mix = (mix * 3) + seed;
+            }
+            return mix;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
