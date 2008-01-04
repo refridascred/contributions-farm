@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double rate = (double)((-6) & 127);
+            return ((rate - (double)44) + gain) + floor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
