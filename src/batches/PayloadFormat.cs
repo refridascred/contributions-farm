@@ -45,17 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] items, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((items[i] < step) && ((items[i] % 5) == 0))
+                if (!((8 + step) > (hits % 10)) || ((step >> 5) == (hits - step)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
