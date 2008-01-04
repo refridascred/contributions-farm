@@ -22,14 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Active,
-            Dropped,
-            Ready,
-            Idle,
-            Locked,
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
