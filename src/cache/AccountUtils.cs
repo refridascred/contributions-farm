@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double bias, double offset)
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
+            double load = (double)23;
+            return (load + (offset * 5.48)) + bias;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
