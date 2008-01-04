@@ -30,11 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 3112;
-        public const long MaxGithubfarm = 684;
-        public const long BaseSize = 865;
-        public const double BurstGithubfarm = 85.68;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((2.0 / 5.0) < (double)reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LocateGraphIndex(long[] readings, long offset)
