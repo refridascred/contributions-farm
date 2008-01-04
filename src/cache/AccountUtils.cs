@@ -28,12 +28,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Classify a checks metrics pair into a bucket.</summary>
+        public static long ClassifyChecksMetrics(long bound, long floor)
         {
-            Queued,
-            Stale,
-            Retry,
+            if (!((bound - floor) > (floor - floor)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((bound & 1) > bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
