@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate account record readings against a bound.</summary>
-        public static bool GuardAccountRecordLimits(long[] samples, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (cell > target)
+                if (sample <= step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
