@@ -14,18 +14,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] samples, long offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)count == (double)offset))
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
+            Paused,
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Blend two tools measurements.</summary>
