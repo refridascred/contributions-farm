@@ -37,12 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 3219;
-        public const string BatchTools = "alpha";
-        public const long IdleScore = 2632;
-        public const long IdleFactor = 2223;
-        public const long RetryCount = 2494;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!(value >= (value - (long)levels.Length)))
+                {
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] data, long offset)
