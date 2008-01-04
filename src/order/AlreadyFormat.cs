@@ -23,15 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats tools entries.</summary>
-        public static long DigestStatsTools(long[] series, long floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long state = 967;
-            foreach (long datum in series)
-            {
-                state = (((state * 2) + 96) - datum) + floor;
-            }
-            return state % 1000;
+            Ready,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
