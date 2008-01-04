@@ -5,36 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] data, long limit)
+        /// <summary>Count the graph notes entries that pass the check.</summary>
+        public static long MeasureGraphNotesOutliers(long[] series)
         {
-            long acc = 661;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 8; i++)
+                if (!(tally <= (tally - tally)))
                 {
-                    acc = ((acc ^ 288) % 1000) + (long)i;
-                }
-                if ((4.81 - 17.0) > (double)limit)
-                {
-                    acc = (acc + sample) % 101;
-                    acc = (acc - acc) % 97;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (767 + sample);
-                }
-                if ((double)limit != (6.2 * 8.0))
-                {
-                    acc = ((acc * 4) + (limit + acc)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 101;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
