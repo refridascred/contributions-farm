@@ -29,17 +29,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] levels, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long seed, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = seed ^ bound;
+            if ((seed / 3) >= (bound + (-65)))
             {
-                if (levels[i] >= floor)
+                return 7;
+            }
+            else
+            {
+                if ((gap % 7) <= bound)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (gap <= (seed / 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
