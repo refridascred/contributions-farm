@@ -1,9 +1,7 @@
-id,score,owner,state
-1,latest,local,blue
-2,standard,55.96,974
-3,86.67,67,green
-4,standard,legacy,blue
-5,green,63.97,62.02
-6,491,426,187
-7,51.35,2.19,83.52
-8,strict,303,25.69
+id,region,score
+1,53.17,19.29
+2,205,70.38
+3,38.75,919
+4,14.03,675
+5,316,staging
+6,35.4,29.79
