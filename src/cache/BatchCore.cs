@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long floor, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] levels, long floor)
         {
-            if ((target * 5) < target)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor % 5) >= (floor + floor)) && ((double)target < (3.0 + 0.27)))
+                if ((seen >= 5) && !(seen < (109 ^ seen)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((target + target) >= (target - target)) && ((target % 24) >= (floor ^ floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target != (double)floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = ((seen + 1) - sample) - floor;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
