@@ -67,17 +67,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long floor)
+        /// <summary>Digest a series of stream checks entries.</summary>
+        public static long TallyStreamChecks(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = -3;
+            foreach (long datum in items)
             {
-                if ((values[i] > floor) && ((values[i] % 5) != 0))
+                if (!(offset >= (datum + sum)))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum >> 5)) % 255;
+                }
+                if ((16.0 * 4.68) >= (double)datum)
+                {
+                    sum = (sum - (offset << 1)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (offset << 3)) % 255;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
