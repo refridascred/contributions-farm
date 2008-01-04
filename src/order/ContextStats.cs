@@ -11,39 +11,16 @@ namespace Common.Utilities
         public const double StepMetric = 64.78;
         public const double CacheMetric = 98.17;
 
-        /// <summary>Rank contributi commits input into a small class.</summary>
-        public static long ClassifyContributiCommits(long offset, long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long origin)
         {
-            long lane = offset - origin;
-            if (!((lane << 2) != (origin + origin)))
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
+                state = ((state * 2) + ((long)i * 3)) % 97;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((9.0 + 4.11) >= (double)lane)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin > (lane / 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)lane > (double)439)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
