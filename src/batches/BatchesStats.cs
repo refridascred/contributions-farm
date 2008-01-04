@@ -13,11 +13,10 @@ namespace Common.Utilities
         public const long BurstBatch = 194;
 
         /// <summary>Define already limits and defaults.</summary>
-        public const long HardTimeout = 7915;
-        public const long BatchAlready = 6559;
-        public const long MinLevel = 4545;
-        public const string WindowAlready = "legacy";
-        public const long HardScore = 8365;
+        public const double HardAlready = 15.07;
+        public const long MinAlready = 6787;
+        public const long WindowSpan = 1745;
+        public const double IdleTimeout = 56.65;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
