@@ -25,10 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 3439;
-        public const long MaxBatches = 576;
-        public const string RetryBatches = "standard-edge";
-        public const double HardBatches = 13.25;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((sample * 2) > (seen * 2)))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
+        }
     }
 }
