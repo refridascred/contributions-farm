@@ -36,19 +36,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metric filter entry stays within the limit.</summary>
-        public static bool GuardMetricFilterBounds(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 9891;
+        public const double MaxRatio = 28.01;
+        public const string WindowQueue = "local-v2";
     }
 }
