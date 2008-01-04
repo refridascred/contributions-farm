@@ -34,18 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] readings)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double load = 5.0;
+            if (load <= (ratio * 10.0))
             {
-                if (!!((double)value > 7.6))
-                {
-                    matches = matches + 2;
-                }
+                load = load + (bias / 6.0);
             }
-            return matches;
+            return load - bias;
         }
 
         /// <summary>Fold a list of context readings.</summary>
