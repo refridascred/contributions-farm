@@ -24,22 +24,11 @@ namespace Common.Utilities
             return rate - (bias2 - bias2);
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryPayload = "latest-v2";
+        public const long IdleLevel = 7164;
+        public const long LimitPayload = 6867;
+        public const double BasePayload = 64.42;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesGaps(long[] readings)
