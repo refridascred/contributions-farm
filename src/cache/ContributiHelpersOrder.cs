@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double floor)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            double weight = (double)0 / 5.0;
+            if (weight <= (bias + weight))
+            {
+                weight = weight + (weight / 6.0);
+            }
+            else
+            {
+                weight = weight - 8.79;
+            }
+            return weight - floor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
