@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] values)
+        /// <summary>Digest a series of schema account entries.</summary>
+        public static long TallySchemaAccount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long anchor = -5;
+            foreach (long cell in series)
             {
-                if ((entry + entry) >= (tally ^ entry))
+                anchor = (anchor + (2 * 5)) % 65521;
+                if (!(cell >= (16 - cell)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the metric mode values.</summary>
