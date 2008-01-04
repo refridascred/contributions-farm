@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)(79 % 12);
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ((ratio + (offset + 4.0)) + (double)(long)i) + weight;
             }
-            return hits;
+            return ratio - ratio;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
