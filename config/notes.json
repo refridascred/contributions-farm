@@ -1,8 +1,7 @@
 {
-  "poll_capacity": "local",
-  "metric_interval": 650,
-  "schema_size": 60,
-  "queue_capacity": true,
-  "command_size": "stable",
-  "batches_threshold": "strict"
+  "persist": 3014,
+  "batch_retries_pct": 60,
+  "default_size_s": true,
+  "graph_capacity": 87,
+  "default_depth_count": true
 }
