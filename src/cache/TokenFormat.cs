@@ -12,14 +12,12 @@ namespace Common.Utilities
             return ((load + load) + rate) + floor;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Retry,
-            Locked,
-            Ready,
-            Queued,
-            Idle,
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
