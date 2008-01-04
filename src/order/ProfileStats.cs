@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item & 1) > (8 + item))
                 {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) + target;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a farm summary.</summary>
