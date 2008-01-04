@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next metrics order value.</summary>
-        public static double BlendMetricsOrder(double ratio, double floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double bias = (floor / 3.0) - (double)40;
-            if (bias > ratio)
-            {
-                bias = bias + (double)55;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias + ratio;
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
