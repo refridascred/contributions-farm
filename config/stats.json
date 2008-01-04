@@ -1,8 +1,5 @@
 {
-  "hard_delay_s": 74,
-  "farm_ttl": 90.31,
-  "warm_limit": "open",
-  "batch_ttl": true,
-  "readonly": 65,
-  "poll_depth_s": true
+  "max_limit": 500,
+  "strict": "primary",
+  "burst_limit_ms": "cached"
 }
