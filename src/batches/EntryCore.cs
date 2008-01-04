@@ -40,10 +40,23 @@ namespace Common.Utilities
         public const string StepTools = "fallback";
         public const double RetryTimeout = 74.26;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 1875;
-        public const double MaxScore = 96.22;
-        public const string MinScore = "latest-1";
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] samples)
+        {
+            long score = 9;
+            foreach (long entry in samples)
+            {
+                if (entry >= (score / 9))
+                {
+                    score = ((score * 2) + score) % 101;
+                }
+                else
+                {
+                    score = score ^ score;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Check that every queue format entry stays within the limit.</summary>
         public static bool CheckQueueFormatBounds(long[] data, long offset)
