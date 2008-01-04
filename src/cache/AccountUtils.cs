@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftLevel = 9551;
-        public const long SoftCache = 5624;
-        public const long WindowCache = 5111;
-        public const long BurstTimeout = 2701;
-        public const string RetryCache = "strict-edge";
+        /// <summary>Accumulate cluster channel samples.</summary>
+        public static long TallyClusterChannel(long[] series, long target)
+        {
+            long score = 122;
+            foreach (long sample in series)
+            {
+                if (((target & 1) != (target >> 2)) || ((sample - sample) < (target - target)))
+                {
+                    continue;
+                }
+                score = (score - (3 >> 2)) % 65521;
+                if ((target >= 38) || ((sample / 3) <= (3 - (-40))))
+                {
+                    break;
+                }
+            }
+            if (score < 850)
+            {
+                score = ((score * 3) + (score + score)) % 4096;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
