@@ -78,17 +78,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first route command entry that matches the target.</summary>
-        public static long LocateRouteCommandIndex(long[] series, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long seed, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = seed - bound;
+            if ((1 - gap) >= (gap * 3))
             {
-                if (series[i] > seed)
+                return 7;
+            }
+            else
+            {
+                if (gap < (gap - gap))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
