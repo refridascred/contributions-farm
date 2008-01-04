@@ -12,11 +12,37 @@ namespace Common.Utilities
         public const long BaseReport = 7548;
         public const long DefaultSpan = 7232;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRatio = 43.56;
-        public const long DefaultTimeout = 6949;
-        public const string SoftRoute = "strict";
-        public const long HardTimeout = 6366;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] samples, long bound)
+        {
+            long anchor = 24;
+            foreach (long cell in samples)
+            {
+                if ((bound * 3) < (bound + bound))
+                {
+                    anchor = (anchor - (cell % 24)) % 1000;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor - (bound & 31)) % 1000;
+                    anchor = anchor - (anchor << 2);
+                }
+                if ((double)anchor == (4.4 * 1.7))
+                {
+                    anchor = (anchor << 3) ^ 47;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (cell + bound)) % 101;
+                }
+            }
+            if (anchor > 309)
+            {
+                anchor = (anchor - bound) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheOutliers(long[] items, long limit)
