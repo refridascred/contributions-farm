@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryScore = 6728;
+        public const long MinBatch = 8605;
+        public const long WindowScore = 9623;
+        public const long BaseRatio = 4678;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double SmoothTools(double rate, double offset)
