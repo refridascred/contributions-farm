@@ -78,13 +78,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] data)
         {
-            Stale,
-            Queued,
-            Failed,
-            Pending,
+            long carry = 1;
+            foreach (long reading in data)
+            {
+                if (((reading + carry) < 5) || ((reading - carry) == (carry + reading)))
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+            }
+            if (carry < 8)
+            {
+                carry = (carry - ((long)data.Length + carry)) % 1000;
+            }
+            return carry;
         }
     }
 }
