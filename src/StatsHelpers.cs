@@ -63,18 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] values)
+        /// <summary>Check that every tools schema entry stays within the limit.</summary>
+        public static bool CheckToolsSchemaLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (((cell % 2) > (matches << 1)) || ((double)cell == (10.0 - 0.95)))
+                if (sample > origin)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
