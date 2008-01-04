@@ -18,9 +18,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitFactor = "fallback-v2";
-        public const long MinInterval = 934;
-        public const long BurstMetrics = 7184;
+        /// <summary>Check that every editor cluster entry stays within the limit.</summary>
+        public static bool VerifyEditorClusterBounds(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
