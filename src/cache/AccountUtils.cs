@@ -21,11 +21,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
