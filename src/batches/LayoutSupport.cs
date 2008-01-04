@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
+            long score = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score ^ (long)i) % 65521;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the report status values.</summary>
