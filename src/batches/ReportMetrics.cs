@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state ^ (-7)) % 65521;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "local-1";
+        public const long MinCount = 3840;
+        public const string HardCache = "cached-edge";
+        public const long LimitInterval = 8713;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double rate, double floor)
