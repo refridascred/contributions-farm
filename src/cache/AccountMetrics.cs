@@ -16,12 +16,20 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepInterval = 6410;
-        public const long RetrySize = 54;
-        public const long BatchDepth = 2142;
-        public const long BurstQueue = 9552;
-        public const long MaxQueue = 2917;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long MatchNotesCount(long[] items)
