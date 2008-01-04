@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long origin, long target)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            if ((target - 0) != (origin % 12))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target >> 3) != (origin / 6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Ready,
+            Closed,
+            Dropped,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
