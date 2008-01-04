@@ -40,38 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long origin, long target)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            if ((target + origin) >= (163 - 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.0 * 11.0) > (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin <= (origin << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= (41 ^ origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a format options.</summary>
