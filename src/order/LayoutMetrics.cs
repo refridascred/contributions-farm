@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 3628;
-        public const long CacheStats = 3676;
-        public const double BurstStats = 95.01;
-        public const long StepScore = 6088;
+        /// <summary>Adjust a tools graph reading.</summary>
+        public static double ProjectToolsGraph(double weight, double floor)
+        {
+            double scale = weight;
+            if (scale < weight)
+            {
+                scale = scale + (4.0 * 14.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (floor - scale)) + (double)(long)i;
+            }
+            return scale - (double)582;
+        }
 
         /// <summary>Classify a order entry pair into a bucket.</summary>
         public static long RankOrderEntry(long limit, long seed)
