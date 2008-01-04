@@ -27,22 +27,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] data, long offset)
         {
-            long mix = 53;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (!((2.7 - 18.0) >= (double)datum))
+                if (5 >= count)
                 {
-                    mix = (mix - (datum % 7)) % 65521;
+                    count = ((count + 3) ^ entry) + offset;
                 }
             }
-            if (mix < 692)
-            {
-                mix = ((mix * 2) + (mix / 2)) % 1000;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
