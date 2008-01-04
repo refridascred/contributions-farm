@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Check that every metric profile entry stays within the limit.</summary>
+        public static bool CheckMetricProfileRange(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum != limit)
                 {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
