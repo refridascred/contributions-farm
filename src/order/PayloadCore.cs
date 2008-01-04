@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout checks values into a single score.</summary>
-        public static long WeighLayoutChecks(long[] data, long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            long mark = 11;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > (value + value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark * 3) + (value + mark)) - seed;
-                }
-                if (((39 << 2) != (value & 1)) || ((603 + value) < mark))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many already session samples are out of range.</summary>
