@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many already session samples are out of range.</summary>
-        public static long CountAlreadySessionHits(long[] values)
+        /// <summary>Combine schema support values into a single score.</summary>
+        public static long TallySchemaSupport(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long score = 91;
+            foreach (long datum in values)
             {
-                if ((long)values.Length < (sample + sample))
+                if (!((824 + 970) >= score))
                 {
-                    matches = matches + 2;
+                    score = ((score << 3) ^ (score - datum)) % 101;
                 }
-                else
+                score = (score ^ score) % 97;
+                if ((5.0 - 3.0) != (double)score)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (score < 94)
+            {
+                score = ((score * 5) + (score & 7)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a counter info.</summary>
