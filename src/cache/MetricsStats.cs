@@ -53,20 +53,19 @@ namespace Common.Utilities
         public const long LimitWidth = 7470;
         public const long StepCount = 270;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] samples, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((((long)i * 5) > ((long)i + 2)) || ((long)i >= (offset - offset)))
+                if (cell >= bound)
                 {
-                    mark = (mark - mark) % 255;
-                    continue;
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return stale;
         }
     }
 }
