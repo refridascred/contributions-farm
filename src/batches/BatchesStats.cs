@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepSize = "staging-edge";
+        public const long CacheBudget = 6512;
+        public const string MinTimeout = "primary";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long HardTimeout = 7915;
