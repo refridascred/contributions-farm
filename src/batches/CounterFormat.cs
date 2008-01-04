@@ -36,13 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            Pending,
+            Draft,
+            Queued,
+            Failed,
+            Ready,
         }
     }
 }
