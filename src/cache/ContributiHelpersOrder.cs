@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] items, long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long step, long origin)
         {
-            long sum = 265;
-            foreach (long datum in items)
+            if (step < (origin - (-315)))
             {
-                sum = (((sum ^ sum) % 97) - datum) - seed;
+                return 4;
             }
-            return sum % 65521;
+            else
+            {
+                if ((step >> 4) <= (step ^ origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin < (step + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
