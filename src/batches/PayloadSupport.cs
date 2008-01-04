@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first token batches entry that matches the target.</summary>
-        public static long FindTokenBatchesIndex(long[] samples, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 3) != 0))
+                if ((double)tally == (6.24 * 3.7))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
