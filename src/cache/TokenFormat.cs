@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] items)
+        /// <summary>Derive the next githubfarm token value from a seed.</summary>
+        public static long IterateGithubfarmToken(long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (matches >= (40 - (-60)))
-                {
-                    matches = (matches + 3) + value;
-                }
+                result = (result << 3) ^ (step >> 3);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
