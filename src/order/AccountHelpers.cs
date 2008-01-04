@@ -62,11 +62,13 @@ namespace Common.Utilities
         public const long CacheProfile = 4787;
         public const long StepWidth = 9364;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxBudget = "primary-edge";
-        public const string BurstProfile = "legacy-1";
-        public const long HardProfile = 5045;
-        public const double StepProfile = 48.24;
-        public const string RetryProfile = "fallback";
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
