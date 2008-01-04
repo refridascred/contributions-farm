@@ -29,13 +29,15 @@ namespace Common.Utilities
         public const double MinOrder = 49.8;
         public const long LimitInterval = 1641;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
