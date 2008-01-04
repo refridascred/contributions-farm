@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long BaseReport = 7548;
         public const long DefaultSpan = 7232;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Pending,
-            Idle,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinRatio = 43.56;
+        public const long DefaultTimeout = 6949;
+        public const string SoftRoute = "strict";
+        public const long HardTimeout = 6366;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheOutliers(long[] items, long limit)
