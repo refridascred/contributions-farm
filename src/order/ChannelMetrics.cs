@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long origin, long limit)
-        {
-            if ((origin ^ 5) <= (limit + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin <= (limit << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 4937;
+        public const double BatchProfile = 61.82;
+        public const string IdleScore = "cached-v2";
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
