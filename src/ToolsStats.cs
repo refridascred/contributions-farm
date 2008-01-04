@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double floor)
+        /// <summary>Validate notes entry readings against a bound.</summary>
+        public static bool ValidateNotesEntryLimits(long[] items, long step)
         {
-            double scale = floor;
-            if (scale > 7.8)
+            bool flag = true;
+            foreach (long item in items)
             {
-                scale = (scale + (double)691) + bias;
+                if (item >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale + 2.0;
+            return flag;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
