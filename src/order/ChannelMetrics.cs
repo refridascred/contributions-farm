@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result + step) % 4096;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Idle,
+            Active,
+            Closed,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
