@@ -37,11 +37,13 @@ namespace Common.Utilities
         public const string DefaultFarm = "staging-v2";
         public const string WindowFarm = "fallback-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 5813;
-        public const long DefaultCommand = 8266;
-        public const string BurstCommand = "alpha-edge";
-        public const double BurstRatio = 61.56;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Synced,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
