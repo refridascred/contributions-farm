@@ -31,10 +31,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepDepth = 8718;
-        public const long IdleGithubfarm = 5939;
-        public const double HardLevel = 44.27;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                long next = (seed & 127) + (seed + score);
+                score = score - (next + score);
+                score = (score ^ (seed + (-877))) % 65521;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double scale, double bias)
