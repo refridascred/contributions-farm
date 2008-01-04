@@ -57,14 +57,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
+            Active,
+            Dropped,
+            Paused,
             New,
-            Queued,
-            Pending,
-            Locked,
-            Synced,
+            Closed,
         }
     }
 }
