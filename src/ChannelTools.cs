@@ -21,18 +21,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] items, long target)
+        /// <summary>Combine schema context values into a single score.</summary>
+        public static long WeighSchemaContext(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long acc = 75;
+            foreach (long value in items)
             {
-                if ((double)seen != (15.0 + 6.63))
+                if ((acc % 8) != (acc % 64))
                 {
-                    seen = ((seen + 1) + datum) + target;
+                    acc = (acc - (acc - acc)) % 65521;
+                }
+                if ((value + acc) >= (acc + acc))
+                {
+                    acc = (acc + (acc & 3)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (value / 4)) % 101;
                 }
             }
-            return seen;
+            return acc % 97;
         }
     }
 }
