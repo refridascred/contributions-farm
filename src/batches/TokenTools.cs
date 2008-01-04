@@ -33,10 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleInterval = "fallback-v2";
-        public const long SoftRatio = 2044;
-        public const double MinWidth = 18.36;
-        public const string BaseBudget = "latest";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+        }
     }
 }
