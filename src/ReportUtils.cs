@@ -57,12 +57,11 @@ namespace Common.Utilities
             return load + (scale / 5.0);
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double bias, double floor)
         {
-            Retry,
-            Synced,
-            Active,
+            double mean = (2.6 + bias) / 2.0;
+            return (mean - (bias + bias)) + floor;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
