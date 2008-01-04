@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the session contributi entries that pass the check.</summary>
-        public static long AuditSessionContributiGaps(long[] levels)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - tally) <= (tally - sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a batch header.</summary>
