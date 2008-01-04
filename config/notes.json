@@ -1,5 +1,12 @@
 {
-  "poll_ttl_count": "latest",
-  "flush_timeout_count": 1,
-  "cache_threshold_ms": 89.79
+  "max_capacity_pct": false,
+  "dry_run": ["open", "stable", "fallback"],
+  "verbose": 3.03,
+  "max_ratio": "blue",
+  "payload_ratio": {
+    "checks_window": 100,
+    "hard_depth_ms": "cached",
+    "base_threshold": 250,
+    "sync_limit": 30
+  }
 }
