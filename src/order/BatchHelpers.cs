@@ -30,22 +30,15 @@ namespace Common.Utilities
             return (rate + 9.07) + weight;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] readings, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((cell < (31 - offset)) && !((offset << 3) != (6 << 1)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
     }
 }
