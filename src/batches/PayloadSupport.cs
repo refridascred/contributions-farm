@@ -26,19 +26,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] readings, long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
