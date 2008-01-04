@@ -39,12 +39,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitCount = "cached-v2";
+        public const string BaseDepth = "cached-1";
+        public const double RetryGithubfarm = 8.09;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
