@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] samples, long origin)
         {
-            Synced,
-            Draft,
-            Paused,
-            Active,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((item + matches) == (matches - item))
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
