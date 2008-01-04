@@ -31,20 +31,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
-        public static bool CheckClusterMetricsRange(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 66;
+        public const long DefaultOrder = 6739;
+        public const string MaxTimeout = "stable";
+        public const long SoftOrder = 6882;
+        public const double LimitOrder = 9.84;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordMatches(long[] levels, long bound)
