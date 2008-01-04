@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] series, long step)
         {
-            double ratio = span;
-            return (ratio - 2.0) + rate;
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((step + reading) > (seen + seen)) || ((seen >> 4) == (reading - seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a metrics window sample.</summary>
