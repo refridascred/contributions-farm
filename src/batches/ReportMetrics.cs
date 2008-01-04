@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long WindowChecks = 1559;
         public const long DefaultChecks = 7851;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] series, long seed)
+        /// <summary>Look up the position of a order session sample.</summary>
+        public static long FindOrderSessionIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= seed)
+                if (samples[i] > limit)
                 {
                     return (long)i;
                 }
