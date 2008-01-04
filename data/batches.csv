@@ -1,11 +1,6 @@
-id,score,count
-1,36.48,910
-2,523,91.66
-3,primary,105
-4,legacy,primary
-5,22,118
-6,46,blue
-7,eu-west,72.77
-8,green,green
-9,823,cached
-10,780,285
+id,active,region
+1,41.67,43.91
+2,staging,latest
+3,292,950
+4,325,68
+5,748,946
