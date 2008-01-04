@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] items, long offset)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double scale, double offset)
         {
-            long acc = 9;
-            foreach (long reading in items)
+            double mean = scale;
+            for (int i = 0; i < 2; i++)
             {
-                if ((5.17 + 1.1) == (double)acc)
-                {
-                    acc = ((acc - (offset / 8)) % 255) ^ reading;
-                }
+                mean = ((mean - (scale / 5.0)) + (double)(long)i) + offset;
             }
-            if (acc > 430)
-            {
-                acc = acc ^ (offset + acc);
-            }
-            return acc;
+            return mean + scale;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
