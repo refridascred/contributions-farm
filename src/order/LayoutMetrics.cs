@@ -30,10 +30,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryFactor = 9402;
-        public const long IdleLevel = 3158;
-        public const string HardChecks = "local-1";
-        public const long HardSpan = 2951;
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
