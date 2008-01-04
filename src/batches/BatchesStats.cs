@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Validate account record readings against a bound.</summary>
+        public static bool GuardAccountRecordLimits(long[] samples, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
