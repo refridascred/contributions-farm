@@ -1,25 +1,8 @@
 # githubfarm settings
-sync_ratio_pct: 60
-strict:
-  - 411
-  - 169
-  - 265
-  - 168
-hard_capacity: 250
+audit: 97.5
+hard_interval_pct: false
 verbose:
-  cache_size_ms: 6602
-  burst_window_count:
-    - edge
-    - blue
-    - primary
-    - edge
-  base_interval:
-    - 195
-    - 236
-    - 393
-    - 235
-  min_threshold: 60
-  burst_retries: 30
-  hard_delay: fallback
-cluster_ttl: 58
-burst_ratio_ms: primary
+  - staging
+  - fallback
+soft_ttl_count: 33.45
+retry_capacity_s: 14
