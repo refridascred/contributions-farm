@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series)
-        {
-            long score = -302;
-            foreach (long datum in series)
-            {
-                if ((5.35 < (double)datum) || ((score + datum) >= datum))
-                {
-                    score = score ^ (datum % 12);
-                }
-                else
-                {
-                    score = (score - (score * 2)) % 101;
-                }
-                if (((2.84 / 4.0) >= (double)score) && (0.1 > (double)score))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchDepth = "stable-edge";
+        public const long SoftDepth = 2462;
+        public const long BurstSchema = 3566;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long DigestQueue(long[] items)
