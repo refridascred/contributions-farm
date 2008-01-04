@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback legacy; do
+for item in fallback standard stable; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
