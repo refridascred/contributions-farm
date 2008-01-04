@@ -68,11 +68,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleLevel = 20.1;
-        public const double DefaultDepth = 89.97;
-        public const string DefaultGithubfarm = "primary-1";
-        public const long DefaultWidth = 2229;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Queued,
+            Closed,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long ClassifyChecks(long origin, long seed)
