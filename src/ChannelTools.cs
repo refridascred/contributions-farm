@@ -14,22 +14,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series, long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8 - count) >= (count + datum))
+                if (samples[i] < origin)
                 {
-                    count = (count + 2) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
