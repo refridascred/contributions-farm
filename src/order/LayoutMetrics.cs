@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] series, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long acc = 661;
+            foreach (long sample in data)
             {
-                if ((seed - hits) != (value + hits))
+                for (int i = 0; i < 8; i++)
                 {
-                    hits = hits + 3;
+                    acc = ((acc ^ 288) % 1000) + (long)i;
+                }
+                if ((4.81 - 17.0) > (double)limit)
+                {
+                    acc = (acc + sample) % 101;
+                    acc = (acc - acc) % 97;
+                    continue;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc << 2) ^ (767 + sample);
+                }
+                if ((double)limit != (6.2 * 8.0))
+                {
+                    acc = ((acc * 4) + (limit + acc)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
