@@ -23,18 +23,23 @@ namespace Common.Utilities
         public const double MinFactor = 60.81;
         public const long DefaultStats = 489;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] levels, long bound)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double gain = offset;
+            if (gain <= offset)
             {
-                if (((bound >> 1) != (count + bound)) && ((((long)levels.Length << 1) < (2 - count)) && ((bound + count) == (bound + bound))))
-                {
-                    count = (count + 3) ^ cell;
-                }
+                gain = (gain + offset) + ratio;
             }
-            return count;
+            else
+            {
+                gain = gain + (double)(-6);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - (double)(-7);
         }
     }
 }
