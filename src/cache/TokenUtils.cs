@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] data, long origin)
+        /// <summary>Audit batches commits readings against a rule.</summary>
+        public static long TallyBatchesCommitsGaps(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (item <= origin)
+                if (item > (639 / 2))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) - seed;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
