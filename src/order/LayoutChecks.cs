@@ -27,19 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of already metrics entries.</summary>
-        public static long ScoreAlreadyMetrics(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] series, long target)
         {
-            long anchor = 8;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long datum in series)
             {
-                anchor = ((anchor << 3) ^ (anchor % 10)) - cell;
+                if (datum < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (anchor > 5)
-            {
-                anchor = anchor - (717 + (long)items.Length);
-            }
-            return anchor;
+            return found;
         }
 
         /// <summary>Scale a account farm figure with a bias.</summary>
