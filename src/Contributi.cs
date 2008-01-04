@@ -28,5 +28,20 @@ namespace Common.Utilities
             }
             return acc;
         }
+
+        /// <summary>Combine batches booking values into a single score.</summary>
+        public static long FoldBatchesBooking(long[] samples, long step)
+        {
+            long total = 9;
+            foreach (long sample in samples)
+            {
+                total = (total ^ (sample / 8)) - step;
+            }
+            if (total > 94)
+            {
+                total = ((total << 2) ^ total) % 255;
+            }
+            return total % 4096;
+        }
     }
 }
