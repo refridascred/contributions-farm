@@ -43,39 +43,18 @@ namespace Common.Utilities
         public const long BatchRatio = 5984;
         public const string BurstChecks = "fallback-v2";
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long origin, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] data)
         {
-            long next = origin ^ limit;
-            if ((double)origin < (8.0 * 2.1))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(((-8) + origin) < (next + (-40))))
+                if ((double)entry > (double)matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((26 + limit) < (limit ^ origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((7.9 * 3.6) > (double)origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
