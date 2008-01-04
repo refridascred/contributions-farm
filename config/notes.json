@@ -1,19 +1,5 @@
 {
-  "notes_window": 28,
-  "readonly": true,
-  "max_depth": {
-    "warm_interval": {
-      "window_window": 51.05,
-      "max_limit_ms": 65,
-      "idle_limit": 250,
-      "idle_timeout": 77,
-      "max_retries": ["standard", "open", "fallback"]
-    },
-    "warm_delay_ms": [454, 14],
-    "editor_threshold": 93.21,
-    "command_threshold": "fallback",
-    "token_delay": 1024,
-    "retry_interval_ms": 11
-  },
-  "format_window": 18
+  "report_timeout": false,
+  "compress": 62,
+  "layout_window": 25.08
 }
