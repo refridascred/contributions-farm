@@ -36,18 +36,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (1 > (60 ^ (long)series.Length))
+                if ((8.0 - 6.0) <= (double)origin)
                 {
-                    tally = (tally + 2) + cell;
+                    mix = (mix + origin) % 101;
+                    mix = ((mix * 4) + origin) % 255;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
     }
 }
