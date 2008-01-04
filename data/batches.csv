@@ -1,8 +1,8 @@
-id,ratio,rank
-1,595,edge
-2,standard,15.89
-3,185,17.74
-4,157,open
-5,988,local
-6,primary,139
-7,937,650
+id,active,state,ratio,label
+1,150,893,220,standard
+2,660,37.27,142,846
+3,464,73.97,10.37,edge
+4,41.62,standard,45.15,94.09
+5,505,367,47.03,78.14
+6,72.32,green,732,primary
+7,91.03,120,445,blue
