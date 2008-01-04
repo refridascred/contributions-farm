@@ -1,8 +1,10 @@
 {
-  "idle_retries": 4933,
-  "counter_interval": 30.96,
-  "burst_interval_pct": 97.63,
-  "hard_depth_pct": 54.32,
-  "retry_ttl_count": 24.37,
-  "retry_retries": 11.76
+  "verbose": 2430,
+  "soft_ratio_count": true,
+  "base_ttl_ms": {
+    "enabled": ["standard", "cached", "legacy"],
+    "sync_delay_ms": ["local", "stable"],
+    "default_timeout": 26.73,
+    "min_window": 11.52
+  }
 }
