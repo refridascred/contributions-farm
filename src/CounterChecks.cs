@@ -62,18 +62,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster support entries that pass the check.</summary>
-        public static long AuditClusterSupportMatches(long[] series)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)seen > 6.8)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a editor info.</summary>
