@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepDepth = 8718;
+        public const long IdleGithubfarm = 5939;
+        public const double HardLevel = 44.27;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double BlendChecks(double gain, double span)
