@@ -47,15 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] levels, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] readings, long offset)
         {
-            long result = -138;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result ^ seed) - reading;
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
