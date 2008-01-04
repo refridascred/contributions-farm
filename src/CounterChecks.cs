@@ -22,11 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Roll a checks route counter forward.</summary>
+        public static long DeriveChecksRoute(long floor)
         {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry << 3) ^ (long)i) % 101;
+                carry = (carry ^ (floor * 5)) % 4096;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Combine entry support values into a single score.</summary>
