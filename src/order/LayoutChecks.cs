@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
+            Idle,
             Retry,
-            New,
-            Synced,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
