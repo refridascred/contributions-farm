@@ -33,14 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Paused,
-            Stale,
-            Synced,
-            Active,
-            Idle,
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
