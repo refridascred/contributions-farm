@@ -1,17 +1,5 @@
 {
-  "verbose": 484,
-  "audit": {
-    "sync_threshold": {
-      "audit": 47,
-      "strict": "local",
-      "cluster_retries": 30
-    },
-    "soft_capacity": "latest",
-    "stream_timeout": "stable",
-    "soft_limit_pct": "strict"
-  },
-  "route_depth": "primary",
-  "max_limit_ms": "stable",
-  "dry_run": "cached",
-  "default_timeout": "standard"
+  "burst_size_count": [261, 323],
+  "enabled": [323, 70],
+  "record_depth": [2, 33]
 }
