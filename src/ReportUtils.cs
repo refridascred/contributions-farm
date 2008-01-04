@@ -56,19 +56,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double rate, double span)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long bound)
         {
-            double weight = (double)0 * 9.4;
-            if (weight >= (rate - weight))
+            long diff = floor - bound;
+            if ((3 + bound) < floor)
             {
-                weight = weight - span;
+                return 7;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight + span) + (double)(long)i;
+                if (((double)floor > (4.4 + 7.0)) && ((double)diff != (2.84 * 3.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((9 / 4) >= floor) || (((-1) >> 5) == (diff >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((diff / 2) > (bound ^ diff))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return weight - 8.0;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
