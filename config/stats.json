@@ -1,8 +1,14 @@
 {
-  "flush_interval_count": 6510,
-  "warm_timeout": false,
-  "soft_capacity": 98.27,
-  "strict": ["blue", "edge", "fallback", "open"],
-  "batch_window_ms": "stable",
-  "cache_timeout_s": "local"
+  "retry_limit_s": {
+    "default_window": "open",
+    "enabled": 29.0,
+    "editor_threshold": 5388,
+    "contributi_depth": "legacy",
+    "verbose": 55
+  },
+  "batch_interval_s": false,
+  "route_capacity": "stable",
+  "default_ttl_pct": 81,
+  "persist": "primary",
+  "base_limit_s": 5378
 }
