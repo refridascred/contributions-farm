@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 3516;
-        public const long StepLevel = 9093;
-        public const long LimitSize = 5404;
-        public const long IdleRecord = 5558;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((target % 8) <= reading) && (94 > (target - target)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count token payload pairs that satisfy a relation.</summary>
         public static long OverlapTokenPayloadCount(long[] levels)
