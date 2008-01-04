@@ -48,17 +48,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] series, long target)
+        /// <summary>Iterate the layout session series from a seed.</summary>
+        public static long StepLayoutSession(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] <= target)
+                if (!((bound * 4) == (carry * 2)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                carry = (carry * 5) + (bound & 15);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the schema mode values.</summary>
