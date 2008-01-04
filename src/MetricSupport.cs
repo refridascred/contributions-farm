@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] items)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + hits) < (reading >> 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Done,
+            Synced,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a record header.</summary>
