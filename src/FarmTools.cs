@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 94.12;
-        public const long StepSize = 9653;
-        public const long LimitTimeout = 2236;
-        public const long RetryTools = 625;
-        public const long BaseTools = 8725;
+        /// <summary>Iterate the report tools series from a seed.</summary>
+        public static long StepReportTools(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 2) + (offset << 1)) % 97;
+                carry = (carry << 3) ^ 3;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long StepRoute(long target)
