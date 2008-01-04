@@ -1,7 +1,12 @@
 {
-  "persist": 3014,
-  "batch_retries_pct": 60,
-  "default_size_s": true,
-  "graph_capacity": 87,
-  "default_depth_count": true
+  "cache_size": 6162,
+  "default_timeout_pct": {
+    "warm_depth_pct": "stable",
+    "burst_window_pct": [255, 395],
+    "audit": 95
+  },
+  "dry_run": true,
+  "sync_size": 7277,
+  "max_depth_s": ["legacy", "open", "eu-west", "local"],
+  "burst_limit_count": "edge"
 }
