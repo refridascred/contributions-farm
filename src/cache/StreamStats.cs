@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long bound, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] levels, long bound)
         {
-            long span = bound + limit;
-            if (limit < (limit ^ limit))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((span >= (33 >> 3)) && (64 < (span / 4)))
+                if (value <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of format schema readings.</summary>
