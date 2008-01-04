@@ -44,17 +44,38 @@ namespace Common.Utilities
         public const long HardGithubfarm = 5635;
         public const long WindowSize = 2833;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] samples, long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long step, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit << 2) <= (step % 5))
             {
-                if (samples[i] >= offset)
+                return 4;
+            }
+            else
+            {
+                if (((limit / 3) < 2) && ((2.97 * 18.0) != (double)limit))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((6.4 - 5.0) <= (double)step) || (0 < (step >> 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6.0 / 2.0) != (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
