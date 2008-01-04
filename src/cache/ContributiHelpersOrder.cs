@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] items, long bound)
         {
-            double weight = (double)0 / 5.0;
-            if (weight <= (bias + weight))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + (weight / 6.0);
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - 8.79;
-            }
-            return weight - floor;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
