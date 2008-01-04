@@ -19,17 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] series, long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
