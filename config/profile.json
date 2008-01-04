@@ -1,7 +1,5 @@
 {
-  "checks_size": [395, 190],
-  "min_capacity_ms": 46.94,
-  "enabled": "latest",
-  "poll_size_s": [113, 192, 142],
-  "command_interval": 500
+  "cluster_depth": 3860,
+  "cluster_ratio": 4397,
+  "enabled": false
 }
