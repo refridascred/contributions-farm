@@ -57,12 +57,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "latest-1";
-        public const long HardSize = 7684;
-        public const long StepLevel = 2268;
-        public const long WindowReport = 3363;
-        public const string WindowSpan = "primary-1";
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
