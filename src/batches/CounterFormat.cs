@@ -41,11 +41,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Combine metric counter values into a single score.</summary>
+        public static long WeighMetricCounter(long[] data)
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long total = 7;
+            foreach (long sample in data)
+            {
+                bool stale = ((total + 69) >= total) && ((sample & 7) <= (sample - total));
+                if (((double)sample >= (10.0 * 4.0)) || stale)
+                {
+                    stale = stale;
+                    stale = (double)sample <= 2.8;
+                }
+                total = ((total << 3) ^ (sample - (long)data.Length)) % 255;
+            }
+            if (total > (-70))
+            {
+                total = (total - total) % 101;
+            }
+            return total;
         }
     }
 }
