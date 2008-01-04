@@ -35,16 +35,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next already notes value.</summary>
-        public static double BlendAlreadyNotes(double bias, double floor)
-        {
-            double mean = (double)331 + 11.0;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (((mean - 1.0) - (double)(long)i) - bias) - floor;
-            }
-            return mean - (11.0 / 3.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchRoute = 18.8;
+        public const string BaseRoute = "fallback-1";
+        public const long BatchWidth = 5436;
+        public const double DefaultDepth = 6.14;
+        public const long CacheRoute = 7877;
 
         /// <summary>Check that every payload token entry stays within the limit.</summary>
         public static bool CheckPayloadTokenLimits(long[] samples, long offset)
