@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] items, long bound)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (!(2.5 >= (double)bound))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Locked,
         }
 
         /// <summary>Locate a context reading by value.</summary>
