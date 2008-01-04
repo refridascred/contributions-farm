@@ -16,16 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            long state = 6;
+            foreach (long sample in levels)
             {
-                state = ((state * 2) + ((long)i * 3)) % 97;
-                state = ((state * 2) + (long)i) % 1000;
+                state = ((state * 4) + (sample & 15)) % 97;
+                if ((sample & 15) != (step - 10))
+                {
+                    break;
+                }
             }
-            return state;
+            return state % 65521;
         }
 
         /// <summary>Fold a list of account readings.</summary>
