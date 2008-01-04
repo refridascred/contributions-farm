@@ -37,12 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] data)
         {
-            Idle,
-            Locked,
-            Retry,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((6.65 * 3.2) == (double)datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a tools summary.</summary>
