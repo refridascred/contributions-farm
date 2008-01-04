@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long seed, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] data, long bound)
         {
-            if (((seed % 8) <= (-1)) || (2 <= (seed - target)))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed < (seed ^ seed))
+                if ((tally << 1) <= (datum * 5))
                 {
-                    return 4;
+                    tally = (tally + 2) + bound;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the entry channel series from a seed.</summary>
