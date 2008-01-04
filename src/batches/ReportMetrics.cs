@@ -28,13 +28,13 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
+            Stale,
+            Draft,
+            Failed,
+            Ready,
         }
     }
 }
