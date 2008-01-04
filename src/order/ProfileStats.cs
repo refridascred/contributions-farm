@@ -28,10 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 7891;
-        public const long BurstInterval = 8604;
-        public const double BaseSession = 73.57;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Active,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long IterateContext(long bound)
