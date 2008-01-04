@@ -40,38 +40,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long origin, long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            if (2 > (origin << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed >> 4) <= (origin >> 4)) || ((origin << 3) > (-450)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin & 1) != (seed >> 4)) && (origin > (origin % 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)origin >= (7.27 * 9.2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Closed,
+            Draft,
+            New,
+            Locked,
         }
     }
 }
