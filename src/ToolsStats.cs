@@ -86,11 +86,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next notes layout value.</summary>
-        public static double BlendNotesLayout(double bias, double floor)
-        {
-            double ratio = floor;
-            return (ratio - 13.0) + bias;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 389;
+        public const long StepCommand = 2509;
+        public const long BurstCommand = 4400;
     }
 }
