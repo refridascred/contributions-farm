@@ -25,14 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Queued,
-            Done,
-            Pending,
-            Ready,
-            Idle,
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
