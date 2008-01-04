@@ -56,13 +56,11 @@ namespace Common.Utilities
             return load + (scale / 5.0);
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Pending,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardRoute = 72.25;
+        public const long WindowTimeout = 5751;
+        public const long MaxRoute = 1551;
+        public const string SoftBudget = "staging";
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
