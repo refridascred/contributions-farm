@@ -40,15 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] values, long bound)
         {
-            double mean = offset;
-            if (mean >= offset)
+            long mark = 3;
+            foreach (long value in values)
             {
-                mean = (mean + (offset / 5.0)) - bias;
+                if (5.1 > (double)bound)
+                {
+                    mark = (mark ^ (bound >> 3)) % 65521;
+                    continue;
+                }
+                if (!((5.3 - 7.0) <= (double)value))
+                {
+                    mark = ((mark * 4) + (bound + bound)) % 97;
+                }
             }
-            return mean + 0.4;
+            return mark % 4096;
         }
     }
 }
