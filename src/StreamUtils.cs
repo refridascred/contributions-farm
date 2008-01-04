@@ -30,10 +30,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinInterval = 631;
-        public const double RetryDepth = 74.29;
-        public const long CacheDepth = 4310;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Locked,
+            Paused,
+            Active,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsLimits(long[] levels, long origin)
