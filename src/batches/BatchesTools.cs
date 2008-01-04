@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            long mark = 818;
-            foreach (long sample in values)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((mark << 2) <= sample)
-                {
-                    mark = (mark << 2) ^ (mark ^ mark);
-                }
-                if ((sample >> 5) < 0)
-                {
-                    mark = mark ^ (sample & 15);
-                }
-                else
-                {
-                    mark = mark ^ (sample & 255);
-                }
+                result = result - result;
+                result = (result * 5) + result;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (mark < 96)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
