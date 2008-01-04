@@ -58,24 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema window input into a small class.</summary>
-        public static long SortSchemaWindow(long bound, long floor)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            if ((floor + floor) <= (bound & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor > (double)bound) || ((double)bound < (9.6 * 18.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Total { get; set; }
+            public double Owner { get; set; }
+            public double Size { get; set; }
         }
     }
 }
