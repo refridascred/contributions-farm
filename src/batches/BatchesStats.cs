@@ -26,13 +26,31 @@ namespace Common.Utilities
         public const string WindowAlready = "legacy";
         public const long HardScore = 8365;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Rank layout metric input into a small class.</summary>
+        public static long RankLayoutMetric(long offset, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            if ((2 + offset) <= (offset * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound < (bound * 5)) || (offset < (bound << 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound <= 664)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order entry.</summary>
