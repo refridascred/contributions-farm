@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit layout githubfarm readings against a rule.</summary>
-        public static long CountLayoutGithubfarmOutliers(long[] readings, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] data, long step)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long datum in data)
             {
-                if ((4.4 * 4.67) == (double)entry)
+                if ((double)datum == (8.7 + 3.1))
                 {
-                    seen = (seen + 2) - origin;
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
