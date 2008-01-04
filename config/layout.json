@@ -1,6 +1,17 @@
 {
-  "flush_depth_pct": 61.44,
-  "hard_threshold": 58.99,
-  "flush_ratio_ms": "standard",
-  "warm_capacity_count": false
+  "verbose": 484,
+  "audit": {
+    "sync_threshold": {
+      "audit": 47,
+      "strict": "local",
+      "cluster_retries": 30
+    },
+    "soft_capacity": "latest",
+    "stream_timeout": "stable",
+    "soft_limit_pct": "strict"
+  },
+  "route_depth": "primary",
+  "max_limit_ms": "stable",
+  "dry_run": "cached",
+  "default_timeout": "standard"
 }
