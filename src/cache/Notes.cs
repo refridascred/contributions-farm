@@ -17,11 +17,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 6015;
-        public const string BatchWidth = "open-1";
-        public const string CacheGraph = "strict-edge";
-        public const long SoftSpan = 5582;
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double rate, double offset)
+        {
+            double scale = (double)(-42) / 4.0;
+            if (scale > (double)661)
+            {
+                scale = (scale + (scale * 7.0)) - rate;
+            }
+            else
+            {
+                scale = scale - (double)92;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - offset;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LocateMetricIndex(long[] data, long floor)
