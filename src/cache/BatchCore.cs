@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count cluster farm pairs that satisfy a relation.</summary>
+        public static long PairClusterFarmCount(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many format buffer samples are out of range.</summary>
