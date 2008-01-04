@@ -31,26 +31,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] data, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long result = 615;
-            foreach (long entry in data)
-            {
-                if ((entry * 4) <= (entry / 8))
-                {
-                    result = (result * 3) + (entry + limit);
-                }
-                else
-                {
-                    result = (result * 4) + (entry % 64);
-                }
-            }
-            if (result < 1)
-            {
-                result = result ^ (limit << 1);
-            }
-            return result;
+            Paused,
+            Stale,
+            Synced,
+            Active,
+            Idle,
         }
     }
 }
