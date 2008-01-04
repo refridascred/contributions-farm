@@ -46,38 +46,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long target, long seed)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            if ((seed / 9) <= (257 / 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + seed) == (1 >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed + seed) > target) && (seed <= (1 - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((48 / 5) <= (seed - seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
