@@ -29,22 +29,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] values, long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((41 & 31) <= step)
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Active,
+            Idle,
+            Draft,
+            Dropped,
         }
     }
 }
