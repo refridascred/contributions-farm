@@ -34,18 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] levels, long limit)
+        /// <summary>Audit batch contributi readings against a rule.</summary>
+        public static long AuditBatchContributiHits(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (!((limit << 2) == (0 & 127)))
+                if ((double)value <= (14.0 + 12.0))
                 {
-                    tally = (tally + 1) - cell;
+                    seen = (seen + 2) + offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Blend two record measurements.</summary>
