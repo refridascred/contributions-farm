@@ -16,22 +16,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metrics editor entries.</summary>
-        public static long DigestMetricsEditor(long[] data)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long seed, long offset)
         {
-            long carry = 2;
-            foreach (long datum in data)
+            if ((double)seed >= 0.2)
             {
-                if (!((carry + datum) > (carry - carry)))
+                return 3;
+            }
+            else
+            {
+                if ((18.0 + 3.17) >= (16.0 - 7.4))
                 {
-                    carry = ((carry * 2) + (carry ^ datum)) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)offset != (double)987) && ((seed - offset) <= (offset % 16)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (carry > 4)
-            {
-                carry = (carry - (carry - carry)) % 101;
-            }
-            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
