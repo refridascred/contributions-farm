@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Grade a profile record value against two limits.</summary>
+        public static long BucketProfileRecord(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((target + seed) == (27 >> 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)target <= (5.06 / 7.0))
                 {
-                    if ((values[i] ^ values[j]) > 9)
+                    return 7;
+                }
+                else
+                {
+                    if ((target % 5) >= (target >> 5))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (3.67 > (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
