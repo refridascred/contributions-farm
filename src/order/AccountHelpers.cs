@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long limit)
-        {
-            long bound = offset ^ limit;
-            if ((238 - 20) <= ((-56) + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound * 5) != (3 ^ offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxCommits = "latest-1";
+        public const double LimitScore = 98.98;
+        public const long BurstScore = 7444;
+        public const long StepRatio = 3309;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsGaps(long[] values)
