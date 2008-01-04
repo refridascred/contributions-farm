@@ -21,13 +21,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] series)
         {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((count + entry) > (entry + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the payload mode values.</summary>
