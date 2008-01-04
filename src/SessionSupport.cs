@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double scale, double offset)
+        /// <summary>Validate command support readings against a bound.</summary>
+        public static bool GuardCommandSupportRange(long[] items, long seed)
         {
-            double mean = scale;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                mean = ((mean - (scale / 5.0)) + (double)(long)i) + offset;
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + scale;
+            return stale;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
