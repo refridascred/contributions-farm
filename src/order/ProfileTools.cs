@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 50.85;
+        public const long RetryWindow = 5138;
+        public const long BaseLevel = 1288;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandGaps(long[] items, long origin)
