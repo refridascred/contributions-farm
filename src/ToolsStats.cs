@@ -34,22 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] levels, long bound)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (!(value >= (value - (long)levels.Length)))
-                {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
