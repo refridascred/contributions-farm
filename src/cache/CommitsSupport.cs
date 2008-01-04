@@ -32,23 +32,12 @@ namespace Common.Utilities
         public const double WindowProfile = 43.16;
         public const long RetryProfile = 1516;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] levels)
-        {
-            long sum = 301;
-            foreach (long reading in levels)
-            {
-                if (sum >= (54 + sum))
-                {
-                    sum = sum - ((-7) + reading);
-                }
-                if ((8 <= (reading - sum)) || ((double)reading != (6.1 * 3.0)))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 9432;
+        public const long SoftLevel = 9715;
+        public const string BatchBudget = "primary";
+        public const string DefaultGithubfarm = "stable";
+        public const long StepLevel = 1592;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesOutliers(long[] readings)
