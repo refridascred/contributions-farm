@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "staging-edge";
-        public const long StepRoute = 4608;
-        public const long CacheSize = 2919;
-        public const double CacheLevel = 82.36;
-        public const long DefaultRoute = 5663;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            New,
+            Pending,
+            Active,
+            Retry,
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] levels)
