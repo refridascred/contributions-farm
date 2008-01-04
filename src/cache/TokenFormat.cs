@@ -31,19 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] samples, long seed)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
