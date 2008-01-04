@@ -1,14 +1,4 @@
 # support settings
-githubfarm_retries: true
-cache_window_s:
-  - 161
-  - 56
-  - 276
-  - 361
-idle_ratio_s:
-  - standard
-  - open
-  - primary
-  - blue
-session_ratio: standard
-max_delay: 30
+max_ratio_pct: 51
+base_capacity_s: 100
+persist: strict
