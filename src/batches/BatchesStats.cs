@@ -27,32 +27,12 @@ namespace Common.Utilities
         public const string WindowAlready = "legacy";
         public const long HardScore = 8365;
 
-        /// <summary>Rank layout metric input into a small class.</summary>
-        public static long RankLayoutMetric(long offset, long bound)
-        {
-            if ((2 + offset) <= (offset * 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound < (bound * 5)) || (offset < (bound << 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound <= 664)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBudget = 11.26;
+        public const double BurstRatio = 9.66;
+        public const long RetryDepth = 8140;
+        public const double SoftBuffer = 92.59;
+        public const long SoftBudget = 142;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportBounds(long[] samples, long floor)
