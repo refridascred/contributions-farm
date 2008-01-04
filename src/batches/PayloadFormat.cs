@@ -43,21 +43,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)bound <= (4.8 - 14.0))
                 {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark - bound;
+                    mark = (mark + mark) % 97;
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
     }
 }
