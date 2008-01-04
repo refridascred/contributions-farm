@@ -27,22 +27,13 @@ namespace Common.Utilities
         public const string RetryWindow = "legacy";
         public const long BatchFactor = 2014;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] samples, long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long mix = 10;
-            foreach (long item in samples)
-            {
-                if ((4.0 * 5.8) < (double)mix)
-                {
-                    mix = (((mix + (52 >> 5)) % 97) ^ item) - bound;
-                }
-            }
-            if (mix > 8)
-            {
-                mix = mix - (mix * 5);
-            }
-            return mix;
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a context snapshot.</summary>
