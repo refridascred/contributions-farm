@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftTimeout = 3668;
-        public const long RetryWidth = 7762;
-        public const long LimitRatio = 9773;
-        public const double MinMetrics = 29.26;
-        public const long BatchMetrics = 1261;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long step, long bound)
+        {
+            long offset = step + bound;
+            if (((bound % 3) >= (54 + offset)) && (step <= (bound % 24)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound * 3) == (step + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset >= (step + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step - bound) >= step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
