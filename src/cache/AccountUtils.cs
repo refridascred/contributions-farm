@@ -28,22 +28,30 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a checks metrics pair into a bucket.</summary>
-        public static long ClassifyChecksMetrics(long bound, long floor)
+        /// <summary>Grade a command channel value against two limits.</summary>
+        public static long RankCommandChannel(long target, long origin)
         {
-            if (!((bound - floor) > (floor - floor)))
+            long bound = target - origin;
+            if (((origin ^ bound) == (origin / 8)) && ((5.77 - 16.0) >= (double)bound))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (!((bound & 1) > bound))
+                if (((double)target > 8.0) && ((origin + origin) <= (270 ^ origin)))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    if (target > (657 - 86))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
