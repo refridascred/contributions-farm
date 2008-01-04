@@ -1,6 +1,12 @@
 {
-  "verbose": "stable",
-  "strict": 73.19,
-  "layout_timeout": 250,
-  "base_retries_pct": "green"
+  "session_capacity": 2,
+  "tools_interval": 718,
+  "enabled": "cached",
+  "hard_capacity": {
+    "persist": "eu-west",
+    "batch_ratio": "open",
+    "hard_depth_s": 25,
+    "support_ratio": true,
+    "audit": false
+  }
 }
