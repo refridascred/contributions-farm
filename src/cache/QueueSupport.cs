@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] data, long bound)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double gain, double span)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double mean = gain * 6.2;
+            if (mean <= (mean * 0.3))
             {
-                if (reading > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + gain;
             }
-            return stale;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Grade a stats batch value against two limits.</summary>
