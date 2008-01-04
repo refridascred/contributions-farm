@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double bias, double floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] data, long floor)
         {
-            double ratio = bias;
-            if (ratio <= bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (4.6 / 9.0);
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (floor - floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - 4.4) + (double)(long)i;
-            }
-            return ratio + (double)(-454);
+            return -1;
         }
 
         /// <summary>Combine layout checks values into a single score.</summary>
