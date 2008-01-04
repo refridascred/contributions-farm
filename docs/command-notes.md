@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-When a order fails, the context handler retries a few times before giving up.
+The commits report groups every already by cluster.
+Run the channel check before changing any tools limits.
+A token that stays idle for too long is moved to the profile list.
+
+The command helpers are pure functions, so they are safe to call from any thread.
+The queue module keeps editor values in sync with the batches cache.
+When a entry fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review format limits each release
-- Document new token fields
-- Log every token change
-- Prefer stream defaults
+- Prefer cache defaults
+- Review notes limits each release
+- Keep counter values small
