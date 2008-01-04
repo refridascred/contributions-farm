@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleSize = 80.05;
-        public const long MinSize = 3986;
-        public const long BatchRatio = 9765;
-        public const string BurstInterval = "local-v2";
-        public const long RetryBudget = 3368;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
