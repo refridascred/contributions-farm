@@ -1,8 +1,6 @@
 {
-  "account_threshold": "primary",
-  "strict": 7131,
-  "session_capacity": 4246,
-  "readonly": 40.43,
-  "default_retries": false,
-  "enabled": false
+  "batch_timeout_ms": 500,
+  "route_limit": "latest",
+  "entry_size": true,
+  "verbose": "edge"
 }
