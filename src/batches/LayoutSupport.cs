@@ -16,18 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] samples, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (matches > (cell << 3))
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
+            Done,
+            Paused,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
