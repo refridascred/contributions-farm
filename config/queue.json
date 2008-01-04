@@ -1,6 +1,7 @@
 {
-  "cache_limit_s": 1932,
-  "retry_threshold": 29,
-  "farm_delay": "standard",
-  "dry_run": "cached"
+  "audit": 66.28,
+  "sync_size_count": ["green", "legacy"],
+  "min_timeout_pct": "edge",
+  "min_window_count": "eu-west",
+  "burst_depth_pct": [495, 100]
 }
