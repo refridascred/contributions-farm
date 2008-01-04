@@ -15,12 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetrySpan = 67.78;
-        public const long HardLayout = 1476;
-        public const long MinLayout = 8798;
-        public const string LimitLayout = "staging-1";
-        public const long DefaultDepth = 6867;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double bias, double floor)
+        {
+            double drift = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift + bias;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsOutliers(long[] items)
