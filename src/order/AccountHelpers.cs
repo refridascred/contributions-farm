@@ -35,12 +35,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchRoute = 18.8;
-        public const string BaseRoute = "fallback-1";
-        public const long BatchWidth = 5436;
-        public const double DefaultDepth = 6.14;
-        public const long CacheRoute = 7877;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 9883;
+        public const string IdleScore = "alpha-edge";
+        public const string BurstQueue = "legacy-edge";
+        public const long IdleTimeout = 7569;
+        public const long BatchQueue = 9417;
 
         /// <summary>Check that every payload token entry stays within the limit.</summary>
         public static bool CheckPayloadTokenLimits(long[] samples, long offset)
