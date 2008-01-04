@@ -62,29 +62,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((total + step) == (step - step)) || ((step - total) < total))
-                {
-                    total = ((total << 2) ^ 83) % 4096;
-                }
-                if ((long)i == ((-48) + (long)i))
-                {
-                    total = (total + step) % 1000;
-                    total = (total * 5) + (step << 1);
-                }
-                else
-                {
-                    total = (total + total) % 4096;
-                    total = total - (total - step);
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Ready,
+            Dropped,
+            Locked,
+            Idle,
         }
     }
 }
