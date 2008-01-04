@@ -32,11 +32,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
+            Dropped,
+            Retry,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Describe the farm kind values.</summary>
