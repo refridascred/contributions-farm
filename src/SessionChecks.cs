@@ -42,19 +42,38 @@ namespace Common.Utilities
         public const string CacheToken = "fallback-edge";
         public const long HardToken = 1996;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] levels, long seed)
+        /// <summary>Grade a batch githubfarm value against two limits.</summary>
+        public static long BucketBatchGithubfarm(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            if (3.7 < (double)limit)
             {
-                if (datum >= seed)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit2 < (double)limit)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (7.5 < (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(limit >= (limit2 + limit2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
