@@ -73,17 +73,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] series, long offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Dropped,
+            Active,
+            Draft,
         }
     }
 }
