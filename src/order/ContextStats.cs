@@ -50,12 +50,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
