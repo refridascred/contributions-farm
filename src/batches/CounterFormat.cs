@@ -28,19 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 2621;
+        public const long BurstCount = 1751;
+        public const string DefaultCount = "standard-edge";
+        public const long RetryCache = 7177;
     }
 }
