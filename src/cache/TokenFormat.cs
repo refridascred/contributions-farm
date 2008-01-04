@@ -21,22 +21,11 @@ namespace Common.Utilities
         public const long WindowWidth = 3900;
         public const long StepSupport = 6195;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count % 3) >= (value ^ value))
-                {
-                    count = (count + 1) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 50.65;
+        public const double BaseWidth = 93.54;
+        public const long BurstSpan = 9858;
+        public const long StepSpan = 7479;
+        public const long MinFactor = 2596;
     }
 }
