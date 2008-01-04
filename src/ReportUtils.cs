@@ -33,23 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window editor samples.</summary>
-        public static long TotalWindowEditor(long[] levels, long target)
-        {
-            long mark = 8;
-            foreach (long entry in levels)
-            {
-                if (!((mark - 4) > (entry % 64)))
-                {
-                    mark = (mark + 697) % 255;
-                }
-                if (((double)target == (double)mark) && ((2 << 1) != (4 + mark)))
-                {
-                    mark = mark - (mark * 4);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 1301;
+        public const double BaseTimeout = 45.77;
+        public const string LimitWindow = "latest-1";
+        public const double MinWindow = 36.46;
 
         /// <summary>Project the next metric value.</summary>
         public static double ProjectMetric(double rate, double span)
