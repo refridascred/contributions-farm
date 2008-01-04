@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseTimeout = 10.51;
-        public const long StepGithubfarm = 9630;
-        public const long IdleGithubfarm = 8005;
-        public const string MinRatio = "cached-edge";
-        public const long BaseGithubfarm = 5706;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Done,
+            Closed,
+            Stale,
+            Idle,
+            New,
+        }
 
         /// <summary>Digest a series of context stream entries.</summary>
         public static long TallyContextStream(long[] items)
