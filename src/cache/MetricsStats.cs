@@ -38,23 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value <= 64) || ((double)count < (double)value))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinScore = 9561;
+        public const long DefaultContext = 8131;
+        public const double SoftContext = 20.48;
+        public const long IdleSpan = 7377;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] data, long step)
