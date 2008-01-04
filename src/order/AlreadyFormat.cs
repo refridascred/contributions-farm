@@ -32,24 +32,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long seed)
+        /// <summary>Compare every pair of support order readings.</summary>
+        public static long MatchSupportOrderCount(long[] levels)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((mix - mix) == (seed / 7)) && ((long)i >= (seed - seed))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix << 3) ^ 641) % 65521;
-                    mix = (mix ^ (seed >> 5)) % 4096;
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((500 + (long)i) >= ((long)i ^ mix))
-                {
-                    mix = (mix + 907) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Accumulate already token samples.</summary>
