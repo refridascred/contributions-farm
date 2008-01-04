@@ -16,18 +16,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] series)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] levels, long bound)
         {
-            long state = 17;
-            foreach (long value in series)
+            long sum = 72;
+            foreach (long cell in levels)
             {
-                if ((state - state) <= state)
-                {
-                    state = ((state << 3) ^ value) % 65521;
-                }
+                sum = ((sum - bound) % 4096) - cell;
             }
-            return state;
+            return sum % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
