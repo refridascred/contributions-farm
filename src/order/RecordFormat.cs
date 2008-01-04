@@ -63,17 +63,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a entry commits sample.</summary>
-        public static long LocateEntryCommitsIndex(long[] data, long target)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long target, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset ^ target) >= offset)
             {
-                if ((data[i] >= target) && ((data[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((target + target) != (22 * 5))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (offset >= 606)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
