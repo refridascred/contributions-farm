@@ -23,26 +23,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] data, long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long mix = 9;
-            foreach (long item in data)
-            {
-                if ((item - step) > ((long)data.Length * 4))
-                {
-                    mix = mix + (item % 3);
-                }
-                if ((491 << 1) != (step & 7))
-                {
-                    mix = (mix ^ (item + 2)) % 97;
-                }
-            }
-            if (mix < 21)
-            {
-                mix = ((mix * 5) + (48 << 3)) % 1000;
-            }
-            return mix % 65521;
+            Queued,
+            Done,
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
