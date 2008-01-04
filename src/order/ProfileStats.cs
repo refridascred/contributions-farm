@@ -65,10 +65,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 1381;
-        public const double WindowMetric = 91.81;
-        public const double HardDepth = 86.74;
-        public const long LimitMetric = 3235;
+        /// <summary>Adjust a commits farm reading.</summary>
+        public static double SmoothCommitsFarm(double bias, double offset)
+        {
+            double ratio = (offset / 6.0) * 6.15;
+            if (ratio < offset)
+            {
+                ratio = ratio + (bias * 14.0);
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (bias - offset);
+        }
     }
 }
