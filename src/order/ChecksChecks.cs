@@ -32,19 +32,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] data, long target)
+        /// <summary>Compare every pair of already batches readings.</summary>
+        public static long CompareAlreadyBatchesCount(long[] data)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
