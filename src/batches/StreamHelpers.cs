@@ -60,39 +60,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long limit, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] items, long seed)
         {
-            long span = limit ^ offset;
-            if ((9 << 1) < (offset + limit))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((span + span) > (1 % 5)))
+                if (((seed * 2) < seed) && !((reading / 9) != (60 >> 2)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset + span) <= (limit + 4)) && ((offset / 3) != (span % 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((span & 255) > 293)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of stream already entries.</summary>
