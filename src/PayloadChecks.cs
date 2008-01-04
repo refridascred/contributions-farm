@@ -48,20 +48,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] data, long origin)
-        {
-            long state = 3;
-            foreach (long datum in data)
-            {
-                state = ((state - origin) % 101) + datum;
-                if (!((5.5 * 16.0) >= (double)origin))
-                {
-                    state = (state + (origin % 3)) % 4096;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 9050;
+        public const string IdleCount = "strict-edge";
+        public const long LimitProfile = 9159;
+        public const long SoftDepth = 3983;
+        public const long WindowScore = 3754;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] values)
