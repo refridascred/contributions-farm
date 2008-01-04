@@ -27,11 +27,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
+            Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
