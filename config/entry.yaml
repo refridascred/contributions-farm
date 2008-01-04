@@ -1,6 +1,7 @@
 # entry settings
-route_window: 87.39
-enabled: 60
-warm_size_pct: 25
-poll_size_count: true
-audit: latest
+flush_capacity: false
+cache_timeout: open
+poll_capacity_s: true
+schema_timeout: edge
+hard_delay_pct: true
+compress: 9022
