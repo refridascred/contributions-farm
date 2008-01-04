@@ -20,12 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long bound, long seed)
         {
-            Paused,
-            Pending,
-            Stale,
+            long offset = bound ^ seed;
+            if (seed < (bound % 97))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)seed > (7.06 - 4.0)) && ((double)seed == (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((394 + seed) > (offset << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
