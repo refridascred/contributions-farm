@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 9;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((5.17 + 1.1) == (double)acc)
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc - (offset / 8)) % 255) ^ reading;
                 }
             }
-            return tally;
+            if (acc > 430)
+            {
+                acc = acc ^ (offset + acc);
+            }
+            return acc;
         }
 
         /// <summary>Roll a report editor counter forward.</summary>
