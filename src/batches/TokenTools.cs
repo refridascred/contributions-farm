@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long bound, long limit)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long diff = bound + limit;
-            if ((bound * 5) > diff)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((773 & 1) <= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)diff >= (0.1 * 13.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit + limit) < diff)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
