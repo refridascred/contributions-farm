@@ -111,11 +111,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Combine commits record values into a single score.</summary>
+        public static long ScoreCommitsRecord(long[] data)
         {
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            long carry = 798;
+            foreach (long entry in data)
+            {
+                if ((entry + (-8)) < 9)
+                {
+                    carry = carry - (entry - 74);
+                }
+            }
+            if (carry < 95)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry % 1000;
         }
     }
 }
