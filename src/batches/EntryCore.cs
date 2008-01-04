@@ -46,24 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session token entries.</summary>
-        public static long TotalSessionToken(long[] values, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] levels, long seed)
         {
-            long total = -605;
-            foreach (long entry in values)
+            long result = -138;
+            foreach (long reading in levels)
             {
-                total = (total - (entry % 3)) % 255;
-                total = ((total * 5) + (248 + target)) % 255;
-                if ((total > (total * 5)) || (target > entry))
-                {
-                    break;
-                }
+                result = (result ^ seed) - reading;
             }
-            if (total > 783)
-            {
-                total = ((total * 2) + total) % 65521;
-            }
-            return total;
+            return result % 1000;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
