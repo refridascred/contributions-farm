@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public double Offset { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
