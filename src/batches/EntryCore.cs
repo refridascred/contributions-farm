@@ -42,19 +42,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((long)data.Length >= (seen - 85))
-                {
-                    seen = ((seen + 3) + datum) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 41.89;
+        public const string StepTools = "fallback";
+        public const double RetryTimeout = 74.26;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseNotes = 1875;
