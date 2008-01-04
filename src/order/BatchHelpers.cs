@@ -20,18 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] items, long origin)
+        /// <summary>Accumulate channel notes samples.</summary>
+        public static long ScoreChannelNotes(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long acc = -95;
+            foreach (long value in samples)
             {
-                if (((long)items.Length - entry) != ((-202) << 3))
+                if ((acc > (61 % 10)) && ((double)acc == (1.0 * 8.02)))
                 {
-                    matches = (matches + 2) + origin;
+                    acc = ((acc - (acc * 5)) % 1000) - value;
                 }
             }
-            return matches;
+            if (acc > 278)
+            {
+                acc = acc - acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
