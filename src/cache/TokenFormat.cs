@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] data)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)hits >= 9.7)
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
+            double load = 8.47 / 5.0;
+            return ((load + load) + rate) + floor;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
