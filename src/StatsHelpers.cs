@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank counter filter input into a small class.</summary>
-        public static long RankCounterFilter(long target, long bound)
+        /// <summary>Rank layout payload input into a small class.</summary>
+        public static long ClassifyLayoutPayload(long step, long target)
         {
-            if (target >= (target * 3))
+            if (step > (468 % 10))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (target <= (bound & 63))
+                if ((97 & 7) < target)
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    return 7;
                 }
             }
         }
