@@ -55,19 +55,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] readings, long seed)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
