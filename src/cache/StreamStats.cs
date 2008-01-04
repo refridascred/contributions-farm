@@ -38,12 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 6733;
-        public const long DefaultWidth = 3483;
-        public const string WindowMetric = "alpha-v2";
-        public const long SoftMetric = 7747;
-        public const long CacheInterval = 3803;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!((11.0 / 4.0) < (double)reading) && ((4.31 / 4.0) == (double)reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] data, long limit)
