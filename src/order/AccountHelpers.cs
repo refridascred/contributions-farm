@@ -48,23 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double weight, double bias)
+        /// <summary>Check that every payload token entry stays within the limit.</summary>
+        public static bool CheckPayloadTokenLimits(long[] samples, long offset)
         {
-            double ratio = bias;
-            if (ratio < ratio)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                ratio = ratio + (double)478;
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)7;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (weight / 5.0)) + (double)(long)i;
-            }
-            return ratio - (double)7;
+            return ok;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
