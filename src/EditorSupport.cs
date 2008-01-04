@@ -51,17 +51,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 8;
+            foreach (long datum in samples)
             {
-                if (data[i] <= origin)
+                if (datum > (datum ^ carry))
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + origin) % 255;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Hold a payload summary.</summary>
