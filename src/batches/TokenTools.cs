@@ -19,26 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Check that every farm route entry stays within the limit.</summary>
+        public static bool GuardFarmRouteLimits(long[] items, long origin)
         {
-            long anchor = 6;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (215 <= anchor)
+                if (entry < origin)
                 {
-                    anchor = ((anchor - (anchor << 2)) % 4096) + datum;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor * 4);
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor > 2)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
