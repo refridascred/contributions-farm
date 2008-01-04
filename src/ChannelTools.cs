@@ -21,19 +21,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] readings, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long anchor = 895;
+            foreach (long reading in readings)
             {
-                if (entry > bound)
+                if ((anchor % 3) >= (anchor / 7))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor * 4) + (reading - anchor);
+                    anchor = ((anchor * 4) + ((long)readings.Length << 2)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + (9 & 63);
+                }
+                if ((double)reading < (5.3 * 4.8))
+                {
+                    anchor = (anchor - (anchor + 64)) % 97;
                 }
             }
-            return ok;
+            if (anchor < 5)
+            {
+                anchor = ((anchor << 3) ^ (8 ^ anchor)) % 101;
+            }
+            return anchor % 65521;
         }
     }
 }
