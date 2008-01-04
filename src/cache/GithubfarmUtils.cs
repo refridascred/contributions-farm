@@ -38,18 +38,38 @@ namespace Common.Utilities
         public const string RetryTools = "staging-v2";
         public const long RetryDepth = 6847;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] readings)
+        /// <summary>Classify a route schema pair into a bucket.</summary>
+        public static long BucketRouteSchema(long target, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if (bound <= (target / 6))
             {
-                if (((cell * 4) < (tally + 650)) || ((cell >= (cell >> 2)) || ((tally & 15) < (cell - 4))))
+                return 3;
+            }
+            else
+            {
+                if (((bound >> 3) >= (target + 5)) || (target <= (bound & 7)))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((-72) <= (target << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((target / 7) != (target * 4)) && ((target + bound) < bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
