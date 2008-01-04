@@ -1,8 +1,9 @@
-id,region,active,count,rank
-1,409,strict,5.12,909
-2,primary,187,776,252
-3,4.57,197,37.1,427
-4,blue,42.29,50.37,2.88
-5,54.17,latest,42.01,955
-6,253,legacy,670,448
-7,722,688,75.12,232
+id,token,score,count
+1,670,primary,48.17
+2,591,487,73.4
+3,legacy,964,latest
+4,303,legacy,standard
+5,10.88,cached,primary
+6,478,72.91,local
+7,180,67.34,311
+8,69.31,497,718
