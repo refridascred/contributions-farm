@@ -45,18 +45,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] levels)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double ratio = bias + (double)6;
+            if (ratio > scale)
             {
-                if (seen <= (datum / 5))
-                {
-                    seen = seen + 3;
-                }
+                ratio = ratio + (double)7;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (ratio * 14.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
