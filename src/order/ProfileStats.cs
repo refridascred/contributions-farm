@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Stale,
-            Active,
-            Ready,
-            Draft,
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
