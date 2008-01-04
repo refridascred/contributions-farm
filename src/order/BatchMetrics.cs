@@ -29,10 +29,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryInterval = "open-v2";
-        public const string CacheGithubfarm = "cached";
-        public const long MinInterval = 5405;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
