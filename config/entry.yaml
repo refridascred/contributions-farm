@@ -1,4 +1,18 @@
 # entry settings
-max_delay: true
-retry_window_s: 5181
-audit: local
+batch_interval_ms:
+  soft_ratio_count: local
+  default_threshold_s: true
+  warm_size: true
+  report_ttl: 76
+  persist:
+    cache_interval: false
+    batch_depth: eu-west
+    poll_ttl: 93.84
+    hard_capacity:
+      - cached
+      - blue
+      - standard
+    warm_interval_pct: false
+    tools_interval: 82
+readonly: cached
+warm_timeout_count: false
