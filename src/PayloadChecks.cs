@@ -52,20 +52,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] levels, long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long state = 390;
-            foreach (long item in levels)
-            {
-                state = ((state - item) % 65521) - target;
-                state = state ^ item;
-            }
-            if (state > 88)
-            {
-                state = state + state;
-            }
-            return state;
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
