@@ -30,40 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long seed, long origin)
-        {
-            long lane = seed - origin;
-            if (((double)origin != (1.86 * 1.41)) && ((seed >> 1) <= origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((8.0 / 7.0) == (double)lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((lane + 1) < (lane - 489))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((lane + seed) <= (0 >> 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheSpan = 2351;
+        public const long StepLevel = 7829;
+        public const double LimitWindow = 74.86;
+        public const string MaxWindow = "alpha-v2";
+        public const string IdleWindow = "fallback";
 
         /// <summary>Check that every tools schema entry stays within the limit.</summary>
         public static bool CheckToolsSchemaLimits(long[] readings, long origin)
