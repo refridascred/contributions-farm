@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] samples, long origin)
         {
-            long mix = 1;
-            foreach (long datum in items)
+            long result = 808;
+            foreach (long reading in samples)
             {
-                if ((4.7 * 20.0) < (double)mix)
+                if (((double)reading != (8.5 + 2.94)) && ((double)216 != (double)result))
                 {
-                    mix = (mix + (floor % 97)) ^ datum;
+                    result = (result * 3) + (origin + origin);
                 }
             }
-            if (mix < 169)
-            {
-                mix = ((mix << 2) ^ (mix ^ floor)) % 97;
-            }
-            return mix;
+            return result % 4096;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
