@@ -22,26 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long floor)
         {
-            long acc = 96;
-            foreach (long datum in values)
+            long span = origin + floor;
+            if (!((double)floor < 8.3))
             {
-                if ((58 - acc) > (datum & 15))
+                return 7;
+            }
+            else
+            {
+                if ((double)floor <= 5.1)
                 {
-                    acc = acc ^ acc;
+                    return 4;
                 }
-                if ((acc + 3) <= (datum * 2))
+                else
                 {
-                    acc = ((acc * 2) + datum) % 255;
+                    if (((span ^ (-83)) >= (origin + floor)) && ((double)floor > 6.1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (span <= 60)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (acc > 455)
-            {
-                acc = (acc + (acc * 3)) % 1000;
-            }
-            return acc;
         }
 
         /// <summary>Describe the metric status values.</summary>
