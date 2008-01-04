@@ -17,14 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 6015;
+        public const string BatchWidth = "open-1";
+        public const string CacheGraph = "strict-edge";
+        public const long SoftSpan = 5582;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsOutliers(long[] readings)
