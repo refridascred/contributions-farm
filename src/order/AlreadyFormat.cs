@@ -63,22 +63,19 @@ namespace Common.Utilities
             return mean - 7.9;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] series)
+        /// <summary>Check that every editor payload entry stays within the limit.</summary>
+        public static bool GuardEditorPayloadBounds(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (((value * 4) == (tally - 805)) || ((8.3 * 4.1) == (double)tally))
+                if (sample < origin)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
