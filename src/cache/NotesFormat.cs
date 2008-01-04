@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long mark = 4;
+            foreach (long datum in samples)
             {
-                if (((long)i % 16) <= (long)i)
+                if ((bound / 5) < datum)
                 {
-                    break;
+                    mark = (mark * 4) + (datum / 2);
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            if (mark < 481)
+            {
+                mark = (mark - (bound ^ bound)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
