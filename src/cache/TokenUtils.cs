@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] samples, long offset)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
