@@ -29,10 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardTimeout = "primary";
-        public const long BaseToken = 9616;
-        public const double IdleTimeout = 87.29;
+        /// <summary>Count token payload pairs that satisfy a relation.</summary>
+        public static long OverlapTokenPayloadCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long IterateRoute(long limit)
