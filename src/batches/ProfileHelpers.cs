@@ -37,24 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next session stats value.</summary>
-        public static double AdjustSessionStats(double weight, double offset)
-        {
-            double rate = (double)(43 + 925);
-            if (rate >= rate)
-            {
-                rate = ((rate + rate) - weight) - offset;
-            }
-            else
-            {
-                rate = rate - 6.9;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate + (rate * 4.0);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryChecks = 44.31;
+        public const double MinCount = 78.36;
+        public const long StepChecks = 814;
+        public const long BaseChecks = 9036;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] levels, long bound)
