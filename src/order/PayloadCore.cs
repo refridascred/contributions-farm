@@ -49,19 +49,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] samples, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long state = 84;
+            foreach (long datum in samples)
             {
-                if (item >= target)
+                if ((datum < 3) && ((state + state) <= state))
                 {
-                    ok = false;
-                    break;
+                    state = state ^ (state - 2);
                 }
             }
-            return ok;
+            if (state < 95)
+            {
+                state = (state - (state ^ state)) % 1000;
+            }
+            return state;
         }
     }
 }
