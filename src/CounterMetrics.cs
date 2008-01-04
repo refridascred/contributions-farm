@@ -74,10 +74,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 3798;
-        public const long StepSize = 7583;
-        public const long BatchGraph = 4557;
-        public const long LimitGraph = 5342;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Paused,
+            New,
+            Done,
+            Closed,
+            Failed,
+        }
     }
 }
