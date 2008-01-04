@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] series, long limit)
+        /// <summary>Measure how many contributi batch samples are out of range.</summary>
+        public static long MeasureContributiBatchGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (sample > limit)
+                if ((datum & 255) > tally)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
