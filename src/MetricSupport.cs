@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long step, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            if (6 > origin)
+            long mark = 2;
+            foreach (long item in samples)
             {
-                return 6;
+                if (((43 << 1) > (item - 46)) && (245 < (mark & 127)))
+                {
+                    mark = mark - item;
+                    mark = mark - (mark % 5);
+                }
+                if ((788 + mark) != (mark ^ 0))
+                {
+                    mark = (mark * 3) + (item / 8);
+                }
+                if (((516 >> 2) >= (mark << 3)) && ((item >> 5) <= (mark >> 4)))
+                {
+                    break;
+                }
             }
-            else
+            if (mark < 1)
             {
-                if ((double)step != (2.7 + 4.9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
+                mark = (mark + (mark % 12)) % 65521;
             }
+            return mark % 1000;
         }
 
         /// <summary>Hold a context entry.</summary>
