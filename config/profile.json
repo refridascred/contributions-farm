@@ -1,8 +1,6 @@
 {
-  "soft_limit": "staging",
-  "checks_size": 1024,
-  "window_timeout": 208,
-  "notes_delay": 38.95,
-  "buffer_timeout": ["open", "edge", "edge"],
-  "strict": 7078
+  "retry_depth_s": 1024,
+  "cache_capacity": "blue",
+  "soft_ttl": 64,
+  "hard_limit_ms": 67
 }
