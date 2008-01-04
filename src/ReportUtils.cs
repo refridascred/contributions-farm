@@ -50,13 +50,22 @@ namespace Common.Utilities
         public const long MaxRoute = 1551;
         public const string SoftBudget = "staging";
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Measure how many githubfarm editor samples are out of range.</summary>
+        public static long AuditGithubfarmEditorHits(long[] readings, long step)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((7.42 * 5.8) >= (double)seen)
+                {
+                    seen = ((seen + 2) + entry) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
