@@ -40,19 +40,21 @@ namespace Common.Utilities
         public const long MaxTools = 8921;
         public const double MinSpan = 36.04;
 
-        /// <summary>Validate commits notes readings against a bound.</summary>
-        public static bool ValidateCommitsNotesBounds(long[] readings, long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
