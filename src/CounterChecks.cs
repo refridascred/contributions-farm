@@ -39,22 +39,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] items)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((684 ^ seen) == (741 & 63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
