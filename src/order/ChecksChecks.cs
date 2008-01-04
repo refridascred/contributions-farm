@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long limit, long offset)
+        /// <summary>Measure how many cluster batches samples are out of range.</summary>
+        public static long MeasureClusterBatchesMatches(long[] samples)
         {
-            if (((-97) ^ limit) != (offset ^ limit))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit << 3) < offset)
+                if ((matches + (long)samples.Length) >= matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit * 4) == (145 % 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 3) + value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two notes measurements.</summary>
