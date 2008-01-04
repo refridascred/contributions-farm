@@ -58,19 +58,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] data, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
         }
     }
 }
