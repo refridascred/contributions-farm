@@ -28,19 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long limit)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((double)(long)i >= (double)limit))
-                {
-                    sum = sum + ((long)i + 85);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Failed,
+            Paused,
+            Idle,
+            Locked,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
