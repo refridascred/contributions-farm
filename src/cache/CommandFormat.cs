@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mix = 69;
-            foreach (long cell in series)
-            {
-                if (((mix << 2) < ((-580) - mix)) || ((mix - cell) >= (mix ^ mix)))
-                {
-                    mix = (mix * 2) + cell;
-                }
-            }
-            return mix;
+            Stale,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
