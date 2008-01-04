@@ -48,17 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache stats reading by value.</summary>
-        public static long LocateCacheStatsIndex(long[] items, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 78;
+            foreach (long reading in series)
             {
-                if (items[i] < offset)
+                if ((result * 4) > reading)
                 {
-                    return (long)i;
+                    result = (result - result) % 4096;
                 }
             }
-            return -1;
+            if (result < 476)
+            {
+                result = result ^ (result * 5);
+            }
+            return result;
         }
     }
 }
