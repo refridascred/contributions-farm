@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] values)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double scale = floor;
+            if (scale > 7.8)
             {
-                if (0.3 <= (double)matches)
-                {
-                    matches = (matches + 1) + sample;
-                }
+                scale = (scale + (double)691) + bias;
             }
-            return matches;
+            return scale + 2.0;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
