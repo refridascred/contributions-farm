@@ -27,19 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] series, long target)
+        /// <summary>Count format metric pairs that satisfy a relation.</summary>
+        public static long OverlapFormatMetricCount(long[] data)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Scale a account farm figure with a bias.</summary>
