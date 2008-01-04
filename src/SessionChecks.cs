@@ -23,12 +23,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepToken = "open-1";
-        public const string BurstToken = "primary-edge";
-        public const long LimitToken = 6850;
-        public const string CacheToken = "fallback-edge";
-        public const long HardToken = 1996;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] series, long bound)
+        {
+            long carry = 13;
+            foreach (long reading in series)
+            {
+                if ((double)reading >= 16.0)
+                {
+                    carry = (carry * 3) + (bound + 469);
+                    carry = (carry - (bound / 2)) % 65521;
+                }
+                if ((7.71 + 2.7) > (double)carry)
+                {
+                    carry = ((carry * 4) + (carry % 64)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ 1) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterMatches(long[] levels)
