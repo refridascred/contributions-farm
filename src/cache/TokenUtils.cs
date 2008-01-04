@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double bias, double offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] samples, long floor)
         {
-            double drift = offset;
-            if (drift < (bias / 6.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - (bias - drift);
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + 2.5;
-            }
-            return drift + (double)360;
+            return -1;
         }
 
         /// <summary>Adjust a command reading.</summary>
