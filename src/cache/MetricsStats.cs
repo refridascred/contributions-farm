@@ -56,12 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] levels, long floor)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] > floor)
+                if ((data[i] == step) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
