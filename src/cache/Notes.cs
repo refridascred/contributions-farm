@@ -22,17 +22,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] samples, long limit)
+        /// <summary>Accumulate contributi session samples.</summary>
+        public static long TallyContributiSession(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -3;
+            foreach (long reading in levels)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
+                if (((double)carry != (4.85 + 4.3)) && (78 > (carry >> 2)))
                 {
-                    return (long)i;
+                    carry = (carry ^ carry) + reading;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
