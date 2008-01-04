@@ -29,36 +29,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long limit, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long limit, long offset)
         {
-            if (!((0.16 * 1.61) < (double)limit))
+            if (!((offset - limit) < (offset >> 1)))
             {
                 return 4;
             }
             else
             {
-                if (((double)offset >= 6.1) || ((offset + offset) < (2 + 284)))
+                if (!(limit < (offset / 3)))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((2.3 <= (2.77 - 5.1)) && ((limit + offset) <= offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit >> 2) < (offset << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
