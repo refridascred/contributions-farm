@@ -18,12 +18,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 66;
-        public const long DefaultOrder = 6739;
-        public const string MaxTimeout = "stable";
-        public const long SoftOrder = 6882;
-        public const double LimitOrder = 9.84;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinWidth = "fallback-v2";
+        public const double MinFactor = 60.81;
+        public const long DefaultStats = 489;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordMatches(long[] levels, long bound)
