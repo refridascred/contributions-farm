@@ -1,7 +1,5 @@
 {
-  "warm_depth_pct": 90,
-  "idle_timeout_ms": 23,
-  "burst_capacity": 64,
-  "batch_ttl_pct": "fallback",
-  "contributi_ttl": true
+  "soft_capacity_s": "cached",
+  "hard_size_count": 9,
+  "flush_depth": [396, 325, 85]
 }
