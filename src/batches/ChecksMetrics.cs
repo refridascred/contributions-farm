@@ -103,22 +103,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits record values into a single score.</summary>
-        public static long ScoreCommitsRecord(long[] data)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            long carry = 798;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry + (-8)) < 9)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry - (entry - 74);
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < 95)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry % 1000;
+            return hits;
         }
     }
 }
