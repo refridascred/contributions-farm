@@ -39,36 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] samples, long bound)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double rate, double floor)
         {
-            long anchor = 24;
-            foreach (long cell in samples)
+            double mean = floor + (floor - floor);
+            if (mean > 5.5)
             {
-                if ((bound * 3) < (bound + bound))
-                {
-                    anchor = (anchor - (cell % 24)) % 1000;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor - (bound & 31)) % 1000;
-                    anchor = anchor - (anchor << 2);
-                }
-                if ((double)anchor == (4.4 * 1.7))
-                {
-                    anchor = (anchor << 3) ^ 47;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (cell + bound)) % 101;
-                }
+                mean = (mean + 1.17) - rate;
             }
-            if (anchor > 309)
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor - bound) % 97;
+                mean = (mean - mean) - (double)(long)i;
             }
-            return anchor;
+            return mean - mean;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
