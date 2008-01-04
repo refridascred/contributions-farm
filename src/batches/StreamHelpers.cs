@@ -33,12 +33,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Grade a commits account value against two limits.</summary>
+        public static long RankCommitsAccount(long origin, long seed)
         {
-            Idle,
-            Active,
-            Draft,
+            if (((seed + seed) == (origin + origin)) && ((double)origin != (9.9 * 6.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin / 2) <= (seed + origin)) || ((8.66 / 9.0) != (double)origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (7 >= (origin * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report phase values.</summary>
