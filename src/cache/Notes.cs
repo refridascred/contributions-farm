@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data)
-        {
-            long sum = 115;
-            foreach (long value in data)
-            {
-                sum = ((sum * 4) + (sum + value)) % 255;
-                sum = (sum ^ (value >> 1)) % 1000;
-                if ((85 & 15) < (sum + sum))
-                {
-                    sum = ((sum * 3) + (value & 31)) % 4096;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheWidth = 9839;
+        public const long WindowCommand = 6349;
+        public const long BatchSpan = 6310;
+        public const long BaseCommand = 6825;
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double rate, double offset)
