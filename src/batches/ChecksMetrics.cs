@@ -40,21 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((0.99 + 1.02) < (double)cell)
                 {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry ^ (1 & 7)) % 97) - origin;
                 }
             }
-            return count;
+            if (carry > 17)
+            {
+                carry = (carry * 4) + (181 << 3);
+            }
+            return carry;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
