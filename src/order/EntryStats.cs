@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] readings)
+        /// <summary>Fold a list of command stream readings.</summary>
+        public static long TallyCommandStream(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long total = -41;
+            foreach (long entry in series)
             {
-                if ((double)63 > (double)hits)
+                if ((5.37 / 8.0) != (double)total)
                 {
-                    hits = (hits + 2) ^ datum;
+                    total = ((total + total) - entry) + bound;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a cluster summary.</summary>
