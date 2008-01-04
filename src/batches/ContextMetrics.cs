@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (5.5 / 7.0) - (0.3 / 2.0);
+            if (ratio >= (ratio * 12.0))
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - ratio) + bias;
             }
-            return -1;
+            return ratio + (rate * 3.8);
         }
 
         /// <summary>Accumulate layout editor samples.</summary>
