@@ -35,18 +35,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the stats context entries that pass the check.</summary>
-        public static long AuditStatsContextOutliers(long[] readings, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long bound, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if ((double)bound >= (9.8 / 7.0))
             {
-                if ((limit + hits) >= (hits >> 2))
+                return 2;
+            }
+            else
+            {
+                if ((8.0 > (16.0 * 3.0)) || (1.23 > (double)target))
                 {
-                    hits = (hits + 3) ^ reading;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
