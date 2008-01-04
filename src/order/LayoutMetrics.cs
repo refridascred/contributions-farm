@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long MinScore = 8867;
         public const string StepInterval = "strict-1";
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            public bool Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
