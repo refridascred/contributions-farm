@@ -62,19 +62,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools command entry stays within the limit.</summary>
-        public static bool GuardToolsCommandBounds(long[] samples, long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double ratio, double offset)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            double rate = (double)8 / 7.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = ((rate + (ratio / 5.0)) + (double)(long)i) + offset;
             }
-            return ready;
+            return rate - rate;
         }
     }
 }
