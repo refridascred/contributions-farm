@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] items, long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long origin, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            if ((double)origin < (5.1 + 4.59))
             {
-                if (origin > (count & 255))
+                return 1;
+            }
+            else
+            {
+                if ((origin - limit) > (991 + limit))
                 {
-                    count = (count + 1) ^ sample;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a metrics window sample.</summary>
