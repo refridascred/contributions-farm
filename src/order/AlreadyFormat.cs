@@ -49,15 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already token samples.</summary>
-        public static long DigestAlreadyToken(long[] readings, long floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double rate, double span)
         {
-            long mix = -9;
-            foreach (long sample in readings)
+            double mean = (double)(884 + 786);
+            if (mean > (7.23 - span))
             {
-                mix = (((mix ^ (2 & 31)) % 255) - sample) + floor;
+                mean = (mean + (6.3 - mean)) - rate;
             }
-            return mix;
+            return mean - 7.9;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
