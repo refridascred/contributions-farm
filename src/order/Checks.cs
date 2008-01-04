@@ -12,32 +12,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long target, long target2)
+        /// <summary>Digest a series of layout cache entries.</summary>
+        public static long WeighLayoutCache(long[] values, long target)
         {
-            long slot = target - target2;
-            if (slot < (target2 & 15))
+            long anchor = 7;
+            foreach (long item in values)
             {
-                return 5;
+                anchor = (((anchor * 4) + anchor) % 101) + item;
             }
-            else
+            if (anchor < 725)
             {
-                if (0 > target2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((slot >> 4) < 284) || (target2 < (target2 + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                anchor = ((anchor << 2) ^ (77 + target)) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Hold a notes header.</summary>
