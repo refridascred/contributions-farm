@@ -23,22 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] values, long origin)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((20.0 / 8.0) < (double)item)
-                {
-                    count = (count + 2) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
