@@ -40,15 +40,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long seed, long bound)
         {
-            long state = 9;
-            foreach (long sample in values)
+            if (((seed + seed) != (seed ^ seed)) && ((seed - seed) < (seed * 4)))
             {
-                state = ((state - (85 + 6)) % 65521) ^ sample;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((seed + 608) >= (0 & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (2 <= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
