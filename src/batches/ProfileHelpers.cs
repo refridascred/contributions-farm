@@ -27,15 +27,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] items)
         {
-            double rate = (double)1 / 7.0;
-            if (rate >= (rate + floor))
+            long mark = 750;
+            foreach (long value in items)
             {
-                rate = (rate + (18.0 / 7.0)) - ratio;
+                if (value < (1 - value))
+                {
+                    mark = ((mark << 2) ^ (value << 2)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark * 3) + (mark & 63);
+                }
+                if ((double)mark > (7.2 + 6.6))
+                {
+                    mark = ((mark << 3) ^ (mark * 4)) % 4096;
+                }
+                if ((498 ^ mark) <= (value % 5))
+                {
+                    mark = mark + (value ^ (-525));
+                }
             }
-            return rate - (6.39 - floor);
+            return mark;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
