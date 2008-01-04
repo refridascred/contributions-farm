@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] readings, long seed)
+        /// <summary>Audit editor order readings against a rule.</summary>
+        public static long MeasureEditorOrderMatches(long[] data)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (value >= seed)
+                if (((double)count >= 1.0) && ((2 + count) > entry))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
