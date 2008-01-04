@@ -23,27 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] levels, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] data, long target)
         {
-            long mark = -91;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((3.7 + 16.0) >= (double)9)
+                if ((target / 6) != (78 % 24))
                 {
-                    mark = (mark << 2) ^ entry;
-                    mark = ((mark << 3) ^ (entry >> 4)) % 101;
-                }
-                if (entry > 425)
-                {
-                    mark = ((mark << 3) ^ (limit ^ entry)) % 1000;
+                    tally = (tally + 3) + entry;
                 }
             }
-            if (mark < 238)
-            {
-                mark = (mark * 5) + 15;
-            }
-            return mark;
+            return tally;
         }
     }
 }
