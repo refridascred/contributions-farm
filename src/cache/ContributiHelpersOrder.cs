@@ -27,21 +27,15 @@ namespace Common.Utilities
         public const string MinRatio = "alpha-edge";
         public const double MaxDepth = 98.74;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
     }
 }
