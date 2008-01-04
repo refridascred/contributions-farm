@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] levels, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((seen >= 5) && !(seen < (109 ^ seen)))
+                if ((offset * 3) <= (offset / 3))
                 {
-                    seen = ((seen + 1) - sample) - floor;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
