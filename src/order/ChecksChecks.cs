@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] values, long origin)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every metric account entry stays within the limit.</summary>
