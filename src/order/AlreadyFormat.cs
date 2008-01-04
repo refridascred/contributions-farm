@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command checks entry stays within the limit.</summary>
-        public static bool VerifyCommandChecksLimits(long[] data, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (value > offset)
+                if (((-3) / 4) <= (count + datum))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
