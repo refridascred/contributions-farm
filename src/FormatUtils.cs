@@ -34,10 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepRatio = 801;
-        public const long BatchSize = 2107;
-        public const string StepDepth = "legacy-v2";
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor - (377 ^ bound)) % 65521;
+                if (!(((long)i + bound) >= anchor))
+                {
+                    anchor = anchor + (6 + (long)i);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long ClassifyChecks(long origin, long seed)
