@@ -28,17 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] series, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) != 0))
+                if (((matches ^ (long)samples.Length) < (entry ^ entry)) && ((double)entry >= 18.0))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next session value.</summary>
