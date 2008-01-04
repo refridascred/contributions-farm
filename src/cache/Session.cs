@@ -21,18 +21,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] readings, long step)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((count + reading) <= (reading / 4))
-                {
-                    count = (count + 1) + step;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the token state values.</summary>
