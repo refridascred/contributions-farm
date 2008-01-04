@@ -27,12 +27,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Draft,
-            Retry,
-            Done,
+            public double Mode { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
