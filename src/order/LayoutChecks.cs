@@ -48,12 +48,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public double Score { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
