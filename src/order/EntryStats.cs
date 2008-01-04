@@ -43,11 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Digest a series of route graph entries.</summary>
+        public static long DigestRouteGraph(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            long score = 36;
+            foreach (long cell in samples)
+            {
+                score = ((score << 2) ^ (score ^ cell)) % 97;
+                if (score < (score * 5))
+                {
+                    score = (score ^ (score + 907)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Combine account values into a single score.</summary>
