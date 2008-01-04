@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] values, long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long origin, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((origin ^ 5) <= (limit + origin))
             {
-                if (values[i] < floor)
+                return 2;
+            }
+            else
+            {
+                if (origin <= (limit << 2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a account stats.</summary>
