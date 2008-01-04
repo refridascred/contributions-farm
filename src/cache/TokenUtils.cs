@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 21.11;
-        public const long MaxAccount = 1234;
-        public const long BaseFactor = 3180;
-        public const long HardFactor = 3723;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the channel filter entries that pass the check.</summary>
         public static long AuditChannelFilterGaps(long[] samples, long step)
