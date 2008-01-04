@@ -1,7 +1,13 @@
 {
-  "flush_retries": 79,
-  "burst_interval_ms": 75,
-  "burst_threshold": "stable",
-  "default_window_pct": false,
-  "idle_timeout": 100
+  "base_retries_s": ["legacy", "cached"],
+  "persist": "latest",
+  "metric_size": {
+    "hard_size": "local",
+    "hard_size_pct": "green",
+    "compress": 22.4,
+    "checks_ratio": 29
+  },
+  "dry_run": "green",
+  "verbose": 46.42,
+  "stream_threshold": 1024
 }
