@@ -24,19 +24,12 @@ namespace Common.Utilities
             return bias2 - (scale * 16.0);
         }
 
-        /// <summary>Measure how many commits support samples are out of range.</summary>
-        public static long MeasureCommitsSupportOutliers(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (8 < (offset << 3))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 9512;
+        public const double MaxCount = 21.7;
+        public const long StepCommand = 7831;
+        public const double DefaultLevel = 2.45;
+        public const long CacheFactor = 5647;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
