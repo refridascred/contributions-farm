@@ -106,13 +106,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
