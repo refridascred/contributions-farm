@@ -50,18 +50,38 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate contributi format samples.</summary>
-        public static long WeighContributiFormat(long[] levels)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long target, long seed)
         {
-            long result = 2;
-            foreach (long entry in levels)
+            if ((seed / 9) <= (257 / 8))
             {
-                if (entry > (entry + result))
+                return 8;
+            }
+            else
+            {
+                if ((seed + seed) == (1 >> 1))
                 {
-                    result = (result ^ (entry + 4)) % 97;
+                    return 3;
+                }
+                else
+                {
+                    if (((seed + seed) > target) && (seed <= (1 - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((48 / 5) <= (seed - seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
