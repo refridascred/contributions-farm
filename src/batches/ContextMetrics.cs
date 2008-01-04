@@ -46,24 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] series, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] items, long target)
         {
-            long state = 6;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (bound <= entry)
+                if (tally <= (tally >> 2))
                 {
-                    state = ((state * 2) + (state - entry)) % 97;
-                    state = (state + (299 - bound)) % 101;
+                    tally = ((tally + 2) ^ value) - target;
                 }
-                state = state - (7 / 5);
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (state < 5)
-            {
-                state = ((state * 5) + (state % 10)) % 4096;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
