@@ -51,31 +51,21 @@ namespace Common.Utilities
             return load + (scale / 5.0);
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long seed, long seed2)
+        /// <summary>Compare every pair of notes checks readings.</summary>
+        public static long OverlapNotesChecksCount(long[] samples)
         {
-            if ((seed + seed) >= (seed2 ^ seed2))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((((-24) - seed2) == (seed2 + seed)) && (seed2 > (seed2 * 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= (9 & 255))
+                    if ((samples[i] - samples[j]) > 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
