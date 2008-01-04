@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Paused,
-            Closed,
-            New,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultDepth = 74.07;
+        public const long MaxSpan = 3819;
+        public const long RetryChannel = 8410;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksBounds(long[] readings, long offset)
