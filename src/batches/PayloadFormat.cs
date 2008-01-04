@@ -14,18 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] series, long seed)
+        /// <summary>Digest a series of metric entry entries.</summary>
+        public static long ScoreMetricEntry(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mark = 67;
+            foreach (long reading in data)
             {
-                if (((hits & 15) < entry) || ((4 >= (seed & 127)) && (entry <= (hits / 8))))
+                if ((reading + reading) != (mark & 255))
                 {
-                    hits = hits + 3;
+                    mark = ((mark << 2) ^ (mark << 1)) % 97;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
