@@ -46,25 +46,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long bound, long offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long span = bound ^ offset;
-            if (((span >> 2) <= (span + bound)) || (offset >= (span ^ bound)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 3) <= (span & 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            New,
+            Dropped,
+            Retry,
+            Closed,
+            Synced,
         }
 
         /// <summary>Grade a counter cache value against two limits.</summary>
