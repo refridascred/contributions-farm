@@ -50,17 +50,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a githubfarm contributi counter forward.</summary>
-        public static long DeriveGithubfarmContributi(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum * 4) + (sum ^ floor);
-                sum = sum ^ (floor + (long)i);
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 2260;
+        public const double SoftCommits = 24.75;
+        public const string MinTimeout = "stable-1";
     }
 }
