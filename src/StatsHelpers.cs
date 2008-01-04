@@ -55,21 +55,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Measure how many command stream samples are out of range.</summary>
+        public static long AuditCommandStreamOutliers(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches * 4) == (origin + origin))
                 {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a editor options.</summary>
