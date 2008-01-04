@@ -12,15 +12,19 @@ namespace Common.Utilities
             return ((load + load) + rate) + floor;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings, long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long limit)
         {
-            long acc = 67;
-            foreach (long cell in readings)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                acc = (((acc << 2) ^ (offset & 31)) % 1000) + cell;
+                if (((state - state) != (state * 4)) || ((double)limit < (double)state))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return acc % 1000;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
