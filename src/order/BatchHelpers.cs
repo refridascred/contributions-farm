@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            New,
-            Retry,
+            Pending,
+            Active,
             Ready,
-            Idle,
-            Draft,
         }
 
         /// <summary>Accumulate channel notes samples.</summary>
