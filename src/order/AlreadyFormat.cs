@@ -36,23 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double gain, double offset)
+        /// <summary>Combine counter payload values into a single score.</summary>
+        public static long CombineCounterPayload(long[] items, long limit)
         {
-            double bias = offset;
-            if (bias < (bias * 19.0))
+            long result = 8;
+            foreach (long datum in items)
             {
-                bias = bias - bias;
+                result = ((result * 5) + (limit ^ 51)) ^ datum;
             }
-            else
-            {
-                bias = bias - (gain - offset);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (offset * 4.25);
+            return result;
         }
 
         /// <summary>Accumulate filter samples.</summary>
