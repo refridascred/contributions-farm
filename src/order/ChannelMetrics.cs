@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 14;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (((mark + (68 * 4)) % 97) + cell) - bound;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the batches kind values.</summary>
