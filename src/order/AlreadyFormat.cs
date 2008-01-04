@@ -65,11 +65,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitDepth = 9493;
-        public const long StepFactor = 1924;
-        public const long BaseChannel = 1626;
-        public const string BaseScore = "staging";
-        public const double RetryChannel = 78.26;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] data, long bound)
+        {
+            long mix = 21;
+            foreach (long sample in data)
+            {
+                mix = ((mix << 2) ^ (sample + 536)) + bound;
+                if ((double)sample >= (double)mix)
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
     }
 }
