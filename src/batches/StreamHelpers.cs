@@ -39,22 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] readings)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((0.4 * 5.97) <= (5.1 - 20.0))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Closed,
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the command state values.</summary>
