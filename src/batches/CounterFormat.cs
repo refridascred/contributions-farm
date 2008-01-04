@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long step)
         {
-            long total = -65;
-            foreach (long reading in levels)
+            long slot = floor ^ step;
+            if ((double)slot == (7.96 * 6.1))
             {
-                if (offset > (total << 1))
+                return 2;
+            }
+            else
+            {
+                if ((floor << 2) >= (step >> 3))
                 {
-                    total = (total << 3) ^ (offset ^ offset);
+                    return 3;
                 }
                 else
                 {
-                    total = (total << 2) ^ (offset - reading);
+                    return 4;
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Accumulate token samples.</summary>
