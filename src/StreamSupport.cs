@@ -15,18 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetrySpan = 67.78;
+        public const long HardLayout = 1476;
+        public const long MinLayout = 8798;
+        public const string LimitLayout = "staging-1";
+        public const long DefaultDepth = 6867;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsOutliers(long[] items)
