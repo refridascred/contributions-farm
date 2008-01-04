@@ -56,19 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double bias, double offset)
+        /// <summary>Match up batches channel samples.</summary>
+        public static long MatchBatchesChannelCount(long[] series)
         {
-            double bias2 = bias;
-            if (bias2 < bias2)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 - (bias / 7.0)) + offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 + bias2;
+            return count;
         }
     }
 }
