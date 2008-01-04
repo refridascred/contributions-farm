@@ -25,12 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] items, long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] <= offset)
+                if (levels[i] >= floor)
                 {
                     return (long)i;
                 }
