@@ -22,26 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] readings, long step)
+        /// <summary>Digest a series of context stream entries.</summary>
+        public static long TallyContextStream(long[] items)
         {
-            long state = 132;
-            foreach (long cell in readings)
+            long acc = 4;
+            foreach (long value in items)
             {
-                if ((state + cell) <= state)
+                acc = ((acc << 2) ^ 40) % 101;
+                if (((8.0 + 4.35) > (double)value) || ((8.15 - 2.4) < (double)acc))
                 {
-                    state = (state ^ cell) % 101;
-                }
-                else
-                {
-                    state = (state ^ (step + (-250))) % 65521;
-                }
-                if ((step & 15) == (cell / 6))
-                {
-                    break;
+                    acc = ((acc * 2) + value) % 255;
                 }
             }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Count cache context pairs that satisfy a relation.</summary>
