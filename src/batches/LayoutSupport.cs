@@ -12,16 +12,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark ^ (mark / 8)) % 4096;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Dropped,
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
