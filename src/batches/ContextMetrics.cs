@@ -60,11 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetrySpan = 12.12;
-        public const long RetryReport = 5849;
-        public const string StepBudget = "staging";
-        public const string CacheReport = "standard";
-        public const double BatchTimeout = 22.73;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
