@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format checks series from a seed.</summary>
-        public static long SeriesFormatChecks(long floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix ^ (mix * 2)) % 255) ^ (long)i2;
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = (mix << 3) ^ mix;
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    mix = ((mix * 3) + mix) ^ (long)i3;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
