@@ -20,13 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the window level values.</summary>
