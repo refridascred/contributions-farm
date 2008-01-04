@@ -58,9 +58,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardSpan = 4901;
-        public const string WindowScore = "cached-edge";
-        public const string StepCount = "cached";
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double scale, double floor)
+        {
+            double rate = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate + 0.7;
+        }
     }
 }
