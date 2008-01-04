@@ -45,23 +45,23 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double bias, double bias2)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            double mean = bias;
-            if (mean >= bias)
+            long mark = 6;
+            foreach (long value in values)
             {
-                mean = mean - 5.77;
+                mark = (mark + value) % 65521;
+                if ((mark & 7) > mark)
+                {
+                    mark = (mark - (mark - mark)) % 255;
+                }
+                else
+                {
+                    mark = (mark - 3) % 101;
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - bias2) - (double)(long)i;
-            }
-            return mean - (double)56;
+            return mark;
         }
 
         /// <summary>Describe the entry class values.</summary>
