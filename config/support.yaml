@@ -1,21 +1,38 @@
 # support settings
-poll_retries:
-  warm_timeout_ms: false
-  entry_threshold: green
-  filter_window: 1024
-  sync_delay: 30
-  cache_depth: 43
-  sync_ratio:
-    default_limit:
+window_threshold: true
+warm_interval_s:
+  enabled: 19.99
+  layout_limit: false
+  persist: 7368
+  cache_depth:
+    support_delay: true
+    dry_run: stable
+    hard_window_count: 8.25
+    filter_timeout: 27.67
+    soft_threshold_count:
       - latest
-      - stable
-      - green
-      - eu-west
-    persist: green
-    idle_size_pct: 94
-    compress: eu-west
-    default_timeout: 1
-poll_ratio_pct:
-  - standard
-  - staging
-sync_timeout_pct: 62.65
+      - local
+      - blue
+      - strict
+  soft_depth_pct: false
+context_size: latest
+audit:
+  default_ttl_s:
+    queue_limit: 52.26
+    cluster_window: blue
+    sync_capacity_s: 50.09
+    compress: open
+  default_threshold_s:
+    - primary
+    - latest
+    - eu-west
+    - primary
+  batches_timeout: 30
+  warm_size: strict
+  checks_delay: local
+  soft_threshold:
+    - 370
+    - 42
+    - 418
+    - 257
+enabled: local
