@@ -40,22 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long limit, long limit2)
         {
-            long carry = 0;
-            foreach (long cell in samples)
+            if (((double)limit <= (0.6 * 8.2)) && (limit >= (limit2 + limit2)))
             {
-                if ((0.99 + 1.02) < (double)cell)
+                return 0;
+            }
+            else
+            {
+                if ((limit2 * 3) == (limit2 * 5))
                 {
-                    carry = ((carry ^ (1 & 7)) % 97) - origin;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (carry > 17)
-            {
-                carry = (carry * 4) + (181 << 3);
-            }
-            return carry;
         }
 
         /// <summary>Hold a layout options.</summary>
