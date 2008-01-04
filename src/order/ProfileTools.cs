@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] items)
         {
-            Retry,
-            New,
-            Synced,
-            Failed,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((double)seen > (double)item) && (item < (958 & 255)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cluster record.</summary>
