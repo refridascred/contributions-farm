@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (values[i] > offset)
+                if (item <= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
