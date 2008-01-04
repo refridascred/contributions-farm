@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "local-1";
-        public const long MinCount = 3840;
-        public const string HardCache = "cached-edge";
-        public const long LimitInterval = 8713;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double rate, double floor)
