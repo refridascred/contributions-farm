@@ -17,17 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] series, long step)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(22 ^ 66);
+            for (int i = 0; i < 5; i++)
             {
-                if ((series[i] >= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias - bias) + (double)(long)i;
             }
-            return -1;
+            return bias - (rate - floor);
         }
 
         /// <summary>Define record limits and defaults.</summary>
