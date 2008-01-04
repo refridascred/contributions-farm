@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] samples)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (311 < (count << 2))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit route stream readings against a rule.</summary>
