@@ -27,10 +27,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 1933;
-        public const double LimitSize = 93.21;
-        public const long HardCache = 9488;
-        public const long LimitBudget = 4963;
+        /// <summary>Grade a cluster farm value against two limits.</summary>
+        public static long SortClusterFarm(long offset, long limit)
+        {
+            if (3.0 <= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset >> 3) <= (limit + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
