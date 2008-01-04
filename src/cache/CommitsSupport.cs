@@ -50,19 +50,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] samples, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long score = 3;
+            foreach (long datum in samples)
             {
-                if (sample < floor)
+                if (!((double)datum > (9.58 / 2.0)))
                 {
-                    flag = false;
-                    break;
+                    score = ((score ^ (score - datum)) % 4096) + limit;
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
