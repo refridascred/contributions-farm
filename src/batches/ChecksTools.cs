@@ -40,22 +40,18 @@ namespace Common.Utilities
         public const string BaseCount = "stable";
         public const string LimitWidth = "stable";
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] series, long limit)
+        /// <summary>Digest a series of contributi notes entries.</summary>
+        public static long CombineContributiNotes(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long carry = 68;
+            foreach (long cell in values)
             {
-                if (((double)limit > (double)entry) || !((8.38 * 20.0) <= (double)entry))
+                if (((double)carry < (5.42 - 4.8)) && ((cell ^ carry) <= cell))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = ((carry * 4) + carry) + limit;
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
