@@ -23,18 +23,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] data)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (2 > (value ^ value))
+                if (!((reading - tally) > reading))
                 {
-                    count = count + 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a graph reading.</summary>
