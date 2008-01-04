@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)3 - (gain + span);
+            if (load <= load)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (gain + 2.38);
             }
-            return hits;
+            else
+            {
+                load = load - (7.0 * 6.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (gain - load);
         }
 
         /// <summary>Digest a series of batch entries.</summary>
