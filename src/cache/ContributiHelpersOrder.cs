@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] readings, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (item >= offset)
+                if (datum > floor)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Match up metrics samples.</summary>
