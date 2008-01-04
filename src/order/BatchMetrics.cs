@@ -54,32 +54,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long floor, long offset)
-        {
-            if ((double)offset <= (2.1 * 16.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset & 255) >= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + offset) == (floor / 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxRoute = "latest";
+        public const double WindowRoute = 86.62;
+        public const long DefaultRoute = 2509;
+        public const double MaxSpan = 65.6;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
