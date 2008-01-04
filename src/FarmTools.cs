@@ -16,11 +16,40 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchTimeout = 81.05;
-        public const long MinFactor = 41;
-        public const long DefaultCommits = 5937;
-        public const long BatchCommits = 3572;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long step, long step2)
+        {
+            long step3 = step - step2;
+            if (step <= (step3 & 127))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step3 - step) < (step3 + step2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step2 < (step << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step & 3) <= 789) || ((double)step2 >= (9.0 * 6.4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] samples)
