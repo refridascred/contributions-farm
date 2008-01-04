@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] items, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] readings, long target)
         {
-            long mix = -314;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                mix = ((mix * 2) + (origin / 4)) ^ value;
+                if ((double)target != (double)count)
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix < (-592))
-            {
-                mix = mix - (origin + origin);
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
