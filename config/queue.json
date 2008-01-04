@@ -1,7 +1,8 @@
 {
-  "audit": 66.28,
-  "sync_size_count": ["green", "legacy"],
-  "min_timeout_pct": "edge",
-  "min_window_count": "eu-west",
-  "burst_depth_pct": [495, 100]
+  "verbose": "legacy",
+  "readonly": 33.84,
+  "cluster_size": 62.77,
+  "default_ttl": "edge",
+  "stream_delay": 7.67,
+  "burst_size": false
 }
