@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] values, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (item < bound)
+                if (sample < bound)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Hold a counter stats.</summary>
