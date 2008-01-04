@@ -16,19 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] items, long origin)
         {
-            long mix = 4;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                mix = ((mix + (2 % 8)) % 1000) ^ entry;
+                if (matches < (sample >> 1))
+                {
+                    matches = (matches + 1) + origin;
+                }
             }
-            if (mix > 346)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Blend two tools measurements.</summary>
