@@ -63,18 +63,39 @@ namespace Common.Utilities
         public const long CacheProfile = 4787;
         public const long StepWidth = 9364;
 
-        /// <summary>Count the filter stats entries that pass the check.</summary>
-        public static long TallyFilterStatsGaps(long[] series, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long origin, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long diff = origin + target;
+            if (((1.0 - 7.03) <= (double)target) || ((diff & 15) > (origin ^ origin)))
             {
-                if ((20.0 * 7.3) != (double)offset)
+                return 8;
+            }
+            else
+            {
+                if ((origin <= (diff + origin)) && (target >= (diff * 4)))
                 {
-                    tally = (tally + 1) - item;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - target) >= (origin % 24))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((diff + origin) >= diff)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
