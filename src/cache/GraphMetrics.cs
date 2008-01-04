@@ -70,33 +70,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] items, long origin)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long anchor = 577;
-            foreach (long cell in items)
-            {
-                if (!((cell - cell) > (anchor << 2)))
-                {
-                    break;
-                }
-                if (cell <= (origin % 97))
-                {
-                    anchor = ((anchor * 3) + (cell * 3)) % 97;
-                    continue;
-                }
-                else
-                {
-                    long prev = (anchor % 16) & 255;
-                    anchor = (anchor << 3) ^ prev;
-                }
-                anchor = anchor + (origin + cell);
-            }
-            if (anchor < 44)
-            {
-                anchor = (anchor + (origin ^ anchor)) % 97;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
