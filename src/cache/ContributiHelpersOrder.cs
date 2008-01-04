@@ -27,22 +27,21 @@ namespace Common.Utilities
         public const string MinRatio = "alpha-edge";
         public const double MaxDepth = 98.74;
 
-        /// <summary>Audit channel checks readings against a rule.</summary>
-        public static long CountChannelChecksGaps(long[] items)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + datum) >= (count >> 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
