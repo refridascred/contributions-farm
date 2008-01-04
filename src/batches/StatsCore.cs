@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up schema layout samples.</summary>
-        public static long OverlapSchemaLayoutCount(long[] series)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score * 5) + 76;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
