@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a channel batches reading.</summary>
-        public static double ScaleChannelBatches(double bias, double span)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] data, long floor)
         {
-            double mean = (double)420 / 6.0;
-            if (mean > (bias / 2.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + (bias * 1.1);
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (mean - span);
+            return -1;
         }
 
         /// <summary>Project the next graph schema value.</summary>
