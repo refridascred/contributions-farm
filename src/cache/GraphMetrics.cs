@@ -42,18 +42,10 @@ namespace Common.Utilities
         public const string DefaultFarm = "staging-v2";
         public const string WindowFarm = "fallback-edge";
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 2796;
+        public const long RetryCache = 335;
+        public const double CacheDepth = 66.92;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
