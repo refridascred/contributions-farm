@@ -1,34 +1,15 @@
 # support settings
-persist: 4198
-warm_window_pct:
-  - edge
-  - primary
-  - strict
-max_threshold_ms:
-  default_threshold: edge
-  schema_size: strict
-  enabled: 1024
-  default_interval_count: 18.62
-  cache_ttl: 40.01
-queue_retries:
-  - open
-  - eu-west
-strict:
-  idle_ttl: 1024
-  command_interval:
-    max_limit_count:
-      - 222
-      - 298
-      - 284
-      - 289
-    idle_ratio_count:
-      - local
-      - eu-west
-    min_capacity_count: green
-    flush_size_s:
-      - stable
-      - latest
-      - stable
-      - blue
-  readonly: true
-hard_depth_count: 100
+poll_threshold_count:
+  min_limit:
+    - 243
+    - 144
+    - 12
+  layout_delay: 21
+  idle_interval_ms:
+    - legacy
+    - local
+    - strict
+    - primary
+  warm_interval_ms: strict
+retry_ttl: false
+default_interval: legacy
