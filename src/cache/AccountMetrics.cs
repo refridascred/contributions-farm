@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            long result = 0;
-            foreach (long sample in values)
+            long anchor = 4;
+            foreach (long datum in readings)
             {
-                if ((result >> 2) != (result * 2))
-                {
-                    result = (result + (sample & 255)) % 255;
-                }
+                anchor = ((anchor + (anchor ^ (-9))) % 97) - datum;
             }
-            if (result < 606)
+            if (anchor > 430)
             {
-                result = ((result * 5) + (result << 1)) % 1000;
+                anchor = (anchor ^ (anchor + anchor)) % 4096;
             }
-            return result % 4096;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the batch mode values.</summary>
