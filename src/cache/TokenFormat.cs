@@ -32,15 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm schema counter forward.</summary>
-        public static long StepGithubfarmSchema(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardSpan = 2791;
+        public const long SoftRatio = 6230;
+        public const double RetryRecord = 51.8;
+        public const long HardRecord = 4028;
     }
 }
