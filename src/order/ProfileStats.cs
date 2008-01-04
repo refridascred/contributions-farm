@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long bound)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public double Token { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = ((mark << 3) ^ (bound & 3)) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
