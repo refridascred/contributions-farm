@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftBudget = 30.02;
-        public const long SoftDepth = 8112;
-        public const long StepCounter = 6454;
-        public const long WindowInterval = 2212;
+        /// <summary>Audit layout githubfarm readings against a rule.</summary>
+        public static long CountLayoutGithubfarmOutliers(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((4.4 * 4.67) == (double)entry)
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two stream cluster measurements.</summary>
         public static double BlendStreamCluster(double bias, double offset)
