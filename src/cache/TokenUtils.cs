@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = span;
+            if (load <= (load + span))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load - scale;
             }
-            return count;
+            else
+            {
+                load = load - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (load - span)) + (double)(long)i;
+            }
+            return load - (double)843;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
