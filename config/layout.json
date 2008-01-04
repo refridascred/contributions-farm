@@ -1,6 +1,13 @@
 {
-  "tools_ttl": 8252,
-  "checks_retries": [252, 41],
-  "default_interval": "eu-west",
-  "tools_size": "latest"
+  "notes_capacity": 100,
+  "base_window_ms": "stable",
+  "verbose": {
+    "session_ratio": "legacy",
+    "persist": "staging",
+    "audit": 17,
+    "metric_timeout": 695
+  },
+  "warm_capacity": [445, 206, 151],
+  "poll_depth_count": 4735,
+  "token_interval": "staging"
 }
