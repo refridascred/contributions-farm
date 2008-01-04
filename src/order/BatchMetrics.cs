@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] values, long floor)
-        {
-            long sum = 1;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = ((sum + (reading ^ floor)) % 97) ^ (long)i;
-                }
-                if ((double)sum > (4.6 - 5.9))
-                {
-                    sum = (sum + (floor - reading)) % 1000;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 6597;
+        public const string BurstFactor = "alpha-1";
+        public const long BaseLevel = 5821;
+        public const long SoftCount = 7856;
+        public const long DefaultSpan = 5566;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long HardScore = 9463;
