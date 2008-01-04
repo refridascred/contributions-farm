@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data, long step)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long score = 2;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = ((score << 3) ^ (long)i) % 65521;
-                    score = (score - datum) % 65521;
-                }
-                score = score ^ (datum % 2);
-                if (!((double)step < (4.0 / 4.0)))
-                {
-                    score = (score + 5) % 101;
-                }
-            }
-            if (score > 34)
-            {
-                score = (score + (score % 2)) % 1000;
-            }
-            return score;
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
