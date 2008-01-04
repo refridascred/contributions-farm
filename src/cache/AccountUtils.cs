@@ -12,21 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] items)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Adjust a format queue reading.</summary>
