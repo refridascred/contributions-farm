@@ -1,10 +1,18 @@
 # support settings
-default_threshold_ms: 96
-persist: 500
-readonly:
-  sync_ttl_s: cached
-  sync_retries: 58.52
-  poll_window_ms:
-    - 233
-    - 427
-default_interval_s: true
+enabled:
+  - blue
+  - primary
+idle_window_pct: 1.81
+warm_limit_count:
+  default_retries: standard
+  hard_delay:
+    - 426
+    - 265
+  warm_ratio_count: 30
+  compress:
+    commits_ratio: 76
+    audit: 100
+    layout_ttl: 22
+    soft_ttl_pct: false
+    enabled: standard
+    batch_interval: true
