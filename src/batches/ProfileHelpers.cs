@@ -126,22 +126,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] data, long step)
         {
-            long carry = 179;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((double)carry >= (0.7 - 2.0))
+                if (entry > step)
                 {
-                    carry = ((carry + (4 % 97)) % 97) ^ cell;
-                }
-                if (((81 / 2) > carry) || ((carry / 8) < (9 << 1)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return carry;
+            return ready;
         }
     }
 }
