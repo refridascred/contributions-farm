@@ -32,16 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric githubfarm value from a seed.</summary>
-        public static long RollMetricGithubfarm(long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            long score = -1;
+            foreach (long value in items)
             {
-                result = (result << 2) ^ ((-96) - result);
-                result = ((result * 4) + (long)i) % 1000;
+                score = ((score - (score / 3)) + value) - limit;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
