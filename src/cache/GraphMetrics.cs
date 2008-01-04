@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every profile stats entry stays within the limit.</summary>
-        public static bool VerifyProfileStatsBounds(long[] readings, long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < seed)
+                if (data[i] <= offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the tools class values.</summary>
