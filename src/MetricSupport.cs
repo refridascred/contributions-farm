@@ -29,12 +29,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
             Draft,
-            Dropped,
-            Stale,
+            Retry,
+            Done,
         }
     }
 }
