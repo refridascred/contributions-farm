@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long SoftCount = 7856;
         public const long DefaultSpan = 5566;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardScore = 9463;
-        public const long BaseDepth = 7465;
-        public const long HardCount = 8313;
-        public const long MinWidth = 3155;
-        public const long BurstOrder = 674;
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string RetryInterval = "open-v2";
