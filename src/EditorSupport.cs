@@ -59,12 +59,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] samples)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
+            long mix = 665;
+            foreach (long item in samples)
+            {
+                if ((0.9 - 3.7) > (double)mix)
+                {
+                    mix = (((mix * 2) + (long)samples.Length) % 255) ^ item;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Blend two stats measurements.</summary>
