@@ -31,11 +31,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstScore = 3559;
-        public const double DefaultFactor = 10.52;
-        public const long MinCommits = 765;
-        public const long RetryCommits = 1285;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutGaps(long[] data, long floor)
