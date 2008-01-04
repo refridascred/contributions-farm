@@ -25,17 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long target)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
