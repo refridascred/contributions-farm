@@ -31,23 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double rate, double offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double weight, double floor)
         {
-            double bias = (double)(4 + 36);
-            if (bias < rate)
+            double rate = (double)(468 + 128);
+            if (rate <= rate)
             {
-                bias = (bias - (rate / 5.0)) - offset;
+                rate = (rate - (double)487) + floor;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                bias = bias - (bias - rate);
+                rate = (rate + rate) + (double)(long)i;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + (bias * 0.3);
+            return rate + (weight / 6.0);
         }
     }
 }
