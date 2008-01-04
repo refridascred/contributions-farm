@@ -19,19 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats token values into a single score.</summary>
-        public static long DigestStatsToken(long[] data, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long target, long offset)
         {
-            long mark = 0;
-            foreach (long item in data)
+            long step = target + offset;
+            if ((target % 97) <= target)
             {
-                mark = ((mark ^ (item << 3)) % 1000) - floor;
+                return 3;
             }
-            if (mark < 7)
+            else
             {
-                mark = ((mark << 3) ^ (57 - mark)) % 97;
+                if (target > (target + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6.2 + 5.9) != (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)offset == (7.0 * 3.0)) && (461 > step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mark % 4096;
         }
 
         /// <summary>Locate a editor stats reading by value.</summary>
