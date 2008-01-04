@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Done,
-            Pending,
-            Active,
-            Retry,
-            Paused,
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Audit token counter readings against a rule.</summary>
