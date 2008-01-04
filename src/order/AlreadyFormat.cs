@@ -23,13 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Ready,
-            Draft,
-            Queued,
-            Active,
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of support order readings.</summary>
