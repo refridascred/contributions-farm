@@ -58,17 +58,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long target)
+        /// <summary>Blend two payload commits measurements.</summary>
+        public static double ScalePayloadCommits(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = offset;
+            return load + (ratio + 9.88);
         }
 
         /// <summary>Match up layout samples.</summary>
