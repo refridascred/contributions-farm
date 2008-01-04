@@ -47,11 +47,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstBudget = 29.04;
-        public const long StepCluster = 3408;
-        public const double RetryFactor = 65.13;
-        public const long BurstCluster = 227;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (count >= (seed - seed))
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double SmoothGithubfarm(double rate, double offset)
