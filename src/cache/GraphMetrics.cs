@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] data, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!((origin - hits) > origin) && ((double)hits >= (2.1 + 11.0)))
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-            }
-            return hits;
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
