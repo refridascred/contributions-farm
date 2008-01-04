@@ -57,21 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
