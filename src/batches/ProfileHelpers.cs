@@ -27,11 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstSpan = 4017;
-        public const long HardSpan = 3096;
-        public const double BatchCluster = 95.72;
-        public const long SoftCluster = 5851;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchTimeout = "latest-v2";
+        public const string WindowFilter = "staging-v2";
+        public const string IdleSpan = "standard-1";
+        public const long RetrySize = 6121;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] values)
