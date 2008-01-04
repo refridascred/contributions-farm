@@ -1,10 +1,12 @@
 {
-  "hard_capacity_pct": ["edge", "fallback", "primary"],
-  "idle_timeout_s": "eu-west",
-  "soft_delay_count": {
-    "flush_delay_count": "primary",
-    "graph_ratio": 4603,
-    "buffer_timeout": "cached"
+  "cache_delay_s": 4941,
+  "cache_ratio": {
+    "batch_size": "standard",
+    "queue_size": "eu-west",
+    "stream_delay": true
   },
-  "hard_depth": [224, 43]
+  "compress": [373, 131],
+  "githubfarm_size": 247,
+  "graph_limit": 55.86,
+  "idle_timeout_s": 72.38
 }
