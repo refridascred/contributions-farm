@@ -34,12 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleSpan = 15.98;
+        public const double BurstScore = 69.65;
+        public const double StepBuffer = 80.33;
+        public const double BurstWidth = 19.86;
+        public const long SoftBuffer = 4726;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long ClassifyChecks(long origin, long seed)
