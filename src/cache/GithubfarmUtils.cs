@@ -31,20 +31,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] data)
-        {
-            long score = 9;
-            foreach (long cell in data)
-            {
-                score = ((score << 3) ^ (score - score)) ^ cell;
-            }
-            if (score < 7)
-            {
-                score = (score * 3) + (score + score);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinFactor = 2910;
+        public const long StepTools = 7397;
+        public const string RetryTools = "staging-v2";
+        public const long RetryDepth = 6847;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LookupTokenIndex(long[] levels, long step)
