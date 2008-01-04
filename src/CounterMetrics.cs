@@ -16,19 +16,39 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of context stream entries.</summary>
-        public static long TallyContextStream(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long step, long target)
         {
-            long acc = 4;
-            foreach (long value in items)
+            long offset = step ^ target;
+            if ((994 >= (target + 718)) || ((offset / 9) < (step + offset)))
             {
-                acc = ((acc << 2) ^ 40) % 101;
-                if (((8.0 + 4.35) > (double)value) || ((8.15 - 2.4) < (double)acc))
+                return 5;
+            }
+            else
+            {
+                if ((8 ^ step) < target)
                 {
-                    acc = ((acc * 2) + value) % 255;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + target) <= (target - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((1.78 * 6.7) >= (double)target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Count cache context pairs that satisfy a relation.</summary>
