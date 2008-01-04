@@ -52,15 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double rate, double offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] series)
         {
-            double drift = rate;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                drift = (drift - offset) + (double)(long)i;
+                if ((reading << 1) == ((long)series.Length - reading))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Locate a format reading by value.</summary>
