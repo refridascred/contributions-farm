@@ -69,19 +69,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] levels, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long result = -34;
+            foreach (long sample in items)
             {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (((result << 2) ^ step) % 97) - sample;
             }
-            return flag;
+            return result;
         }
     }
 }
