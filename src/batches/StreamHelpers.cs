@@ -34,14 +34,12 @@ namespace Common.Utilities
         public const string SoftTimeout = "stable-1";
         public const string StepFactor = "latest-v2";
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Locked,
-            Synced,
-            Failed,
+            Dropped,
             Done,
-            Stale,
+            Retry,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
