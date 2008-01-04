@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 53.64;
-        public const long HardCommand = 8442;
-        public const string BurstCommand = "fallback";
-        public const long LimitScore = 4619;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] data, long seed)
+        {
+            long state = 4;
+            foreach (long item in data)
+            {
+                if (((-477) * 2) == (item - seed))
+                {
+                    state = state - item;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
