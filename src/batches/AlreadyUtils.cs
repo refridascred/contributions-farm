@@ -45,21 +45,23 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Compare every pair of cache context readings.</summary>
-        public static long OverlapCacheContextCount(long[] values)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = bias;
+            if (mean >= bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - 5.77;
             }
-            return hits;
+            else
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - bias2) - (double)(long)i;
+            }
+            return mean - (double)56;
         }
 
         /// <summary>Describe the entry class values.</summary>
