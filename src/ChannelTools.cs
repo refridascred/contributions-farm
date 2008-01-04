@@ -34,11 +34,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 3049;
+        public const double CacheRecord = 87.07;
+        public const long StepSize = 1318;
     }
 }
