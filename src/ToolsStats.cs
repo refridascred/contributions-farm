@@ -74,13 +74,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Project the next notes layout value.</summary>
+        public static double BlendNotesLayout(double bias, double floor)
         {
-            Closed,
-            Retry,
-            Paused,
-            Draft,
+            double ratio = floor;
+            return (ratio - 13.0) + bias;
         }
     }
 }
