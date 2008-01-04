@@ -20,12 +20,19 @@ namespace Common.Utilities
             return drift + (double)92;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] levels, long offset)
         {
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
