@@ -36,14 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Retry,
-            Queued,
-            Paused,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 1870;
+        public const double WindowGithubfarm = 88.47;
+        public const long BaseInterval = 1406;
 
         /// <summary>Find the first profile contributi entry that matches the target.</summary>
         public static long SeekProfileContributiIndex(long[] samples, long origin)
