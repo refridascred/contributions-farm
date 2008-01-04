@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Ready,
-            Draft,
-            Failed,
-            Paused,
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a account stats.</summary>
