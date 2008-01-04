@@ -20,19 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] readings, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long mix = 8;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((double)(long)readings.Length != (double)cell)
                 {
-                    mark = ((mark << 3) ^ (bound & 3)) ^ (long)i2;
+                    mix = (mix - (offset - offset)) % 65521;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
+                mix = mix ^ cell;
+                mix = (mix << 3) ^ (mix + mix);
             }
-            return mark;
+            if (mix > 761)
+            {
+                mix = (mix ^ (mix & 63)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
