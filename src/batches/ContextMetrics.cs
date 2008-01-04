@@ -38,11 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 39.35;
-        public const long HardRatio = 258;
-        public const long RetryBuffer = 7997;
-        public const long WindowBuffer = 266;
+        /// <summary>Compare every pair of command graph readings.</summary>
+        public static long PairCommandGraphCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] readings)
