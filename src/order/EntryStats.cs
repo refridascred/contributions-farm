@@ -55,18 +55,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many order command samples are out of range.</summary>
-        public static long AuditOrderCommandHits(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)55 >= (13.0 + 8.8))
-                {
-                    count = ((count + 2) + datum) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftSpan = "strict";
+        public const double StepSpan = 47.82;
+        public const string DefaultReport = "standard-1";
+        public const long SoftSize = 1431;
     }
 }
