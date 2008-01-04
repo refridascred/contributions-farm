@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] values, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] levels, long bound)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long cell in levels)
             {
-                if ((double)hits < 20.0)
+                if (((double)bound == (7.7 * 8.7)) || (((39 << 3) == (bound * 3)) && ((cell << 2) >= (bound % 8))))
                 {
-                    hits = ((hits + 1) + item) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
