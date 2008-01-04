@@ -1,13 +1,11 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The batch helpers are pure functions, so they are safe to call from any thread.
-
-The token report groups every commits by commits.
-Use githubfarm settings to tune how often contributi data is refreshed.
+Each farm is validated before it reaches the githubfarm queue.
+Keep format and window names short and lowercase.
+A batch that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new metric fields
-- Log every token change
+- Prefer context defaults
+- Keep token values small
+- Log every command change
