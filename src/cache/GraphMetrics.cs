@@ -48,21 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 469;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = (sum - (sum % 97)) % 97;
+                if ((double)sum <= (11.0 - 6.3))
                 {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 2) ^ sum) % 101;
+                }
+                if (!((sum * 4) >= (value - sum)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Hold a format record.</summary>
