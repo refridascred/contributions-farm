@@ -28,12 +28,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            Paused,
-            Dropped,
-            Done,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next session value.</summary>
