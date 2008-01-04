@@ -55,17 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a support route reading by value.</summary>
-        public static long FindSupportRouteIndex(long[] series, long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Stale,
         }
     }
 }
