@@ -12,24 +12,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long origin, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            if (((origin % 24) > (seed + seed)) || ((7.75 * 8.79) > (double)origin))
+            long mix = 57;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin >= (0.1 + 4.44))
+                if ((mix << 3) <= (mix - entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    mix = mix ^ (mix >> 4);
                 }
             }
+            return mix;
         }
 
         /// <summary>Accumulate farm samples.</summary>
