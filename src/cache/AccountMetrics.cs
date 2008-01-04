@@ -23,12 +23,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Active,
-            New,
-            Paused,
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
