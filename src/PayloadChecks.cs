@@ -19,20 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Iterate the entry channel series from a seed.</summary>
+        public static long RollEntryChannel(long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    acc = (((acc * 2) + (acc << 1)) % 255) ^ (long)i2;
-                    acc = ((acc * 5) + acc) % 1000;
+                    mark = ((mark + (floor + 98)) % 1000) ^ (long)i2;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
