@@ -65,23 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a commits farm reading.</summary>
-        public static double SmoothCommitsFarm(double bias, double offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] levels, long target)
         {
-            double ratio = (offset / 6.0) * 6.15;
-            if (ratio < offset)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                ratio = ratio + (bias * 14.0);
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (bias - offset);
+            return flag;
         }
     }
 }
