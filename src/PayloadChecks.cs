@@ -35,18 +35,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch contributi readings against a rule.</summary>
-        public static long AuditBatchContributiHits(long[] series, long offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)value <= (14.0 + 12.0))
-                {
-                    seen = (seen + 2) + offset;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two record measurements.</summary>
