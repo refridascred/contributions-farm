@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Adjust a editor cluster reading.</summary>
+        public static double BlendEditorCluster(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (8.23 * 12.0) / 6.0;
+            if (bias2 < 0.06)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = ((bias2 + bias2) - scale) + bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
