@@ -14,12 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public double Limit { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowCount = 13.31;
+        public const long WindowLevel = 7775;
+        public const long BaseDepth = 9972;
+        public const double MinProfile = 61.38;
+        public const string HardSize = "latest-edge";
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long RollStream(long limit)
