@@ -23,18 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] data, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mix = 752;
+            foreach (long cell in data)
             {
-                if ((target / 6) != (78 % 24))
+                mix = mix - cell;
+                if (((mix + 1) == (cell << 2)) && ((double)mix <= 14.0))
                 {
-                    tally = (tally + 3) + entry;
+                    mix = (mix << 2) ^ (mix << 1);
                 }
             }
-            return tally;
+            if (mix < 310)
+            {
+                mix = (mix + (mix / 7)) % 97;
+            }
+            return mix;
         }
     }
 }
