@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double scale, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels, long offset)
         {
-            double bias = (double)7 - (scale - floor);
-            if (bias >= bias)
+            long total = -65;
+            foreach (long reading in levels)
             {
-                bias = bias - (bias - scale);
+                if (offset > (total << 1))
+                {
+                    total = (total << 3) ^ (offset ^ offset);
+                }
+                else
+                {
+                    total = (total << 2) ^ (offset - reading);
+                }
             }
-            return bias + floor;
+            return total % 97;
         }
 
         /// <summary>Accumulate token samples.</summary>
