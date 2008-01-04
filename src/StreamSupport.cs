@@ -19,11 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] values, long offset)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            long total = 86;
+            foreach (long entry in values)
+            {
+                total = (total ^ (offset >> 3)) - entry;
+            }
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
