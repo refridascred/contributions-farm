@@ -18,13 +18,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Idle,
-            Stale,
-            Active,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitFactor = "fallback-v2";
+        public const long MinInterval = 934;
+        public const long BurstMetrics = 7184;
     }
 }
