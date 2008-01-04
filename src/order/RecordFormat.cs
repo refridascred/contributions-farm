@@ -33,23 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double scale, double bias)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            double drift = bias / 5.0;
-            if (drift < (bias + scale))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (scale - 3.69);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (8.59 + bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (scale / 6.0)) + (double)(long)i;
-            }
-            return drift + (5.69 * 6.0);
+            return count;
         }
 
         /// <summary>Describe the command kind values.</summary>
