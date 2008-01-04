@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] readings, long floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many stats queue samples are out of range.</summary>
