@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Scale a account commits figure with a bias.</summary>
+        public static double ScaleAccountCommits(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)(88 * 3);
+            if (rate >= (bias + rate))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate + rate) - weight;
             }
-            return matches;
+            return rate - (double)596;
         }
 
         /// <summary>Measure how many contributi batch samples are out of range.</summary>
