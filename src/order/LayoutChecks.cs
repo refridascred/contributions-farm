@@ -37,18 +37,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] data)
+        /// <summary>Look up the position of a checks window sample.</summary>
+        public static long FindChecksWindowIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.65 * 3.2) == (double)datum)
+                if (samples[i] > seed)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a tools summary.</summary>
