@@ -27,21 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Adjust a profile contributi reading.</summary>
+        public static double AdjustProfileContributi(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)(-45) + (weight + weight);
+            if (gain <= (gain * 3.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain + (gain * 2.0)) - span;
             }
-            return tally;
+            return gain + (double)771;
         }
     }
 }
