@@ -1,9 +1,7 @@
 {
-  "payload_delay": 4863,
-  "batch_size": 5906,
-  "stream_size": {
-    "persist": "cached",
-    "cluster_limit": "stable",
-    "default_timeout_pct": 60.92
-  }
+  "checks_size": [395, 190],
+  "min_capacity_ms": 46.94,
+  "enabled": "latest",
+  "poll_size_s": [113, 192, 142],
+  "command_interval": 500
 }
