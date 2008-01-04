@@ -27,24 +27,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a cluster farm value against two limits.</summary>
-        public static long SortClusterFarm(long offset, long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            if (3.0 <= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset >> 3) <= (limit + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Active,
+            Stale,
+            Queued,
         }
     }
 }
