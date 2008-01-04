@@ -39,39 +39,22 @@ namespace Common.Utilities
         public const string DefaultFarm = "staging-v2";
         public const string WindowFarm = "fallback-edge";
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long floor, long floor2)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] items, long bound)
         {
-            long span = floor + floor2;
-            if ((floor2 + floor2) < span)
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor2 > (floor2 + floor2)) && ((8.0 / 6.0) > (double)floor2))
+                if ((bound + seen) < (bound & 255))
                 {
-                    return 2;
+                    seen = (seen + 3) ^ item;
                 }
                 else
                 {
-                    if ((4 << 1) > (floor2 - 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((span & 7) <= (span % 10)) || ((double)span <= (double)2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
