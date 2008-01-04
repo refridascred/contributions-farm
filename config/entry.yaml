@@ -1,17 +1,11 @@
 # entry settings
-strict: green
-command_ttl:
-  batch_timeout: true
-  buffer_limit: 1044
-  persist:
-    - staging
-    - cached
-    - eu-west
-    - fallback
-  batch_timeout_pct: open
-  verbose: true
-  retry_ttl_pct: 24
-contributi_limit: 4019
-compress: 5735
-enabled: primary
-cluster_ttl: false
+enabled: 60
+audit:
+  - 397
+  - 246
+poll_ttl_s: 60
+batch_threshold_pct: strict
+persist:
+  - 126
+  - 483
+  - 223
