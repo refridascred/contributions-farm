@@ -28,18 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] samples)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((matches ^ (long)samples.Length) < (entry ^ entry)) && ((double)entry >= 18.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Project the next session value.</summary>
