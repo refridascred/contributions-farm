@@ -70,17 +70,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] readings, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long floor, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((779 % 100) <= (floor % 100))
             {
-                if ((readings[i] <= limit) && ((readings[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((target + floor) >= (target & 255))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((12.0 + 20.0) >= (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3 ^ 12) > target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
