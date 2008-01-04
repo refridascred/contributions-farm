@@ -38,13 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Draft,
-            Done,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleScore = 78.65;
+        public const long LimitLevel = 4270;
+        public const string StepWidth = "alpha-1";
+        public const string DefaultToken = "local";
+        public const double LimitScore = 23.44;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] data, long offset)
