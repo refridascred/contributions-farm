@@ -28,13 +28,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long origin, long offset)
         {
-            Failed,
-            Paused,
-            Idle,
-            Locked,
+            if (!(offset >= origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin >> 3) >= 3)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Grade a order value against two limits.</summary>
