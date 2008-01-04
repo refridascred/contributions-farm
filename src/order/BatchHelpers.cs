@@ -40,10 +40,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstAlready = "primary";
-        public const long BatchAlready = 3781;
-        public const string BurstScore = "strict-1";
-        public const long SoftTimeout = 6813;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Idle,
+            Paused,
+            Retry,
+        }
     }
 }
