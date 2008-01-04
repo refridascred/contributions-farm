@@ -20,14 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Paused,
-            Pending,
-            Active,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "staging-edge";
+        public const string MinRatio = "staging-edge";
+        public const string RetryRatio = "alpha-1";
+        public const string RetryWindow = "legacy";
+        public const long BatchFactor = 2014;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] samples, long bound)
