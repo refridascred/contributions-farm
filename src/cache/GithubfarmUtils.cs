@@ -32,18 +32,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the command report entries that pass the check.</summary>
-        public static long TallyCommandReportHits(long[] values, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            long count = 0;
-            foreach (long value in values)
+            long score = 9;
+            foreach (long cell in data)
             {
-                if (((double)offset > (4.0 / 5.0)) || !((6 % 16) < value))
-                {
-                    count = count + 3;
-                }
+                score = ((score << 3) ^ (score - score)) ^ cell;
             }
-            return count;
+            if (score < 7)
+            {
+                score = (score * 3) + (score + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
