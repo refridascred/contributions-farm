@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long limit, long limit2)
         {
-            Synced,
-            Queued,
-            Retry,
+            if ((limit ^ limit) != (limit2 - limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit2 > (limit - limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit != (10.0 + 8.21))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + limit) > limit2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many filter channel samples are out of range.</summary>
