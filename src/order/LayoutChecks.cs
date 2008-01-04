@@ -75,26 +75,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream checks entries.</summary>
-        public static long TallyStreamChecks(long[] items, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long sum = -3;
-            foreach (long datum in items)
-            {
-                if (!(offset >= (datum + sum)))
-                {
-                    sum = (sum ^ (sum >> 5)) % 255;
-                }
-                if ((16.0 * 4.68) >= (double)datum)
-                {
-                    sum = (sum - (offset << 1)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (offset << 3)) % 255;
-                }
-            }
-            return sum;
+            Stale,
+            Queued,
+            Failed,
+            Pending,
         }
     }
 }
