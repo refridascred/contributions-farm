@@ -52,22 +52,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= (3.3 / 5.0))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Retry,
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
