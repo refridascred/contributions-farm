@@ -33,11 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 1301;
-        public const double BaseTimeout = 45.77;
-        public const string LimitWindow = "latest-1";
-        public const double MinWindow = 36.46;
+        /// <summary>Check that every stream tools entry stays within the limit.</summary>
+        public static bool CheckStreamToolsRange(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double ProjectMetric(double rate, double span)
