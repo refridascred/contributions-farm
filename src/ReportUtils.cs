@@ -41,19 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream tools entry stays within the limit.</summary>
-        public static bool CheckStreamToolsRange(long[] series, long offset)
+        /// <summary>Find the first layout batch entry that matches the target.</summary>
+        public static long LookupLayoutBatchIndex(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != offset)
+                if ((values[i] <= floor) && ((values[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
