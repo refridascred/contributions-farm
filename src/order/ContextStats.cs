@@ -31,13 +31,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
+        public static bool CheckClusterMetricsRange(long[] samples, long origin)
         {
-            Queued,
-            Closed,
-            Locked,
-            New,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the commits status values.</summary>
