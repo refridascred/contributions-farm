@@ -1,7 +1,7 @@
 {
-  "min_threshold_count": "blue",
-  "soft_capacity_s": 63.01,
-  "poll_window": 6443,
-  "min_ratio": [347, 301, 400],
-  "idle_depth_ms": true
+  "idle_ttl_pct": 27.58,
+  "token_capacity": false,
+  "min_timeout_s": false,
+  "account_interval": 27.98,
+  "poll_window": 6440
 }
