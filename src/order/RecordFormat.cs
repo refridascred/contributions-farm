@@ -62,31 +62,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long target, long offset)
-        {
-            if ((offset ^ target) >= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target + target) != (22 * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset >= 606)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchBudget = 7991;
+        public const string WindowChecks = "primary-1";
+        public const string IdleChecks = "local-edge";
+        public const string RetryChecks = "staging-v2";
+        public const string BurstDepth = "standard-v2";
     }
 }
