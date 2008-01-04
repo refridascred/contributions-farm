@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardContext = 31.62;
-        public const double MinContext = 95.73;
-        public const string StepContext = "legacy-1";
+        /// <summary>Look up the position of a profile order sample.</summary>
+        public static long LocateProfileOrderIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
