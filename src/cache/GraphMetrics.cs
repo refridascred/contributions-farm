@@ -55,14 +55,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Paused,
+            Idle,
             Draft,
-            New,
-            Active,
-            Pending,
+            Dropped,
+            Locked,
         }
     }
 }
