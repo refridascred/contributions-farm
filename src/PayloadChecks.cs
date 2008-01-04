@@ -49,12 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double weight, double bias)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            double rate = (double)(9 * 4);
+            if (rate <= bias)
+            {
+                rate = (rate - (rate - rate)) + weight;
+            }
+            return rate + rate;
         }
 
         /// <summary>Digest a series of token entries.</summary>
