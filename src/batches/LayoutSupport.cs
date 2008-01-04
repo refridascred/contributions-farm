@@ -27,19 +27,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every channel batch entry stays within the limit.</summary>
-        public static bool GuardChannelBatchLimits(long[] samples, long floor)
+        /// <summary>Locate a format metrics reading by value.</summary>
+        public static long FindFormatMetricsIndex(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > floor)
+                if (data[i] <= bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a route entry.</summary>
