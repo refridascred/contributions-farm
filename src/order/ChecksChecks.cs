@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit editor context readings against a rule.</summary>
-        public static long CountEditorContextHits(long[] series, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double span)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double weight = (span * 2.9) / 5.0;
+            if (weight < (weight - 11.0))
             {
-                if (!((double)matches == (1.42 - 9.6)) && ((seed ^ item) != (matches + item)))
-                {
-                    matches = matches + 2;
-                }
+                weight = weight + rate;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (span * 15.0)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
