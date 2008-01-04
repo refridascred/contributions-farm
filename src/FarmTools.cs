@@ -16,18 +16,38 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] values)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long bound, long target)
         {
-            long tally = 0;
-            foreach (long item in values)
+            if ((8.18 * 0.04) >= (double)bound)
             {
-                if ((((item & 1) != (item & 15)) || ((item - tally) <= tally)) || (4.74 <= (double)item))
+                return 1;
+            }
+            else
+            {
+                if (target < 40)
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((target + bound) >= 3)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(target >= (target ^ 17)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
