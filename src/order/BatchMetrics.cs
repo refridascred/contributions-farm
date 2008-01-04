@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] series)
-        {
-            long mix = 87;
-            foreach (long cell in series)
-            {
-                if ((double)cell > (2.6 + 5.5))
-                {
-                    mix = mix - (cell & 1);
-                }
-            }
-            if (mix < 3)
-            {
-                mix = (mix - mix) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 3389;
+        public const long DefaultLayout = 2165;
+        public const long HardTimeout = 9309;
 
         /// <summary>Match up profile samples.</summary>
         public static long PairProfileCount(long[] items)
