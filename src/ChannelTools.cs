@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next editor metric value.</summary>
-        public static double ProjectEditorMetric(double bias, double offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double weight = offset;
-            if (weight <= (offset / 8.0))
-            {
-                weight = weight + (weight * 9.02);
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - bias;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
