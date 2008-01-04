@@ -42,18 +42,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit batch buffer readings against a rule.</summary>
-        public static long TallyBatchBufferOutliers(long[] data)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item + item) < (item * 2))
+                if (samples[i] >= offset)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up report samples.</summary>
