@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many filter queue samples are out of range.</summary>
-        public static long AuditFilterQueueMatches(long[] data, long limit)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((3.33 * 11.0) >= (double)limit)
-                {
-                    matches = (matches + 2) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 6050;
+        public const long LimitMetrics = 2166;
+        public const long StepSpan = 8894;
 
         /// <summary>Accumulate context samples.</summary>
         public static long CombineContext(long[] values, long bound)
