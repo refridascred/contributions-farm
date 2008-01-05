@@ -70,11 +70,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] series, long seed)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
