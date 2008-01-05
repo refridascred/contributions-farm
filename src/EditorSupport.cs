@@ -19,25 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi record input into a small class.</summary>
-        public static long ClassifyContributiRecord(long origin, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] items, long floor)
         {
-            long diff = origin - bound;
-            if (((bound << 1) >= (origin - origin)) && ((diff ^ 83) == (diff >> 5)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (origin * 3))
+                if (items[i] > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up layout samples.</summary>
