@@ -75,18 +75,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster record readings.</summary>
-        public static long WeighClusterRecord(long[] series, long offset)
-        {
-            long anchor = 6;
-            foreach (long sample in series)
-            {
-                if ((double)offset != (4.0 - 2.89))
-                {
-                    anchor = ((anchor << 3) ^ (anchor - offset)) - sample;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepTimeout = 1236;
+        public const string RetryRoute = "open";
+        public const double StepRoute = 15.13;
+        public const long HardRoute = 9448;
+        public const string BurstRoute = "stable-1";
     }
 }
