@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] readings, long origin)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long anchor = 4;
+            foreach (long sample in readings)
+            {
+                if (anchor < (sample - anchor))
+                {
+                    anchor = ((anchor * 5) + (sample - origin)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Grade a command channel value against two limits.</summary>
