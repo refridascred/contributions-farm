@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] samples, long seed)
+        /// <summary>Derive the next channel graph value from a seed.</summary>
+        public static long SeriesChannelGraph(long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (item <= ((-9) + seed))
-                {
-                    tally = tally + 3;
-                }
+                state = ((state << 2) ^ (step % 60)) % 4096;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
