@@ -32,10 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitScore = "legacy-edge";
-        public const double LimitSupport = 63.05;
-        public const long BatchScore = 858;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double ratio, double floor)
+        {
+            double bias = 7.0 - (double)69;
+            if (bias < (bias / 6.0))
+            {
+                bias = ((bias + bias) + ratio) - floor;
+            }
+            return bias + (double)562;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
