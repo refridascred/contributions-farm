@@ -1,9 +1,8 @@
 {
-  "persist": {
-    "poll_window_pct": [405, 186],
-    "burst_ttl": false,
-    "enabled": 24.63
-  },
-  "enabled": "eu-west",
-  "soft_timeout_s": "green"
+  "command_threshold": 3,
+  "burst_ratio": [217, 467, 269],
+  "checks_window": 0.73,
+  "readonly": 5761,
+  "enabled": 4175,
+  "default_limit": [474, 9, 189]
 }
