@@ -19,23 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor schema entries that pass the check.</summary>
-        public static long MeasureEditorSchemaGaps(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - cell) <= (360 % 12))
-                {
-                    seen = (seen + 3) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepTimeout = 90.66;
+        public const long CacheEditor = 5294;
+        public const long LimitEditor = 9980;
+        public const long CacheLevel = 3516;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long SeriesQueue(long seed)
