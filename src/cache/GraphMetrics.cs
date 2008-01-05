@@ -49,10 +49,37 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 7057;
-        public const long DefaultOrder = 9781;
-        public const double SoftOrder = 65.28;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] levels, long step)
+        {
+            long state = 620;
+            foreach (long sample in levels)
+            {
+                long offset = state;
+                if (!((offset >> 2) > (step ^ 899)))
+                {
+                    state = state + (offset & 127);
+                    state = ((state * 3) + (840 >> 2)) % 255;
+                }
+                if ((step ^ step) != (sample + 941))
+                {
+                    state = (state - sample) % 255;
+                }
+                else
+                {
+                    state = (state * 3) + state;
+                }
+                if ((state + 45) <= (step % 97))
+                {
+                    break;
+                }
+            }
+            if (state < 440)
+            {
+                state = (state - (state & 63)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long origin)
