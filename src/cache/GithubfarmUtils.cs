@@ -40,39 +40,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long limit, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] levels)
         {
-            long offset = limit + seed;
-            if ((limit % 24) < 565)
+            long anchor = 8;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed >= (limit + seed))
+                if (entry < (293 >> 4))
                 {
-                    return 8;
+                    anchor = (anchor ^ (anchor & 63)) % 97;
                 }
                 else
                 {
-                    if ((double)seed == (8.3 + 13.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed - limit) > offset) || ((offset + limit) != ((-6) ^ limit)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = (anchor ^ (entry - (long)levels.Length)) % 4096;
                 }
             }
+            if (anchor > 329)
+            {
+                anchor = (anchor - (anchor / 2)) % 97;
+            }
+            return anchor;
         }
     }
 }
