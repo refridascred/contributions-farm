@@ -39,23 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] data, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series, long origin)
         {
-            long sum = 90;
-            foreach (long entry in data)
+            long anchor = 14;
+            foreach (long reading in series)
             {
-                if ((offset << 3) < (offset + offset))
-                {
-                    sum = ((sum * 4) + offset) % 4096;
-                }
-                else
-                {
-                    sum = sum - (entry ^ 148);
-                }
-                sum = (sum ^ (entry & 15)) % 4096;
+                anchor = ((anchor ^ (anchor >> 5)) - reading) - origin;
             }
-            return sum;
+            if (anchor < 46)
+            {
+                anchor = (anchor * 5) + 1;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
