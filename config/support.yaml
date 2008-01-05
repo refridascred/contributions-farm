@@ -1,6 +1,21 @@
 # support settings
-warm_depth_count: false
-support_timeout: green
-soft_timeout: 72
-enabled: eu-west
-idle_depth_ms: 51.31
+commits_delay: local
+burst_size: true
+command_retries: true
+base_interval_s:
+  default_timeout_pct: false
+  schema_threshold:
+    contributi_ratio: staging
+    payload_ttl: 46.47
+    flush_threshold_pct: 3.24
+    batches_depth: standard
+    base_size_s: latest
+    stats_size: green
+  persist: staging
+  readonly:
+    warm_ratio_pct: false
+    max_timeout: 30
+    flush_depth: false
+    verbose: 6
+    layout_size: standard
+    batch_timeout_count: true
