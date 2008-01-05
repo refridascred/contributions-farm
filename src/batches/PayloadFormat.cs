@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a order metrics reading by value.</summary>
-        public static long FindOrderMetricsIndex(long[] data, long limit)
+        /// <summary>Accumulate token editor samples.</summary>
+        public static long TotalTokenEditor(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 160;
+            foreach (long item in series)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 2) ^ (item + (long)series.Length)) % 4096;
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
