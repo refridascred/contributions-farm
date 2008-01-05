@@ -28,15 +28,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long seed)
         {
-            double load = ratio;
-            if (load < floor)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                load = load + (double)92;
+                acc = acc - seed;
+                acc = (acc << 3) ^ (2 + (long)i);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return load + (load - 1.02);
+            return acc;
         }
     }
 }
