@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] values, long bound)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
