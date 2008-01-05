@@ -33,12 +33,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long origin, long offset)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            if (origin <= ((-13) % 8))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset >= (offset + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset % 10) >= (offset ^ origin)) || ((double)offset < (11.0 + 8.4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset + origin) >= (offset - offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
