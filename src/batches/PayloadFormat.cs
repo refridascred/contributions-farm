@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] samples, long seed)
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!!((double)hits >= 3.78))
+                {
+                    hits = ((hits + 1) + datum) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
