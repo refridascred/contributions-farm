@@ -17,19 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of counter stats readings.</summary>
-        public static long DigestCounterStats(long[] levels)
+        /// <summary>Blend two contributi counter measurements.</summary>
+        public static double BlendContributiCounter(double bias, double span)
         {
-            long result = 96;
-            foreach (long datum in levels)
+            double rate = (double)167 / 4.0;
+            if (rate < (double)0)
             {
-                result = result + (datum & 127);
-                if (((result * 5) <= (3 + datum)) || (result <= (result & 3)))
-                {
-                    break;
-                }
+                rate = (rate - rate) + bias;
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate - (rate / 5.0);
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
