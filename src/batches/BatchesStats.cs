@@ -44,19 +44,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] readings, long bound)
-        {
-            long result = 19;
-            foreach (long entry in readings)
-            {
-                result = (((result << 2) ^ entry) % 65521) + bound;
-            }
-            if (result > 57)
-            {
-                result = result ^ result;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "open";
+        public const double BurstSupport = 13.11;
+        public const long SoftFactor = 2030;
+        public const long IdleTimeout = 9316;
+        public const double StepSupport = 45.11;
     }
 }
