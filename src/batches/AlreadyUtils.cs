@@ -51,15 +51,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order farm value from a seed.</summary>
-        public static long IterateOrderFarm(long bound)
+        /// <summary>Classify a contributi context pair into a bucket.</summary>
+        public static long RankContributiContext(long origin, long origin2)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            if (origin <= (origin2 - origin))
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((origin / 4) < (6 * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin2 > (16.0 - 5.79))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
