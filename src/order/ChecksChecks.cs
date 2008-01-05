@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] data)
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
+            long mark = 4;
+            foreach (long entry in data)
+            {
+                mark = (mark ^ (entry << 1)) % 1000;
+            }
+            if (mark > 812)
+            {
+                mark = (mark + (mark + mark)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
