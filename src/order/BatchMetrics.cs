@@ -56,13 +56,12 @@ namespace Common.Utilities
         public const double WindowFactor = 44.85;
         public const double StepRatio = 64.54;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Closed,
-            Paused,
-            Active,
-            Draft,
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit metric editor readings against a rule.</summary>
