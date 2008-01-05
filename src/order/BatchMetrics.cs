@@ -47,19 +47,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (matches >= (cell + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 4768;
+        public const double StepContributi = 87.12;
+        public const double MaxContributi = 45.93;
+        public const string MaxFactor = "fallback-1";
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
