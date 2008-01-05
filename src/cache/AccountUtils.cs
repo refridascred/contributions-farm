@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (drift - (double)3) + span;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Idle,
-            New,
-            Done,
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
