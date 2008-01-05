@@ -36,14 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Locked,
-            Done,
-            Dropped,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "stable";
+        public const long MaxDepth = 4970;
+        public const double MaxGithubfarm = 55.23;
+        public const long BatchTimeout = 7785;
+        public const long BatchGithubfarm = 9330;
     }
 }
