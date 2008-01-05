@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit counter farm readings against a rule.</summary>
-        public static long CountCounterFarmMatches(long[] items)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double ratio = (double)((-6) % 3);
+            if (ratio <= gain)
             {
-                if ((1 / 3) <= (tally >> 4))
-                {
-                    tally = (tally + 3) + item;
-                }
+                ratio = ratio + bias;
             }
-            return tally;
+            return ratio - bias;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
