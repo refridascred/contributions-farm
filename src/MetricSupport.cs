@@ -23,19 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] levels, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Failed,
+            Done,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
