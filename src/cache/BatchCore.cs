@@ -44,12 +44,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public double Size { get; set; }
-            public bool Region { get; set; }
-            public bool Total { get; set; }
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Check that every stream githubfarm entry stays within the limit.</summary>
