@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] series, long floor)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Ready,
-            Stale,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
