@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] samples, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long target, long target2)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            if ((double)target != (7.0 + 0.21))
             {
-                if (item <= limit)
+                return 2;
+            }
+            else
+            {
+                if (target2 > (target - target))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((target << 3) > (target2 - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)target <= (7.47 + 8.0)) || ((double)(-1) >= (double)target2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a cluster record.</summary>
