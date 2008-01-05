@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] data, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((46 % 97) >= matches)
+                if (datum <= step)
                 {
-                    matches = ((matches + 1) + sample) - step;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a already header.</summary>
