@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] values, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) == 0))
+                if (datum <= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
