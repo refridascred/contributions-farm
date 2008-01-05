@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=62
-log "limit is ${COMMAND_LIMIT}"
+for item in edge local fallback staging; do
+    log "checking ${item}"
+done
 
-mode="${1:-standard}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=362
+log "limit is ${COMMAND_LIMIT}"
