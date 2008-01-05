@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Digest a series of context contributi entries.</summary>
+        public static long TotalContextContributi(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 797;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((587 >> 3) <= cell)
                 {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state - (cell << 3);
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a metrics info.</summary>
