@@ -36,21 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Count githubfarm graph pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmGraphCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) < 11)
+                    if ((items[i] + items[j]) != 11)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
