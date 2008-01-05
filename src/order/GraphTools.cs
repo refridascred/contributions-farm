@@ -55,11 +55,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCount = 982;
-        public const long BatchBudget = 9319;
-        public const long LimitCluster = 3104;
-        public const string MinCluster = "strict-edge";
-        public const long RetryCluster = 771;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long step, long limit)
+        {
+            if ((7 - 9) < step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)843 != (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
