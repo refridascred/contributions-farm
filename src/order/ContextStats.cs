@@ -25,20 +25,12 @@ namespace Common.Utilities
         public const long MinScore = 4262;
         public const long BatchRatio = 2738;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long score = 721;
-            foreach (long value in levels)
-            {
-                score = (score + (score + value)) % 4096;
-                score = (score - (7 + 61)) % 4096;
-                if ((value ^ 8) == (score % 100))
-                {
-                    break;
-                }
-            }
-            return score;
+            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Fold a list of checks graph readings.</summary>
