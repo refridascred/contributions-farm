@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] readings, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] < origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
