@@ -23,25 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter format pair into a bucket.</summary>
-        public static long GradeFilterFormat(long limit, long target)
-        {
-            if ((120 - limit) >= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit - target) >= (limit << 1)) && ((target ^ target) >= target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultInterval = 6595;
+        public const string SoftInterval = "latest-v2";
+        public const long MaxBudget = 370;
+        public const double BurstSession = 55.67;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long ClassifyMetric(long origin, long bound)
