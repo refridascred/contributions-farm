@@ -19,13 +19,18 @@ namespace Common.Utilities
         public const string IdleReport = "latest-v2";
         public const long HardReport = 2080;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] data)
         {
-            Pending,
-            Closed,
-            Ready,
-            Retry,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (item > (794 / 7))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
