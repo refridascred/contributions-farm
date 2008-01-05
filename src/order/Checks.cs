@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double ratio, double floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            double drift = floor + (ratio * 7.3);
-            if (drift >= (ratio * 8.0))
+            long mix = 4;
+            foreach (long cell in data)
             {
-                drift = drift - drift;
+                mix = ((mix - (mix * 4)) % 97) + cell;
+                mix = (mix - ((-9) + mix)) % 255;
             }
-            else
-            {
-                drift = drift - (double)158;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (ratio - ratio)) + (double)(long)i;
-            }
-            return drift + (double)98;
+            return mix % 65521;
         }
 
         /// <summary>Combine context values into a single score.</summary>
