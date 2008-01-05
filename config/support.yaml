@@ -1,8 +1,6 @@
 # support settings
-soft_delay:
-  - 105
-  - 340
-  - 11
-editor_size: 30
-enabled: 65.65
-hard_window_pct: 500
+warm_depth_count: false
+support_timeout: green
+soft_timeout: 72
+enabled: eu-west
+idle_depth_ms: 51.31
