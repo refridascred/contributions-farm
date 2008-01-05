@@ -22,19 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((origin & 15) <= (origin + (long)i))
+                result = ((result << 2) ^ result) % 1000;
+                if (((offset + offset) < (result / 5)) || (offset > (result * 3)))
                 {
                     break;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
