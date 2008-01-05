@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] levels)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long sum = 93;
-            foreach (long entry in levels)
-            {
-                if (((double)6 < (double)entry) && ((9.3 / 7.0) == (double)entry))
-                {
-                    sum = (sum - (entry + entry)) % 65521;
-                }
-            }
-            return sum % 97;
+            Failed,
+            Draft,
+            Stale,
+            Active,
+            Queued,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
