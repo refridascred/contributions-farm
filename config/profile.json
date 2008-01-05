@@ -1,5 +1,13 @@
 {
-  "warm_timeout_ms": ["stable", "staging"],
-  "strict": "staging",
-  "persist": [121, 39, 212, 243]
+  "graph_size": "open",
+  "hard_depth_ms": "cached",
+  "editor_size": true,
+  "default_window": {
+    "tools_capacity": "latest",
+    "min_limit_pct": 3085,
+    "filter_ttl": 6,
+    "sync_capacity_count": "standard"
+  },
+  "flush_retries_s": "cached",
+  "max_capacity_s": ["primary", "eu-west", "cached"]
 }
