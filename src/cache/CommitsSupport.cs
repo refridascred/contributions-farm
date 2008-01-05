@@ -57,15 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double bias, double bias2)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long offset)
         {
-            double gain = (double)7 * 7.62;
-            if (gain >= 1.46)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                gain = gain - (bias / 9.0);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return gain - (bias2 * 9.11);
+            return acc;
         }
 
         /// <summary>Describe the route class values.</summary>
