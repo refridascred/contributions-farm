@@ -24,13 +24,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long floor)
         {
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + cell) > (seen % 24))
+                {
+                    seen = (seen + 3) + floor;
+                }
+            }
+            return seen;
         }
     }
 }
