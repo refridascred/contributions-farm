@@ -63,39 +63,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long origin, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] samples)
         {
-            long lane = origin + target;
-            if (((target / 5) <= target) && (lane >= 54))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((lane * 3) >= (202 % 10))
+                if (!((hits >> 2) < ((long)samples.Length - hits)))
                 {
-                    return 6;
+                    hits = (hits + 3) + reading;
                 }
                 else
                 {
-                    if ((double)lane <= 4.48)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((lane + target) > origin) || ((origin % 24) != (origin - origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
