@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double bias, double offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double drift = bias;
-            if (drift >= bias)
-            {
-                drift = (drift - (double)894) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - 3.5) - (double)(long)i;
-            }
-            return drift + (double)(-12);
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
