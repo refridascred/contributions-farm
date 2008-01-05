@@ -26,21 +26,23 @@ namespace Common.Utilities
         public const string DefaultScore = "standard-edge";
         public const long IdleInterval = 1516;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 12;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((total + 6) != (datum >> 3)) && (total <= (bound + total)))
                 {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total + (86 / 3)) % 65521;
                 }
+                total = (total << 2) ^ (total + 5);
             }
-            return matches;
+            if (total < 72)
+            {
+                total = total - (207 & 63);
+            }
+            return total;
         }
     }
 }
