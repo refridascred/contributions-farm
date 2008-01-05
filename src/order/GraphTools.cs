@@ -33,10 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 3.11;
-        public const string BaseNotes = "primary-1";
-        public const double MinNotes = 46.52;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 40.55;
+        public const string IdleBatches = "cached-v2";
+        public const long DefaultCount = 5409;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
