@@ -54,18 +54,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] readings)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample / 8) <= (matches / 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            Dropped,
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
