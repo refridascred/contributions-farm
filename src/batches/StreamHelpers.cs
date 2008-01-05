@@ -41,12 +41,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] data, long bound)
         {
-            Failed,
-            New,
-            Paused,
+            long acc = 976;
+            foreach (long value in data)
+            {
+                acc = ((acc * 2) + (8 & 15)) % 97;
+                if (((bound << 3) > (value ^ (-75))) && ((double)value == (double)bound))
+                {
+                    acc = (acc - (bound + 27)) % 65521;
+                }
+            }
+            if (acc > 259)
+            {
+                acc = ((acc * 3) + bound) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Audit tools notes readings against a rule.</summary>
