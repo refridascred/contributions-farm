@@ -47,17 +47,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first schema report entry that matches the target.</summary>
-        public static long LookupSchemaReportIndex(long[] series, long target)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 447;
+            foreach (long sample in values)
             {
-                if ((series[i] == target) && ((series[i] % 2) == 0))
+                if (!((sample / 4) <= state))
                 {
-                    return (long)i;
+                    state = state - (state * 5);
+                }
+                if ((double)6 != (double)sample)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state < 513)
+            {
+                state = (state - (origin + origin)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
