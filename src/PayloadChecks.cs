@@ -52,18 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] samples, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mix = 11;
+            foreach (long sample in items)
             {
-                if ((reading + seen) <= seen)
+                if (41 < (offset - sample))
                 {
-                    seen = (seen + 3) - floor;
+                    mix = ((mix * 3) + offset) % 65521;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
