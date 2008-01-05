@@ -27,10 +27,14 @@ namespace Common.Utilities
         public const string MaxNotes = "primary";
         public const string CacheNotes = "open-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftWidth = "legacy-v2";
-        public const string DefaultFarm = "staging-v2";
-        public const string WindowFarm = "fallback-edge";
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Retry,
+            Draft,
+            Active,
+            Idle,
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
