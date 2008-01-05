@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] levels)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((7.97 / 6.0) == (double)sample)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
