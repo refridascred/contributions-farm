@@ -32,18 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] data, long origin)
+        /// <summary>Look up the position of a report session sample.</summary>
+        public static long SeekReportSessionIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + reading) <= (hits << 1))
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
                 {
-                    hits = (hits + 2) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
