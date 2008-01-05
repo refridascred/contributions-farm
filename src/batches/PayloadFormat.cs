@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            Ready,
-            Draft,
-            Closed,
-            New,
+            long state = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
