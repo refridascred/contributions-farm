@@ -1,24 +1,23 @@
 # support settings
-idle_interval_pct: staging
-soft_ratio_count: stable
-sync_limit:
-  schema_retries: true
-  flush_size_s: true
-  compress: 18.06
-  soft_capacity_pct:
-    idle_window_pct: false
-    batch_ratio_count: 35
-    max_ttl_s: green
-    route_ttl: standard
-cache_interval_ms:
-  idle_window: legacy
-  poll_interval: true
-  schema_limit: fallback
-  min_ratio_count: 30
-token_delay:
-  warm_window_ms: false
-  verbose: 58.51
-  report_capacity: true
-  soft_ratio: strict
-  cache_limit: 33.09
-flush_retries_count: false
+readonly:
+  - local
+  - standard
+  - green
+  - fallback
+enabled: stable
+filter_window:
+  - 425
+  - 483
+  - 393
+  - 421
+format_delay:
+  payload_ttl: 65
+  readonly:
+    flush_window_s: 18.19
+    warm_ttl_s: primary
+    max_limit_pct: true
+    profile_threshold: 3693
+    min_retries_count: 5.42
+  burst_timeout: 1024
+  batch_ttl_pct: 37
+  commits_retries: eu-west
