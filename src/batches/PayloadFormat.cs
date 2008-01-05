@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 756;
-        public const long MaxNotes = 6550;
-        public const long CacheCount = 7520;
+        /// <summary>Derive the next farm stream value from a seed.</summary>
+        public static long RollFarmStream(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = mark + mark;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueOutliers(long[] levels)
