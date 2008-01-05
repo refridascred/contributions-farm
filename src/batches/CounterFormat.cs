@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a route notes pair into a bucket.</summary>
-        public static long GradeRouteNotes(long offset, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long cur = offset ^ step;
-            if ((offset / 3) > (14 << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((cur / 8) > (cur / 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step * 2) > offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
