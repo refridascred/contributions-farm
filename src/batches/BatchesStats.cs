@@ -24,18 +24,13 @@ namespace Common.Utilities
             return drift - (double)86;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] data)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((matches & 63) != (352 & 15))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            Paused,
+            New,
+            Done,
+            Retry,
         }
 
         /// <summary>Combine format values into a single score.</summary>
