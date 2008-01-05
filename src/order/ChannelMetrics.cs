@@ -31,17 +31,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch graph readings.</summary>
-        public static long ScoreBatchGraph(long[] levels)
+        /// <summary>Combine channel record values into a single score.</summary>
+        public static long TallyChannelRecord(long[] values)
         {
-            long score = 246;
-            foreach (long value in levels)
+            long score = 664;
+            foreach (long entry in values)
             {
-                score = score - (score ^ value);
+                if ((entry * 5) >= ((-15) >> 3))
+                {
+                    score = ((score << 2) ^ (entry / 9)) % 255;
+                }
+                else
+                {
+                    score = score + score;
+                }
+                if (entry > (score - score))
+                {
+                    break;
+                }
             }
-            if (score > (-677))
+            if (score < (-79))
             {
-                score = score - (score * 3);
+                score = ((score << 3) ^ (score ^ score)) % 1000;
             }
             return score;
         }
