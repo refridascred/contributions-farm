@@ -52,20 +52,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 2293;
+        public const long MaxWidth = 2210;
+        public const long MaxCluster = 1840;
+        public const long BaseCluster = 2925;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] values)
