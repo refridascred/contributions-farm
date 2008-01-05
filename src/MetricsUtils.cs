@@ -51,19 +51,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] series, long bound)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
