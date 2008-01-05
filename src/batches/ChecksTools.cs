@@ -27,12 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Look up the position of a token contributi sample.</summary>
+        public static long LookupTokenContributiIndex(long[] data, long step)
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate channel notes samples.</summary>
