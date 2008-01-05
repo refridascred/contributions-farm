@@ -59,16 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
             {
-                result = (result + (729 % 2)) % 1000;
-                result = ((result * 2) + (long)i) % 4093;
+                sum = (sum ^ ((long)i + (long)i)) % 255;
+                sum = ((sum << 3) ^ (243 + sum)) % 1000;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Blend two cache batches measurements.</summary>
