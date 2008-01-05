@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] levels)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - 18) > sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
