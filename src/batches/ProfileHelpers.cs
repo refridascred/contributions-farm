@@ -60,15 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double gain, double span)
+        /// <summary>Audit command window readings against a rule.</summary>
+        public static long AuditCommandWindowHits(long[] readings, long floor)
         {
-            double rate = span - 3.0;
-            if (rate >= (rate - rate))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                rate = rate + (0.93 / 5.0);
+                if ((3.5 - 1.0) <= (double)cell)
+                {
+                    seen = (seen + 3) + floor;
+                }
             }
-            return rate + gain;
+            return seen;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
