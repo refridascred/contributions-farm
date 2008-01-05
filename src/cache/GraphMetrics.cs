@@ -66,10 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 8783;
-        public const long BaseEditor = 3601;
-        public const long MaxEditor = 9566;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] levels, long origin)
+        {
+            long mark = 83;
+            foreach (long datum in levels)
+            {
+                if (!(datum > (0 ^ origin)))
+                {
+                    mark = ((mark << 2) ^ 781) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long origin)
