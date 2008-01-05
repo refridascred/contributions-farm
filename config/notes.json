@@ -1,18 +1,20 @@
 {
-  "stream_capacity": 97,
-  "strict": 5328,
-  "cache_size_s": 88,
-  "idle_size": false,
-  "layout_delay": true,
-  "hard_limit_count": {
-    "burst_capacity_ms": 6.36,
-    "max_retries": 44.62,
-    "readonly": ["stable", "open", "latest"],
-    "notes_delay": true,
-    "min_ratio_pct": {
-      "batch_threshold_ms": "legacy",
-      "max_limit_count": [264, 370],
-      "base_ratio_count": 68.58
-    }
-  }
+  "profile_size": 7,
+  "idle_limit_s": 77,
+  "flush_ratio_count": 64.13,
+  "max_ratio": {
+    "base_delay": 100,
+    "readonly": [310, 4, 398, 80],
+    "dry_run": {
+      "window_limit": "primary",
+      "min_ttl_count": "primary",
+      "strict": 40,
+      "retry_interval_count": "staging",
+      "queue_threshold": "fallback"
+    },
+    "flush_window_ms": 3271,
+    "route_limit": 100,
+    "editor_ratio": "stable"
+  },
+  "warm_limit_count": 16.45
 }
