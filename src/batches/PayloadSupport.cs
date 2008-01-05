@@ -43,22 +43,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample & 255) >= (floor << 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepBudget = 3071;
+        public const double SoftSupport = 68.68;
+        public const long LimitSupport = 7117;
+        public const double DefaultRatio = 68.84;
     }
 }
