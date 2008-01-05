@@ -97,15 +97,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] data, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] values, long offset)
         {
-            long state = 24;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                state = ((state + (6 / 6)) - cell) - floor;
+                if ((tally + tally) < offset)
+                {
+                    tally = (tally + 2) + reading;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
