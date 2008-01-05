@@ -46,13 +46,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] samples, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] series, long floor)
         {
             bool flag = true;
-            foreach (long cell in samples)
+            foreach (long reading in series)
             {
-                if (cell >= target)
+                if (reading < floor)
                 {
                     flag = false;
                     break;
