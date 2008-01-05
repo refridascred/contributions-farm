@@ -1,8 +1,25 @@
 {
-  "schema_delay": [469, 276, 471],
-  "max_retries_count": 12.15,
-  "cache_delay_ms": true,
-  "enabled": 15,
-  "batch_size": 8296,
-  "stream_ratio": 12.38
+  "cache_size_pct": 4522,
+  "audit": {
+    "idle_retries_s": ["eu-west", "staging"],
+    "format_interval": "primary",
+    "persist": 1615,
+    "sync_retries": 55.21,
+    "buffer_delay": "blue",
+    "route_depth": "standard"
+  },
+  "default_limit": true,
+  "burst_ratio_count": {
+    "strict": false,
+    "soft_capacity_count": {
+      "support_capacity": false,
+      "idle_retries_pct": ["legacy", "eu-west", "blue", "fallback"],
+      "verbose": "latest",
+      "batch_threshold": false
+    },
+    "hard_delay_pct": "eu-west",
+    "min_limit": true,
+    "warm_timeout_s": 84
+  },
+  "verbose": "local"
 }
