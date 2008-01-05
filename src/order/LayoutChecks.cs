@@ -42,12 +42,21 @@ namespace Common.Utilities
         public const long BurstEditor = 2013;
         public const long DefaultEditor = 4222;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Match up layout tools samples.</summary>
+        public static long MatchLayoutToolsCount(long[] values)
         {
-            Failed,
-            Locked,
-            New,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
