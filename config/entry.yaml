@@ -1,5 +1,13 @@
 # entry settings
-command_timeout: 6338
-burst_timeout_s: green
-notes_ratio: 52
-cache_capacity_count: standard
+default_depth_ms:
+  - stable
+  - green
+audit:
+  - primary
+  - eu-west
+notes_window:
+  - primary
+  - legacy
+  - fallback
+compress: 13
+flush_interval: false
