@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up batches account samples.</summary>
-        public static long OverlapBatchesAccountCount(long[] levels)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((9.52 + 7.04) < (double)value)
                 {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) - seed;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a farm window reading by value.</summary>
