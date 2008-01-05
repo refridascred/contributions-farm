@@ -1,5 +1,14 @@
 {
-  "burst_threshold_count": ["blue", "local", "strict", "fallback"],
-  "warm_limit": 84.56,
-  "poll_ttl_ms": "green"
+  "stream_interval": false,
+  "min_delay": 81,
+  "enabled": 44,
+  "burst_window": ["stable", "latest"],
+  "readonly": 78.64,
+  "verbose": {
+    "flush_timeout_count": 2224,
+    "hard_ttl": [116, 162, 319],
+    "audit": ["primary", "standard", "eu-west", "eu-west"],
+    "strict": "fallback",
+    "min_delay": "staging"
+  }
 }
