@@ -24,15 +24,12 @@ namespace Common.Utilities
         public const long BurstSize = 9530;
         public const long SoftBudget = 3847;
 
-        /// <summary>Adjust a notes route reading.</summary>
-        public static double AdjustNotesRoute(double rate, double bias)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double bias2 = 0.05;
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - (rate / 2.0);
+            Ready,
+            New,
+            Active,
         }
     }
 }
