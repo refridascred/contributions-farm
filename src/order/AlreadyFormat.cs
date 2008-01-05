@@ -84,18 +84,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] samples)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)entry != (6.4 - 13.0)) && (((entry + 23) >= (entry - hits)) || ((8 & 3) < (hits / 3))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
