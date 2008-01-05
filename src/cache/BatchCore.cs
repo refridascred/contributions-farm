@@ -20,19 +20,12 @@ namespace Common.Utilities
         public const string DefaultAccount = "strict-1";
         public const long HardAccount = 248;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] values, long offset)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Size { get; set; }
+            public bool Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of batch window readings.</summary>
