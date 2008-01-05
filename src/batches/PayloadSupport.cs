@@ -15,22 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((571 << 1) >= (matches - matches))
+                if (value != origin)
                 {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
