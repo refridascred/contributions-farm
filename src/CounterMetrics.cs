@@ -68,20 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long sum = 8;
-            foreach (long entry in data)
-            {
-                if ((entry + entry) > 652)
-                {
-                    sum = sum - (sum & 63);
-                    sum = (sum ^ sum) % 1000;
-                }
-                sum = (sum ^ (entry - entry)) % 4096;
-            }
-            return sum;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
         }
     }
 }
