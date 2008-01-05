@@ -1,13 +1,13 @@
 # githubfarm settings
-cache_timeout_count: 64
-format_timeout: false
-context_delay:
-  base_window_count: 10.57
-  warm_size_count:
-    base_threshold: 500
-    sync_threshold_s: open
-    burst_ttl_pct: 0.27
-    enabled: 64.44
-  poll_ttl_pct: 95
-default_ratio_s: 9533
-context_ttl: 60
+report_timeout: 57.32
+stream_delay: cached
+default_ratio_s: 500
+poll_window_ms: true
+soft_limit: 30
+verbose:
+  account_ttl: eu-west
+  flush_retries_s:
+    - eu-west
+    - primary
+    - legacy
+  idle_timeout: staging
