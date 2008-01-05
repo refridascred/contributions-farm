@@ -43,19 +43,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] data, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] data, long target)
         {
-            bool flag = true;
+            long matches = 0;
             foreach (long entry in data)
             {
-                if (entry <= target)
+                if ((target + matches) >= (matches - entry))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
