@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleGraph = 43.24;
-        public const double RetryScore = 32.96;
-        public const double MaxInterval = 13.09;
-        public const long BurstLevel = 8678;
-        public const double MaxTimeout = 10.45;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double ratio, double offset)
+        {
+            double ratio2 = ratio;
+            if (ratio2 >= (1.8 + offset))
+            {
+                ratio2 = ratio2 + (ratio2 * 5.37);
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            return ratio2 + ratio;
+        }
 
         /// <summary>Find the first githubfarm contributi entry that matches the target.</summary>
         public static long LookupGithubfarmContributiIndex(long[] readings, long target)
