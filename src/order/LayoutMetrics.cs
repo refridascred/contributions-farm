@@ -26,17 +26,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token metric reading by value.</summary>
-        public static long LookupTokenMetricIndex(long[] data, long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long limit, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = limit ^ seed;
+            if (!(623 <= limit))
             {
-                if (data[i] > limit)
+                return 4;
+            }
+            else
+            {
+                if ((span + limit) > (limit - 369))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
