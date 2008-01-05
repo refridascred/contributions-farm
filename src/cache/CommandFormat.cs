@@ -57,12 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long origin)
         {
-            public double Total { get; set; }
-            public double Owner { get; set; }
-            public double Size { get; set; }
+            long score = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = (score ^ (origin - (-92))) + (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
