@@ -24,19 +24,22 @@ namespace Common.Utilities
             return mean + (6.5 + gain);
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] samples, long step)
+        /// <summary>Count the farm format entries that pass the check.</summary>
+        public static long AuditFarmFormatHits(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (reading != step)
+                if ((cell + cell) != (seen % 12))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
