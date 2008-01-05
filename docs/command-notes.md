@@ -1,10 +1,14 @@
 # Command notes
 
-The tools report groups every stream by account.
-The window report groups every contributi by queue.
+Defaults for batches live in the config folder and can be overridden per environment.
+Keep support and token names short and lowercase.
+
+Defaults for tools live in the config folder and can be overridden per environment.
+Run the format check before changing any tools limits.
 
 ## Guidelines
 
-- Document new context fields
-- Review profile limits each release
-- Log every session change
+- Prefer already defaults
+- Validate queue input early
+- Review contributi limits each release
+- Keep commits values small
