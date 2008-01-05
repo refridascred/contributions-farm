@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 88.89;
+        public const double LimitContributi = 9.56;
+        public const double BaseContributi = 98.8;
+        public const long MinContributi = 7454;
+        public const long BurstLevel = 6034;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsHits(long[] data, long target)
