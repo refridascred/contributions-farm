@@ -37,10 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 9722;
-        public const long BurstEditor = 2013;
-        public const long DefaultEditor = 4222;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (tally <= (sample >> 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up layout tools samples.</summary>
         public static long MatchLayoutToolsCount(long[] values)
