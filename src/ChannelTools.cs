@@ -27,16 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] data, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                sum = (sum ^ (sum / 3)) % 65521;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((origin % 2) > value)
+                {
+                    count = count + 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
