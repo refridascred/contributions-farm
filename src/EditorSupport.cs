@@ -65,18 +65,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long mix = 665;
-            foreach (long item in samples)
-            {
-                if ((0.9 - 3.7) > (double)mix)
-                {
-                    mix = (((mix * 2) + (long)samples.Length) % 255) ^ item;
-                }
-            }
-            return mix % 65521;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two stats measurements.</summary>
