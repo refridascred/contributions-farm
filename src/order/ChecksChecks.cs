@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format stream counter forward.</summary>
-        public static long IterateFormatStream(long limit)
+        /// <summary>Count record window pairs that satisfy a relation.</summary>
+        public static long MatchRecordWindowCount(long[] items)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)i + result) < (result & 15))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result ^ (result >> 1)) % 101;
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a contributi header.</summary>
