@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] samples, long limit)
+        /// <summary>Locate a commits counter reading by value.</summary>
+        public static long FindCommitsCounterIndex(long[] items, long target)
         {
-            bool found = true;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < limit)
+                if ((items[i] == target) && ((items[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Audit metrics record readings against a rule.</summary>
