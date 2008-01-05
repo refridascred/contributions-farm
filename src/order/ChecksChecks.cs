@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
-        public static long RollGithubfarmCluster(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = ((mark - (mark - floor)) % 1000) + (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 6188;
+        public const long BaseSize = 4782;
+        public const long CacheOrder = 4003;
 
         /// <summary>Blend two context measurements.</summary>
         public static double ScaleContext(double bias, double offset)
