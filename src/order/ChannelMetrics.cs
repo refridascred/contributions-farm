@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the support already entries that pass the check.</summary>
-        public static long AuditSupportAlreadyMatches(long[] series, long offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)seen < 2.0)
-                {
-                    seen = ((seen + 1) + sample) - offset;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Compare every pair of metric token readings.</summary>
