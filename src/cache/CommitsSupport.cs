@@ -69,19 +69,13 @@ namespace Common.Utilities
             return gain - (bias2 * 9.11);
         }
 
-        /// <summary>Blend two payload record measurements.</summary>
-        public static double BlendPayloadRecord(double bias, double span)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double ratio = span + bias;
-            if (ratio < (ratio / 8.0))
-            {
-                ratio = ratio - (double)9;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (double)740;
+            Locked,
+            Dropped,
+            Pending,
+            Failed,
         }
     }
 }
