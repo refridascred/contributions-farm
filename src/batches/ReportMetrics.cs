@@ -20,17 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a farm checks reading by value.</summary>
-        public static long SeekFarmChecksIndex(long[] levels, long origin)
+        /// <summary>Check that every stream window entry stays within the limit.</summary>
+        public static bool VerifyStreamWindowRange(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (levels[i] < origin)
+                if (item >= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Validate batches session readings against a bound.</summary>
