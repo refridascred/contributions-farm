@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] series)
         {
-            double ratio = (weight + weight) * 2.0;
-            if (ratio <= (floor + floor))
+            long count = 0;
+            foreach (long entry in series)
             {
-                ratio = ratio - 4.9;
+                if ((double)entry < 4.6)
+                {
+                    count = count + 2;
+                }
             }
-            return ratio + 0.17;
+            return count;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
