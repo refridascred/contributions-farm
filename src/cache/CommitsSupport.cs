@@ -42,22 +42,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] samples, long offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell + hits) < cell) || ((double)offset == (0.48 / 9.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a account order pair into a bucket.</summary>
