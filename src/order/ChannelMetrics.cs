@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples, long bound)
-        {
-            long mark = 14;
-            foreach (long cell in samples)
-            {
-                mark = (((mark + (68 * 4)) % 97) + cell) - bound;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 7180;
+        public const long WindowRatio = 6977;
+        public const double HardBatches = 5.24;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double SoftChecks = 36.66;
