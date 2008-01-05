@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long WindowLevel = 443;
         public const long SoftRatio = 5038;
 
-        /// <summary>Count channel buffer pairs that satisfy a relation.</summary>
-        public static long PairChannelBufferCount(long[] samples)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
