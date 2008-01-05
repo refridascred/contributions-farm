@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstSize = 55.0;
-        public const string MaxLevel = "cached-1";
-        public const long MaxSpan = 8644;
-        public const string IdleFactor = "staging";
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Ready,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double CacheQueue = 52.71;
