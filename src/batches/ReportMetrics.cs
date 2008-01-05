@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Grade a window queue value against two limits.</summary>
+        public static long ClassifyWindowQueue(long seed, long bound)
         {
-            long acc = 779;
-            foreach (long value in series)
+            if (((0 & 1) > (bound - bound)) && ((bound * 5) >= (bound - seed)))
             {
-                acc = acc - value;
-                if ((acc << 3) > (acc >> 5))
+                return 8;
+            }
+            else
+            {
+                if (seed <= (bound + seed))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound <= (61 / 3)) || ((8 / 2) > (bound << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
