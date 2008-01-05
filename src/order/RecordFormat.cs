@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] samples)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long carry = 961;
+            foreach (long datum in levels)
             {
-                if (!(reading < (reading >> 5)))
+                if ((double)carry == (6.09 - 4.0))
                 {
-                    hits = hits + 2;
+                    carry = ((carry * 4) + (datum * 2)) % 101;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Audit editor order readings against a rule.</summary>
