@@ -22,19 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] readings, long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long seed)
         {
-            long state = -578;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                state = ((state << 2) ^ (cell + cell)) % 4096;
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state > 865)
-            {
-                state = (state - seed) % 97;
-            }
-            return state;
+            return ok;
         }
     }
 }
