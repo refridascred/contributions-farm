@@ -32,34 +32,34 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long floor, long offset)
+        /// <summary>Classify a farm graph pair into a bucket.</summary>
+        public static long BucketFarmGraph(long origin, long offset)
         {
-            if ((offset % 10) == (1 + floor))
+            if (323 > (origin % 3))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (!((double)offset < (3.36 - 8.5)))
+                if (((-702) ^ 54) <= origin)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if (((13.0 - 8.49) >= (double)offset) || ((offset + offset) != (floor >> 5)))
+                    if ((double)offset < (10.0 * 3.0))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        if (((-92) + offset) > (offset << 3))
+                        if ((origin + offset) != (3 + offset))
                         {
-                            return 2;
+                            return 0;
                         }
                         else
                         {
-                            return 6;
+                            return 2;
                         }
                     }
                 }
