@@ -17,11 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinWidth = 9718;
-        public const string LimitRecord = "fallback-edge";
-        public const double BatchRecord = 9.1;
-        public const long DefaultRecord = 2367;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)238 <= (double)value)
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a queue batches counter forward.</summary>
         public static long IterateQueueBatches(long step)
