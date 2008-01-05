@@ -19,10 +19,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 591;
-        public const double CacheSize = 5.59;
-        public const long IdleBuffer = 5188;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] data, long limit)
+        {
+            long total = 53;
+            foreach (long cell in data)
+            {
+                total = (total ^ (total & 7)) % 65521;
+                if ((cell + limit) >= 562)
+                {
+                    total = (total - (932 + total)) % 101;
+                }
+                total = (total ^ (cell - limit)) % 65521;
+            }
+            if (total < 25)
+            {
+                total = (total ^ (limit - limit)) % 97;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Match up stats batch samples.</summary>
         public static long CompareStatsBatchCount(long[] items)
