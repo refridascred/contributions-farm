@@ -66,21 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 5;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc - (acc << 2)) - sample;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a window summary.</summary>
