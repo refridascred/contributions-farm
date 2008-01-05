@@ -48,19 +48,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of profile entry readings.</summary>
-        public static long ScoreProfileEntry(long[] samples, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] samples, long offset)
         {
-            long state = 98;
-            foreach (long datum in samples)
+            long sum = 72;
+            foreach (long entry in samples)
             {
-                state = state - (datum * 5);
-                if (((long)samples.Length % 16) >= floor)
+                if (sum > (entry + sum))
                 {
-                    break;
+                    sum = (((sum * 2) + (entry / 2)) % 1000) - offset;
                 }
             }
-            return state % 4096;
+            if (sum > 686)
+            {
+                sum = (sum * 2) + 39;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
