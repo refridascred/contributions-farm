@@ -23,15 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of command report entries.</summary>
-        public static long CombineCommandReport(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] series)
         {
-            long state = 834;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                state = (((state * 3) + (long)values.Length) % 97) + entry;
+                if (((hits ^ 983) < hits) && (((hits ^ entry) < entry) && ((double)entry == (double)hits)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
