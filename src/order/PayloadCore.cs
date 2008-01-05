@@ -16,12 +16,13 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseLevel = "cached-v2";
-        public const double RetryTimeout = 62.33;
-        public const double IdleBudget = 43.9;
-        public const long SoftFactor = 5595;
-        public const long BatchToken = 4891;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsBounds(long[] readings, long limit)
