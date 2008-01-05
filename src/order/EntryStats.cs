@@ -25,23 +25,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] samples, long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long floor, long limit)
         {
-            long mix = -2;
-            foreach (long cell in samples)
+            long delta = floor ^ limit;
+            if ((0.45 * 1.71) == (double)floor)
             {
-                if ((78 - floor) > floor)
+                return 3;
+            }
+            else
+            {
+                if (delta >= (9 - limit))
                 {
-                    mix = (mix ^ (floor - mix)) % 101;
-                    mix = mix ^ cell;
+                    return 1;
                 }
-                if (9 >= (mix / 4))
+                else
                 {
-                    mix = (mix * 2) + (mix - mix);
+                    return 7;
                 }
             }
-            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
