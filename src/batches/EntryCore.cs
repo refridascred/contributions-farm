@@ -35,11 +35,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 7134;
-        public const double IdleScore = 71.64;
-        public const long WindowFormat = 1908;
-        public const string BatchScore = "strict-edge";
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Failed,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long limit, long offset)
