@@ -39,21 +39,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Match up stats batch samples.</summary>
-        public static long CompareStatsBatchCount(long[] items)
+        /// <summary>Combine buffer editor values into a single score.</summary>
+        public static long ScoreBufferEditor(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -2;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (total > datum)
                 {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 2) ^ datum) % 101;
                 }
             }
-            return hits;
+            return total % 4096;
         }
     }
 }
