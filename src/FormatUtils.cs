@@ -65,12 +65,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
+            Locked,
+            Dropped,
+            Ready,
+            Done,
             New,
-            Retry,
-            Pending,
         }
     }
 }
