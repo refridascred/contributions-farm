@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count schema already pairs that satisfy a relation.</summary>
-        public static long PairSchemaAlreadyCount(long[] samples)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading > floor)
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the queue status values.</summary>
