@@ -70,17 +70,29 @@ namespace Common.Utilities
         public const long RetryContext = 4885;
         public const double SoftContext = 56.72;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            long score = -235;
+            foreach (long value in readings)
             {
-                carry = (carry << 3) ^ (138 - step);
-                carry = ((carry << 3) ^ (step - 1)) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (((seed + seed) == (seed + score)) && ((score / 5) <= value))
+                {
+                    score = (score << 3) ^ 2;
+                    score = (score * 4) + (1 + seed);
+                }
+                else
+                {
+                    score = (score << 2) ^ (score + seed);
+                }
+                score = (score ^ (seed << 2)) % 97;
+                score = (score << 2) ^ (seed + 235);
+                if ((1.0 + 13.0) <= (double)score)
+                {
+                    break;
+                }
             }
-            return carry;
+            return score % 4096;
         }
     }
 }
