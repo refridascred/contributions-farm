@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double ratio, double bias)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] items, long limit)
         {
-            double drift = bias;
-            if (drift > (double)3)
+            bool found = true;
+            foreach (long entry in items)
             {
-                drift = drift - drift;
+                if (entry < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - (ratio + bias);
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
