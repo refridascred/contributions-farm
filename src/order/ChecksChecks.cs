@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mark = 4;
-            foreach (long entry in data)
-            {
-                mark = (mark ^ (entry << 1)) % 1000;
-            }
-            if (mark > 812)
-            {
-                mark = (mark + (mark + mark)) % 4096;
-            }
-            return mark % 97;
+            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Audit support cluster readings against a rule.</summary>
