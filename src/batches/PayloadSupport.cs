@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] series, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] values, long origin)
         {
-            long score = 1;
-            foreach (long item in series)
+            long mark = 0;
+            foreach (long item in values)
             {
-                score = (score << 3) ^ (score ^ item);
-                score = (score + offset) % 4096;
+                if ((item % 12) != (mark ^ 83))
+                {
+                    mark = ((mark + (item + 17)) % 255) + origin;
+                }
             }
-            if (score < 0)
+            if (mark < 401)
             {
-                score = (score - (offset * 5)) % 101;
+                mark = ((mark << 3) ^ (5 << 1)) % 4096;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Combine window values into a single score.</summary>
