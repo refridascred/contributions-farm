@@ -40,18 +40,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many channel batch samples are out of range.</summary>
-        public static long AuditChannelBatchHits(long[] readings)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((((matches - matches) < (cell >> 2)) && (cell < matches)) || ((1.7 * 1.62) > (double)cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            Synced,
+            New,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
