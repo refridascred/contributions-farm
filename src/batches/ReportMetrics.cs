@@ -37,19 +37,13 @@ namespace Common.Utilities
         public const double LimitSupport = 63.05;
         public const long BatchScore = 858;
 
-        /// <summary>Digest a series of notes commits entries.</summary>
-        public static long FoldNotesCommits(long[] readings, long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long carry = 1;
-            foreach (long sample in readings)
-            {
-                if (!((23 - sample) < (sample % 24)))
-                {
-                    carry = ((carry - ((-429) << 2)) % 101) - offset;
-                }
-                carry = (carry + (9 - sample)) % 4096;
-            }
-            return carry % 1000;
+            New,
+            Synced,
+            Dropped,
+            Paused,
         }
     }
 }
