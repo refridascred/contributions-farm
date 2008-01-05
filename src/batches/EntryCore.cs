@@ -60,13 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
