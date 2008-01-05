@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] items, long offset)
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally % 97) > (offset ^ 888))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
