@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 371;
+        public const double MinProfile = 6.18;
+        public const long CacheProfile = 6346;
+        public const long MaxScore = 4068;
+        public const long HardProfile = 956;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double SoftFormat = 35.1;
