@@ -26,13 +26,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] items, long seed)
         {
-            Retry,
-            Failed,
-            Queued,
-            Draft,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches % 3) > (seed & 255))
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
