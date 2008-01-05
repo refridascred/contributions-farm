@@ -12,15 +12,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double ratio, double floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double bias = 7.0 - (double)69;
-            if (bias < (bias / 6.0))
-            {
-                bias = ((bias + bias) + ratio) - floor;
-            }
-            return bias + (double)562;
+            Draft,
+            Dropped,
+            Idle,
+            Done,
         }
 
         /// <summary>Accumulate context samples.</summary>
