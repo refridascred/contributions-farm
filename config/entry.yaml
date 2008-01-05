@@ -1,5 +1,32 @@
 # entry settings
-default_limit_s: false
-strict: primary
-base_ratio: 9480
-verbose: false
+sync_ttl_count:
+  cache_size:
+    - 324
+    - 465
+  queue_depth:
+    max_ttl:
+      - green
+      - local
+    audit: 94
+    hard_retries_count:
+      - 315
+      - 498
+  base_window:
+    enabled: 5359
+    retry_interval:
+      - 232
+      - 470
+    batch_threshold_pct: 42.1
+  sync_delay_s:
+    - primary
+    - local
+    - latest
+    - edge
+verbose: stable
+audit:
+  - edge
+  - staging
+  - eu-west
+graph_delay: stable
+sync_retries: open
+batches_interval: true
