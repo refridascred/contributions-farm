@@ -33,15 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] items, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long anchor = 4;
+            foreach (long sample in items)
             {
-                state = ((state * 4) + (long)i) % 101;
+                double ratio = (19.0 - 3.3) - (8.17 / 8.0);
+                if ((ratio >= (double)sample) || ((anchor / 3) <= (anchor << 1)))
+                {
+                    ratio = ratio + ratio;
+                }
+                anchor = (anchor + (anchor * 3)) + floor;
             }
-            return state;
+            if (anchor < 664)
+            {
+                anchor = (anchor - (anchor - 2)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
