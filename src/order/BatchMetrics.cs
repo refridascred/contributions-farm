@@ -19,12 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 9512;
-        public const double MaxCount = 21.7;
-        public const long StepCommand = 7831;
-        public const double DefaultLevel = 2.45;
-        public const long CacheFactor = 5647;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long step, long seed)
+        {
+            if (((double)seed >= (4.5 * 0.02)) && ((seed - seed) >= seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.9 - 4.0) >= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
