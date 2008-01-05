@@ -55,11 +55,11 @@ namespace Common.Utilities
         public const long RetryContext = 4885;
         public const double SoftContext = 56.72;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 4473;
-        public const double WindowFactor = 25.45;
-        public const long DefaultLevel = 5141;
-        public const string CacheFactor = "fallback-1";
-        public const long CacheLevel = 5504;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinBudget = 80.12;
+        public const long WindowDepth = 5286;
+        public const long DefaultBudget = 2166;
+        public const long RetryMetric = 2875;
+        public const long DefaultWidth = 6738;
     }
 }
