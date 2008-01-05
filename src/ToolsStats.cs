@@ -56,19 +56,17 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] items, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > limit)
+                if (values[i] < origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
