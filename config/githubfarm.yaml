@@ -1,6 +1,5 @@
 # githubfarm settings
-batch_timeout:
-  - latest
-  - edge
-dry_run: 6
-flush_ratio_s: staging
+sync_ratio: edge
+dry_run: false
+verbose: cached
+idle_delay: 60
