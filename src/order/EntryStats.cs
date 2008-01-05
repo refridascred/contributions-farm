@@ -44,18 +44,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] readings)
+        /// <summary>Look up the position of a command counter sample.</summary>
+        public static long LocateCommandCounterIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((entry + seen) > seen) && ((((long)readings.Length ^ entry) >= ((long)readings.Length ^ 7)) && ((double)entry >= (9.6 * 9.0))))
+                if (levels[i] > origin)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a token counter forward.</summary>
