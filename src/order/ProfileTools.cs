@@ -75,18 +75,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record graph readings against a rule.</summary>
-        public static long CountRecordGraphMatches(long[] levels, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits > (origin - origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + item;
+                    if ((levels[i] + levels[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine entry order values into a single score.</summary>
