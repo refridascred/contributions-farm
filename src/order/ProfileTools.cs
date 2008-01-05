@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a farm graph figure with a bias.</summary>
-        public static double BlendFarmGraph(double gain, double offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double drift = (double)88 - (offset / 2.0);
-            if (drift > (double)186)
-            {
-                drift = (drift + (double)535) + gain;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - (drift * 7.9);
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count stream farm pairs that satisfy a relation.</summary>
