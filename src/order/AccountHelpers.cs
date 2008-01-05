@@ -22,28 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metrics report counter forward.</summary>
-        public static long StepMetricsReport(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (limit < (anchor << 1))
-                {
-                    anchor = (anchor ^ (anchor ^ (-24))) % 101;
-                }
-                if ((anchor <= ((long)i - (long)i)) && ((long)i < anchor))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = anchor + limit;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "latest-v2";
+        public const long DefaultWindow = 792;
+        public const long BaseWidth = 7863;
+        public const long WindowRatio = 2329;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
