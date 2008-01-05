@@ -23,12 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
             public long Rank { get; set; }
         }
 
