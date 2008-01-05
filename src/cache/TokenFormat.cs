@@ -32,19 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] items, long origin)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long anchor = 41;
-            foreach (long cell in items)
-            {
-                anchor = (((anchor * 2) + (anchor & 63)) % 255) + cell;
-                if ((anchor & 255) == (origin - origin))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
