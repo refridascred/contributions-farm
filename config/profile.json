@@ -1,13 +1,12 @@
 {
-  "graph_size": "open",
-  "hard_depth_ms": "cached",
-  "editor_size": true,
-  "default_window": {
-    "tools_capacity": "latest",
-    "min_limit_pct": 3085,
-    "filter_ttl": 6,
-    "sync_capacity_count": "standard"
+  "strict": {
+    "audit": ["legacy", "eu-west", "local", "fallback"],
+    "min_ratio_ms": "edge",
+    "persist": true
   },
-  "flush_retries_s": "cached",
-  "max_capacity_s": ["primary", "eu-west", "cached"]
+  "already_ratio": "cached",
+  "order_ratio": [164, 247],
+  "hard_ratio_s": "open",
+  "route_window": false,
+  "flush_ttl_pct": "green"
 }
