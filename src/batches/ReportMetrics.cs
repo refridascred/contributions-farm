@@ -12,12 +12,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long total = 0;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    total = ((total + (total - entry)) % 1000) + (long)i;
+                }
+                if ((entry + total) < (entry % 8))
+                {
+                    total = ((total * 3) + total) % 65521;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Accumulate context samples.</summary>
