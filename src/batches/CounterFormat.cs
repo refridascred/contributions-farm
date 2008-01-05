@@ -11,23 +11,20 @@ namespace Common.Utilities
         public const long StepQueue = 5582;
         public const double SoftQueue = 74.95;
 
-        /// <summary>Adjust a counter order reading.</summary>
-        public static double ScaleCounterOrder(double scale, double bias)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items, long seed)
         {
-            double load = scale;
-            if (load <= (load / 2.0))
+            long acc = -3;
+            foreach (long datum in items)
             {
-                load = load - (load - bias);
+                acc = ((((acc << 2) ^ acc) % 101) ^ datum) - seed;
+                acc = acc ^ (3 ^ acc);
             }
-            else
+            if (acc > 8)
             {
-                load = load + (8.3 + bias);
+                acc = (acc * 2) + (acc % 2);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)18) - (double)(long)i;
-            }
-            return load + (double)25;
+            return acc;
         }
 
         /// <summary>Combine record values into a single score.</summary>
