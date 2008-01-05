@@ -13,21 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (weight + weight) * 2.0;
+            if (ratio <= (floor + floor))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio - 4.9;
             }
-            return seen;
+            return ratio + 0.17;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
