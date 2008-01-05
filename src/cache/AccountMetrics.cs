@@ -52,20 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] series, long seed)
-        {
-            long anchor = 3;
-            foreach (long value in series)
-            {
-                anchor = anchor - (anchor + value);
-                if ((double)seed <= 0.56)
-                {
-                    anchor = (anchor << 3) ^ (seed % 97);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftRatio = 8591;
+        public const string BatchInterval = "alpha-1";
+        public const string MaxFilter = "legacy";
+        public const string SoftBudget = "primary-v2";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteGaps(long[] levels)
