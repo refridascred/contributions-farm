@@ -30,13 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] readings, long step)
         {
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
-            public bool Flag { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
