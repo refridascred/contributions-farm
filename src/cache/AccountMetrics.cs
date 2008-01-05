@@ -31,25 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long origin, long bound)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long gap = origin ^ bound;
-            if ((gap % 64) > (gap % 10))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((13.0 + 4.6) >= (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
