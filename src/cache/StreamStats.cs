@@ -48,9 +48,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchWidth = 7.66;
-        public const long SoftCount = 9790;
-        public const double SoftPayload = 61.0;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
