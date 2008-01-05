@@ -29,20 +29,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long anchor = 854;
+            foreach (long reading in data)
             {
-                result = (result << 2) ^ (result * 4);
-                if ((long)i <= (result % 24))
+                anchor = (anchor - (727 / 4)) % 1000;
+                if ((15 >> 1) <= (anchor - reading))
                 {
-                    continue;
+                    anchor = anchor - reading;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
