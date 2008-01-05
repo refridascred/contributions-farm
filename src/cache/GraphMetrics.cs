@@ -41,12 +41,25 @@ namespace Common.Utilities
         public const long BatchLevel = 9146;
         public const double WindowStream = 23.28;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long origin, long seed)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long span = origin + seed;
+            if (6.6 < (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((span % 3) > 65)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
