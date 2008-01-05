@@ -17,21 +17,28 @@ namespace Common.Utilities
         public const long DefaultRatio = 4208;
         public const long SoftAlready = 182;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 3;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)datum >= (3.4 / 6.0))
                 {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor + datum) % 1000;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor & 63)) % 65521;
+                    anchor = (anchor ^ (datum + 905)) % 97;
+                }
+                if (((7.79 * 6.0) != (double)datum) || (anchor <= datum))
+                {
+                    anchor = (anchor + (datum + anchor)) % 1000;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the route mode values.</summary>
