@@ -20,26 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] series, long origin)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] levels, long seed)
         {
-            long mix = 29;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((entry * 4) > (origin ^ entry))
+                if (reading < seed)
                 {
-                    mix = ((mix * 5) + (entry >> 4)) % 255;
-                }
-                if ((mix % 64) >= (mix * 4))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mix > 17)
-            {
-                mix = mix + 19;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
