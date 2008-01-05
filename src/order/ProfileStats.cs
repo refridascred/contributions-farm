@@ -33,16 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] data, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total - (total - total)) % 97;
-                total = ((total * 3) + (long)i) % 97;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
