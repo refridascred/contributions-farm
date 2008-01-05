@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 74.09;
-        public const long CacheContributi = 1863;
-        public const string BatchContributi = "open-edge";
-        public const long HardContributi = 6117;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportOutliers(long[] readings, long limit)
