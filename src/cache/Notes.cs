@@ -36,15 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Count the support record entries that pass the check.</summary>
+        public static long CountSupportRecordOutliers(long[] values, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((seed & 31) > (hits - datum))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
