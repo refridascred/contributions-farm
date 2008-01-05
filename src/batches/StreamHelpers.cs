@@ -61,18 +61,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit tools notes readings against a rule.</summary>
-        public static long TallyToolsNotesGaps(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((76 / 6) == ((-3) - tally))
+                if (seen <= (datum & 31))
                 {
-                    tally = (tally + 2) ^ item;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
