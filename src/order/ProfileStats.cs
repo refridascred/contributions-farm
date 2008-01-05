@@ -20,17 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] items, long offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
