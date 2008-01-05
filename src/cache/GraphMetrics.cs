@@ -14,18 +14,38 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] levels, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long bound, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if (((bound - origin) <= bound) || ((bound * 3) < bound))
             {
-                if (((count < (sample - step)) || ((double)sample > (double)step)) && ((step + step) > count))
+                return 0;
+            }
+            else
+            {
+                if (origin <= (origin % 24))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((7 / 8) == (bound ^ bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound > (703 - bound)) && ((origin << 1) == (bound % 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
