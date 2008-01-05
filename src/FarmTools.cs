@@ -17,18 +17,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a farm tools counter forward.</summary>
-        public static long StepFarmTools(long floor)
+        /// <summary>Fold a list of counter stats readings.</summary>
+        public static long DigestCounterStats(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            long result = 96;
+            foreach (long datum in levels)
             {
-                if ((double)floor < 1.47)
+                result = result + (datum & 127);
+                if (((result * 5) <= (3 + datum)) || (result <= (result & 3)))
                 {
-                    result = (result * 3) + ((long)i ^ (long)i);
-                    result = (result - (long)i) % 1000;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
             return result;
         }
