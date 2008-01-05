@@ -51,15 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Ready,
+            Failed,
+            Stale,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define context limits and defaults.</summary>
