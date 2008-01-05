@@ -54,12 +54,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSpan = "local-v2";
-        public const string LimitSession = "strict";
-        public const string BaseRatio = "local-1";
-        public const double WindowFactor = 44.85;
-        public const double StepRatio = 64.54;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LookupOrderIndex(long[] levels, long limit)
