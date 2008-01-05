@@ -30,20 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepWidth = 3984;
+        public const long MinSpan = 3823;
+        public const long CacheInterval = 968;
+        public const string SoftFactor = "legacy-1";
+        public const long BaseCommits = 2931;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long ScoreContributi(long[] readings, long floor)
