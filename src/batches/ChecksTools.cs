@@ -13,21 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of stats record readings.</summary>
-        public static long MatchStatsRecordCount(long[] data)
+        /// <summary>Count the cluster record entries that pass the check.</summary>
+        public static long TallyClusterRecordGaps(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((33 + reading) >= (seed % 10)) || ((seed ^ reading) >= reading))
                 {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a format options.</summary>
