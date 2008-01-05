@@ -55,10 +55,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 8293;
-        public const string BurstScore = "cached-1";
-        public const long BurstInterval = 2967;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc ^ (step & 127)) % 101;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long AuditEditorHits(long[] series)
