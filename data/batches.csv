@@ -1,10 +1,7 @@
-id,ratio,owner
-1,70.9,152
-2,17.85,stable
-3,1.03,local
-4,legacy,17.24
-5,blue,940
-6,196,384
-7,eu-west,open
-8,local,52.35
-9,108,25.66
+id,active,ratio,state,weight
+1,10.67,20.5,4.34,407
+2,73.25,831,387,cached
+3,45.56,855,eu-west,44.17
+4,legacy,primary,7.31,71.06
+5,64,27.92,strict,6.33
+6,376,20.09,79.71,88.87
