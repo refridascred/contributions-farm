@@ -56,19 +56,25 @@ namespace Common.Utilities
         public const double IdleFarm = 69.8;
         public const long DefaultFarm = 7168;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double gain, double span)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long limit, long bound)
         {
-            double scale = gain + gain;
-            if (scale > (double)5)
+            long bound2 = limit - bound;
+            if (!(bound2 >= (bound - limit)))
             {
-                scale = scale - (double)435;
+                return 3;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                scale = (scale + (5.0 - gain)) - (double)(long)i;
+                if ((3 + limit) < (bound % 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return scale + span;
         }
     }
 }
