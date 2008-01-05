@@ -44,32 +44,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long seed)
-        {
-            if ((973 > seed) || ((double)offset <= (4.0 / 6.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((2 + seed) < seed) && (offset < 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (7.8 < (6.1 / 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 33.6;
+        public const long HardDepth = 2807;
+        public const long StepBatches = 7057;
+        public const long MinTimeout = 7184;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long bound)
