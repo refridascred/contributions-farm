@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] samples, long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long mark = 52;
-            foreach (long datum in samples)
-            {
-                if (((8.4 - 9.0) <= (double)mark) || ((15.0 + 7.9) >= (double)target))
-                {
-                    mark = ((mark ^ mark) % 97) + datum;
-                }
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the payload phase values.</summary>
