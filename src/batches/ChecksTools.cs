@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const string LimitToken = "latest-edge";
         public const long RetrySize = 605;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Measure how many channel batch samples are out of range.</summary>
+        public static long AuditChannelBatchHits(long[] readings)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((((matches - matches) < (cell >> 2)) && (cell < matches)) || ((1.7 * 1.62) > (double)cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
