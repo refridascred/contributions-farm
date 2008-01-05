@@ -49,18 +49,10 @@ namespace Common.Utilities
         public const double BatchStats = 25.41;
         public const string StepStats = "legacy-1";
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetrySize = 9503;
+        public const long BatchTimeout = 2793;
+        public const long DefaultTimeout = 2656;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
