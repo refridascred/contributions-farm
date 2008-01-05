@@ -21,13 +21,15 @@ namespace Common.Utilities
             return bias + (double)562;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] levels, long seed)
         {
-            Active,
-            Ready,
-            Draft,
-            Done,
+            long total = 67;
+            foreach (long sample in levels)
+            {
+                total = (((total << 3) ^ (0 / 7)) - sample) - seed;
+            }
+            return total % 65521;
         }
     }
 }
