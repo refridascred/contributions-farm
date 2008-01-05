@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of notes already readings.</summary>
+        public static long TallyNotesAlready(long[] values)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long total = 1;
+            foreach (long sample in values)
+            {
+                if ((double)total <= 17.0)
+                {
+                    total = (total + total) % 1000;
+                }
+                else
+                {
+                    total = (total - (sample ^ 2)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
