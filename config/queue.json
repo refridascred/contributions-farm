@@ -1,18 +1,8 @@
 {
-  "sync_interval_count": false,
-  "dry_run": "blue",
-  "format_retries": 500,
-  "batch_ttl_count": {
-    "burst_delay": {
-      "command_retries": true,
-      "sync_threshold_pct": [181, 491, 425],
-      "checks_threshold": ["staging", "latest"],
-      "compress": ["latest", "blue", "legacy", "standard"],
-      "min_depth": "cached"
-    },
-    "poll_size": 2707,
-    "burst_window_pct": 26.44,
-    "batch_depth": "blue",
-    "sync_delay_count": 1024
-  }
+  "schema_delay": [469, 276, 471],
+  "max_retries_count": 12.15,
+  "cache_delay_ms": true,
+  "enabled": 15,
+  "batch_size": 8296,
+  "stream_ratio": 12.38
 }
