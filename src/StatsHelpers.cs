@@ -13,21 +13,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((17.0 - 7.0) > (double)sum) && ((sum / 8) <= (offset ^ (long)i)))
                 {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + 70) % 97;
+                    sum = sum ^ (offset + sum);
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = (sum + (long)i) + (long)i2;
+                    sum = (sum - sum) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
