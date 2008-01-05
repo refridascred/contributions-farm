@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 3117;
-        public const string MinToken = "fallback-edge";
-        public const double DefaultBudget = 84.49;
-        public const string BurstScore = "open-v2";
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long WeighCommand(long[] values)
