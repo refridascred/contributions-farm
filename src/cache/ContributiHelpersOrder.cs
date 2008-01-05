@@ -27,19 +27,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double rate, double offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long offset)
         {
-            double weight = 7.8 - rate;
-            if (weight > (weight - 4.2))
+            if ((floor << 2) <= (0 / 7))
             {
-                weight = weight + (double)94;
+                return 6;
             }
             else
             {
-                weight = weight - weight;
+                if ((double)offset >= (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return weight + offset;
         }
     }
 }
