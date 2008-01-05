@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] series)
-        {
-            long carry = 47;
-            foreach (long entry in series)
-            {
-                if ((0.2 + 3.5) > (double)entry)
-                {
-                    carry = carry + (entry * 2);
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 6878;
+        public const long HardCount = 6721;
+        public const long BatchNotes = 9374;
+        public const long RetryFactor = 8177;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountOutliers(long[] values)
