@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] samples, long bound)
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((value + bound) != (bound + value)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
