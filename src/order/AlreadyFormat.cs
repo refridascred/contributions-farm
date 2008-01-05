@@ -65,38 +65,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long floor, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items, long offset)
         {
-            if (!((846 + floor) != (floor - floor)))
+            long mark = 30;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (target >= ((-703) & 255))
+                mark = (mark << 3) ^ (offset + value);
+                if ((double)offset != (double)(long)items.Length)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target <= (63 << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target + 99) > (floor + 473)) || ((floor >> 2) < floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = ((mark * 5) + (offset + mark)) % 97;
                 }
             }
+            if (mark < 89)
+            {
+                mark = ((mark << 3) ^ offset) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
