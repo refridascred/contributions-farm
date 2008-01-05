@@ -12,12 +12,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            Active,
-            New,
-            Done,
+            long mark = 7;
+            foreach (long datum in samples)
+            {
+                if ((double)datum < (3.7 * 9.95))
+                {
+                    mark = mark - (985 ^ mark);
+                }
+            }
+            if (mark > 3)
+            {
+                mark = mark - (mark ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
