@@ -1,8 +1,12 @@
 {
-  "base_timeout_pct": false,
-  "buffer_timeout": "open",
-  "default_ttl": ["strict", "cached", "edge"],
-  "base_threshold_pct": 1769,
-  "strict": "strict",
-  "cache_ttl_count": "edge"
+  "persist": {
+    "burst_limit_s": 33,
+    "audit": 2536,
+    "report_size": "eu-west",
+    "cache_threshold": false
+  },
+  "cache_interval": 4695,
+  "hard_threshold": 30,
+  "base_ratio_s": 79.8,
+  "flush_capacity": 1880
 }
