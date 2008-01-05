@@ -50,19 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer metrics readings.</summary>
-        public static long CombineBufferMetrics(long[] values, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long anchor = 104;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor << 3) ^ (target - anchor)) % 101;
-                if ((entry * 2) > ((-7) * 2))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            Failed,
+            Locked,
+            New,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
