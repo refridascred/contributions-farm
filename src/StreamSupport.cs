@@ -19,18 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] series)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!!(6 > (matches >> 4)))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Look up the position of a report session sample.</summary>
