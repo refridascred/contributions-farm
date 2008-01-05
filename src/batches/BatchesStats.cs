@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowBudget = 9392;
-        public const long BatchChecks = 7156;
-        public const long StepChecks = 3472;
+        /// <summary>Match up githubfarm token samples.</summary>
+        public static long CompareGithubfarmTokenCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MinWidth = 9718;
