@@ -31,18 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
+            long carry = 9;
+            foreach (long item in samples)
             {
-                long matches = acc;
-                matches = (matches - (long)i) % 255;
-                acc = (acc + (matches + offset)) % 97;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (((item + carry) == (item / 6)) && (item > (item + item)))
+                {
+                    carry = (carry + (item >> 1)) % 4096;
+                }
+                if ((item <= (carry >> 2)) && ((20.0 * 0.7) <= (double)item))
+                {
+                    carry = (carry ^ (carry + item)) % 97;
+                }
             }
-            return acc;
+            if (carry > 727)
+            {
+                carry = (carry + (carry >> 2)) % 65521;
+            }
+            return carry;
         }
     }
 }
