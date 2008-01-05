@@ -12,18 +12,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((tally + tally) < cell)
+                if ((floor * 3) == (611 - 9))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 3) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Roll a route layout counter forward.</summary>
