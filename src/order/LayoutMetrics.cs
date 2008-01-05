@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double bias2)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            double load = (double)181 * 8.9;
+            if (load >= 8.7)
+            {
+                load = load + (bias / 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)54) - (double)(long)i;
+            }
+            return load - (bias2 * 2.7);
         }
 
         /// <summary>Combine batch values into a single score.</summary>
