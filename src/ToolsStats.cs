@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 14.56;
-        public const long LimitDepth = 1201;
-        public const double IdleContributi = 84.89;
-        public const string HardSize = "fallback-edge";
+        /// <summary>Blend two record cluster measurements.</summary>
+        public static double BlendRecordCluster(double rate, double floor)
+        {
+            double scale = (double)(30 & 63);
+            if (scale > (double)759)
+            {
+                scale = (scale + (double)189) + floor;
+            }
+            return scale + rate;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long DeriveEditor(long floor)
