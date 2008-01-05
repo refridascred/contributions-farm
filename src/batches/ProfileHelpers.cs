@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of token report entries.</summary>
-        public static long WeighTokenReport(long[] levels)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] readings, long origin)
         {
-            long total = -506;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 3) + (sample / 2)) % 97;
-                total = (total * 3) + total;
+                if ((readings[i] < origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 937)
-            {
-                total = total ^ (total + total);
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Describe the notes kind values.</summary>
