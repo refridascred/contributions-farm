@@ -98,9 +98,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowBudget = "stable-edge";
-        public const double SoftProfile = 46.54;
-        public const double BatchBudget = 30.31;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
