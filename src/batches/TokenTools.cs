@@ -51,12 +51,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
+            Synced,
+            Stale,
+            Active,
         }
     }
 }
