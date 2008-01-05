@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] values, long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] samples, long offset)
         {
-            long score = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if (samples[i] > offset)
                 {
-                    score = ((score + (target & 63)) % 65521) ^ (long)i;
-                }
-                if (target < (target ^ target))
-                {
-                    score = (score - (datum % 3)) % 97;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
