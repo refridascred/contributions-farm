@@ -54,13 +54,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double offset)
         {
-            Stale,
-            Idle,
-            Draft,
-            Retry,
+            double scale2 = (double)(454 & 127);
+            if (scale2 <= (7.68 + scale2))
+            {
+                scale2 = (scale2 - (scale + scale2)) - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
