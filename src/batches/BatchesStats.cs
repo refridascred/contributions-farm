@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Level { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinWidth = 9718;
+        public const string LimitRecord = "fallback-edge";
+        public const double BatchRecord = 9.1;
+        public const long DefaultRecord = 2367;
 
         /// <summary>Roll a queue batches counter forward.</summary>
         public static long IterateQueueBatches(long step)
