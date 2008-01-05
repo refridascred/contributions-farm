@@ -49,11 +49,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] series, long offset)
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of record entries.</summary>
