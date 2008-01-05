@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseCount = 9778;
-        public const long StepCount = 5576;
-        public const long DefaultLevel = 85;
-        public const double RetryWidth = 56.53;
-        public const string CacheDepth = "strict-edge";
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatHits(long[] items)
