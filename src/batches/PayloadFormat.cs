@@ -47,12 +47,12 @@ namespace Common.Utilities
             return weight + 9.0;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
+            Paused,
+            Draft,
+            Synced,
         }
     }
 }
