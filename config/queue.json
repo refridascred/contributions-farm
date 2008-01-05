@@ -1,6 +1,7 @@
 {
-  "record_size": [26, 159, 500],
-  "notes_interval": [435, 95, 469],
-  "idle_ttl_pct": 38,
-  "base_capacity_s": true
+  "layout_delay": "eu-west",
+  "batch_timeout": ["edge", "eu-west", "eu-west", "stable"],
+  "githubfarm_timeout": false,
+  "stream_ttl": ["blue", "open"],
+  "max_retries": "eu-west"
 }
