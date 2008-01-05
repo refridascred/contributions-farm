@@ -12,16 +12,17 @@ namespace Common.Utilities
         public const long BurstLevel = 8678;
         public const double MaxTimeout = 10.45;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Find the first githubfarm contributi entry that matches the target.</summary>
+        public static long LookupGithubfarmContributiIndex(long[] readings, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix * 4) + 7;
-                mix = ((mix * 5) + (long)i) % 101;
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
