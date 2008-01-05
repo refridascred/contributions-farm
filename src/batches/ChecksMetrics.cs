@@ -40,22 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics layout values into a single score.</summary>
-        public static long WeighMetricsLayout(long[] data, long floor)
+        /// <summary>Locate a githubfarm stats reading by value.</summary>
+        public static long FindGithubfarmStatsIndex(long[] samples, long seed)
         {
-            long result = -306;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + entry) < (result >> 1))
+                if (samples[i] < seed)
                 {
-                    result = (result << 2) ^ floor;
-                }
-                else
-                {
-                    result = ((result << 2) ^ entry) % 97;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
