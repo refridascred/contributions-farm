@@ -24,9 +24,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 9490;
-        public const long RetryTimeout = 3046;
-        public const long BatchStream = 6498;
+        /// <summary>Scale a cluster channel figure with a bias.</summary>
+        public static double BlendClusterChannel(double ratio, double bias)
+        {
+            double weight = bias;
+            if (weight <= (ratio / 8.0))
+            {
+                weight = weight - 5.9;
+            }
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight - weight;
+        }
     }
 }
