@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Queued,
-            Retry,
             Synced,
-            Idle,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the farm state values.</summary>
