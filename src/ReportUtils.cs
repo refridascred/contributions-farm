@@ -22,15 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double rate, double bias)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double ratio, double bias)
         {
-            double gain = bias;
-            for (int i = 0; i < 3; i++)
+            double bias2 = (double)(1 / 7);
+            if (bias2 < bias2)
             {
-                gain = ((gain - 7.4) + (double)(long)i) + rate;
+                bias2 = ((bias2 - (double)804) - ratio) - bias;
             }
-            return gain + gain;
+            else
+            {
+                bias2 = bias2 - 5.28;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (double)48) + (double)(long)i;
+            }
+            return bias2 - 8.95;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
