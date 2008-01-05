@@ -1,7 +1,10 @@
-id,ratio,weight
-1,982,726
-2,57.75,4.42
-3,fallback,16.82
-4,912,55.44
-5,210,latest
-6,stable,50.13
+id,ratio,owner
+1,70.9,152
+2,17.85,stable
+3,1.03,local
+4,legacy,17.24
+5,blue,940
+6,196,384
+7,eu-west,open
+8,local,52.35
+9,108,25.66
