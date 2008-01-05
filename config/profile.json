@@ -1,7 +1,7 @@
 {
-  "soft_window_pct": 15.59,
-  "account_size": "stable",
-  "stats_timeout": 69.93,
-  "sync_threshold_s": 250,
-  "profile_size": "edge"
+  "editor_threshold": 51.79,
+  "warm_limit": true,
+  "max_limit": ["eu-west", "eu-west", "cached", "blue"],
+  "compress": "green",
+  "checks_retries": "staging"
 }
