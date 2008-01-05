@@ -37,18 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (tally <= (sample >> 1))
+                if (sample <= offset)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Match up layout tools samples.</summary>
