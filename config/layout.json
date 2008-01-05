@@ -1,6 +1,14 @@
 {
-  "stream_ttl": 68,
-  "warm_retries": false,
-  "sync_retries_s": ["legacy", "stable"],
-  "queue_size": 57
+  "order_size": 4227,
+  "burst_retries": {
+    "stream_capacity": [40, 475],
+    "contributi_depth": 81.65,
+    "hard_size_count": 54,
+    "commits_delay": "blue",
+    "warm_interval_ms": 100
+  },
+  "flush_interval": 100,
+  "warm_threshold": 1024,
+  "max_delay_count": "primary",
+  "batch_capacity": 100
 }
