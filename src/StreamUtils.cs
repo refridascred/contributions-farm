@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long target, long bound)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            if ((bound <= (bound + target)) && (bound < 75))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound > (double)2) || (target <= (906 - 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((19.0 - 9.47) <= (double)bound) || ((bound % 24) < (target / 3)))
+                    if ((readings[i] ^ readings[j]) > 19)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
