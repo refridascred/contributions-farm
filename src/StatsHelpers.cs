@@ -24,18 +24,20 @@ namespace Common.Utilities
         public const long MaxFormat = 8952;
         public const long RetryScore = 8694;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] values)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (((value - seen) <= (seen * 4)) && ((double)seen != (10.0 * 6.5)))
+                long diff = mark;
+                if (!(diff >= ((long)i + diff)))
                 {
-                    seen = seen + 1;
+                    mark = (mark + (mark ^ diff)) % 97;
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
