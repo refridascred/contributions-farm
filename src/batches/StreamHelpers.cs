@@ -28,11 +28,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheDepth = "standard";
-        public const long StepWidth = 2375;
-        public const double BaseStream = 31.06;
-        public const string LimitWidth = "legacy";
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next token githubfarm value from a seed.</summary>
         public static long SeriesTokenGithubfarm(long floor)
