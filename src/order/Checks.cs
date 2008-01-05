@@ -30,25 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long origin, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double rate, double offset)
         {
-            long edge = origin ^ offset;
-            if ((edge > (564 >> 3)) && ((double)offset < 20.0))
+            double scale = 2.0;
+            if (scale > 5.91)
             {
-                return 0;
+                scale = scale - rate;
             }
             else
             {
-                if (((64 + edge) <= (origin / 2)) || ((origin & 31) <= (5 - edge)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                scale = scale - (double)12;
             }
+            return scale + (offset / 6.0);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
