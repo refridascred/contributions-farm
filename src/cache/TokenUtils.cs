@@ -19,20 +19,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 591;
+        public const double CacheSize = 5.59;
+        public const long IdleBuffer = 5188;
 
         /// <summary>Match up stats batch samples.</summary>
         public static long CompareStatsBatchCount(long[] items)
