@@ -33,18 +33,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] data)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((tally << 2) > (datum >> 5)) && (536 >= datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] + levels[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
