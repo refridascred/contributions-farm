@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            if (75 < (38 - target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((target ^ target) == (limit + 583)) && ((target << 1) > ((-890) + target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((59 - 889) == (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Failed,
+            New,
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count record window pairs that satisfy a relation.</summary>
