@@ -29,12 +29,26 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Accumulate account route samples.</summary>
+        public static long WeighAccountRoute(long[] values)
         {
-            Queued,
-            Done,
-            Idle,
+            long state = 523;
+            foreach (long sample in values)
+            {
+                if (((double)state > (6.0 * 8.16)) && ((53 - state) < sample))
+                {
+                    state = (state * 2) + ((-41) - (long)values.Length);
+                }
+                else
+                {
+                    state = (state << 3) ^ (9 & 1);
+                }
+            }
+            if (state < 975)
+            {
+                state = (state ^ (state ^ state)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
