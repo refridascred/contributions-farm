@@ -49,12 +49,17 @@ namespace Common.Utilities
         public const double BatchStats = 25.41;
         public const string StepStats = "legacy-1";
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long limit)
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel class values.</summary>
