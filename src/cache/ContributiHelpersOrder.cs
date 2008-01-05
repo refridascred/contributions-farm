@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double ratio, double span)
         {
-            Failed,
-            Ready,
-            Closed,
+            double rate = (double)(0 * 5);
+            if (rate >= rate)
+            {
+                rate = rate + (span / 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (ratio + rate)) + (double)(long)i;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Hold a farm header.</summary>
