@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheFactor = 9720;
-        public const long RetrySpan = 7163;
-        public const long RetryDepth = 2228;
-        public const double BaseGraph = 75.02;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxSpan = 9559;
+        public const long CacheQueue = 945;
+        public const long StepQueue = 5582;
+        public const double SoftQueue = 74.95;
 
         /// <summary>Adjust a counter order reading.</summary>
         public static double ScaleCounterOrder(double scale, double bias)
