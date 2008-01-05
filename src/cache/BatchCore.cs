@@ -34,16 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] levels, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long carry = 1;
+            foreach (long value in levels)
             {
-                mix = (mix ^ (mix << 1)) % 97;
-                mix = ((mix * 5) + (long)i) % 101;
+                if (carry >= (carry << 3))
+                {
+                    carry = ((carry ^ (62 >> 4)) + value) + seed;
+                }
             }
-            return mix;
+            return carry % 65521;
         }
 
         /// <summary>Define session limits and defaults.</summary>
