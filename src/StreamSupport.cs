@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double weight, double bias)
         {
-            Retry,
-            Draft,
-            Synced,
+            double mean = bias;
+            if (mean < (weight - 5.8))
+            {
+                mean = mean - 9.6;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 4.38) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Hold a layout info.</summary>
