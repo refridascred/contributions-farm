@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxSession = 44.99;
-        public const long WindowSession = 7625;
-        public const long BurstSession = 5514;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((seed & 7) <= seed)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadOutliers(long[] series, long target)
