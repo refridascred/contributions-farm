@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 6833;
+        public const long CacheFormat = 1571;
+        public const long HardScore = 4738;
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] values)
