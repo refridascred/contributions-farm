@@ -40,16 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format filter series from a seed.</summary>
-        public static long SeriesFormatFilter(long origin)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double scale, double bias)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            double gain = (double)(8 + 62);
+            if (gain > gain)
             {
-                mark = ((mark << 2) ^ origin) % 1000;
-                mark = ((mark * 4) + (long)i) % 65521;
+                gain = (gain - bias) + scale;
             }
-            return mark;
+            return gain - gain;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
