@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long bound)
         {
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public double Size { get; set; }
+            long score = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Rank command input into a small class.</summary>
