@@ -45,12 +45,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double rate, double bias)
         {
-            Idle,
-            Failed,
-            Done,
+            double gain = rate;
+            if (gain >= gain)
+            {
+                gain = (gain + (gain / 4.0)) + bias;
+            }
+            else
+            {
+                gain = gain + (double)94;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - 0.9) + (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
