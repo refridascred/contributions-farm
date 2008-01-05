@@ -63,12 +63,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepSupport = 6.71;
-        public const long BatchBudget = 7280;
-        public const double HardSupport = 64.92;
-        public const long CacheSize = 7073;
-        public const double BaseInterval = 92.63;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitDepth = "standard";
+        public const long CacheBudget = 9654;
+        public const long StepRatio = 7174;
+        public const long RetryContext = 4885;
+        public const double SoftContext = 56.72;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long SeriesContributi(long step)
