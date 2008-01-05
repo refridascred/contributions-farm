@@ -75,12 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Fold a list of cluster record readings.</summary>
+        public static long WeighClusterRecord(long[] series, long offset)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long anchor = 6;
+            foreach (long sample in series)
+            {
+                if ((double)offset != (4.0 - 2.89))
+                {
+                    anchor = ((anchor << 3) ^ (anchor - offset)) - sample;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
