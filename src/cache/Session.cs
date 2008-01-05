@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] readings, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long result = 2;
+            foreach (long datum in samples)
             {
-                if (!(((limit & 7) > count) && ((sample - limit) < (2 + 649))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result ^ (41 << 2)) % 4096) ^ datum;
             }
-            return count;
+            if (result > 1)
+            {
+                result = (result << 3) ^ (result + result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
