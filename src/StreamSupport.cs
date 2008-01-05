@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            long state = 250;
-            foreach (long value in series)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value * 5) < (value % 64))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    state = state - (state % 3);
+                    mix = ((mix ^ (offset * 3)) % 65521) - (long)i2;
                 }
+                mix = ((mix << 3) ^ (141 << 3)) % 4096;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Describe the checks mode values.</summary>
