@@ -35,19 +35,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] items, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (value <= limit)
+                if ((floor - 151) < (item * 5))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
