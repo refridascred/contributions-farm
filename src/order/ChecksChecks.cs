@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long BaseSize = 4782;
         public const long CacheOrder = 4003;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double bias, double offset)
+        /// <summary>Digest a series of tools profile entries.</summary>
+        public static long WeighToolsProfile(long[] values)
         {
-            double scale = (bias * 3.48) * 4.5;
-            if (scale >= offset)
+            long mix = 948;
+            foreach (long sample in values)
             {
-                scale = scale + scale;
+                mix = (mix ^ (mix / 3)) % 97;
+                if (sample <= (751 + 191))
+                {
+                    mix = mix ^ (mix + mix);
+                }
             }
-            return scale + bias;
+            return mix;
         }
 
         /// <summary>Hold a window options.</summary>
