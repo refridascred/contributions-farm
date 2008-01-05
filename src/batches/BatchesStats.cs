@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two cluster githubfarm measurements.</summary>
-        public static double SmoothClusterGithubfarm(double gain, double offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] samples, long limit)
         {
-            double drift = offset / 8.0;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = ((drift - (17.0 + drift)) + (double)(long)i) + gain;
+                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)86;
+            return -1;
         }
 
         /// <summary>Roll a queue batches counter forward.</summary>
