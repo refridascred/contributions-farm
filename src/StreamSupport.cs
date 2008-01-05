@@ -28,17 +28,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a report session sample.</summary>
-        public static long SeekReportSessionIndex(long[] levels, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
