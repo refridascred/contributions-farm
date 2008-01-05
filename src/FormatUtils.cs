@@ -63,19 +63,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double scale, double floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] series)
         {
-            double bias = floor / 2.0;
-            if (bias <= (scale - 8.0))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                bias = bias - (8.9 - 7.3);
+                if (!(reading > (514 + matches)))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - floor) + (double)(long)i;
-            }
-            return bias - (9.0 / 3.0);
+            return matches;
         }
     }
 }
