@@ -33,11 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchWidth = 824;
-        public const string IdleInterval = "alpha-edge";
-        public const string BurstStream = "primary-v2";
-        public const long MinStream = 2727;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public bool Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesLimits(long[] levels, long bound)
