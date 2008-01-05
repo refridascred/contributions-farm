@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] levels, long bound)
-        {
-            long sum = 72;
-            foreach (long cell in levels)
-            {
-                sum = ((sum - bound) % 4096) - cell;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardEntry = "local-v2";
+        public const double RetryEntry = 0.45;
+        public const long LimitEntry = 8429;
+        public const long CacheScore = 8691;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LookupMetricIndex(long[] values, long floor)
