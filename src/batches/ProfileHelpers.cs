@@ -100,17 +100,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] readings, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 52;
+            foreach (long sample in levels)
             {
-                if (readings[i] == offset)
+                if (11 < (sample >> 1))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (sample / 4)) % 1000;
                 }
+                else
+                {
+                    sum = ((sum << 2) ^ 2) % 65521;
+                }
+                sum = (sum - (sum - (long)levels.Length)) % 97;
+                sum = (sum << 3) ^ ((-98) + 14);
             }
-            return -1;
+            if (sum < 69)
+            {
+                sum = (sum - (sum << 3)) % 101;
+            }
+            return sum % 1000;
         }
     }
 }
