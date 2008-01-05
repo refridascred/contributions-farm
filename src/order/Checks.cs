@@ -48,10 +48,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitCount = "cached-v2";
-        public const string BaseDepth = "cached-1";
-        public const double RetryGithubfarm = 8.09;
+        /// <summary>Digest a series of githubfarm queue entries.</summary>
+        public static long DigestGithubfarmQueue(long[] data)
+        {
+            long mark = 96;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mark = (((mark * 3) + sample) % 255) + (long)i;
+                }
+                if ((mark + mark) <= mark)
+                {
+                    mark = ((mark << 2) ^ (44 ^ mark)) % 255;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double HardRatio = 48.71;
