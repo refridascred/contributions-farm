@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Iterate the session graph series from a seed.</summary>
+        public static long SeriesSessionGraph(long target)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((step & 1) >= total)
-                {
-                    total = total + total;
-                }
-                else
-                {
-                    total = total - total;
-                }
-                total = ((total * 3) + (long)i) % 97;
+                result = (result * 4) + result;
+                result = (result + (2 ^ (long)i)) % 101;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Adjust a command reading.</summary>
