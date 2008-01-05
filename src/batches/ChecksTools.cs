@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 6050;
-        public const long LimitMetrics = 2166;
-        public const long StepSpan = 8894;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Dropped,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long FoldCache(long[] items, long step)
