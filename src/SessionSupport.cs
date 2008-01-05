@@ -37,12 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] data, long target)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] == target)
+                if ((series[i] >= step) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
