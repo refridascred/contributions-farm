@@ -33,10 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstBuffer = 25.12;
-        public const double BatchTimeout = 79.55;
-        public const double LimitBuffer = 34.06;
+        /// <summary>Fold a list of filter stats readings.</summary>
+        public static long ScoreFilterStats(long[] samples)
+        {
+            long acc = 8;
+            foreach (long entry in samples)
+            {
+                acc = (((acc * 5) + (31 - acc)) % 1000) - entry;
+                acc = acc ^ (acc * 4);
+                acc = acc - 2;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long IterateAlready(long limit)
