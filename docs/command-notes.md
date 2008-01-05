@@ -1,11 +1,11 @@
 # Command notes
 
-Run the graph check before changing any stream limits.
-A filter that stays idle for too long is moved to the commits list.
-Defaults for order live in the config folder and can be overridden per environment.
+Keep buffer and metric names short and lowercase.
+The record report groups every contributi by batch.
 
 ## Guidelines
 
-- Keep command values small
-- Log every layout change
-- Prefer filter defaults
+- Review format limits each release
+- Keep layout values small
+- Validate payload input early
+- Log every commits change
