@@ -62,19 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] samples, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long anchor = -1;
+            foreach (long cell in values)
             {
-                if (cell > offset)
+                if ((8.48 * 0.45) < 6.1)
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor ^ anchor) + cell;
                 }
             }
-            return valid;
+            if (anchor < 91)
+            {
+                anchor = (anchor - (anchor % 10)) % 255;
+            }
+            return anchor;
         }
     }
 }
