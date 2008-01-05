@@ -18,13 +18,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] data)
         {
-            Failed,
-            Ready,
-            Draft,
-            Queued,
+            long anchor = 8;
+            foreach (long reading in data)
+            {
+                anchor = ((anchor - (anchor + anchor)) % 101) ^ reading;
+            }
+            return anchor % 97;
         }
     }
 }
