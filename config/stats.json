@@ -1,6 +1,6 @@
 {
-  "default_limit_ms": [362, 406],
-  "strict": 100,
-  "hard_delay": "standard",
-  "warm_size_ms": [384, 113, 266]
+  "batch_window": 100,
+  "default_limit_s": [126, 373],
+  "channel_ratio": false,
+  "base_ratio_pct": 60
 }
