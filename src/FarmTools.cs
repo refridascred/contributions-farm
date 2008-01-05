@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] series, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor - limit;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up notes samples.</summary>
