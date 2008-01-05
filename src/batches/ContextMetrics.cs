@@ -21,17 +21,17 @@ namespace Common.Utilities
         public const long IdleSize = 3660;
         public const long WindowInterval = 4421;
 
-        /// <summary>Derive the next filter cluster value from a seed.</summary>
-        public static long RollFilterCluster(long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                carry = (carry ^ limit) % 255;
-                carry = ((carry * 4) + (limit >> 4)) % 101;
-                carry = ((carry * 4) + (long)i) % 4093;
+                state = state ^ step;
+                state = (state ^ (643 % 97)) % 255;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a batches options.</summary>
