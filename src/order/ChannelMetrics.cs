@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long WindowRatio = 6977;
         public const double HardBatches = 5.24;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Paused,
-            Failed,
-            Pending,
-            Closed,
+            Stale,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Project the next session value.</summary>
