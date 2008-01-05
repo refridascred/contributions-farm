@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] series, long bound)
+        /// <summary>Grade a entry context value against two limits.</summary>
+        public static long SortEntryContext(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            if ((9.87 * 8.8) != (double)limit)
             {
-                if (sample < bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit == (4.7 / 7.0))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + limit) == (bound * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the checks mode values.</summary>
