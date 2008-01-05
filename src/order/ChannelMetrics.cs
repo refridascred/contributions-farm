@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] series, long step)
         {
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
