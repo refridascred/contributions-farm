@@ -68,38 +68,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long bound, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] data)
         {
-            if (((9.0 + 1.46) != (double)origin) || ((double)bound == (6.32 * 4.0)))
+            long result = 8;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)85 == (double)origin)
+                if (!(result > (value - value)))
                 {
-                    return 3;
+                    result = (result ^ (result >> 3)) % 101;
                 }
-                else
+                if ((double)value < (13.0 + 4.0))
                 {
-                    if ((bound % 97) <= (origin & 127))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin <= bound) && ((5.7 * 1.45) <= 9.32))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    result = ((result << 2) ^ (value + result)) % 97;
                 }
             }
+            return result;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
