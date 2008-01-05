@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Iterate the batches schema series from a seed.</summary>
+        public static long IterateBatchesSchema(long target)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry * 4) + (target ^ 6);
+                carry = (carry * 2) + (667 % 7);
+                carry = (carry - (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
