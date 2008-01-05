@@ -31,11 +31,32 @@ namespace Common.Utilities
         public const long DefaultSize = 4994;
         public const string DefaultChannel = "strict-edge";
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long target, long offset)
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
+            long edge = target - offset;
+            if ((double)2 < (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((3 % 7) < (target + target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((edge + 518) <= edge) && (((-453) + target) >= (offset >> 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
