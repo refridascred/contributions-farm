@@ -1,7 +1,18 @@
 {
-  "cache_size": 100,
-  "payload_ttl": "strict",
-  "burst_threshold_count": 27,
-  "batch_interval": false,
-  "format_interval": 14.3
+  "flush_threshold_count": 6,
+  "poll_window": ["strict", "cached"],
+  "cache_ratio": 30,
+  "strict": "edge",
+  "min_timeout": 7515,
+  "default_limit_count": {
+    "max_delay_count": "latest",
+    "max_size_pct": 41,
+    "dry_run": 60,
+    "batch_size": {
+      "readonly": false,
+      "max_retries_ms": [7, 51, 34],
+      "base_limit_count": "staging",
+      "metric_ratio": 4541
+    }
+  }
 }
