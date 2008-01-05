@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 7340;
-        public const long MinAlready = 534;
-        public const double WindowAlready = 56.38;
+        /// <summary>Check that every batch command entry stays within the limit.</summary>
+        public static bool VerifyBatchCommandLimits(long[] data, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryRange(long[] levels, long floor)
