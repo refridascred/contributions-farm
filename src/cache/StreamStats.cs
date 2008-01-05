@@ -37,11 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "stable";
-        public const long MaxDepth = 4970;
-        public const double MaxGithubfarm = 55.23;
-        public const long BatchTimeout = 7785;
-        public const long BatchGithubfarm = 9330;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum << 3) <= datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
