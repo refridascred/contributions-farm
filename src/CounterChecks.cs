@@ -50,18 +50,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many route context samples are out of range.</summary>
-        public static long CountRouteContextGaps(long[] series, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if ((17.0 * 17.0) > (double)seed)
             {
-                if (5.1 < (double)value)
+                return 8;
+            }
+            else
+            {
+                if (((origin * 5) >= (seed % 60)) || (seed > (origin + seed)))
                 {
-                    seen = (seen + 1) + limit;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
