@@ -1,22 +1,5 @@
 {
-  "persist": "eu-west",
-  "cluster_window": 83.06,
-  "schema_ttl": [358, 245, 365],
-  "cache_interval_s": {
-    "sync_delay": false,
-    "cache_threshold": {
-      "retry_window_s": "cached",
-      "verbose": ["stable", "stable"],
-      "contributi_ttl": 30,
-      "editor_threshold": 3.98,
-      "graph_capacity": 66.77
-    },
-    "min_ttl": {
-      "poll_depth_s": "primary",
-      "buffer_ratio": "standard",
-      "hard_ratio_ms": 30,
-      "context_depth": ["primary", "open", "legacy", "strict"],
-      "audit": "latest"
-    }
-  }
+  "layout_ttl": "green",
+  "verbose": "legacy",
+  "compress": "cached"
 }
