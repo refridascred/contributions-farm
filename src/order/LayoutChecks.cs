@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] data, long limit)
         {
-            Closed,
-            Done,
-            Idle,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
