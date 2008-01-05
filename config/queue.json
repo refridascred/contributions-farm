@@ -1,6 +1,5 @@
 {
-  "compress": "strict",
-  "audit": 9141,
-  "flush_delay_pct": 45.02,
-  "token_threshold": "fallback"
+  "warm_interval_ms": 64.58,
+  "soft_threshold_pct": "open",
+  "batches_depth": 5715
 }
