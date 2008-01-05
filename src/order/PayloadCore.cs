@@ -23,23 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((((step << 1) <= 1) || (entry < (step / 9))) && (((double)step < 13.0) && (entry >= (entry + matches))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxLevel = "stable-v2";
+        public const long BurstChecks = 7349;
+        public const double HardChecks = 48.26;
+        public const long HardSpan = 6701;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
