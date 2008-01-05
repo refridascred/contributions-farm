@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a cache order pair into a bucket.</summary>
-        public static long SortCacheOrder(long floor, long bound)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long slot = floor - bound;
-            if ((slot - (-98)) >= (floor >> 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound ^ floor) == (6 / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor < (-2)) && ((9.5 * 1.15) != (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Scale a metric cache figure with a bias.</summary>
