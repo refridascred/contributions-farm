@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a layout batches sample.</summary>
-        public static long FindLayoutBatchesIndex(long[] series, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 81;
+            foreach (long entry in samples)
             {
-                if ((series[i] <= floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result - (target - result)) % 4096) ^ entry;
             }
-            return -1;
+            if (result > 407)
+            {
+                result = (result + (target + target)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of account readings.</summary>
