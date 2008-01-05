@@ -1,5 +1,15 @@
 {
-  "cache_threshold_s": 100,
-  "poll_threshold": "primary",
-  "hard_ttl": 70.19
+  "sync_size_ms": false,
+  "poll_ttl": ["fallback", "cached", "latest"],
+  "strict": 59.48,
+  "warm_window_ms": 66,
+  "retry_retries": {
+    "command_ttl": 76.0,
+    "flush_depth_s": 59.79,
+    "sync_threshold_ms": 60,
+    "record_size": "fallback",
+    "profile_interval": 30,
+    "idle_capacity_count": "open"
+  },
+  "readonly": 77.76
 }
