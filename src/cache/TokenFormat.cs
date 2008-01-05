@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long LimitFilter = 5584;
         public const double DefaultFilter = 35.01;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long carry = -3;
-            foreach (long cell in data)
-            {
-                if ((carry + carry) >= (620 / 5))
-                {
-                    carry = carry - (cell + 975);
-                }
-                else
-                {
-                    carry = carry + 10;
-                }
-            }
-            return carry % 1000;
+            public bool Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
