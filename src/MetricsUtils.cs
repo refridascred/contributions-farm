@@ -12,40 +12,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long origin)
-        {
-            long step = seed - origin;
-            if (seed >= (seed + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step > (step + (-231)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.0 * 18.0) > (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((6.95 - 6.72) > (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 35.1;
+        public const long MaxTimeout = 8862;
+        public const long IdleFormat = 661;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheRange(long[] values, long limit)
