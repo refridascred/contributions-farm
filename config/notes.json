@@ -1,6 +1,10 @@
 {
-  "already_ttl": 76.23,
-  "batch_delay": "blue",
-  "cache_retries": 19,
-  "hard_size_pct": 87
+  "persist": {
+    "retry_delay_ms": 96.21,
+    "soft_ratio_pct": "green",
+    "soft_threshold": "latest"
+  },
+  "dry_run": false,
+  "min_interval_ms": "stable",
+  "batches_limit": 2995
 }
