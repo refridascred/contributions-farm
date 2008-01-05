@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowBudget = 4106;
-        public const long SoftFormat = 5784;
-        public const long LimitFormat = 5803;
-        public const long BurstBudget = 8378;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long origin, long target)
+        {
+            if (((double)origin > (8.68 + 19.0)) || (origin >= (origin * 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ origin) < origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
