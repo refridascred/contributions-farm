@@ -24,14 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Locked,
-            Stale,
-            New,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "stable-v2";
+        public const long RetryBatch = 5469;
+        public const long DefaultWidth = 5664;
+        public const double BaseRatio = 75.45;
+        public const long SoftBatch = 5184;
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long ClassifyGithubfarm(long floor, long target)
