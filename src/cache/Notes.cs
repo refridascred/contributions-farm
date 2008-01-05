@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long offset, long seed)
+        /// <summary>Audit metric editor readings against a rule.</summary>
+        public static long AuditMetricEditorHits(long[] items)
         {
-            if ((59 - offset) == (7 & 127))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed <= 14.0)
+                if ((double)(-73) <= (double)matches)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 1) ^ value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
