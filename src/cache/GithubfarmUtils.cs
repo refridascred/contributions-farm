@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const long BatchInterval = 1534;
         public const long BatchFactor = 5367;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Closed,
-            Paused,
-            Draft,
-            Dropped,
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
