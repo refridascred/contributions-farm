@@ -1,12 +1,6 @@
 {
-  "warm_retries": "open",
-  "order_window": {
-    "sync_ttl_count": "latest",
-    "strict": 7230,
-    "compress": 89.14,
-    "enabled": 59.73,
-    "sync_limit": 3365
-  },
-  "default_size_count": 1842,
-  "burst_ratio_count": 37
+  "githubfarm_interval": 75.17,
+  "default_timeout": ["edge", "primary"],
+  "sync_delay_pct": "open",
+  "soft_retries": true
 }
