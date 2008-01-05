@@ -37,17 +37,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] items, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((items[i] < step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = carry + (657 + carry);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
