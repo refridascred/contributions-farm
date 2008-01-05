@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result << 2) ^ (312 + result)) % 4096;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
