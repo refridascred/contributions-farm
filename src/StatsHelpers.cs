@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Audit buffer counter readings against a rule.</summary>
+        public static long MeasureBufferCounterOutliers(long[] values, long seed)
         {
-            Dropped,
-            Idle,
-            Active,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (seed > (cell ^ matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
