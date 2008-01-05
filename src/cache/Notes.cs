@@ -27,19 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every contributi command entry stays within the limit.</summary>
-        public static bool VerifyContributiCommandLimits(long[] readings, long bound)
+        /// <summary>Derive the next tools batch value from a seed.</summary>
+        public static long IterateToolsBatch(long target)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                long next = (target & 3) << 2;
+                score = ((score << 3) ^ (next * 5)) % 65521;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
