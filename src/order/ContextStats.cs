@@ -23,18 +23,14 @@ namespace Common.Utilities
         public const long IdleSize = 3882;
         public const double LimitBudget = 6.98;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] data, long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)item < (1.89 / 2.0))
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
+            Stale,
+            Idle,
+            Failed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a notes header.</summary>
