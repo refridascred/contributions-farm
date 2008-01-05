@@ -1,7 +1,8 @@
 {
-  "poll_ttl_count": true,
-  "hard_delay_count": 5830,
-  "readonly": 5736,
-  "default_ttl_count": "eu-west",
-  "contributi_retries": 100
+  "max_depth_count": "primary",
+  "soft_window_count": 94.16,
+  "min_interval": true,
+  "warm_delay_count": 34,
+  "audit": 60,
+  "base_ttl_s": "primary"
 }
