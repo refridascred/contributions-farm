@@ -27,24 +27,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long origin, long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            if ((origin >> 5) <= origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor / 3) > (origin >> 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Dropped,
+            Failed,
+            Done,
+            New,
         }
     }
 }
