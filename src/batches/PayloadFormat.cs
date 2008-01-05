@@ -30,22 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] data, long origin)
+        /// <summary>Compare every pair of editor record readings.</summary>
+        public static long PairEditorRecordCount(long[] levels)
         {
-            long acc = 97;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell * 2) <= (-13))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (origin / 4)) % 65521;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 96)
-            {
-                acc = acc + (origin << 2);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
