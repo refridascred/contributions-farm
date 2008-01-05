@@ -1,5 +1,5 @@
 {
-  "default_size": false,
-  "readonly": 77,
-  "checks_interval": 30
+  "dry_run": [112, 331, 170, 51],
+  "soft_retries": "green",
+  "batch_depth_ms": false
 }
