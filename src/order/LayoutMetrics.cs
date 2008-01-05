@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((floor >> 5) >= (item * 4)) && !(((-2) - floor) >= (item % 97)))
                 {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of metrics editor readings.</summary>
