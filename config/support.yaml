@@ -1,4 +1,24 @@
 # support settings
-min_depth_s: open
-hard_capacity_pct: 1024
-burst_depth_count: 7515
+idle_interval_pct: staging
+soft_ratio_count: stable
+sync_limit:
+  schema_retries: true
+  flush_size_s: true
+  compress: 18.06
+  soft_capacity_pct:
+    idle_window_pct: false
+    batch_ratio_count: 35
+    max_ttl_s: green
+    route_ttl: standard
+cache_interval_ms:
+  idle_window: legacy
+  poll_interval: true
+  schema_limit: fallback
+  min_ratio_count: 30
+token_delay:
+  warm_window_ms: false
+  verbose: 58.51
+  report_capacity: true
+  soft_ratio: strict
+  cache_limit: 33.09
+flush_retries_count: false
