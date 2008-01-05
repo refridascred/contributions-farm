@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit notes support readings against a rule.</summary>
-        public static long AuditNotesSupportHits(long[] values)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] data)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((6.9 * 0.43) < (double)count)
+                if (((seen - seen) <= item) && ((seen / 2) != (seen + seen)))
                 {
-                    count = (count + 3) ^ datum;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the notes kind values.</summary>
