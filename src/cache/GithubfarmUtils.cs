@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] items, long floor)
         {
             long matches = 0;
-            foreach (long reading in data)
+            foreach (long reading in items)
             {
-                if ((6.68 * 2.51) >= (9.0 * 0.54))
+                if ((3.7 - 4.5) < (double)matches)
                 {
-                    matches = (matches + 3) - reading;
+                    matches = ((matches + 1) ^ reading) + floor;
                 }
             }
             return matches;
