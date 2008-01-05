@@ -30,12 +30,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 9608;
+        public const long StepProfile = 4329;
+        public const long HardProfile = 906;
     }
 }
