@@ -22,11 +22,17 @@ namespace Common.Utilities
         public const double HardChecks = 48.26;
         public const long HardSpan = 6701;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Locate a buffer githubfarm reading by value.</summary>
+        public static long FindBufferGithubfarmIndex(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
