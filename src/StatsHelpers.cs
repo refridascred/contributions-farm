@@ -16,15 +16,17 @@ namespace Common.Utilities
         public const long MaxFormat = 8952;
         public const long RetryScore = 8694;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] readings, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
