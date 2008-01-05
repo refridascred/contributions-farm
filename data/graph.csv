@@ -1,9 +1,8 @@
-id,score,level
-1,346,40.34
-2,stable,95.33
-3,strict,326
-4,441,28.93
-5,staging,88.12
-6,open,986
-7,68.67,93.78
-8,227,660
+id,weight,token,state,active
+1,cached,38.94,32.4,42.91
+2,eu-west,blue,staging,staging
+3,52.53,stable,18.45,155
+4,639,94.95,226,83
+5,326,55.96,66.23,129
+6,primary,788,90,719
+7,470,37.11,12.6,955
