@@ -31,11 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            Failed,
+            Done,
+            Pending,
+            Active,
         }
     }
 }
