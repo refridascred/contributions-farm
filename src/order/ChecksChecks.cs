@@ -43,12 +43,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Iterate the stats profile series from a seed.</summary>
+        public static long RollStatsProfile(long step)
         {
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public bool Rank { get; set; }
+            long state = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((18.0 * 2.86) != (double)(long)i)
+                {
+                    state = (state - state) % 65521;
+                }
+                else
+                {
+                    state = (state ^ ((long)i + state)) % 97;
+                    state = (state * 2) + (step % 3);
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
