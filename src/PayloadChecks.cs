@@ -52,19 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats command readings against a bound.</summary>
-        public static bool VerifyStatsCommandRange(long[] samples, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
