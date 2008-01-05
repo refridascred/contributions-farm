@@ -16,19 +16,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Blend two contributi counter measurements.</summary>
-        public static double BlendContributiCounter(double bias, double span)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double rate = (double)167 / 4.0;
-            if (rate < (double)0)
-            {
-                rate = (rate - rate) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate - (rate / 5.0);
+            Retry,
+            Active,
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
