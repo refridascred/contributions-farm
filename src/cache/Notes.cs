@@ -64,23 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] items, long offset)
         {
-            long acc = -35;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long value in items)
             {
-                acc = ((acc * 5) + acc) % 65521;
-                if ((value ^ acc) < (value - acc))
+                if (offset <= (tally * 4))
                 {
-                    acc = (acc - (value & 63)) % 1000;
+                    tally = (tally + 3) + value;
                 }
             }
-            if (acc > 842)
-            {
-                acc = (acc ^ (acc * 3)) % 255;
-            }
-            return acc % 97;
+            return tally;
         }
     }
 }
