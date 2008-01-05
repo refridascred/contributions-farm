@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] samples, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            long acc = 1;
-            foreach (long sample in samples)
+            long acc = 75;
+            foreach (long datum in readings)
             {
-                acc = acc ^ (sample / 7);
+                acc = (acc + (datum << 2)) % 97;
             }
-            if (acc < 9)
+            if (acc > 501)
             {
-                acc = acc + (step ^ (-62));
+                acc = (acc << 2) ^ (acc ^ acc);
             }
             return acc;
         }
