@@ -1,7 +1,6 @@
 # githubfarm settings
-enabled: 2243
-persist: false
-flush_timeout_ms: 4876
-flush_depth_count: true
-retry_size: 4942
-payload_interval: 60
+batch_timeout:
+  - latest
+  - edge
+dry_run: 6
+flush_ratio_s: staging
