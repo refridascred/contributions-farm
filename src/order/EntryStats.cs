@@ -16,15 +16,12 @@ namespace Common.Utilities
             return rate - (double)596;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Pending,
-            New,
-            Queued,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseScore = 2384;
+        public const long BatchLevel = 4758;
+        public const double MaxCache = 2.13;
+        public const long StepCache = 7039;
+        public const long LimitCache = 1911;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
