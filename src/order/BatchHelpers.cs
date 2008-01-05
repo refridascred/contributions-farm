@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long StepRatio = 2329;
         public const long HardStats = 2304;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchBudget = 39.7;
-        public const long HardLevel = 3601;
-        public const long SoftWindow = 9619;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (!!((seen / 9) >= ((-633) * 2)))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
