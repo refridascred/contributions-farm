@@ -24,13 +24,15 @@ namespace Common.Utilities
             return drift - (double)86;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Roll a queue batches counter forward.</summary>
+        public static long IterateQueueBatches(long step)
         {
-            Paused,
-            New,
-            Done,
-            Retry,
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Combine format values into a single score.</summary>
