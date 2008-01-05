@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long mark = 930;
-            foreach (long value in items)
-            {
-                mark = (mark * 4) + (value + 668);
-                if ((value << 2) < value)
-                {
-                    mark = (mark - (63 / 7)) % 255;
-                }
-            }
-            return mark;
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
