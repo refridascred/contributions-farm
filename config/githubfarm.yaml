@@ -1,21 +1,15 @@
 # githubfarm settings
-stream_timeout: standard
-audit: strict
-contributi_ttl:
-  persist:
-    - 492
-    - 121
-    - 129
-  default_window_ms: 6193
-  poll_ratio: staging
-  commits_limit:
-    - 413
-    - 73
-    - 6
-    - 29
-idle_capacity_ms:
-  sync_delay_s: stable
-  queue_ratio: false
-  metric_retries: 2367
-flush_size_ms: primary
-idle_retries: 1024
+readonly: edge
+idle_threshold: eu-west
+channel_delay:
+  default_ttl:
+    default_capacity_s: 3
+    farm_depth: 55
+    sync_ttl_pct: 250
+  idle_threshold_count: false
+  readonly: true
+  max_delay_pct: 7228
+  retry_interval_s: 64.6
+flush_threshold: eu-west
+idle_ttl_ms: 94.16
+queue_window: 27.34
