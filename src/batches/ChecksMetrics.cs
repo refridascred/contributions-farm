@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Accumulate stream command samples.</summary>
+        public static long CombineStreamCommand(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 37;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((offset + item) > 57)
                 {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry - item;
+                }
+                else
+                {
+                    carry = carry + 4;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
