@@ -1,4 +1,4 @@
 # support settings
-retry_depth_ms: latest
-burst_capacity_count: staging
-buffer_ratio: 2871
+persist: eu-west
+payload_window: 97.55
+min_limit_ms: true
