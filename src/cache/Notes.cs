@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] data, long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long offset, long seed)
         {
-            long score = 40;
-            foreach (long item in data)
+            if ((59 - offset) == (7 & 127))
             {
-                score = (((score << 2) ^ score) ^ item) + offset;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((double)seed <= 14.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
