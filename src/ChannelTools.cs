@@ -23,19 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format stream readings against a bound.</summary>
-        public static bool CheckFormatStreamBounds(long[] levels, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state - (920 + (long)i)) % 65521;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
