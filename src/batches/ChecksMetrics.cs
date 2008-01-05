@@ -98,15 +98,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] data, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long state = 24;
+            foreach (long cell in data)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                state = ((state + (6 / 6)) - cell) - floor;
             }
-            return mark;
+            return state;
         }
     }
 }
