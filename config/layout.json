@@ -1,19 +1,5 @@
 {
-  "readonly": {
-    "retry_window": ["blue", "legacy", "cached", "edge"],
-    "cluster_depth": false,
-    "verbose": 85,
-    "soft_interval": false,
-    "retry_depth_count": 24.74
-  },
-  "hard_depth": ["strict", "legacy"],
-  "context_size": {
-    "compress": true,
-    "flush_ratio_pct": "latest",
-    "verbose": false,
-    "hard_delay_s": "stable",
-    "flush_timeout": "cached",
-    "commits_ttl": "standard"
-  },
-  "default_limit_count": ["cached", "strict", "strict", "stable"]
+  "default_size": false,
+  "readonly": 77,
+  "checks_interval": 30
 }
