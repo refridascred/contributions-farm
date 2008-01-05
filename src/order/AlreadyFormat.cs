@@ -68,11 +68,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 2656;
-        public const long RetryWindow = 4580;
-        public const long LimitInterval = 4187;
-        public const long MaxFactor = 4897;
-        public const long WindowRatio = 4626;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] values, long offset)
+        {
+            long acc = 7;
+            foreach (long datum in values)
+            {
+                if ((2.5 / 2.0) != (double)offset)
+                {
+                    acc = ((acc + (offset + 86)) % 1000) ^ datum;
+                }
+            }
+            if (acc < 44)
+            {
+                acc = (acc ^ (acc >> 3)) % 4096;
+            }
+            return acc % 97;
+        }
     }
 }
