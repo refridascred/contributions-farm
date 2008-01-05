@@ -13,23 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] readings, long bound)
-        {
-            long state = 4;
-            foreach (long sample in readings)
-            {
-                if ((5 < (sample / 6)) && ((sample ^ sample) >= (state * 4)))
-                {
-                    state = (state << 2) ^ bound;
-                }
-            }
-            if (state > (-86))
-            {
-                state = (state << 3) ^ (state >> 4);
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 3861;
+        public const long SoftRatio = 4153;
+        public const long SoftSpan = 7644;
+        public const long MinTimeout = 6316;
+        public const long RetryChecks = 5793;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstDepth = 5614;
