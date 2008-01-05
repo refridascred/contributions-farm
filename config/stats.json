@@ -1,6 +1,18 @@
 {
-  "persist": 1024,
-  "counter_timeout": 250,
-  "min_ratio_pct": 500,
-  "max_threshold": "green"
+  "flush_limit_ms": false,
+  "audit": 10.43,
+  "route_capacity": {
+    "cluster_delay": "staging",
+    "sync_window_count": 3.3,
+    "record_window": "standard",
+    "default_size_ms": "fallback",
+    "base_delay": {
+      "audit": "edge",
+      "dry_run": "cached",
+      "burst_capacity": 85.3
+    },
+    "default_limit_ms": "eu-west"
+  },
+  "persist": [258, 185, 253, 120],
+  "sync_retries_ms": "staging"
 }
