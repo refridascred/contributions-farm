@@ -13,21 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the batches mode values.</summary>
