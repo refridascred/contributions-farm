@@ -18,21 +18,20 @@ namespace Common.Utilities
         public const long SoftSpan = 5699;
         public const double WindowCounter = 59.48;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Iterate the batch metrics series from a seed.</summary>
+        public static long StepBatchMetrics(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 2) ^ ((-4) - 1)) ^ (long)i2;
                 }
+                carry = carry + carry;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the stream mode values.</summary>
