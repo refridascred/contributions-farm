@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double bias, double bias2)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] items, long step)
         {
-            double gain = (double)79 * 4.6;
-            if (gain >= (bias2 - gain))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                gain = gain + (bias - bias);
+                if ((tally & 31) >= tally)
+                {
+                    tally = ((tally + 3) + reading) + step;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (bias - bias)) + (double)(long)i;
-            }
-            return gain - bias;
+            return tally;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
