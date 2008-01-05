@@ -21,17 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (data[i] <= seed)
+                if (3.0 >= (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
