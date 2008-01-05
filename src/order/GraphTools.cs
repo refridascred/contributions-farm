@@ -42,21 +42,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -6;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                long gap = 72;
+                if ((state & 255) > (gap * 4))
                 {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state << 3) ^ item) % 101;
+                }
+                else
+                {
+                    gap = ((gap * 3) + (item % 100)) % 4096;
+                }
+                if ((item >> 4) > (0 << 1))
+                {
+                    state = (state - (636 / 7)) % 1000;
                 }
             }
-            return hits;
+            if (state > 1)
+            {
+                state = (state * 2) + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
