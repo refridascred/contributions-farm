@@ -23,13 +23,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Count channel payload pairs that satisfy a relation.</summary>
+        public static long OverlapChannelPayloadCount(long[] series)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
