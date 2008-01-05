@@ -31,18 +31,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] items, long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mark = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (((1.3 + 1.95) > (double)datum) || (((double)(long)items.Length == (10.0 - 1.7)) && ((limit * 5) > datum)))
+                long delta = (mark % 3) / 2;
+                if (((13.0 / 2.0) == (double)mark) || ((double)delta != (2.1 - 13.0)))
                 {
-                    hits = hits + 2;
+                    mark = (mark ^ target) % 65521;
                 }
+                else
+                {
+                    mark = (mark + target) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
