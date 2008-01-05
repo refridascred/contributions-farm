@@ -18,22 +18,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] levels, long seed)
+        /// <summary>Digest a series of record stats entries.</summary>
+        public static long DigestRecordStats(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long score = 39;
+            foreach (long datum in samples)
             {
-                if (!((double)seed > (16.0 - 15.0)))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score << 3) ^ (score / 7)) + datum;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the tools level values.</summary>
