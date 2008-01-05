@@ -51,21 +51,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] == floor)
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
