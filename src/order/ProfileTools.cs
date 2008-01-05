@@ -32,12 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Classify a stream context pair into a bucket.</summary>
+        public static long SortStreamContext(long offset, long target)
         {
-            Retry,
-            Done,
-            Synced,
+            if ((((-67) - target) >= (offset * 2)) && ((0.07 + 2.2) > (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset >= (target << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target - offset) > offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
