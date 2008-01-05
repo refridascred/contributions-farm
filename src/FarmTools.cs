@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items, long seed)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long result = 1;
-            foreach (long value in items)
-            {
-                result = ((result - ((long)items.Length + seed)) % 101) - value;
-            }
-            return result % 65521;
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
