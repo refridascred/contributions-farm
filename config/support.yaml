@@ -1,4 +1,20 @@
 # support settings
-checks_size: false
-filter_interval: false
-readonly: 1024
+entry_timeout: strict
+contributi_threshold:
+  - 290
+  - 121
+  - 254
+persist:
+  flush_capacity: 95
+  default_limit_s: 9569
+  idle_window_s: eu-west
+  persist: blue
+compress:
+  layout_capacity: legacy
+  default_delay_s:
+    - 319
+    - 97
+    - 311
+    - 220
+  token_capacity: staging
+  context_retries: false
