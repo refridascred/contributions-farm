@@ -59,21 +59,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of layout order readings.</summary>
-        public static long CompareLayoutOrderCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleSize = 74.02;
+        public const long CacheScore = 1020;
+        public const long SoftWidth = 8459;
+        public const long DefaultLevel = 2078;
     }
 }
