@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double gain, double floor)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double scale = (gain + gain) + (floor / 7.0);
-            if (scale >= scale)
-            {
-                scale = scale - (double)(-384);
-            }
-            return scale + scale;
+            public long Total { get; set; }
+            public bool Size { get; set; }
+            public double Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
