@@ -22,19 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] series, long step)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long bound)
         {
-            bool found = true;
-            foreach (long item in series)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total + (36 & 255)) % 101;
+                total = (total * 4) + bound;
+                total = total - (bound + total);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
