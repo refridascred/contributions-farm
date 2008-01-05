@@ -51,18 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload report value from a seed.</summary>
-        public static long StepPayloadReport(long floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long target)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (((0.27 / 7.0) != (double)(long)i) && ((state + state) < state))
-                {
-                    break;
-                }
-                state = (state - ((long)i + floor)) % 97;
-                state = ((state * 3) + (long)i) % 4093;
+                state = ((state * 2) + (long)i) % 65521;
             }
             return state;
         }
