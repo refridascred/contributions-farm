@@ -16,12 +16,18 @@ namespace Common.Utilities
             return bias2 - (floor / 6.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "latest-v2";
-        public const long BatchInterval = 8718;
-        public const double CacheSpan = 68.64;
-        public const long MaxRoute = 3280;
-        public const long MaxDepth = 1928;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LookupNotesIndex(long[] readings, long origin)
