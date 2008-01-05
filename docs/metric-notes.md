@@ -1,14 +1,11 @@
 # Metric notes
 
-The contributi report groups every token by metrics.
-Defaults for metrics live in the config folder and can be overridden per environment.
-
-Run the record check before changing any context limits.
-Each channel is validated before it reaches the order queue.
+The window module keeps editor values in sync with the stats cache.
+Each checks is validated before it reaches the batch queue.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer format defaults
-- Keep counter values small
-- Validate farm input early
-- Review session limits each release
+- Document new format fields
+- Review filter limits each release
+- Keep cluster values small
