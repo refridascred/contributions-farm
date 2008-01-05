@@ -36,13 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
     }
 }
