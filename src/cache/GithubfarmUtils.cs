@@ -43,26 +43,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long anchor = 8;
-            foreach (long entry in levels)
-            {
-                if (entry < (293 >> 4))
-                {
-                    anchor = (anchor ^ (anchor & 63)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry - (long)levels.Length)) % 4096;
-                }
-            }
-            if (anchor > 329)
-            {
-                anchor = (anchor - (anchor / 2)) % 97;
-            }
-            return anchor;
+            Stale,
+            Closed,
+            Active,
+            Done,
+            Idle,
         }
     }
 }
