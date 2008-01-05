@@ -45,10 +45,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleDepth = 76.75;
-        public const long SoftLevel = 2069;
-        public const long HardAccount = 3748;
-        public const long SoftTimeout = 7860;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
