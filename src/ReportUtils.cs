@@ -47,19 +47,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] series, long origin)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Ready,
+            Synced,
+            Queued,
+            Paused,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
