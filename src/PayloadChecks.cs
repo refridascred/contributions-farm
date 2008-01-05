@@ -38,19 +38,16 @@ namespace Common.Utilities
         public const string BurstEditor = "local-1";
         public const long RetryCount = 8304;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] data, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (carry << 3) ^ (2 ^ (long)i);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Hold a session options.</summary>
