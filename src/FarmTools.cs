@@ -22,20 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 2) ^ result) % 1000;
-                if (((offset + offset) < (result / 5)) || (offset > (result * 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
