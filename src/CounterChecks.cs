@@ -60,20 +60,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark + (mark - floor)) % 101;
-                if ((mark - 4) < 5)
-                {
-                    mark = ((mark << 3) ^ (mark + 169)) % 4096;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many route context samples are out of range.</summary>
