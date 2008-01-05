@@ -24,25 +24,19 @@ namespace Common.Utilities
             return mean + (6.5 + gain);
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long target, long floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] samples, long step)
         {
-            long prev = target ^ floor;
-            if (((double)floor < (3.0 + 2.1)) || ((floor - 357) > target))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor <= (7.0 + 5.8)) && ((prev + floor) <= (prev >> 5)))
+                if (reading != step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
