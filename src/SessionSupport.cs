@@ -22,15 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload farm readings.</summary>
-        public static long ScorePayloadFarm(long[] values)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long total = 195;
-            foreach (long item in values)
-            {
-                total = (total - (94 % 10)) - item;
-            }
-            return total;
+            Failed,
+            Queued,
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the entry class values.</summary>
