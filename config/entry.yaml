@@ -1,10 +1,6 @@
 # entry settings
-persist: 4067
-dry_run: 88.76
-cache_depth: latest
-readonly:
-  burst_interval_ms: blue
-  hard_ttl_s: 31
-  poll_ttl: 30
-  compress: 6690
-verbose: standard
+audit: 60
+flush_window_pct: green
+base_interval_count: 5474
+min_ttl_pct: 1024
+cache_depth_ms: 100
