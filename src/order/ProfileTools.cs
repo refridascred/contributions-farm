@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token report readings against a rule.</summary>
-        public static long CountTokenReportGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum >= (7.6 + 9.1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchWidth = 824;
+        public const string IdleInterval = "alpha-edge";
+        public const string BurstStream = "primary-v2";
+        public const long MinStream = 2727;
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] levels)
