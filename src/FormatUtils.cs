@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] readings, long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = ratio;
+            if (load >= bias)
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                load = load + (double)8;
             }
-            return -1;
+            else
+            {
+                load = load - (ratio / 8.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (double)62;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
