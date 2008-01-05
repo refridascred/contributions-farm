@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate already notes samples.</summary>
-        public static long DigestAlreadyNotes(long[] data)
-        {
-            long mix = 484;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = ((mix - (datum + mix)) % 255) - (long)i;
-                    mix = ((mix * 5) + (mix / 6)) % 65521;
-                }
-                if (((double)mix < (0.1 + 2.7)) && ((9.0 * 4.91) != (double)(long)data.Length))
-                {
-                    mix = ((mix << 2) ^ (mix >> 1)) % 4096;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchFactor = 41.38;
+        public const double BatchSize = 18.03;
+        public const long LimitFactor = 5852;
+        public const string DefaultCount = "stable";
+        public const long MinSpan = 5429;
 
         /// <summary>Scale a already record figure with a bias.</summary>
         public static double BlendAlreadyRecord(double scale, double bias)
