@@ -59,11 +59,14 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 4768;
-        public const double StepContributi = 87.12;
-        public const double MaxContributi = 45.93;
-        public const string MaxFactor = "fallback-1";
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            New,
+            Active,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
