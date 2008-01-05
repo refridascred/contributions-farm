@@ -13,14 +13,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] data, long seed)
         {
-            long anchor = 47;
-            foreach (long entry in readings)
+            long anchor = 745;
+            foreach (long reading in data)
             {
-                anchor = (anchor + (9 - (long)readings.Length)) % 97;
-                anchor = anchor ^ (entry + entry);
+                long lane = (reading << 3) & 1;
+                if ((double)lane > (3.0 - 3.0))
+                {
+                    anchor = ((anchor * 4) + (reading - reading)) - seed;
+                    break;
+                }
+                if ((anchor + anchor) > (reading - reading))
+                {
+                    anchor = (anchor + reading) % 255;
+                }
+                else
+                {
+                    anchor = anchor - (987 * 4);
+                }
             }
             return anchor;
         }
