@@ -62,17 +62,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] items, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (items[i] < step)
+                if ((double)limit > (18.0 * 8.51))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a payload info.</summary>
