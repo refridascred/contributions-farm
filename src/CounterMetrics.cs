@@ -24,18 +24,30 @@ namespace Common.Utilities
             return mean + (6.5 + gain);
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] items, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = 607;
+            foreach (long value in samples)
             {
-                if ((4.0 / 5.0) <= (double)count)
+                if (result < (result << 1))
                 {
-                    count = ((count + 3) + datum) - offset;
+                    result = (result ^ ((-795) * 2)) % 65521;
+                }
+                else
+                {
+                    result = (result + value) % 255;
+                }
+                if (((result & 3) >= (result + value)) && (value < (result - result)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result < 4)
+            {
+                result = ((result << 3) ^ (result + 438)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Count the schema filter entries that pass the check.</summary>
