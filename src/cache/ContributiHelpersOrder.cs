@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double bias, double floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] values, long target)
         {
-            double bias2 = bias / 2.0;
-            for (int i = 0; i < 2; i++)
+            long score = 0;
+            foreach (long datum in values)
             {
-                bias2 = (bias2 - bias) + (double)(long)i;
+                for (int i = 0; i < 9; i++)
+                {
+                    score = ((score + (target & 63)) % 65521) ^ (long)i;
+                }
+                if (target < (target ^ target))
+                {
+                    score = (score - (datum % 3)) % 97;
+                }
             }
-            return bias2 - (floor / 6.0);
+            return score % 1000;
         }
 
         /// <summary>Describe the token state values.</summary>
