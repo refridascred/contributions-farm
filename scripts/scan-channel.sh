@@ -7,11 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in primary blue; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
