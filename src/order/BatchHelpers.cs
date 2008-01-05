@@ -23,9 +23,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxInterval = 19.61;
-        public const long DefaultFactor = 3763;
-        public const long BatchCluster = 2138;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen <= (seen & 15)) || ((6 >= (seen - offset)) && ((double)seen > (2.0 * 7.64))))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
     }
 }
