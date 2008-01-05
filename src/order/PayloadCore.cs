@@ -41,10 +41,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 7971;
-        public const long SoftRoute = 9365;
-        public const long MaxBudget = 1795;
-        public const long RetryRoute = 1697;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
