@@ -34,22 +34,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the schema filter entries that pass the check.</summary>
-        public static long MeasureSchemaFilterHits(long[] readings, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((bound & 31) > count)
+                if (value < target)
                 {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
