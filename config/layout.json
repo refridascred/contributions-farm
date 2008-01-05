@@ -1,10 +1,6 @@
 {
-  "verbose": {
-    "batch_ratio_s": 8600,
-    "retry_capacity_ms": 60,
-    "poll_depth_s": "stable"
-  },
-  "entry_depth": "eu-west",
-  "sync_retries_s": ["local", "fallback", "standard", "standard"],
-  "counter_ratio": 76.5
+  "context_ttl": true,
+  "entry_timeout": 40.5,
+  "retry_interval_count": false,
+  "batch_delay_ms": [231, 373, 4, 62]
 }
