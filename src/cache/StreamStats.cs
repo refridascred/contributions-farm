@@ -23,16 +23,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long offset)
+        /// <summary>Accumulate counter filter samples.</summary>
+        public static long FoldCounterFilter(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            long score = 6;
+            foreach (long item in series)
             {
-                acc = (acc + (long)i) % 101;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((15.0 * 0.2) >= (double)item)
+                {
+                    score = (score ^ (item * 5)) % 1000;
+                }
             }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
