@@ -25,14 +25,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Idle,
-            Paused,
-            Draft,
-            Pending,
-            Ready,
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
