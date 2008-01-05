@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] data, long limit)
+        /// <summary>Classify a cache metrics pair into a bucket.</summary>
+        public static long ClassifyCacheMetrics(long floor, long bound)
         {
-            long acc = 2;
-            foreach (long reading in data)
+            if ((54 * 3) > floor)
             {
-                acc = (acc << 2) ^ (limit + limit);
-                if ((limit - acc) <= (limit + acc))
+                return 5;
+            }
+            else
+            {
+                if ((36 % 5) >= bound)
                 {
-                    acc = ((acc << 3) ^ (limit + reading)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return acc;
         }
 
         /// <summary>Locate a account reading by value.</summary>
