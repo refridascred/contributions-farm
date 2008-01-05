@@ -26,22 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long seed)
         {
-            long anchor = -355;
-            foreach (long item in items)
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)anchor < 4.9)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    anchor = (anchor - (item - item)) % 101;
+                    mix = ((mix ^ ((long)i & 31)) % 65521) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            if (anchor < 392)
-            {
-                anchor = anchor ^ (35 << 3);
-            }
-            return anchor;
+            return mix;
         }
     }
 }
