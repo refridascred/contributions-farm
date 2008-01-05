@@ -53,13 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Project the next session layout value.</summary>
+        public static double BlendSessionLayout(double rate, double floor)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
+            double bias = rate + (floor / 5.0);
+            if (bias <= 6.2)
+            {
+                bias = bias - (double)258;
+            }
+            return bias + (double)9;
         }
 
         /// <summary>Match up layout samples.</summary>
