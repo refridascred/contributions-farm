@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long offset, long step)
-        {
-            long next = offset ^ step;
-            if (5 <= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((834 ^ next) <= (next << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + offset) != (next << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheSize = 3714;
+        public const long IdleLevel = 6035;
+        public const long StepRatio = 2329;
+        public const long HardStats = 2304;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
