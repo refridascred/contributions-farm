@@ -12,22 +12,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many record checks samples are out of range.</summary>
-        public static long AuditRecordChecksOutliers(long[] items)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + datum) > (matches * 5)) || ((matches / 7) >= (97 % 8)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate graph stats readings against a bound.</summary>
