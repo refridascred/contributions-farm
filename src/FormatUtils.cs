@@ -14,19 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] series)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] series)
         {
             long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((5.4 / 2.0) == (double)cell) && (772 <= (matches << 3))) && (matches > (cell << 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
