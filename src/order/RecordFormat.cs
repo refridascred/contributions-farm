@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] values)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!((12.0 / 8.0) != (double)(long)values.Length))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
