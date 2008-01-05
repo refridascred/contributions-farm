@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            long result = 1;
+            foreach (long value in items)
             {
-                sum = (sum << 3) ^ (sum + target);
-                sum = ((sum * 4) + (long)i) % 65521;
+                result = ((result - ((long)items.Length + seed)) % 101) - value;
             }
-            return sum;
+            return result % 65521;
         }
 
         /// <summary>Blend two contributi counter measurements.</summary>
