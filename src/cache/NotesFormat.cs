@@ -35,19 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] readings, long offset)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
