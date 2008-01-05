@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Digest a series of route entries.</summary>
