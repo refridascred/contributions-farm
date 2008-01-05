@@ -16,18 +16,12 @@ namespace Common.Utilities
             return bias2 - (floor / 6.0);
         }
 
-        /// <summary>Measure how many route counter samples are out of range.</summary>
-        public static long AuditRouteCounterOutliers(long[] values)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((item ^ tally) > (69 / 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a filter record.</summary>
