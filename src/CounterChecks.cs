@@ -76,13 +76,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many route context samples are out of range.</summary>
+        public static long CountRouteContextGaps(long[] series, long limit)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (5.1 < (double)value)
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
