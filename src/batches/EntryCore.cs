@@ -35,12 +35,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double rate, double floor)
         {
-            Idle,
-            Retry,
-            Dropped,
+            double weight = (rate * 5.64) + floor;
+            if (weight >= weight)
+            {
+                weight = weight - (weight - rate);
+            }
+            else
+            {
+                weight = weight + (8.8 / 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
