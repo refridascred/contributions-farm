@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already counter entries.</summary>
-        public static long WeighAlreadyCounter(long[] readings, long limit)
-        {
-            long acc = 55;
-            foreach (long value in readings)
-            {
-                if ((acc + limit) < (acc / 4))
-                {
-                    acc = ((acc + limit) % 1000) - value;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 8459;
+        public const long StepBatches = 5298;
+        public const long CacheBatches = 8406;
+        public const long SoftFactor = 744;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
