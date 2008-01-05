@@ -1,6 +1,19 @@
 {
-  "dry_run": false,
-  "warm_interval_pct": "edge",
-  "base_ttl_ms": "eu-west",
-  "compress": "fallback"
+  "burst_depth_pct": {
+    "sync_interval": "standard",
+    "min_size_s": "latest",
+    "burst_retries_s": "staging",
+    "counter_ttl": 8656,
+    "max_ttl_ms": "staging",
+    "cache_interval": "legacy"
+  },
+  "notes_depth": {
+    "context_ratio": "strict",
+    "report_retries": "blue",
+    "max_retries": [51, 344, 219],
+    "soft_capacity": false,
+    "warm_timeout_s": 1024
+  },
+  "hard_ttl_count": 65.04,
+  "retry_limit_count": false
 }
