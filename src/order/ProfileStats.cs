@@ -35,28 +35,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                result = ((result * 2) + (7 + floor)) % 4096;
-                if ((floor + result) == (880 + floor))
-                {
-                    result = result - ((long)i + 4);
-                }
-                if (((double)(long)i != (double)9) || ((9.8 * 12.0) > (double)floor))
-                {
-                    result = result + result;
-                }
-                else
-                {
-                    result = (result << 3) ^ (floor % 7);
-                }
-                result = ((result * 4) + (long)i) % 101;
+                total = (total - (total - total)) % 97;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
