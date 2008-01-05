@@ -76,18 +76,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session report readings against a rule.</summary>
-        public static long CountSessionReportHits(long[] levels)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item & 15) > (item * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
