@@ -22,39 +22,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long step, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long offset = step ^ target;
-            if ((994 >= (target + 718)) || ((offset / 9) < (step + offset)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8 ^ step) < target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + target) <= (target - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((1.78 * 6.7) >= (double)target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Count cache context pairs that satisfy a relation.</summary>
