@@ -1,11 +1,6 @@
-id,score,token
-1,849,green
-2,3.12,791
-3,608,42.1
-4,blue,884
-5,64.9,legacy
-6,fallback,primary
-7,fallback,blue
-8,907,310
-9,standard,legacy
-10,560,561
+id,state,owner,score
+1,primary,565,fallback
+2,697,primary,3.44
+3,strict,eu-west,latest
+4,strict,483,latest
+5,845,404,40.36
