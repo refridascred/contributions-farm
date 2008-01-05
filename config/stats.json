@@ -1,17 +1,5 @@
 {
-  "verbose": ["staging", "eu-west", "eu-west", "cached"],
-  "default_timeout_count": {
-    "soft_delay_count": true,
-    "max_retries_count": "green",
-    "base_ttl_ms": {
-      "readonly": 4137,
-      "compress": [436, 358],
-      "default_delay": "primary",
-      "default_ratio_ms": "legacy",
-      "audit": 5451,
-      "poll_capacity": 7
-    }
-  },
-  "base_size": 56.76,
-  "persist": 6484
+  "schema_interval": 79.34,
+  "retry_timeout_pct": true,
+  "account_delay": 56.02
 }
