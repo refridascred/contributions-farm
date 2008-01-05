@@ -22,22 +22,19 @@ namespace Common.Utilities
         public const long IdleBuffer = 3131;
         public const long MaxBuffer = 4538;
 
-        /// <summary>Accumulate farm cache samples.</summary>
-        public static long TallyFarmCache(long[] samples, long step)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] samples, long limit)
         {
-            long state = 59;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (((cell + 8) >= (state - 132)) && ((9.1 * 14.0) != (double)(long)samples.Length))
+                if (entry != limit)
                 {
-                    state = ((state << 3) ^ (5 >> 1)) % 65521;
-                }
-                if ((step + cell) > (step ^ state))
-                {
-                    state = ((state << 2) ^ (cell / 9)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Find the first format route entry that matches the target.</summary>
