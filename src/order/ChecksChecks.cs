@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Failed,
-            New,
-            Dropped,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxPayload = 5.37;
+        public const long LimitDepth = 1894;
+        public const long BurstWidth = 3617;
+        public const double CacheLevel = 91.84;
 
         /// <summary>Count record window pairs that satisfy a relation.</summary>
         public static long MatchRecordWindowCount(long[] items)
