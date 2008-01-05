@@ -26,18 +26,23 @@ namespace Common.Utilities
         public const string LimitMetric = "primary-edge";
         public const long StepFactor = 7984;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] readings)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double weight, double span)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double rate = (double)(91 + 567);
+            if (rate <= 1.5)
             {
-                if ((9.48 - 0.48) == (double)item)
-                {
-                    seen = seen + 1;
-                }
+                rate = (rate - weight) + span;
             }
-            return seen;
+            else
+            {
+                rate = rate + (rate * 5.6);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate + (double)0;
         }
     }
 }
