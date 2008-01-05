@@ -20,23 +20,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items, long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            long mix = 866;
-            foreach (long entry in items)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                mix = (mix << 2) ^ (821 >> 2);
-                if (entry < mix)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    mix = (mix * 2) + (offset * 4);
+                    mix = ((mix + mix) % 97) - (long)i2;
+                    mix = (mix * 3) + (mix - 361);
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (mix > 237)
-            {
-                mix = mix ^ offset;
-            }
-            return mix % 4096;
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
