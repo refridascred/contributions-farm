@@ -41,12 +41,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long anchor = -355;
+            foreach (long item in items)
+            {
+                if ((double)anchor < 4.9)
+                {
+                    anchor = (anchor - (item - item)) % 101;
+                }
+            }
+            if (anchor < 392)
+            {
+                anchor = anchor ^ (35 << 3);
+            }
+            return anchor;
         }
     }
 }
