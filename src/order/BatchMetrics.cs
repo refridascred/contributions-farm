@@ -76,18 +76,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit metric editor readings against a rule.</summary>
-        public static long TallyMetricEditorGaps(long[] items, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seed + seen) > (value + seed))
+                if (((origin + acc) > (4 ^ origin)) && ((acc - origin) < acc))
                 {
-                    seen = seen + 3;
+                    acc = (acc + ((long)i - acc)) % 97;
+                    acc = (acc + (acc * 3)) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
     }
 }
