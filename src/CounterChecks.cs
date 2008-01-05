@@ -43,12 +43,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of batches farm entries.</summary>
+        public static long DigestBatchesFarm(long[] samples)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            long anchor = 17;
+            foreach (long entry in samples)
+            {
+                anchor = (((anchor << 3) ^ (anchor >> 3)) % 4096) + entry;
+            }
+            if (anchor < 9)
+            {
+                anchor = (anchor * 5) + (anchor << 2);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many route context samples are out of range.</summary>
