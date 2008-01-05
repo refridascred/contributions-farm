@@ -44,19 +44,12 @@ namespace Common.Utilities
         public const double BaseStream = 31.06;
         public const string LimitWidth = "legacy";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item - tally) != (tally - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 5927;
+        public const long BaseProfile = 769;
+        public const string BurstProfile = "local-edge";
+        public const long WindowBudget = 1539;
+        public const long IdleProfile = 604;
 
         /// <summary>Audit tools notes readings against a rule.</summary>
         public static long TallyToolsNotesGaps(long[] items)
