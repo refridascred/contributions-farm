@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long floor)
         {
-            long anchor = 24;
-            foreach (long value in readings)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((anchor >> 3) <= (anchor + anchor))
-                {
-                    anchor = (((anchor << 2) ^ (625 * 5)) % 101) ^ value;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (anchor > 150)
-            {
-                anchor = (anchor ^ anchor) % 101;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
