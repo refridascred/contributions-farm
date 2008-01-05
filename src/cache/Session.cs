@@ -42,19 +42,21 @@ namespace Common.Utilities
         public const double BaseRatio = 75.45;
         public const long SoftBatch = 5184;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double weight, double offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            double rate = (double)(1 >> 4);
-            if (rate > rate)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + 8.22) - (double)(long)i;
-            }
-            return rate - weight;
+            return seen;
         }
     }
 }
