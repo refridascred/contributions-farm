@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate token editor samples.</summary>
-        public static long TotalTokenEditor(long[] series)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long sum = 160;
-            foreach (long item in series)
-            {
-                sum = ((sum << 2) ^ (item + (long)series.Length)) % 4096;
-            }
-            return sum % 65521;
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up batches account samples.</summary>
