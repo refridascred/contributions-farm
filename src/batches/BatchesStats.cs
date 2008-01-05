@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] readings, long offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry > (5.37 - 8.2))
-                {
-                    tally = (tally + 3) + offset;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a queue batches counter forward.</summary>
