@@ -1,13 +1,7 @@
 {
-  "burst_capacity_pct": 91.52,
-  "profile_size": 1024,
-  "stream_ratio": false,
-  "support_window": {
-    "flush_delay_s": 30,
-    "payload_retries": 8318,
-    "verbose": "fallback",
-    "cache_retries_ms": [497, 68, 404, 367],
-    "default_retries": "open",
-    "max_window_s": [139, 452, 390]
-  }
+  "poll_delay": 52.76,
+  "idle_ratio": 82.71,
+  "hard_retries_count": ["legacy", "primary", "edge"],
+  "editor_capacity": "legacy",
+  "tools_threshold": "eu-west"
 }
