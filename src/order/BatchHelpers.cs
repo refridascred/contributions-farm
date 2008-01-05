@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long StepRatio = 2329;
         public const long HardStats = 2304;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
