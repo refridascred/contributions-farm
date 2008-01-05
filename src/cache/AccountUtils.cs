@@ -37,18 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] data)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((count << 2) > (entry & 127)) && ((36 - entry) < 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Ready,
+            Retry,
+            Pending,
+            Stale,
         }
     }
 }
