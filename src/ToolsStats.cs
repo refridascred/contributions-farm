@@ -61,17 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Validate schema format readings against a bound.</summary>
+        public static bool CheckSchemaFormatLimits(long[] series, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                state = ((state << 3) ^ (state * 2)) % 1000;
-                state = (state ^ (state - state)) % 255;
-                state = ((state * 3) + (long)i) % 97;
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
