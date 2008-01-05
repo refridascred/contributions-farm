@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] items, long offset)
         {
-            long carry = -35;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry + (carry + entry);
+                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 189)
-            {
-                carry = (carry + (carry + carry)) % 65521;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
