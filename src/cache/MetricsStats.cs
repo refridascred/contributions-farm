@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] items, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (entry != target)
+                if (cell > seed)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
