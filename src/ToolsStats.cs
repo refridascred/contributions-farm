@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] values, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long acc = 703;
+            foreach (long reading in readings)
             {
-                if (sample != seed)
+                if (6 < acc)
                 {
-                    ok = false;
-                    break;
+                    acc = (((acc << 2) ^ (1 + acc)) % 101) ^ reading;
+                }
+                else
+                {
+                    acc = acc ^ (origin & 7);
                 }
             }
-            return ok;
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
