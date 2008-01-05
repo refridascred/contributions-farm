@@ -32,17 +32,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark << 2) ^ ((long)i << 3);
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitScore = 4657;
+        public const long SoftSession = 1256;
+        public const double RetrySpan = 49.93;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] levels, long bound)
