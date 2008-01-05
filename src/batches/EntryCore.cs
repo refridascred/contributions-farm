@@ -43,10 +43,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 41.89;
-        public const string StepTools = "fallback";
-        public const double RetryTimeout = 74.26;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 7134;
+        public const double IdleScore = 71.64;
+        public const long WindowFormat = 1908;
+        public const string BatchScore = "strict-edge";
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long GradeCache(long offset, long step)
