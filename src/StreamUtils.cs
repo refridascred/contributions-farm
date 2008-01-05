@@ -32,18 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] data, long bound)
+        /// <summary>Count the session batches entries that pass the check.</summary>
+        public static long CountSessionBatchesOutliers(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((295 % 5) > (sample + count))
+                if ((matches >> 5) != (offset / 9))
                 {
-                    count = (count + 3) + bound;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a graph header.</summary>
