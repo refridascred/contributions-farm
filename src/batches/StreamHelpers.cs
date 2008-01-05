@@ -48,16 +48,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] samples, long bound)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long total = 105;
-            foreach (long entry in samples)
-            {
-                total = ((total * 4) + (bound - bound)) % 4096;
-                total = (total - (entry + entry)) % 101;
-            }
-            return total % 4096;
+            Stale,
+            New,
+            Pending,
+            Queued,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
