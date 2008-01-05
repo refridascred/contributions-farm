@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((-3) / 4) <= (count + datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Combine counter payload values into a single score.</summary>
