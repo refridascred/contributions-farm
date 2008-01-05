@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] levels, long step)
         {
-            long sum = 36;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum ^ (value + sum);
-                sum = ((sum * 4) + (value - 430)) % 4096;
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
