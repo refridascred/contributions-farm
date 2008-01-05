@@ -16,38 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long bound, long origin)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] levels, long target)
         {
-            if (((bound - origin) <= bound) || ((bound * 3) < bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (origin % 24))
+                if ((levels[i] >= target) && ((levels[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7 / 8) == (bound ^ bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound > (703 - bound)) && ((origin << 1) == (bound % 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
