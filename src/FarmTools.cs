@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] samples, long bound)
+        /// <summary>Digest a series of tools githubfarm entries.</summary>
+        public static long TallyToolsGithubfarm(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = 4;
+            foreach (long reading in series)
             {
-                if (!((value + bound) != (bound + value)))
+                if ((result - reading) != (76 >> 1))
                 {
-                    seen = seen + 2;
+                    result = (result - (reading + offset)) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = result - ((-5) >> 3);
                 }
+                if (!(offset >= (result - reading)))
+                {
+                    result = (result * 3) + (offset & 15);
+                }
+                result = ((result << 2) ^ ((long)series.Length + result)) % 97;
             }
-            return seen;
+            if (result > 37)
+            {
+                result = result - (result - result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
