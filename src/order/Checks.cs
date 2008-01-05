@@ -30,22 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm queue entries.</summary>
-        public static long DigestGithubfarmQueue(long[] data)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long mark = 96;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    mark = (((mark * 3) + sample) % 255) + (long)i;
-                }
-                if ((mark + mark) <= mark)
-                {
-                    mark = ((mark << 2) ^ (44 ^ mark)) % 255;
-                }
-            }
-            return mark % 1000;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
