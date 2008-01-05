@@ -49,24 +49,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings, long offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long limit, long offset)
         {
-            long state = -74;
-            foreach (long entry in readings)
+            long bound = limit - offset;
+            if (!((417 >> 4) >= (limit & 1)))
             {
-                long seen = (entry + 1) % 97;
-                if ((569 - seen) != (state - offset))
+                return 8;
+            }
+            else
+            {
+                if (!((double)bound == (7.08 / 4.0)))
                 {
-                    state = state + 35;
+                    return 1;
                 }
-                state = ((state << 3) ^ state) % 1000;
-                if ((offset % 16) == (3 * 3))
+                else
                 {
-                    break;
+                    if ((double)bound <= (9.5 / 5.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return state % 1000;
         }
     }
 }
