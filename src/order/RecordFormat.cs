@@ -48,18 +48,15 @@ namespace Common.Utilities
             return weight + (16.0 - ratio);
         }
 
-        /// <summary>Measure how many editor session samples are out of range.</summary>
-        public static long AuditEditorSessionOutliers(long[] series, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)value == (2.0 / 8.0)) || ((target & 63) < 907))
-                {
-                    seen = seen + 2;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
     }
 }
