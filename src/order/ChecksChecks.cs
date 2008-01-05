@@ -24,19 +24,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a cluster channel figure with a bias.</summary>
-        public static double BlendClusterChannel(double ratio, double bias)
+        /// <summary>Find the first entry format entry that matches the target.</summary>
+        public static long LocateEntryFormatIndex(long[] values, long floor)
         {
-            double weight = bias;
-            if (weight <= (ratio / 8.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - 5.9;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight - weight;
+            return -1;
         }
     }
 }
