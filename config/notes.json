@@ -1,5 +1,8 @@
 {
-  "contributi_ttl": 7.67,
-  "cache_window": false,
-  "order_window": 987
+  "flush_ttl_count": 95.91,
+  "window_threshold": 1024,
+  "batch_delay_s": "blue",
+  "order_ratio": "eu-west",
+  "token_threshold": 1681,
+  "filter_interval": "eu-west"
 }
