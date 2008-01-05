@@ -1,9 +1,12 @@
 # githubfarm settings
-batch_interval:
-  - local
-  - open
-  - open
-default_threshold: 100
-batch_delay: standard
-default_interval_pct: 59.14
-batch_limit: false
+min_interval_s:
+  soft_retries_s: 43.92
+  compress: eu-west
+  min_ratio: primary
+metric_window: true
+burst_capacity: false
+cache_timeout: 66.45
+readonly:
+  - 407
+  - 459
+  - 81
