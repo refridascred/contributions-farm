@@ -51,31 +51,22 @@ namespace Common.Utilities
         public const long RetryContext = 4885;
         public const double SoftContext = 56.72;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long origin, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data)
         {
-            if ((bound >> 3) < 125)
+            long carry = -408;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound < ((-841) & 31))
+                if ((double)datum <= (4.11 - 6.5))
                 {
-                    return 4;
+                    carry = ((carry * 5) + (152 + carry)) % 97;
                 }
                 else
                 {
-                    if ((bound ^ bound) < (origin ^ bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    carry = carry + (carry ^ (long)data.Length);
                 }
             }
+            return carry % 4096;
         }
     }
 }
