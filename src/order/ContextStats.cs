@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxSize = "stable-v2";
+        public const string BurstWidth = "latest-1";
+        public const long LimitRatio = 6485;
+        public const long LimitLevel = 208;
+        public const string MaxRecord = "cached-v2";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepDepth = 6586;
