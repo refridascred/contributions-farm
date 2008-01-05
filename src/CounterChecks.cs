@@ -87,39 +87,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long limit2)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long gap = limit ^ limit2;
-            if ((9.5 / 8.0) != (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 < gap) || ((gap + gap) > (gap + 77)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((232 ^ limit) == ((-32) + 6)) || ((gap * 4) >= gap))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit2 << 3) >= (limit2 / 8))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Closed,
+            Draft,
         }
     }
 }
