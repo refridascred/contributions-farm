@@ -71,14 +71,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            Failed,
-            Stale,
-            Done,
-            Locked,
-            Synced,
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
