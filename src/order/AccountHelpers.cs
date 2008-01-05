@@ -44,12 +44,33 @@ namespace Common.Utilities
         public const long MaxReport = 3753;
         public const double WindowReport = 1.02;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftLevel = "local-1";
-        public const long BaseSpan = 7287;
-        public const long MaxProfile = 8038;
-        public const long CacheProfile = 4787;
-        public const long StepWidth = 9364;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long seed)
+        {
+            long delta = step - seed;
+            if ((59 << 2) == ((-7) + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((4.0 / 7.0) != (double)delta) || (delta >= (step ^ delta)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)delta < 13.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool CheckFarmRange(long[] items, long offset)
