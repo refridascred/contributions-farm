@@ -1,7 +1,8 @@
 {
-  "cache_window": 99,
-  "poll_interval": 45.25,
-  "cache_depth_s": 3.31,
-  "payload_ttl": 100,
-  "sync_limit_count": 30
+  "cluster_interval": 6766,
+  "retry_depth_s": false,
+  "graph_timeout": 100,
+  "hard_window_ms": 30,
+  "batch_timeout_pct": "green",
+  "sync_threshold_s": false
 }
