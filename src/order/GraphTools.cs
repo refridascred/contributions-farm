@@ -16,12 +16,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 2423;
-        public const string RetryContributi = "cached";
-        public const long HardContributi = 7447;
-        public const double CacheContributi = 67.91;
-        public const long BatchContributi = 9683;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result + (limit + result)) % 97) - (long)i2;
+                }
+                long next = (long)i;
+                if (!((long)i < next))
+                {
+                    next = next - ((long)i >> 3);
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BaseAlready = 7340;
