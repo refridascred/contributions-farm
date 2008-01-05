@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] levels, long target)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a account snapshot.</summary>
