@@ -48,10 +48,19 @@ namespace Common.Utilities
         public const string LimitFactor = "primary";
         public const double BaseSize = 91.48;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardLevel = 2836;
-        public const long StepWidth = 1504;
-        public const long MinCounter = 7425;
-        public const long RetryWidth = 4695;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
