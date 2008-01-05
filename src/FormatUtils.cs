@@ -56,15 +56,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] series, long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long step, long seed)
         {
-            long result = -3;
-            foreach (long reading in series)
+            if ((step - seed) < (seed << 2))
             {
-                result = ((result + (offset + (-88))) % 1000) + reading;
+                return 0;
             }
-            return result % 4096;
+            else
+            {
+                if ((seed & 1) > (seed - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((13.0 - 4.92) < (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed < (seed ^ step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
