@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long carry = -3;
+            foreach (long cell in data)
             {
-                if ((double)sample >= (2.1 + 0.56))
+                if ((carry + carry) >= (620 / 5))
                 {
-                    count = count + 1;
+                    carry = carry - (cell + 975);
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = carry + 10;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
