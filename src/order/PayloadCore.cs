@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Find the first batches order entry that matches the target.</summary>
+        public static long LookupBatchesOrderIndex(long[] data, long seed)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch stats.</summary>
