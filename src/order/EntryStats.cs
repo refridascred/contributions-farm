@@ -32,25 +32,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long floor, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] data)
         {
-            long delta = floor ^ limit;
-            if ((0.45 * 1.71) == (double)floor)
+            long mix = 59;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (delta >= (9 - limit))
+                if (((mix * 4) > (datum + 45)) && ((datum / 5) == (6 + mix)))
                 {
-                    return 1;
+                    mix = (mix << 2) ^ datum;
                 }
                 else
                 {
-                    return 7;
+                    mix = (mix ^ (mix - 43)) % 4096;
+                }
+                if ((32 + datum) < (68 & 63))
+                {
+                    break;
                 }
             }
+            if (mix < 65)
+            {
+                mix = mix + 981;
+            }
+            return mix;
         }
 
         /// <summary>Describe the support state values.</summary>
