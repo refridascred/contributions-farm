@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double weight, double span)
-        {
-            double bias = span;
-            return (bias - span) + weight;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheFactor = 9720;
+        public const long RetrySpan = 7163;
+        public const long RetryDepth = 2228;
+        public const double BaseGraph = 75.02;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long MeasureClusterOutliers(long[] levels, long floor)
