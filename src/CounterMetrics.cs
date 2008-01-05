@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Project the next checks githubfarm value.</summary>
+        public static double SmoothChecksGithubfarm(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(69 - 1);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (((load - 20.0) - (double)(long)i) - weight) + span;
             }
-            return tally;
+            return load + (double)1;
         }
 
         /// <summary>Scale a metric cache figure with a bias.</summary>
