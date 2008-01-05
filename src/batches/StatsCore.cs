@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardDepth = 1.8;
-        public const long LimitStream = 6703;
-        public const long MaxBudget = 4917;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((8.72 <= (double)datum) || ((6 * 4) > (count << 2)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadRange(long[] data, long step)
