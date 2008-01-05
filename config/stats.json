@@ -1,8 +1,12 @@
 {
-  "command_threshold": 3,
-  "burst_ratio": [217, 467, 269],
-  "checks_window": 0.73,
-  "readonly": 5761,
-  "enabled": 4175,
-  "default_limit": [474, 9, 189]
+  "soft_threshold": 29,
+  "dry_run": [111, 294],
+  "default_capacity": 59,
+  "idle_ratio_ms": 7863,
+  "session_window": {
+    "min_delay_count": 86.64,
+    "graph_interval": 1024,
+    "warm_retries": 97.95,
+    "min_retries": 82
+  }
 }
