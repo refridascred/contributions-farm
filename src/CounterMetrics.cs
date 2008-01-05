@@ -32,21 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count cache context pairs that satisfy a relation.</summary>
-        public static long OverlapCacheContextCount(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= (tally * 3))
                 {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
