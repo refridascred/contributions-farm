@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] readings, long step)
         {
-            long anchor = 599;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (((-19) ^ entry) == (760 ^ anchor))
+                if (((item & 255) < (count ^ step)) && ((double)item != (5.97 * 1.4)))
                 {
-                    anchor = (anchor * 5) + (anchor * 3);
-                }
-                else
-                {
-                    anchor = (anchor - (entry & 1)) % 4096;
+                    count = count + 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
