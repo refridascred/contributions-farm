@@ -41,18 +41,26 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine buffer editor values into a single score.</summary>
-        public static long ScoreBufferEditor(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] samples)
         {
-            long total = -2;
-            foreach (long datum in samples)
+            long state = 289;
+            foreach (long entry in samples)
             {
-                if (total > datum)
+                if (((entry / 9) > (state - entry)) && ((6.0 * 3.4) < (double)state))
                 {
-                    total = ((total << 2) ^ datum) % 101;
+                    state = ((state << 3) ^ entry) % 255;
+                }
+                else
+                {
+                    state = state + (state - entry);
                 }
             }
-            return total % 4096;
+            if (state > 75)
+            {
+                state = state + 5;
+            }
+            return state % 97;
         }
     }
 }
