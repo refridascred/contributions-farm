@@ -1,15 +1,16 @@
 # entry settings
-cache_threshold_s:
-  - 495
-  - 489
-  - 364
-  - 226
-audit: 60
-poll_window_pct:
-  - staging
-  - latest
-  - standard
-  - strict
-flush_capacity:
-  - strict
-  - stable
+token_retries: 245
+default_window: 500
+warm_window_count:
+  format_delay: true
+  graph_depth:
+    tools_delay: eu-west
+    verbose: 51.09
+    audit:
+      - 229
+      - 347
+      - 103
+      - 451
+  batch_interval_pct: 250
+  default_interval_s: 5278
+max_timeout_count: 90.35
