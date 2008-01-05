@@ -59,19 +59,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] readings, long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry > target)
+                if (((double)score >= 5.58) || (score >= (646 / 6)))
                 {
-                    stale = false;
-                    break;
+                    score = (score + bound) % 101;
+                    continue;
                 }
+                else
+                {
+                    score = (score ^ (bound + bound)) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
     }
 }
