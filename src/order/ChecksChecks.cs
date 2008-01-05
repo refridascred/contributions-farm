@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] values, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if (75 < (38 - target))
             {
-                if (offset > tally)
+                return 2;
+            }
+            else
+            {
+                if (((target ^ target) == (limit + 583)) && ((target << 1) > ((-890) + target)))
                 {
-                    tally = (tally + 2) - reading;
+                    return 4;
+                }
+                else
+                {
+                    if ((59 - 889) == (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a format stream counter forward.</summary>
