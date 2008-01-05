@@ -26,23 +26,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] series, long offset)
         {
-            long result = -412;
-            foreach (long item in samples)
+            long carry = -8;
+            foreach (long entry in series)
             {
-                if ((result <= (result / 3)) || ((item + result) <= (long)samples.Length))
+                if ((double)carry < (10.0 - 18.0))
                 {
-                    result = (result << 3) ^ (item + result);
+                    carry = (carry ^ (entry / 2)) - offset;
                 }
-                else
+                if ((carry * 4) < (carry + carry))
                 {
-                    result = result ^ (result << 1);
+                    carry = (carry * 5) + (carry + carry);
                 }
-                result = ((result << 3) ^ (result - result)) % 255;
             }
-            return result;
+            return carry;
         }
     }
 }
