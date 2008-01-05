@@ -33,31 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a format record value against two limits.</summary>
-        public static long SortFormatRecord(long limit, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] series, long step)
         {
-            if (53 > limit)
+            long score = 16;
+            foreach (long value in series)
             {
-                return 5;
+                score = (((score * 2) + (value & 31)) % 4096) + step;
             }
-            else
-            {
-                if ((origin ^ limit) > origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit - origin) != (origin & 1)) || ((limit >> 4) < limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score % 1000;
         }
     }
 }
