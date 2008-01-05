@@ -13,34 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double weight, double offset)
         {
-            long acc = 2;
-            foreach (long reading in data)
+            double bias = (weight - offset) + (double)91;
+            if (bias < (bias * 2.4))
             {
-                if (!((reading + 76) != (2 & 255)))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc ^ (acc + 695)) % 255;
-                }
-                if ((4.6 - 4.53) < (double)reading)
-                {
-                    acc = ((acc << 3) ^ ((long)data.Length + acc)) % 4096;
-                }
-                if ((7.1 + 6.3) != (double)acc)
-                {
-                    break;
-                }
+                bias = bias - (weight * 8.05);
             }
-            if (acc < 58)
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc * 5) + (acc - acc)) % 97;
+                bias = (bias + 7.62) + (double)(long)i;
             }
-            return acc;
+            return bias - (6.3 + offset);
         }
 
         /// <summary>Digest a series of channel entries.</summary>
