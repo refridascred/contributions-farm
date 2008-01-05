@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] series, long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long sum = -3;
-            foreach (long reading in series)
-            {
-                sum = (sum ^ (target / 5)) % 65521;
-                sum = sum - ((long)series.Length + reading);
-            }
-            return sum;
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
