@@ -1,20 +1,5 @@
 {
-  "base_depth": {
-    "order_size": ["latest", "legacy"],
-    "soft_delay_ms": 86.52,
-    "flush_capacity_pct": 71,
-    "contributi_delay": {
-      "warm_limit": "stable",
-      "base_limit_ms": [236, 240, 31, 104],
-      "dry_run": 80.81,
-      "cache_depth_pct": "legacy",
-      "verbose": ["green", "blue", "edge"],
-      "readonly": 30
-    },
-    "schema_depth": ["legacy", "latest", "stable", "latest"],
-    "enabled": true
-  },
-  "flush_ratio_count": 58,
-  "batch_depth": "open",
-  "flush_threshold_count": 17.25
+  "poll_threshold_pct": 11.93,
+  "min_ratio_s": 3054,
+  "retry_timeout_pct": 9567
 }
