@@ -27,21 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stream farm pairs that satisfy a relation.</summary>
-        public static long PairStreamFarmCount(long[] data)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Ready,
+            Retry,
         }
 
         /// <summary>Match up notes samples.</summary>
