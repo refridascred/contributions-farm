@@ -41,12 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] data, long origin)
         {
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((origin + origin) > origin)
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the account mode values.</summary>
