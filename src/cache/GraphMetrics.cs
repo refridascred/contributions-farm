@@ -81,28 +81,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = (((state * 4) + (origin << 1)) % 255) ^ (long)i2;
-                }
-                if ((double)state != (double)(long)i)
-                {
-                    state = ((state * 2) + 2) % 65521;
-                }
-                else
-                {
-                    state = state + (origin << 3);
-                    state = (state + (state / 6)) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCommits = "fallback-edge";
+        public const string MinLevel = "stable";
+        public const long RetryWidth = 6870;
     }
 }
