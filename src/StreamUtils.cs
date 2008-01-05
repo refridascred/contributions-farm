@@ -47,20 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support cache readings against a bound.</summary>
-        public static bool CheckSupportCacheBounds(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinLevel = 3699;
+        public const long HardTools = 6834;
+        public const long BatchBudget = 5277;
+        public const long IdleSize = 2993;
+        public const long BurstTools = 4627;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long HardCounter = 3248;
