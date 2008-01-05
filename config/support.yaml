@@ -1,20 +1,14 @@
 # support settings
-entry_timeout: strict
-contributi_threshold:
-  - 290
-  - 121
-  - 254
-persist:
-  flush_capacity: 95
-  default_limit_s: 9569
-  idle_window_s: eu-west
-  persist: blue
-compress:
-  layout_capacity: legacy
-  default_delay_s:
-    - 319
-    - 97
-    - 311
-    - 220
-  token_capacity: staging
-  context_retries: false
+soft_size: true
+cache_interval_s: 14.42
+idle_ratio_pct:
+  layout_size: 865
+  window_threshold: standard
+  max_threshold_pct: 60
+  warm_ttl:
+    - blue
+    - open
+    - primary
+    - eu-west
+  retry_limit_s: primary
+  sync_capacity: 7695
