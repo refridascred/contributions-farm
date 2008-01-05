@@ -1,9 +1,20 @@
 {
-  "compress": "fallback",
-  "batch_timeout": "stable",
-  "hard_capacity_count": {
-    "default_ratio_count": 8633,
-    "readonly": "legacy",
-    "editor_limit": 53.58
-  }
+  "batch_ratio_ms": {
+    "idle_capacity": "edge",
+    "dry_run": 4005,
+    "flush_threshold": 74,
+    "sync_delay_ms": false,
+    "min_delay": 55,
+    "editor_threshold": [264, 259]
+  },
+  "notes_window": 73,
+  "cache_depth_s": 1,
+  "max_size_pct": {
+    "githubfarm_retries": false,
+    "min_limit": 75.39,
+    "cache_ratio": 38,
+    "route_interval": "primary",
+    "route_ttl": [373, 14, 173]
+  },
+  "account_ttl": "standard"
 }
