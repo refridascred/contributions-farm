@@ -43,22 +43,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] data, long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((target + matches) >= (matches - entry))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Pending,
+            Locked,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
