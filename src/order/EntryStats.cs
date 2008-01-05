@@ -46,11 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 33.6;
-        public const long HardDepth = 2807;
-        public const long StepBatches = 7057;
-        public const long MinTimeout = 7184;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Done,
+            Closed,
+            Pending,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long bound)
