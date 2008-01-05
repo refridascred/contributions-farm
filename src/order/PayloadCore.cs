@@ -48,9 +48,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitScore = 79.68;
-        public const long StepOrder = 1924;
-        public const string WindowOrder = "staging-v2";
+        /// <summary>Digest a series of record commits entries.</summary>
+        public static long ScoreRecordCommits(long[] levels)
+        {
+            long acc = 38;
+            foreach (long value in levels)
+            {
+                if (value > (5 - value))
+                {
+                    acc = ((acc * 4) + (value / 9)) % 4096;
+                }
+            }
+            if (acc > 72)
+            {
+                acc = ((acc << 3) ^ (acc / 2)) % 255;
+            }
+            return acc % 4096;
+        }
     }
 }
