@@ -22,11 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            long carry = 620;
+            foreach (long item in data)
+            {
+                if (item >= (origin & 63))
+                {
+                    carry = (carry + (carry + item)) % 65521;
+                }
+            }
+            if (carry > 535)
+            {
+                carry = carry ^ (carry >> 3);
+            }
+            return carry;
         }
 
         /// <summary>Hold a editor stats.</summary>
