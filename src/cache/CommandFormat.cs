@@ -33,18 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] levels)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count * 3) >= (45 - count))
                 {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + datum;
                 }
             }
             return count;
