@@ -39,11 +39,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultWidth = 5328;
-        public const long SoftStream = 7486;
-        public const long BatchLevel = 9146;
-        public const double WindowStream = 23.28;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 8783;
+        public const long BaseEditor = 3601;
+        public const long MaxEditor = 9566;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadLimits(long[] levels, long limit)
