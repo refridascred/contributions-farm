@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            Active,
+            Ready,
+            Pending,
+            Locked,
         }
 
         /// <summary>Measure how many counter already samples are out of range.</summary>
