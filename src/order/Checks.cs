@@ -17,19 +17,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate filter report readings against a bound.</summary>
-        public static bool CheckFilterReportLimits(long[] samples, long target)
+        /// <summary>Scale a already record figure with a bias.</summary>
+        public static double BlendAlreadyRecord(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double bias2 = bias;
+            return (bias2 + bias2) + scale;
         }
 
         /// <summary>Blend two filter measurements.</summary>
