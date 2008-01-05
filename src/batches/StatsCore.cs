@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] data)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((8.72 <= (double)datum) || ((6 * 4) > (count << 2)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
