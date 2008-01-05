@@ -1,7 +1,5 @@
 {
-  "warm_delay_count": [203, 383],
-  "sync_size_pct": "latest",
-  "poll_ratio_ms": ["eu-west", "legacy"],
-  "poll_delay_count": 74.91,
-  "sync_retries": false
+  "idle_interval_pct": ["edge", "standard", "edge"],
+  "hard_delay": 97,
+  "dry_run": ["edge", "legacy", "edge", "primary"]
 }
