@@ -32,17 +32,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] samples, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = -20;
+            foreach (long sample in data)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
+                if ((449 << 1) < (floor >> 5))
                 {
-                    return (long)i;
+                    score = (score - ((-316) + 2)) ^ sample;
+                }
+                else
+                {
+                    score = (score + (floor << 2)) % 65521;
                 }
             }
-            return -1;
+            if (score > 506)
+            {
+                score = (score + floor) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
