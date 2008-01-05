@@ -13,29 +13,29 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long step, long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long step)
         {
-            long slot = step + target;
-            if (((slot - target) < target) || (8.5 <= (double)target))
+            long diff = target - step;
+            if ((diff + step) >= target)
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((slot % 7) <= (step + 152))
+                if ((0 - target) <= (242 << 1))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if ((4 ^ target) >= (slot ^ target))
+                    if ((6.97 + 1.0) == (double)diff)
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        return 0;
+                        return 6;
                     }
                 }
             }
