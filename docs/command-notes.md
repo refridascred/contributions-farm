@@ -1,11 +1,10 @@
 # Command notes
 
-Each commits is validated before it reaches the githubfarm queue.
-Run the metric check before changing any queue limits.
+The tools report groups every stream by account.
+The window report groups every contributi by queue.
 
 ## Guidelines
 
-- Review window limits each release
-- Document new buffer fields
-- Prefer layout defaults
-- Validate entry input early
+- Document new context fields
+- Review profile limits each release
+- Log every session change
