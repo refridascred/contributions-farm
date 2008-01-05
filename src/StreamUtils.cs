@@ -49,18 +49,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the session batches entries that pass the check.</summary>
-        public static long CountSessionBatchesOutliers(long[] series, long offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches >> 5) != (offset / 9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) + datum;
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Rank order input into a small class.</summary>
