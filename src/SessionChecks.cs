@@ -23,17 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] items, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
+                if ((0.2 - 16.0) <= (double)item)
                 {
-                    return (long)i;
+                    seen = (seen + 3) - floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
