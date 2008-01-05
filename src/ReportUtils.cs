@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] series, long offset)
         {
-            Queued,
-            Stale,
-            Failed,
-            New,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the layout kind values.</summary>
