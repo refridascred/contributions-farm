@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            Closed,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the channel level values.</summary>
