@@ -1,8 +1,17 @@
 {
-  "compress": ["latest", "staging"],
-  "sync_window": true,
-  "checks_ratio": [426, 281, 254],
-  "idle_delay_s": 78.84,
-  "audit": 88,
-  "counter_threshold": [149, 283, 495, 82]
+  "record_retries": "staging",
+  "sync_size": 1561,
+  "enabled": "cached",
+  "audit": {
+    "queue_limit": {
+      "poll_capacity_count": 5178,
+      "notes_depth": 83.17,
+      "warm_ratio_count": "local"
+    },
+    "flush_interval_ms": [139, 245],
+    "burst_timeout": "staging",
+    "base_ratio": 1.46
+  },
+  "retry_ttl": "local",
+  "verbose": false
 }
