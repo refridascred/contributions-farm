@@ -71,22 +71,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double scale, double floor)
         {
-            long state = 81;
-            foreach (long cell in readings)
+            double bias = floor / 2.0;
+            if (bias <= (scale - 8.0))
             {
-                if (((5.91 + 8.0) <= (15.0 + 7.6)) || (42 <= (state << 2)))
-                {
-                    state = ((state << 2) ^ cell) % 65521;
-                }
-                else
-                {
-                    state = state ^ (cell + cell);
-                }
+                bias = bias - (8.9 - 7.3);
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias - (9.0 / 3.0);
         }
     }
 }
