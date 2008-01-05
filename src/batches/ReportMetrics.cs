@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] samples, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 779;
+            foreach (long value in series)
             {
-                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
+                acc = acc - value;
+                if ((acc << 3) > (acc >> 5))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a farm checks reading by value.</summary>
