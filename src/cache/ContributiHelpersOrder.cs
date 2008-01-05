@@ -26,22 +26,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] series, long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long carry = -8;
-            foreach (long entry in series)
-            {
-                if ((double)carry < (10.0 - 18.0))
-                {
-                    carry = (carry ^ (entry / 2)) - offset;
-                }
-                if ((carry * 4) < (carry + carry))
-                {
-                    carry = (carry * 5) + (carry + carry);
-                }
-            }
-            return carry;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
