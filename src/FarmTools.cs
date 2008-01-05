@@ -23,19 +23,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] items, long limit)
+        /// <summary>Rank token stats input into a small class.</summary>
+        public static long BucketTokenStats(long offset, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long edge = offset - origin;
+            if ((double)edge == (18.0 * 6.34))
             {
-                if (item >= limit)
+                return 6;
+            }
+            else
+            {
+                if ((origin % 100) > origin)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((edge - origin) < (offset % 10))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((edge << 1) >= (origin >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
