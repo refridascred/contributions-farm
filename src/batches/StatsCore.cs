@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the graph route entries that pass the check.</summary>
-        public static long CountGraphRouteOutliers(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (((double)seen >= 10.0) && (((double)entry >= (7.7 / 2.0)) || ((1.64 - 16.0) != (double)seen)))
+                if ((sample >> 1) >= (sample * 3))
                 {
-                    seen = seen + 3;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
