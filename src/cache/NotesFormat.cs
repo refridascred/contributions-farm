@@ -63,12 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
             public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
