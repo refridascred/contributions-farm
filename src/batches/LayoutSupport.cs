@@ -62,14 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] readings, long target)
         {
-            Queued,
-            Pending,
-            New,
-            Active,
-            Locked,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
