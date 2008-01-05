@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] values, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (reading < offset)
+                if (hits > (872 + reading))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a session snapshot.</summary>
