@@ -14,32 +14,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long step, long seed)
+        /// <summary>Locate a farm checks reading by value.</summary>
+        public static long SeekFarmChecksIndex(long[] levels, long origin)
         {
-            long bound = step - seed;
-            if (((bound >> 1) > (step + bound)) && ((seed % 2) <= ((-6) % 10)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)seed > 1.6))
+                if (levels[i] < origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.0 / 4.0) <= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the commits class values.</summary>
