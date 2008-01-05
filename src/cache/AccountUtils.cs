@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] readings, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long origin, long floor)
         {
-            long anchor = 4;
-            foreach (long sample in readings)
+            if ((floor ^ floor) <= 345)
             {
-                if (anchor < (sample - anchor))
+                return 8;
+            }
+            else
+            {
+                if ((51 - (-64)) < origin)
                 {
-                    anchor = ((anchor * 5) + (sample - origin)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
