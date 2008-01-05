@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Stale,
-            Pending,
-            Idle,
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
