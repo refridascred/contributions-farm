@@ -43,12 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] readings, long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] <= step)
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
