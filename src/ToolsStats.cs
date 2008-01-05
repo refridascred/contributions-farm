@@ -73,15 +73,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double scale, double floor)
+        /// <summary>Find the first payload schema entry that matches the target.</summary>
+        public static long LookupPayloadSchemaIndex(long[] samples, long offset)
         {
-            double rate = (double)(0 << 3);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (((rate + (5.3 / 6.0)) + (double)(long)i) + scale) - floor;
+                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (double)3;
+            return -1;
         }
     }
 }
