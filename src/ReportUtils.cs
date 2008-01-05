@@ -46,13 +46,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Classify a queue graph pair into a bucket.</summary>
+        public static long RankQueueGraph(long limit, long seed)
         {
-            New,
-            Active,
-            Closed,
-            Done,
+            if ((0.8 / 7.0) != (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit % 2) > (limit + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed < (8.0 + 4.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format level values.</summary>
