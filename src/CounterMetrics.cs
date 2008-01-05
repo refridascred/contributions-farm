@@ -18,19 +18,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double scale, double span)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] samples, long origin)
         {
-            double mean = span;
-            if (mean < mean)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mean = (mean + span) - scale;
+                if ((origin - entry) < (count ^ origin))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean + span;
+            return count;
         }
 
         /// <summary>Count cache context pairs that satisfy a relation.</summary>
