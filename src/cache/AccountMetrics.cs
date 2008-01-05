@@ -47,12 +47,21 @@ namespace Common.Utilities
         public const double LimitPayload = 0.94;
         public const double BatchPayload = 38.9;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
