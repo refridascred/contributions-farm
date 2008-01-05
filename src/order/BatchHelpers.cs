@@ -29,38 +29,19 @@ namespace Common.Utilities
         public const long MaxBudget = 370;
         public const double BurstSession = 55.67;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long origin, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] items, long offset)
         {
-            if ((8.66 - 5.9) > (double)origin)
+            bool ok = true;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound > (bound & 127))
+                if (value >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound < (6.2 * 3.73))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.18 * 8.0) != (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
