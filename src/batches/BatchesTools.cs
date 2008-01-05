@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] samples)
         {
-            Dropped,
-            Queued,
-            Idle,
-            Pending,
-            Closed,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)hits >= (double)(-981))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two cache measurements.</summary>
