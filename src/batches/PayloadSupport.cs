@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] series, long target)
+        /// <summary>Roll a farm layout counter forward.</summary>
+        public static long StepFarmLayout(long limit)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state << 2) ^ 28) % 255;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Find the first batch counter entry that matches the target.</summary>
