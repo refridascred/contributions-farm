@@ -33,19 +33,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] items, long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Stale,
+            New,
         }
     }
 }
