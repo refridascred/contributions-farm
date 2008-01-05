@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Paused,
-            Synced,
-            Locked,
-            Ready,
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine batch values into a single score.</summary>
