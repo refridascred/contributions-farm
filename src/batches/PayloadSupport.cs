@@ -33,17 +33,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] data, long bound)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long floor, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = floor ^ step;
+            if ((floor & 1) <= (step >> 4))
             {
-                if (data[i] >= bound)
+                return 5;
+            }
+            else
+            {
+                if (((bound - step) >= ((-36) << 2)) || ((bound + bound) > step))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (7.55 < (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
