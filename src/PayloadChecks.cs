@@ -33,39 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long origin, long offset)
-        {
-            if (origin <= ((-13) % 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset >= (offset + origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset % 10) >= (offset ^ origin)) || ((double)offset < (11.0 + 8.4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + origin) >= (offset - offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleWidth = "standard";
+        public const string IdleSchema = "cached";
+        public const long CacheSchema = 4484;
+        public const string DefaultLevel = "stable-1";
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long SeriesEditor(long target)
