@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double scale, double bias)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double bias2)
         {
-            double gain = (double)(8 + 62);
-            if (gain > gain)
+            double mean = bias2;
+            if (mean <= (double)282)
             {
-                gain = (gain - bias) + scale;
+                mean = mean - mean;
             }
-            return gain - gain;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - bias;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
