@@ -42,18 +42,9 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((614 * 3) >= (hits * 3))
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepSpan = 937;
+        public const double BaseEntry = 37.62;
+        public const long StepEntry = 5447;
     }
 }
