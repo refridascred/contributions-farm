@@ -25,10 +25,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitScore = 4657;
-        public const long SoftSession = 1256;
-        public const double RetrySpan = 49.93;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] levels, long bound)
