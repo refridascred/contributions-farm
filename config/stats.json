@@ -1,6 +1,6 @@
 {
-  "batch_window": 100,
-  "default_limit_s": [126, 373],
-  "channel_ratio": false,
-  "base_ratio_pct": 60
+  "hard_window_count": "latest",
+  "filter_interval": 29,
+  "hard_ttl_pct": ["legacy", "green", "staging", "stable"],
+  "base_window_s": "strict"
 }
