@@ -44,23 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score + (51 - score)) % 4096) + (long)i2;
-                }
-                if (!(((17 / 3) < (long)i) && ((double)score >= (12.0 * 14.0))))
-                {
-                    score = (score * 5) + ((long)i << 1);
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
