@@ -34,17 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheLevel = 61.95;
+        public const double LimitEditor = 17.68;
+        public const double DefaultEditor = 15.7;
+        public const long SoftDepth = 9655;
+        public const long WindowSize = 8689;
     }
 }
