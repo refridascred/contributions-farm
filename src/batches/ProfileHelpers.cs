@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long state = -6;
+            foreach (long entry in values)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (((double)(long)values.Length == (10.0 * 7.0)) && ((7.0 - 1.1) >= (double)entry))
+                {
+                    state = state ^ (long)values.Length;
+                }
             }
-            return mix;
+            if (state > 328)
+            {
+                state = state + (state & 3);
+            }
+            return state;
         }
 
         /// <summary>Hold a commits entry.</summary>
