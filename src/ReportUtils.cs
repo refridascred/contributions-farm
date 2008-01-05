@@ -47,26 +47,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values, long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] series, long origin)
         {
-            long state = 447;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (!((sample / 4) <= state))
+                if (value != origin)
                 {
-                    state = state - (state * 5);
-                }
-                if ((double)6 != (double)sample)
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (state < 513)
-            {
-                state = (state - (origin + origin)) % 4096;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
