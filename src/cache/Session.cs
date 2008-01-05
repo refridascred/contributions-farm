@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] values)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long score = 317;
-            foreach (long sample in values)
-            {
-                if (!((sample ^ sample) <= (sample >> 5)))
-                {
-                    score = ((score << 2) ^ (216 ^ sample)) % 1000;
-                }
-            }
-            return score;
+            Locked,
+            Stale,
+            New,
+            Idle,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
