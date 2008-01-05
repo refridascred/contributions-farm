@@ -10,29 +10,12 @@ namespace Common.Utilities
         public const double HardAlready = 15.05;
         public const string MaxSize = "cached-v2";
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] data, long seed)
-        {
-            long anchor = 745;
-            foreach (long reading in data)
-            {
-                long lane = (reading << 3) & 1;
-                if ((double)lane > (3.0 - 3.0))
-                {
-                    anchor = ((anchor * 4) + (reading - reading)) - seed;
-                    break;
-                }
-                if ((anchor + anchor) > (reading - reading))
-                {
-                    anchor = (anchor + reading) % 255;
-                }
-                else
-                {
-                    anchor = anchor - (987 * 4);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstDepth = "staging";
+        public const long DefaultFormat = 9070;
+        public const double BatchDepth = 15.41;
+        public const long WindowFormat = 6378;
+        public const double RetryCount = 87.46;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long PairWindowCount(long[] series)
