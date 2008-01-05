@@ -16,18 +16,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] levels)
+        /// <summary>Match up batches account samples.</summary>
+        public static long OverlapBatchesAccountCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((entry + seen) < (entry / 6)) || ((seen & 31) <= (entry + entry))) || !((entry + entry) != (entry + 741)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a already reading.</summary>
