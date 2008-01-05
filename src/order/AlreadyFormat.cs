@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 2760;
-        public const long DefaultEditor = 2279;
-        public const long BurstEditor = 5800;
-        public const double MaxEditor = 34.15;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesBounds(long[] values, long limit)
