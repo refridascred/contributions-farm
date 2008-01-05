@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up format tools samples.</summary>
-        public static long MatchFormatToolsCount(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 1;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = acc ^ (sample / 7);
             }
-            return matches;
+            if (acc < 9)
+            {
+                acc = acc + (step ^ (-62));
+            }
+            return acc;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
