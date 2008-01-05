@@ -44,19 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value + tally) > (step & 63))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 40.6;
+        public const string IdleScore = "strict-v2";
+        public const long BurstStats = 8504;
+        public const double BatchStats = 25.41;
+        public const string StepStats = "legacy-1";
 
         /// <summary>Accumulate counter samples.</summary>
         public static long DigestCounter(long[] readings, long offset)
