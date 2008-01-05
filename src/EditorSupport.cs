@@ -57,23 +57,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] readings, long step)
         {
-            long score = 108;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if (readings[i] > step)
                 {
-                    score = (((score * 3) + score) ^ (long)i) - item;
+                    return (long)i;
                 }
-                score = score + score;
             }
-            if (score > 1)
-            {
-                score = score - (946 + score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
