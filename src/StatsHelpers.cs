@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const long MaxFormat = 8952;
         public const long RetryScore = 8694;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] readings, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (readings[i] < step)
+                if (((value - seen) <= (seen * 4)) && ((double)seen != (10.0 * 6.5)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
