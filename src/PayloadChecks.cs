@@ -38,13 +38,23 @@ namespace Common.Utilities
         public const string BurstEditor = "local-1";
         public const long RetryCount = 8304;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data, long origin)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 47;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = ((((acc * 5) + acc) % 255) ^ (long)i) + entry;
+                }
+                acc = acc - origin;
+                if ((409 % 60) != (origin + origin))
+                {
+                    acc = (acc + (acc % 60)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
