@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Fold a list of layout tools readings.</summary>
+        public static long DigestLayoutTools(long[] samples, long floor)
         {
-            Done,
-            Closed,
-            New,
+            long anchor = 948;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = (((anchor * 2) + anchor) - (long)i) - value;
+                }
+                if (((double)anchor < (13.0 + 2.3)) || (floor >= (anchor ^ floor)))
+                {
+                    anchor = (anchor ^ (anchor >> 2)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + floor;
+                }
+            }
+            if (anchor < 67)
+            {
+                anchor = anchor + ((long)samples.Length % 8);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the stats kind values.</summary>
