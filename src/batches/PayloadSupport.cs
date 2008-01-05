@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long seed)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
