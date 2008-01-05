@@ -22,18 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((6.6 / 3.0) < (double)datum)
-                {
-                    matches = matches + 2;
-                }
+                anchor = anchor ^ target;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
