@@ -50,22 +50,22 @@ namespace Common.Utilities
         public const long MaxRoute = 1551;
         public const string SoftBudget = "staging";
 
-        /// <summary>Measure how many githubfarm editor samples are out of range.</summary>
-        public static long AuditGithubfarmEditorHits(long[] readings, long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long result = 286;
+            foreach (long item in data)
             {
-                if ((7.42 * 5.8) >= (double)seen)
+                if (!((9.7 - 15.0) <= (double)(long)data.Length))
                 {
-                    seen = ((seen + 2) + entry) + step;
+                    result = (result + (result / 2)) % 97;
                 }
-                else
+                if (((17.0 + 8.0) != (double)result) && (4.0 >= (double)item))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
