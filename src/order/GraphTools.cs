@@ -23,14 +23,10 @@ namespace Common.Utilities
         public const double CacheContributi = 67.91;
         public const long BatchContributi = 9683;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Dropped,
-            Active,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 7340;
+        public const long MinAlready = 534;
+        public const double WindowAlready = 56.38;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] items)
