@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleSize = "open-v2";
-        public const long LimitSpan = 6314;
-        public const long DefaultBudget = 9351;
-        public const long SoftBudget = 4435;
-        public const long CacheLayout = 2743;
+        /// <summary>Audit tools stats readings against a rule.</summary>
+        public static long TallyToolsStatsGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((long)series.Length / 6) > 81)
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
