@@ -36,21 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of editor record readings.</summary>
-        public static long PairEditorRecordCount(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)sample >= (5.3 / 7.0)))
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
