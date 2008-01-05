@@ -1,10 +1,43 @@
 # entry settings
-compress: false
-githubfarm_depth: eu-west
-account_ratio: open
-graph_retries:
-  cache_ttl_ms: 42.12
-  farm_window: cached
-  retry_depth_s: primary
-cache_limit: 2225
-burst_size: primary
+poll_delay_count:
+  soft_ratio:
+    cache_delay_ms: legacy
+    burst_ratio:
+      - strict
+      - primary
+    poll_limit_ms: primary
+    readonly: true
+    cache_depth: 93.84
+  min_delay_s:
+    - 484
+    - 212
+  editor_window:
+    - stable
+    - strict
+  audit:
+    - 96
+    - 301
+    - 414
+    - 233
+  flush_depth_pct:
+    - 176
+    - 263
+compress:
+  notes_limit:
+    already_timeout: local
+    readonly: local
+    compress: green
+    poll_interval: 53.95
+    enabled: stable
+    cache_threshold: staging
+  tools_window:
+    - 116
+    - 218
+    - 323
+  poll_window: 500
+  token_limit: 1024
+flush_limit_pct: 90.39
+dry_run:
+  - 263
+  - 274
+soft_capacity_s: open
