@@ -32,18 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] data)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long limit)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((count * 3) >= (45 - count))
+                for (int i3 = 0; i3 < 4; i3++)
                 {
-                    count = (count + 1) + datum;
+                    score = ((score * 3) + ((long)i3 ^ 95)) % 97;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
