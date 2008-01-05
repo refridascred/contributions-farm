@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Idle,
-            Draft,
-            New,
+            Dropped,
+            Retry,
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Combine counter payload values into a single score.</summary>
