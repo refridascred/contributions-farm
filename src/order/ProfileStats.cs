@@ -33,17 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] data, long origin)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long limit, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((limit + limit) <= 6)
             {
-                if (data[i] >= origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= (2.3 + 5.14))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!(limit > (limit ^ limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
