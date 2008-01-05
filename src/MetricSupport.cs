@@ -36,18 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] items, long origin)
+        /// <summary>Count route payload pairs that satisfy a relation.</summary>
+        public static long MatchRoutePayloadCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((seen & 31) != (origin + cell)) || ((cell + 174) <= (cell / 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
