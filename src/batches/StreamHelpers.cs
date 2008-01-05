@@ -24,12 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            Pending,
+            Stale,
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
