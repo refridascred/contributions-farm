@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long MaxScore = 4068;
         public const long HardProfile = 956;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] items, long offset)
+        /// <summary>Count payload cache pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCacheCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
