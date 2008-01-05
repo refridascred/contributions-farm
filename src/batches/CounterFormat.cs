@@ -19,10 +19,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 7036;
-        public const long BurstSize = 9530;
-        public const long SoftBudget = 3847;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultChannel = "latest-1";
+        public const string LimitSize = "open-v2";
+        public const string RetryChannel = "local-1";
+        public const long BatchScore = 556;
 
         /// <summary>Audit stats queue readings against a rule.</summary>
         public static long CountStatsQueueGaps(long[] readings, long seed)
