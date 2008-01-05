@@ -42,12 +42,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSchema = "fallback";
+        public const double MinInterval = 50.74;
+        public const double LimitInterval = 96.79;
     }
 }
