@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] items, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((double)(long)items.Length <= 4.3)
-                {
-                    tally = ((tally + 2) + item) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Draft,
+            Stale,
         }
 
         /// <summary>Scale a layout record figure with a bias.</summary>
