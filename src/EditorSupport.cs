@@ -57,17 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] readings, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
