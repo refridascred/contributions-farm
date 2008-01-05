@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Dropped,
-            Idle,
+            Ready,
             Paused,
+            Closed,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
