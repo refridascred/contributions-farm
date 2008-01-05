@@ -38,24 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            if ((floor << 2) <= (0 / 7))
+            long acc = 3;
+            foreach (long value in levels)
             {
-                return 6;
+                acc = ((acc * 4) + (value + value)) % 4096;
+                acc = (acc * 3) + (value & 15);
+                acc = ((acc << 2) ^ (value << 2)) % 1000;
             }
-            else
+            if (acc > 865)
             {
-                if ((double)offset >= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
+                acc = (acc + (long)levels.Length) % 65521;
             }
+            return acc;
         }
     }
 }
