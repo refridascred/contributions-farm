@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (value >= (value ^ matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 948;
+        public const double HardAlready = 15.05;
+        public const string MaxSize = "cached-v2";
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TotalPayload(long[] data, long seed)
