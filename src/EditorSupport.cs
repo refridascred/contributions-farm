@@ -70,13 +70,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
-            public bool Limit { get; set; }
+            long state = 7;
+            foreach (long item in readings)
+            {
+                state = state + (item >> 5);
+            }
+            return state;
         }
 
         /// <summary>Blend two stats measurements.</summary>
