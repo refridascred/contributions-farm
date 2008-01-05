@@ -35,19 +35,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long sum = -8;
+            foreach (long entry in items)
             {
-                if (!((double)39 < (double)mark))
+                sum = ((sum - (entry ^ entry)) % 255) - origin;
+                if ((entry >> 5) <= sum)
                 {
-                    mark = ((mark * 3) + (mark + mark)) % 65521;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return sum;
         }
     }
 }
