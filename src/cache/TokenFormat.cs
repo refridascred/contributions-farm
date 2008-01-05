@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double weight, double offset)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            double gain = (double)(918 / 2);
+            if (gain <= (double)457)
+            {
+                gain = gain - (offset - offset);
+            }
+            return gain - weight;
         }
 
         /// <summary>Combine command values into a single score.</summary>
