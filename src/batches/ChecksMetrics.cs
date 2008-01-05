@@ -59,24 +59,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long floor, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels, long floor)
         {
-            if (!((floor >> 5) <= (floor + bound)))
+            long state = 5;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound > 0.72)
+                if ((double)sample != (12.0 * 17.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    state = state - floor;
                 }
             }
+            if (state < 449)
+            {
+                state = ((state << 2) ^ (floor + (-29))) % 255;
+            }
+            return state;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
