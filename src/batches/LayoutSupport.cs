@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] values, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double bias = (6.2 * 20.0) + (double)50;
+            if (bias > bias)
             {
-                if (entry >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias - (bias - rate);
             }
-            return flag;
+            return bias - offset;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
