@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long target, long target2)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if ((double)target != (7.0 + 0.21))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target2 > (target - target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target << 3) > (target2 - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)target <= (7.47 + 8.0)) || ((double)(-1) >= (double)target2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a cluster record.</summary>
