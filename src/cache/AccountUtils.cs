@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long origin, long floor)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            if ((floor ^ floor) <= 345)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((51 - (-64)) < origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next order support value from a seed.</summary>
