@@ -1,5 +1,5 @@
 {
-  "enabled": false,
-  "compress": "edge",
-  "cache_ttl_ms": 38.07
+  "editor_depth": "green",
+  "burst_limit": "strict",
+  "batch_timeout": "edge"
 }
