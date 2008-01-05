@@ -1,8 +1,7 @@
 {
-  "metrics_ratio": 5387,
-  "max_retries_ms": ["primary", "standard"],
-  "persist": true,
-  "max_capacity_s": 62,
-  "retry_capacity": ["latest", "blue", "green"],
-  "cluster_timeout": "staging"
+  "poll_delay_pct": 74.71,
+  "idle_interval": "legacy",
+  "retry_threshold_s": 47,
+  "githubfarm_ratio": "green",
+  "default_timeout_count": "staging"
 }
