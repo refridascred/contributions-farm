@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const long LimitRatio = 1097;
         public const long MaxInterval = 7306;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] items, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] series, long origin)
         {
-            long total = 53;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((step << 1) <= total)
+                if (item >= origin)
                 {
-                    total = (total ^ step) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            if (total < 47)
-            {
-                total = (total * 2) + step;
-            }
-            return total;
+            return valid;
         }
     }
 }
