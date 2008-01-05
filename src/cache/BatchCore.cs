@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] readings, long step)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (((item & 255) < (count ^ step)) && ((double)item != (5.97 * 1.4)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
