@@ -1,6 +1,17 @@
 {
-  "strict": 18,
-  "readonly": 3,
-  "idle_interval": "strict",
-  "batch_retries_pct": 7454
+  "readonly": 83.22,
+  "support_ttl": {
+    "burst_threshold_ms": 59,
+    "sync_size": 1592,
+    "poll_retries": 62,
+    "persist": false,
+    "warm_size_pct": "staging"
+  },
+  "audit": "strict",
+  "warm_limit": {
+    "poll_capacity": "legacy",
+    "persist": 30,
+    "soft_capacity_pct": "legacy"
+  },
+  "base_limit_ms": false
 }
