@@ -58,11 +58,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Rank format account input into a small class.</summary>
+        public static long GradeFormatAccount(long limit, long limit2)
         {
-            public double Label { get; set; }
-            public bool Count { get; set; }
+            if ((double)limit >= (5.79 * 2.2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit2 + limit2) == (limit << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit << 3) < (limit2 ^ limit2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit % 12) == (limit & 15))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
