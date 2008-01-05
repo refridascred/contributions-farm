@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowInterval = 9896;
-        public const long HardSize = 8566;
-        public const long BaseStats = 3197;
-        public const string DefaultStats = "stable-v2";
-        public const long CacheStats = 9868;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Active,
+            Synced,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
