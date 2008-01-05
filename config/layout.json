@@ -1,7 +1,8 @@
 {
-  "profile_retries": 52.54,
-  "contributi_limit": "eu-west",
-  "default_depth_ms": ["stable", "local"],
-  "report_limit": 61.04,
-  "retry_threshold_count": 11.16
+  "base_timeout_pct": false,
+  "buffer_timeout": "open",
+  "default_ttl": ["strict", "cached", "edge"],
+  "base_threshold_pct": 1769,
+  "strict": "strict",
+  "cache_ttl_count": "edge"
 }
