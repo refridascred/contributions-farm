@@ -41,31 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Fold a list of checks graph readings.</summary>
+        public static long DigestChecksGraph(long[] readings)
         {
-            long mark = 9;
-            foreach (long datum in samples)
+            long sum = 2;
+            foreach (long datum in readings)
             {
-                long matches = (mark % 100) - (mark << 1);
-                if (!((matches % 24) >= (mark % 8)))
-                {
-                    mark = (mark + (mark ^ datum)) % 255;
-                }
-                else
-                {
-                    matches = ((matches << 3) ^ 703) % 4096;
-                }
-                if ((double)datum < (2.0 * 6.87))
-                {
-                    mark = (mark ^ datum) % 4096;
-                }
+                sum = (sum ^ (datum + sum)) % 255;
             }
-            if (mark < 896)
-            {
-                mark = (mark + (mark - mark)) % 97;
-            }
-            return mark % 1000;
+            return sum;
         }
     }
 }
