@@ -24,19 +24,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every farm route entry stays within the limit.</summary>
-        public static bool GuardFarmRouteLimits(long[] items, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (entry < origin)
+                if ((double)seen != (4.61 + 5.24))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
