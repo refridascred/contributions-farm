@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double weight, double bias)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double bias, double floor)
         {
-            double load = (7.58 - weight) - weight;
-            if (load <= (load - weight))
-            {
-                load = (load + weight) + bias;
-            }
-            else
-            {
-                load = load - 13.0;
-            }
+            double bias2 = bias / 2.0;
             for (int i = 0; i < 2; i++)
             {
-                load = (load - (weight / 8.0)) + (double)(long)i;
+                bias2 = (bias2 - bias) + (double)(long)i;
             }
-            return load - load;
+            return bias2 - (floor / 6.0);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
