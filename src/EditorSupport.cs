@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Done,
-            Closed,
-            Stale,
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
