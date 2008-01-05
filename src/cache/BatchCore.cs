@@ -22,23 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format buffer samples are out of range.</summary>
-        public static long TallyFormatBufferGaps(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches / 9) > (777 << 3))
-                {
-                    matches = ((matches + 1) + reading) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 32.8;
+        public const long MinAccount = 7565;
+        public const string DefaultAccount = "strict-1";
+        public const long HardAccount = 248;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileBounds(long[] values, long offset)
