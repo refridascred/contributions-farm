@@ -40,14 +40,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] items, long origin)
         {
-            Closed,
-            Synced,
-            Draft,
-            Stale,
-            Queued,
+            long mix = 902;
+            foreach (long datum in items)
+            {
+                if ((mix + datum) >= (12 - datum))
+                {
+                    mix = (mix + 3) - origin;
+                }
+                else
+                {
+                    mix = (mix ^ (mix << 2)) % 4096;
+                }
+            }
+            return mix;
         }
     }
 }
