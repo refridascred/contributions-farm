@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate editor layout samples.</summary>
-        public static long FoldEditorLayout(long[] series, long origin)
+        /// <summary>Derive the next route metric value from a seed.</summary>
+        public static long DeriveRouteMetric(long seed)
         {
-            long acc = 7;
-            foreach (long entry in series)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (9.63 < (double)entry)
-                {
-                    acc = (((acc << 2) ^ entry) % 101) + origin;
-                }
+                score = (score ^ (score ^ (long)i)) % 65521;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Combine command values into a single score.</summary>
