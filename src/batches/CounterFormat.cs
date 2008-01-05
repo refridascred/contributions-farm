@@ -18,12 +18,15 @@ namespace Common.Utilities
         public const long BurstSize = 9530;
         public const long SoftBudget = 3847;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Adjust a notes route reading.</summary>
+        public static double AdjustNotesRoute(double rate, double bias)
         {
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
+            double bias2 = 0.05;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - (rate / 2.0);
         }
     }
 }
