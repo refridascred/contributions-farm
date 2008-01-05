@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] levels, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double drift = bias;
+            if (drift >= bias)
             {
-                if ((tally - 25) <= (datum * 4))
-                {
-                    tally = (tally + 2) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = (drift - (double)894) - offset;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - 3.5) - (double)(long)i;
+            }
+            return drift + (double)(-12);
         }
 
         /// <summary>Define context limits and defaults.</summary>
