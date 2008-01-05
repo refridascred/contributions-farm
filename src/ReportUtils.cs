@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a schema channel pair into a bucket.</summary>
-        public static long SortSchemaChannel(long bound, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] samples, long origin)
         {
-            if (bound < (bound - step))
+            long result = 1;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step >> 2) < bound)
+                if (result >= (result ^ origin))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((step + step) <= bound) || ((8.0 * 2.36) == (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = (((result << 3) ^ (result << 2)) % 1000) + datum;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
