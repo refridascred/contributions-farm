@@ -35,13 +35,11 @@ namespace Common.Utilities
         public const string BaseSize = "local-1";
         public const double LimitFactor = 28.35;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Synced,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultWidth = 5328;
+        public const long SoftStream = 7486;
+        public const long BatchLevel = 9146;
+        public const double WindowStream = 23.28;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
