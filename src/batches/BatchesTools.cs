@@ -18,18 +18,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first session support entry that matches the target.</summary>
-        public static long SeekSessionSupportIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryRatio = 6817;
+        public const long RetryReport = 4790;
+        public const double LimitReport = 15.72;
+        public const long IdleReport = 8824;
+        public const double MaxSpan = 86.9;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
