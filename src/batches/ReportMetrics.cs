@@ -43,13 +43,12 @@ namespace Common.Utilities
             return bias + (double)562;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            New,
-            Synced,
-            Dropped,
-            Paused,
+            Done,
+            Locked,
+            Active,
         }
     }
 }
