@@ -23,22 +23,29 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long step, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long seed, long limit)
         {
-            if (((double)seed >= (4.5 * 0.02)) && ((seed - seed) >= seed))
+            if (((limit << 2) != (limit + limit)) && ((limit << 2) > limit))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((3.9 - 4.0) >= (double)step)
+                if ((seed / 2) > seed)
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    return 3;
+                    if ((seed + seed) > limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
