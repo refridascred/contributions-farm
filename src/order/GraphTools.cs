@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = bias;
+            if (load >= rate)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - rate;
             }
-            return hits;
+            return load + (double)82;
         }
 
         /// <summary>Compare every pair of filter editor readings.</summary>
