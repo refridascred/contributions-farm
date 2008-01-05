@@ -1,14 +1,14 @@
 # Command notes
 
-A context that stays idle for too long is moved to the route list.
-The order helpers are pure functions, so they are safe to call from any thread.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
+When a payload fails, the token handler retries a few times before giving up.
 
-The route helpers are pure functions, so they are safe to call from any thread.
-When a cache fails, the entry handler retries a few times before giving up.
-The metric report groups every metrics by order.
+Run the batch check before changing any order limits.
+When a route fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate commits input early
-- Keep metric values small
-- Review farm limits each release
+- Prefer channel defaults
+- Validate githubfarm input early
+- Log every tools change
