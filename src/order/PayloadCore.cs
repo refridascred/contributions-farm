@@ -10,32 +10,10 @@ namespace Common.Utilities
         public const long BaseProfile = 353;
         public const long IdleProfile = 5450;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long seed, long step)
-        {
-            if (step >= (step & 63))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((19.0 - 8.0) <= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepDepth = 2654;
+        public const long BaseNotes = 8235;
+        public const string IdleScore = "local-v2";
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
