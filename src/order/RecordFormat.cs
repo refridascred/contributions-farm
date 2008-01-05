@@ -59,21 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            New,
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
