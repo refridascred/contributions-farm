@@ -48,11 +48,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long bound, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            if (((9.0 + 1.46) != (double)origin) || ((double)bound == (6.32 * 4.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)85 == (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound % 97) <= (origin & 127))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin <= bound) && ((5.7 * 1.45) <= 9.32))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
