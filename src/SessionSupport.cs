@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const string MinRatio = "primary";
         public const double IdleBudget = 68.52;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Audit metrics record readings against a rule.</summary>
+        public static long MeasureMetricsRecordGaps(long[] samples, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen * 2) != (seed >> 1))
                 {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) - reading;
                 }
             }
             return seen;
