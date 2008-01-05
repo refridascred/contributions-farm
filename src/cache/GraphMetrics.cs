@@ -45,18 +45,19 @@ namespace Common.Utilities
         public const long BatchLevel = 9146;
         public const double WindowStream = 23.28;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] items, long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((11.0 - 10.0) > (double)matches)
+                if (cell >= limit)
                 {
-                    matches = ((matches + 1) ^ item) + target;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
