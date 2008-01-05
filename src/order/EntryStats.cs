@@ -39,19 +39,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] samples, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] data)
         {
-            long acc = 10;
-            foreach (long cell in samples)
+            long sum = 412;
+            foreach (long sample in data)
             {
-                acc = ((acc << 2) ^ (acc / 4)) % 97;
-                if ((floor << 3) >= (cell & 1))
-                {
-                    acc = (acc + (cell & 127)) % 4096;
-                }
+                sum = (sum - ((-986) ^ sum)) ^ sample;
             }
-            return acc;
+            if (sum > 822)
+            {
+                sum = (sum << 2) ^ (sum % 16);
+            }
+            return sum;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
