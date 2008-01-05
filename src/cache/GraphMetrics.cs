@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((double)hits <= 2.02) && ((double)reading <= (9.0 / 9.0)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleInterval = 5117;
+        public const string MaxNotes = "primary";
+        public const string CacheNotes = "open-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string SoftWidth = "legacy-v2";
