@@ -19,25 +19,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long bound, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items, long offset)
         {
-            long bound2 = bound - offset;
-            if (bound2 < (offset + offset))
+            long state = 5;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((bound & 3) >= (888 / 9)))
+                if (state >= (state + state))
                 {
-                    return 4;
+                    state = state ^ (3 << 3);
                 }
                 else
                 {
-                    return 5;
+                    state = ((state << 3) ^ (cell + state)) % 4096;
+                }
+                if ((cell + offset) >= (long)items.Length)
+                {
+                    state = (state << 3) ^ (cell - 69);
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a already entry.</summary>
