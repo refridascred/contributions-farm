@@ -69,24 +69,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] samples, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((9.1 / 2.0) < (double)carry) || (8.13 > (double)(long)i))
+                if ((reading + seen) <= seen)
                 {
-                    carry = ((carry << 3) ^ 591) % 1000;
+                    seen = (seen + 3) - floor;
                 }
-                else
-                {
-                    carry = (carry << 2) ^ (304 << 1);
-                }
-                carry = ((carry * 4) + carry) % 1000;
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
