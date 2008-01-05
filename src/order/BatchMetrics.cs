@@ -23,31 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long seed, long limit)
+        /// <summary>Iterate the notes graph series from a seed.</summary>
+        public static long IterateNotesGraph(long bound)
         {
-            if (((limit << 2) != (limit + limit)) && ((limit << 2) > limit))
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((seed / 2) > seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) > limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
