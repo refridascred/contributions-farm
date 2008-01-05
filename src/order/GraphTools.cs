@@ -16,13 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Dropped,
-            Stale,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 2423;
+        public const string RetryContributi = "cached";
+        public const long HardContributi = 7447;
+        public const double CacheContributi = 67.91;
+        public const long BatchContributi = 9683;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
