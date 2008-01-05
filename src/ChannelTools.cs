@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Count the githubfarm session entries that pass the check.</summary>
