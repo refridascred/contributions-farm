@@ -1,11 +1,5 @@
 {
-  "tools_limit": "staging",
-  "warm_delay": [350, 244, 127],
-  "payload_delay": "latest",
-  "order_interval": 1024,
-  "poll_ttl": {
-    "support_ttl": false,
-    "sync_limit_pct": [213, 305, 299],
-    "max_depth_pct": 5940
-  }
+  "record_ratio": "green",
+  "graph_window": [73, 123, 405, 397],
+  "cache_delay_pct": 8660
 }
