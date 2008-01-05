@@ -64,38 +64,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long floor, long target)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            if (floor > (81 + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor >= (target - 60))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target - target) != (floor / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)floor < (5.0 + 0.82)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Dropped,
+            Ready,
+            Active,
+            Synced,
         }
     }
 }
