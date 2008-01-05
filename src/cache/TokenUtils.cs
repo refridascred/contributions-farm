@@ -34,11 +34,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheLevel = 61.95;
-        public const double LimitEditor = 17.68;
-        public const double DefaultEditor = 15.7;
-        public const long SoftDepth = 9655;
-        public const long WindowSize = 8689;
+        /// <summary>Match up stats batch samples.</summary>
+        public static long CompareStatsBatchCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
