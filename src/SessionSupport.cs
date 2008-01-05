@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream contributi readings against a bound.</summary>
-        public static bool VerifyStreamContributiLimits(long[] readings, long step)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double span)
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = span;
+            return (mean + 2.22) + rate;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
