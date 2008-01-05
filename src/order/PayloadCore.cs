@@ -16,11 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxLevel = "stable-v2";
-        public const long BurstChecks = 7349;
-        public const double HardChecks = 48.26;
-        public const long HardSpan = 6701;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public string Token { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Locate a buffer githubfarm reading by value.</summary>
         public static long FindBufferGithubfarmIndex(long[] levels, long target)
