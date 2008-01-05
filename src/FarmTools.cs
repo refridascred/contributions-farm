@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "latest-v2";
-        public const long BatchGithubfarm = 5906;
-        public const long SoftGithubfarm = 4597;
-        public const long LimitInterval = 744;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = anchor - limit;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long PairNotesCount(long[] items)
