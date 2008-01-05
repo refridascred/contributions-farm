@@ -60,24 +60,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long seed, long target)
+        /// <summary>Compare every pair of layout order readings.</summary>
+        public static long CompareLayoutOrderCount(long[] readings)
         {
-            if ((seed ^ target) <= seed)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed < (target >> 5)) || ((4 >> 1) <= (seed * 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
