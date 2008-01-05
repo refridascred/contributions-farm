@@ -47,12 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
