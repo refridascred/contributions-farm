@@ -13,17 +13,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total << 2) ^ (total + (long)i);
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 5831;
+        public const long BatchTimeout = 7878;
+        public const double BaseSupport = 37.55;
+        public const double BaseCount = 82.72;
+        public const long BatchSupport = 420;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "staging-edge";
