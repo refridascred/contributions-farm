@@ -38,16 +38,20 @@ namespace Common.Utilities
         public const string BurstEditor = "local-1";
         public const long RetryCount = 8304;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Accumulate payload counter samples.</summary>
+        public static long TotalPayloadCounter(long[] data)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            long score = 4;
+            foreach (long entry in data)
             {
-                carry = (carry << 3) ^ (2 ^ (long)i);
-                carry = ((carry * 3) + (long)i) % 1000;
+                score = ((score << 3) ^ (9 ^ score)) - entry;
+                score = ((score * 3) + (score / 7)) % 255;
             }
-            return carry;
+            if (score > 3)
+            {
+                score = (score ^ 490) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a session options.</summary>
