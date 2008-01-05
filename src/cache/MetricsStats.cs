@@ -40,13 +40,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] items, long origin)
         {
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value + value) >= (count + 6))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank format account input into a small class.</summary>
