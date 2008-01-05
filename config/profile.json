@@ -1,7 +1,13 @@
 {
-  "schema_depth": "stable",
-  "metrics_ttl": ["edge", "primary", "legacy"],
-  "batch_size_pct": false,
-  "verbose": "stable",
-  "burst_depth": true
+  "retry_depth_s": false,
+  "format_ttl": false,
+  "compress": false,
+  "min_capacity_ms": ["cached", "latest", "fallback"],
+  "sync_interval_s": {
+    "warm_limit": "staging",
+    "min_ttl_ms": "fallback",
+    "enabled": 21.45,
+    "stream_depth": 250
+  },
+  "cache_ratio_pct": [154, 242]
 }
