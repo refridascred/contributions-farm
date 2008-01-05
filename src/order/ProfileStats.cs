@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] values, long offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long offset)
         {
-            long total = 5;
-            foreach (long reading in values)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (offset <= (3 + 70))
-                {
-                    total = (total ^ (offset & 15)) - reading;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return total % 1000;
+            return acc;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
