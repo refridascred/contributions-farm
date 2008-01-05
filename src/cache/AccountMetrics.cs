@@ -23,21 +23,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count channel payload pairs that satisfy a relation.</summary>
-        public static long OverlapChannelPayloadCount(long[] series)
+        /// <summary>Measure how many batches counter samples are out of range.</summary>
+        public static long MeasureBatchesCounterMatches(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((4.85 - 0.6) < (double)matches)
                 {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = ((matches + 1) + item) - origin;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
