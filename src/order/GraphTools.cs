@@ -33,22 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstNotes = 3.11;
+        public const string BaseNotes = "primary-1";
+        public const double MinNotes = 46.52;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
