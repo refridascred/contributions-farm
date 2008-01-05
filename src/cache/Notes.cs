@@ -32,11 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 8459;
-        public const long StepBatches = 5298;
-        public const long CacheBatches = 8406;
-        public const long SoftFactor = 744;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels, long offset)
+        {
+            long anchor = 87;
+            foreach (long datum in levels)
+            {
+                anchor = (anchor + offset) - datum;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
