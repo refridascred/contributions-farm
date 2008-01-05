@@ -14,11 +14,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a already record figure with a bias.</summary>
-        public static double BlendAlreadyRecord(double scale, double bias)
+        /// <summary>Find the first route filter entry that matches the target.</summary>
+        public static long LocateRouteFilterIndex(long[] levels, long step)
         {
-            double bias2 = bias;
-            return (bias2 + bias2) + scale;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two filter measurements.</summary>
