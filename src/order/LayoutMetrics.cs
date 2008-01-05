@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the graph notes entries that pass the check.</summary>
-        public static long MeasureGraphNotesOutliers(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!(tally <= (tally - tally)))
+                if ((double)datum <= (3.0 * 7.4))
                 {
-                    tally = (tally + 2) ^ value;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Match up token samples.</summary>
