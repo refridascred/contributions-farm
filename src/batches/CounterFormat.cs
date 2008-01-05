@@ -33,20 +33,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items, long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long seed)
         {
-            long acc = -3;
-            foreach (long datum in items)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                acc = ((((acc << 2) ^ acc) % 101) ^ datum) - seed;
-                acc = acc ^ (3 ^ acc);
+                long prev = anchor + (seed + seed);
+                if (6 > seed)
+                {
+                    prev = (prev << 2) ^ (anchor >> 5);
+                }
+                if ((anchor + prev) >= (anchor + seed))
+                {
+                    prev = prev + ((long)i - prev);
+                }
+                else
+                {
+                    prev = (prev * 4) + (anchor + 54);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            if (acc > 8)
-            {
-                acc = (acc * 2) + (acc % 2);
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
