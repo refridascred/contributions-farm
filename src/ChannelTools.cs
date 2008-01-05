@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm session entries that pass the check.</summary>
-        public static long TallyGithubfarmSessionMatches(long[] samples)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (count <= datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Look up the position of a batches schema sample.</summary>
