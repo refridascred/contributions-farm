@@ -1,15 +1,9 @@
 {
-  "max_window_count": {
-    "context_size": false,
-    "layout_limit": 71.27,
-    "soft_ratio": false,
-    "metric_window": "stable",
-    "min_ratio": "cached",
-    "readonly": ["cached", "primary"]
-  },
-  "format_interval": "primary",
-  "default_timeout_pct": 8608,
-  "persist": 79.28,
-  "max_timeout_ms": 100,
-  "min_capacity_s": "open"
+  "compress": "fallback",
+  "batch_timeout": "stable",
+  "hard_capacity_count": {
+    "default_ratio_count": 8633,
+    "readonly": "legacy",
+    "editor_limit": 53.58
+  }
 }
