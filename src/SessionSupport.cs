@@ -20,11 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
