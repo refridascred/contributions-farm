@@ -47,18 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
-        public static long MeasureGithubfarmEntryHits(long[] data, long target)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)matches <= 5.0))
-                {
-                    matches = ((matches + 1) - entry) - target;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
