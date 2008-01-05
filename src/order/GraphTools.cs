@@ -53,17 +53,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a already contributi reading by value.</summary>
-        public static long FindAlreadyContributiIndex(long[] series, long origin)
+        /// <summary>Audit batch commits readings against a rule.</summary>
+        public static long CountBatchCommitsMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (series[i] >= origin)
+                if (((long)levels.Length & 15) >= hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
