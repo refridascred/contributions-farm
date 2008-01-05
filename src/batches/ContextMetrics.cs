@@ -21,21 +21,17 @@ namespace Common.Utilities
         public const long IdleSize = 3660;
         public const long WindowInterval = 4421;
 
-        /// <summary>Compare every pair of command graph readings.</summary>
-        public static long PairCommandGraphCount(long[] series)
+        /// <summary>Derive the next filter cluster value from a seed.</summary>
+        public static long RollFilterCluster(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry ^ limit) % 255;
+                carry = ((carry * 4) + (limit >> 4)) % 101;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a batches options.</summary>
