@@ -43,15 +43,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate editor cache samples.</summary>
-        public static long DigestEditorCache(long[] data, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] items, long floor)
         {
-            long acc = 110;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                acc = (acc ^ datum) - floor;
+                if ((sample & 255) >= (floor << 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc % 1000;
+            return hits;
         }
     }
 }
