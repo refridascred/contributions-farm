@@ -54,20 +54,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double offset)
-        {
-            double scale2 = (double)(454 & 127);
-            if (scale2 <= (7.68 + scale2))
-            {
-                scale2 = (scale2 - (scale + scale2)) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 - scale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "staging-v2";
+        public const long MinRoute = 4097;
+        public const double HardLevel = 91.37;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool ValidateSessionRange(long[] levels, long floor)
