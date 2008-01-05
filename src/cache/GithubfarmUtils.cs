@@ -67,38 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route schema pair into a bucket.</summary>
-        public static long BucketRouteSchema(long target, long bound)
+        /// <summary>Compare every pair of contributi checks readings.</summary>
+        public static long MatchContributiChecksCount(long[] data)
         {
-            if (bound <= (target / 6))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound >> 3) >= (target + 5)) || (target <= (bound & 7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((-72) <= (target << 1))
+                    if ((data[i] ^ data[j]) == 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((target / 7) != (target * 4)) && ((target + bound) < bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
