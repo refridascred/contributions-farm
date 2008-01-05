@@ -17,19 +17,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double weight, double offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double bias = (weight - offset) + (double)91;
-            if (bias < (bias * 2.4))
-            {
-                bias = bias - (weight * 8.05);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + 7.62) + (double)(long)i;
-            }
-            return bias - (6.3 + offset);
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
