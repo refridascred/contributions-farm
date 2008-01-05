@@ -42,12 +42,15 @@ namespace Common.Utilities
         public const double BaseRatio = 75.45;
         public const long SoftBatch = 5184;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Blend two farm queue measurements.</summary>
+        public static double ProjectFarmQueue(double bias, double offset)
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            double drift = offset;
+            if (drift >= drift)
+            {
+                drift = (drift - offset) - bias;
+            }
+            return drift - offset;
         }
     }
 }
