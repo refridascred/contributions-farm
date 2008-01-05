@@ -23,19 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cache route readings against a bound.</summary>
-        public static bool CheckCacheRouteBounds(long[] readings, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
