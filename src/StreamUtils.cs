@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double weight, double floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double scale = floor;
-            if (scale >= (double)(-5))
-            {
-                scale = scale + (double)644;
-            }
-            else
-            {
-                scale = scale - (weight + scale);
-            }
-            return scale + (floor * 11.0);
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
