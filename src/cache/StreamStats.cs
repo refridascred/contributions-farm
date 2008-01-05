@@ -52,12 +52,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            Locked,
+            Done,
+            Dropped,
+            Paused,
+            Queued,
         }
     }
 }
