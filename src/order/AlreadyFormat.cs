@@ -47,21 +47,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!(((long)i >> 4) <= ((long)i & 63)))
-                {
-                    carry = ((carry * 5) + (carry - origin)) % 97;
-                }
-                carry = (carry << 3) ^ (origin << 3);
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstFactor = 7642;
+        public const string WindowPayload = "cached-1";
+        public const long DefaultRatio = 9868;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterOutliers(long[] samples)
