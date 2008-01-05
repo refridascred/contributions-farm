@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the format metric series from a seed.</summary>
-        public static long IterateFormatMetric(long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] data, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            long mark = 561;
+            foreach (long sample in data)
             {
-                score = ((score * 4) + (long)i) % 97;
+                mark = ((mark * 3) + (target + target)) + sample;
             }
-            return score;
+            if (mark > 227)
+            {
+                mark = (mark - (target - mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
