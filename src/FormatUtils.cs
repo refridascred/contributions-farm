@@ -56,32 +56,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long limit, long bound)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long next = limit + bound;
-            if ((double)limit < (16.0 - 2.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-49) + next) >= (bound / 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit == (double)4)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Synced,
+            Done,
+            Queued,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the notes state values.</summary>
