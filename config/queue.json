@@ -1,8 +1,12 @@
 {
-  "base_size_ms": "open",
-  "flush_window_s": true,
-  "readonly": 54,
-  "entry_window": ["primary", "latest"],
-  "retry_ratio_ms": "green",
-  "sync_window": 8.82
+  "stream_window": "cached",
+  "verbose": true,
+  "format_capacity": "eu-west",
+  "poll_ratio_pct": {
+    "poll_timeout_s": 100,
+    "cache_depth": "cached",
+    "min_window_pct": 500
+  },
+  "retry_threshold_s": "strict",
+  "filter_limit": 58.17
 }
