@@ -60,18 +60,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading != (2.9 - 11.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
