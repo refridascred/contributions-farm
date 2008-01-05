@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many filter notes samples are out of range.</summary>
-        public static long MeasureFilterNotesOutliers(long[] data, long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (origin <= (origin / 5))
+                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
                 {
-                    tally = (tally + 3) - datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a farm checks reading by value.</summary>
