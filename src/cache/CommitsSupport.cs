@@ -57,14 +57,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Classify a account order pair into a bucket.</summary>
+        public static long BucketAccountOrder(long target, long offset)
         {
-            Queued,
-            Paused,
-            Failed,
-            Locked,
-            Draft,
+            if ((target - offset) != (target / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target + offset) <= (offset & 63))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset % 24) >= (target - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset % 24) > offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route class values.</summary>
