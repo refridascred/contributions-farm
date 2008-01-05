@@ -13,18 +13,32 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] series)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long step, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long slot = step + target;
+            if (((slot - target) < target) || (8.5 <= (double)target))
             {
-                if ((seen << 2) >= 60)
+                return 1;
+            }
+            else
+            {
+                if ((slot % 7) <= (step + 152))
                 {
-                    seen = (seen + 1) + item;
+                    return 4;
+                }
+                else
+                {
+                    if ((4 ^ target) >= (slot ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a report session sample.</summary>
