@@ -37,9 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSchema = "fallback";
-        public const double MinInterval = 50.74;
-        public const double LimitInterval = 96.79;
+        /// <summary>Project the next order graph value.</summary>
+        public static double SmoothOrderGraph(double rate, double offset)
+        {
+            double ratio = 9.2;
+            if (ratio > ratio)
+            {
+                ratio = ((ratio - ratio) - rate) + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - ratio) - (double)(long)i;
+            }
+            return ratio + (ratio + ratio);
+        }
     }
 }
