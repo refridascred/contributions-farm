@@ -29,24 +29,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] items, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long bound)
         {
-            long anchor = 4;
-            foreach (long sample in items)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                double ratio = (19.0 - 3.3) - (8.17 / 8.0);
-                if ((ratio >= (double)sample) || ((anchor / 3) <= (anchor << 1)))
+                result = (result << 2) ^ (result * 4);
+                if ((long)i <= (result % 24))
                 {
-                    ratio = ratio + ratio;
+                    continue;
                 }
-                anchor = (anchor + (anchor * 3)) + floor;
+                result = ((result * 3) + (long)i) % 101;
             }
-            if (anchor < 664)
-            {
-                anchor = (anchor - (anchor - 2)) % 1000;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Roll a session counter forward.</summary>
