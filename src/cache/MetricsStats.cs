@@ -36,14 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Pending,
-            Queued,
-            New,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBatch = 24.86;
+        public const string BatchSpan = "primary-1";
+        public const long WindowBatch = 3706;
+        public const string SoftBatch = "staging-edge";
+        public const long BaseBatch = 6609;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long BucketWindow(long origin, long offset)
