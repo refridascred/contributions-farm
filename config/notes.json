@@ -1,9 +1,7 @@
 {
-  "poll_timeout_ms": {
-    "sync_retries_pct": ["open", "local"],
-    "context_ttl": "local",
-    "batch_size": "green"
-  },
-  "contributi_window": 21,
-  "sync_depth_count": "latest"
+  "verbose": 39.67,
+  "buffer_threshold": "local",
+  "schema_timeout": 60,
+  "record_interval": "legacy",
+  "queue_capacity": 8524
 }
