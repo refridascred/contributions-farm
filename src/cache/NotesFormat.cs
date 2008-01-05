@@ -49,19 +49,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double bias, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] items)
         {
-            double load = bias;
-            if (load > (8.73 + load))
+            long count = 0;
+            foreach (long reading in items)
             {
-                load = (load + (double)93) - span;
+                if (((0.18 * 20.0) <= (double)count) && ((reading * 4) >= count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (bias + load);
+            return count;
         }
     }
 }
