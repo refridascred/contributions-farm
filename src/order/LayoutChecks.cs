@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples, long target)
+        /// <summary>Grade a metric tools value against two limits.</summary>
+        public static long RankMetricTools(long target, long seed)
         {
-            long result = 81;
-            foreach (long entry in samples)
+            long gap = target ^ seed;
+            if (((gap - gap) >= target) && (seed > (target - gap)))
             {
-                result = ((result - (target - result)) % 4096) ^ entry;
+                return 0;
             }
-            if (result > 407)
+            else
             {
-                result = (result + (target + target)) % 97;
+                if (target <= (target << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return result;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
