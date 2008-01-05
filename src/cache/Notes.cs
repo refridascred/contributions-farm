@@ -32,22 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support record entries that pass the check.</summary>
-        public static long CountSupportRecordOutliers(long[] values, long seed)
+        /// <summary>Digest a series of already counter entries.</summary>
+        public static long WeighAlreadyCounter(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long acc = 55;
+            foreach (long value in readings)
             {
-                if ((seed & 31) > (hits - datum))
+                if ((acc + limit) < (acc / 4))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = ((acc + limit) % 1000) - value;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a session stats.</summary>
