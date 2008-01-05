@@ -1,7 +1,10 @@
-id,score,level
-1,edge,44.84
-2,33,local
-3,487,eu-west
-4,39,651
-5,primary,807
-6,433,green
+id,score,level,rank,owner
+1,689,eu-west,861,802
+2,290,61,700,strict
+3,cached,blue,standard,401
+4,44.05,56.58,189,76.47
+5,789,open,85.54,649
+6,33.06,239,fallback,local
+7,fallback,90.75,238,52.8
+8,757,51.91,35.84,latest
+9,49,19.92,67.94,fallback
