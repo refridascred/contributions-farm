@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many notes token samples are out of range.</summary>
-        public static long MeasureNotesTokenGaps(long[] items, long offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)tally > 0.63)
-                {
-                    tally = ((tally + 1) + cell) - offset;
-                }
-            }
-            return tally;
+            Dropped,
+            Idle,
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
