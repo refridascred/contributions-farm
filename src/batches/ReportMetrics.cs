@@ -33,9 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryBudget = "cached-1";
-        public const long LimitRecord = 546;
-        public const double BaseRecord = 38.91;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Locked,
+            Pending,
+            Stale,
+            Paused,
+            Failed,
+        }
     }
 }
