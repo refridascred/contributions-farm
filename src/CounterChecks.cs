@@ -60,11 +60,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double rate, double floor)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            double drift = (rate + rate) * 2.4;
+            if (drift <= (6.3 - floor))
+            {
+                drift = drift - (double)63;
+            }
+            return drift + floor;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
