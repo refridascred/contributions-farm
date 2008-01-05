@@ -30,18 +30,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] readings, long seed)
+        /// <summary>Accumulate support stream samples.</summary>
+        public static long DigestSupportStream(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long acc = 9;
+            foreach (long value in readings)
             {
-                if ((seed >> 3) == (reading + (long)readings.Length))
+                acc = acc ^ 179;
+                acc = ((acc << 3) ^ (acc << 3)) % 1000;
+                if (((value >> 3) <= (acc >> 5)) && ((double)acc > (4.0 - 4.0)))
                 {
-                    tally = tally + 1;
+                    acc = (acc ^ (value - acc)) % 255;
                 }
             }
-            return tally;
+            return acc % 4096;
         }
     }
 }
