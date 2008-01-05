@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] data, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (cell <= step)
+                if ((tally - 25) <= (datum * 4))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
