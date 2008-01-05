@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] items, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((matches + origin) == (sample - sample)) || ((double)origin <= (double)matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 3688;
+        public const long BaseCount = 3609;
+        public const double MaxCluster = 79.21;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long DeriveChecks(long origin)
