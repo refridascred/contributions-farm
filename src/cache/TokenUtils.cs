@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value << 1) >= (matches * 4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 9673;
+        public const double BatchScore = 82.18;
+        public const long WindowSpan = 9128;
+        public const long HardMetric = 5934;
+        public const long MinSize = 9632;
 
         /// <summary>Iterate the report entry series from a seed.</summary>
         public static long RollReportEntry(long floor)
