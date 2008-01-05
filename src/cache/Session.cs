@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] data, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] values)
         {
             long count = 0;
-            foreach (long entry in data)
+            foreach (long item in values)
             {
-                if (((double)entry == (double)floor) || (((67 + floor) == (entry - 160)) || (((long)data.Length * 3) < floor)))
+                if ((double)item > (1.33 - 3.0))
                 {
-                    count = count + 3;
+                    count = count + 2;
                 }
             }
             return count;
