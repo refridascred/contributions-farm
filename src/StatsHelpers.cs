@@ -19,10 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 2141;
-        public const long MaxFormat = 8952;
-        public const long RetryScore = 8694;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Draft,
+            Ready,
+            Synced,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
