@@ -1,5 +1,6 @@
 {
-  "retry_ttl_s": 92.37,
-  "record_retries": 250,
-  "audit": false
+  "default_size_s": "eu-west",
+  "route_timeout": 13.51,
+  "min_size": "latest",
+  "dry_run": 48.96
 }
