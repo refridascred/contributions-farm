@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double ratio, double bias)
-        {
-            double weight = bias / 6.0;
-            if (weight >= bias)
-            {
-                weight = (weight + 9.9) - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (weight + weight);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 43.24;
+        public const double RetryScore = 32.96;
+        public const double MaxInterval = 13.09;
+        public const long BurstLevel = 8678;
+        public const double MaxTimeout = 10.45;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] levels, long offset)
