@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many filter notes samples are out of range.</summary>
+        public static long MeasureFilterNotesOutliers(long[] data, long origin)
         {
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (origin <= (origin / 5))
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a farm checks reading by value.</summary>
