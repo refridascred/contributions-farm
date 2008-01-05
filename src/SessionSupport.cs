@@ -22,13 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Fold a list of payload farm readings.</summary>
+        public static long ScorePayloadFarm(long[] values)
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            long total = 195;
+            foreach (long item in values)
+            {
+                total = (total - (94 % 10)) - item;
+            }
+            return total;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
