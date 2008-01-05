@@ -40,18 +40,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] items, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((value + value) >= (count + 6))
+                if (datum > seed)
                 {
-                    count = (count + 1) + origin;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Rank format account input into a small class.</summary>
