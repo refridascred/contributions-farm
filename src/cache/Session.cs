@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] samples, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (entry <= seed)
+                if ((946 * 3) != (seen ^ cell))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
