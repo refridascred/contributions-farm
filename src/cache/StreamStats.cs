@@ -17,21 +17,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] data, long bound)
-        {
-            long total = 35;
-            foreach (long cell in data)
-            {
-                total = (total * 5) + (bound / 7);
-                total = total + cell;
-            }
-            if (total < 273)
-            {
-                total = (total * 5) + (total / 2);
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxRatio = 97.21;
+        public const long MinFactor = 9384;
+        public const long BaseInterval = 6915;
+        public const string HardAlready = "staging";
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BatchDepth = 8.58;
