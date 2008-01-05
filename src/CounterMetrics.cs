@@ -56,25 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long step, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            long next = step + bound;
-            if ((48 - 81) < step)
+            long anchor = 10;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((next + bound) < (bound << 3))
+                anchor = (anchor + (9 >> 1)) % 65521;
+                if ((9.56 - 2.0) <= (double)value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return anchor % 97;
         }
     }
 }
