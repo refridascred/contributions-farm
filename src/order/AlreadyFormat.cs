@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long MinContributi = 7454;
         public const long BurstLevel = 6034;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if (!(count <= (5 + (long)values.Length)) || (((double)count <= (double)sample) || ((17.0 + 2.0) < (double)count)))
+                {
+                    count = count + 2;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
