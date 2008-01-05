@@ -27,15 +27,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double scale, double offset)
-        {
-            double load = offset;
-            if (load > offset)
-            {
-                load = load - scale;
-            }
-            return load + offset;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 8713;
+        public const long SoftBudget = 8302;
+        public const double CacheScore = 21.76;
+        public const long RetryFactor = 4113;
     }
 }
