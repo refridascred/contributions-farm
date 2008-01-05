@@ -26,26 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics editor readings.</summary>
-        public static long CombineMetricsEditor(long[] readings, long origin)
+        /// <summary>Locate a token metric reading by value.</summary>
+        public static long LookupTokenMetricIndex(long[] data, long limit)
         {
-            long anchor = 75;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.0 + 16.0) <= (double)entry)
+                if (data[i] > limit)
                 {
-                    anchor = ((anchor * 5) + (entry - origin)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                if ((7 > origin) && ((origin + entry) >= (anchor & 255)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
