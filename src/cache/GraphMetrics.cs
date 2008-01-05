@@ -46,9 +46,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCommits = "fallback-edge";
-        public const string MinLevel = "stable";
-        public const long RetryWidth = 6870;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleDepth = 76.75;
+        public const long SoftLevel = 2069;
+        public const long HardAccount = 3748;
+        public const long SoftTimeout = 7860;
     }
 }
