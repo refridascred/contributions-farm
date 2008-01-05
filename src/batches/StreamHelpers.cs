@@ -17,13 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long bound)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public double Limit { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark << 2) ^ ((long)i - mark)) % 255;
+                mark = mark - mark;
+                if ((940 - (long)i) != ((long)i - bound))
+                {
+                    mark = mark ^ (bound - (long)i);
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a filter stats.</summary>
