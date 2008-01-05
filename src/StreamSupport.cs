@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] samples, long step)
         {
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
