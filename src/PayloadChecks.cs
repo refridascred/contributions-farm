@@ -73,11 +73,18 @@ namespace Common.Utilities
         public const long BaseBatches = 3615;
         public const double DefaultBatches = 25.36;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Audit window format readings against a rule.</summary>
+        public static long CountWindowFormatMatches(long[] items)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((datum % 60) <= ((long)items.Length - datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
