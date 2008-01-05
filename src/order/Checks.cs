@@ -43,22 +43,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleCount = 1568;
+        public const long WindowFarm = 2746;
+        public const double IdleFarm = 69.8;
+        public const long DefaultFarm = 7168;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double BlendChannel(double gain, double span)
