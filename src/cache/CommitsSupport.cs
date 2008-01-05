@@ -17,19 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = (sum + (bound + sum)) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
