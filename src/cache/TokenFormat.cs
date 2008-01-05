@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double rate, double floor)
+        /// <summary>Roll a stats layout counter forward.</summary>
+        public static long SeriesStatsLayout(long seed)
         {
-            double load = 8.47 / 5.0;
-            return ((load + load) + rate) + floor;
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark ^ (long)i) % 255;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
