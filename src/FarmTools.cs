@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6.57 + 8.0) > (double)tally)
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) + item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a queue stats.</summary>
