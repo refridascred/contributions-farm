@@ -1,10 +1,7 @@
 # entry settings
-max_delay: 25
-default_size_ms:
-  - strict
+cache_delay:
+  - staging
+  - stable
   - legacy
-cache_window:
-  - local
-  - local
-profile_interval: 72
-stream_delay: false
+session_capacity: fallback
+min_limit_s: 47.76
