@@ -68,12 +68,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit metric editor readings against a rule.</summary>
+        public static long TallyMetricEditorGaps(long[] items, long seed)
         {
-            Draft,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seed + seen) > (value + seed))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
