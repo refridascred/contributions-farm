@@ -23,21 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count graph contributi pairs that satisfy a relation.</summary>
-        public static long CompareGraphContributiCount(long[] data)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
-                    if ((data[i] - data[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
