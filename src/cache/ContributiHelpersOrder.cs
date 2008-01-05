@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double ratio, double span)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double weight, double bias)
         {
-            double rate = (double)(0 * 5);
-            if (rate >= rate)
+            double load = (7.58 - weight) - weight;
+            if (load <= (load - weight))
             {
-                rate = rate + (span / 9.0);
+                load = (load + weight) + bias;
+            }
+            else
+            {
+                load = load - 13.0;
             }
             for (int i = 0; i < 2; i++)
             {
-                rate = (rate - (ratio + rate)) + (double)(long)i;
+                load = (load - (weight / 8.0)) + (double)(long)i;
             }
-            return rate - ratio;
+            return load - load;
         }
 
         /// <summary>Match up token samples.</summary>
