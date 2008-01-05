@@ -21,14 +21,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] samples)
         {
-            Pending,
-            Stale,
-            Closed,
-            Retry,
-            Active,
+            long carry = 9;
+            foreach (long sample in samples)
+            {
+                if (((double)sample <= (2.3 - 4.2)) && ((sample - carry) == (sample % 5)))
+                {
+                    carry = carry - (7 ^ (long)samples.Length);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate metric samples.</summary>
