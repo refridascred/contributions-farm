@@ -1,13 +1,9 @@
 # githubfarm settings
-readonly: 100
-hard_depth_count:
-  base_retries_s: cached
-  idle_delay_pct: true
-  soft_timeout: 76.96
-  min_threshold_ms:
-    - stable
-    - staging
-    - standard
-    - legacy
-  commits_size: 81
-batch_delay_count: legacy
+verbose: cached
+filter_ratio: true
+min_size_ms:
+  - strict
+  - stable
+  - green
+batch_ttl_ms: 250
+default_retries_count: 249
