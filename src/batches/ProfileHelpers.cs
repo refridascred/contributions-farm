@@ -60,19 +60,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command window readings against a rule.</summary>
-        public static long AuditCommandWindowHits(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((3.5 - 1.0) <= (double)cell)
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepSupport = 6.71;
+        public const long BatchBudget = 7280;
+        public const double HardSupport = 64.92;
+        public const long CacheSize = 7073;
+        public const double BaseInterval = 92.63;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long SeriesContributi(long step)
