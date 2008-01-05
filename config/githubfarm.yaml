@@ -1,7 +1,17 @@
 # githubfarm settings
-strict: 45.09
-hard_limit_s:
-  - primary
-  - edge
-  - standard
-sync_timeout: 32.72
+idle_depth_count: 0.43
+enabled:
+  poll_threshold_count: 30
+  githubfarm_depth: 40.76
+  profile_ttl:
+    notes_ttl: legacy
+    format_size: 60
+    min_ttl_pct: 4459
+    audit: cached
+  default_retries_count: 23.15
+  dry_run: local
+base_ratio_ms: true
+record_limit:
+  - 214
+  - 119
+  - 140
