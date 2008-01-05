@@ -46,15 +46,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double span)
+        /// <summary>Rank channel queue input into a small class.</summary>
+        public static long BucketChannelQueue(long target, long offset)
         {
-            double ratio = gain / 5.0;
-            if (ratio > span)
+            long edge = target ^ offset;
+            if (!((target + target) <= (offset * 2)))
             {
-                ratio = ratio - (gain * 19.0);
+                return 2;
             }
-            return ratio + (double)528;
+            else
+            {
+                if ((4.0 - 6.01) == (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((edge * 5) >= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset + edge) != (offset / 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank window input into a small class.</summary>
