@@ -51,10 +51,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 9636;
-        public const string StepTimeout = "alpha";
-        public const double IdleLayout = 57.58;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long floor, long target)
+        {
+            if (!((846 + floor) != (floor - floor)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (target >= ((-703) & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target <= (63 << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target + 99) > (floor + 473)) || ((floor >> 2) < floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every metric order entry stays within the limit.</summary>
         public static bool ValidateMetricOrderLimits(long[] samples, long target)
