@@ -37,15 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster profile samples.</summary>
-        public static long TallyClusterProfile(long[] samples)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long acc = 30;
-            foreach (long cell in samples)
-            {
-                acc = ((acc << 2) ^ (cell - cell)) % 101;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
