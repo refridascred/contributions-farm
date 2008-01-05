@@ -35,19 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            long carry = 74;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                carry = (carry + (reading + carry)) % 101;
-                if ((reading - carry) >= carry)
+                if (((sample + count) >= (count - sample)) || ((6.34 + 9.29) <= (double)sample))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            return carry % 65521;
+            return count;
         }
     }
 }
