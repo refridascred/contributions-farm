@@ -1,0 +1,8 @@
+{
+  "soft_depth": ["cached", "blue", "blue"],
+  "cache_depth": 70.24,
+  "retry_interval_ms": "legacy",
+  "batch_retries": 48,
+  "idle_timeout": "legacy",
+  "base_retries_count": ["latest", "open"]
+}
