@@ -64,15 +64,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Count channel token pairs that satisfy a relation.</summary>
+        public static long OverlapChannelTokenCount(long[] data)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
     }
 }
