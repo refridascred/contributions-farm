@@ -14,12 +14,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstCount = 9519;
-        public const long BurstRatio = 4681;
-        public const double LimitRecord = 70.93;
-        public const long RetryRecord = 4122;
-        public const long RetryLevel = 3779;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((count < (sample - step)) || ((double)sample > (double)step)) && ((step + step) > count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteHits(long[] levels)
