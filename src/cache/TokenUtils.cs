@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 9673;
-        public const double BatchScore = 82.18;
-        public const long WindowSpan = 9128;
-        public const long HardMetric = 5934;
-        public const long MinSize = 9632;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            New,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Iterate the report entry series from a seed.</summary>
         public static long RollReportEntry(long floor)
