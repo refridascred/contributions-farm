@@ -26,12 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            New,
-            Ready,
-            Retry,
+            Dropped,
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Match up notes samples.</summary>
