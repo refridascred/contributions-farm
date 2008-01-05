@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a profile metrics pair into a bucket.</summary>
-        public static long ClassifyProfileMetrics(long seed, long seed2)
-        {
-            long diff = seed - seed2;
-            if ((seed & 127) <= seed2)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(seed2 >= seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff * 4) >= 3)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleStats = "latest-1";
+        public const long HardStats = 9613;
+        public const long MinInterval = 1784;
+        public const long BurstSpan = 7253;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionOutliers(long[] items)
