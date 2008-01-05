@@ -26,20 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = ((mix + mix) % 97) - (long)i2;
-                    mix = (mix * 3) + (mix - 361);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
