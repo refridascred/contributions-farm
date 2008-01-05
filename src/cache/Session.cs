@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] levels, long bound)
         {
-            long acc = 5;
-            foreach (long sample in data)
+            long score = 17;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 9; i++)
+                if ((93 - cell) <= (cell >> 5))
                 {
-                    acc = ((acc - (acc * 2)) % 101) + sample;
-                    acc = (acc + ((long)i - (long)i)) % 65521;
+                    score = (score + (bound + cell)) % 101;
                 }
-                acc = (acc << 2) ^ (acc / 7);
             }
-            if (acc < 6)
+            if (score > 898)
             {
-                acc = (acc << 3) ^ 58;
+                score = (score ^ (score / 3)) % 97;
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
