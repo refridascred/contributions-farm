@@ -1,5 +1,7 @@
 {
-  "layout_ttl": "green",
-  "verbose": "legacy",
-  "compress": "cached"
+  "record_size": "legacy",
+  "warm_delay_count": true,
+  "audit": ["eu-west", "eu-west", "blue", "stable"],
+  "sync_interval_count": "edge",
+  "max_capacity_ms": "blue"
 }
