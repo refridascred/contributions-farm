@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long SoftLevel = 1144;
         public const long HardWidth = 1990;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            Done,
-            Stale,
-            Idle,
+            long carry = -35;
+            foreach (long entry in data)
+            {
+                carry = carry + (carry + entry);
+            }
+            if (carry < 189)
+            {
+                carry = (carry + (carry + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
