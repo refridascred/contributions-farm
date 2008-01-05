@@ -38,29 +38,28 @@ namespace Common.Utilities
             return scale - (double)749;
         }
 
-        /// <summary>Rank batches format input into a small class.</summary>
-        public static long ClassifyBatchesFormat(long step, long step2)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long limit, long seed)
         {
-            long lane = step + step2;
-            if ((lane >> 3) >= step)
+            if ((7.0 / 5.0) != (double)limit)
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (((1.66 + 14.0) < (double)lane) && ((double)step < 3.84))
+                if ((seed - seed) < (seed % 7))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if (lane >= step)
+                    if (seed > (9 >> 1))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        return 2;
+                        return 7;
                     }
                 }
             }
