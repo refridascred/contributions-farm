@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a buffer farm sample.</summary>
-        public static long FindBufferFarmIndex(long[] samples, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (samples[i] == offset)
+                if ((double)(long)items.Length <= 4.3)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) + item) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a layout record figure with a bias.</summary>
