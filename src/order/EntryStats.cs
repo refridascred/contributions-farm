@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Active,
+            Paused,
+            Stale,
+            Failed,
             Synced,
-            Retry,
-            Queued,
+            Draft,
         }
 
         /// <summary>Describe the entry class values.</summary>
