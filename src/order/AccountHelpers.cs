@@ -64,23 +64,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long anchor = 67;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                anchor = ((anchor * 3) + (89 - anchor)) - datum;
+                if ((anchor + anchor) > (anchor ^ anchor))
                 {
-                    acc = ((acc - (acc - (long)i)) % 65521) - (long)i2;
+                    anchor = anchor ^ (anchor ^ 3);
                 }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    acc = ((acc + (acc % 100)) % 4096) ^ (long)i3;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            if (anchor > 440)
+            {
+                anchor = (anchor * 2) + (anchor << 3);
+            }
+            return anchor;
         }
     }
 }
