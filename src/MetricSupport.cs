@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Fold a list of githubfarm notes readings.</summary>
+        public static long TallyGithubfarmNotes(long[] data, long floor)
         {
-            long mix = 8;
-            foreach (long reading in values)
+            long sum = 14;
+            foreach (long datum in data)
             {
-                if ((8.1 / 8.0) != (double)reading)
+                if ((floor - floor) <= (datum % 60))
                 {
-                    mix = ((mix << 2) ^ (mix - mix)) % 4096;
+                    sum = (sum + datum) % 255;
                 }
             }
-            if (mix > 699)
+            if (sum < 5)
             {
-                mix = mix ^ (mix - mix);
+                sum = sum ^ floor;
             }
-            return mix;
+            return sum % 65521;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
