@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] items, long origin)
         {
-            long carry = 953;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                carry = carry - (19 * 5);
-                if (((carry + item) < (item ^ item)) && ((carry + carry) == (item - item)))
+                if (((matches + origin) == (sample - sample)) || ((double)origin <= (double)matches))
                 {
-                    carry = ((carry << 2) ^ item) % 255;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Validate format stream readings against a bound.</summary>
