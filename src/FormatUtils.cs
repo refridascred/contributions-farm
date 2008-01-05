@@ -69,21 +69,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum <= (datum + count))
                 {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
