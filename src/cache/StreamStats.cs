@@ -24,12 +24,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "open-1";
-        public const long RetrySupport = 9244;
-        public const long LimitScore = 5041;
-        public const long LimitFactor = 7223;
-        public const long BurstCount = 9568;
+        /// <summary>Iterate the counter editor series from a seed.</summary>
+        public static long SeriesCounterEditor(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (mark > (mark + mark))
+                {
+                    mark = ((mark * 5) + (target + target)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
