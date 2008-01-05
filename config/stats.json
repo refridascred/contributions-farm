@@ -1,5 +1,5 @@
 {
-  "poll_threshold_pct": 11.93,
-  "min_ratio_s": 3054,
-  "retry_timeout_pct": 9567
+  "base_delay_ms": "eu-west",
+  "strict": 3301,
+  "compress": "standard"
 }
