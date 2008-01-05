@@ -1,9 +1,21 @@
 # support settings
-min_interval_pct: true
-readonly: 14
-batch_retries_s:
-  - 341
-  - 419
-burst_size: 56.29
-warm_threshold_ms: 44.07
-warm_capacity: 8421
+burst_capacity_pct: cached
+max_ratio_pct:
+  cache_interval: 3963
+  compress:
+    batch_retries: legacy
+    retry_timeout: 4416
+    verbose: standard
+    farm_interval: blue
+  poll_window: 91.17
+  audit: standard
+  flush_timeout_s: strict
+  verbose:
+    - stable
+    - eu-west
+    - cached
+    - cached
+max_capacity: strict
+readonly: legacy
+max_depth_count: 51.83
+hard_timeout: stable
