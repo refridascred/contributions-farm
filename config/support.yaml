@@ -1,14 +1,15 @@
 # support settings
-soft_size: true
-cache_interval_s: 14.42
-idle_ratio_pct:
-  layout_size: 865
-  window_threshold: standard
-  max_threshold_pct: 60
-  warm_ttl:
-    - blue
-    - open
-    - primary
-    - eu-west
-  retry_limit_s: primary
-  sync_capacity: 7695
+filter_interval: false
+persist:
+  buffer_retries: green
+  burst_size_s: legacy
+  max_window:
+    - 280
+    - 227
+    - 458
+    - 388
+  enabled: true
+  idle_window_pct: 250
+graph_interval: 3059
+soft_depth_count: 27
+min_ratio_s: 100
