@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const double LimitPayload = 0.94;
         public const double BatchPayload = 38.9;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] readings, long target)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen - 93) == (reading + reading))
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
