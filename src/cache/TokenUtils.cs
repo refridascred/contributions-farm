@@ -29,13 +29,17 @@ namespace Common.Utilities
         public const long MaxContext = 3899;
         public const string WindowContext = "standard-v2";
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] items, long target)
         {
-            Pending,
-            Draft,
-            Active,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
