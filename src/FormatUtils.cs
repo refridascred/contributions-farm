@@ -64,11 +64,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardWidth = "strict-1";
-        public const string LimitBatches = "fallback-edge";
-        public const string MaxBatches = "local-edge";
-        public const long BatchBatches = 6909;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public double Size { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] readings)
