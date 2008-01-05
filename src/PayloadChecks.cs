@@ -57,16 +57,13 @@ namespace Common.Utilities
         public const string BurstEditor = "local-1";
         public const long RetryCount = 8304;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = carry - (carry ^ limit);
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
