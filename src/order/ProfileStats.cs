@@ -60,24 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long offset, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] samples, long offset)
         {
-            if ((30 & 7) <= (offset / 5))
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (6.61 < (double)bound)
+                if (cell > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
