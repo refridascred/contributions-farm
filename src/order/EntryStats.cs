@@ -25,21 +25,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -2;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((78 - floor) > floor)
                 {
-                    if ((samples[i] + samples[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix ^ (floor - mix)) % 101;
+                    mix = mix ^ cell;
+                }
+                if (9 >= (mix / 4))
+                {
+                    mix = (mix * 2) + (mix - mix);
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
