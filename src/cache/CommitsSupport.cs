@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const string DefaultGithubfarm = "stable";
         public const long StepLevel = 1592;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((double)reading < (6.7 + 2.92))
+                if (sample < limit)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
