@@ -31,19 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Locate a farm window reading by value.</summary>
+        public static long LookupFarmWindowIndex(long[] readings, long floor)
         {
-            double weight = 9.0 - 6.0;
-            if (weight < ratio)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - (double)534) - bias;
+                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (double)249;
-            }
-            return weight + 9.0;
+            return -1;
         }
 
         /// <summary>Adjust a graph reading.</summary>
