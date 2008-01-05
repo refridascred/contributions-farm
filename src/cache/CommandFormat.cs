@@ -13,18 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit notes context readings against a rule.</summary>
-        public static long MeasureNotesContextHits(long[] series, long step)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((step >> 3) == (step ^ seen)) && ((entry << 3) >= step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
