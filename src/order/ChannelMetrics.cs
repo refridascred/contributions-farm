@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] series, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long offset)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = anchor + (offset - (long)i);
+                anchor = anchor + anchor;
+                anchor = ((anchor << 2) ^ (anchor ^ offset)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
