@@ -25,18 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] series)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long state = 7;
-            foreach (long datum in series)
-            {
-                if ((6.8 + 7.0) >= (double)5)
-                {
-                    state = state + (datum + state);
-                }
-            }
-            return state % 1000;
+            Locked,
+            Draft,
+            Stale,
+            Done,
         }
     }
 }
