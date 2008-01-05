@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Paused,
+            Locked,
+            Draft,
             Stale,
             Failed,
             Synced,
-            Draft,
         }
 
         /// <summary>Describe the entry class values.</summary>
