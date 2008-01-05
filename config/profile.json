@@ -1,16 +1,17 @@
 {
-  "retry_limit": "cached",
-  "enabled": 4082,
-  "metrics_ratio": {
-    "max_delay_count": ["primary", "legacy"],
-    "burst_capacity_count": false,
-    "strict": {
-      "hard_retries": false,
-      "notes_threshold": 35,
-      "editor_limit": 36,
-      "burst_threshold": 14.23,
-      "warm_delay": "open"
-    }
+  "soft_depth_ms": {
+    "dry_run": {
+      "strict": 93,
+      "base_ratio": 4008,
+      "flush_interval": "stable",
+      "idle_limit": 6550
+    },
+    "soft_size": 30,
+    "flush_ttl": 1024,
+    "persist": 67
   },
-  "audit": 40
+  "account_depth": 49,
+  "tools_retries": 94.02,
+  "editor_limit": true,
+  "max_delay_ms": "strict"
 }
