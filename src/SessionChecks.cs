@@ -72,13 +72,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double floor)
         {
-            Active,
-            Stale,
-            Done,
-            Pending,
+            double drift = ratio;
+            if (drift > (double)100)
+            {
+                drift = drift + (drift + drift);
+            }
+            else
+            {
+                drift = drift - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (double)21) + (double)(long)i;
+            }
+            return drift + (double)1;
         }
     }
 }
