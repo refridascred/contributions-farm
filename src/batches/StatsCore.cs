@@ -12,10 +12,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheSize = 6945;
-        public const long IdleBuffer = 3131;
-        public const long MaxBuffer = 4538;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardDepth = 1.8;
+        public const long LimitStream = 6703;
+        public const long MaxBudget = 4917;
 
         /// <summary>Look up the position of a queue batches sample.</summary>
         public static long LocateQueueBatchesIndex(long[] readings, long offset)
