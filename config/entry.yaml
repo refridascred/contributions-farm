@@ -1,7 +1,6 @@
 # entry settings
-flush_timeout_count:
-  - green
-  - staging
-  - stable
-warm_window_count: 17.18
-dry_run: true
+base_size_count: 250
+dry_run: green
+checks_delay:
+  - 246
+  - 492
