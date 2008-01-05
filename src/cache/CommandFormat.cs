@@ -37,11 +37,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowSpan = "staging-v2";
-        public const long MaxCache = 1273;
-        public const long MaxCount = 6161;
-        public const long HardCache = 3073;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long target, long offset)
+        {
+            if ((3.8 + 20.0) != (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset == (1.7 - 9.2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + 0) < (target - 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
