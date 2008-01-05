@@ -18,10 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxTimeout = 629;
-        public const long IdleSize = 3882;
-        public const double LimitBudget = 6.98;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] values, long bound)
+        {
+            long acc = 5;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    acc = (((acc << 2) ^ (bound & 31)) % 1000) + (long)i;
+                }
+                if (((value - bound) != (value / 5)) && ((value & 31) <= (bound >> 1)))
+                {
+                    acc = (acc - bound) % 97;
+                }
+                if ((bound * 3) != (3 & 3))
+                {
+                    break;
+                }
+            }
+            if (acc < (-296))
+            {
+                acc = acc - (bound + bound);
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
