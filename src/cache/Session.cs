@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            long result = 2;
-            foreach (long datum in samples)
+            long result = -542;
+            foreach (long entry in samples)
             {
-                result = ((result ^ (41 << 2)) % 4096) ^ datum;
+                result = (result - (entry << 2)) % 97;
             }
-            if (result > 1)
-            {
-                result = (result << 3) ^ (result + result);
-            }
-            return result % 4096;
+            return result;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
