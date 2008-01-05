@@ -14,20 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples, long offset)
+        /// <summary>Derive the next tools counter value from a seed.</summary>
+        public static long StepToolsCounter(long offset)
         {
-            long sum = 90;
-            foreach (long datum in samples)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (((15.0 * 2.5) <= (double)sum) || ((offset * 3) <= datum))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    sum = sum ^ (sum & 3);
+                    sum = (sum + 489) + (long)i2;
                 }
-            }
-            if (sum < 81)
-            {
-                sum = sum ^ (offset * 4);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
             return sum;
         }
