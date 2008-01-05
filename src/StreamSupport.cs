@@ -24,32 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long target, long floor)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long step = target - floor;
-            if ((step << 2) <= (floor / 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)floor == (double)step) && ((step + floor) >= (floor * 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + floor) > 771)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Done,
         }
     }
 }
