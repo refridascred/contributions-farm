@@ -25,13 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] samples, long floor)
         {
-            Locked,
-            Draft,
-            Stale,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
