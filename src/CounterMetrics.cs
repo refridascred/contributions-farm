@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] samples, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] >= limit)
+                if ((step & 1) >= total)
                 {
-                    return (long)i;
+                    total = total + total;
                 }
+                else
+                {
+                    total = total - total;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the cache class values.</summary>
