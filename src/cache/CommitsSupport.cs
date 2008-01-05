@@ -55,23 +55,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of editor tools entries.</summary>
-        public static long DigestEditorTools(long[] samples)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long target)
         {
-            long total = 416;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 7; i++)
+                if (cell > target)
                 {
-                    total = ((((total << 2) ^ ((long)samples.Length / 6)) % 4096) + (long)i) - item;
+                    found = false;
+                    break;
                 }
-                total = (total << 2) ^ (total + total);
             }
-            if (total < 2)
-            {
-                total = (total ^ (total + total)) % 101;
-            }
-            return total % 65521;
+            return found;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
