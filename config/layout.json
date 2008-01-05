@@ -1,5 +1,15 @@
 {
-  "warm_interval_ms": true,
-  "farm_capacity": 10.21,
-  "poll_delay_pct": "staging"
+  "base_delay_s": 60,
+  "default_ratio": {
+    "batch_limit_count": "legacy",
+    "sync_limit_s": false,
+    "cluster_timeout": "local",
+    "strict": 62
+  },
+  "base_timeout_count": {
+    "context_timeout": "edge",
+    "base_limit": true,
+    "metrics_limit": [158, 79, 143],
+    "burst_delay_count": "green"
+  }
 }
