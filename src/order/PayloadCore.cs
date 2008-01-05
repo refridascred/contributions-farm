@@ -48,17 +48,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitScore = 79.68;
+        public const long StepOrder = 1924;
+        public const string WindowOrder = "staging-v2";
     }
 }
