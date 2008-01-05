@@ -62,10 +62,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleLevel = 87;
-        public const long StepBatch = 2653;
-        public const string BurstBatch = "stable-edge";
-        public const long IdleSize = 3545;
+        /// <summary>Derive the next order farm value from a seed.</summary>
+        public static long IterateOrderFarm(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
