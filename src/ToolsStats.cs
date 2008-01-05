@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit route metric readings against a rule.</summary>
-        public static long TallyRouteMetricHits(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((8.05 - 20.0) > (double)item)
+                if (sample != seed)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
