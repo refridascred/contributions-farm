@@ -1,7 +1,8 @@
 {
-  "poll_delay_pct": 74.71,
-  "idle_interval": "legacy",
-  "retry_threshold_s": 47,
-  "githubfarm_ratio": "green",
-  "default_timeout_count": "staging"
+  "hard_capacity": ["open", "cached", "standard"],
+  "max_window_pct": 5509,
+  "burst_depth_ms": ["blue", "edge", "edge"],
+  "poll_capacity_pct": true,
+  "hard_size": "blue",
+  "idle_retries": false
 }
