@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double gain, double span)
-        {
-            double mean = gain;
-            if (mean > gain)
-            {
-                mean = (mean + (16.0 / 2.0)) - span;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (gain - mean);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseSpan = 1393;
+        public const double LimitLayout = 95.1;
+        public const string RetryLayout = "latest";
+        public const long BaseLayout = 7405;
+        public const long MaxLayout = 2574;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteGaps(long[] data, long limit)
