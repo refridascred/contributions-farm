@@ -13,24 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the report entry series from a seed.</summary>
-        public static long RollReportEntry(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((floor >> 1) < (floor ^ floor)) || ((double)floor < 5.76))
-                {
-                    anchor = anchor ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstDepth = 1546;
+        public const long LimitFactor = 7485;
+        public const long MaxContext = 3899;
+        public const string WindowContext = "standard-v2";
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
