@@ -1,7 +1,27 @@
 # entry settings
-cache_capacity:
-  - legacy
-  - strict
-  - legacy
-context_size: strict
-readonly: blue
+retry_threshold_s:
+  - 283
+  - 396
+  - 330
+counter_size:
+  - stable
+  - open
+  - staging
+audit: strict
+idle_window_count: false
+max_retries_count:
+  order_ttl:
+    enabled: 500
+    support_threshold: 27
+    sync_window_count: 74.89
+    default_capacity: 56
+  audit:
+    audit: 70
+    editor_threshold: 73.55
+    hard_capacity_ms: 97
+    verbose:
+      - standard
+      - standard
+      - strict
+      - edge
+  soft_ratio_pct: 79
