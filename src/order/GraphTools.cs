@@ -71,18 +71,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] data)
+        /// <summary>Locate a already contributi reading by value.</summary>
+        public static long FindAlreadyContributiIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry - entry) >= entry)
+                if (series[i] >= origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
