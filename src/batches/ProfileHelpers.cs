@@ -33,24 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long step, long step2)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            if (step2 <= ((-571) << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step / 4) > (step2 << 3)) || ((step + step2) > step2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Idle,
+            Paused,
+            Draft,
+            Pending,
+            Ready,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
