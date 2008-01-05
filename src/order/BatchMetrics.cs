@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double scale, double bias)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] samples)
         {
-            double bias2 = bias;
-            if (bias2 > (bias * 5.4))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                bias2 = bias2 - (bias2 / 9.0);
+                if ((value % 7) != (seen - seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 - 6.9;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + bias2) - (double)(long)i;
-            }
-            return bias2 - (scale * 16.0);
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
