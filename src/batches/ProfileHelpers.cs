@@ -19,13 +19,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] series, long target)
         {
-            Locked,
-            Dropped,
-            Closed,
-            Retry,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((target << 2) == (sample / 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
