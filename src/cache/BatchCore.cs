@@ -14,11 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 32.8;
-        public const long MinAccount = 7565;
-        public const string DefaultAccount = "strict-1";
-        public const long HardAccount = 248;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = carry + ((long)i >> 4);
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
