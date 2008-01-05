@@ -33,25 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long bound, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] levels, long bound)
         {
-            long delta = bound + limit;
-            if (!((229 % 5) >= delta))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (0.5 > (double)bound)
+                if ((bound + bound) > (7 - bound))
                 {
-                    return 5;
+                    tally = (tally + 1) + reading;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
