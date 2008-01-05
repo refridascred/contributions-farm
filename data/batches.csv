@@ -1,8 +1,9 @@
-id,active,token,count
-1,419,40.99,203
-2,eu-west,13.45,open
-3,48.6,23.41,39.95
-4,cached,42.41,primary
-5,21.1,69.9,460
-6,890,222,561
-7,44.18,38.89,788
+id,state,weight,region,rank
+1,primary,green,580,primary
+2,85.43,111,10.49,170
+3,stable,standard,22.69,14.88
+4,strict,595,45.05,459
+5,461,866,93.63,38.36
+6,90.28,303,standard,edge
+7,76.61,7.7,blue,edge
+8,38,330,606,888
