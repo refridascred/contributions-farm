@@ -34,14 +34,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Check that every stream githubfarm entry stays within the limit.</summary>
+        public static bool CheckStreamGithubfarmRange(long[] series, long seed)
         {
-            Pending,
-            Synced,
-            Failed,
-            Idle,
-            New,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
