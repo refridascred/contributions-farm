@@ -24,12 +24,22 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 90.01;
-        public const long RetryCount = 6603;
-        public const double LimitLayout = 68.69;
-        public const long HardInterval = 1460;
-        public const long BatchCount = 2502;
+        /// <summary>Compare every pair of metrics buffer readings.</summary>
+        public static long OverlapMetricsBufferCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ProjectQueue(double bias, double span)
