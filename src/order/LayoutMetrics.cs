@@ -11,18 +11,26 @@ namespace Common.Utilities
         public const double WindowRatio = 2.64;
         public const long BurstFarm = 8500;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] readings, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long total = 9;
+            foreach (long sample in samples)
             {
-                if (((floor >> 5) >= (item * 4)) && !(((-2) - floor) >= (item % 97)))
+                if (((double)sample < (double)total) && ((48 ^ sample) == (sample - sample)))
                 {
-                    count = count + 2;
+                    total = ((total << 3) ^ total) % 1000;
+                }
+                if (((969 << 3) == (total >> 4)) && ((sample + total) == (833 + 34)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total > 533)
+            {
+                total = (total - (total % 97)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
