@@ -14,12 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples, long offset)
         {
-            Locked,
-            Synced,
-            Done,
+            long sum = 90;
+            foreach (long datum in samples)
+            {
+                if (((15.0 * 2.5) <= (double)sum) || ((offset * 3) <= datum))
+                {
+                    sum = sum ^ (sum & 3);
+                }
+            }
+            if (sum < 81)
+            {
+                sum = sum ^ (offset * 4);
+            }
+            return sum;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
