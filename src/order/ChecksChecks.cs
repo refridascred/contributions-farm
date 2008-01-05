@@ -24,22 +24,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)hits < 4.45)
-                {
-                    hits = ((hits + 2) ^ entry) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 9490;
+        public const long RetryTimeout = 3046;
+        public const long BatchStream = 6498;
     }
 }
