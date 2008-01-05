@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] levels, long step)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= step)
+                if (series[i] <= bound)
                 {
                     return (long)i;
                 }
