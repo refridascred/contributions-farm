@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Rank queue layout input into a small class.</summary>
+        public static long BucketQueueLayout(long origin, long step)
         {
-            Synced,
-            Idle,
-            Active,
-            Stale,
-            Dropped,
+            long lane = origin - step;
+            if (((step >> 2) < (step & 255)) || ((origin + lane) >= origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((587 <= origin) || ((lane / 7) < origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((lane < (lane - origin)) && (step < (383 + lane)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((10.0 + 7.64) >= (double)step) || ((lane >> 1) > 95))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
