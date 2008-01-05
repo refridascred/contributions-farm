@@ -47,9 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardCount = 19.27;
-        public const long WindowFormat = 2665;
-        public const string StepSize = "staging-1";
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
