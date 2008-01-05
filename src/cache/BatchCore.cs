@@ -14,16 +14,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long mix = 80;
+            foreach (long item in series)
             {
-                carry = carry + ((long)i >> 4);
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (6 < ((long)series.Length % 3))
+                {
+                    mix = ((mix << 3) ^ (item % 100)) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (item + item)) % 65521;
+                }
             }
-            return carry;
+            if (mix < 102)
+            {
+                mix = (mix * 2) + (mix % 8);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a batches summary.</summary>
