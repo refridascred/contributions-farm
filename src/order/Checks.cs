@@ -43,27 +43,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] values, long seed)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            long result = 700;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result * 5) + (sample * 2);
-                if (sample > (seed - result))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result << 3) ^ (long)values.Length;
-                }
-                else
-                {
-                    result = ((result * 3) + seed) % 255;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 19)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Adjust a channel reading.</summary>
