@@ -51,22 +51,22 @@ namespace Common.Utilities
             return gain + (gain / 8.0);
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] items, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] series, long floor)
         {
-            long mark = 464;
-            foreach (long reading in items)
+            long sum = 71;
+            foreach (long sample in series)
             {
-                if ((reading + 37) <= reading)
+                if ((floor + sum) >= (sample >> 2))
                 {
-                    mark = ((mark * 4) + (57 & 1)) % 101;
+                    sum = (sum ^ (sample - sum)) % 255;
                 }
-                if (9.5 > (double)target)
+                else
                 {
-                    break;
+                    sum = ((sum * 3) + (sample - sum)) % 1000;
                 }
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Match up channel samples.</summary>
