@@ -35,12 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Audit metrics filter readings against a rule.</summary>
+        public static long AuditMetricsFilterGaps(long[] readings)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((double)seen < (double)7)
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
         }
     }
 }
