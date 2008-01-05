@@ -40,15 +40,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Accumulate graph metric samples.</summary>
+        public static long TallyGraphMetric(long[] samples)
         {
-            double gain = (ratio * 7.4) + ratio;
-            for (int i = 0; i < 4; i++)
+            long mix = 4;
+            foreach (long sample in samples)
             {
-                gain = (gain - (double)(long)i) - bias;
+                if ((mix & 1) != (sample - mix))
+                {
+                    mix = ((mix << 3) ^ ((-86) + 382)) % 101;
+                }
             }
-            return gain + (gain / 8.0);
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
