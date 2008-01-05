@@ -55,24 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long step, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] data)
         {
-            if ((7 - 9) < step)
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)843 != (double)limit)
+                if ((entry - entry) >= entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
