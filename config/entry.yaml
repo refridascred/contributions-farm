@@ -1,6 +1,11 @@
 # entry settings
-base_size_count: 250
-dry_run: green
-checks_delay:
-  - 246
-  - 492
+poll_retries_ms: 37.09
+soft_delay:
+  - 170
+  - 141
+  - 396
+  - 295
+commits_ratio: green
+stream_interval: staging
+checks_limit: 250
+dry_run: 60
