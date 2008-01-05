@@ -24,31 +24,12 @@ namespace Common.Utilities
             return scale + (bias * 2.9);
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long limit, long floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            if ((floor / 6) == (floor % 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(limit >= floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((-54) < (5 + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
