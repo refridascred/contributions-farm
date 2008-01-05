@@ -53,13 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Failed,
-            Queued,
-            Done,
             Draft,
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
