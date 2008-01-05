@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchDepth = "stable-edge";
-        public const long SoftDepth = 2462;
-        public const long BurstSchema = 3566;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
