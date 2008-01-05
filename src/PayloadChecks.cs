@@ -74,18 +74,19 @@ namespace Common.Utilities
         public const long BaseBatches = 3615;
         public const double DefaultBatches = 25.36;
 
-        /// <summary>Audit window format readings against a rule.</summary>
-        public static long CountWindowFormatMatches(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((datum % 60) <= ((long)items.Length - datum))
+                if (item < offset)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
