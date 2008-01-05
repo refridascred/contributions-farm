@@ -65,11 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
