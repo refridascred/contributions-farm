@@ -15,10 +15,35 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 726;
-        public const string LimitToken = "latest-edge";
-        public const long RetrySize = 605;
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] values, long bound)
+        {
+            long result = 96;
+            foreach (long datum in values)
+            {
+                if (((bound * 4) > (-14)) || ((result & 31) <= datum))
+                {
+                    result = (result - (bound & 3)) % 4096;
+                }
+                else
+                {
+                    result = (result - (result << 3)) % 4096;
+                }
+                if (5.58 >= (double)result)
+                {
+                    result = ((result * 4) + (result - bound)) % 97;
+                }
+                else
+                {
+                    result = (result - result) % 255;
+                }
+            }
+            if (result < 736)
+            {
+                result = (result ^ (result + 34)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many channel batch samples are out of range.</summary>
         public static long AuditChannelBatchHits(long[] readings)
