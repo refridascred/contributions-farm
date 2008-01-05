@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long MinFactor = 14;
         public const double HardSize = 19.83;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] values, long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = bias * 8.2;
+            if (bias2 < bias2)
             {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + (bias2 + 4.0)) - ratio;
             }
-            return -1;
+            return bias2 + bias2;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
