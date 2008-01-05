@@ -28,19 +28,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch queue entry stays within the limit.</summary>
-        public static bool VerifyBatchQueueBounds(long[] readings, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long anchor = 167;
+            foreach (long reading in series)
             {
-                if (datum < step)
+                if ((reading + (-316)) > (reading - 72))
                 {
-                    valid = false;
+                    anchor = ((anchor << 3) ^ (anchor - (long)series.Length)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + 8) % 65521;
+                }
+                if (((double)933 > (double)anchor) && ((double)reading < (3.0 + 5.75)))
+                {
                     break;
                 }
             }
-            return valid;
+            return anchor % 4096;
         }
     }
 }
