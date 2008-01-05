@@ -17,12 +17,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] data, long seed)
+        /// <summary>Find the first farm report entry that matches the target.</summary>
+        public static long LookupFarmReportIndex(long[] data, long bound)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] < seed) && ((data[i] % 2) == 0))
+                if (data[i] <= bound)
                 {
                     return (long)i;
                 }
