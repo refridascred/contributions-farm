@@ -42,19 +42,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell > target)
+                if (target <= ((long)i + target))
                 {
-                    found = false;
                     break;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Describe the token kind values.</summary>
