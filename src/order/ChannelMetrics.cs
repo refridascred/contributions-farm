@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepTimeout = 90.66;
-        public const long CacheEditor = 5294;
-        public const long LimitEditor = 9980;
-        public const long CacheLevel = 3516;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally - origin) >= (1 - 6))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TallyBuffer(long[] data)
