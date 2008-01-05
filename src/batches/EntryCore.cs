@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] data, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long total = -916;
+            foreach (long sample in series)
             {
-                if (datum >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total ^ ((long)series.Length + total)) % 101) - sample;
             }
-            return ok;
+            if (total < 659)
+            {
+                total = (total << 3) ^ (origin & 7);
+            }
+            return total;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
