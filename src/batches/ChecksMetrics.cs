@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every buffer entry entry stays within the limit.</summary>
-        public static bool VerifyBufferEntryLimits(long[] readings, long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the notes phase values.</summary>
