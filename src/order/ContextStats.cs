@@ -70,15 +70,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] items, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings, long step)
         {
             long count = 0;
-            foreach (long cell in items)
+            foreach (long value in readings)
             {
-                if (!(((double)cell <= (8.0 + 0.4)) || ((451 + 31) > (cell / 4))))
+                if ((((8.1 + 4.3) > (double)step) && (step > (value & 1))) || ((5 - step) <= (count - value)))
                 {
-                    count = (count + 1) + offset;
+                    count = count + 2;
                 }
             }
             return count;
