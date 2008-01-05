@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] series, long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Find the first githubfarm contributi entry that matches the target.</summary>
