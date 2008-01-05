@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double bias, double bias2)
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
+            double rate = bias2;
+            if (rate <= rate)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                rate = rate + bias;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - bias2) - (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Describe the batches mode values.</summary>
