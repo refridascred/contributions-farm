@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)hits <= (2.75 / 6.0))
-                {
-                    hits = ((hits + 3) + value) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowInterval = 9896;
+        public const long HardSize = 8566;
+        public const long BaseStats = 3197;
+        public const string DefaultStats = "stable-v2";
+        public const long CacheStats = 9868;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
