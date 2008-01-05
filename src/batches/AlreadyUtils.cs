@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 948;
-        public const double HardAlready = 15.05;
-        public const string MaxSize = "cached-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 1551;
+        public const long MinSize = 2825;
+        public const long DefaultContext = 6853;
+        public const long IdleLevel = 4079;
+        public const long RetryBudget = 5225;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
