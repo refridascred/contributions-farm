@@ -37,12 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] data)
         {
-            Synced,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((tally << 2) > (datum >> 5)) && (536 >= datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
