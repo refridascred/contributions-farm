@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many schema filter samples are out of range.</summary>
-        public static long CountSchemaFilterGaps(long[] samples, long limit)
+        /// <summary>Count the githubfarm session entries that pass the check.</summary>
+        public static long TallyGithubfarmSessionMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((double)sample >= 3.37)
+                if (count <= datum)
                 {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a token counter forward.</summary>
