@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] items, long seed)
+        /// <summary>Count the checks metric entries that pass the check.</summary>
+        public static long CountChecksMetricOutliers(long[] data)
         {
-            long state = 7;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (!((double)state < (3.62 * 1.0)))
+                if (771 > (seen - seen))
                 {
-                    state = (((state * 5) + (item % 16)) % 1000) - seed;
-                    state = ((state * 4) + (372 / 2)) % 4096;
+                    seen = (seen + 1) ^ reading;
                 }
-                state = ((state * 2) + item) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
