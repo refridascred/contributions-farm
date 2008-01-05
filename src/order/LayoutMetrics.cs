@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftBudget = 5657;
-        public const string DefaultRatio = "alpha-v2";
-        public const double WindowRatio = 2.64;
-        public const long BurstFarm = 8500;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Paused,
+            Synced,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long FoldBatch(long[] samples)
