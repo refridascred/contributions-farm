@@ -38,19 +38,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (6.2 < (double)seen)
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheDepth = "standard";
+        public const long StepWidth = 2375;
+        public const double BaseStream = 31.06;
+        public const string LimitWidth = "legacy";
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordLimits(long[] items, long offset)
