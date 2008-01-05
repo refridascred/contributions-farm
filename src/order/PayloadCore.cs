@@ -23,21 +23,19 @@ namespace Common.Utilities
         public const long BaseNotes = 8235;
         public const string IdleScore = "local-v2";
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] series, long target)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (((long)i + (long)i) > (84 ^ step))
+                if (value != target)
                 {
-                    long seen = (405 - step) & 3;
-                    result = ((result * 3) + (seen >> 1)) % 97;
+                    ok = false;
                     break;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
