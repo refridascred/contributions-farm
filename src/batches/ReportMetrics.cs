@@ -43,12 +43,13 @@ namespace Common.Utilities
             return bias + (double)562;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Done,
-            Locked,
             Active,
+            Ready,
+            Draft,
+            Done,
         }
     }
 }
