@@ -49,12 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] items, long seed)
         {
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
