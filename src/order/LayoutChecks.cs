@@ -26,11 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] values, long limit)
         {
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
+            long state = 0;
+            foreach (long entry in values)
+            {
+                state = (state ^ (entry + 388)) - limit;
+            }
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
