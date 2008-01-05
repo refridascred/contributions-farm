@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 6878;
-        public const long HardCount = 6721;
-        public const long BatchNotes = 9374;
-        public const long RetryFactor = 8177;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 2760;
+        public const long DefaultEditor = 2279;
+        public const long BurstEditor = 5800;
+        public const double MaxEditor = 34.15;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryLimits(long[] values, long limit)
