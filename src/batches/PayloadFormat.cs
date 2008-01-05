@@ -31,22 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] levels)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)sample >= (5.3 / 7.0)))
+                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
