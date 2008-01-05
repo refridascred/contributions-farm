@@ -26,18 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] levels, long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((4.8 / 4.0) > (double)limit)
+                if (score < (limit + score))
                 {
-                    tally = (tally + 3) + reading;
+                    score = score - (976 + limit);
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (((score << 3) ^ score) % 101) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
