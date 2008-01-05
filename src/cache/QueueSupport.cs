@@ -17,11 +17,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowScore = 8080;
-        public const string WindowMetric = "staging-1";
-        public const string LimitMetric = "primary-edge";
-        public const long StepFactor = 7984;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long bound, long offset)
+        {
+            long bound2 = bound - offset;
+            if (bound2 < (offset + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((bound & 3) >= (888 / 9)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double ProjectLayout(double weight, double floor)
