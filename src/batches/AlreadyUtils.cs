@@ -68,18 +68,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] readings)
+        /// <summary>Rank batches format input into a small class.</summary>
+        public static long ClassifyBatchesFormat(long step, long step2)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long lane = step + step2;
+            if ((lane >> 3) >= step)
             {
-                if ((seen >> 3) > seen)
+                return 8;
+            }
+            else
+            {
+                if (((1.66 + 14.0) < (double)lane) && ((double)step < 3.84))
                 {
-                    seen = (seen + 3) - entry;
+                    return 7;
+                }
+                else
+                {
+                    if (lane >= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
