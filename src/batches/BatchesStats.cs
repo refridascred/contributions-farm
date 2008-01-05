@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] samples, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample * 4) > 194)
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
+            Idle,
+            Dropped,
+            Done,
+            Retry,
+            Active,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
