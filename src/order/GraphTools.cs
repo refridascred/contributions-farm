@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first stats report entry that matches the target.</summary>
-        public static long LocateStatsReportIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 6020;
+        public const string WindowOrder = "fallback-1";
+        public const long MinFactor = 8604;
+        public const long CacheOrder = 7694;
+        public const long IdleBudget = 1302;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long origin, long offset)
