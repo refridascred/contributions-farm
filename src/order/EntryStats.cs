@@ -25,15 +25,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double rate, double span)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] samples)
         {
-            double bias = span * 9.4;
-            if (bias < rate)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias + (double)651;
+            return tally;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
