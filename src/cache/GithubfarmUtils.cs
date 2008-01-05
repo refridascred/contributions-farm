@@ -23,13 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((carry ^ carry) <= carry)
+                {
+                    carry = (carry - (bound + (long)i)) % 97;
+                    break;
+                }
+                else
+                {
+                    carry = (carry + (333 - bound)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
