@@ -1,17 +1,5 @@
 # githubfarm settings
-context_ttl:
-  batch_depth_pct: 73
-  cache_timeout: 8563
-  payload_threshold:
-    batch_size_ms: 6823
-    buffer_capacity: green
-    base_ratio_s: 49.84
-    idle_capacity: 44
-    cache_size: staging
-soft_capacity_s:
-  - staging
-  - legacy
-  - strict
-  - fallback
-strict: legacy
-burst_capacity_ms: open
+retry_capacity: stable
+notes_ratio: 23.62
+hard_depth_s: 78
+cache_timeout_s: 52
