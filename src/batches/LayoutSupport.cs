@@ -25,23 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Validate graph stats readings against a bound.</summary>
+        public static bool CheckGraphStatsBounds(long[] levels, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (score < (limit + score))
+                if (cell < origin)
                 {
-                    score = score - (976 + limit);
+                    flag = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = (((score << 3) ^ score) % 101) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a context entry.</summary>
