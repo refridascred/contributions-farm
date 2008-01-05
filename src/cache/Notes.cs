@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit metric editor readings against a rule.</summary>
-        public static long AuditMetricEditorHits(long[] items)
+        /// <summary>Audit contributi counter readings against a rule.</summary>
+        public static long MeasureContributiCounterMatches(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((double)(-73) <= (double)matches)
+                if ((1.7 - 0.1) >= (double)count)
                 {
-                    matches = (matches + 1) ^ value;
+                    count = ((count + 1) - value) + floor;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
