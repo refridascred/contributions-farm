@@ -23,11 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultInterval = 6595;
-        public const string SoftInterval = "latest-v2";
-        public const long MaxBudget = 370;
-        public const double BurstSession = 55.67;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 3790;
+        public const double MaxSize = 78.27;
+        public const double LimitContributi = 39.92;
+        public const long SoftContributi = 3488;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsRange(long[] items, long offset)
