@@ -37,19 +37,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next order graph value.</summary>
-        public static double SmoothOrderGraph(double rate, double offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] levels)
         {
-            double ratio = 9.2;
-            if (ratio > ratio)
+            long acc = 48;
+            foreach (long value in levels)
             {
-                ratio = ((ratio - ratio) - rate) + offset;
+                if ((444 >> 3) > (value + value))
+                {
+                    acc = (acc * 3) + (149 * 2);
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (acc < 0)
             {
-                ratio = (ratio - ratio) - (double)(long)i;
+                acc = (acc << 3) ^ (acc / 6);
             }
-            return ratio + (ratio + ratio);
+            return acc % 97;
         }
     }
 }
