@@ -51,20 +51,18 @@ namespace Common.Utilities
             return weight + (16.0 - ratio);
         }
 
-        /// <summary>Combine batches editor values into a single score.</summary>
-        public static long DigestBatchesEditor(long[] levels, long target)
+        /// <summary>Measure how many editor session samples are out of range.</summary>
+        public static long AuditEditorSessionOutliers(long[] series, long target)
         {
-            long result = -7;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (!((4 ^ cell) > (cell * 4)))
+                if (((double)value == (2.0 / 8.0)) || ((target & 63) < 907))
                 {
-                    result = (result + (target + 82)) % 65521;
+                    seen = seen + 2;
                 }
-                result = ((result * 5) + 215) % 255;
-                result = ((result << 2) ^ (cell - target)) % 101;
             }
-            return result;
+            return seen;
         }
     }
 }
