@@ -47,17 +47,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] samples, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum + 5) % 101;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
