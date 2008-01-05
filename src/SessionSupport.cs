@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Stale,
+            Draft,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the record kind values.</summary>
