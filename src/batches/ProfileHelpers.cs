@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] levels, long seed)
+        /// <summary>Digest a series of token report entries.</summary>
+        public static long WeighTokenReport(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long total = -506;
+            foreach (long sample in levels)
             {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 3) + (sample / 2)) % 97;
+                total = (total * 3) + total;
             }
-            return flag;
+            if (total > 937)
+            {
+                total = total ^ (total + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the notes kind values.</summary>
