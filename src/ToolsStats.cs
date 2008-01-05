@@ -65,17 +65,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] data, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                if (reading > limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
