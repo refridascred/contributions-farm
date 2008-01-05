@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] data)
+        /// <summary>Fold a list of entry graph readings.</summary>
+        public static long ScoreEntryGraph(long[] series, long step)
         {
-            long mix = 4;
-            foreach (long cell in data)
+            long carry = 86;
+            foreach (long value in series)
             {
-                mix = ((mix - (mix * 4)) % 97) + cell;
-                mix = (mix - ((-9) + mix)) % 255;
+                carry = carry + (836 + value);
+                if ((step + (-317)) > value)
+                {
+                    carry = carry + (step - value);
+                }
             }
-            return mix % 65521;
+            return carry;
         }
 
         /// <summary>Scale a already record figure with a bias.</summary>
