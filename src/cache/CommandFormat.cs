@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((6.1 * 3.54) < (double)item)
+                if ((double)count <= (3.39 + 5.76))
                 {
-                    tally = tally + 3;
+                    count = (count + 3) ^ sample;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
