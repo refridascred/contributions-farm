@@ -29,17 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a token contributi sample.</summary>
-        public static long LookupTokenContributiIndex(long[] data, long step)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Locate a graph reading by value.</summary>
