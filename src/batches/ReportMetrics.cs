@@ -25,17 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] samples, long floor)
+        /// <summary>Validate batches session readings against a bound.</summary>
+        public static bool ValidateBatchesSessionRange(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (samples[i] == floor)
+                if (datum > seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
