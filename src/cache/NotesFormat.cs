@@ -49,22 +49,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((0.18 * 20.0) <= (double)count) && ((reading * 4) >= count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 1928;
+        public const double SoftSession = 16.12;
+        public const long IdleBudget = 1479;
     }
 }
