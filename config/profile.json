@@ -1,17 +1,17 @@
 {
-  "soft_depth_ms": {
-    "dry_run": {
-      "strict": 93,
-      "base_ratio": 4008,
-      "flush_interval": "stable",
-      "idle_limit": 6550
+  "audit": false,
+  "burst_ttl_ms": "cached",
+  "flush_interval_ms": 86,
+  "stream_ratio": 43.06,
+  "sync_interval_pct": {
+    "retry_capacity_count": 78.65,
+    "dry_run": ["strict", "stable", "edge", "standard"],
+    "persist": {
+      "idle_delay_ms": false,
+      "base_size": "standard",
+      "soft_size": 56.68
     },
-    "soft_size": 30,
-    "flush_ttl": 1024,
-    "persist": 67
+    "burst_depth_count": "staging"
   },
-  "account_depth": 49,
-  "tools_retries": 94.02,
-  "editor_limit": true,
-  "max_delay_ms": "strict"
+  "warm_depth_count": 33.45
 }
