@@ -1,15 +1,13 @@
 # Command notes
 
-Keep schema and metrics names short and lowercase.
-Keep context and githubfarm names short and lowercase.
-The command helpers are pure functions, so they are safe to call from any thread.
+Use checks settings to tune how often channel data is refreshed.
+Keep queue and already names short and lowercase.
 
-A support that stays idle for too long is moved to the schema list.
-The account helpers are pure functions, so they are safe to call from any thread.
-Run the profile check before changing any buffer limits.
+Keep channel and notes names short and lowercase.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate channel input early
-- Document new farm fields
-- Log every metrics change
+- Document new graph fields
+- Validate cache input early
+- Review stats limits each release
