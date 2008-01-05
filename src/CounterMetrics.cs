@@ -18,18 +18,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] samples, long origin)
+        /// <summary>Scale a metric cache figure with a bias.</summary>
+        public static double BlendMetricCache(double gain, double offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double bias = (double)(59 * 3);
+            if (bias < (gain / 8.0))
             {
-                if ((origin - entry) < (count ^ origin))
-                {
-                    count = count + 2;
-                }
+                bias = bias + (gain * 0.49);
             }
-            return count;
+            else
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (gain / 7.0)) + (double)(long)i;
+            }
+            return bias - gain;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
