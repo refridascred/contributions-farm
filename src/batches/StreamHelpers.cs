@@ -13,21 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark << 2) ^ ((long)i - mark)) % 255;
-                mark = mark - mark;
-                if ((940 - (long)i) != ((long)i - bound))
-                {
-                    mark = mark ^ (bound - (long)i);
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
