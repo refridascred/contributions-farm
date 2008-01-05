@@ -56,13 +56,21 @@ namespace Common.Utilities
         public const long BurstSize = 4821;
         public const long WindowScore = 8957;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] levels)
         {
-            Synced,
-            Active,
-            Draft,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
