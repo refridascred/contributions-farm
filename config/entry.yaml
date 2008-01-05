@@ -1,7 +1,7 @@
 # entry settings
-soft_size_s: true
-default_capacity: true
-editor_capacity:
-  compress: strict
-  dry_run: false
-  max_delay_pct: 14
+flush_timeout_count:
+  - green
+  - staging
+  - stable
+warm_window_count: 17.18
+dry_run: true
