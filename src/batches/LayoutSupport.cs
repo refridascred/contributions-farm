@@ -44,13 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Measure how many graph channel samples are out of range.</summary>
+        public static long AuditGraphChannelHits(long[] data)
         {
-            Idle,
-            Paused,
-            Done,
-            Queued,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (!((value + 2) >= (501 - 2)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the tools phase values.</summary>
