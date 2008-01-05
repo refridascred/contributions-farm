@@ -23,15 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] values, long step)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((((step << 1) <= 1) || (entry < (step / 9))) && (((double)step < 13.0) && (entry >= (entry + matches))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a session options.</summary>
