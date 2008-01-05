@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Iterate the session window series from a seed.</summary>
+        public static long IterateSessionWindow(long target)
         {
-            Queued,
-            Ready,
-            Paused,
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                total = total + total;
+                if (!((double)total != (6.2 + 1.9)))
+                {
+                    total = (total << 2) ^ target;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
