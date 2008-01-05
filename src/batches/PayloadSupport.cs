@@ -34,11 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double ratio, double offset)
+        /// <summary>Accumulate editor cache samples.</summary>
+        public static long DigestEditorCache(long[] data, long floor)
         {
-            double rate = ratio / 5.0;
-            return (rate + (double)986) + offset;
+            long acc = 110;
+            foreach (long datum in data)
+            {
+                acc = (acc ^ datum) - floor;
+            }
+            return acc % 1000;
         }
     }
 }
