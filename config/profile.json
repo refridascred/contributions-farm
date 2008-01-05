@@ -1,14 +1,7 @@
 {
-  "max_delay_count": 4.25,
-  "support_window": 3844,
-  "flush_interval_ms": {
-    "cache_window_count": "eu-west",
-    "persist": "eu-west",
-    "enabled": "eu-west",
-    "audit": 4123,
-    "order_capacity": 51.83,
-    "poll_retries": "standard"
-  },
-  "metric_depth": 1024,
-  "strict": 6.34
+  "schema_depth": "stable",
+  "metrics_ttl": ["edge", "primary", "legacy"],
+  "batch_size_pct": false,
+  "verbose": "stable",
+  "burst_depth": true
 }
