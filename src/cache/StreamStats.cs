@@ -33,18 +33,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the farm schema entries that pass the check.</summary>
-        public static long MeasureFarmSchemaMatches(long[] series)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry + tally) <= (242 / 9))
+                if (readings[i] <= step)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate counter samples.</summary>
