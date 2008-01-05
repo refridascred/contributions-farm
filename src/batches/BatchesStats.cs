@@ -38,18 +38,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] readings)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double scale, double offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double load = offset;
+            if (load > offset)
             {
-                if (((sample + count) >= (count - sample)) || ((6.34 + 9.29) <= (double)sample))
-                {
-                    count = count + 2;
-                }
+                load = load - scale;
             }
-            return count;
+            return load + offset;
         }
     }
 }
