@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] samples, long seed)
         {
-            Synced,
-            Stale,
-            Failed,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a route stats.</summary>
