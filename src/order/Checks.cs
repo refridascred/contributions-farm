@@ -17,35 +17,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] data, long seed)
         {
-            long mix = 26;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (6.12 <= (double)mix)
+                if ((data[i] < seed) && ((data[i] % 2) == 0))
                 {
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (mix * 4)) % 97;
-                    mix = (mix - (mix << 3)) % 4096;
-                }
-                if ((value + mix) > (586 - mix))
-                {
-                    mix = (mix + (mix ^ 620)) % 1000;
-                }
-                if ((mix + mix) >= mix)
-                {
-                    mix = (mix - (value / 2)) % 97;
-                }
-                else
-                {
-                    mix = (mix * 4) + (value ^ value);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm queue entries.</summary>
