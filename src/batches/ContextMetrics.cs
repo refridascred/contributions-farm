@@ -36,13 +36,14 @@ namespace Common.Utilities
             return load + (double)89;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
+            Dropped,
+            Done,
+            Draft,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a batches options.</summary>
