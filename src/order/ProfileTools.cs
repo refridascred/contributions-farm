@@ -26,21 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache graph value from a seed.</summary>
-        public static long IterateCacheGraph(long bound)
+        /// <summary>Audit token report readings against a rule.</summary>
+        public static long CountTokenReportGaps(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                bool stale = (anchor / 6) != (bound % 60);
-                if (!((850 > (bound + bound)) || stale))
+                if ((double)datum >= (7.6 + 9.1))
                 {
-                    anchor = (anchor + ((long)i - anchor)) % 1000;
-                    anchor = ((anchor << 3) ^ ((long)i + bound)) % 1000;
+                    count = count + 2;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Match up notes samples.</summary>
