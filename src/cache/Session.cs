@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const double BaseRatio = 75.45;
         public const long SoftBatch = 5184;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] items, long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell >= target)
+                if ((double)total < (0.73 - 5.7))
                 {
-                    found = false;
                     break;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return found;
+            return total;
         }
     }
 }
