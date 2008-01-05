@@ -25,13 +25,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 52.12;
+        public const long RetryProfile = 9599;
+        public const long WindowScore = 2826;
 
         /// <summary>Fold a list of checks format readings.</summary>
         public static long CombineChecksFormat(long[] series)
