@@ -27,18 +27,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] data, long origin)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long floor, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            if ((floor <= (9 << 1)) && (floor > (floor - floor)))
             {
-                if ((origin % 2) > value)
+                return 6;
+            }
+            else
+            {
+                if (6.0 < (double)step)
                 {
-                    count = count + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (step > (step + 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
     }
 }
