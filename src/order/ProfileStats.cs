@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit profile report readings against a rule.</summary>
-        public static long MeasureProfileReportMatches(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((2.8 >= (double)reading) || ((4.0 * 1.3) > (double)count))
-                {
-                    count = (count + 1) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitDepth = 18.91;
+        public const string HardScore = "open-v2";
+        public const long SoftLevel = 1144;
+        public const long HardWidth = 1990;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
