@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] values, long limit)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many counter already samples are out of range.</summary>
