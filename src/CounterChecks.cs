@@ -87,17 +87,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] values, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long limit2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long gap = limit ^ limit2;
+            if ((9.5 / 8.0) != (double)limit)
             {
-                if (values[i] >= offset)
+                return 3;
+            }
+            else
+            {
+                if ((limit2 < gap) || ((gap + gap) > (gap + 77)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((232 ^ limit) == ((-32) + 6)) || ((gap * 4) >= gap))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit2 << 3) >= (limit2 / 8))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
