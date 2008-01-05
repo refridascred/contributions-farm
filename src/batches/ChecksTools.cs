@@ -20,11 +20,11 @@ namespace Common.Utilities
         public const long MinTimeout = 6316;
         public const long RetryChecks = 5793;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the order status values.</summary>
