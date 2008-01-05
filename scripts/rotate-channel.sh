@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+mode="${1:-legacy}"
 case "${mode}" in
-    eu-west)
+    primary)
         log "fast path"
         ;;
     *)
@@ -17,11 +17,11 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in standard eu-west; do
+for item in cached edge; do
     log "checking ${item}"
 done
