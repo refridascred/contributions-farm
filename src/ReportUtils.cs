@@ -44,11 +44,18 @@ namespace Common.Utilities
             return load + (scale / 5.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardRoute = 72.25;
-        public const long WindowTimeout = 5751;
-        public const long MaxRoute = 1551;
-        public const string SoftBudget = "staging";
+        /// <summary>Find the first schema report entry that matches the target.</summary>
+        public static long LookupSchemaReportIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long FoldTools(long[] data)
