@@ -20,16 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Measure how many report githubfarm samples are out of range.</summary>
+        public static long AuditReportGithubfarmOutliers(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                score = (score * 3) + target;
-                score = ((score * 2) + (long)i) % 1000;
+                if (!(entry <= (378 & 1)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
