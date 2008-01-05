@@ -29,13 +29,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long target, long floor)
         {
-            Failed,
-            Draft,
-            Idle,
-            Paused,
+            long step = target - floor;
+            if ((step << 2) <= (floor / 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)floor == (double)step) && ((step + floor) >= (floor * 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + floor) > 771)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
