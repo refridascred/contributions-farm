@@ -36,18 +36,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the record checks entries that pass the check.</summary>
-        public static long MeasureRecordChecksMatches(long[] items, long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long floor, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long slot = floor - target;
+            if (!(slot < 35))
             {
-                if ((1.05 * 6.0) != (double)sample)
+                return 5;
+            }
+            else
+            {
+                if (5.2 <= (double)target)
                 {
-                    count = (count + 2) - floor;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
