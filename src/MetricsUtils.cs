@@ -62,12 +62,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBudget = 94.64;
-        public const long MaxSpan = 9641;
-        public const long WindowLevel = 7440;
-        public const string BurstBuffer = "stable-1";
-        public const long WindowCount = 7468;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
