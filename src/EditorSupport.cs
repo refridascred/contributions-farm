@@ -57,26 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels, long origin)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long mix = 0;
-            foreach (long item in levels)
-            {
-                if ((double)origin >= (4.04 - 3.8))
-                {
-                    mix = ((mix * 2) + (item - mix)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (origin * 5)) % 255;
-                }
-            }
-            if (mix < 0)
-            {
-                mix = (mix + (mix >> 4)) % 255;
-            }
-            return mix % 4096;
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
