@@ -28,18 +28,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] items, long offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen <= (seen & 15)) || ((6 >= (seen - offset)) && ((double)seen > (2.0 * 7.64))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
