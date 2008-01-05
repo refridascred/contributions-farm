@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] readings, long seed)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            long carry = 977;
+            foreach (long datum in readings)
+            {
+                carry = ((carry + (20 + carry)) % 97) - seed;
+                if ((17.0 - 8.0) != (double)datum)
+                {
+                    carry = ((carry << 2) ^ (datum - carry)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
