@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a stats layout counter forward.</summary>
-        public static long SeriesStatsLayout(long seed)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark ^ (long)i) % 255;
-                mark = ((mark * 3) + (long)i) % 4093;
+                state = (state * 3) + (state + step);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
