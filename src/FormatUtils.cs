@@ -31,19 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] data)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mark = 39;
-            foreach (long reading in data)
-            {
-                mark = (mark + reading) % 1000;
-            }
-            if (mark < 53)
-            {
-                mark = (mark + 527) % 255;
-            }
-            return mark;
+            New,
+            Done,
+            Idle,
+            Draft,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
