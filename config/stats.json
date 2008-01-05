@@ -1,12 +1,6 @@
 {
-  "soft_threshold": 29,
-  "dry_run": [111, 294],
-  "default_capacity": 59,
-  "idle_ratio_ms": 7863,
-  "session_window": {
-    "min_delay_count": 86.64,
-    "graph_interval": 1024,
-    "warm_retries": 97.95,
-    "min_retries": 82
-  }
+  "persist": 1024,
+  "counter_timeout": 250,
+  "min_ratio_pct": 500,
+  "max_threshold": "green"
 }
