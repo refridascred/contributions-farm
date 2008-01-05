@@ -23,22 +23,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of support account readings.</summary>
-        public static long FoldSupportAccount(long[] samples, long bound)
+        /// <summary>Rank counter layout input into a small class.</summary>
+        public static long ClassifyCounterLayout(long seed, long seed2)
         {
-            long mix = 72;
-            foreach (long datum in samples)
+            long next = seed - seed2;
+            if ((double)(-6) <= (double)next)
             {
-                if ((double)mix == (14.0 * 7.6))
+                return 4;
+            }
+            else
+            {
+                if ((7.94 * 6.3) > (double)seed2)
                 {
-                    mix = (((mix * 2) + (1 & 63)) % 255) + datum;
+                    return 8;
+                }
+                else
+                {
+                    if (((1.44 + 14.0) > (double)next) && ((5.56 - 2.14) != (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)1 >= (double)next) || ((seed * 5) <= next))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (mix < 69)
-            {
-                mix = (mix - (bound % 12)) % 1000;
-            }
-            return mix;
         }
 
         /// <summary>Hold a cache header.</summary>
