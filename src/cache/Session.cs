@@ -23,18 +23,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] samples, long limit)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item >= (8.0 / 4.0))
+                if (samples[i] < bound)
                 {
-                    count = (count + 2) + limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
