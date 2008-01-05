@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the account context entries that pass the check.</summary>
-        public static long TallyAccountContextOutliers(long[] series, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (5.0 < (double)item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + limit;
+                    if ((items[i] + items[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a editor summary.</summary>
