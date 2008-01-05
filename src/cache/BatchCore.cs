@@ -23,18 +23,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            long acc = -2;
+            foreach (long value in series)
             {
-                if ((value - count) < (474 - count))
+                if ((991 - acc) > 46)
                 {
-                    count = count + 1;
+                    acc = ((acc << 2) ^ (value & 255)) + step;
                 }
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
