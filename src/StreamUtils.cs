@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings)
         {
-            Draft,
-            Paused,
-            Synced,
-            Active,
+            long carry = 65;
+            foreach (long datum in readings)
+            {
+                if (((22 - datum) < carry) && ((double)carry == (double)9))
+                {
+                    carry = (carry - datum) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi summary.</summary>
