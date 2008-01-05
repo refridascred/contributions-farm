@@ -59,13 +59,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            New,
+            Closed,
+            Paused,
             Active,
-            Retry,
-            Locked,
+            Draft,
         }
 
         /// <summary>Audit metric editor readings against a rule.</summary>
