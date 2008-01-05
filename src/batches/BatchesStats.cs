@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] readings)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading >= 2.81)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two cluster githubfarm measurements.</summary>
