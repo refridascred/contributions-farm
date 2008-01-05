@@ -54,21 +54,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up record batches samples.</summary>
-        public static long CompareRecordBatchesCount(long[] samples)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] samples, long offset)
         {
-            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] < offset)
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
