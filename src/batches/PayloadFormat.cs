@@ -32,26 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] data, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double rate, double floor)
         {
-            long score = -20;
-            foreach (long sample in data)
+            double scale = (double)(7 & 127);
+            for (int i = 0; i < 5; i++)
             {
-                if ((449 << 1) < (floor >> 5))
-                {
-                    score = (score - ((-316) + 2)) ^ sample;
-                }
-                else
-                {
-                    score = (score + (floor << 2)) % 65521;
-                }
+                scale = (((scale + (double)75) + (double)(long)i) - rate) - floor;
             }
-            if (score > 506)
-            {
-                score = (score + floor) % 97;
-            }
-            return score % 4096;
+            return scale + (scale * 10.0);
         }
 
         /// <summary>Describe the stats phase values.</summary>
