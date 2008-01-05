@@ -46,12 +46,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] readings, long offset)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
+            long anchor = 57;
+            foreach (long cell in readings)
+            {
+                anchor = anchor + offset;
+                if ((offset / 5) != (offset - offset))
+                {
+                    continue;
+                }
+                if ((cell / 9) <= offset)
+                {
+                    anchor = (anchor * 3) + (anchor + cell);
+                }
+                else
+                {
+                    anchor = (anchor - offset) % 4096;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the channel class values.</summary>
