@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftTimeout = "legacy-1";
+        public const long LimitContext = 2221;
+        public const long DefaultContext = 4193;
+        public const long RetryContext = 2346;
+        public const long BaseBudget = 249;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] data, long step)
