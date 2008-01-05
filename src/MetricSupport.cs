@@ -36,18 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stats editor samples.</summary>
-        public static long OverlapStatsEditorCount(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] items, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((seen & 31) != (origin + cell)) || ((cell + 174) <= (cell / 3)))
                 {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
