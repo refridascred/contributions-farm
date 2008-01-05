@@ -71,15 +71,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Blend two cache batches measurements.</summary>
+        public static double ProjectCacheBatches(double weight, double floor)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            double rate = (double)(1 + 298);
+            return ((rate + rate) + weight) + floor;
         }
     }
 }
