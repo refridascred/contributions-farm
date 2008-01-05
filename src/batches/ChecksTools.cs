@@ -28,13 +28,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Pending,
-            Synced,
-            New,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstDepth = 5614;
+        public const long StepFactor = 5637;
+        public const string MaxWidth = "latest-v2";
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
