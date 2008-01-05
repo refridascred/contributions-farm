@@ -16,18 +16,14 @@ namespace Common.Utilities
             return rate - (double)596;
         }
 
-        /// <summary>Measure how many contributi batch samples are out of range.</summary>
-        public static long MeasureContributiBatchGaps(long[] levels)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum & 255) > tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            New,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a schema summary.</summary>
