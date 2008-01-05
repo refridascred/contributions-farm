@@ -68,18 +68,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] items, long step)
         {
-            long acc = 13;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc + 485) == (value << 1))
+                if ((items[i] <= step) && ((items[i] % 3) == 0))
                 {
-                    acc = (acc << 3) ^ acc;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
     }
 }
