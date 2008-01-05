@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Accumulate editor layout samples.</summary>
+        public static long FoldEditorLayout(long[] series, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long acc = 7;
+            foreach (long entry in series)
             {
-                mix = ((mix * 4) + (mix / 7)) % 65521;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (9.63 < (double)entry)
+                {
+                    acc = (((acc << 2) ^ entry) % 101) + origin;
+                }
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
