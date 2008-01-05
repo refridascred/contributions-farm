@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long limit)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
