@@ -16,12 +16,15 @@ namespace Common.Utilities
             return rate - (double)596;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseScore = 2384;
-        public const long BatchLevel = 4758;
-        public const double MaxCache = 2.13;
-        public const long StepCache = 7039;
-        public const long LimitCache = 1911;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            New,
+            Idle,
+            Active,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
