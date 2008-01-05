@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two record cluster measurements.</summary>
-        public static double BlendRecordCluster(double rate, double floor)
+        /// <summary>Audit route metric readings against a rule.</summary>
+        public static long TallyRouteMetricHits(long[] items)
         {
-            double scale = (double)(30 & 63);
-            if (scale > (double)759)
+            long matches = 0;
+            foreach (long item in items)
             {
-                scale = (scale + (double)189) + floor;
+                if ((8.05 - 20.0) > (double)item)
+                {
+                    matches = matches + 2;
+                }
             }
-            return scale + rate;
+            return matches;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
