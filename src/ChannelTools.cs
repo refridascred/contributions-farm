@@ -22,14 +22,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Digest a series of metric stream entries.</summary>
+        public static long ScoreMetricStream(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long state = 813;
+            foreach (long reading in data)
             {
-                state = (state - (920 + (long)i)) % 65521;
-                state = ((state * 5) + (long)i) % 101;
+                state = state + (reading + state);
+                if (((81 + reading) <= (reading << 2)) && ((653 ^ reading) >= state))
+                {
+                    state = (state ^ state) % 4096;
+                }
+                else
+                {
+                    state = (state - (3 ^ reading)) % 255;
+                }
+            }
+            if (state > 427)
+            {
+                state = (state - state) % 255;
             }
             return state;
         }
