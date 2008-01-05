@@ -13,19 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double weight, double bias)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long limit)
         {
-            double mean = bias;
-            if (mean < (weight - 5.8))
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean - 9.6;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 4.38) + (double)(long)i;
-            }
-            return mean - bias;
+            return anchor;
         }
 
         /// <summary>Describe the route kind values.</summary>
