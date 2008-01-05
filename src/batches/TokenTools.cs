@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] samples)
+        /// <summary>Roll a stats cluster counter forward.</summary>
+        public static long RollStatsCluster(long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(seen > (datum + seen)))
+                if ((sum <= (seed % 97)) && ((double)(long)i >= (1.77 / 5.0)))
                 {
-                    seen = seen + 2;
+                    sum = ((sum * 5) + (long)i) % 101;
                 }
+                else
+                {
+                    sum = (sum << 3) ^ (long)i;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Check that every farm route entry stays within the limit.</summary>
