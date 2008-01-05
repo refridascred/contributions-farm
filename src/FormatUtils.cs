@@ -31,24 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double ratio, double offset)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            double load = (offset / 6.0) * 2.0;
+            if (load > ratio)
             {
-                long delta = (mark % 3) / 2;
-                if (((13.0 / 2.0) == (double)mark) || ((double)delta != (2.1 - 13.0)))
-                {
-                    mark = (mark ^ target) % 65521;
-                }
-                else
-                {
-                    mark = (mark + target) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
+                load = load + load;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - ratio;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
