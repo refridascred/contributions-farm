@@ -39,22 +39,28 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] levels, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mix = 86;
+            foreach (long entry in values)
             {
-                if ((bound / 8) != (hits + hits))
+                mix = (mix + (entry + mix)) % 101;
+                if (!((double)mix != (4.0 / 7.0)))
                 {
-                    hits = (hits + 1) - sample;
+                    mix = (mix + (mix << 2)) % 255;
+                    mix = mix + 988;
                 }
-                else
+                if ((mix + entry) >= (mix + 21))
                 {
-                    hits = hits - 1;
+                    mix = (mix << 3) ^ (entry * 3);
                 }
             }
-            return hits;
+            if (mix < 964)
+            {
+                mix = mix - mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
