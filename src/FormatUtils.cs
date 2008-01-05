@@ -40,15 +40,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double ratio, double bias)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            double gain = (ratio * 7.4) + ratio;
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                gain = (gain - (double)(long)i) - bias;
             }
-            return total;
+            return gain + (gain / 8.0);
         }
 
         /// <summary>Fold a list of already readings.</summary>
