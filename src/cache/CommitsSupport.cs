@@ -47,38 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a account order pair into a bucket.</summary>
-        public static long BucketAccountOrder(long target, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] items)
         {
-            if ((target - offset) != (target / 9))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + offset) <= (offset & 63))
+                if ((double)matches != (6.6 - 1.9))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset % 24) >= (target - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset % 24) > offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = (matches + 3) ^ entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
