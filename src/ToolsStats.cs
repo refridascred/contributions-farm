@@ -62,22 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long origin)
         {
-            long anchor = -50;
-            foreach (long entry in values)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((anchor - anchor) == (25 + anchor))
-                {
-                    anchor = (((anchor << 3) ^ anchor) % 1000) ^ entry;
-                }
+                score = (score ^ score) % 4096;
+                score = score - ((long)i % 7);
+                score = score - (score >> 2);
+                score = ((score * 3) + (long)i) % 65521;
             }
-            if (anchor > 52)
-            {
-                anchor = (anchor - anchor) % 255;
-            }
-            return anchor;
+            return score;
         }
     }
 }
