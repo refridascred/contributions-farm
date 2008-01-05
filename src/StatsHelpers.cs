@@ -24,13 +24,18 @@ namespace Common.Utilities
             return mean + (gain - mean);
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] data, long limit)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((double)seen > (5.3 * 11.0))
+                {
+                    seen = ((seen + 3) + sample) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
