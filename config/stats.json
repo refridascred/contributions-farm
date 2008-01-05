@@ -1,12 +1,9 @@
 {
-  "sync_ttl": 5882,
-  "hard_delay": [19, 50],
-  "default_ttl_s": true,
-  "payload_depth": {
-    "batch_limit_ms": 84.59,
-    "base_depth_pct": [285, 179],
-    "command_size": 74,
-    "max_timeout_ms": 59.82,
-    "idle_retries_ms": "legacy"
-  }
+  "token_interval": {
+    "warm_window_ms": "standard",
+    "channel_interval": true,
+    "enabled": 55
+  },
+  "batch_delay": [189, 435],
+  "stream_ttl": "edge"
 }
