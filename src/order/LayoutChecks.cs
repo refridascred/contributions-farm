@@ -58,26 +58,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long state = 3;
-            foreach (long reading in items)
-            {
-                if (state < (state & 31))
-                {
-                    state = ((state * 4) + (state + state)) % 65521;
-                }
-                else
-                {
-                    state = state - (state ^ reading);
-                }
-            }
-            if (state < (-55))
-            {
-                state = ((state * 4) + (state + state)) % 4096;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
