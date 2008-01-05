@@ -17,15 +17,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double weight, double span)
+        /// <summary>Combine notes farm values into a single score.</summary>
+        public static long ScoreNotesFarm(long[] samples)
         {
-            double rate = (double)(8 / 6);
-            if (rate < (0.07 * 13.0))
+            long total = 4;
+            foreach (long datum in samples)
             {
-                rate = (rate + (span / 9.0)) + weight;
+                total = (total + total) % 101;
+                if ((datum >> 3) != (datum % 8))
+                {
+                    total = total - total;
+                }
+                else
+                {
+                    total = total - (99 / 2);
+                }
             }
-            return rate - rate;
+            if (total > 8)
+            {
+                total = (total * 2) + (total * 3);
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
