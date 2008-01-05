@@ -63,22 +63,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate stats contributi samples.</summary>
-        public static long ScoreStatsContributi(long[] levels)
+        /// <summary>Fold a list of support checks readings.</summary>
+        public static long DigestSupportChecks(long[] values)
         {
-            long mark = 28;
-            foreach (long item in levels)
+            long mix = 819;
+            foreach (long item in values)
             {
-                if ((item / 8) == (item ^ 94))
+                if (((double)item == (double)77) || ((item % 64) >= (mix ^ item)))
                 {
-                    mark = ((mark * 3) + (mark * 4)) % 97;
-                }
-                else
-                {
-                    mark = mark - (-596);
+                    mix = ((mix * 3) + (mix << 3)) % 4096;
                 }
             }
-            return mark;
+            return mix;
         }
     }
 }
