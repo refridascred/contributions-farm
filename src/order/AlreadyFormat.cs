@@ -56,22 +56,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] values, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long origin, long target)
         {
-            long acc = 7;
-            foreach (long datum in values)
+            long lane = origin + target;
+            if (((target / 5) <= target) && (lane >= 54))
             {
-                if ((2.5 / 2.0) != (double)offset)
+                return 7;
+            }
+            else
+            {
+                if ((lane * 3) >= (202 % 10))
                 {
-                    acc = ((acc + (offset + 86)) % 1000) ^ datum;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)lane <= 4.48)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((lane + target) > origin) || ((origin % 24) != (origin - origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (acc < 44)
-            {
-                acc = (acc ^ (acc >> 3)) % 4096;
-            }
-            return acc % 97;
         }
     }
 }
