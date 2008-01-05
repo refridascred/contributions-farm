@@ -1,13 +1,8 @@
 {
-  "verbose": ["stable", "local", "cached"],
-  "stats_capacity": "local",
-  "strict": {
-    "default_threshold_count": "blue",
-    "record_ratio": "blue",
-    "persist": true,
-    "batch_size_s": 250,
-    "verbose": [446, 402, 194, 295]
-  },
-  "idle_retries": 7859,
-  "githubfarm_window": ["strict", "stable"]
+  "compress": ["latest", "staging"],
+  "sync_window": true,
+  "checks_ratio": [426, 281, 254],
+  "idle_delay_s": 78.84,
+  "audit": 88,
+  "counter_threshold": [149, 283, 495, 82]
 }
