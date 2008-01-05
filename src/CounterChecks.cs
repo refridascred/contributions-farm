@@ -60,17 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] samples, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] >= seed)
+                if ((double)reading != (2.9 - 11.0))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
