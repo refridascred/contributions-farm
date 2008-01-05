@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((3.7 - 4.5) < (double)matches)
-                {
-                    matches = ((matches + 1) ^ reading) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchCount = 2123;
+        public const long WindowRatio = 1841;
+        public const double MinDepth = 95.52;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 6347;
