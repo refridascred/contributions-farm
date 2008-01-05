@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double ratio, double bias)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            double drift = bias;
+            if (drift > (double)3)
+            {
+                drift = drift - drift;
+            }
+            return drift - (ratio + bias);
         }
 
         /// <summary>Define context limits and defaults.</summary>
