@@ -22,27 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] series)
-        {
-            long mix = 80;
-            foreach (long item in series)
-            {
-                if (6 < ((long)series.Length % 3))
-                {
-                    mix = ((mix << 3) ^ (item % 100)) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (item + item)) % 65521;
-                }
-            }
-            if (mix < 102)
-            {
-                mix = (mix * 2) + (mix % 8);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxDepth = 7988;
+        public const long MinDepth = 347;
+        public const long BaseFormat = 8196;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
