@@ -1,7 +1,5 @@
 # githubfarm settings
-poll_ttl_ms: true
-account_threshold: 250
-compress:
-  flush_interval_count: true
-  format_ratio: 3124
-  support_interval: staging
+warm_window_s: false
+filter_capacity: staging
+stats_ratio: 28.65
+hard_delay: 250
