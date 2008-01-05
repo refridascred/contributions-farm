@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double weight, double bias)
+        /// <summary>Measure how many stats batch samples are out of range.</summary>
+        public static long CountStatsBatchOutliers(long[] series)
         {
-            double mean = bias;
-            if (mean > (weight / 3.0))
+            long hits = 0;
+            foreach (long item in series)
             {
-                mean = mean + 4.59;
+                if (hits < (hits + 9))
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean - mean;
+            return hits;
         }
 
         /// <summary>Accumulate route samples.</summary>
