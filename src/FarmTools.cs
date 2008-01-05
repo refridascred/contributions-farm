@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] series, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = weight;
+            if (gain < (8.0 * 0.4))
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (9.9 / 4.0)) + span;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (double)(-2)) + (double)(long)i;
+            }
+            return gain - 6.0;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
