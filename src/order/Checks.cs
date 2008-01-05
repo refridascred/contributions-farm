@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double rate, double bias)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double gain, double floor)
         {
-            double rate2 = (double)((-2) + 263);
-            if (rate2 < (double)4)
+            double weight = gain;
+            for (int i = 0; i < 3; i++)
             {
-                rate2 = (rate2 + rate) - bias;
+                weight = ((weight + weight) + (double)(long)i) - floor;
             }
-            return rate2 + (rate2 / 3.0);
+            return weight + (double)16;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
