@@ -1,13 +1,14 @@
 # Command notes
 
-Each tools is validated before it reaches the editor queue.
-Run the counter check before changing any metrics limits.
+A context that stays idle for too long is moved to the route list.
+The order helpers are pure functions, so they are safe to call from any thread.
 
-Keep commits and entry names short and lowercase.
-Each order is validated before it reaches the channel queue.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a cache fails, the entry handler retries a few times before giving up.
+The metric report groups every metrics by order.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Document new metrics fields
-- Review metrics limits each release
+- Validate commits input early
+- Keep metric values small
+- Review farm limits each release
