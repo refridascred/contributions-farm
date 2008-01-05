@@ -68,21 +68,19 @@ namespace Common.Utilities
             return bias + (double)9;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry <= target)
                 {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Match up profile context samples.</summary>
