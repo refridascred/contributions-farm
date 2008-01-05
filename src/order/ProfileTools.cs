@@ -92,22 +92,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long floor, long limit)
         {
-            long sum = 58;
-            foreach (long sample in readings)
+            long span = floor ^ limit;
+            if ((0.89 / 7.0) >= (double)limit)
             {
-                if ((sample + 69) == (9 + 4))
+                return 3;
+            }
+            else
+            {
+                if ((limit - (-789)) == (floor ^ span))
                 {
-                    sum = sum - (sample + (-3));
+                    return 5;
+                }
+                else
+                {
+                    if ((limit ^ floor) >= (limit + 151))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor == (double)span)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (sum > 56)
-            {
-                sum = (sum + 6) % 255;
-            }
-            return sum % 4096;
         }
     }
 }
