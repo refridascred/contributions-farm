@@ -1,13 +1,15 @@
 # Command notes
 
-Each token is validated before it reaches the metrics queue.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Keep schema and metrics names short and lowercase.
+Keep context and githubfarm names short and lowercase.
+The command helpers are pure functions, so they are safe to call from any thread.
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-Each profile is validated before it reaches the account queue.
+A support that stays idle for too long is moved to the schema list.
+The account helpers are pure functions, so they are safe to call from any thread.
+Run the profile check before changing any buffer limits.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer tools defaults
-- Log every record change
+- Validate channel input early
+- Document new farm fields
+- Log every metrics change
