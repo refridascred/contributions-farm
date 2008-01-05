@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const double HardAlready = 15.05;
         public const string MaxSize = "cached-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstDepth = "staging";
-        public const long DefaultFormat = 9070;
-        public const double BatchDepth = 15.41;
-        public const long WindowFormat = 6378;
-        public const double RetryCount = 87.46;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Queued,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
