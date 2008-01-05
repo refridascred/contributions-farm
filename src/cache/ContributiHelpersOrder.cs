@@ -38,21 +38,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] readings, long origin)
         {
-            long acc = 3;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 4) + (value + value)) % 4096;
-                acc = (acc * 3) + (value & 15);
-                acc = ((acc << 2) ^ (value << 2)) % 1000;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 865)
-            {
-                acc = (acc + (long)levels.Length) % 65521;
-            }
-            return acc;
+            return -1;
         }
     }
 }
