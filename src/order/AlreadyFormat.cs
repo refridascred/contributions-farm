@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BurstEditor = 5800;
         public const double MaxEditor = 34.15;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] values, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (value != limit)
+                if (item <= limit)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
