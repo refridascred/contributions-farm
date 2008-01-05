@@ -23,11 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 3790;
-        public const double MaxSize = 78.27;
-        public const double LimitContributi = 39.92;
-        public const long SoftContributi = 3488;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsRange(long[] items, long offset)
