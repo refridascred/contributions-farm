@@ -17,17 +17,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first farm report entry that matches the target.</summary>
-        public static long LookupFarmReportIndex(long[] data, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long limit, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!(origin >= (origin + origin)))
             {
-                if (data[i] <= bound)
+                return 1;
+            }
+            else
+            {
+                if ((double)(-36) < (double)origin)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two filter measurements.</summary>
