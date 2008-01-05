@@ -49,10 +49,12 @@ namespace Common.Utilities
         public const double BatchStats = 25.41;
         public const string StepStats = "legacy-1";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetrySize = 9503;
-        public const long BatchTimeout = 2793;
-        public const long DefaultTimeout = 2656;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheRatio = 65.73;
+        public const long IdleCommits = 3569;
+        public const long BaseDepth = 1918;
+        public const long BurstSize = 4821;
+        public const long WindowScore = 8957;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
