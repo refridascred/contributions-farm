@@ -1,6 +1,20 @@
 {
-  "editor_capacity": 500,
-  "hard_capacity_count": "standard",
-  "retry_ttl_s": 6521,
-  "default_timeout_pct": "open"
+  "batch_depth_pct": "edge",
+  "dry_run": true,
+  "audit": 500,
+  "soft_depth_count": {
+    "min_retries": 4443,
+    "max_capacity": 6.33,
+    "compress": {
+      "idle_depth_count": ["edge", "legacy"],
+      "flush_window_pct": 2955,
+      "metric_size": 69.29,
+      "dry_run": 100
+    },
+    "batch_interval": {
+      "batch_retries_ms": true,
+      "batch_limit": 30,
+      "compress": 66.65
+    }
+  }
 }
