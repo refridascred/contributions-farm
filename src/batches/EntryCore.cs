@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftTimeout = "legacy-1";
-        public const long LimitContext = 2221;
-        public const long DefaultContext = 4193;
-        public const long RetryContext = 2346;
-        public const long BaseBudget = 249;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double bias, double bias2)
+        {
+            double gain = (double)79 * 4.6;
+            if (gain >= (bias2 - gain))
+            {
+                gain = gain + (bias - bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (bias - bias)) + (double)(long)i;
+            }
+            return gain - bias;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] data, long step)
