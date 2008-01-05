@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] items, long target)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((double)hits <= (2.75 / 6.0))
+                {
+                    hits = ((hits + 3) + value) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the entry class values.</summary>
