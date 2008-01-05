@@ -32,23 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile checks entries.</summary>
-        public static long TotalProfileChecks(long[] series)
-        {
-            long result = -3;
-            foreach (long sample in series)
-            {
-                if ((sample % 64) <= (result + sample))
-                {
-                    result = (result ^ (sample / 4)) % 97;
-                }
-                if (((sample & 15) >= sample) && ((23 + sample) > result))
-                {
-                    result = (result << 3) ^ (sample + sample);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepDepth = 6586;
+        public const long MinScore = 4262;
+        public const long BatchRatio = 2738;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricGaps(long[] samples)
