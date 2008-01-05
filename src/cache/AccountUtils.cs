@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            New,
-            Done,
-            Draft,
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
