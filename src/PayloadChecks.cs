@@ -71,19 +71,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] levels, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Queued,
+            Failed,
         }
     }
 }
