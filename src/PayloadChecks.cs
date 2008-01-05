@@ -71,12 +71,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] samples, long origin)
         {
-            Locked,
-            Queued,
-            Failed,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (origin < (matches - matches))
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
