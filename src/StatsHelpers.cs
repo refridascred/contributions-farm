@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 33;
-        public const string SoftScore = "standard-1";
-        public const long BaseTimeout = 1809;
-        public const long LimitStats = 2775;
+        /// <summary>Measure how many notes token samples are out of range.</summary>
+        public static long MeasureNotesTokenGaps(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)tally > 0.63)
+                {
+                    tally = ((tally + 1) + cell) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long SoftFormat = 2141;
