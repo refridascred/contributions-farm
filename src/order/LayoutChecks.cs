@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of schema account entries.</summary>
-        public static long TallySchemaAccount(long[] series)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long target)
         {
-            long anchor = -5;
-            foreach (long cell in series)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor + (2 * 5)) % 65521;
-                if (!(cell >= (16 - cell)))
-                {
-                    break;
-                }
+                score = (score * 3) + target;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
