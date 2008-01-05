@@ -37,17 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = carry + (657 + carry);
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstRatio = 10.1;
+        public const long BurstChannel = 1904;
+        public const long SoftFactor = 3128;
+        public const long IdleChannel = 9892;
+        public const long HardInterval = 9264;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long DeriveSession(long floor)
