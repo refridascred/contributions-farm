@@ -27,19 +27,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long origin)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Paused,
+            Queued,
+            Dropped,
+            Retry,
         }
     }
 }
