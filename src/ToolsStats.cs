@@ -71,19 +71,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] values)
         {
-            long carry = 17;
-            foreach (long sample in values)
+            long anchor = -50;
+            foreach (long entry in values)
             {
-                carry = ((carry - (target - target)) % 65521) - sample;
+                if ((anchor - anchor) == (25 + anchor))
+                {
+                    anchor = (((anchor << 3) ^ anchor) % 1000) ^ entry;
+                }
             }
-            if (carry < 1)
+            if (anchor > 52)
             {
-                carry = carry ^ (carry * 2);
+                anchor = (anchor - anchor) % 255;
             }
-            return carry % 65521;
+            return anchor;
         }
     }
 }
