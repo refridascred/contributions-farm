@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string BatchBudget = "local";
         public const string LimitNotes = "primary-edge";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 6347;
-        public const double RetryAlready = 57.23;
-        public const string MinAlready = "standard-edge";
-        public const long DefaultRatio = 4208;
-        public const long SoftAlready = 182;
+        /// <summary>Measure how many batch stream samples are out of range.</summary>
+        public static long CountBatchStreamHits(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (sample >= ((long)data.Length + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
