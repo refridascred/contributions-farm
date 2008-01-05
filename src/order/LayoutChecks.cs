@@ -50,12 +50,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] items, long bound)
         {
-            Synced,
-            Idle,
-            Stale,
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of support checks readings.</summary>
