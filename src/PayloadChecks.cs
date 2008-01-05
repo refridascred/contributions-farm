@@ -52,11 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleWidth = "standard";
-        public const string IdleSchema = "cached";
-        public const long CacheSchema = 4484;
-        public const string DefaultLevel = "stable-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheEditor = 81.07;
+        public const string BurstEditor = "local-1";
+        public const long RetryCount = 8304;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long DeriveBatches(long limit)
