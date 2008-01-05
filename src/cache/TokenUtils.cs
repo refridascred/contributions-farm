@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the batches schema series from a seed.</summary>
-        public static long IterateBatchesSchema(long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
+            long anchor = 6;
+            foreach (long value in data)
             {
-                carry = (carry * 4) + (target ^ 6);
-                carry = (carry * 2) + (667 % 7);
-                carry = (carry - (long)i) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (anchor > (anchor % 97))
+                {
+                    anchor = anchor + (anchor - value);
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
