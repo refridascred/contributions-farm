@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            double load = bias;
-            if (load >= rate)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                load = load - rate;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return load + (double)82;
+            return anchor;
         }
 
         /// <summary>Compare every pair of filter editor readings.</summary>
