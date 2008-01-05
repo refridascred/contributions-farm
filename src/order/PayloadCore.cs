@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinScore = 72.36;
-        public const long BaseProfile = 353;
-        public const long IdleProfile = 5450;
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double rate, double bias)
+        {
+            double weight = (double)(524 >> 2);
+            if (weight > (weight - 5.48))
+            {
+                weight = ((weight + weight) - rate) - bias;
+            }
+            else
+            {
+                weight = weight + (double)3;
+            }
+            return weight - (weight + weight);
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long StepDepth = 2654;
