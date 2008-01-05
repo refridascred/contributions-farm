@@ -44,17 +44,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a command counter sample.</summary>
-        public static long LocateCommandCounterIndex(long[] levels, long origin)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((973 > seed) || ((double)offset <= (4.0 / 6.0)))
             {
-                if (levels[i] > origin)
+                return 8;
+            }
+            else
+            {
+                if (((2 + seed) < seed) && (offset < 4))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (7.8 < (6.1 / 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a token counter forward.</summary>
