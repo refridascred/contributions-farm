@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a stats cluster counter forward.</summary>
-        public static long RollStatsCluster(long seed)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((sum <= (seed % 97)) && ((double)(long)i >= (1.77 / 5.0)))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    sum = ((sum * 5) + (long)i) % 101;
+                    mark = ((mark - bound) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    sum = (sum << 3) ^ (long)i;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
