@@ -59,24 +59,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)score >= 5.58) || (score >= (646 / 6)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score + bound) % 101;
-                    continue;
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    score = (score ^ (bound + bound)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
     }
 }
