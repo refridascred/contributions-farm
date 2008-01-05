@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = (((sum << 2) ^ sum) % 4096) - (long)i2;
-                }
-                if ((sum - sum) == (sum + (long)i))
-                {
-                    sum = (sum - limit) % 255;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many contributi route samples are out of range.</summary>
