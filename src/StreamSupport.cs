@@ -30,12 +30,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long bound)
         {
-            Synced,
-            Pending,
-            Done,
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
