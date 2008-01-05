@@ -44,21 +44,15 @@ namespace Common.Utilities
         public const string DefaultGithubfarm = "stable";
         public const long StepLevel = 1592;
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)7 * 7.62;
+            if (gain >= 1.46)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain - (bias / 9.0);
             }
-            return count;
+            return gain - (bias2 * 9.11);
         }
 
         /// <summary>Define window limits and defaults.</summary>
