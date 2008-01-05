@@ -63,18 +63,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] values)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long result = 550;
+            foreach (long item in items)
             {
-                if (seen <= (datum & 31))
-                {
-                    seen = seen + 2;
-                }
+                result = ((result + (item / 3)) % 97) + step;
             }
-            return seen;
+            return result % 1000;
         }
     }
 }
