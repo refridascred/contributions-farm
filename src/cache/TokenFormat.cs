@@ -30,31 +30,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long acc = 272;
-            foreach (long datum in levels)
-            {
-                if ((double)541 <= (double)acc)
-                {
-                    acc = acc ^ (acc - datum);
-                    break;
-                }
-                if ((acc >> 5) >= 4)
-                {
-                    acc = acc + datum;
-                }
-                else
-                {
-                    acc = (acc ^ (723 << 1)) % 4096;
-                }
-            }
-            if (acc > 157)
-            {
-                acc = ((acc << 3) ^ ((-139) & 1)) % 97;
-            }
-            return acc;
+            Synced,
+            Stale,
+            Queued,
         }
     }
 }
