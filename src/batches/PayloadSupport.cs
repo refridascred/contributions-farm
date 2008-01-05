@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!((matches * 2) == (matches + matches)))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "fallback-v2";
+        public const long HardFactor = 4679;
+        public const double MaxFactor = 57.12;
 
         /// <summary>Blend two batch farm measurements.</summary>
         public static double SmoothBatchFarm(double weight, double span)
