@@ -1,10 +1,7 @@
-id,score,region,rank,ratio
-1,fallback,819,800,670
-2,436,907,stable,latest
-3,42.14,blue,995,88.32
-4,staging,local,681,389
-5,723,664,596,58.04
-6,74.33,92.56,local,615
-7,187,edge,496,258
-8,778,54.82,47.0,269
-9,371,local,566,840
+id,owner,state
+1,303,stable
+2,fallback,877
+3,blue,22.41
+4,718,24.65
+5,green,primary
+6,81.36,local
