@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double rate, double bias)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] levels, long offset)
         {
-            double load = bias;
-            if (load <= (rate * 6.64))
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                load = load + load;
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load + rate;
+            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
