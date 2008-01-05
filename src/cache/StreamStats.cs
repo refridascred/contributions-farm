@@ -45,9 +45,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 9891;
-        public const double MaxRatio = 28.01;
-        public const string WindowQueue = "local-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchWidth = 7.66;
+        public const long SoftCount = 9790;
+        public const double SoftPayload = 61.0;
     }
 }
