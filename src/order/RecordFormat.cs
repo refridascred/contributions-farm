@@ -49,14 +49,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Grade a notes token value against two limits.</summary>
+        public static long GradeNotesToken(long offset, long seed)
         {
-            Synced,
-            New,
-            Draft,
-            Retry,
-            Failed,
+            if (!((double)offset != (14.0 + 19.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)(-72) != (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset < (145 - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
