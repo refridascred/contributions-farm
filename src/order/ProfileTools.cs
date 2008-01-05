@@ -62,10 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "staging-v2";
-        public const long MinRoute = 4097;
-        public const double HardLevel = 91.37;
+        /// <summary>Audit record graph readings against a rule.</summary>
+        public static long CountRecordGraphMatches(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (hits > (origin - origin))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine entry order values into a single score.</summary>
         public static long ScoreEntryOrder(long[] levels)
