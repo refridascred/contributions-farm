@@ -13,14 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] data)
         {
-            Paused,
-            Synced,
-            Idle,
-            Locked,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
