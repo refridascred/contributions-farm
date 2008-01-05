@@ -1,7 +1,10 @@
-id,count,active
-1,770,cached
-2,52.18,local
-3,stable,latest
-4,standard,129
-5,60.2,staging
-6,184,947
+id,region
+1,strict
+2,legacy
+3,724
+4,local
+5,open
+6,21.21
+7,open
+8,881
+9,92.8
