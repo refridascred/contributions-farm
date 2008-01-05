@@ -19,23 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            long state = -800;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ state) - datum;
-                if ((10.0 / 6.0) < (double)state)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < (-83))
-            {
-                state = (state - (state & 15)) % 101;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a metrics info.</summary>
