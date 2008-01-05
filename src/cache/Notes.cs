@@ -39,19 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series, long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            long anchor = 14;
-            foreach (long reading in series)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = ((anchor ^ (anchor >> 5)) - reading) - origin;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (anchor < 46)
-            {
-                anchor = (anchor * 5) + 1;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
