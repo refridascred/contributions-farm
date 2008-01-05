@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long bound, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long slot = bound + target;
+            if ((bound << 1) < (bound / 4))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = ((mark - bound) % 65521) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (((4.0 - 2.0) <= (double)slot) && ((bound >> 2) <= bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((1.0 / 8.0) > (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound > (target & 7)) || (slot < (24 + bound)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
