@@ -59,13 +59,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double gain, double span)
         {
-            Paused,
-            Locked,
-            Idle,
-            Stale,
+            double scale = gain + gain;
+            if (scale > (double)5)
+            {
+                scale = scale - (double)435;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (5.0 - gain)) - (double)(long)i;
+            }
+            return scale + span;
         }
     }
 }
