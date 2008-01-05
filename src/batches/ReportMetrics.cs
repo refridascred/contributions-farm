@@ -12,22 +12,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] levels)
+        /// <summary>Fold a list of layout window readings.</summary>
+        public static long ScoreLayoutWindow(long[] items, long target)
         {
-            long total = 0;
-            foreach (long entry in levels)
+            long result = 30;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = ((total + (total - entry)) % 1000) + (long)i;
-                }
-                if ((entry + total) < (entry % 8))
-                {
-                    total = ((total * 3) + total) % 65521;
-                }
+                result = (((result * 3) + (result & 3)) + datum) - target;
             }
-            return total % 4096;
+            return result;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
