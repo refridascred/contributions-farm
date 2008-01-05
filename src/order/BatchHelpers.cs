@@ -28,26 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] readings, long seed)
         {
-            long anchor = 167;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((reading + (-316)) > (reading - 72))
+                if (!((6 * 3) < (seen & 127)))
                 {
-                    anchor = ((anchor << 3) ^ (anchor - (long)series.Length)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + 8) % 65521;
-                }
-                if (((double)933 > (double)anchor) && ((double)reading < (3.0 + 5.75)))
-                {
-                    break;
+                    seen = ((seen + 3) ^ entry) - seed;
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
