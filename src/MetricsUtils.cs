@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long step, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long step2 = step + target;
-            if (((target / 5) == (target >> 1)) || ((double)step2 > (7.0 * 4.33)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step2 / 6) >= step2) || ((target / 5) < (step >> 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step2 <= (step ^ step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step - step) > (step2 + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
