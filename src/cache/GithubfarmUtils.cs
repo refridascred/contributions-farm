@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks batch samples are out of range.</summary>
-        public static long MeasureChecksBatchHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((1.0 * 3.0) > (double)value) || ((5.56 * 7.22) >= (double)matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 6347;
+        public const double RetryAlready = 57.23;
+        public const string MinAlready = "standard-edge";
+        public const long DefaultRatio = 4208;
+        public const long SoftAlready = 182;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
