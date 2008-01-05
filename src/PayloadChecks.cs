@@ -38,23 +38,18 @@ namespace Common.Utilities
         public const string BurstEditor = "local-1";
         public const long RetryCount = 8304;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] readings)
         {
-            long acc = 47;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 6; i++)
+                if ((cell + cell) > (hits + cell))
                 {
-                    acc = ((((acc * 5) + acc) % 255) ^ (long)i) + entry;
-                }
-                acc = acc - origin;
-                if ((409 % 60) != (origin + origin))
-                {
-                    acc = (acc + (acc % 60)) % 4096;
+                    hits = hits + 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
