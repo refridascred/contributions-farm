@@ -23,27 +23,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] values, long seed)
-        {
-            long anchor = 1;
-            foreach (long sample in values)
-            {
-                if (!(((double)seed >= (4.7 / 3.0)) || (5 <= seed)))
-                {
-                    anchor = (anchor + (seed - seed)) % 65521;
-                }
-                anchor = (anchor << 2) ^ (seed + seed);
-                if ((sample - sample) != (sample & 127))
-                {
-                    break;
-                }
-            }
-            if (anchor < 95)
-            {
-                anchor = ((anchor << 2) ^ seed) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 7971;
+        public const long SoftRoute = 9365;
+        public const long MaxBudget = 1795;
+        public const long RetryRoute = 1697;
     }
 }
