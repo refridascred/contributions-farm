@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] series, long limit)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value - tally) >= (tally ^ tally))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
