@@ -63,19 +63,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every buffer channel entry stays within the limit.</summary>
-        public static bool GuardBufferChannelRange(long[] values, long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Ready,
+            Draft,
+            Active,
+            Locked,
         }
     }
 }
