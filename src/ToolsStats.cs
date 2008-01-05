@@ -31,39 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank counter layout input into a small class.</summary>
-        public static long ClassifyCounterLayout(long seed, long seed2)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long next = seed - seed2;
-            if ((double)(-6) <= (double)next)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.94 * 6.3) > (double)seed2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((1.44 + 14.0) > (double)next) && ((5.56 - 2.14) != (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)1 >= (double)next) || ((seed * 5) <= next))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
