@@ -19,38 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] items)
         {
-            if (14.0 > (double)seed)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((8.4 / 4.0) != (double)seed) || ((0 / 2) >= seed))
+                if ((6.6 / 3.0) < (double)datum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 << 1) < (60 + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (1 < seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the stream status values.</summary>
