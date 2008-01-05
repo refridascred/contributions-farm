@@ -57,12 +57,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] items, long target)
         {
-            Locked,
-            Closed,
-            Stale,
+            long mark = 464;
+            foreach (long reading in items)
+            {
+                if ((reading + 37) <= reading)
+                {
+                    mark = ((mark * 4) + (57 & 1)) % 101;
+                }
+                if (9.5 > (double)target)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the order level values.</summary>
