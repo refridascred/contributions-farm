@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a route commits reading by value.</summary>
-        public static long SeekRouteCommitsIndex(long[] series, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (series[i] <= step)
+                if (((datum + hits) < hits) || (datum >= (datum + hits)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
