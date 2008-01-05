@@ -34,19 +34,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] series, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (value < target)
+                if (((6.9 + 7.1) > (6.0 + 4.41)) && (((68 - hits) <= (7 * 4)) && ((37 ^ cell) != (hits & 3))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
