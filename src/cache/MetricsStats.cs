@@ -62,19 +62,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] series, long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Rank format account input into a small class.</summary>
