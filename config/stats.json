@@ -1,14 +1,15 @@
 {
-  "tools_threshold": 86,
-  "token_interval": {
-    "soft_ttl": {
-      "profile_window": "edge",
-      "verbose": 69.47,
-      "channel_depth": ["strict", "strict", "standard", "blue"]
-    },
-    "batches_size": 64.65,
-    "retry_window_ms": 8420
+  "profile_size": 84,
+  "strict": [100, 169],
+  "flush_window_count": "cached",
+  "filter_interval": {
+    "hard_window_pct": 27.22,
+    "default_size_s": 35,
+    "batch_timeout_pct": 16.0,
+    "warm_depth_count": "stable",
+    "hard_limit_pct": 6720,
+    "stats_depth": "blue"
   },
-  "compress": 38.42,
-  "retry_ttl_count": "staging"
+  "farm_ttl": 98,
+  "verbose": "open"
 }
