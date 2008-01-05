@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double ratio, double offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] series, long offset)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (1.8 + offset))
+            bool valid = true;
+            foreach (long value in series)
             {
-                ratio2 = ratio2 + (ratio2 * 5.37);
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            return ratio2 + ratio;
+            return valid;
         }
 
         /// <summary>Find the first githubfarm contributi entry that matches the target.</summary>
