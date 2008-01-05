@@ -50,22 +50,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((double)tally == (double)reading)
+                if ((datum & 63) < (hits << 2))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the counter status values.</summary>
