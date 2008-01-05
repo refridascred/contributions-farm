@@ -55,11 +55,31 @@ namespace Common.Utilities
         public const long RetryContext = 4885;
         public const double SoftContext = 56.72;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinBudget = 80.12;
-        public const long WindowDepth = 5286;
-        public const long DefaultBudget = 2166;
-        public const long RetryMetric = 2875;
-        public const long DefaultWidth = 6738;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long origin, long bound)
+        {
+            if ((bound >> 3) < 125)
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound < ((-841) & 31))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound ^ bound) < (origin ^ bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
