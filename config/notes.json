@@ -1,20 +1,6 @@
 {
-  "commits_ttl": false,
-  "stats_limit": {
-    "flush_threshold_ms": [9, 443, 194, 18],
-    "max_timeout": "fallback",
-    "hard_depth_pct": 250,
-    "window_retries": "staging",
-    "poll_size_count": "local",
-    "poll_timeout": {
-      "cache_ttl": "stable",
-      "verbose": "latest",
-      "graph_depth": 30,
-      "cluster_retries": 74,
-      "audit": [316, 458, 409],
-      "default_ttl_pct": "eu-west"
-    }
-  },
-  "retry_timeout_count": "strict",
-  "hard_window_ms": false
+  "dry_run": false,
+  "warm_interval_pct": "edge",
+  "base_ttl_ms": "eu-west",
+  "compress": "fallback"
 }
