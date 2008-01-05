@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Locked,
-            Draft,
-            Dropped,
-            Paused,
             Idle,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a account snapshot.</summary>
