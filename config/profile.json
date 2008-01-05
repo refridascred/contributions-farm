@@ -1,16 +1,7 @@
 {
-  "retry_limit_s": 72,
-  "base_delay": [475, 307, 247, 414],
-  "soft_retries_s": {
-    "already_size": 5197,
-    "default_delay_count": {
-      "batch_delay": 250,
-      "checks_ttl": 16,
-      "sync_threshold_pct": "primary"
-    },
-    "strict": true,
-    "readonly": "standard",
-    "idle_window": "green",
-    "filter_retries": 3070
-  }
+  "sync_limit_count": 34,
+  "cache_ratio": 500,
+  "hard_ttl_ms": 35.24,
+  "counter_limit": ["strict", "staging", "legacy"],
+  "audit": "edge"
 }
