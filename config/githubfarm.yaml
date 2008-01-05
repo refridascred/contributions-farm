@@ -1,9 +1,17 @@
 # githubfarm settings
-audit: open
-base_retries: 64
-cache_ttl_pct:
+context_ttl:
+  batch_depth_pct: 73
+  cache_timeout: 8563
+  payload_threshold:
+    batch_size_ms: 6823
+    buffer_capacity: green
+    base_ratio_s: 49.84
+    idle_capacity: 44
+    cache_size: staging
+soft_capacity_s:
+  - staging
   - legacy
-  - eu-west
-  - eu-west
-tools_timeout: 8107
-batch_ttl_s: standard
+  - strict
+  - fallback
+strict: legacy
+burst_capacity_ms: open
