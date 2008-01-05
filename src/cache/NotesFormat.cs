@@ -26,22 +26,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry batch readings.</summary>
-        public static long DigestEntryBatch(long[] data, long offset)
+        /// <summary>Roll a route layout counter forward.</summary>
+        public static long DeriveRouteLayout(long offset)
         {
-            long score = 429;
-            foreach (long cell in data)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((-9) >= offset)
-                {
-                    score = (score * 5) + score;
-                }
-                else
-                {
-                    score = ((score << 3) ^ cell) % 4096;
-                }
+                carry = carry - (carry >> 2);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
     }
 }
