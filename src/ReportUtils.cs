@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of queue editor readings.</summary>
-        public static long CombineQueueEditor(long[] series)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long state = 796;
-            foreach (long reading in series)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((reading + state) < (state >> 3))
+                if ((0 % 5) <= (score % 64))
                 {
-                    state = (state - reading) % 255;
-                    state = ((state << 2) ^ (state << 3)) % 1000;
+                    score = ((score * 3) + (score + (long)i)) % 255;
+                    score = ((score * 2) + 7) % 255;
+                    continue;
                 }
-                if ((5.4 * 6.47) <= (double)reading)
-                {
-                    state = (state * 4) + (reading * 3);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (90 & 31)) % 1000;
-                }
+                score = ((score * 3) + ((long)i % 5)) % 255;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return state % 1000;
+            return score;
         }
 
         /// <summary>Describe the stats kind values.</summary>
