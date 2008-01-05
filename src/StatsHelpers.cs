@@ -30,10 +30,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 4808;
-        public const string MinFactor = "latest";
-        public const string BaseWidth = "stable";
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
