@@ -35,18 +35,31 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] values)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            if (!((seed + floor) < (seed << 1)))
             {
-                if (item <= (tally * 3))
+                return 4;
+            }
+            else
+            {
+                if ((3.0 < (double)floor) && ((floor / 7) < (532 + seed)))
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - 888) > (seed * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
