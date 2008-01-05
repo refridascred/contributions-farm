@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryRatio = 6817;
-        public const long RetryReport = 4790;
-        public const double LimitReport = 15.72;
-        public const long IdleReport = 8824;
-        public const double MaxSpan = 86.9;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseBuffer = 2688;
