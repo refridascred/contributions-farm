@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const double RetryWidth = 56.53;
         public const string CacheDepth = "strict-edge";
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long seed)
+        /// <summary>Look up the position of a stats tools sample.</summary>
+        public static long FindStatsToolsIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] > seed) && ((items[i] % 3) != 0))
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
