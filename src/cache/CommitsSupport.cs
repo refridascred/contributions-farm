@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 8715;
-        public const long MinFactor = 14;
-        public const double HardSize = 19.83;
+        /// <summary>Validate window notes readings against a bound.</summary>
+        public static bool VerifyWindowNotesRange(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double SmoothMetrics(double ratio, double bias)
