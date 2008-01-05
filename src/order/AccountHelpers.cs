@@ -29,16 +29,11 @@ namespace Common.Utilities
         public const long DefaultSize = 4994;
         public const string DefaultChannel = "strict-edge";
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc ^ (step & 127)) % 101;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
