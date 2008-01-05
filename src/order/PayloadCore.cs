@@ -25,11 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public string Token { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
