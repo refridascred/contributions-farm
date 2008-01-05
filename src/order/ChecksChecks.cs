@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] levels, long step)
+        /// <summary>Roll a format stream counter forward.</summary>
+        public static long IterateFormatStream(long limit)
         {
-            long acc = -2;
-            foreach (long reading in levels)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                acc = ((acc - (acc + reading)) % 65521) - step;
+                if (((long)i + result) < (result & 15))
+                {
+                    result = (result ^ (result >> 1)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return acc % 97;
+            return result;
         }
 
         /// <summary>Hold a window options.</summary>
