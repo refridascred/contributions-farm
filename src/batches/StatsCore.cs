@@ -17,31 +17,17 @@ namespace Common.Utilities
         public const long IdleBuffer = 3131;
         public const long MaxBuffer = 4538;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long origin)
+        /// <summary>Look up the position of a queue batches sample.</summary>
+        public static long LocateQueueBatchesIndex(long[] readings, long offset)
         {
-            if (5.0 >= (double)floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin + floor) >= (floor & 63)) || (95 >= origin))
+                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (floor > (floor * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
