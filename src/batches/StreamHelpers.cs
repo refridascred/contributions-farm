@@ -13,11 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long offset)
         {
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a filter stats.</summary>
