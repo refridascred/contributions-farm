@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitDepth = 7191;
-        public const long IdleCommand = 8917;
-        public const double BaseCommand = 33.7;
+        /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
+        public static long RollGithubfarmCluster(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = ((mark - (mark - floor)) % 1000) + (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double ScaleContext(double bias, double offset)
