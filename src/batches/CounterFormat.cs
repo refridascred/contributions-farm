@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sum <= ((long)i << 2))
                 {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the report status values.</summary>
