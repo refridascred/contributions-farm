@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of githubfarm notes readings.</summary>
-        public static long TallyGithubfarmNotes(long[] data, long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long target)
         {
-            long sum = 14;
-            foreach (long datum in data)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((floor - floor) <= (datum % 60))
-                {
-                    sum = (sum + datum) % 255;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (sum < 5)
-            {
-                sum = sum ^ floor;
-            }
-            return sum % 65521;
+            return mix;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
