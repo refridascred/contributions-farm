@@ -83,21 +83,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up profile context samples.</summary>
-        public static long MatchProfileContextCount(long[] samples)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)count >= 2.63)
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 1) ^ sample) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
