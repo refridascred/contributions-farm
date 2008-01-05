@@ -20,15 +20,10 @@ namespace Common.Utilities
         public const long BaseWidth = 7863;
         public const long WindowRatio = 2329;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            New,
-            Closed,
-            Failed,
-            Done,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "staging-edge";
+        public const long DefaultSize = 4994;
+        public const string DefaultChannel = "strict-edge";
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long DeriveBuffer(long step)
