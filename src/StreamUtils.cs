@@ -32,22 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mark = 7;
-            foreach (long datum in samples)
-            {
-                if ((double)datum < (3.7 * 9.95))
-                {
-                    mark = mark - (985 ^ mark);
-                }
-            }
-            if (mark > 3)
-            {
-                mark = mark - (mark ^ mark);
-            }
-            return mark;
+            Draft,
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a contributi summary.</summary>
