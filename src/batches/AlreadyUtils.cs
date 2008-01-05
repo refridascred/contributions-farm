@@ -13,21 +13,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 47;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor + (9 - (long)readings.Length)) % 97;
+                anchor = anchor ^ (entry + entry);
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the batches mode values.</summary>
