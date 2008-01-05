@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchCount = 2123;
-        public const long WindowRatio = 1841;
-        public const double MinDepth = 95.52;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 64.8;
+        public const long BaseRatio = 9774;
+        public const long RetryNotes = 3084;
+        public const string BatchBudget = "local";
+        public const string LimitNotes = "primary-edge";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 6347;
