@@ -57,15 +57,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Queued,
+            Paused,
+            Failed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the route class values.</summary>
