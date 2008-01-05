@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks route counter forward.</summary>
-        public static long DeriveChecksRoute(long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                carry = ((carry << 3) ^ (long)i) % 101;
-                carry = (carry ^ (floor * 5)) % 4096;
-                carry = ((carry * 5) + (long)i) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Describe the context kind values.</summary>
