@@ -62,14 +62,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Synced,
-            Done,
-            Queued,
-            Retry,
-            New,
+            Locked,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the notes state values.</summary>
