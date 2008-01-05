@@ -20,19 +20,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate graph stats readings against a bound.</summary>
-        public static bool CheckGraphStatsBounds(long[] levels, long origin)
+        /// <summary>Count the metric cluster entries that pass the check.</summary>
+        public static long AuditMetricClusterMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (cell < origin)
+                if (!((double)sample <= (1.5 / 5.0)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
