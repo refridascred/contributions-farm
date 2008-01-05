@@ -22,40 +22,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long seed, long offset)
-        {
-            long cur = seed + offset;
-            if ((17.0 * 3.9) > (6.4 - 1.55))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed <= (0.4 / 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset % 12) > (seed + 64)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((cur / 4) >= offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSize = 8313;
+        public const long DefaultSpan = 9941;
+        public const double HardFactor = 66.86;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
