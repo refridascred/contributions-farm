@@ -1,18 +1,17 @@
 # support settings
-enabled:
-  - blue
+support_capacity: 30.66
+dry_run:
+  contributi_timeout:
+    soft_size: true
+    strict: 7.7
+    persist: 16
+  strict: 17.12
+  warm_ttl_ms:
+    - local
+    - latest
+    - edge
+    - fallback
+batch_delay_count:
+  - staging
+  - stable
   - primary
-idle_window_pct: 1.81
-warm_limit_count:
-  default_retries: standard
-  hard_delay:
-    - 426
-    - 265
-  warm_ratio_count: 30
-  compress:
-    commits_ratio: 76
-    audit: 100
-    layout_ttl: 22
-    soft_ttl_pct: false
-    enabled: standard
-    batch_interval: true
