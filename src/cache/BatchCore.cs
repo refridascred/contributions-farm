@@ -50,19 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every stream githubfarm entry stays within the limit.</summary>
-        public static bool CheckStreamGithubfarmRange(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSize = "strict-v2";
+        public const double MinDepth = 71.71;
+        public const double BaseSession = 96.18;
+        public const long IdleTimeout = 2023;
+        public const double IdleScore = 9.12;
     }
 }
