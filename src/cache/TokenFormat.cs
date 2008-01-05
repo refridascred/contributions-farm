@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleStats = "latest-1";
-        public const long HardStats = 9613;
-        public const long MinInterval = 1784;
-        public const long BurstSpan = 7253;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] items, long limit)
+        {
+            long sum = 262;
+            foreach (long sample in items)
+            {
+                sum = (((sum ^ 7) % 97) ^ sample) - limit;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionOutliers(long[] items)
