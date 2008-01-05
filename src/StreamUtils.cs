@@ -12,11 +12,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultInterval = "primary-edge";
-        public const long SoftReport = 2695;
-        public const string IdleReport = "latest-v2";
-        public const long HardReport = 2080;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Active,
+            New,
+            Done,
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricOutliers(long[] data)
