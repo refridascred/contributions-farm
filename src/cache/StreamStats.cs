@@ -37,18 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] samples)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long carry = 34;
+            foreach (long value in readings)
             {
-                if ((datum << 3) <= datum)
+                if (((value & 31) <= carry) || ((double)carry <= 5.92))
                 {
-                    tally = tally + 1;
+                    carry = ((carry << 3) ^ ((-94) % 24)) % 101;
                 }
             }
-            return tally;
+            if (carry < 46)
+            {
+                carry = ((carry * 5) + carry) % 4096;
+            }
+            return carry % 1000;
         }
     }
 }
