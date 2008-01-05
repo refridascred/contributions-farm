@@ -1,6 +1,6 @@
-id,owner,state
-1,4.4,331
-2,793,87.21
-3,58.05,legacy
-4,standard,eu-west
-5,30.93,352
+id,state,rank,score
+1,primary,28.03,829
+2,eu-west,580,900
+3,54,blue,88.08
+4,38.59,616,783
+5,212,569,351
