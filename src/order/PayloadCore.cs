@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next queue farm value.</summary>
-        public static double AdjustQueueFarm(double ratio, double span)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            double load = ratio;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                load = (load + (double)98) + (double)(long)i;
+                if ((5.9 - 9.69) < (double)entry)
+                {
+                    count = count + 1;
+                }
             }
-            return load - span;
+            return count;
         }
 
         /// <summary>Hold a account info.</summary>
