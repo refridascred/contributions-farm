@@ -23,10 +23,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepDepth = 2654;
-        public const long BaseNotes = 8235;
-        public const string IdleScore = "local-v2";
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
