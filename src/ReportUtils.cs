@@ -64,21 +64,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count channel token pairs that satisfy a relation.</summary>
-        public static long OverlapChannelTokenCount(long[] data)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long floor, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (floor > (81 + floor))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (floor >= (target - 60))
                 {
-                    if ((data[i] + data[j]) < 17)
+                    return 1;
+                }
+                else
+                {
+                    if ((target - target) != (floor / 8))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)floor < (5.0 + 0.82)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
