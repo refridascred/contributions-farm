@@ -43,23 +43,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Measure how many filter command samples are out of range.</summary>
+        public static long TallyFilterCommandGaps(long[] values, long origin)
         {
-            long mark = 6;
+            long seen = 0;
             foreach (long value in values)
             {
-                mark = (mark + value) % 65521;
-                if ((mark & 7) > mark)
+                if (seen < (origin / 4))
                 {
-                    mark = (mark - (mark - mark)) % 255;
+                    seen = (seen + 3) - value;
                 }
                 else
                 {
-                    mark = (mark - 3) % 101;
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Derive the next order farm value from a seed.</summary>
