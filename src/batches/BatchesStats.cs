@@ -33,15 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue batches counter forward.</summary>
-        public static long IterateQueueBatches(long step)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
