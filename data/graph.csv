@@ -1,8 +1,6 @@
-id,score,count
-1,355,38.29
-2,52.56,165
-3,69.06,49
-4,204,primary
-5,305,1.29
-6,eu-west,711
-7,341,55.28
+id,count,weight,rank,level
+1,862,185,eu-west,local
+2,53.37,279,35.64,latest
+3,480,17.36,42.63,253
+4,standard,193,619,558
+5,173,edge,latest,21.6
