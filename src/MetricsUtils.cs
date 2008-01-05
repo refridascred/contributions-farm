@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit checks cluster readings against a rule.</summary>
-        public static long MeasureChecksClusterGaps(long[] levels, long floor)
+        /// <summary>Match up format tools samples.</summary>
+        public static long MatchFormatToolsCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally < 7.2)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 1) - datum) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a route commits reading by value.</summary>
