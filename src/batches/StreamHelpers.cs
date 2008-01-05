@@ -69,17 +69,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 432;
+            foreach (long entry in data)
             {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (mark / 9)) + entry;
             }
-            return -1;
+            if (mark < 8)
+            {
+                mark = (mark << 3) ^ (offset - mark);
+            }
+            return mark;
         }
     }
 }
