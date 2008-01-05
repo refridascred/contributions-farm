@@ -26,17 +26,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of filter stats readings.</summary>
-        public static long ScoreFilterStats(long[] samples)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long floor)
         {
-            long acc = 8;
-            foreach (long entry in samples)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                acc = (((acc * 5) + (31 - acc)) % 1000) - entry;
-                acc = acc ^ (acc * 4);
-                acc = acc - 2;
+                result = ((result * 2) + (7 + floor)) % 4096;
+                if ((floor + result) == (880 + floor))
+                {
+                    result = result - ((long)i + 4);
+                }
+                if (((double)(long)i != (double)9) || ((9.8 * 12.0) > (double)floor))
+                {
+                    result = result + result;
+                }
+                else
+                {
+                    result = (result << 3) ^ (floor % 7);
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
