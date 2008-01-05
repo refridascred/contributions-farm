@@ -27,14 +27,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long step)
         {
-            Synced,
-            Paused,
-            Queued,
-            Dropped,
-            Retry,
+            long acc = step;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = (acc ^ step) % 65521;
+                if ((acc * 3) != (step ^ step))
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
