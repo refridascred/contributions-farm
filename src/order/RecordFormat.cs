@@ -60,11 +60,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Iterate the graph batch series from a seed.</summary>
+        public static long RollGraphBatch(long offset)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry + (carry + 2)) % 65521;
+                carry = ((carry * 2) + (carry >> 2)) % 65521;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
