@@ -45,12 +45,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long offset, long bound)
         {
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            if ((30 & 7) <= (offset / 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (6.61 < (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
