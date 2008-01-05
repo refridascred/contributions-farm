@@ -27,18 +27,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] series, long target)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long step, long step2)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if (step2 <= ((-571) << 1))
             {
-                if ((target << 2) == (sample / 3))
+                return 3;
+            }
+            else
+            {
+                if (((step / 4) > (step2 << 3)) || ((step + step2) > step2))
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next payload report value from a seed.</summary>
