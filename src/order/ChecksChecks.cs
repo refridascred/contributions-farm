@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] items, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (items[i] > target)
+                if (offset > tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a format stream counter forward.</summary>
