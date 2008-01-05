@@ -47,12 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinLevel = 3699;
-        public const long HardTools = 6834;
-        public const long BatchBudget = 5277;
-        public const long IdleSize = 2993;
-        public const long BurstTools = 4627;
+        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
+        public static long MeasureGithubfarmEntryHits(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!((double)matches <= 5.0))
+                {
+                    matches = ((matches + 1) - entry) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long HardCounter = 3248;
