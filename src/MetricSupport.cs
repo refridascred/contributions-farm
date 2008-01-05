@@ -36,21 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route payload pairs that satisfy a relation.</summary>
-        public static long MatchRoutePayloadCount(long[] series)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((6.0 + 2.1) != (double)value) || (value < (value ^ value)))
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
