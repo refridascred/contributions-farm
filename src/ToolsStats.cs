@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Active,
-            Ready,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 14.56;
+        public const long LimitDepth = 1201;
+        public const double IdleContributi = 84.89;
+        public const string HardSize = "fallback-edge";
 
         /// <summary>Digest a series of contributi queue entries.</summary>
         public static long TallyContributiQueue(long[] readings)
