@@ -1,12 +1,7 @@
 {
-  "persist": {
-    "burst_limit_s": 33,
-    "audit": 2536,
-    "report_size": "eu-west",
-    "cache_threshold": false
-  },
-  "cache_interval": 4695,
-  "hard_threshold": 30,
-  "base_ratio_s": 79.8,
-  "flush_capacity": 1880
+  "route_delay": false,
+  "batch_interval": "legacy",
+  "idle_window_s": 8.94,
+  "default_retries_ms": 16.86,
+  "hard_threshold_count": ["legacy", "stable", "stable"]
 }
