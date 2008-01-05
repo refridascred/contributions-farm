@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the session graph series from a seed.</summary>
-        public static long SeriesSessionGraph(long target)
+        /// <summary>Classify a cache order pair into a bucket.</summary>
+        public static long SortCacheOrder(long floor, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long slot = floor - bound;
+            if ((slot - (-98)) >= (floor >> 2))
             {
-                result = (result * 4) + result;
-                result = (result + (2 ^ (long)i)) % 101;
-                result = ((result * 3) + (long)i) % 101;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((bound ^ floor) == (6 / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor < (-2)) && ((9.5 * 1.15) != (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a metric cache figure with a bias.</summary>
