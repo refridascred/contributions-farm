@@ -34,20 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] series, long offset)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long sum = 85;
-            foreach (long datum in series)
-            {
-                sum = ((sum + (sum / 6)) % 1000) + datum;
-                sum = sum + (offset * 2);
-            }
-            if (sum < 49)
-            {
-                sum = ((sum * 2) + (offset + sum)) % 65521;
-            }
-            return sum % 1000;
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
