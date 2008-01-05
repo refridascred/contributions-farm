@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] data, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long mark = 561;
-            foreach (long sample in data)
-            {
-                mark = ((mark * 3) + (target + target)) + sample;
-            }
-            if (mark > 227)
-            {
-                mark = (mark - (target - mark)) % 1000;
-            }
-            return mark;
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
