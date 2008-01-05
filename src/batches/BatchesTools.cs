@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Count the account context entries that pass the check.</summary>
+        public static long TallyAccountContextOutliers(long[] series, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                result = result - result;
-                result = (result * 5) + result;
-                result = ((result * 2) + (long)i) % 4093;
+                if (5.0 < (double)item)
+                {
+                    hits = (hits + 1) + limit;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
