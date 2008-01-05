@@ -1,7 +1,7 @@
 {
-  "record_limit": 500,
-  "hard_ratio_ms": 82.45,
-  "enabled": 250,
-  "retry_ratio": "blue",
-  "warm_timeout_ms": ["local", "fallback", "local", "strict"]
+  "entry_ttl": 500,
+  "batch_timeout_s": [419, 358, 126],
+  "max_window": "local",
+  "order_size": "fallback",
+  "flush_size_s": "cached"
 }
