@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue cached open staging; do
+for item in strict fallback cached; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
+mode="${1:-strict}"
 case "${mode}" in
-    primary)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=400
+log "limit is ${BUFFER_LIMIT}"
