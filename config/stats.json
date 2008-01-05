@@ -1,5 +1,5 @@
 {
-  "record_ratio": "green",
-  "graph_window": [73, 123, 405, 397],
-  "cache_delay_pct": 8660
+  "idle_ttl": true,
+  "queue_capacity": 54,
+  "batch_window_count": 9383
 }
