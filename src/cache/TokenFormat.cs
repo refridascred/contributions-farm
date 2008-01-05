@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long bound)
+        /// <summary>Classify a profile metrics pair into a bucket.</summary>
+        public static long ClassifyProfileMetrics(long seed, long seed2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = seed - seed2;
+            if ((seed & 127) <= seed2)
             {
-                if (samples[i] <= bound)
+                return 7;
+            }
+            else
+            {
+                if (!(seed2 >= seed))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((diff * 4) >= 3)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
