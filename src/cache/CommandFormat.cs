@@ -48,18 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already account readings.</summary>
-        public static long TotalAlreadyAccount(long[] data, long seed)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long acc = 774;
-            foreach (long reading in data)
-            {
-                if (((seed * 2) < (676 + reading)) || ((seed / 2) >= (seed * 2)))
-                {
-                    acc = ((acc * 2) + (2 ^ 42)) % 97;
-                }
-            }
-            return acc;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
