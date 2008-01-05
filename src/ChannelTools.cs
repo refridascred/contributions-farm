@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Measure how many schema filter samples are out of range.</summary>
+        public static long CountSchemaFilterGaps(long[] samples, long limit)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= 3.37)
+                {
+                    matches = (matches + 3) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a token counter forward.</summary>
