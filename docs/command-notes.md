@@ -1,11 +1,11 @@
 # Command notes
 
-Keep buffer and metric names short and lowercase.
-The record report groups every contributi by batch.
+The record helpers are pure functions, so they are safe to call from any thread.
+A report that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Review format limits each release
-- Keep layout values small
-- Validate payload input early
-- Log every commits change
+- Document new checks fields
+- Review session limits each release
+- Log every counter change
+- Keep notes values small
