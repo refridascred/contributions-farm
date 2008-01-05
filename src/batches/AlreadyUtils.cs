@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the buffer batch series from a seed.</summary>
-        public static long StepBufferBatch(long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum * 2) + ((long)i << 2);
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
