@@ -40,24 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long limit, long limit2)
+        /// <summary>Combine metrics layout values into a single score.</summary>
+        public static long WeighMetricsLayout(long[] data, long floor)
         {
-            if (((double)limit <= (0.6 * 8.2)) && (limit >= (limit2 + limit2)))
+            long result = -306;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit2 * 3) == (limit2 * 5))
+                if ((entry + entry) < (result >> 1))
                 {
-                    return 7;
+                    result = (result << 2) ^ floor;
                 }
                 else
                 {
-                    return 5;
+                    result = ((result << 2) ^ entry) % 97;
                 }
             }
+            return result;
         }
 
         /// <summary>Hold a layout options.</summary>
