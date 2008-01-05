@@ -28,39 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long seed, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] data)
         {
-            long gap = seed ^ floor;
-            if ((seed ^ gap) <= seed)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 5) < (gap - 97))
+                if ((tally + tally) < cell)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(((-568) >> 2) != (589 + seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)gap < (1.92 * 14.0)) || ((seed + seed) != (gap >> 4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of entry batch readings.</summary>
