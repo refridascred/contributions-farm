@@ -34,18 +34,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] values, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = 202;
+            foreach (long sample in data)
             {
-                if ((double)origin >= (8.42 - 4.7))
-                {
-                    hits = (hits + 3) + reading;
-                }
+                sum = (((sum * 3) + sum) % 1000) + seed;
+                sum = (sum + (sample * 5)) % 65521;
+                sum = (sum + sum) % 101;
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
