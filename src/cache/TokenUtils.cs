@@ -32,12 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
