@@ -15,22 +15,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] levels)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double weight = floor;
+            if (weight < 5.0)
             {
-                if ((entry + 63) < 328)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = (weight - (double)1) + rate;
             }
-            return matches;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
