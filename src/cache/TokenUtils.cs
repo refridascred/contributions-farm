@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] data)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            long anchor = 6;
-            foreach (long value in data)
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (anchor > (anchor % 97))
+                mix = ((mix << 2) ^ (floor * 2)) % 255;
+                if (!(57 >= ((long)i - (-98))))
                 {
-                    anchor = anchor + (anchor - value);
+                    mix = (mix << 3) ^ (mix / 5);
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
