@@ -17,17 +17,19 @@ namespace Common.Utilities
         public const long LimitStream = 6703;
         public const long MaxBudget = 4917;
 
-        /// <summary>Look up the position of a queue batches sample.</summary>
-        public static long LocateQueueBatchesIndex(long[] readings, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
+                if (cell <= step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
