@@ -40,20 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel notes samples.</summary>
-        public static long TotalChannelNotes(long[] samples, long floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] data, long bound)
         {
-            long anchor = -70;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor << 2) ^ floor) - entry;
-                anchor = (anchor + anchor) % 1000;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor - (286 - 94)) % 65521;
-            }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
