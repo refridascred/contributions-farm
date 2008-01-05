@@ -1,12 +1,21 @@
 # githubfarm settings
-min_interval_s:
-  soft_retries_s: 43.92
-  compress: eu-west
-  min_ratio: primary
-metric_window: true
-burst_capacity: false
-cache_timeout: 66.45
-readonly:
-  - 407
-  - 459
-  - 81
+default_capacity_pct: 24.8
+hard_depth: 250
+record_window: false
+graph_depth:
+  sync_retries_ms: 3172
+  max_threshold_count:
+    - primary
+    - local
+    - fallback
+  dry_run:
+    batch_ttl: 25
+    strict:
+      - 384
+      - 323
+    payload_delay: 30
+  persist: true
+default_interval_ms:
+  - primary
+  - primary
+retry_threshold_s: true
