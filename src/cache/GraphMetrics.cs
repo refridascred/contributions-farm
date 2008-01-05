@@ -21,11 +21,23 @@ namespace Common.Utilities
         public const long RetryRecord = 4122;
         public const long RetryLevel = 3779;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryScore = 239;
-        public const double RetryCommits = 89.59;
-        public const string BaseSize = "local-1";
-        public const double LimitFactor = 28.35;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (33 > matches)
+                {
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultWidth = 5328;
