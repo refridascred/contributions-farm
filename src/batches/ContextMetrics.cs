@@ -16,10 +16,20 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheTimeout = 2063;
-        public const long IdleSize = 3660;
-        public const long WindowInterval = 4421;
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double bias, double offset)
+        {
+            double load = (double)(56 - 40);
+            if (load < (load + 4.22))
+            {
+                load = ((load + 19.0) + bias) + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (double)89;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long SeriesSession(long step)
