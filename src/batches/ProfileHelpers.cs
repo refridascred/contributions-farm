@@ -33,26 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] levels, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] data)
         {
-            long acc = 4;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (6 > (value + acc))
+                if ((3.82 / 9.0) <= (double)sample)
                 {
-                    acc = acc + (acc + bound);
-                }
-                else
-                {
-                    acc = (acc * 5) + (value / 9);
+                    seen = seen + 2;
                 }
             }
-            if (acc > 9)
-            {
-                acc = (acc + (677 - acc)) % 65521;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Adjust a already reading.</summary>
