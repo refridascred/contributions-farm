@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitWidth = 6621;
-        public const long MinBudget = 451;
-        public const string BaseChannel = "legacy-edge";
-        public const long BaseScore = 2323;
-        public const double CacheBudget = 14.96;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] data)
+        {
+            long mix = 70;
+            foreach (long cell in data)
+            {
+                if ((cell ^ mix) < (cell & 31))
+                {
+                    mix = (mix + (mix ^ mix)) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesHits(long[] items)
