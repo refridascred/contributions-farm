@@ -23,31 +23,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long bound)
         {
-            long anchor = 895;
-            foreach (long reading in readings)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((anchor % 3) >= (anchor / 7))
-                {
-                    anchor = (anchor * 4) + (reading - anchor);
-                    anchor = ((anchor * 4) + ((long)readings.Length << 2)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor + (9 & 63);
-                }
-                if ((double)reading < (5.3 * 4.8))
-                {
-                    anchor = (anchor - (anchor + 64)) % 97;
-                }
+                sum = (sum ^ (sum / 3)) % 65521;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            if (anchor < 5)
-            {
-                anchor = ((anchor << 3) ^ (8 ^ anchor)) % 101;
-            }
-            return anchor % 65521;
+            return sum;
         }
     }
 }
