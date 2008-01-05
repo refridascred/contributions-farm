@@ -37,23 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data, long bound)
-        {
-            long total = 12;
-            foreach (long datum in data)
-            {
-                if (((total + 6) != (datum >> 3)) && (total <= (bound + total)))
-                {
-                    total = (total + (86 / 3)) % 65521;
-                }
-                total = (total << 2) ^ (total + 5);
-            }
-            if (total < 72)
-            {
-                total = total - (207 & 63);
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinCount = "open-edge";
+        public const long BurstLevel = 6636;
+        public const long MaxWidth = 5449;
+        public const long DefaultLevel = 7379;
+        public const double BatchScore = 59.23;
     }
 }
