@@ -45,18 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] items, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long anchor = 41;
+            foreach (long sample in readings)
             {
-                if ((8.78 / 7.0) != (double)reading)
-                {
-                    hits = (hits + 2) - offset;
-                }
+                anchor = ((anchor + anchor) % 255) - sample;
             }
-            return hits;
+            if (anchor > 3)
+            {
+                anchor = ((anchor * 5) + (floor ^ anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
