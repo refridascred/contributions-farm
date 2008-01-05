@@ -25,13 +25,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double rate, double span)
         {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            double bias = span * 9.4;
+            if (bias < rate)
+            {
+                bias = bias + bias;
+            }
+            return bias + (double)651;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
