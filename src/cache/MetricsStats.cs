@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitFactor = 2201;
-        public const long RetryRecord = 8219;
-        public const string BaseBudget = "stable-edge";
-        public const double MinRecord = 23.34;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseMetric = "latest-1";
+        public const long BatchMetric = 1363;
+        public const string HardFactor = "primary-1";
+        public const double BatchDepth = 39.67;
+        public const double DefaultSpan = 23.98;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
