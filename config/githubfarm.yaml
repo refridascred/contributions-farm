@@ -1,7 +1,22 @@
 # githubfarm settings
-flush_threshold_pct: 85
-context_depth: 100
-compress: 500
-batch_retries: latest
-hard_ratio: 25
-stream_window: green
+sync_retries_s: primary
+route_window:
+  token_size: eu-west
+  min_threshold_s: latest
+  compress: true
+  batch_ttl:
+    idle_interval:
+      - fallback
+      - strict
+      - primary
+      - standard
+    dry_run: false
+    support_delay: 93.34
+enabled: true
+soft_size:
+  - edge
+  - standard
+  - fallback
+  - cached
+sync_size_pct: false
+min_threshold_s: 90
