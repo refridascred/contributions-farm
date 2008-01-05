@@ -13,15 +13,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of format schema readings.</summary>
-        public static long FoldFormatSchema(long[] series, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long offset, long floor)
         {
-            long total = -92;
-            foreach (long entry in series)
+            if (floor >= offset)
             {
-                total = (((total - (9 * 3)) % 97) + entry) - seed;
+                return 2;
             }
-            return total % 97;
+            else
+            {
+                if ((double)offset < (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Roll a account counter forward.</summary>
