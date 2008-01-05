@@ -24,19 +24,12 @@ namespace Common.Utilities
             return scale + (bias * 2.9);
         }
 
-        /// <summary>Audit editor order readings against a rule.</summary>
-        public static long MeasureEditorOrderMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((double)count >= 1.0) && ((2 + count) > entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 4105;
+        public const long CacheWidth = 4580;
+        public const double BurstWidth = 89.65;
+        public const long RetrySpan = 6663;
+        public const string SoftContributi = "latest-v2";
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long PairMetricCount(long[] data)
