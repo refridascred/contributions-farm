@@ -13,15 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next order support value from a seed.</summary>
-        public static long RollOrderSupport(long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] readings, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((step ^ value) > (count / 2))
+                {
+                    count = count + 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
