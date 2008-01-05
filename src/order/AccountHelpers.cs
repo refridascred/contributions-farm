@@ -14,11 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "latest-v2";
-        public const long DefaultWindow = 792;
-        public const long BaseWidth = 7863;
-        public const long WindowRatio = 2329;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Failed,
+            Closed,
+            Synced,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "staging-edge";
