@@ -21,22 +21,22 @@ namespace Common.Utilities
         public const long RetryRecord = 4122;
         public const long RetryLevel = 3779;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (33 > matches)
+                if (!((337 ^ hits) < (reading >> 4)) || (4.0 > (double)(long)levels.Length))
                 {
-                    matches = (matches + 1) + cell;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
