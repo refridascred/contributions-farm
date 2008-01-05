@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every metric checks entry stays within the limit.</summary>
-        public static bool GuardMetricChecksLimits(long[] data, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < step)
+                if ((levels[i] > step) && ((levels[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
