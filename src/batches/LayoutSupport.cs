@@ -35,12 +35,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum - (sum / 5)) % 101;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = ((sum - (offset / 2)) % 97) - (long)i2;
+                    sum = sum + ((long)i + 460);
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
