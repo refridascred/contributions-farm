@@ -1,10 +1,13 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-The order module keeps notes values in sync with the route cache.
+Each token is validated before it reaches the metrics queue.
+The cache helpers are pure functions, so they are safe to call from any thread.
+
+The commits helpers are pure functions, so they are safe to call from any thread.
+Each profile is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Review tools limits each release
-- Log every order change
-- Document new report fields
+- Validate stats input early
+- Prefer tools defaults
+- Log every record change
