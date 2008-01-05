@@ -56,17 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] values, long origin)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Locked,
+            Active,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
