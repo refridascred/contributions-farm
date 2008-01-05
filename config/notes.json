@@ -1,13 +1,5 @@
 {
-  "batch_window": 2712,
-  "contributi_retries": "green",
-  "schema_delay": {
-    "commits_depth": 17.81,
-    "idle_window_s": 94,
-    "burst_window_s": "green",
-    "warm_limit_s": true,
-    "strict": 1024,
-    "burst_depth_ms": ["strict", "edge", "standard"]
-  },
-  "already_size": "strict"
+  "max_timeout_count": 16.69,
+  "verbose": "latest",
+  "cache_size": 19.2
 }
