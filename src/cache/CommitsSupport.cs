@@ -5,16 +5,28 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next channel graph value from a seed.</summary>
-        public static long SeriesChannelGraph(long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] series)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long carry = 506;
+            foreach (long value in series)
             {
-                state = ((state << 2) ^ (step % 60)) % 4096;
-                state = ((state * 4) + (long)i) % 97;
+                long lane = carry + (carry * 4);
+                if ((double)lane < (5.8 - 4.0))
+                {
+                    lane = (lane - (lane << 3)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (value << 2)) % 1000;
+                }
+                if ((value % 64) > value)
+                {
+                    carry = carry ^ (carry >> 1);
+                }
             }
-            return state;
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
