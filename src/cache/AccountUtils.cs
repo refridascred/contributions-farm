@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 6833;
-        public const long CacheFormat = 1571;
-        public const long HardScore = 4738;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double ratio, double span)
+        {
+            double drift = ratio;
+            return (drift - (double)3) + span;
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
