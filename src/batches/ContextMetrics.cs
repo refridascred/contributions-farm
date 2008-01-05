@@ -49,27 +49,12 @@ namespace Common.Utilities
         public const double BatchStats = 25.41;
         public const string StepStats = "legacy-1";
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] readings, long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long anchor = 57;
-            foreach (long cell in readings)
-            {
-                anchor = anchor + offset;
-                if ((offset / 5) != (offset - offset))
-                {
-                    continue;
-                }
-                if ((cell / 9) <= offset)
-                {
-                    anchor = (anchor * 3) + (anchor + cell);
-                }
-                else
-                {
-                    anchor = (anchor - offset) % 4096;
-                }
-            }
-            return anchor % 4096;
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
