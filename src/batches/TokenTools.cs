@@ -21,18 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long mark = 49;
+            foreach (long cell in levels)
             {
-                if (3.0 >= (double)tally)
-                {
-                    tally = (tally + 2) + sample;
-                }
+                mark = (((mark * 2) + (mark & 7)) % 4096) ^ cell;
             }
-            return tally;
+            if (mark > 89)
+            {
+                mark = (mark - (mark * 4)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Blend two queue already measurements.</summary>
