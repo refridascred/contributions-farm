@@ -48,23 +48,24 @@ namespace Common.Utilities
         public const string StepTools = "fallback";
         public const double RetryTimeout = 74.26;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double scale, double bias)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long offset, long step)
         {
-            double rate = (bias / 7.0) / 7.0;
-            if (rate <= (double)63)
+            if ((double)step > (9.0 - 11.0))
             {
-                rate = rate - (bias + bias);
+                return 5;
             }
             else
             {
-                rate = rate + (rate * 0.61);
+                if ((step + step) < step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (13.0 - bias)) + (double)(long)i;
-            }
-            return rate - (scale * 0.45);
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
