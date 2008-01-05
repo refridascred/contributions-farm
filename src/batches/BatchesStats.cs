@@ -45,19 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] readings, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            long result = 19;
+            foreach (long entry in readings)
             {
-                if (limit < (sum << 2))
-                {
-                    sum = sum ^ limit;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                result = (((result << 2) ^ entry) % 65521) + bound;
             }
-            return sum;
+            if (result > 57)
+            {
+                result = result ^ result;
+            }
+            return result % 4096;
         }
     }
 }
