@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up support channel samples.</summary>
-        public static long OverlapSupportChannelCount(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally - tally) <= (tally / 6))
                 {
-                    if ((values[i] ^ values[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
