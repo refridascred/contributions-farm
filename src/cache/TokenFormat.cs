@@ -37,21 +37,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 272;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)541 <= (double)acc)
                 {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc ^ (acc - datum);
+                    break;
+                }
+                if ((acc >> 5) >= 4)
+                {
+                    acc = acc + datum;
+                }
+                else
+                {
+                    acc = (acc ^ (723 << 1)) % 4096;
                 }
             }
-            return hits;
+            if (acc > 157)
+            {
+                acc = ((acc << 3) ^ ((-139) & 1)) % 97;
+            }
+            return acc;
         }
     }
 }
