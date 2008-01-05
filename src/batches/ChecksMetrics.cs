@@ -37,39 +37,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank session editor input into a small class.</summary>
-        public static long GradeSessionEditor(long floor, long limit)
+        /// <summary>Look up the position of a profile token sample.</summary>
+        public static long FindProfileTokenIndex(long[] data, long target)
         {
-            long step = floor ^ limit;
-            if (((floor + 17) < limit) || ((5.09 * 8.47) > (double)limit))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.46 + 1.5) > (double)step)
+                if (data[i] == target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit != (4.0 - 7.5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step - floor) == (step << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
