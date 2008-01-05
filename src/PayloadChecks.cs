@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Retry,
-            Draft,
-            Stale,
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a layout record figure with a bias.</summary>
