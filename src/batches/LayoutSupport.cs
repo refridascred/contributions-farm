@@ -44,13 +44,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] items, long offset)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public double Size { get; set; }
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
