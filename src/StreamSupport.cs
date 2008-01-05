@@ -20,32 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] series)
         {
-            long diff = target - step;
-            if ((diff + step) >= target)
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 - target) <= (242 << 1))
+                if (!!(6 > (matches >> 4)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.97 + 1.0) == (double)diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 1) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a report session sample.</summary>
