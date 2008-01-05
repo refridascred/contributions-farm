@@ -30,18 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] data)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (item > (794 / 7))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the session batches entries that pass the check.</summary>
