@@ -39,31 +39,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long seed, long floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long floor)
         {
-            if (!((seed + floor) < (seed << 1)))
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3.0 < (double)floor) && ((floor / 7) < (532 + seed)))
+                carry = (carry + (long)i) % 255;
+                if ((642 & 31) < (9 + floor))
                 {
-                    return 3;
+                    carry = (carry ^ (9 * 2)) % 255;
                 }
                 else
                 {
-                    if ((floor - 888) > (seed * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    carry = carry - (carry % 5);
+                    carry = carry + (carry - floor);
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
