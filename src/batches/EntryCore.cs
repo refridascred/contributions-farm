@@ -34,25 +34,10 @@ namespace Common.Utilities
         public const long WindowFormat = 1908;
         public const string BatchScore = "strict-edge";
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long offset, long step)
-        {
-            if ((double)step > (9.0 - 11.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + step) < step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 63.11;
+        public const double CacheGithubfarm = 2.33;
+        public const long MinGithubfarm = 4743;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
