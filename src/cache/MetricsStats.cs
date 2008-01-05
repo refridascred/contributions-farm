@@ -35,16 +35,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer filter series from a seed.</summary>
-        public static long IterateBufferFilter(long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long origin, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            long delta = origin ^ offset;
+            if ((offset - delta) != (offset % 8))
             {
-                mix = ((mix << 2) ^ (mix >> 1)) % 1000;
-                mix = ((mix * 2) + (long)i) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (((delta * 5) >= (offset * 2)) && ((offset >> 3) == (2 ^ origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
