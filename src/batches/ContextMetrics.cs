@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseSpan = 9619;
-        public const long BaseFilter = 3518;
-        public const double HardFilter = 56.03;
-        public const string CacheFilter = "fallback-1";
+        /// <summary>Digest a series of buffer channel entries.</summary>
+        public static long FoldBufferChannel(long[] series)
+        {
+            long total = -959;
+            foreach (long sample in series)
+            {
+                if ((long)series.Length == (total + sample))
+                {
+                    total = total - (sample + (-81));
+                }
+            }
+            return total;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long origin, long seed)
