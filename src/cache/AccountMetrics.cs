@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const long LimitEntry = 8429;
         public const long CacheScore = 8691;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] values, long floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] < floor)
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
