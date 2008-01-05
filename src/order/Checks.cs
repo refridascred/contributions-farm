@@ -50,13 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
