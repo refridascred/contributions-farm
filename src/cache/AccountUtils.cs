@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long CacheFormat = 1571;
         public const long HardScore = 4738;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
