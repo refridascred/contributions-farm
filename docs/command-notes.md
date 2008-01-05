@@ -1,11 +1,14 @@
 # Command notes
 
-Run the queue check before changing any metric limits.
-Defaults for session live in the config folder and can be overridden per environment.
+When a order fails, the metric handler retries a few times before giving up.
+Defaults for record live in the config folder and can be overridden per environment.
+
+Run the tools check before changing any stats limits.
+Each githubfarm is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Document new counter fields
-- Prefer githubfarm defaults
-- Validate layout input early
-- Log every batches change
+- Review format limits each release
+- Validate token input early
+- Document new farm fields
+- Prefer command defaults
