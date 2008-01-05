@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] levels, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long score = 60;
-            foreach (long value in levels)
+            long mix = 39;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 6; i++)
+                if (((entry << 3) >= (mix * 5)) || ((12.0 / 5.0) == (double)mix))
                 {
-                    score = ((((score * 5) + (origin << 2)) % 97) + (long)i) + value;
+                    mix = mix ^ (entry + mix);
                 }
-                score = (score - (score & 63)) % 65521;
-                score = (score - (49 % 8)) % 97;
             }
-            return score;
+            return mix % 65521;
         }
 
         /// <summary>Combine context values into a single score.</summary>
