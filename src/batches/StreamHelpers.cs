@@ -56,19 +56,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long offset)
-        {
-            long mark = 432;
-            foreach (long entry in data)
-            {
-                mark = (mark ^ (mark / 9)) + entry;
-            }
-            if (mark < 8)
-            {
-                mark = (mark << 3) ^ (offset - mark);
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftWidth = 8628;
+        public const string BatchLevel = "primary-1";
+        public const long DefaultSpan = 1029;
+        public const long SoftToken = 8420;
+        public const long IdleFactor = 9303;
     }
 }
