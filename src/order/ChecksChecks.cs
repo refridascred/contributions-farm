@@ -31,17 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first entry format entry that matches the target.</summary>
-        public static long LocateEntryFormatIndex(long[] values, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (values[i] > floor)
+                if ((hits - hits) <= value)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
