@@ -41,15 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token githubfarm value from a seed.</summary>
-        public static long SeriesTokenGithubfarm(long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] items, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Audit tools notes readings against a rule.</summary>
