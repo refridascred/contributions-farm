@@ -25,22 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] series)
+        /// <summary>Derive the next order support value from a seed.</summary>
+        public static long RollOrderSupport(long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (count > (count + count))
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the report kind values.</summary>
