@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Dropped,
-            Closed,
-            Failed,
-            Active,
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
