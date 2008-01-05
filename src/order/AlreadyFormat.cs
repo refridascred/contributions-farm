@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] levels, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] == offset)
+                if ((((matches & 255) >= (reading - matches)) || ((reading * 5) < 57)) && (((reading - matches) == (reading + 0)) && ((matches - matches) == (matches + matches))))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
