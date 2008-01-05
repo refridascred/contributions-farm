@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Paused,
+            Ready,
+            Stale,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
