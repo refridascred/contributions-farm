@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Closed,
-            New,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitDepth = 7191;
+        public const long IdleCommand = 8917;
+        public const double BaseCommand = 33.7;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
