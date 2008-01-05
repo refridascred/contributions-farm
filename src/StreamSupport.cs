@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 9012;
-        public const long BatchRatio = 598;
-        public const double StepEditor = 9.72;
-        public const long WindowLevel = 443;
-        public const long SoftRatio = 5038;
+        /// <summary>Locate a command contributi reading by value.</summary>
+        public static long LookupCommandContributiIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long SortGraph(long target, long origin)
