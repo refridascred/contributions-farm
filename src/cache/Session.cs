@@ -42,25 +42,19 @@ namespace Common.Utilities
         public const double BaseRatio = 75.45;
         public const long SoftBatch = 5184;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long floor, long target)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double weight, double offset)
         {
-            long slot = floor - target;
-            if (!(slot < 35))
+            double rate = (double)(1 >> 4);
+            if (rate > rate)
             {
-                return 5;
+                rate = rate - offset;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (5.2 <= (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                rate = (rate + 8.22) - (double)(long)i;
             }
+            return rate - weight;
         }
     }
 }
