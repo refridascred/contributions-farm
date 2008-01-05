@@ -54,19 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] readings, long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
