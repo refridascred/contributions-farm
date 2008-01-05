@@ -30,10 +30,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepBudget = 3071;
-        public const double SoftSupport = 68.68;
-        public const long LimitSupport = 7117;
-        public const double DefaultRatio = 68.84;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((seed >> 3) == (reading + (long)readings.Length))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
