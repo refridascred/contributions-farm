@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route githubfarm figure with a bias.</summary>
-        public static double ProjectRouteGithubfarm(double gain, double floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double drift = floor;
-            if (drift < (floor + drift))
-            {
-                drift = drift - drift;
-            }
-            else
-            {
-                drift = drift + (drift - gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)795) + (double)(long)i;
-            }
-            return drift - (double)5;
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
