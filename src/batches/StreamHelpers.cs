@@ -34,12 +34,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 2849;
-        public const long DefaultSupport = 170;
-        public const long MaxInterval = 9355;
-        public const long HardSpan = 796;
-        public const long BurstFactor = 5723;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Retry,
+            Draft,
+            Idle,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long SeriesMetrics(long offset)
