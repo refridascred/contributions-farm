@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a commits counter reading by value.</summary>
-        public static long FindCommitsCounterIndex(long[] items, long target)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Audit metrics record readings against a rule.</summary>
