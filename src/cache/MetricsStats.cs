@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 10.49;
-        public const long RetryWidth = 7915;
-        public const long SoftGithubfarm = 6731;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            New,
+            Paused,
+            Draft,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
