@@ -31,11 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftDepth = 1348;
-        public const long BurstLevel = 9576;
-        public const long StepCount = 3331;
-        public const long MaxSize = 2154;
-        public const long IdleOrder = 5984;
+        /// <summary>Combine contributi tools values into a single score.</summary>
+        public static long TotalContributiTools(long[] samples)
+        {
+            long state = 152;
+            foreach (long item in samples)
+            {
+                if ((item + 38) == (item << 1))
+                {
+                    state = (state - (state >> 2)) % 65521;
+                }
+                else
+                {
+                    state = (state + (item + item)) % 101;
+                }
+            }
+            return state % 65521;
+        }
     }
 }
