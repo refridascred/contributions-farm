@@ -57,27 +57,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 17; i++)
-            {
-                result = result ^ (result % 64);
-                if (((long)i / 5) >= (result >> 3))
-                {
-                    result = (result + step) % 65521;
-                    result = ((result << 3) ^ (step / 3)) % 4096;
-                }
-                if (!((496 / 9) < step))
-                {
-                    result = ((result * 3) + (step / 8)) % 4096;
-                    result = (result * 2) + result;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 6854;
+        public const string BurstAccount = "cached-v2";
+        public const long StepAccount = 929;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] items, long limit)
