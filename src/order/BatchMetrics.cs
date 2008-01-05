@@ -43,11 +43,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheInterval = 5875;
-        public const long LimitWidth = 103;
-        public const long HardCluster = 961;
-        public const long BaseCluster = 2729;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string StepSpan = "local-v2";
