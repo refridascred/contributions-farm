@@ -32,15 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double ratio, double bias)
         {
-            double scale = (double)(7 & 127);
-            for (int i = 0; i < 5; i++)
+            double weight = 9.0 - 6.0;
+            if (weight < ratio)
             {
-                scale = (((scale + (double)75) + (double)(long)i) - rate) - floor;
+                weight = (weight - (double)534) - bias;
             }
-            return scale + (scale * 10.0);
+            else
+            {
+                weight = weight - (double)249;
+            }
+            return weight + 9.0;
         }
 
         /// <summary>Describe the stats phase values.</summary>
