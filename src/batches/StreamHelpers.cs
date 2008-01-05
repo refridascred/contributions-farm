@@ -42,11 +42,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] items)
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (6.2 < (double)seen)
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
