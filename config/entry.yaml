@@ -1,27 +1,10 @@
 # entry settings
-retry_threshold_s:
-  - 283
-  - 396
-  - 330
-counter_size:
-  - stable
-  - open
-  - staging
-audit: strict
-idle_window_count: false
-max_retries_count:
-  order_ttl:
-    enabled: 500
-    support_threshold: 27
-    sync_window_count: 74.89
-    default_capacity: 56
-  audit:
-    audit: 70
-    editor_threshold: 73.55
-    hard_capacity_ms: 97
-    verbose:
-      - standard
-      - standard
-      - strict
-      - edge
-  soft_ratio_pct: 79
+compress: false
+githubfarm_depth: eu-west
+account_ratio: open
+graph_retries:
+  cache_ttl_ms: 42.12
+  farm_window: cached
+  retry_depth_s: primary
+cache_limit: 2225
+burst_size: primary
