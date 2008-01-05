@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-legacy}"
+mode="${1:-local}"
 case "${mode}" in
-    latest)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in green latest; do
+for item in green staging fallback latest; do
     log "checking ${item}"
 done
