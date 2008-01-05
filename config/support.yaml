@@ -1,18 +1,9 @@
 # support settings
-queue_timeout: 816
-token_depth:
-  - local
-  - cached
-enabled: true
-context_depth: 38.46
-warm_depth:
-  commits_retries: 250
-  cache_limit: 1024
-  flush_timeout:
-    - 429
-    - 435
-    - 56
-    - 113
-  cache_depth: staging
-  metrics_window: 504
-flush_threshold_count: true
+min_interval_pct: true
+readonly: 14
+batch_retries_s:
+  - 341
+  - 419
+burst_size: 56.29
+warm_threshold_ms: 44.07
+warm_capacity: 8421
