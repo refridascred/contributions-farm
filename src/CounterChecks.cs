@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long origin, long limit)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double bias, double bias2)
         {
-            if (origin <= (limit + origin))
+            double mean = bias;
+            if (mean < 1.0)
             {
-                return 1;
+                mean = mean + (bias2 + 9.22);
             }
-            else
-            {
-                if (((-2) & 15) < (638 + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mean + mean;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
