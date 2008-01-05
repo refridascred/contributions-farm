@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local edge; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=62
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-edge}"
+mode="${1:-standard}"
 case "${mode}" in
-    blue)
+    edge)
         log "fast path"
         ;;
     *)
