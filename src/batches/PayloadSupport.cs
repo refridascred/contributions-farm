@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank queue layout input into a small class.</summary>
-        public static long BucketQueueLayout(long origin, long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] levels, long seed)
         {
-            long lane = origin - step;
-            if (((step >> 2) < (step & 255)) || ((origin + lane) >= origin))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((587 <= origin) || ((lane / 7) < origin))
+                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane < (lane - origin)) && (step < (383 + lane)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((10.0 + 7.64) >= (double)step) || ((lane >> 1) > 95))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
