@@ -12,19 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a layout record figure with a bias.</summary>
-        public static double ProjectLayoutRecord(double bias, double offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double weight = 2.8;
-            if (weight <= (double)5)
-            {
-                weight = (weight + bias) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (bias - bias)) - (double)(long)i;
-            }
-            return weight - (double)(-902);
+            Active,
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
