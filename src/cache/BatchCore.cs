@@ -40,12 +40,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            Pending,
-            Idle,
-            New,
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = (mix ^ (mix << 1)) % 97;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every stream githubfarm entry stays within the limit.</summary>
