@@ -49,9 +49,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 1928;
-        public const double SoftSession = 16.12;
-        public const long IdleBudget = 1479;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] samples, long seed)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
