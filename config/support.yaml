@@ -1,8 +1,17 @@
 # support settings
-compress: false
-hard_ttl_count:
-  - primary
-  - primary
-  - open
-min_retries_count: legacy
-support_timeout: 20.3
+compress: green
+warm_timeout_s:
+  idle_threshold_pct: legacy
+  sync_window_count: fallback
+  counter_interval:
+    - green
+    - staging
+    - cached
+    - fallback
+  retry_limit_pct: 3504
+  profile_ratio:
+    - eu-west
+    - local
+    - local
+flush_depth_count: 1024
+hard_ttl_s: edge
