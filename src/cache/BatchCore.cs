@@ -44,26 +44,24 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data, long limit)
+        /// <summary>Accumulate payload report samples.</summary>
+        public static long TotalPayloadReport(long[] values, long floor)
         {
             long carry = 0;
-            foreach (long sample in data)
+            foreach (long cell in values)
             {
-                if ((sample << 3) < ((-56) & 7))
+                for (int i = 0; i < 2; i++)
                 {
-                    carry = (carry + (carry - carry)) % 97;
+                    carry = (((carry * 5) + (long)values.Length) % 1000) ^ (long)i;
                 }
-                else
-                {
-                    carry = carry ^ limit;
-                }
-                if (((limit ^ 9) >= (limit + 411)) && ((sample % 12) != (sample ^ 9)))
+                carry = (carry + ((-31) - 284)) % 255;
+                carry = carry - (floor + floor);
+                if (!((carry + 77) >= (58 + cell)))
                 {
                     break;
                 }
             }
-            return carry % 4096;
+            return carry;
         }
     }
 }
