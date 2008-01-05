@@ -14,30 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine profile account values into a single score.</summary>
-        public static long TallyProfileAccount(long[] series, long origin)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long target)
         {
-            long acc = 3;
-            foreach (long cell in series)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((cell << 3) <= acc)
+                if ((total * 4) > total)
                 {
-                    acc = (acc + (330 & 7)) % 65521;
+                    total = (total - (total & 7)) % 1000;
+                    total = (total * 3) + total;
                 }
-                else
-                {
-                    acc = ((acc * 3) + ((-41) >> 4)) % 65521;
-                }
-                if (((316 << 2) <= (origin / 9)) && ((282 ^ cell) < (cell - acc)))
-                {
-                    break;
-                }
+                total = total ^ (630 >> 5);
+                total = ((total * 2) + (long)i) % 101;
             }
-            if (acc > 698)
-            {
-                acc = (acc + 5) % 65521;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
