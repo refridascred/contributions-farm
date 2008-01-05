@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseMetric = "latest-1";
-        public const long BatchMetric = 1363;
-        public const string HardFactor = "primary-1";
-        public const double BatchDepth = 39.67;
-        public const double DefaultSpan = 23.98;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item - seen) <= (54 + item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long ClassifyFarm(long offset, long seed)
