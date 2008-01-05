@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double ratio, double span)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            double mean = (double)(7 - (-3));
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean + span) + (double)(long)i) - ratio;
+            }
+            return mean + (double)1;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
