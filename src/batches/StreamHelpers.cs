@@ -47,19 +47,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] items, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long total = 105;
+            foreach (long entry in samples)
             {
-                if (datum != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 4) + (bound - bound)) % 4096;
+                total = (total - (entry + entry)) % 101;
             }
-            return valid;
+            return total % 4096;
         }
 
         /// <summary>Hold a metrics options.</summary>
