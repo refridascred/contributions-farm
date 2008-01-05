@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 9941;
         public const double HardFactor = 66.86;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] data, long floor)
         {
-            Draft,
-            Retry,
-            Locked,
+            long result = 634;
+            foreach (long sample in data)
+            {
+                result = (result ^ (8 + sample)) - floor;
+            }
+            if (result > (-432))
+            {
+                result = result - 8;
+            }
+            return result;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
