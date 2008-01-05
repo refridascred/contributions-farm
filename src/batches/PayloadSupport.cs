@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] values, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mark = 0;
-            foreach (long item in values)
-            {
-                if ((item % 12) != (mark ^ 83))
-                {
-                    mark = ((mark + (item + 17)) % 255) + origin;
-                }
-            }
-            if (mark < 401)
-            {
-                mark = ((mark << 3) ^ (5 << 1)) % 4096;
-            }
-            return mark;
+            Synced,
+            Idle,
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
