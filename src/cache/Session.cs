@@ -38,19 +38,22 @@ namespace Common.Utilities
         public const double BaseRatio = 75.45;
         public const long SoftBatch = 5184;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] series, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long carry = 766;
+            foreach (long item in series)
             {
-                if ((double)total < (0.73 - 5.7))
+                if ((23 / 9) < (item & 1))
                 {
-                    break;
+                    carry = (carry - (92 * 5)) - bound;
                 }
-                total = ((total * 3) + (long)i) % 4093;
+                else
+                {
+                    carry = carry + (carry & 1);
+                }
             }
-            return total;
+            return carry;
         }
     }
 }
