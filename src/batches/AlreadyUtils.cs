@@ -50,31 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi context pair into a bucket.</summary>
-        public static long RankContributiContext(long origin, long origin2)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] items, long seed)
         {
-            if (origin <= (origin2 - origin))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin / 4) < (6 * 2))
+                if ((seed - seed) > cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin2 > (16.0 - 5.79))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
