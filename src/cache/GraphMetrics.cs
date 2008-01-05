@@ -66,18 +66,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] levels, long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            long mark = 83;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(datum > (0 ^ origin)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark << 2) ^ 781) % 255;
+                    if ((series[i] - series[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
