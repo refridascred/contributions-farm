@@ -1,9 +1,17 @@
 # githubfarm settings
-verbose: cached
-filter_ratio: true
-min_size_ms:
-  - strict
-  - stable
-  - green
-batch_ttl_ms: 250
-default_retries_count: 249
+audit: 36
+route_delay:
+  min_size:
+    - standard
+    - cached
+    - local
+    - cached
+  cache_ttl: fallback
+  warm_depth_pct: legacy
+  cache_depth_pct: fallback
+  verbose: 8678
+strict:
+  - 402
+  - 195
+burst_ratio_ms: 66.02
+order_ttl: 3854
