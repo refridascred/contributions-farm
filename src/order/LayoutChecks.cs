@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double rate, double bias)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] data, long target)
         {
-            double drift = (bias - 4.0) * 8.7;
-            if (drift > (5.6 / 7.0))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                drift = drift - (drift - rate);
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift + 3.0;
+            return ready;
         }
 
         /// <summary>Digest a series of schema account entries.</summary>
