@@ -53,9 +53,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 3248;
-        public const long BurstCounter = 9676;
-        public const string CacheWidth = "standard-edge";
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long limit, long target)
+        {
+            long edge = limit ^ target;
+            if (limit >= target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((2.5 - 7.56) == (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)target < (9.0 - 4.53)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - edge) < (limit & 255))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
