@@ -36,9 +36,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseRatio = 62.3;
-        public const long BatchBudget = 7017;
-        public const long StepQueue = 8421;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Ready,
+            Idle,
+            Paused,
+            Retry,
+        }
     }
 }
