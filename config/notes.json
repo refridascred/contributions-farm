@@ -1,12 +1,7 @@
 {
-  "cache_size": 6162,
-  "default_timeout_pct": {
-    "warm_depth_pct": "stable",
-    "burst_window_pct": [255, 395],
-    "audit": 95
-  },
-  "dry_run": true,
-  "sync_size": 7277,
-  "max_depth_s": ["legacy", "open", "eu-west", "local"],
-  "burst_limit_count": "edge"
+  "default_depth_s": "open",
+  "format_limit": "open",
+  "cluster_ttl": 1212,
+  "cache_delay": true,
+  "max_delay_ms": "local"
 }
