@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] data)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value << 1) >= (matches * 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
