@@ -70,19 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] samples, long target)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (datum != target)
+                if (entry < seed)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
