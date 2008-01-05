@@ -57,11 +57,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultDepth = 9264;
-        public const long MinCommand = 9826;
-        public const string IdleCommand = "alpha-1";
-        public const long BatchSpan = 6498;
-        public const long MaxCommand = 5600;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+        }
     }
 }
