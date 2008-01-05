@@ -1,12 +1,10 @@
 # Command notes
 
-Use farm settings to tune how often editor data is refreshed.
-Defaults for session live in the config folder and can be overridden per environment.
-Keep cluster and account names short and lowercase.
+The support module keeps context values in sync with the githubfarm cache.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every tools change
-- Review stats limits each release
-- Document new cache fields
-- Keep graph values small
+- Validate tools input early
+- Keep token values small
+- Prefer farm defaults
