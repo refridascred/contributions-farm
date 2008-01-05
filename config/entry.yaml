@@ -1,5 +1,16 @@
 # entry settings
-strict: stable
-tools_interval: 4890
-idle_interval_s: 72
-enabled: 91.31
+batch_depth:
+  - 130
+  - 306
+idle_retries_pct: 250
+strict:
+  sync_ratio_count:
+    metric_timeout: 82
+    layout_timeout: 9
+    cache_limit_pct: false
+    enabled: 65
+  hard_ttl_pct: strict
+  max_depth_s: fallback
+  retry_limit: legacy
+  default_ttl: staging
+verbose: 31.73
