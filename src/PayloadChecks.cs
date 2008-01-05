@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinDepth = "staging-edge";
-        public const long BurstToken = 7011;
-        public const long LimitToken = 3927;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = ((acc - (1 * 3)) % 101) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long origin, long offset)
