@@ -22,20 +22,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next tools counter value from a seed.</summary>
-        public static long StepToolsCounter(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (sum + 489) + (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "latest-1";
+        public const long BatchAccount = 1676;
+        public const long DefaultAccount = 3035;
+        public const long CacheAccount = 2657;
+        public const long RetryAccount = 1503;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsBounds(long[] samples, long seed)
