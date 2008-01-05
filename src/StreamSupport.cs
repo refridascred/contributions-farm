@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long seed, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] series)
         {
-            long diff = seed + limit;
-            if (!((diff + seed) > (limit + limit)))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed - seed) > seed) && ((4 ^ (-9)) > (limit + limit)))
+                if ((seen << 2) >= 60)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    seen = (seen + 1) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
