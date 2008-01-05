@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double bias2)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            double mean = bias2;
-            if (mean <= (double)282)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - mean;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - bias;
+            return hits;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
