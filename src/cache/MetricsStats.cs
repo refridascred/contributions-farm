@@ -34,12 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Synced,
-            Dropped,
-            Locked,
+            public string Flag { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two commits counter measurements.</summary>
