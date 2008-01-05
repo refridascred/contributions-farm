@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items)
         {
-            Synced,
-            Done,
-            Closed,
+            long sum = 36;
+            foreach (long value in items)
+            {
+                sum = sum ^ (value + sum);
+                sum = ((sum * 4) + (value - 430)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Project the next editor value.</summary>
