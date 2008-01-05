@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the farm batch entries that pass the check.</summary>
-        public static long MeasureFarmBatchOutliers(long[] levels)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((39 + cell) == (long)levels.Length) || ((seen * 4) >= (cell / 5))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
