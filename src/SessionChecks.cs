@@ -57,38 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long floor, long bound)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            if (bound < (bound % 16))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) == (floor >> 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor - floor) > (bound + floor)) && ((floor >> 1) <= (bound + bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor != (double)bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
