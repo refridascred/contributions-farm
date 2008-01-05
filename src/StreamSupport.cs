@@ -35,11 +35,18 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] samples, long limit)
         {
-            public double Count { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (28 < reading)
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
     }
 }
