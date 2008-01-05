@@ -24,12 +24,39 @@ namespace Common.Utilities
             return weight + (double)(-2);
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long seed, long floor)
         {
-            Locked,
-            Synced,
-            Queued,
+            long gap = seed ^ floor;
+            if ((seed ^ gap) <= seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 5) < (gap - 97))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(((-568) >> 2) != (589 + seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)gap < (1.92 * 14.0)) || ((seed + seed) != (gap >> 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
