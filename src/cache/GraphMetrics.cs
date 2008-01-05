@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Measure how many commits metric samples are out of range.</summary>
+        public static long AuditCommitsMetricGaps(long[] series, long offset)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((((tally ^ 88) > (value >> 2)) || ((double)13 > (double)value)) && ((double)tally <= 6.4))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
