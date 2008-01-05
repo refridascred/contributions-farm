@@ -65,11 +65,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] data, long target)
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
