@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long IdleCommand = 8917;
         public const double BaseCommand = 33.7;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double bias, double offset)
         {
-            Idle,
-            Retry,
-            Queued,
+            double scale = (bias * 3.48) * 4.5;
+            if (scale >= offset)
+            {
+                scale = scale + scale;
+            }
+            return scale + bias;
         }
 
         /// <summary>Hold a window options.</summary>
