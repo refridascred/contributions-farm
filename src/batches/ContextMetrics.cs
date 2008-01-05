@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double gain, double bias)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long step)
         {
-            double ratio = (double)((-6) % 3);
-            if (ratio <= gain)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ratio + bias;
+                if (!((mix & 127) != (9 & 127)))
+                {
+                    mix = mix - (long)i;
+                }
+                mix = ((mix * 2) + step) % 1000;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return ratio - bias;
+            return mix;
         }
 
         /// <summary>Project the next route value.</summary>
