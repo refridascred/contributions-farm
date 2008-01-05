@@ -49,16 +49,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc << 3) ^ (offset >> 2);
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
