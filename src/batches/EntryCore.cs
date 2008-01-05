@@ -48,15 +48,10 @@ namespace Common.Utilities
         public const string LimitFactor = "primary";
         public const double BaseSize = 91.48;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardLevel = 2836;
+        public const long StepWidth = 1504;
+        public const long MinCounter = 7425;
+        public const long RetryWidth = 4695;
     }
 }
