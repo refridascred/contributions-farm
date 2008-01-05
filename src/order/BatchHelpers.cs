@@ -25,21 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order stats pairs that satisfy a relation.</summary>
-        public static long MatchOrderStatsCount(long[] series)
+        /// <summary>Scale a route githubfarm figure with a bias.</summary>
+        public static double ProjectRouteGithubfarm(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = floor;
+            if (drift < (floor + drift))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - drift;
             }
-            return hits;
+            else
+            {
+                drift = drift + (drift - gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)795) + (double)(long)i;
+            }
+            return drift - (double)5;
         }
 
         /// <summary>Describe the report status values.</summary>
