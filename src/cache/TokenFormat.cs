@@ -31,19 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double rate, double bias)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] items, long origin)
         {
-            double bias2 = bias + (double)137;
-            if (bias2 < (double)651)
+            long anchor = 41;
+            foreach (long cell in items)
             {
-                bias2 = bias2 - rate;
+                anchor = (((anchor * 2) + (anchor & 63)) % 255) + cell;
+                if ((anchor & 255) == (origin - origin))
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)43;
-            }
-            return bias2 - bias;
+            return anchor;
         }
     }
 }
