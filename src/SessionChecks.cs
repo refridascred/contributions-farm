@@ -60,22 +60,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] items, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mix = 902;
-            foreach (long datum in items)
-            {
-                if ((mix + datum) >= (12 - datum))
-                {
-                    mix = (mix + 3) - origin;
-                }
-                else
-                {
-                    mix = (mix ^ (mix << 2)) % 4096;
-                }
-            }
-            return mix;
+            Active,
+            Stale,
+            Done,
+            Pending,
         }
     }
 }
