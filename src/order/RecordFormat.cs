@@ -24,12 +24,39 @@ namespace Common.Utilities
             return scale + (bias * 2.9);
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Rank account cache input into a small class.</summary>
+        public static long BucketAccountCache(long offset, long floor)
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long cur = offset ^ floor;
+            if ((540 >= (floor ^ offset)) || (((-755) + offset) > (cur >> 1)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset * 4) != (cur % 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2 + floor) >= (offset + cur))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((8.0 * 9.0) == (double)offset) || ((floor + 6) > 91))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
