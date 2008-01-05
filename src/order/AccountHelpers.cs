@@ -88,19 +88,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] items, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell < offset)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc - (acc - (long)i)) % 65521) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    acc = ((acc + (acc % 100)) % 4096) ^ (long)i3;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return ready;
+            return acc;
         }
     }
 }
