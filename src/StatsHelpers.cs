@@ -26,18 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] data)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long bound)
         {
-            long count = 0;
-            foreach (long item in data)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)count <= (1.95 / 2.0))
-                {
-                    count = (count + 3) + item;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
