@@ -1,13 +1,7 @@
 # entry settings
-default_depth_ms:
-  - stable
-  - green
-audit:
-  - primary
-  - eu-west
-notes_window:
-  - primary
+cache_capacity:
   - legacy
-  - fallback
-compress: 13
-flush_interval: false
+  - strict
+  - legacy
+context_size: strict
+readonly: blue
