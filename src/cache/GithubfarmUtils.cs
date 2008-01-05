@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of context contributi entries.</summary>
-        public static long TotalContextContributi(long[] data)
+        /// <summary>Measure how many checks batch samples are out of range.</summary>
+        public static long MeasureChecksBatchHits(long[] levels)
         {
-            long state = 797;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((587 >> 3) <= cell)
+                if (((1.0 * 3.0) > (double)value) || ((5.56 * 7.22) >= (double)matches))
                 {
-                    state = state - (cell << 3);
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a metrics info.</summary>
