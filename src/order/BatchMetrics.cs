@@ -51,12 +51,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSpan = "local-v2";
+        public const string LimitSession = "strict";
+        public const string BaseRatio = "local-1";
+        public const double WindowFactor = 44.85;
+        public const double StepRatio = 64.54;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
