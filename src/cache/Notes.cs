@@ -65,12 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
