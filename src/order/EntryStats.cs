@@ -59,19 +59,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Ready,
+            Pending,
+            Synced,
         }
     }
 }
