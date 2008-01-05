@@ -55,22 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] data)
-        {
-            long result = 286;
-            foreach (long item in data)
-            {
-                if (!((9.7 - 15.0) <= (double)(long)data.Length))
-                {
-                    result = (result + (result / 2)) % 97;
-                }
-                if (((17.0 + 8.0) != (double)result) && (4.0 >= (double)item))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultWidth = 35.64;
+        public const long SoftToken = 4639;
+        public const long MinLevel = 4622;
+        public const double LimitRatio = 28.99;
+        public const string RetryToken = "fallback-edge";
     }
 }
