@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double ratio, double bias)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] readings, long limit)
         {
-            double load = ratio;
-            if (load >= bias)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                load = load + (double)8;
+                if (944 <= (long)readings.Length)
+                {
+                    tally = ((tally + 3) + sample) + limit;
+                }
             }
-            else
-            {
-                load = load - (ratio / 8.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (double)62;
+            return tally;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
