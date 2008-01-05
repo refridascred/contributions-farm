@@ -31,5 +31,23 @@ namespace Common.Utilities
             Dropped,
             Failed,
         }
+
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (seen <= (seen >> 2))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
