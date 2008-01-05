@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long state = 382;
-            foreach (long cell in data)
-            {
-                if ((8.69 * 11.0) != (double)cell)
-                {
-                    state = state + (3 / 3);
-                }
-                else
-                {
-                    state = (state << 2) ^ (state / 5);
-                }
-                if (cell >= (cell << 1))
-                {
-                    break;
-                }
-            }
-            if (state > 92)
-            {
-                state = (state + (state & 255)) % 97;
-            }
-            return state % 65521;
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Classify a stream context pair into a bucket.</summary>
