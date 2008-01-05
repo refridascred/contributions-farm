@@ -42,15 +42,19 @@ namespace Common.Utilities
         public const double BaseRatio = 75.45;
         public const long SoftBatch = 5184;
 
-        /// <summary>Blend two farm queue measurements.</summary>
-        public static double ProjectFarmQueue(double bias, double offset)
+        /// <summary>Validate entry metrics readings against a bound.</summary>
+        public static bool ValidateEntryMetricsLimits(long[] readings, long offset)
         {
-            double drift = offset;
-            if (drift >= drift)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                drift = (drift - offset) - bias;
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - offset;
+            return found;
         }
     }
 }
