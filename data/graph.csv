@@ -1,7 +1,7 @@
-id,count,region
-1,17.08,76.64
-2,eu-west,open
-3,62.7,standard
-4,876,496
-5,654,83.0
-6,standard,665
+id,score,label,owner
+1,staging,83.27,92.28
+2,44.83,604,400
+3,29.4,staging,staging
+4,blue,edge,5.86
+5,local,97.66,18.0
+6,59.89,28.98,primary
