@@ -20,19 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] items, long offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
