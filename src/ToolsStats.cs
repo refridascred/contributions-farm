@@ -20,15 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Grade a schema report value against two limits.</summary>
+        public static long RankSchemaReport(long offset, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long span = offset ^ bound;
+            if (offset < (463 * 2))
             {
-                result = ((result * 3) + (long)i) % 101;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((offset + 9) != (span - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound < (13.0 * 5.2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two payload measurements.</summary>
