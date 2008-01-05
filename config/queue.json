@@ -1,12 +1,5 @@
 {
-  "stream_window": "cached",
-  "verbose": true,
-  "format_capacity": "eu-west",
-  "poll_ratio_pct": {
-    "poll_timeout_s": 100,
-    "cache_depth": "cached",
-    "min_window_pct": 500
-  },
-  "retry_threshold_s": "strict",
-  "filter_limit": 58.17
+  "session_threshold": "standard",
+  "base_depth_pct": "fallback",
+  "order_retries": true
 }
