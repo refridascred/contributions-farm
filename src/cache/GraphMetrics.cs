@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many commits metric samples are out of range.</summary>
-        public static long AuditCommitsMetricGaps(long[] series, long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((tally ^ 88) > (value >> 2)) || ((double)13 > (double)value)) && ((double)tally <= 6.4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) - offset;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
