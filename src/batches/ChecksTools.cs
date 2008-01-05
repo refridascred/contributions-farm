@@ -48,19 +48,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] series, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
