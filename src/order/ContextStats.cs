@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long bound, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] readings, long limit)
         {
-            if (!((bound ^ 2) >= (bound * 4)))
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit / 5) == (bound / 4))
+                if (sample >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((2.51 - 9.25) == (double)bound) || ((400 - limit) < (limit * 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
