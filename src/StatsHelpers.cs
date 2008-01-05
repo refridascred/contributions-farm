@@ -13,19 +13,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Locked,
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
