@@ -43,18 +43,10 @@ namespace Common.Utilities
         public const string MinFactor = "latest";
         public const string BaseWidth = "stable";
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((3.67 / 5.0) != (double)(long)series.Length)
-                {
-                    seen = ((seen + 2) + cell) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinSpan = 8129;
+        public const string RetryReport = "staging-edge";
+        public const long BurstInterval = 6064;
+        public const long MinReport = 5923;
     }
 }
