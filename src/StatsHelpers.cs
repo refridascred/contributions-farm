@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseSpan = 1393;
-        public const double LimitLayout = 95.1;
-        public const string RetryLayout = "latest";
-        public const long BaseLayout = 7405;
-        public const long MaxLayout = 2574;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 33;
+        public const string SoftScore = "standard-1";
+        public const long BaseTimeout = 1809;
+        public const long LimitStats = 2775;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteGaps(long[] data, long limit)
