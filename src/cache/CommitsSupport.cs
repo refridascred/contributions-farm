@@ -17,27 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine notes farm values into a single score.</summary>
-        public static long ScoreNotesFarm(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            long total = 4;
-            foreach (long datum in samples)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                total = (total + total) % 101;
-                if ((datum >> 3) != (datum % 8))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    total = total - total;
+                    sum = (sum + (bound + sum)) ^ (long)i2;
                 }
-                else
-                {
-                    total = total - (99 / 2);
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            if (total > 8)
-            {
-                total = (total * 2) + (total * 3);
-            }
-            return total % 1000;
+            return sum;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
