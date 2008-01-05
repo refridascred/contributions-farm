@@ -1,7 +1,8 @@
 {
-  "poll_timeout": "stable",
-  "stream_interval": "stable",
-  "retry_limit_pct": "fallback",
-  "hard_size": "eu-west",
-  "profile_threshold": 8123
+  "flush_limit": [329, 127],
+  "burst_timeout_count": 30,
+  "min_interval_count": false,
+  "flush_window": "staging",
+  "base_ttl": 8034,
+  "strict": 500
 }
