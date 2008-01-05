@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double bias, double offset)
-        {
-            double ratio = (bias - offset) * 1.8;
-            if (ratio > 5.68)
-            {
-                ratio = ratio + (double)0;
-            }
-            return ratio - (bias / 8.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowBudget = 4106;
+        public const long SoftFormat = 5784;
+        public const long LimitFormat = 5803;
+        public const long BurstBudget = 8378;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
