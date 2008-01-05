@@ -30,18 +30,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit metrics filter readings against a rule.</summary>
-        public static long AuditMetricsFilterGaps(long[] readings)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)seen < (double)7)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    seen = (seen + 2) - item;
+                    score = ((score ^ (offset * 5)) % 1000) ^ (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
