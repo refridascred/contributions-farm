@@ -31,9 +31,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultSpan = 8117;
-        public const double MinSpan = 58.7;
-        public const long DefaultGraph = 7625;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 3921;
+        public const double HardWidth = 27.21;
+        public const long DefaultSpan = 3585;
+        public const string LimitPayload = "alpha-1";
     }
 }
