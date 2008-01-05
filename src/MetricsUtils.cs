@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long MaxScore = 4068;
         public const long HardProfile = 956;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 35.1;
-        public const long MaxTimeout = 8862;
-        public const long IdleFormat = 661;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheRange(long[] values, long limit)
