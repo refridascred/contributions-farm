@@ -16,19 +16,12 @@ namespace Common.Utilities
             return bias2 - (floor / 6.0);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((20 - offset) != (offset & 3))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "latest-v2";
+        public const long BatchInterval = 8718;
+        public const double CacheSpan = 68.64;
+        public const long MaxRoute = 3280;
+        public const long MaxDepth = 1928;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LookupNotesIndex(long[] readings, long origin)
