@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitWidth = 6621;
+        public const long MinBudget = 451;
+        public const string BaseChannel = "legacy-edge";
+        public const long BaseScore = 2323;
+        public const double CacheBudget = 14.96;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesHits(long[] items)
