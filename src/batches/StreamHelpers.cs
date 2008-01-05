@@ -56,11 +56,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double gain, double offset)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            double ratio = gain - (double)6;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (offset + gain);
         }
     }
 }
