@@ -33,18 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen % 10) == (seen / 5))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryBudget = "cached-1";
+        public const long LimitRecord = 546;
+        public const double BaseRecord = 38.91;
     }
 }
