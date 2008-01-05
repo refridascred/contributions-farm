@@ -24,30 +24,14 @@ namespace Common.Utilities
             return mean + (6.5 + gain);
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long result = 607;
-            foreach (long value in samples)
-            {
-                if (result < (result << 1))
-                {
-                    result = (result ^ ((-795) * 2)) % 65521;
-                }
-                else
-                {
-                    result = (result + value) % 255;
-                }
-                if (((result & 3) >= (result + value)) && (value < (result - result)))
-                {
-                    break;
-                }
-            }
-            if (result < 4)
-            {
-                result = ((result << 3) ^ (result + 438)) % 65521;
-            }
-            return result % 1000;
+            Draft,
+            Failed,
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count the schema filter entries that pass the check.</summary>
