@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] levels, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long acc = 5;
+            foreach (long sample in data)
             {
-                if ((946 * 3) != (seen ^ cell))
+                for (int i = 0; i < 9; i++)
                 {
-                    seen = (seen + 1) + origin;
+                    acc = ((acc - (acc * 2)) % 101) + sample;
+                    acc = (acc + ((long)i - (long)i)) % 65521;
                 }
+                acc = (acc << 2) ^ (acc / 7);
             }
-            return seen;
+            if (acc < 6)
+            {
+                acc = (acc << 3) ^ 58;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
