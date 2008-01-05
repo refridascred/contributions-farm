@@ -58,15 +58,16 @@ namespace Common.Utilities
         public const long CacheSchema = 4484;
         public const string DefaultLevel = "stable-1";
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long limit)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                carry = carry - (carry ^ limit);
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
