@@ -48,22 +48,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] samples, long offset)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double ratio, double floor)
         {
-            long sum = 72;
-            foreach (long entry in samples)
+            double scale = (ratio * 16.0) + (ratio + ratio);
+            for (int i = 0; i < 7; i++)
             {
-                if (sum > (entry + sum))
-                {
-                    sum = (((sum * 2) + (entry / 2)) % 1000) - offset;
-                }
+                scale = ((scale + (ratio / 9.0)) + (double)(long)i) - floor;
             }
-            if (sum > 686)
-            {
-                sum = (sum * 2) + 39;
-            }
-            return sum % 4096;
+            return scale + 19.0;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
