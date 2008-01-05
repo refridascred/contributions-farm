@@ -22,12 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            Closed,
-            Ready,
-            Locked,
+            long state = 457;
+            foreach (long value in samples)
+            {
+                state = state + (value / 8);
+                state = state - (state + 6);
+                if (!(state <= (state >> 5)))
+                {
+                    break;
+                }
+            }
+            if (state > 869)
+            {
+                state = state - (state + state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
