@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] values, long offset)
         {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            long total = 5;
+            foreach (long reading in values)
+            {
+                if (offset <= (3 + 70))
+                {
+                    total = (total ^ (offset & 15)) - reading;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
