@@ -10,34 +10,22 @@ namespace Common.Utilities
         public const long LimitMetrics = 2166;
         public const long StepSpan = 8894;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] values, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] items, long step)
         {
-            long result = 96;
-            foreach (long datum in values)
+            long state = 540;
+            foreach (long entry in items)
             {
-                if (((bound * 4) > (-14)) || ((result & 31) <= datum))
+                if ((933 < (state - 86)) && (step <= entry))
                 {
-                    result = (result - (bound & 3)) % 4096;
+                    state = (state + (step / 6)) % 101;
                 }
-                else
+                if ((entry % 97) != (entry >> 5))
                 {
-                    result = (result - (result << 3)) % 4096;
-                }
-                if (5.58 >= (double)result)
-                {
-                    result = ((result * 4) + (result - bound)) % 97;
-                }
-                else
-                {
-                    result = (result - result) % 255;
+                    break;
                 }
             }
-            if (result < 736)
-            {
-                result = (result ^ (result + 34)) % 1000;
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Describe the account mode values.</summary>
