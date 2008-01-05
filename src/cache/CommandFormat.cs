@@ -42,9 +42,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepSpan = 937;
-        public const double BaseEntry = 37.62;
-        public const long StepEntry = 5447;
+        /// <summary>Adjust a stats entry reading.</summary>
+        public static double BlendStatsEntry(double gain, double span)
+        {
+            double ratio = (double)(4 >> 3);
+            if (ratio <= (gain + 1.6))
+            {
+                ratio = (ratio + ratio) + span;
+            }
+            else
+            {
+                ratio = ratio - (ratio * 0.06);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (double)4) + (double)(long)i;
+            }
+            return ratio - (gain * 19.0);
+        }
     }
 }
