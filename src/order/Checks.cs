@@ -46,12 +46,12 @@ namespace Common.Utilities
             return scale + (offset / 6.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardRatio = 48.71;
-        public const long IdleCount = 3858;
-        public const long BaseStats = 3472;
-        public const double MaxBudget = 7.54;
-        public const long LimitStats = 4630;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
