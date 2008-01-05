@@ -1,6 +1,8 @@
 {
-  "min_delay_count": true,
-  "sync_limit_count": "edge",
-  "base_size": 250,
-  "warm_capacity": "legacy"
+  "account_depth": 5011,
+  "persist": true,
+  "order_capacity": 4413,
+  "min_window_ms": true,
+  "flush_interval_pct": 30.52,
+  "flush_timeout_pct": [54, 412, 155]
 }
