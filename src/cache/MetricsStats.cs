@@ -40,19 +40,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] values, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long total = 2;
+            foreach (long datum in samples)
             {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total ^ (datum * 4)) % 1000;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Rank format account input into a small class.</summary>
