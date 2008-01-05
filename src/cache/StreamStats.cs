@@ -43,18 +43,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate counter filter samples.</summary>
-        public static long FoldCounterFilter(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] levels, long step)
         {
-            long score = 6;
-            foreach (long item in series)
+            long mark = 9;
+            foreach (long entry in levels)
             {
-                if ((15.0 * 0.2) >= (double)item)
+                if ((604 & 31) < (entry + entry))
                 {
-                    score = (score ^ (item * 5)) % 1000;
+                    mark = mark + 7;
+                    mark = mark - entry;
                 }
+                mark = ((mark << 3) ^ 3) % 4096;
             }
-            return score % 97;
+            if (mark > 75)
+            {
+                mark = (mark - (step / 6)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
