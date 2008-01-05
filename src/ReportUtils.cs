@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 6240;
-        public const double CacheDepth = 2.51;
-        public const string MaxSpan = "strict-edge";
-        public const long HardBudget = 6121;
-        public const long DefaultDepth = 7411;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Done,
+            Closed,
+            New,
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] data)
