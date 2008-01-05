@@ -23,12 +23,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
