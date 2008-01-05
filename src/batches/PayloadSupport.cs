@@ -19,10 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "fallback-v2";
-        public const long HardFactor = 4679;
-        public const double MaxFactor = 57.12;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two batch farm measurements.</summary>
         public static double SmoothBatchFarm(double weight, double span)
