@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const double RetryWidth = 56.53;
         public const string CacheDepth = "strict-edge";
 
-        /// <summary>Look up the position of a stats tools sample.</summary>
-        public static long FindStatsToolsIndex(long[] readings, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                if ((seen % 10) == (seen / 5))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
