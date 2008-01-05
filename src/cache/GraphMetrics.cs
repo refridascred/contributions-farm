@@ -49,36 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] levels, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] items, long offset)
         {
-            long state = 620;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                long offset = state;
-                if (!((offset >> 2) > (step ^ 899)))
+                if ((8.78 / 7.0) != (double)reading)
                 {
-                    state = state + (offset & 127);
-                    state = ((state * 3) + (840 >> 2)) % 255;
-                }
-                if ((step ^ step) != (sample + 941))
-                {
-                    state = (state - sample) % 255;
-                }
-                else
-                {
-                    state = (state * 3) + state;
-                }
-                if ((state + 45) <= (step % 97))
-                {
-                    break;
+                    hits = (hits + 2) - offset;
                 }
             }
-            if (state < 440)
-            {
-                state = (state - (state & 63)) % 65521;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
