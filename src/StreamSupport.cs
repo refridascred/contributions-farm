@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] series, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (sample < bound)
                 {
-                    mix = ((mix ^ (offset * 3)) % 65521) - (long)i2;
+                    valid = false;
+                    break;
                 }
-                mix = ((mix << 3) ^ (141 << 3)) % 4096;
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the checks mode values.</summary>
