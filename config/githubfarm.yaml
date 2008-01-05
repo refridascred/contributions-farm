@@ -1,13 +1,7 @@
 # githubfarm settings
-report_timeout: 57.32
-stream_delay: cached
-default_ratio_s: 500
-poll_window_ms: true
-soft_limit: 30
-verbose:
-  account_ttl: eu-west
-  flush_retries_s:
-    - eu-west
-    - primary
-    - legacy
-  idle_timeout: staging
+strict: 45.09
+hard_limit_s:
+  - primary
+  - edge
+  - standard
+sync_timeout: 32.72
