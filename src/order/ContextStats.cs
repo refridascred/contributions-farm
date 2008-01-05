@@ -18,30 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] values, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] samples, long target)
         {
-            long acc = 5;
-            foreach (long value in values)
+            long mark = 52;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 4; i++)
+                if (((8.4 - 9.0) <= (double)mark) || ((15.0 + 7.9) >= (double)target))
                 {
-                    acc = (((acc << 2) ^ (bound & 31)) % 1000) + (long)i;
-                }
-                if (((value - bound) != (value / 5)) && ((value & 31) <= (bound >> 1)))
-                {
-                    acc = (acc - bound) % 97;
-                }
-                if ((bound * 3) != (3 & 3))
-                {
-                    break;
+                    mark = ((mark ^ mark) % 97) + datum;
                 }
             }
-            if (acc < (-296))
-            {
-                acc = acc - (bound + bound);
-            }
-            return acc % 65521;
+            return mark;
         }
 
         /// <summary>Describe the payload phase values.</summary>
