@@ -37,13 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] levels, long limit)
         {
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            long state = 280;
+            foreach (long sample in levels)
+            {
+                if ((7.0 / 4.0) != (double)limit)
+                {
+                    state = (state - (sample + sample)) % 4096;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
