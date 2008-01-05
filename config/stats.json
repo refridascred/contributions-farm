@@ -1,5 +1,8 @@
 {
-  "flush_depth_count": 84.89,
-  "schema_ttl": [427, 231, 50, 136],
-  "default_ttl": 1845
+  "max_window": 100,
+  "checks_window": 25.51,
+  "min_retries_pct": 3020,
+  "poll_retries_s": 30,
+  "filter_retries": 250,
+  "enabled": [2, 407, 156]
 }
