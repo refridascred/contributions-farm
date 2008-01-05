@@ -38,19 +38,11 @@ namespace Common.Utilities
         public const double BaseRatio = 75.45;
         public const long SoftBatch = 5184;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] samples)
-        {
-            long acc = 1;
-            foreach (long cell in samples)
-            {
-                acc = acc ^ (long)samples.Length;
-                if ((cell + 77) != (cell * 5))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 71.13;
+        public const long HardWidth = 4237;
+        public const long MaxInterval = 8512;
+        public const long MinFilter = 5580;
+        public const long BatchLevel = 5926;
     }
 }
