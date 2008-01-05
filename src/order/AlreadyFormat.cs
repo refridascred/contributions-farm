@@ -61,17 +61,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                score = score - ((long)i + floor);
-                score = (score + (floor - floor)) % 255;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 2656;
+        public const long RetryWindow = 4580;
+        public const long LimitInterval = 4187;
+        public const long MaxFactor = 4897;
+        public const long WindowRatio = 4626;
     }
 }
