@@ -1,5 +1,7 @@
 {
-  "idle_interval_pct": ["edge", "standard", "edge"],
-  "hard_delay": 97,
-  "dry_run": ["edge", "legacy", "edge", "primary"]
+  "batch_depth_ms": "standard",
+  "checks_interval": 4044,
+  "sync_capacity_ms": "local",
+  "flush_capacity": 60.03,
+  "farm_delay": 81.2
 }
