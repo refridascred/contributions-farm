@@ -20,17 +20,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] readings, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 88;
+            foreach (long cell in levels)
             {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (cell + limit)) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Find the first entry format entry that matches the target.</summary>
