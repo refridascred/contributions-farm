@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] series, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((double)238 <= (double)value)
+                if ((sample * 4) > 194)
                 {
-                    tally = (tally + 1) + target;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
