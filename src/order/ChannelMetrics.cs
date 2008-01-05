@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] items, long origin)
+        /// <summary>Accumulate entry buffer samples.</summary>
+        public static long TotalEntryBuffer(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mix = 8;
+            foreach (long value in levels)
             {
-                if ((tally - origin) >= (1 - 6))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                mix = (((mix << 2) ^ 104) % 4096) ^ value;
             }
-            return tally;
+            if (mix > 67)
+            {
+                mix = (mix * 5) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
