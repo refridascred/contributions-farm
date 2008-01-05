@@ -22,14 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Locked,
-            Active,
+            Stale,
+            Closed,
+            Dropped,
             Failed,
-            Done,
-            Retry,
+            Paused,
         }
 
         /// <summary>Accumulate layout samples.</summary>
