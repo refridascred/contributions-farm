@@ -47,19 +47,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double weight, double span)
+        /// <summary>Grade a format record value against two limits.</summary>
+        public static long SortFormatRecord(long limit, long origin)
         {
-            double weight2 = (double)(2 / 2);
-            if (weight2 <= span)
+            if (53 > limit)
             {
-                weight2 = weight2 - weight2;
+                return 5;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight2 = (weight2 - (double)72) + (double)(long)i;
+                if ((origin ^ limit) > origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((limit - origin) != (origin & 1)) || ((limit >> 4) < limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return weight2 - (weight * 9.1);
         }
     }
 }
