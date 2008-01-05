@@ -47,18 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] readings)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long result = 414;
+            foreach (long cell in series)
             {
-                if ((tally ^ tally) >= (tally * 3))
+                if ((900 + result) > (cell + result))
                 {
-                    tally = (tally + 3) ^ value;
+                    result = (result << 2) ^ (cell * 2);
                 }
             }
-            return tally;
+            if (result < 547)
+            {
+                result = ((result << 2) ^ (result % 12)) % 4096;
+            }
+            return result;
         }
     }
 }
