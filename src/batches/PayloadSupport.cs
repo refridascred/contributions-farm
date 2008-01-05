@@ -5,35 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] samples)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] data)
         {
-            long acc = 938;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (!(((-863) / 9) < (acc / 9)))
+                if (tally > cell)
                 {
-                    break;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (item + acc)) % 97;
-                    acc = ((acc << 2) ^ 52) % 255;
-                }
-                if (!((5.56 * 9.0) != (double)acc))
-                {
-                    acc = (acc - (acc + item)) % 97;
-                }
-                else
-                {
-                    acc = acc + acc;
-                }
-                if (!((acc + 76) >= item))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
