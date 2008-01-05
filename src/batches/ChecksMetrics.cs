@@ -72,12 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Done,
-            Pending,
-            Locked,
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
