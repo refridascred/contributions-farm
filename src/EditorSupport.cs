@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long DefaultGraph = 7055;
         public const long WindowGraph = 9269;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxLevel = 6058;
+        public const long HardCounter = 8880;
+        public const long SoftSpan = 5699;
+        public const double WindowCounter = 59.48;
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] samples)
