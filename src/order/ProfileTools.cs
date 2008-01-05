@@ -45,13 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count stream farm pairs that satisfy a relation.</summary>
+        public static long PairStreamFarmCount(long[] data)
         {
-            Active,
-            Queued,
-            Dropped,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
