@@ -24,12 +24,11 @@ namespace Common.Utilities
         public const long BurstSize = 9530;
         public const long SoftBudget = 3847;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Ready,
-            New,
-            Active,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 67.91;
+        public const string BatchDepth = "latest";
+        public const double RetryQueue = 3.77;
+        public const long MinQueue = 9278;
+        public const string MaxQueue = "standard";
     }
 }
