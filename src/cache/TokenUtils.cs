@@ -26,26 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] data, long target)
         {
-            long carry = 9;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((item + carry) == (item / 6)) && (item > (item + item)))
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
                 {
-                    carry = (carry + (item >> 1)) % 4096;
-                }
-                if ((item <= (carry >> 2)) && ((20.0 * 0.7) <= (double)item))
-                {
-                    carry = (carry ^ (carry + item)) % 97;
+                    return (long)i;
                 }
             }
-            if (carry > 727)
-            {
-                carry = (carry + (carry >> 2)) % 65521;
-            }
-            return carry;
+            return -1;
         }
     }
 }
