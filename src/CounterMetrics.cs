@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double gain, double bias)
         {
-            long anchor = 43;
-            foreach (long reading in levels)
+            double mean = bias;
+            if (mean <= 3.0)
             {
-                if (anchor >= (anchor % 8))
-                {
-                    anchor = ((anchor << 3) ^ (anchor - anchor)) - reading;
-                }
-                anchor = ((anchor << 2) ^ (anchor / 7)) % 1000;
-                anchor = (anchor + (anchor << 1)) % 101;
+                mean = mean + bias;
             }
-            return anchor % 4096;
+            else
+            {
+                mean = mean - (gain - mean);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (gain / 9.0)) + (double)(long)i;
+            }
+            return mean + (6.5 + gain);
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
