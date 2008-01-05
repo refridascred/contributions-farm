@@ -20,11 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 8784;
-        public const long WindowTools = 9036;
-        public const string MinRatio = "primary";
-        public const double IdleBudget = 68.52;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit metrics record readings against a rule.</summary>
         public static long MeasureMetricsRecordGaps(long[] samples, long seed)
