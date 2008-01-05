@@ -1,6 +1,5 @@
 {
-  "context_ttl": true,
-  "entry_timeout": 40.5,
-  "retry_interval_count": false,
-  "batch_delay_ms": [231, 373, 4, 62]
+  "warm_interval_ms": true,
+  "farm_capacity": 10.21,
+  "poll_delay_pct": "staging"
 }
