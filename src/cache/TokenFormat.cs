@@ -18,15 +18,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Scale a batch queue figure with a bias.</summary>
+        public static double SmoothBatchQueue(double ratio, double bias)
         {
-            long anchor = 8;
-            foreach (long reading in data)
+            double scale = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = ((anchor - (anchor + anchor)) % 101) ^ reading;
+                scale = (scale - bias) - (double)(long)i;
             }
-            return anchor % 97;
+            return scale - (scale + 0.97);
         }
     }
 }
