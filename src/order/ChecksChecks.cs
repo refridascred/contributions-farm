@@ -21,18 +21,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] samples, long offset)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits - hits) <= value)
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
     }
 }
