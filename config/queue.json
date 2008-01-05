@@ -1,16 +1,7 @@
 {
-  "compress": 71.26,
-  "max_window_ms": {
-    "verbose": 88,
-    "batch_delay": {
-      "hard_ratio_ms": "staging",
-      "strict": "latest",
-      "soft_limit": 7.07,
-      "retry_capacity_s": 2,
-      "cache_capacity": true
-    },
-    "sync_capacity_count": ["open", "fallback", "eu-west", "stable"]
-  },
-  "min_interval_s": true,
-  "stream_threshold": 55
+  "flush_threshold": 8908,
+  "burst_retries_pct": 85,
+  "cache_threshold": [58, 309],
+  "batch_timeout_count": 69,
+  "contributi_ratio": 2.84
 }
