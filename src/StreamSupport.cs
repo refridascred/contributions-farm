@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] data, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] items)
         {
-            long total = 110;
-            foreach (long entry in data)
+            long score = 994;
+            foreach (long entry in items)
             {
-                total = (((total << 3) ^ (target + total)) % 4096) - entry;
+                score = (((score * 4) + (score - (long)items.Length)) % 1000) ^ entry;
             }
-            return total % 1000;
+            if (score < 17)
+            {
+                score = (score + (score * 4)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
