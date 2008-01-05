@@ -1,6 +1,16 @@
 {
-  "format_depth": 5.95,
-  "readonly": 81.38,
-  "sync_ttl": "stable",
-  "idle_ratio": 4724
+  "compress": 71.26,
+  "max_window_ms": {
+    "verbose": 88,
+    "batch_delay": {
+      "hard_ratio_ms": "staging",
+      "strict": "latest",
+      "soft_limit": 7.07,
+      "retry_capacity_s": 2,
+      "cache_capacity": true
+    },
+    "sync_capacity_count": ["open", "fallback", "eu-west", "stable"]
+  },
+  "min_interval_s": true,
+  "stream_threshold": 55
 }
