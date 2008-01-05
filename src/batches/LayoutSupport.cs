@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double rate, double offset)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double ratio, double bias)
         {
-            double bias = (6.2 * 20.0) + (double)50;
-            if (bias > bias)
+            double weight = bias / 6.0;
+            if (weight >= bias)
             {
-                bias = bias - (bias - rate);
+                weight = (weight + 9.9) - ratio;
             }
-            return bias - offset;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (weight + weight);
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
