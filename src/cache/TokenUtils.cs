@@ -19,12 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Iterate the report entry series from a seed.</summary>
+        public static long RollReportEntry(long floor)
         {
-            New,
-            Synced,
-            Dropped,
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((floor >> 1) < (floor ^ floor)) || ((double)floor < 5.76))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
