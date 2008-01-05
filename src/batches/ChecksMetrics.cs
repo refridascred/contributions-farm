@@ -83,22 +83,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] values, long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)count >= 2.63)
+                long gap = (281 + (-757)) % 100;
+                if ((carry >> 5) <= (123 % 7))
                 {
-                    count = ((count + 1) ^ sample) - origin;
+                    carry = ((carry * 2) + (gap * 2)) % 255;
                 }
                 else
                 {
-                    count = count - 1;
+                    gap = (gap ^ (carry + carry)) % 101;
                 }
+                carry = ((carry << 2) ^ (carry - carry)) % 65521;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
