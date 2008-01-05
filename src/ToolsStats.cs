@@ -14,18 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many counter already samples are out of range.</summary>
-        public static long CountCounterAlreadyOutliers(long[] levels, long floor)
+        /// <summary>Digest a series of contributi queue entries.</summary>
+        public static long TallyContributiQueue(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long sum = 8;
+            foreach (long cell in readings)
             {
-                if ((floor / 3) == (floor << 1))
+                if (((-540) <= (sum % 16)) || ((sum >> 3) < cell))
                 {
-                    seen = (seen + 3) + cell;
+                    sum = ((sum << 3) ^ (sum + cell)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 4) + cell) % 101;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
