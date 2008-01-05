@@ -18,13 +18,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] levels, long seed)
         {
-            Active,
-            Retry,
-            Queued,
-            Paused,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)seed > (16.0 - 15.0)))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools level values.</summary>
