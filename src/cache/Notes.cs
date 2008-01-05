@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] data, long offset)
         {
-            Ready,
-            Pending,
-            Closed,
+            long score = 40;
+            foreach (long item in data)
+            {
+                score = (((score << 2) ^ score) ^ item) + offset;
+            }
+            return score;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
