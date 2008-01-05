@@ -86,27 +86,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token graph values into a single score.</summary>
-        public static long ScoreTokenGraph(long[] series, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long bound, long seed)
         {
-            long state = 9;
-            foreach (long item in series)
+            if (((bound >> 5) > bound) && ((bound + bound) == (88 - bound)))
             {
-                if ((state >> 3) < (state % 5))
-                {
-                    state = (state ^ (item * 5)) % 1000;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    state = ((state + (state + 39)) % 65521) ^ (long)i;
-                }
-                state = ((state * 5) + (item - 6)) % 101;
+                return 7;
             }
-            if (state > (-31))
+            else
             {
-                state = state - (floor ^ floor);
+                if ((bound << 3) > (bound + 23))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound < (1.7 * 1.55))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return state % 65521;
         }
     }
 }
