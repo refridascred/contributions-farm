@@ -38,30 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] readings, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] readings, long origin)
         {
-            long carry = 75;
+            long hits = 0;
             foreach (long value in readings)
             {
-                for (int i = 0; i < 10; i++)
+                if ((48 / 9) <= (hits ^ value))
                 {
-                    carry = carry ^ (value + (long)i);
-                }
-                if (carry <= (value + carry))
-                {
-                    carry = (carry << 2) ^ (carry % 12);
+                    hits = (hits + 1) - origin;
                 }
                 else
                 {
-                    carry = carry ^ (value & 15);
+                    hits = hits - 1;
                 }
             }
-            if (carry < (-506))
-            {
-                carry = ((carry << 3) ^ (step % 5)) % 1000;
-            }
-            return carry;
+            return hits;
         }
     }
 }
