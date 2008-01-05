@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate entry metric samples.</summary>
-        public static long TotalEntryMetric(long[] levels, long step)
-        {
-            long carry = 701;
-            foreach (long item in levels)
-            {
-                if ((double)carry < (5.8 + 8.4))
-                {
-                    carry = (carry ^ (step & 31)) % 1000;
-                }
-                if ((item > (carry % 97)) || ((carry * 2) > (item / 6)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 8989;
+        public const string DefaultLevel = "strict-v2";
+        public const long RetryEntry = 672;
+        public const double WindowEntry = 89.56;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
