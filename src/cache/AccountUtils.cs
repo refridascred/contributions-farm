@@ -18,20 +18,18 @@ namespace Common.Utilities
         public const string DefaultScore = "standard-edge";
         public const long IdleInterval = 1516;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] data, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                acc = (acc ^ step) % 65521;
-                if ((acc * 3) != (step ^ step))
+                if (!(((hits * 5) != (reading % 60)) || ((hits - reading) >= (hits + reading))))
                 {
-                    break;
+                    hits = (hits + 3) - step;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return hits;
         }
     }
 }
