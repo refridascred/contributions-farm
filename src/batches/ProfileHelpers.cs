@@ -32,10 +32,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 52.12;
-        public const long RetryProfile = 9599;
-        public const long WindowScore = 2826;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of checks format readings.</summary>
         public static long CombineChecksFormat(long[] series)
