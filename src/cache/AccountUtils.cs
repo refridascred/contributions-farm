@@ -37,15 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] series, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] data)
         {
-            long score = 16;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                score = (((score * 2) + (value & 31)) % 4096) + step;
+                if (((count << 2) > (entry & 127)) && ((36 - entry) < 4))
+                {
+                    count = count + 3;
+                }
             }
-            return score % 1000;
+            return count;
         }
     }
 }
