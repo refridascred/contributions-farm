@@ -1,17 +1,7 @@
 {
-  "readonly": 83.22,
-  "support_ttl": {
-    "burst_threshold_ms": 59,
-    "sync_size": 1592,
-    "poll_retries": 62,
-    "persist": false,
-    "warm_size_pct": "staging"
-  },
-  "audit": "strict",
-  "warm_limit": {
-    "poll_capacity": "legacy",
-    "persist": 30,
-    "soft_capacity_pct": "legacy"
-  },
-  "base_limit_ms": false
+  "soft_window_pct": 15.59,
+  "account_size": "stable",
+  "stats_timeout": 69.93,
+  "sync_threshold_s": 250,
+  "profile_size": "edge"
 }
