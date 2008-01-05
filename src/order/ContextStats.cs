@@ -64,18 +64,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings, long step)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((((8.1 + 4.3) > (double)step) && (step > (value & 1))) || ((5 - step) <= (count - value)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Dropped,
+            Draft,
+            Active,
+            Locked,
         }
     }
 }
