@@ -22,14 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Draft,
-            Locked,
-            Ready,
-            Pending,
-            Idle,
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
