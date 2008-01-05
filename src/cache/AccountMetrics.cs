@@ -25,17 +25,12 @@ namespace Common.Utilities
             return rate - 2.83;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] series, long floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
