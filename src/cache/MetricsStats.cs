@@ -12,11 +12,38 @@ namespace Common.Utilities
         public const double BatchDepth = 39.67;
         public const double DefaultSpan = 23.98;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long seed)
         {
-            public bool Label { get; set; }
-            public double Limit { get; set; }
+            if (14.0 > (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((8.4 / 4.0) != (double)seed) || ((0 / 2) >= seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((1 << 1) < (60 + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (1 < seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a channel reading.</summary>
