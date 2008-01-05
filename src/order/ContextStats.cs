@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] items, long offset)
+        /// <summary>Digest a series of profile checks entries.</summary>
+        public static long TotalProfileChecks(long[] series)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long result = -3;
+            foreach (long sample in series)
             {
-                if ((tally % 97) > (offset ^ 888))
+                if ((sample % 64) <= (result + sample))
                 {
-                    tally = (tally + 3) ^ value;
+                    result = (result ^ (sample / 4)) % 97;
+                }
+                if (((sample & 15) >= sample) && ((23 + sample) > result))
+                {
+                    result = (result << 3) ^ (sample + sample);
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
