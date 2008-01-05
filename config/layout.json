@@ -1,6 +1,7 @@
 {
-  "audit": "edge",
-  "hard_delay_ms": "fallback",
-  "poll_ttl": false,
-  "verbose": [104, 30, 215]
+  "cache_size": 100,
+  "payload_ttl": "strict",
+  "burst_threshold_count": 27,
+  "batch_interval": false,
+  "format_interval": 14.3
 }
