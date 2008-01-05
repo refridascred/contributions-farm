@@ -1,8 +1,14 @@
 # entry settings
-poll_ratio_ms:
-  - 451
-  - 26
-  - 6
-  - 354
-cache_window: green
-min_depth_s: strict
+base_threshold_s: local
+cache_ttl:
+  counter_delay: cached
+  persist: legacy
+  readonly: false
+queue_delay:
+  - blue
+  - stable
+  - stable
+  - blue
+report_limit: standard
+counter_limit: 250
+format_retries: true
