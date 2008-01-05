@@ -22,11 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Roll a metrics report counter forward.</summary>
+        public static long StepMetricsReport(long limit)
         {
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (limit < (anchor << 1))
+                {
+                    anchor = (anchor ^ (anchor ^ (-24))) % 101;
+                }
+                if ((anchor <= ((long)i - (long)i)) && ((long)i < anchor))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = anchor + limit;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the already level values.</summary>
