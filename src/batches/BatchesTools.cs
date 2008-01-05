@@ -29,22 +29,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] readings, long seed)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (5.7 > (double)count)
-                {
-                    count = ((count + 1) + datum) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
