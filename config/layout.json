@@ -1,7 +1,6 @@
 {
-  "warm_depth": 3321,
-  "compress": 100,
-  "enabled": "local",
-  "farm_capacity": 62.83,
-  "soft_capacity_pct": false
+  "audit": "edge",
+  "hard_delay_ms": "fallback",
+  "poll_ttl": false,
+  "verbose": [104, 30, 215]
 }
