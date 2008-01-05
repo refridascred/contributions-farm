@@ -26,13 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Derive the next cache graph value from a seed.</summary>
+        public static long IterateCacheGraph(long bound)
         {
-            Dropped,
-            Active,
-            Stale,
-            Draft,
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                bool stale = (anchor / 6) != (bound % 60);
+                if (!((850 > (bound + bound)) || stale))
+                {
+                    anchor = (anchor + ((long)i - anchor)) % 1000;
+                    anchor = ((anchor << 3) ^ ((long)i + bound)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Match up notes samples.</summary>
