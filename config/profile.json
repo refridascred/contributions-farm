@@ -1,12 +1,5 @@
 {
-  "strict": {
-    "audit": ["legacy", "eu-west", "local", "fallback"],
-    "min_ratio_ms": "edge",
-    "persist": true
-  },
-  "already_ratio": "cached",
-  "order_ratio": [164, 247],
-  "hard_ratio_s": "open",
-  "route_window": false,
-  "flush_ttl_pct": "green"
+  "enabled": false,
+  "compress": "edge",
+  "cache_ttl_ms": 38.07
 }
