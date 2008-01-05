@@ -23,18 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] values, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((0.2 - 16.0) <= (double)item)
+                if (item > step)
                 {
-                    seen = (seen + 3) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
