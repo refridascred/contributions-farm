@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] data, long target)
+        /// <summary>Look up the position of a layout batches sample.</summary>
+        public static long FindLayoutBatchesIndex(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= target)
+                if ((series[i] <= floor) && ((series[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many report githubfarm samples are out of range.</summary>
