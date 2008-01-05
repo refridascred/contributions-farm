@@ -70,12 +70,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Blend two stats measurements.</summary>
