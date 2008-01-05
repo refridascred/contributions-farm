@@ -39,12 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 24.88;
-        public const long DefaultPayload = 2640;
-        public const long SoftDepth = 4450;
-        public const double BatchPayload = 49.88;
-        public const string MaxPayload = "alpha";
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Done,
+            Queued,
+            Pending,
+            Failed,
+            New,
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ProjectQueue(double bias, double span)
