@@ -1,6 +1,8 @@
 {
-  "window_threshold": false,
-  "readonly": 0.02,
-  "base_limit_count": "green",
-  "default_window_s": 78.35
+  "base_size_ms": "open",
+  "flush_window_s": true,
+  "readonly": 54,
+  "entry_window": ["primary", "latest"],
+  "retry_ratio_ms": "green",
+  "sync_window": 8.82
 }
