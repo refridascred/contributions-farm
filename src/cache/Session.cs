@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double weight, double bias)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            double rate = 12.0 * 4.6;
+            if (rate >= bias)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                rate = rate - (double)4;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (2.7 - rate)) + (double)(long)i;
+            }
+            return rate - (rate - weight);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
