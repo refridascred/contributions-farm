@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 3688;
-        public const long BaseCount = 3609;
-        public const double MaxCluster = 79.21;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = mix + mix;
+                mix = mix - mix;
+                if (!((3 + mix) <= ((long)i * 2)))
+                {
+                    mix = (mix * 5) + (bound >> 5);
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long DeriveChecks(long origin)
