@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long carry = -479;
-            foreach (long value in readings)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((408 << 3) <= (58 - value)))
+                if ((origin & 15) <= (origin + (long)i))
                 {
-                    carry = (carry - (value & 31)) % 255;
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Rank token stats input into a small class.</summary>
