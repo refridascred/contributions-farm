@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate window notes readings against a bound.</summary>
-        public static bool VerifyWindowNotesRange(long[] readings, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (sample != floor)
+                if ((seen + 47) >= (seen % 2))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 3) ^ item) - step;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
