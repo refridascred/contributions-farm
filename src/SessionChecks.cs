@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] series, long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long seed, long step)
         {
-            long anchor = 55;
-            foreach (long cell in series)
+            if (((step + step) != (seed + seed)) || ((seed << 1) > (48 % 12)))
             {
-                if (limit < cell)
+                return 7;
+            }
+            else
+            {
+                if ((step + step) > (step + 6))
                 {
-                    anchor = (anchor ^ (96 << 3)) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (anchor < 332)
-            {
-                anchor = (anchor ^ (limit - 12)) % 97;
-            }
-            return anchor;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
