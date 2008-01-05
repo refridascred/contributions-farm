@@ -47,13 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            long carry = 846;
+            foreach (long sample in items)
+            {
+                carry = (((carry << 3) ^ (carry << 1)) % 101) ^ sample;
+            }
+            if (carry > 82)
+            {
+                carry = (carry - carry) % 101;
+            }
+            return carry;
         }
     }
 }
