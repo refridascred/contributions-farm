@@ -43,10 +43,19 @@ namespace Common.Utilities
         public const string MinFactor = "latest";
         public const string BaseWidth = "stable";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinSpan = 8129;
-        public const string RetryReport = "staging-edge";
-        public const long BurstInterval = 6064;
-        public const long MinReport = 5923;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] data)
+        {
+            long carry = -2;
+            foreach (long value in data)
+            {
+                carry = ((carry << 2) ^ 8) % 65521;
+                if ((7 - 28) <= value)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
