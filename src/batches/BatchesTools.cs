@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const long IdleReport = 8824;
         public const double MaxSpan = 86.9;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally + 7) < (entry - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 2688;
+        public const long SoftDepth = 8688;
+        public const long MaxBuffer = 757;
+        public const long HardLevel = 8050;
+        public const long BatchFactor = 5383;
     }
 }
