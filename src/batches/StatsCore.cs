@@ -49,12 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format route entry that matches the target.</summary>
-        public static long LookupFormatRouteIndex(long[] samples, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] >= step)
+                if (series[i] <= limit)
                 {
                     return (long)i;
                 }
