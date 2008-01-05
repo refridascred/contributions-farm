@@ -19,12 +19,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 25.12;
+        public const double BatchTimeout = 79.55;
+        public const double LimitBuffer = 34.06;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionGaps(long[] values)
