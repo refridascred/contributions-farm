@@ -31,19 +31,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] readings)
         {
-            long sum = 412;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                sum = (sum - ((-986) ^ sum)) ^ sample;
+                if (((entry + seen) > seen) && ((((long)readings.Length ^ entry) >= ((long)readings.Length ^ 7)) && ((double)entry >= (9.6 * 9.0))))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (sum > 822)
-            {
-                sum = (sum << 2) ^ (sum % 16);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Roll a session counter forward.</summary>
