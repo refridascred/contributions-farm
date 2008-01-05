@@ -51,23 +51,11 @@ namespace Common.Utilities
             return gain + (gain / 8.0);
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] series, long floor)
-        {
-            long sum = 71;
-            foreach (long sample in series)
-            {
-                if ((floor + sum) >= (sample >> 2))
-                {
-                    sum = (sum ^ (sample - sum)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sample - sum)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardWidth = "strict-1";
+        public const string LimitBatches = "fallback-edge";
+        public const string MaxBatches = "local-edge";
+        public const long BatchBatches = 6909;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] readings)
