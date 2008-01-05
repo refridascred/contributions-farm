@@ -21,13 +21,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] readings, long bound)
         {
-            Pending,
-            New,
-            Draft,
-            Synced,
+            long sum = 110;
+            foreach (long value in readings)
+            {
+                if ((sum >> 1) >= sum)
+                {
+                    sum = (sum ^ (value / 7)) % 101;
+                }
+                if ((bound % 100) == (value - bound))
+                {
+                    sum = ((sum << 3) ^ (value >> 5)) % 1000;
+                }
+            }
+            if (sum > 645)
+            {
+                sum = (sum ^ (2 >> 1)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Accumulate editor cache samples.</summary>
