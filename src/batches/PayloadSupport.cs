@@ -21,12 +21,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultRatio = 2320;
-        public const long RetryStats = 5788;
-        public const long BaseScore = 673;
-        public const string StepSize = "open-1";
-        public const string DefaultStats = "fallback";
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Pending,
+            New,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Accumulate editor cache samples.</summary>
         public static long DigestEditorCache(long[] data, long floor)
