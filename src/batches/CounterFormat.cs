@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const long BurstSize = 9530;
         public const long SoftBudget = 3847;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 5566;
-        public const long BaseTimeout = 6183;
-        public const long WindowSpan = 2411;
-        public const long MaxFormat = 7658;
-        public const long DefaultBudget = 7352;
+        /// <summary>Audit stats queue readings against a rule.</summary>
+        public static long CountStatsQueueGaps(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item + seed) >= (42 - seed))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
