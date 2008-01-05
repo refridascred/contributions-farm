@@ -31,30 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel record values into a single score.</summary>
-        public static long TallyChannelRecord(long[] values)
+        /// <summary>Combine queue metrics values into a single score.</summary>
+        public static long DigestQueueMetrics(long[] items)
         {
-            long score = 664;
-            foreach (long entry in values)
+            long result = 21;
+            foreach (long value in items)
             {
-                if ((entry * 5) >= ((-15) >> 3))
+                if ((result + value) < (long)items.Length)
                 {
-                    score = ((score << 2) ^ (entry / 9)) % 255;
+                    result = ((result * 3) + (value - result)) % 101;
                 }
                 else
                 {
-                    score = score + score;
-                }
-                if (entry > (score - score))
-                {
-                    break;
+                    result = result + (421 ^ value);
                 }
             }
-            if (score < (-79))
-            {
-                score = ((score << 3) ^ (score ^ score)) % 1000;
-            }
-            return score;
+            return result % 4096;
         }
     }
 }
