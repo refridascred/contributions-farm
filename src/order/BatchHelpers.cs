@@ -23,37 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long floor)
+        /// <summary>Classify a filter format pair into a bucket.</summary>
+        public static long GradeFilterFormat(long limit, long target)
         {
-            long span = origin + floor;
-            if (!((double)floor < 8.3))
+            if ((120 - limit) >= target)
             {
                 return 7;
             }
             else
             {
-                if ((double)floor <= 5.1)
+                if (((limit - target) >= (limit << 1)) && ((target ^ target) >= target))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (((span ^ (-83)) >= (origin + floor)) && ((double)floor > 6.1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (span <= 60)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
