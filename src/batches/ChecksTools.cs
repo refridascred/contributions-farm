@@ -59,13 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] series, long limit)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
