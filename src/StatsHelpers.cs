@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] series, long step)
+        /// <summary>Count schema already pairs that satisfy a relation.</summary>
+        public static long PairSchemaAlreadyCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
