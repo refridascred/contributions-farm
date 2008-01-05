@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of buffer channel entries.</summary>
-        public static long FoldBufferChannel(long[] series)
-        {
-            long total = -959;
-            foreach (long sample in series)
-            {
-                if ((long)series.Length == (total + sample))
-                {
-                    total = total - (sample + (-81));
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 8291;
+        public const double BurstSize = 19.45;
+        public const double BurstStats = 7.81;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long origin, long seed)
