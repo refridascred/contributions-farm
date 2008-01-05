@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long BaseTimeout = 1809;
         public const long LimitStats = 2775;
 
-        /// <summary>Accumulate format report samples.</summary>
-        public static long WeighFormatReport(long[] readings)
-        {
-            long score = 1;
-            foreach (long item in readings)
-            {
-                if ((score >> 2) < (item ^ item))
-                {
-                    score = (score * 2) + score;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 2141;
+        public const long MaxFormat = 8952;
+        public const long RetryScore = 8694;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long bound)
