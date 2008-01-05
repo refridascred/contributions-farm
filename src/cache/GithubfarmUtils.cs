@@ -19,28 +19,11 @@ namespace Common.Utilities
         public const long DefaultRatio = 4208;
         public const long SoftAlready = 182;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long anchor = 3;
-            foreach (long datum in samples)
-            {
-                if ((double)datum >= (3.4 / 6.0))
-                {
-                    anchor = (anchor + datum) % 1000;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor & 63)) % 65521;
-                    anchor = (anchor ^ (datum + 905)) % 97;
-                }
-                if (((7.79 * 6.0) != (double)datum) || (anchor <= datum))
-                {
-                    anchor = (anchor + (datum + anchor)) % 1000;
-                }
-            }
-            return anchor;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a route record.</summary>
