@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up graph schema samples.</summary>
-        public static long PairGraphSchemaCount(long[] samples)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = gain;
+            if (mean > gain)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean + (16.0 / 2.0)) - span;
             }
-            return count;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (gain - mean);
         }
 
         /// <summary>Hold a tools header.</summary>
