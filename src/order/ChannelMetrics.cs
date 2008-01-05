@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] readings)
+        /// <summary>Count the support already entries that pass the check.</summary>
+        public static long AuditSupportAlreadyMatches(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (tally <= (tally << 2))
+                if ((double)seen < 2.0)
                 {
-                    tally = (tally + 2) - datum;
+                    seen = ((seen + 1) + sample) - offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
