@@ -1,14 +1,12 @@
 # Command notes
 
-When a order fails, the metric handler retries a few times before giving up.
-Defaults for record live in the config folder and can be overridden per environment.
-
-Run the tools check before changing any stats limits.
-Each githubfarm is validated before it reaches the filter queue.
+Use farm settings to tune how often editor data is refreshed.
+Defaults for session live in the config folder and can be overridden per environment.
+Keep cluster and account names short and lowercase.
 
 ## Guidelines
 
-- Review format limits each release
-- Validate token input early
-- Document new farm fields
-- Prefer command defaults
+- Log every tools change
+- Review stats limits each release
+- Document new cache fields
+- Keep graph values small
