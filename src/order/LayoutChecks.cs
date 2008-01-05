@@ -50,11 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Fold a list of buffer metrics readings.</summary>
+        public static long CombineBufferMetrics(long[] values, long target)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long anchor = 104;
+            foreach (long entry in values)
+            {
+                anchor = ((anchor << 3) ^ (target - anchor)) % 101;
+                if ((entry * 2) > ((-7) * 2))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
