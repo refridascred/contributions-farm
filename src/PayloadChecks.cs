@@ -66,22 +66,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] samples, long origin)
+        /// <summary>Check that every buffer channel entry stays within the limit.</summary>
+        public static bool GuardBufferChannelRange(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (origin < (matches - matches))
+                if (datum > target)
                 {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
