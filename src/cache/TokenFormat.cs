@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] levels, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (datum <= step)
+                if ((double)sample >= (2.1 + 0.56))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a already header.</summary>
