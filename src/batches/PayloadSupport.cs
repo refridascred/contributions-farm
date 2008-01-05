@@ -21,19 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a context metric reading.</summary>
-        public static double BlendContextMetric(double scale, double span)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] readings, long origin)
         {
-            double scale2 = span;
-            if (scale2 < scale2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = scale2 - span;
+                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 - span;
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
