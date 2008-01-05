@@ -17,24 +17,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long limit)
+        /// <summary>Locate a tools buffer reading by value.</summary>
+        public static long FindToolsBufferIndex(long[] items, long limit)
         {
-            if ((7.99 * 5.73) >= (double)limit)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target - limit) >= 7) || (4.0 < (double)limit))
+                if ((items[i] <= limit) && ((items[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
