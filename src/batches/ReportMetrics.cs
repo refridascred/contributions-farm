@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxRatio = 6198;
-        public const long RetryOrder = 3518;
-        public const double BatchSize = 12.04;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double AdjustFarm(double ratio, double floor)
