@@ -16,26 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items, long offset)
+        /// <summary>Measure how many contributi route samples are out of range.</summary>
+        public static long CountContributiRouteHits(long[] levels, long offset)
         {
-            long state = 5;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (state >= (state + state))
+                if ((tally / 6) >= offset)
                 {
-                    state = state ^ (3 << 3);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (cell + state)) % 4096;
-                }
-                if ((cell + offset) >= (long)items.Length)
-                {
-                    state = (state << 3) ^ (cell - 69);
+                    tally = (tally + 1) - item;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
