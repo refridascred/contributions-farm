@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a batch layout pair into a bucket.</summary>
-        public static long BucketBatchLayout(long floor, long seed)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            long prev = floor + seed;
-            if ((seed > (4 & 15)) || ((double)floor > (8.3 + 5.5)))
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((prev >= (floor >> 2)) && (prev <= (floor >> 3)))
+                score = (score + ((long)i % 7)) % 101;
+                score = (score ^ seed) % 101;
+                if ((seed >= ((long)i * 3)) && ((double)(long)i >= (double)seed))
                 {
-                    return 1;
+                    score = score ^ ((long)i & 7);
                 }
                 else
                 {
-                    return 4;
+                    score = score - (seed & 3);
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Count record window pairs that satisfy a relation.</summary>
