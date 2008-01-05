@@ -1,4 +1,4 @@
 # support settings
-persist: eu-west
-payload_window: 97.55
-min_limit_ms: true
+min_depth_s: open
+hard_capacity_pct: 1024
+burst_depth_count: 7515
