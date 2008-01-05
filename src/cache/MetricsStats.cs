@@ -43,15 +43,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two commits counter measurements.</summary>
-        public static double BlendCommitsCounter(double bias, double offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] series, long target)
         {
-            double mean = offset;
-            for (int i = 0; i < 2; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                mean = ((mean + offset) - (double)(long)i) + bias;
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - (double)8;
+            return flag;
         }
 
         /// <summary>Hold a metrics options.</summary>
