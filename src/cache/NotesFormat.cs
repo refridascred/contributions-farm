@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next metrics window value.</summary>
-        public static double BlendMetricsWindow(double bias, double bias2)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] samples, long bound)
         {
-            double mean = (double)(264 << 1);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (((mean + 2.3) + (double)(long)i) - bias) + bias2;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (double)126;
+            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
