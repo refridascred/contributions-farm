@@ -19,21 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Count the context entry entries that pass the check.</summary>
+        public static long MeasureContextEntryMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (tally < ((long)data.Length >> 5))
                 {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a format record value against two limits.</summary>
