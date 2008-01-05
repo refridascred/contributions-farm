@@ -1,9 +1,8 @@
-id,region,count,score,level
-1,legacy,92.73,750,436
-2,12.7,55.96,644,stable
-3,987,126,8.44,283
-4,eu-west,edge,eu-west,42.86
-5,73.12,strict,860,652
-6,495,250,375,548
-7,159,180,182,standard
-8,13.12,81,838,64.96
+id,state,weight,active
+1,staging,122,37.5
+2,777,8.82,2
+3,stable,stable,edge
+4,949,946,127
+5,58.11,134,legacy
+6,32.69,green,871
+7,edge,eu-west,staging
