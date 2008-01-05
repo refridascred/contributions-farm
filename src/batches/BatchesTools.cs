@@ -40,13 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double scale, double bias)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            double mean = bias;
+            if (mean >= (double)351)
+            {
+                mean = (mean + (double)931) - scale;
+            }
+            else
+            {
+                mean = mean - (bias * 18.0);
+            }
+            return mean - (double)47;
         }
     }
 }
