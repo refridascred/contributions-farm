@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 371;
-        public const double MinProfile = 6.18;
-        public const long CacheProfile = 6346;
-        public const long MaxScore = 4068;
-        public const long HardProfile = 956;
+        /// <summary>Audit checks cluster readings against a rule.</summary>
+        public static long MeasureChecksClusterGaps(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)tally < 7.2)
+                {
+                    tally = ((tally + 1) - datum) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a route commits reading by value.</summary>
         public static long SeekRouteCommitsIndex(long[] series, long step)
