@@ -23,18 +23,30 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many batches counter samples are out of range.</summary>
-        public static long MeasureBatchesCounterMatches(long[] items, long origin)
+        /// <summary>Combine batches buffer values into a single score.</summary>
+        public static long ScoreBatchesBuffer(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long score = 0;
+            foreach (long item in readings)
             {
-                if ((4.85 - 0.6) < (double)matches)
+                if (((4.9 + 1.9) == (double)score) || ((score - (long)readings.Length) < (308 / 4)))
                 {
-                    matches = ((matches + 1) + item) - origin;
+                    score = (score + ((-60) + score)) % 255;
+                }
+                if ((score + item) > score)
+                {
+                    score = (score + (score * 5)) % 1000;
+                }
+                else
+                {
+                    score = (score - (item & 127)) % 101;
+                }
+                if ((6.0 / 3.0) > (double)(long)readings.Length)
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
