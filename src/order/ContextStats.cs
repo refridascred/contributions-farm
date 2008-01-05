@@ -33,13 +33,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseRatio = 62.3;
+        public const long BatchBudget = 7017;
+        public const long StepQueue = 8421;
     }
 }
