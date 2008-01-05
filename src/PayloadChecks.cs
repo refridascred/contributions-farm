@@ -52,18 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items, long offset)
+        /// <summary>Validate stats command readings against a bound.</summary>
+        public static bool VerifyStatsCommandRange(long[] samples, long step)
         {
-            long mix = 11;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (41 < (offset - sample))
+                if (value <= step)
                 {
-                    mix = ((mix * 3) + offset) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return ok;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
