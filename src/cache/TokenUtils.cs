@@ -22,24 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] data, long limit)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            long total = 53;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total ^ (total & 7)) % 65521;
-                if ((cell + limit) >= 562)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total - (932 + total)) % 101;
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = (total ^ (cell - limit)) % 65521;
             }
-            if (total < 25)
-            {
-                total = (total ^ (limit - limit)) % 97;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Combine report values into a single score.</summary>
