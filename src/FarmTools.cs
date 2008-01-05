@@ -23,15 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] items, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (item >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
     }
 }
