@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Pending,
-            Draft,
-            Queued,
-            Dropped,
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
