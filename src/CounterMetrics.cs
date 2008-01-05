@@ -49,14 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Synced,
-            Draft,
-            Active,
-            Done,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxLevel = 5919;
+        public const long BatchGithubfarm = 6775;
+        public const double BurstSpan = 77.31;
+        public const long BurstLevel = 152;
     }
 }
