@@ -56,24 +56,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (((long)i * 2) < (mix * 5))
+                if (datum != target)
                 {
-                    mix = ((mix << 3) ^ (mix * 5)) % 97;
-                    continue;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix * 3) + (bound + bound);
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return flag;
         }
     }
 }
