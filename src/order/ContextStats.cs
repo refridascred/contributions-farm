@@ -35,13 +35,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] items, long limit)
         {
-            Ready,
-            Idle,
-            Paused,
-            Retry,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
