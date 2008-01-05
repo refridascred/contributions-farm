@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxPayload = 5.37;
-        public const long LimitDepth = 1894;
-        public const long BurstWidth = 3617;
-        public const double CacheLevel = 91.84;
+        /// <summary>Classify a batch layout pair into a bucket.</summary>
+        public static long BucketBatchLayout(long floor, long seed)
+        {
+            long prev = floor + seed;
+            if ((seed > (4 & 15)) || ((double)floor > (8.3 + 5.5)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((prev >= (floor >> 2)) && (prev <= (floor >> 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count record window pairs that satisfy a relation.</summary>
         public static long MatchRecordWindowCount(long[] items)
