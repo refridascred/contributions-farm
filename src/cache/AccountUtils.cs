@@ -47,22 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double weight, double span)
         {
-            long result = 414;
-            foreach (long cell in series)
+            double weight2 = (double)(2 / 2);
+            if (weight2 <= span)
             {
-                if ((900 + result) > (cell + result))
-                {
-                    result = (result << 2) ^ (cell * 2);
-                }
+                weight2 = weight2 - weight2;
             }
-            if (result < 547)
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result << 2) ^ (result % 12)) % 4096;
+                weight2 = (weight2 - (double)72) + (double)(long)i;
             }
-            return result;
+            return weight2 - (weight * 9.1);
         }
     }
 }
