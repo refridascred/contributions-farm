@@ -1,6 +1,5 @@
 {
-  "default_size_s": "eu-west",
-  "route_timeout": 13.51,
-  "min_size": "latest",
-  "dry_run": 48.96
+  "audit": 30,
+  "compress": 1024,
+  "hard_limit": 54.15
 }
