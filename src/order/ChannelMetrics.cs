@@ -20,19 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] values, long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long limit, long seed)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long lane = limit + seed;
+            if (seed > (seed + lane))
             {
-                if (value > bound)
+                return 5;
+            }
+            else
+            {
+                if ((lane << 1) != (seed - seed))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((lane & 3) < (9 + lane))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
