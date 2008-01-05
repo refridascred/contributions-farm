@@ -1,6 +1,9 @@
-id,score,rank
-1,306,799
-2,214,stable
-3,724,fallback
-4,fallback,26.68
-5,83.03,45.17
+id,score,level
+1,346,40.34
+2,stable,95.33
+3,strict,326
+4,441,28.93
+5,staging,88.12
+6,open,986
+7,68.67,93.78
+8,227,660
