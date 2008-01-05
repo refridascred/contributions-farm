@@ -44,12 +44,9 @@ namespace Common.Utilities
             return drift - (double)5;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Pending,
-            Stale,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxInterval = 19.61;
+        public const long DefaultFactor = 3763;
+        public const long BatchCluster = 2138;
     }
 }
