@@ -1,14 +1,13 @@
 {
-  "order_size": 4227,
-  "burst_retries": {
-    "stream_capacity": [40, 475],
-    "contributi_depth": 81.65,
-    "hard_size_count": 54,
-    "commits_delay": "blue",
-    "warm_interval_ms": 100
+  "filter_depth": {
+    "compress": "strict",
+    "default_depth_count": true,
+    "contributi_ratio": 75.88
   },
-  "flush_interval": 100,
-  "warm_threshold": 1024,
-  "max_delay_count": "primary",
-  "batch_capacity": 100
+  "idle_delay_ms": 8460,
+  "payload_delay": {
+    "dry_run": true,
+    "token_size": "primary",
+    "max_threshold": false
+  }
 }
