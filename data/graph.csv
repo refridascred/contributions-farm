@@ -1,6 +1,6 @@
-id,ratio,count
-1,301,904
-2,29.06,open
-3,973,33.83
-4,18.7,912
-5,607,standard
+id,score,rank
+1,306,799
+2,214,stable
+3,724,fallback
+4,fallback,26.68
+5,83.03,45.17
