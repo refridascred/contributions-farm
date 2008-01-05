@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the report token entries that pass the check.</summary>
+        public static long MeasureReportTokenHits(long[] levels, long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((2 - origin) >= (matches * 5))
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the githubfarm session entries that pass the check.</summary>
