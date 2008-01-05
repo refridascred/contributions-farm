@@ -36,14 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            New,
-            Done,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "primary-v2";
+        public const double IdleAccount = 45.99;
+        public const long WindowAccount = 263;
+        public const long WindowSpan = 5309;
 
         /// <summary>Accumulate graph metric samples.</summary>
         public static long TallyGraphMetric(long[] samples)
