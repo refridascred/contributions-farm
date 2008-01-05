@@ -34,24 +34,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of batch window readings.</summary>
-        public static long TotalBatchWindow(long[] samples, long step)
+        /// <summary>Combine batch cluster values into a single score.</summary>
+        public static long CombineBatchCluster(long[] data)
         {
-            long mix = 8;
-            foreach (long cell in samples)
+            long score = 66;
+            foreach (long datum in data)
             {
-                if ((mix + step) >= (mix + cell))
-                {
-                    mix = (mix * 2) + (cell * 3);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix + cell);
-                    mix = (mix ^ mix) % 97;
-                }
-                mix = (mix + cell) % 1000;
+                score = ((score << 2) ^ (score * 4)) ^ datum;
             }
-            return mix % 65521;
+            if (score > 71)
+            {
+                score = (score ^ (8 * 4)) % 101;
+            }
+            return score;
         }
     }
 }
