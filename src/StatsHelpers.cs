@@ -28,13 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] data)
         {
-            Ready,
-            Failed,
-            New,
-            Done,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)count <= (1.95 / 2.0))
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
