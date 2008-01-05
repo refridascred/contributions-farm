@@ -1,17 +1,19 @@
 # support settings
-support_capacity: 30.66
-dry_run:
-  contributi_timeout:
-    soft_size: true
-    strict: 7.7
-    persist: 16
-  strict: 17.12
-  warm_ttl_ms:
-    - local
-    - latest
-    - edge
-    - fallback
-batch_delay_count:
-  - staging
-  - stable
-  - primary
+warm_interval: stable
+burst_capacity_ms: legacy
+warm_depth_ms:
+  soft_interval_ms:
+    - 240
+    - 176
+  max_timeout_pct: 5891
+  batch_depth: eu-west
+  readonly: green
+  compress: primary
+  persist:
+    enabled: 60
+    cache_retries: 0.82
+    flush_ttl_ms: open
+    flush_interval_pct: strict
+    persist: latest
+    filter_threshold: 78
+cache_threshold_s: 2685
