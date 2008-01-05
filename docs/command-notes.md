@@ -1,12 +1,10 @@
 # Command notes
 
-Keep record and record names short and lowercase.
-The support helpers are pure functions, so they are safe to call from any thread.
-Defaults for filter live in the config folder and can be overridden per environment.
+Each stats is validated before it reaches the route queue.
+When a buffer fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate record input early
-- Document new batch fields
-- Log every checks change
-- Prefer account defaults
+- Document new session fields
+- Review commits limits each release
+- Log every batches change
