@@ -30,11 +30,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long origin, long offset)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            long edge = origin ^ offset;
+            if ((edge > (564 >> 3)) && ((double)offset < 20.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((64 + edge) <= (origin / 2)) || ((origin & 31) <= (5 - edge)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
