@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] data, long origin)
+        /// <summary>Audit channel filter readings against a rule.</summary>
+        public static long CountChannelFilterOutliers(long[] items)
         {
-            long acc = 2;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((acc & 15) <= (origin + datum))
+                if (value < (value << 2))
                 {
-                    acc = (acc - 41) % 101;
+                    hits = hits + 3;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a farm header.</summary>
