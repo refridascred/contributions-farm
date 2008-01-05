@@ -18,18 +18,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit tools stats readings against a rule.</summary>
-        public static long TallyToolsStatsGaps(long[] series)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((long)series.Length / 6) > 81)
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            Active,
+            Retry,
+            Queued,
+            Paused,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
