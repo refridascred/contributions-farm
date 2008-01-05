@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long RetryWidth = 7915;
         public const long SoftGithubfarm = 6731;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] samples)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)matches <= (3.87 - 7.2))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
