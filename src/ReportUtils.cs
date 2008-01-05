@@ -60,18 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] series)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((count + 4) > sample)
-                {
-                    count = count + 1;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
     }
 }
