@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up githubfarm token samples.</summary>
-        public static long CompareGithubfarmTokenCount(long[] levels)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total + (origin / 6)) % 97;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
