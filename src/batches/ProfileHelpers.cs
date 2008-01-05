@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long SoftDepth = 2462;
         public const long BurstSchema = 3566;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] items, long offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Retry,
+            Locked,
+            Synced,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
