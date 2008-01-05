@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((5.25 * 1.91) == (double)cell)
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "staging-edge";
+        public const double MinSpan = 18.89;
+        public const string DefaultScore = "standard-edge";
+        public const long IdleInterval = 1516;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long RollCommand(long step)
