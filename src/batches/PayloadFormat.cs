@@ -54,19 +54,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] series, long floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Pending,
+            New,
         }
     }
 }
