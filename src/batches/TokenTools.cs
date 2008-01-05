@@ -33,13 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long seed)
         {
-            public double Mode { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix ^ ((long)i + mix)) % 4096;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
