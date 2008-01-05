@@ -46,12 +46,19 @@ namespace Common.Utilities
             return weight + 9.0;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double rate, double span)
         {
-            Paused,
-            Draft,
-            Synced,
+            double scale = span;
+            if (scale < (double)9)
+            {
+                scale = (scale + 15.0) + rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (scale * 3.1)) - (double)(long)i;
+            }
+            return scale + 5.0;
         }
     }
 }
