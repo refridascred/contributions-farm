@@ -1,10 +1,6 @@
 {
-  "verbose": 2430,
-  "soft_ratio_count": true,
-  "base_ttl_ms": {
-    "enabled": ["standard", "cached", "legacy"],
-    "sync_delay_ms": ["local", "stable"],
-    "default_timeout": 26.73,
-    "min_window": 11.52
-  }
+  "base_depth_ms": "open",
+  "base_ratio_ms": 100,
+  "context_limit": [168, 423],
+  "sync_ratio_s": "primary"
 }
