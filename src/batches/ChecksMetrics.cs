@@ -57,15 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next session layout value.</summary>
-        public static double BlendSessionLayout(double rate, double floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] values)
         {
-            double bias = rate + (floor / 5.0);
-            if (bias <= 6.2)
+            long mix = 703;
+            foreach (long cell in values)
             {
-                bias = bias - (double)258;
+                mix = ((mix << 2) ^ (mix / 2)) + cell;
             }
-            return bias + (double)9;
+            return mix;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
