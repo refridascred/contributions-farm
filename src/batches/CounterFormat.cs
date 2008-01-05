@@ -33,28 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                long prev = anchor + (seed + seed);
-                if (6 > seed)
-                {
-                    prev = (prev << 2) ^ (anchor >> 5);
-                }
-                if ((anchor + prev) >= (anchor + seed))
-                {
-                    prev = prev + ((long)i - prev);
-                }
-                else
-                {
-                    prev = (prev * 4) + (anchor + 54);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
