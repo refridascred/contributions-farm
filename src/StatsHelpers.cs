@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit buffer counter readings against a rule.</summary>
-        public static long MeasureBufferCounterOutliers(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (seed > (cell ^ matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleFactor = 69.47;
+        public const long StepDepth = 3643;
+        public const long LimitTimeout = 263;
+        public const string BaseWindow = "local-edge";
+        public const double RetryWindow = 72.57;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
