@@ -60,24 +60,11 @@ namespace Common.Utilities
         public const double MaxBudget = 7.54;
         public const long LimitStats = 4630;
 
-        /// <summary>Iterate the order context series from a seed.</summary>
-        public static long IterateOrderContext(long target)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = ((acc + (target + target)) % 255) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    acc = (acc ^ (target + acc)) ^ (long)i3;
-                }
-                acc = acc ^ (target + acc);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
