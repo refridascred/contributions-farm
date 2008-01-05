@@ -30,19 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double scale, double span)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double load = scale - 5.0;
-            if (load >= (4.0 / 2.0))
-            {
-                load = load - (scale * 6.1);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (span * 12.0)) + (double)(long)i;
-            }
-            return load + (scale / 5.0);
+            Locked,
+            Active,
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Find the first schema report entry that matches the target.</summary>
