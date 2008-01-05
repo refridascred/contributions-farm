@@ -23,15 +23,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double ratio, double floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] data)
         {
-            double scale = (ratio * 16.0) + (ratio + ratio);
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                scale = ((scale + (ratio / 9.0)) + (double)(long)i) - floor;
+                if ((value - count) < (474 - count))
+                {
+                    count = count + 1;
+                }
             }
-            return scale + 19.0;
+            return count;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
