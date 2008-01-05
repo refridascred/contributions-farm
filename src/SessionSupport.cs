@@ -32,12 +32,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
+            Active,
             Closed,
             Stale,
-            New,
+            Failed,
+            Paused,
         }
     }
 }
