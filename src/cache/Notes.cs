@@ -50,21 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
