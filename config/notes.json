@@ -1,7 +1,5 @@
 {
-  "default_depth_s": "open",
-  "format_limit": "open",
-  "cluster_ttl": 1212,
-  "cache_delay": true,
-  "max_delay_ms": "local"
+  "contributi_ttl": 7.67,
+  "cache_window": false,
+  "order_window": 987
 }
