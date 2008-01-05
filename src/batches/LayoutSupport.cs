@@ -20,18 +20,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the metric cluster entries that pass the check.</summary>
-        public static long AuditMetricClusterMatches(long[] samples)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)sample <= (1.5 / 5.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
