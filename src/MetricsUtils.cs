@@ -66,19 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long carry = 846;
-            foreach (long sample in items)
-            {
-                carry = (((carry << 3) ^ (carry << 1)) % 101) ^ sample;
-            }
-            if (carry > 82)
-            {
-                carry = (carry - carry) % 101;
-            }
-            return carry;
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
