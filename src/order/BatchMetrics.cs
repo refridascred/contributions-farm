@@ -61,12 +61,17 @@ namespace Common.Utilities
         public const double WindowFactor = 44.85;
         public const double StepRatio = 64.54;
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] levels, long limit)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metric editor readings against a rule.</summary>
