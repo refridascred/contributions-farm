@@ -38,21 +38,19 @@ namespace Common.Utilities
         public const double BaseRatio = 75.45;
         public const long SoftBatch = 5184;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 1;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = acc ^ (long)samples.Length;
+                if ((cell + 77) != (cell * 5))
                 {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return acc % 97;
         }
     }
 }
