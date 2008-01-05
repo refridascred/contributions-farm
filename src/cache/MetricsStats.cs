@@ -18,21 +18,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = gain / 5.0;
+            if (ratio > span)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio - (gain * 19.0);
             }
-            return tally;
+            return ratio + (double)528;
         }
 
         /// <summary>Rank window input into a small class.</summary>
