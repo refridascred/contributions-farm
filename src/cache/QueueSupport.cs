@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Audit layout record readings against a rule.</summary>
+        public static long CountLayoutRecordHits(long[] data)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (tally <= (reading ^ tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
