@@ -20,12 +20,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCommits = 7.58;
-        public const long MinSize = 4806;
-        public const double BurstLevel = 8.95;
-        public const double SoftCommits = 61.88;
-        public const double LimitSpan = 6.9;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] series, long origin)
+        {
+            long mix = 29;
+            foreach (long entry in series)
+            {
+                if ((entry * 4) > (origin ^ entry))
+                {
+                    mix = ((mix * 5) + (entry >> 4)) % 255;
+                }
+                if ((mix % 64) >= (mix * 4))
+                {
+                    break;
+                }
+            }
+            if (mix > 17)
+            {
+                mix = mix + 19;
+            }
+            return mix;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheRange(long[] values, long limit)
