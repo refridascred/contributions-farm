@@ -39,10 +39,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 2027;
-        public const long MaxReport = 3753;
-        public const double WindowReport = 1.02;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 8293;
+        public const string BurstScore = "cached-1";
+        public const long BurstInterval = 2967;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long ClassifyContext(long step, long seed)
