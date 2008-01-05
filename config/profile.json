@@ -1,5 +1,16 @@
 {
-  "editor_depth": "green",
-  "burst_limit": "strict",
-  "batch_timeout": "edge"
+  "retry_limit": "cached",
+  "enabled": 4082,
+  "metrics_ratio": {
+    "max_delay_count": ["primary", "legacy"],
+    "burst_capacity_count": false,
+    "strict": {
+      "hard_retries": false,
+      "notes_threshold": 35,
+      "editor_limit": 36,
+      "burst_threshold": 14.23,
+      "warm_delay": "open"
+    }
+  },
+  "audit": 40
 }
