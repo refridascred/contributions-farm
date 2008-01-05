@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first batches order entry that matches the target.</summary>
-        public static long LookupBatchesOrderIndex(long[] data, long seed)
+        /// <summary>Combine counter metric values into a single score.</summary>
+        public static long TotalCounterMetric(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 294;
+            foreach (long cell in readings)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) != 0))
+                mark = mark - (938 % 97);
+                mark = (mark ^ origin) % 65521;
+                if (((double)origin <= (double)cell) && ((double)1 < (double)(long)readings.Length))
                 {
-                    return (long)i;
+                    mark = (mark + (3 + cell)) % 4096;
                 }
             }
-            return -1;
+            if (mark < 62)
+            {
+                mark = ((mark << 3) ^ (origin - 53)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a batch stats.</summary>
