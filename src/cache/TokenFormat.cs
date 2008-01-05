@@ -51,12 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
