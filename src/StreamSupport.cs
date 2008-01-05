@@ -12,12 +12,31 @@ namespace Common.Utilities
         public const long WindowLevel = 443;
         public const long SoftRatio = 5038;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long target, long origin)
         {
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
+            if ((double)origin <= 3.52)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin > (double)8)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (6.8 < (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
