@@ -27,19 +27,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] readings, long limit)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
