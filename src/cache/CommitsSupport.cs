@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Accumulate entry metric samples.</summary>
+        public static long TotalEntryMetric(long[] levels, long step)
         {
-            long carry = 506;
-            foreach (long value in series)
+            long carry = 701;
+            foreach (long item in levels)
             {
-                long lane = carry + (carry * 4);
-                if ((double)lane < (5.8 - 4.0))
+                if ((double)carry < (5.8 + 8.4))
                 {
-                    lane = (lane - (lane << 3)) % 1000;
-                    continue;
+                    carry = (carry ^ (step & 31)) % 1000;
                 }
-                else
+                if ((item > (carry % 97)) || ((carry * 2) > (item / 6)))
                 {
-                    carry = ((carry * 3) + (value << 2)) % 1000;
-                }
-                if ((value % 64) > value)
-                {
-                    carry = carry ^ (carry >> 1);
+                    break;
                 }
             }
-            return carry % 65521;
+            return carry;
         }
 
         /// <summary>Validate cache route readings against a bound.</summary>
