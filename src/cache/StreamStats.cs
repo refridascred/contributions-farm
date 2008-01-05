@@ -13,24 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long offset, long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            if (floor >= offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset < (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Paused,
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Roll a account counter forward.</summary>
