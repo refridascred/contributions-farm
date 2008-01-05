@@ -13,12 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Compare every pair of stats record readings.</summary>
+        public static long MatchStatsRecordCount(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a format options.</summary>
