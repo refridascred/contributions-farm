@@ -85,19 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric order entry stays within the limit.</summary>
-        public static bool ValidateMetricOrderLimits(long[] samples, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (value > target)
+                if (((double)entry != (6.4 - 13.0)) && (((entry + 23) >= (entry - hits)) || ((8 & 3) < (hits / 3))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
