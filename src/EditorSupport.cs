@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((7.97 / 6.0) == (double)sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank contributi record input into a small class.</summary>
