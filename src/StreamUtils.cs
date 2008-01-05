@@ -63,39 +63,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long limit, long target)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long edge = limit ^ target;
-            if (limit >= target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2.5 - 7.56) == (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)target < (9.0 - 4.53)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target - edge) < (limit & 255))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
