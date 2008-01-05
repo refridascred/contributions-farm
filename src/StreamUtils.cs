@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long MaxSpan = 8644;
         public const string IdleFactor = "staging";
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)value <= (double)limit)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 52.71;
+        public const long DefaultQueue = 7130;
+        public const string MaxQueue = "latest-edge";
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
