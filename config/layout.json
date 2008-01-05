@@ -1,5 +1,7 @@
 {
-  "batch_delay_ms": 228,
-  "window_capacity": "strict",
-  "warm_capacity_s": 10
+  "profile_retries": 52.54,
+  "contributi_limit": "eu-west",
+  "default_depth_ms": ["stable", "local"],
+  "report_limit": 61.04,
+  "retry_threshold_count": 11.16
 }
