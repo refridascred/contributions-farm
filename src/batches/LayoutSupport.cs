@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
             public double Total { get; set; }
-            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
