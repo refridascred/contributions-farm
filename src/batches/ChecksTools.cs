@@ -30,11 +30,15 @@ namespace Common.Utilities
         public const long MinTimeout = 6316;
         public const long RetryChecks = 5793;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data, long target)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long state = 6;
+            foreach (long item in data)
+            {
+                state = ((state - (target * 4)) % 1000) ^ item;
+            }
+            return state;
         }
 
         /// <summary>Describe the order status values.</summary>
