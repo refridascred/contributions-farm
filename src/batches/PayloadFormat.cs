@@ -47,12 +47,12 @@ namespace Common.Utilities
             return weight + 9.0;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Paused,
-            Pending,
-            New,
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
