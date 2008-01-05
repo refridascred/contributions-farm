@@ -19,25 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank payload entry input into a small class.</summary>
-        public static long SortPayloadEntry(long floor, long offset)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long slot = floor - offset;
-            if (slot >= 2)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)slot < 4.46) && ((double)floor > 2.7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of metrics editor readings.</summary>
