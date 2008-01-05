@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const long IdleReport = 8824;
         public const double MaxSpan = 86.9;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] values)
         {
-            Failed,
-            Done,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally + 7) < (entry - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
