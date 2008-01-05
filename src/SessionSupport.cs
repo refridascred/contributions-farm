@@ -22,24 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] samples)
         {
-            long state = 457;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                state = state + (value / 8);
-                state = state - (state + 6);
-                if (!(state <= (state >> 5)))
+                if (cell <= (seen >> 4))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (state > 869)
-            {
-                state = state - (state + state);
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
