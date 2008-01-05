@@ -32,15 +32,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Rank session editor input into a small class.</summary>
+        public static long GradeSessionEditor(long floor, long limit)
         {
-            long mix = 703;
-            foreach (long cell in values)
+            long step = floor ^ limit;
+            if (((floor + 17) < limit) || ((5.09 * 8.47) > (double)limit))
             {
-                mix = ((mix << 2) ^ (mix / 2)) + cell;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((8.46 + 1.5) > (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit != (4.0 - 7.5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step - floor) == (step << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route phase values.</summary>
