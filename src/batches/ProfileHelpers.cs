@@ -71,29 +71,21 @@ namespace Common.Utilities
         public const long RetryContext = 4885;
         public const double SoftContext = 56.72;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            long score = -235;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seed + seed) == (seed + score)) && ((score / 5) <= value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score << 3) ^ 2;
-                    score = (score * 4) + (1 + seed);
-                }
-                else
-                {
-                    score = (score << 2) ^ (score + seed);
-                }
-                score = (score ^ (seed << 2)) % 97;
-                score = (score << 2) ^ (seed + 235);
-                if ((1.0 + 13.0) <= (double)score)
-                {
-                    break;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return tally;
         }
     }
 }
