@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a context notes value against two limits.</summary>
-        public static long GradeContextNotes(long floor, long target)
+        /// <summary>Check that every buffer entry entry stays within the limit.</summary>
+        public static bool VerifyBufferEntryLimits(long[] readings, long step)
         {
-            long bound = floor + target;
-            if (floor < (474 + target))
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.19 - 6.8) == (double)target)
+                if (entry >= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound > (57 * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((15.0 / 2.0) <= (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the notes phase values.</summary>
