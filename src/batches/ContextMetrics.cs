@@ -38,22 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] series, long floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((floor << 3) > (count + floor))
-                {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
