@@ -20,32 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a schema report value against two limits.</summary>
-        public static long RankSchemaReport(long offset, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long floor)
         {
-            long span = offset ^ bound;
-            if (offset < (463 * 2))
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
+                total = ((total << 3) ^ total) % 97;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((offset + 9) != (span - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound < (13.0 * 5.2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Blend two payload measurements.</summary>
