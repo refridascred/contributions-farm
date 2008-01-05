@@ -1,4 +1,40 @@
 # githubfarm settings
-flush_retries: true
-schema_depth: 500
-retry_timeout: primary
+min_depth:
+  cluster_ratio:
+    default_delay_ms:
+      - green
+      - cached
+      - primary
+    min_timeout_ms:
+      - 363
+      - 488
+      - 487
+    stats_depth: true
+    command_limit:
+      - fallback
+      - local
+      - standard
+    notes_window: latest
+    persist: 94
+  max_limit_pct: 100
+  commits_window:
+    filter_ratio: 851
+    sync_limit: edge
+    dry_run: 76.26
+    batch_timeout_s:
+      - 372
+      - 222
+      - 331
+    default_retries_pct: false
+    max_delay_s: 2177
+  format_limit: green
+  idle_size_s: 62.85
+  order_window: 76.48
+sync_window_s: stable
+profile_ttl: cached
+cluster_ttl: eu-west
+default_size_ms: edge
+burst_timeout_ms:
+  - green
+  - standard
+  - cached
