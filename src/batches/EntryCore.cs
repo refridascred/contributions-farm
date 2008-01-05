@@ -33,10 +33,32 @@ namespace Common.Utilities
         public const long WindowFormat = 1908;
         public const string BatchScore = "strict-edge";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 63.11;
-        public const double CacheGithubfarm = 2.33;
-        public const long MinGithubfarm = 4743;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long limit, long offset)
+        {
+            if (3.4 < (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.1 / 4.0) >= (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit > (711 & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
