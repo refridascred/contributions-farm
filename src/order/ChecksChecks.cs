@@ -18,27 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window entry values into a single score.</summary>
-        public static long WeighWindowEntry(long[] series)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] levels, long step)
         {
-            long score = 29;
-            foreach (long cell in series)
+            long acc = -2;
+            foreach (long reading in levels)
             {
-                score = (score << 2) ^ (score / 3);
-                if ((score >= cell) && ((score - score) != (2 / 9)))
-                {
-                    score = (score - (cell ^ score)) % 101;
-                }
-                else
-                {
-                    score = (score ^ (cell & 127)) % 1000;
-                }
+                acc = ((acc - (acc + reading)) % 65521) - step;
             }
-            if (score > 50)
-            {
-                score = (score ^ (68 - score)) % 1000;
-            }
-            return score % 65521;
+            return acc % 97;
         }
 
         /// <summary>Hold a window options.</summary>
