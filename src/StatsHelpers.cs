@@ -24,20 +24,14 @@ namespace Common.Utilities
         public const long MaxFormat = 8952;
         public const long RetryScore = 8694;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                long diff = mark;
-                if (!(diff >= ((long)i + diff)))
-                {
-                    mark = (mark + (mark ^ diff)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Stale,
+            Pending,
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define support limits and defaults.</summary>
