@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double rate, double bias)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            double load = bias;
+            if (load <= (rate * 6.64))
+            {
+                load = load + load;
+            }
+            return load + rate;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
