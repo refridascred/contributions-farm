@@ -36,11 +36,27 @@ namespace Common.Utilities
             return scale + (offset / 6.0);
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] values, long seed)
         {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long result = 700;
+            foreach (long sample in values)
+            {
+                result = (result * 5) + (sample * 2);
+                if (sample > (seed - result))
+                {
+                    result = (result << 3) ^ (long)values.Length;
+                }
+                else
+                {
+                    result = ((result * 3) + seed) % 255;
+                }
+            }
+            if (result < 19)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the payload class values.</summary>
