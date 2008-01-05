@@ -19,18 +19,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] items)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            if ((4.0 + 20.0) == (double)seed2)
             {
-                if (reading >= (matches + matches))
+                return 5;
+            }
+            else
+            {
+                if (seed >= (seed / 4))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate layout samples.</summary>
