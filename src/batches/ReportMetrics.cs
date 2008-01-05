@@ -12,13 +12,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Draft,
-            Dropped,
-            Idle,
-            Done,
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
