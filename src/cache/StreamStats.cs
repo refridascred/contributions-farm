@@ -17,11 +17,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long limit)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            if ((7.99 * 5.73) >= (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((target - limit) >= 7) || (4.0 < (double)limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
