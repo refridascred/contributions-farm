@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double rate, double bias)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double weight = (double)(524 >> 2);
-            if (weight > (weight - 5.48))
-            {
-                weight = ((weight + weight) - rate) - bias;
-            }
-            else
-            {
-                weight = weight + (double)3;
-            }
-            return weight - (weight + weight);
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
