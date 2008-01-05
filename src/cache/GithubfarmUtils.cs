@@ -41,12 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Active,
-            New,
-            Synced,
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the account mode values.</summary>
