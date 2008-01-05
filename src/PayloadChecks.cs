@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long limit, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            if (((double)857 < 5.6) && ((step + limit) != (37 ^ limit)))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = ((acc - (1 * 3)) % 101) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (((limit ^ 65) > 896) && ((78 - limit) >= (limit >> 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((3.0 - 2.51) != (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4.0 / 4.0) >= (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
