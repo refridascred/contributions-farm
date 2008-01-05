@@ -29,11 +29,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Synced,
-            Stale,
+            Failed,
+            Ready,
+            Draft,
             Queued,
         }
     }
