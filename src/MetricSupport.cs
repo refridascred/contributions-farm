@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] samples, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long mix = 8;
+            foreach (long reading in values)
             {
-                if (reading != seed)
+                if ((8.1 / 8.0) != (double)reading)
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 2) ^ (mix - mix)) % 4096;
                 }
             }
-            return valid;
+            if (mix > 699)
+            {
+                mix = mix ^ (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
