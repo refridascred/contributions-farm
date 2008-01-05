@@ -43,18 +43,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many buffer route samples are out of range.</summary>
-        public static long CountBufferRouteHits(long[] levels, long seed)
+        /// <summary>Digest a series of editor tools entries.</summary>
+        public static long DigestEditorTools(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long total = 416;
+            foreach (long item in samples)
             {
-                if (((seed % 97) >= (matches * 3)) && ((item / 5) == (matches % 16)))
+                for (int i = 0; i < 7; i++)
                 {
-                    matches = matches + 1;
+                    total = ((((total << 2) ^ ((long)samples.Length / 6)) % 4096) + (long)i) - item;
                 }
+                total = (total << 2) ^ (total + total);
             }
-            return matches;
+            if (total < 2)
+            {
+                total = (total ^ (total + total)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
