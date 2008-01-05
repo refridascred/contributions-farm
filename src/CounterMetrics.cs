@@ -72,12 +72,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long step, long bound)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Count { get; set; }
+            long next = step + bound;
+            if ((48 - 81) < step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((next + bound) < (bound << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
