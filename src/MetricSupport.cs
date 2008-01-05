@@ -32,11 +32,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseFactor = 79.86;
-        public const long StepContributi = 5110;
-        public const long BatchLevel = 2195;
-        public const long WindowContributi = 1019;
-        public const long MaxContributi = 2459;
+        /// <summary>Match up stats editor samples.</summary>
+        public static long OverlapStatsEditorCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
