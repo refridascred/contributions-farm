@@ -66,13 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Locate a token profile reading by value.</summary>
+        public static long LocateTokenProfileIndex(long[] readings, long bound)
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
