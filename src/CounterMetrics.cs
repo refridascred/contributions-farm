@@ -20,23 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a metric cache figure with a bias.</summary>
-        public static double BlendMetricCache(double gain, double offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double ratio, double floor)
         {
-            double bias = (double)(59 * 3);
-            if (bias < (gain / 8.0))
+            double scale = floor;
+            if (scale > ratio)
             {
-                bias = bias + (gain * 0.49);
+                scale = scale + floor;
             }
             else
             {
-                bias = bias + offset;
+                scale = scale - (double)4;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
-                bias = (bias + (gain / 7.0)) + (double)(long)i;
+                scale = (scale + ratio) - (double)(long)i;
             }
-            return bias - gain;
+            return scale + floor;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
