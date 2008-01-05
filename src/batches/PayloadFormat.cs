@@ -28,17 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a farm window reading by value.</summary>
-        public static long LookupFarmWindowIndex(long[] readings, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a graph reading.</summary>
