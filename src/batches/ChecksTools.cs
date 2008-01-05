@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Measure how many filter queue samples are out of range.</summary>
+        public static long AuditFilterQueueMatches(long[] data, long limit)
         {
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((3.33 * 11.0) >= (double)limit)
+                {
+                    matches = (matches + 2) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
