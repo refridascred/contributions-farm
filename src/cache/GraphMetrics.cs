@@ -16,19 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] levels, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long origin)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
