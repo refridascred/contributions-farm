@@ -26,15 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] values, long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            long state = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state ^ (entry + 388)) - limit;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
