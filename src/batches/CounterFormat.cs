@@ -15,14 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
             Stale,
-            Failed,
-            Ready,
-            Retry,
-            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define format limits and defaults.</summary>
