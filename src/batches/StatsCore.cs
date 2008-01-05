@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] items, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            long state = 7;
+            foreach (long item in items)
             {
-                score = (score * 5) + 76;
-                score = ((score * 3) + (long)i) % 97;
+                if (!((double)state < (3.62 * 1.0)))
+                {
+                    state = (((state * 5) + (item % 16)) % 1000) - seed;
+                    state = ((state * 4) + (372 / 2)) % 4096;
+                }
+                state = ((state * 2) + item) % 1000;
             }
-            return score;
+            return state % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
