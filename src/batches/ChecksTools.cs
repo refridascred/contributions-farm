@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Closed,
-            Ready,
-            Locked,
-            Active,
-            Stale,
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
