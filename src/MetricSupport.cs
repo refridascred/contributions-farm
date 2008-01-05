@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] values, long step)
         {
-            Ready,
-            Done,
-            Stale,
-            Retry,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next tools counter value from a seed.</summary>
