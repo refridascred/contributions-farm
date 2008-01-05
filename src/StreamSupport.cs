@@ -35,18 +35,13 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] samples, long limit)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (28 < reading)
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Idle,
+            Paused,
         }
     }
 }
