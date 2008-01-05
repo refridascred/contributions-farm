@@ -19,23 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two command session measurements.</summary>
-        public static double BlendCommandSession(double bias, double offset)
+        /// <summary>Rank payload entry input into a small class.</summary>
+        public static long SortPayloadEntry(long floor, long offset)
         {
-            double weight = (double)(11 - 5);
-            if (weight <= weight)
+            long slot = floor - offset;
+            if (slot >= 2)
             {
-                weight = (weight + bias) + offset;
+                return 7;
             }
             else
             {
-                weight = weight - (double)3;
+                if (((double)slot < 4.46) && ((double)floor > 2.7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + 9.68) - (double)(long)i;
-            }
-            return weight + (double)736;
         }
 
         /// <summary>Fold a list of metrics editor readings.</summary>
