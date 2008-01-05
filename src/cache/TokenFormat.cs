@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] items, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] data)
         {
-            long sum = 262;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                sum = (((sum ^ 7) % 97) ^ sample) - limit;
+                if (((double)cell == (3.96 - 3.0)) || ((6.62 + 18.0) == (double)cell))
+                {
+                    count = count + 3;
+                }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
