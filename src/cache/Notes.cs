@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] series, long step)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long mix = 742;
-            foreach (long reading in series)
-            {
-                if (((mix / 4) >= mix) && (70 > mix))
-                {
-                    mix = (mix + (reading - step)) % 4096;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = (mix ^ (step + mix)) % 255;
-            }
-            return mix;
+            Ready,
+            Pending,
+            Closed,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
