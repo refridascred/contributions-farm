@@ -43,13 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Stale,
-            Queued,
-            Retry,
-            Done,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a account summary.</summary>
