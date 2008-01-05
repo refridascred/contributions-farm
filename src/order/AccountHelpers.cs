@@ -56,23 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a tools batch figure with a bias.</summary>
-        public static double ProjectToolsBatch(double ratio, double floor)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double ratio2 = ratio * 2.0;
-            if (ratio2 <= 15.0)
-            {
-                ratio2 = ratio2 + (ratio / 2.0);
-            }
-            else
-            {
-                ratio2 = ratio2 - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - ratio2) - (double)(long)i;
-            }
-            return ratio2 - (double)(-433);
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
