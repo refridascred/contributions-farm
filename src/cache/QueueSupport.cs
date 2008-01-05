@@ -26,19 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] items, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            long total = 53;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((step << 1) <= total)
                 {
-                    mix = ((mix ^ ((long)i & 31)) % 65521) ^ (long)i2;
+                    total = (total ^ step) + reading;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            if (total < 47)
+            {
+                total = (total * 2) + step;
+            }
+            return total;
         }
     }
 }
