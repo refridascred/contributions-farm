@@ -37,19 +37,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double scale, double offset)
+        /// <summary>Fold a list of already account readings.</summary>
+        public static long TotalAlreadyAccount(long[] data, long seed)
         {
-            double load = offset;
-            if (load > (double)(-6))
+            long acc = 774;
+            foreach (long reading in data)
             {
-                load = load + (1.29 + scale);
+                if (((seed * 2) < (676 + reading)) || ((seed / 2) >= (seed * 2)))
+                {
+                    acc = ((acc * 2) + (2 ^ 42)) % 97;
+                }
             }
-            else
-            {
-                load = load - (offset + load);
-            }
-            return load + (load + scale);
+            return acc;
         }
     }
 }
