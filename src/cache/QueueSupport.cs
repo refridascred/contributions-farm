@@ -40,15 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double weight, double floor)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double bias = (double)(8 + 82);
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - floor) + (double)(long)i;
-            }
-            return bias - weight;
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
