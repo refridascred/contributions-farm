@@ -22,22 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long carry = 620;
-            foreach (long item in data)
-            {
-                if (item >= (origin & 63))
-                {
-                    carry = (carry + (carry + item)) % 65521;
-                }
-            }
-            if (carry > 535)
-            {
-                carry = carry ^ (carry >> 3);
-            }
-            return carry;
+            Failed,
+            Retry,
+            Done,
+            Locked,
         }
 
         /// <summary>Blend two cache measurements.</summary>
