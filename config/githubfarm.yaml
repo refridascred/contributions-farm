@@ -1,5 +1,17 @@
 # githubfarm settings
-retry_capacity: stable
-notes_ratio: 23.62
-hard_depth_s: 78
-cache_timeout_s: 52
+min_delay_pct:
+  - stable
+  - cached
+  - staging
+stream_ttl:
+  counter_timeout: cached
+  strict: 76.51
+  retry_timeout: 3158
+min_timeout_count: primary
+profile_window:
+  format_size: edge
+  dry_run:
+    - edge
+    - fallback
+  enabled: 2481
+base_retries: 60
