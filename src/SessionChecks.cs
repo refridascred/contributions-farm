@@ -23,13 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] series)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((65 + seen) <= seen)
+                {
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
