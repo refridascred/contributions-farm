@@ -42,18 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] samples)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((reading + seen) == (seen + reading))
+                if ((tally ^ tally) >= (tally * 3))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
