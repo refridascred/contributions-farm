@@ -27,31 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long floor, long step)
+        /// <summary>Look up the position of a batches schema sample.</summary>
+        public static long FindBatchesSchemaIndex(long[] series, long limit)
         {
-            if ((floor <= (9 << 1)) && (floor > (floor - floor)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (6.0 < (double)step)
+                if (series[i] < limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (step > (step + 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
