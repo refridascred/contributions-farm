@@ -35,18 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] items)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!(hits < (reading + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
