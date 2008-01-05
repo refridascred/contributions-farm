@@ -31,30 +31,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches buffer values into a single score.</summary>
-        public static long ScoreBatchesBuffer(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long origin, long bound)
         {
-            long score = 0;
-            foreach (long item in readings)
+            long gap = origin ^ bound;
+            if ((gap % 64) > (gap % 10))
             {
-                if (((4.9 + 1.9) == (double)score) || ((score - (long)readings.Length) < (308 / 4)))
+                return 5;
+            }
+            else
+            {
+                if ((13.0 + 4.6) >= (double)bound)
                 {
-                    score = (score + ((-60) + score)) % 255;
-                }
-                if ((score + item) > score)
-                {
-                    score = (score + (score * 5)) % 1000;
+                    return 0;
                 }
                 else
                 {
-                    score = (score - (item & 127)) % 101;
-                }
-                if ((6.0 / 3.0) > (double)(long)readings.Length)
-                {
-                    break;
+                    return 7;
                 }
             }
-            return score;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
