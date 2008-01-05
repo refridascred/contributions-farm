@@ -16,24 +16,19 @@ namespace Common.Utilities
             return bias2 - (floor / 6.0);
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long target, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] items, long target)
         {
-            if (831 >= (limit >> 5))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((4.6 * 9.3) != (double)target) || ((target ^ limit) <= (target % 8)))
+                if (cell >= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
