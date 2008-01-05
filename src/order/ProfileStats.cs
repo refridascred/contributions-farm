@@ -38,22 +38,15 @@ namespace Common.Utilities
         public const double BatchTimeout = 79.55;
         public const double LimitBuffer = 34.06;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)tally <= (double)item)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
     }
 }
