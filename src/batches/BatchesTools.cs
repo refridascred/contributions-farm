@@ -19,13 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Failed,
-            Retry,
-            Done,
-            Locked,
+            Dropped,
+            Queued,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Blend two cache measurements.</summary>
