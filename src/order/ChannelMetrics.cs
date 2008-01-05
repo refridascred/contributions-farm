@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long LimitEditor = 9980;
         public const long CacheLevel = 3516;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Count the report checks entries that pass the check.</summary>
+        public static long AuditReportChecksMatches(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                acc = acc - seed;
-                acc = (acc << 3) ^ (2 + (long)i);
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((double)datum != (17.0 / 8.0))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
