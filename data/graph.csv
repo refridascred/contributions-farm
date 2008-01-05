@@ -1,10 +1,7 @@
-id,ratio,region
-1,stable,175
-2,strict,local
-3,stable,400
-4,legacy,56
-5,135,open
-6,76.23,365
-7,open,41.85
-8,14.39,94
-9,2.54,856
+id,count,region
+1,17.08,76.64
+2,eu-west,open
+3,62.7,standard
+4,876,496
+5,654,83.0
+6,standard,665
