@@ -33,10 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftBatches = 40.55;
-        public const string IdleBatches = "cached-v2";
-        public const long DefaultCount = 5409;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Dropped,
+            Active,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
