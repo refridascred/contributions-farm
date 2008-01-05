@@ -44,17 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] items, long bound)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
