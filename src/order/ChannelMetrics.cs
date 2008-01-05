@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const long LimitEditor = 9980;
         public const long CacheLevel = 3516;
 
-        /// <summary>Count the report checks entries that pass the check.</summary>
-        public static long AuditReportChecksMatches(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long result = -433;
+            foreach (long sample in data)
             {
-                if ((double)datum != (17.0 / 8.0))
+                if (!((double)result < (7.73 / 7.0)))
                 {
-                    hits = hits + 3;
+                    result = (result + (sample ^ sample)) % 101;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result ^ result);
                 }
             }
-            return hits;
+            return result % 1000;
         }
     }
 }
