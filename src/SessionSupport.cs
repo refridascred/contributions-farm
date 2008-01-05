@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of channel cluster readings.</summary>
-        public static long CombineChannelCluster(long[] readings, long floor)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            long mark = 3;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 5) + (2 & 15)) + item;
-                mark = (mark << 2) ^ (floor / 7);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a token record.</summary>
