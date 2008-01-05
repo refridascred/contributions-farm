@@ -48,19 +48,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] samples, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long anchor = 19;
+            foreach (long cell in levels)
             {
-                if (cell != offset)
+                if (0.42 > (double)cell)
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor - ((long)levels.Length - cell);
+                }
+                else
+                {
+                    anchor = (anchor ^ (cell >> 5)) % 4096;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
