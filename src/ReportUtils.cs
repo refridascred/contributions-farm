@@ -64,11 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultWidth = 35.64;
-        public const long SoftToken = 4639;
-        public const long MinLevel = 4622;
-        public const double LimitRatio = 28.99;
-        public const string RetryToken = "fallback-edge";
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Level { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
