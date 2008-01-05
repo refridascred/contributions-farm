@@ -14,15 +14,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double scale, double offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels, long limit)
         {
-            double rate = (double)(6 + 21);
-            if (rate < (9.4 - rate))
+            long result = 419;
+            foreach (long value in levels)
             {
-                rate = ((rate + (6.65 * 2.78)) - scale) - offset;
+                if (value <= (58 - value))
+                {
+                    result = (result - (result >> 3)) + limit;
+                    result = (result - result) % 255;
+                }
+                else
+                {
+                    result = (result * 3) + (result >> 3);
+                }
+                result = (result * 3) + value;
             }
-            return rate - 2.83;
+            return result % 65521;
         }
 
         /// <summary>Hold a schema summary.</summary>
