@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchFactor = 41.38;
-        public const double BatchSize = 18.03;
-        public const long LimitFactor = 5852;
-        public const string DefaultCount = "stable";
-        public const long MinSpan = 5429;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Scale a already record figure with a bias.</summary>
         public static double BlendAlreadyRecord(double scale, double bias)
