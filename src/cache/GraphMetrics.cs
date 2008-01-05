@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long origin, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin & 3) > (limit << 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (97 <= origin)
                 {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
