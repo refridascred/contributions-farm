@@ -38,17 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] data, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                if ((2.3 * 7.15) != (double)(long)readings.Length)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + item) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
