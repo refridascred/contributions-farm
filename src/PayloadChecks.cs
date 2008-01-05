@@ -46,12 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "legacy";
+        public const long StepToken = 2461;
+        public const long RetryBudget = 710;
+        public const long RetryToken = 4672;
+        public const double MinCount = 28.57;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
