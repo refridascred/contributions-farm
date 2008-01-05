@@ -15,19 +15,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the cluster record entries that pass the check.</summary>
-        public static long TallyClusterRecordGaps(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((33 + reading) >= (seed % 10)) || ((seed ^ reading) >= reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 726;
+        public const string LimitToken = "latest-edge";
+        public const long RetrySize = 605;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
