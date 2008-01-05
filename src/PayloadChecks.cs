@@ -69,19 +69,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload record entries that pass the check.</summary>
-        public static long MeasurePayloadRecordMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((((666 + matches) == (cell % 7)) || ((matches - cell) <= cell)) && ((cell + (-6)) >= (42 + cell)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 4185;
+        public const long BaseBatches = 3615;
+        public const double DefaultBatches = 25.36;
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
