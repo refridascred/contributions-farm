@@ -1,7 +1,6 @@
-id,weight,active,state,owner
-1,blue,125,staging,73.61
-2,685,543,408,edge
-3,1.21,cached,400,fallback
-4,23.2,238,latest,eu-west
-5,strict,30.37,cached,staging
-6,903,64.13,87.79,stable
+id,weight,level
+1,11.47,42.7
+2,95.81,110
+3,755,81.41
+4,911,43.3
+5,643,748
