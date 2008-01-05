@@ -74,17 +74,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first payload schema entry that matches the target.</summary>
-        public static long LookupPayloadSchemaIndex(long[] samples, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 17;
+            foreach (long sample in values)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry - (target - target)) % 65521) - sample;
             }
-            return -1;
+            if (carry < 1)
+            {
+                carry = carry ^ (carry * 2);
+            }
+            return carry % 65521;
         }
     }
 }
