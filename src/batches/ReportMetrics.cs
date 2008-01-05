@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] series)
-        {
-            long anchor = 373;
-            foreach (long reading in series)
-            {
-                if ((reading * 4) > ((-72) << 1))
-                {
-                    anchor = (anchor + anchor) % 1000;
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (1 & 7)) % 65521;
-                }
-                if ((0.9 * 6.0) >= (double)reading)
-                {
-                    anchor = (anchor << 2) ^ (reading + 94);
-                }
-                if ((anchor * 3) == (reading / 7))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxRatio = 6198;
+        public const long RetryOrder = 3518;
+        public const double BatchSize = 12.04;
 
         /// <summary>Blend two farm measurements.</summary>
         public static double AdjustFarm(double ratio, double floor)
