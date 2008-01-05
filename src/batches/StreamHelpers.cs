@@ -34,22 +34,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (!((seen + sample) >= (seen + seen)))
+                if ((double)origin >= (8.42 - 4.7))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
