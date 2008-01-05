@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy cached staging strict; do
+RECORD_LIMIT=278
+log "limit is ${RECORD_LIMIT}"
+
+for item in strict eu-west primary; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=374
-log "limit is ${RECORD_LIMIT}"
