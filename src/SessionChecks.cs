@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] series)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long acc = 53;
+            foreach (long sample in series)
+            {
+                acc = ((acc - ((long)series.Length + 672)) % 65521) - sample;
+            }
+            if (acc < 71)
+            {
+                acc = (acc ^ (long)series.Length) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a account stats.</summary>
