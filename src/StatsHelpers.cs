@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string BaseWindow = "local-edge";
         public const double RetryWindow = 72.57;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Adjust a farm tools reading.</summary>
+        public static double BlendFarmTools(double bias, double span)
         {
-            Synced,
-            Failed,
-            Queued,
+            double drift = span + 5.0;
+            if (drift > drift)
+            {
+                drift = (drift - (double)931) - bias;
+            }
+            else
+            {
+                drift = drift + (drift / 2.0);
+            }
+            return drift - 4.9;
         }
 
         /// <summary>Describe the farm state values.</summary>
