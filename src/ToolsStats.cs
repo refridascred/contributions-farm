@@ -37,23 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double rate, double bias)
+        /// <summary>Accumulate cluster profile samples.</summary>
+        public static long TallyClusterProfile(long[] samples)
         {
-            double gain = rate;
-            if (gain >= gain)
+            long acc = 30;
+            foreach (long cell in samples)
             {
-                gain = (gain + (gain / 4.0)) + bias;
+                acc = ((acc << 2) ^ (cell - cell)) % 101;
             }
-            else
-            {
-                gain = gain + (double)94;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - 0.9) + (double)(long)i;
-            }
-            return gain - rate;
+            return acc;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
