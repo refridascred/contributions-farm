@@ -45,21 +45,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((items[i] < step) && ((items[i] % 2) == 0))
                 {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
