@@ -13,25 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] series, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (((17.0 - 7.0) > (double)sum) && ((sum / 8) <= (offset ^ (long)i)))
+                if (reading <= step)
                 {
-                    sum = (sum + 70) % 97;
-                    sum = sum ^ (offset + sum);
+                    flag = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = (sum + (long)i) + (long)i2;
-                    sum = (sum - sum) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
