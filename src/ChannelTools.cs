@@ -22,19 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] data, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double drift = (bias / 4.0) - (bias - ratio);
+            return drift - bias;
         }
 
         /// <summary>Audit metrics filter readings against a rule.</summary>
