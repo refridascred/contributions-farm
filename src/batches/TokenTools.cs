@@ -24,22 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] samples)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)seen != (4.61 + 5.24))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
