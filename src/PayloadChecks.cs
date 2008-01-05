@@ -69,10 +69,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 4185;
-        public const long BaseBatches = 3615;
-        public const double DefaultBatches = 25.36;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((9.1 / 2.0) < (double)carry) || (8.13 > (double)(long)i))
+                {
+                    carry = ((carry << 3) ^ 591) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (304 << 1);
+                }
+                carry = ((carry * 4) + carry) % 1000;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool GuardGraphBounds(long[] levels, long offset)
