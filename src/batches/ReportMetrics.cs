@@ -20,19 +20,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stream window entry stays within the limit.</summary>
-        public static bool VerifyStreamWindowRange(long[] series, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long limit)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (item >= offset)
+                if (((limit % 7) > (carry << 2)) && ((89 >> 2) != (long)i))
                 {
-                    flag = false;
+                    carry = (carry * 5) + (520 / 9);
                     break;
                 }
+                if (carry > (174 & 31))
+                {
+                    carry = carry ^ limit;
+                    carry = (carry - (limit - (long)i)) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Validate batches session readings against a bound.</summary>
