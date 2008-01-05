@@ -1,8 +1,6 @@
 {
-  "enabled": "green",
-  "max_capacity_s": ["standard", "primary"],
-  "retry_delay_s": "blue",
-  "retry_retries": 39.0,
-  "poll_ratio_ms": "fallback",
-  "order_ratio": "stable"
+  "batch_depth_s": 100,
+  "already_window": 7801,
+  "schema_retries": 32.93,
+  "persist": 42
 }
