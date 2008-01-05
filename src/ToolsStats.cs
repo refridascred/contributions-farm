@@ -11,22 +11,16 @@ namespace Common.Utilities
         public const double IdleContributi = 84.89;
         public const string HardSize = "fallback-edge";
 
-        /// <summary>Digest a series of contributi queue entries.</summary>
-        public static long TallyContributiQueue(long[] readings)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long floor)
         {
-            long sum = 8;
-            foreach (long cell in readings)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (((-540) <= (sum % 16)) || ((sum >> 3) < cell))
-                {
-                    sum = ((sum << 3) ^ (sum + cell)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 4) + cell) % 101;
-                }
+                mark = (mark - ((long)i + mark)) % 1000;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
