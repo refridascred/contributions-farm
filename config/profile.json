@@ -1,6 +1,5 @@
 {
-  "cache_limit": 30,
-  "poll_ratio_ms": [487, 118, 52],
-  "compress": 5661,
-  "soft_ttl_s": ["legacy", "green"]
+  "queue_size": 28,
+  "persist": 8635,
+  "contributi_window": "latest"
 }
