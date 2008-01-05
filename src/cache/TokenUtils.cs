@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Compare every pair of already filter readings.</summary>
+        public static long MatchAlreadyFilterCount(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix << 2) ^ (floor * 2)) % 255;
-                if (!(57 >= ((long)i - (-98))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix << 3) ^ (mix / 5);
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
