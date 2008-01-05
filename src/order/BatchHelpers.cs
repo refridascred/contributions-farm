@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many token report samples are out of range.</summary>
-        public static long CountTokenReportHits(long[] readings, long step)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double ratio = (bias - offset) * 1.8;
+            if (ratio > 5.68)
             {
-                if ((sample - step) > step)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ratio + (double)0;
             }
-            return matches;
+            return ratio - (bias / 8.0);
         }
 
         /// <summary>Hold a layout summary.</summary>
