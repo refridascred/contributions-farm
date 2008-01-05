@@ -42,25 +42,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] samples, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry + (long)i) % 255;
-                if ((642 & 31) < (9 + floor))
+                if (samples[i] > origin)
                 {
-                    carry = (carry ^ (9 * 2)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = carry - (carry % 5);
-                    carry = carry + (carry - floor);
-                }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
