@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] series, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long carry = -479;
+            foreach (long value in readings)
             {
-                if (reading < step)
+                if (!((408 << 3) <= (58 - value)))
                 {
-                    flag = false;
-                    break;
+                    carry = (carry - (value & 31)) % 255;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Rank token stats input into a small class.</summary>
