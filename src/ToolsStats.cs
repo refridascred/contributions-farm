@@ -33,18 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] samples, long seed)
+        /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
+        public static long CompareClusterCounterCount(long[] items)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)1 == (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 1) + reading) + seed;
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
