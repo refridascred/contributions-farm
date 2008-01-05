@@ -33,31 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long target, long offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            if ((3.8 + 20.0) != (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset == (1.7 - 9.2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + 0) < (target - 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit record readings against a rule.</summary>
