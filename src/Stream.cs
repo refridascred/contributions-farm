@@ -57,17 +57,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] values, long seed)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                carry = (carry + 397) % 255;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
