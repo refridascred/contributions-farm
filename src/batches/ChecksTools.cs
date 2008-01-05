@@ -13,20 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] items, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] readings, long bound)
         {
-            long state = 540;
-            foreach (long entry in items)
+            long state = 4;
+            foreach (long sample in readings)
             {
-                if ((933 < (state - 86)) && (step <= entry))
+                if ((5 < (sample / 6)) && ((sample ^ sample) >= (state * 4)))
                 {
-                    state = (state + (step / 6)) % 101;
+                    state = (state << 2) ^ bound;
                 }
-                if ((entry % 97) != (entry >> 5))
-                {
-                    break;
-                }
+            }
+            if (state > (-86))
+            {
+                state = (state << 3) ^ (state >> 4);
             }
             return state;
         }
