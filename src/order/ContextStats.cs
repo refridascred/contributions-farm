@@ -23,30 +23,18 @@ namespace Common.Utilities
         public const long IdleSize = 3882;
         public const double LimitBudget = 6.98;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] data, long origin)
         {
-            long anchor = 26;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((double)anchor > (double)item)
+                if ((double)item < (1.89 / 2.0))
                 {
-                    anchor = (anchor + (anchor + item)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 97;
-                }
-                if ((double)item > (double)anchor)
-                {
-                    anchor = ((anchor << 2) ^ (item + (-218))) % 1000;
+                    matches = (matches + 2) - origin;
                 }
             }
-            if (anchor < 0)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Hold a notes header.</summary>
