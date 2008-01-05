@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] values)
         {
             long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 1)
+                    if ((values[i] + values[j]) > 8)
                     {
                         hits = hits + 1;
                     }
