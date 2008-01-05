@@ -28,18 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] readings, long seed)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((6 * 3) < (seen & 127)))
-                {
-                    seen = ((seen + 3) ^ entry) - seed;
-                }
-            }
-            return seen;
+            Dropped,
+            Paused,
+            Queued,
         }
     }
 }
