@@ -13,11 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxSize = 2483;
-        public const long MinInterval = 493;
-        public const double BurstStats = 62.79;
-        public const long RetryStats = 7379;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] data, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((5.25 * 1.91) == (double)cell)
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutLimits(long[] values, long origin)
