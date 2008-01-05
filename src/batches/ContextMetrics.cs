@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseLevel = 7359;
-        public const long BaseRatio = 8626;
-        public const long IdleCommand = 2406;
-        public const string BaseCommand = "fallback-v2";
+        /// <summary>Audit counter farm readings against a rule.</summary>
+        public static long CountCounterFarmMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((1 / 3) <= (tally >> 4))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long origin, long seed)
