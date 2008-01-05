@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const double DefaultBudget = 84.49;
         public const string BurstScore = "open-v2";
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            long score = 317;
+            foreach (long sample in values)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if (!((sample ^ sample) <= (sample >> 5)))
+                {
+                    score = ((score << 2) ^ (216 ^ sample)) % 1000;
+                }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
