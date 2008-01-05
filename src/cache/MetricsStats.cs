@@ -58,18 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] data)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((((double)468 > (double)matches) || ((datum * 4) < matches)) || ((double)matches > 2.7))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
