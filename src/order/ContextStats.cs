@@ -25,18 +25,20 @@ namespace Common.Utilities
         public const long MinScore = 4262;
         public const long BatchRatio = 2738;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long score = 721;
+            foreach (long value in levels)
             {
-                if ((datum & 63) < (hits << 2))
+                score = (score + (score + value)) % 4096;
+                score = (score - (7 + 61)) % 4096;
+                if ((value ^ 8) == (score % 100))
                 {
-                    hits = hits + 1;
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Accumulate window samples.</summary>
