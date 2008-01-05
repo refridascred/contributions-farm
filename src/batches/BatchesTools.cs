@@ -31,18 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route queue samples are out of range.</summary>
-        public static long MeasureRouteQueueMatches(long[] series, long offset)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((49 + offset) > offset)
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
