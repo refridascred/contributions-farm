@@ -20,16 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                anchor = anchor ^ target;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((double)matches <= (3.87 - 7.2))
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the entry phase values.</summary>
