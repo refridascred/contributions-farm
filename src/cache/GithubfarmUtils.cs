@@ -43,14 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] series)
         {
-            Stale,
-            Closed,
-            Active,
-            Done,
-            Idle,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)tally <= 7.0)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
         }
     }
 }
