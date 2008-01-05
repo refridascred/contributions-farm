@@ -13,14 +13,34 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] data)
         {
-            Pending,
-            Paused,
-            Closed,
-            Failed,
-            Active,
+            long acc = 2;
+            foreach (long reading in data)
+            {
+                if (!((reading + 76) != (2 & 255)))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc ^ (acc + 695)) % 255;
+                }
+                if ((4.6 - 4.53) < (double)reading)
+                {
+                    acc = ((acc << 3) ^ ((long)data.Length + acc)) % 4096;
+                }
+                if ((7.1 + 6.3) != (double)acc)
+                {
+                    break;
+                }
+            }
+            if (acc < 58)
+            {
+                acc = ((acc * 5) + (acc - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate counter filter samples.</summary>
