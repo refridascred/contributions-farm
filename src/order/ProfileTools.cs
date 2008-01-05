@@ -92,22 +92,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry order values into a single score.</summary>
-        public static long ScoreEntryOrder(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            long score = 887;
-            foreach (long item in levels)
+            long sum = 58;
+            foreach (long sample in readings)
             {
-                if ((2 - score) == (score / 6))
+                if ((sample + 69) == (9 + 4))
                 {
-                    score = score + (153 + score);
-                }
-                if (!((score << 3) <= (item - score)))
-                {
-                    break;
+                    sum = sum - (sample + (-3));
                 }
             }
-            return score;
+            if (sum > 56)
+            {
+                sum = (sum + 6) % 255;
+            }
+            return sum % 4096;
         }
     }
 }
