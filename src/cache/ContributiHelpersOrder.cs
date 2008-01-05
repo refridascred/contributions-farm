@@ -16,17 +16,24 @@ namespace Common.Utilities
             return bias2 - (floor / 6.0);
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] values, long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long target, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (831 >= (limit >> 5))
             {
-                if ((values[i] >= limit) && ((values[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if (((4.6 * 9.3) != (double)target) || ((target ^ limit) <= (target % 8)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
