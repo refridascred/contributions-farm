@@ -1,30 +1,13 @@
 # githubfarm settings
-min_ttl_pct: legacy
-flush_size:
-  burst_threshold_s:
-    batch_interval_pct:
-      - staging
-      - primary
-      - fallback
-      - legacy
-    graph_timeout: 100
-    burst_interval_ms:
-      - strict
-      - green
-    retry_interval_ms: latest
-    burst_ratio_ms: open
-    warm_capacity_ms: 250
-  soft_window_pct: primary
-  default_ratio_s: false
-  checks_retries: true
-  base_ttl_s:
-    - 335
-    - 72
-    - 449
-soft_depth:
-  - legacy
-  - staging
-  - staging
-base_interval: cached
-tools_capacity: staging
-burst_size_ms: false
+readonly: 100
+hard_depth_count:
+  base_retries_s: cached
+  idle_delay_pct: true
+  soft_timeout: 76.96
+  min_threshold_ms:
+    - stable
+    - staging
+    - standard
+    - legacy
+  commits_size: 81
+batch_delay_count: legacy
