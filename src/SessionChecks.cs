@@ -91,23 +91,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double floor)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            double drift = ratio;
-            if (drift > (double)100)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + (drift + drift);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (double)21) + (double)(long)i;
-            }
-            return drift + (double)1;
+            return matches;
         }
     }
 }
