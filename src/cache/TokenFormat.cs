@@ -31,10 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 3921;
-        public const double HardWidth = 27.21;
-        public const long DefaultSpan = 3585;
-        public const string LimitPayload = "alpha-1";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftDepth = 1348;
+        public const long BurstLevel = 9576;
+        public const long StepCount = 3331;
+        public const long MaxSize = 2154;
+        public const long IdleOrder = 5984;
     }
 }
