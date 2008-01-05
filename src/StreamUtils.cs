@@ -57,22 +57,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] series)
+        /// <summary>Rank checks profile input into a small class.</summary>
+        public static long RankChecksProfile(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if (!((24 + offset) < 8))
             {
-                if (((double)matches == (9.6 * 1.3)) || ((matches ^ sample) < matches))
+                return 0;
+            }
+            else
+            {
+                if ((limit / 7) < (offset & 63))
                 {
-                    matches = matches + 1;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
