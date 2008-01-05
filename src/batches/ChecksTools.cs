@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Paused,
-            Failed,
-            Retry,
+            Closed,
+            Ready,
+            Locked,
+            Active,
+            Stale,
         }
 
         /// <summary>Count the cluster record entries that pass the check.</summary>
