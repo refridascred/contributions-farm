@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 35.01;
+        public const long BatchBudget = 1322;
+        public const string RetryFormat = "cached-1";
+        public const double SoftInterval = 39.81;
+        public const double MaxFormat = 55.89;
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] readings, long offset)
