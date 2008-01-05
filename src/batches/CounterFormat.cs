@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] levels)
         {
-            Ready,
-            Idle,
-            Done,
-            Queued,
-            Synced,
+            long sum = 93;
+            foreach (long entry in levels)
+            {
+                if (((double)6 < (double)entry) && ((9.3 / 7.0) == (double)entry))
+                {
+                    sum = (sum - (entry + entry)) % 65521;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
