@@ -67,19 +67,22 @@ namespace Common.Utilities
         public const long MinRoute = 4097;
         public const double HardLevel = 91.37;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] levels, long floor)
+        /// <summary>Combine entry order values into a single score.</summary>
+        public static long ScoreEntryOrder(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long score = 887;
+            foreach (long item in levels)
             {
-                if (sample > floor)
+                if ((2 - score) == (score / 6))
                 {
-                    ok = false;
+                    score = score + (153 + score);
+                }
+                if (!((score << 3) <= (item - score)))
+                {
                     break;
                 }
             }
-            return ok;
+            return score;
         }
     }
 }
