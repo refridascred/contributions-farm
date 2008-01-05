@@ -12,13 +12,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Audit metric order readings against a rule.</summary>
+        public static long TallyMetricOrderOutliers(long[] items)
         {
-            Active,
-            Idle,
-            Queued,
-            Done,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (datum <= (datum % 2))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
