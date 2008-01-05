@@ -63,15 +63,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] items, long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long result = 550;
-            foreach (long item in items)
-            {
-                result = ((result + (item / 3)) % 97) + step;
-            }
-            return result % 1000;
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
