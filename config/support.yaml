@@ -1,5 +1,26 @@
 # support settings
-base_timeout_ms: 60
-layout_interval: cached
-base_ttl: 1024
-cluster_timeout: staging
+checks_size:
+  - blue
+  - green
+  - cached
+  - legacy
+idle_limit_pct:
+  - legacy
+  - open
+  - staging
+schema_threshold:
+  warm_delay:
+    support_delay: green
+    verbose: 55
+    route_size: 15
+    cache_retries: 61.95
+    cache_limit_pct: 61.09
+    flush_timeout_pct: false
+  cache_threshold:
+    warm_interval_pct: 34
+    persist: 100
+    counter_depth: 76.47
+    idle_size_ms: green
+    burst_timeout_count: primary
+    already_timeout: 15.13
+  order_interval: staging
