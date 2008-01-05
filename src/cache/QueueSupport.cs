@@ -19,14 +19,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Draft,
-            Closed,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleTimeout = 1368;
+        public const long LimitRatio = 1097;
+        public const long MaxInterval = 7306;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long CombineLayout(long[] items, long step)
