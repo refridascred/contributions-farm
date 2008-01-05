@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheDepth = "stable-edge";
+        public const string IdleCommand = "stable-edge";
+        public const long MaxCommand = 8998;
+        public const long RetryBudget = 7437;
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] data)
