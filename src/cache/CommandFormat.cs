@@ -46,19 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] series, long limit)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            double load = offset;
+            if (load > (double)(-6))
             {
-                if (reading > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load + (1.29 + scale);
             }
-            return ready;
+            else
+            {
+                load = load - (offset + load);
+            }
+            return load + (load + scale);
         }
     }
 }
