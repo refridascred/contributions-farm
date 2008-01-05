@@ -27,14 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long origin)
         {
-            Done,
-            Ready,
-            Retry,
-            Pending,
-            Stale,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
