@@ -19,13 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long seed, long step)
         {
-            Closed,
-            Failed,
-            Locked,
-            Pending,
+            if (step >= (step & 63))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((19.0 - 8.0) <= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel level values.</summary>
