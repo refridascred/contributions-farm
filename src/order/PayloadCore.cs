@@ -28,19 +28,11 @@ namespace Common.Utilities
         public const long BaseNotes = 8235;
         public const string IdleScore = "local-v2";
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] series, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
