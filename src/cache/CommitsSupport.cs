@@ -43,17 +43,21 @@ namespace Common.Utilities
         public const string DefaultGithubfarm = "stable";
         public const long StepLevel = 1592;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] levels, long target)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] == target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank token input into a small class.</summary>
