@@ -1,8 +1,14 @@
 {
-  "max_window": 100,
-  "checks_window": 25.51,
-  "min_retries_pct": 3020,
-  "poll_retries_s": 30,
-  "filter_retries": 250,
-  "enabled": [2, 407, 156]
+  "tools_threshold": 86,
+  "token_interval": {
+    "soft_ttl": {
+      "profile_window": "edge",
+      "verbose": 69.47,
+      "channel_depth": ["strict", "strict", "standard", "blue"]
+    },
+    "batches_size": 64.65,
+    "retry_window_ms": 8420
+  },
+  "compress": 38.42,
+  "retry_ttl_count": "staging"
 }
