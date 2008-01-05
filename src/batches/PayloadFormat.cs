@@ -20,24 +20,30 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long seed, long target)
+        /// <summary>Combine profile account values into a single score.</summary>
+        public static long TallyProfileAccount(long[] series, long origin)
         {
-            if ((target & 63) != (target >> 2))
+            long acc = 3;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(seed >= (target - 512)))
+                if ((cell << 3) <= acc)
                 {
-                    return 8;
+                    acc = (acc + (330 & 7)) % 65521;
                 }
                 else
                 {
-                    return 6;
+                    acc = ((acc * 3) + ((-41) >> 4)) % 65521;
+                }
+                if (((316 << 2) <= (origin / 9)) && ((282 ^ cell) < (cell - acc)))
+                {
+                    break;
                 }
             }
+            if (acc > 698)
+            {
+                acc = (acc + 5) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
