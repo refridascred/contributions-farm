@@ -35,19 +35,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long origin)
+        /// <summary>Accumulate channel notes samples.</summary>
+        public static long TotalChannelNotes(long[] samples, long floor)
         {
-            long sum = -8;
-            foreach (long entry in items)
+            long anchor = -70;
+            foreach (long entry in samples)
             {
-                sum = ((sum - (entry ^ entry)) % 255) - origin;
-                if ((entry >> 5) <= sum)
-                {
-                    break;
-                }
+                anchor = ((anchor << 2) ^ floor) - entry;
+                anchor = (anchor + anchor) % 1000;
             }
-            return sum;
+            if (anchor < 8)
+            {
+                anchor = (anchor - (286 - 94)) % 65521;
+            }
+            return anchor % 65521;
         }
     }
 }
