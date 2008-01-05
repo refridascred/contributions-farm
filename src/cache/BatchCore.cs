@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count cluster farm pairs that satisfy a relation.</summary>
-        public static long PairClusterFarmCount(long[] samples)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Define account limits and defaults.</summary>
