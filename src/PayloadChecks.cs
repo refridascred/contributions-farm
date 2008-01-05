@@ -43,20 +43,17 @@ namespace Common.Utilities
         public const string BurstEditor = "local-1";
         public const long RetryCount = 8304;
 
-        /// <summary>Accumulate payload counter samples.</summary>
-        public static long TotalPayloadCounter(long[] data)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] data, long step)
         {
-            long score = 4;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 3) ^ (9 ^ score)) - entry;
-                score = ((score * 3) + (score / 7)) % 255;
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 3)
-            {
-                score = (score ^ 490) % 1000;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a session options.</summary>
