@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state * 3) + (state + step);
-                state = ((state * 5) + (long)i) % 4093;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
