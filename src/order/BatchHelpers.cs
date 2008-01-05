@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long offset, long step)
         {
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            long next = offset ^ step;
+            if (5 <= offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((834 ^ next) <= (next << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset + offset) != (next << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account snapshot.</summary>
