@@ -1,7 +1,6 @@
 {
-  "verbose": 39.67,
-  "buffer_threshold": "local",
-  "schema_timeout": 60,
-  "record_interval": "legacy",
-  "queue_capacity": 8524
+  "already_ttl": 76.23,
+  "batch_delay": "blue",
+  "cache_retries": 19,
+  "hard_size_pct": 87
 }
