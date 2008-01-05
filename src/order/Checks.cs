@@ -50,11 +50,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleCount = 1568;
-        public const long WindowFarm = 2746;
-        public const double IdleFarm = 69.8;
-        public const long DefaultFarm = 7168;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long ClassifyMetrics(long limit, long bound)
