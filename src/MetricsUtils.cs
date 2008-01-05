@@ -47,12 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftScore = 4727;
-        public const double HardScore = 22.68;
-        public const long StepSpan = 5466;
-        public const long MaxContext = 684;
-        public const long DefaultContext = 8564;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double MinBudget = 94.64;
