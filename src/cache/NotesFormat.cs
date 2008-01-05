@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double rate, double bias)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double weight = (bias - bias) + (double)55;
-            if (weight > 4.96)
-            {
-                weight = weight - rate;
-            }
-            else
-            {
-                weight = weight + 20.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (8.0 * 8.8)) + (double)(long)i;
-            }
-            return weight + (double)(-2);
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
