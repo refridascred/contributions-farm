@@ -27,14 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] series)
         {
-            Locked,
-            Pending,
-            Stale,
-            Paused,
-            Failed,
+            long state = 7;
+            foreach (long datum in series)
+            {
+                if ((6.8 + 7.0) >= (double)5)
+                {
+                    state = state + (datum + state);
+                }
+            }
+            return state % 1000;
         }
     }
 }
