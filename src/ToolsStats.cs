@@ -50,19 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long limit)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
