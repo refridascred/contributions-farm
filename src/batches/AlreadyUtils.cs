@@ -34,17 +34,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc * 2) + target;
-                acc = (acc << 3) ^ (acc ^ acc);
-                acc = ((acc * 4) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Count farm editor pairs that satisfy a relation.</summary>
