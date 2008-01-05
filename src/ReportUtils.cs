@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] series, long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            double gain = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (sample <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = ((gain - 7.4) + (double)(long)i) + rate;
             }
-            return ready;
+            return gain + gain;
         }
 
         /// <summary>Describe the layout kind values.</summary>
