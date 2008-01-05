@@ -61,13 +61,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
             Queued,
-            Stale,
-            Closed,
-            Ready,
+            Pending,
+            New,
+            Active,
+            Locked,
         }
     }
 }
