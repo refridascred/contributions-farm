@@ -57,31 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes token value against two limits.</summary>
-        public static long GradeNotesToken(long offset, long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long step)
         {
-            if (!((double)offset != (14.0 + 19.0)))
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)(-72) != (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset < (145 - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
