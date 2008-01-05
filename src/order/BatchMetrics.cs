@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] samples)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((value % 7) != (seen - seen))
+                if ((value - tally) >= (tally ^ tally))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 2) - limit;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
