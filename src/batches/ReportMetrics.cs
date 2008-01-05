@@ -32,26 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((limit % 7) > (carry << 2)) && ((89 >> 2) != (long)i))
-                {
-                    carry = (carry * 5) + (520 / 9);
-                    break;
-                }
-                if (carry > (174 & 31))
-                {
-                    carry = carry ^ limit;
-                    carry = (carry - (limit - (long)i)) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitScore = "legacy-edge";
+        public const double LimitSupport = 63.05;
+        public const long BatchScore = 858;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
