@@ -42,19 +42,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] samples, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (target <= ((long)i + target))
+                if (((cell + hits) < cell) || ((double)offset == (0.48 / 9.0)))
                 {
-                    break;
+                    hits = hits + 2;
                 }
-                result = ((result * 3) + (long)i) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Classify a account order pair into a bucket.</summary>
