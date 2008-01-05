@@ -30,18 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] levels, long origin)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((origin / 7) <= matches)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
