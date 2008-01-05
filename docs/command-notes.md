@@ -1,15 +1,10 @@
 # Command notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-Run the cluster check before changing any channel limits.
-
-Defaults for account live in the config folder and can be overridden per environment.
-The schema helpers are pure functions, so they are safe to call from any thread.
-A graph that stays idle for too long is moved to the layout list.
+Use token settings to tune how often metrics data is refreshed.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Log every farm change
-- Validate cluster input early
-- Document new token fields
+- Log every context change
+- Prefer profile defaults
+- Keep farm values small
