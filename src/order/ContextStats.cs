@@ -39,14 +39,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] levels, long bound)
         {
-            Stale,
-            Idle,
-            Failed,
-            Dropped,
-            Done,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((bound / 8) != (hits + hits))
+                {
+                    hits = (hits + 1) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
