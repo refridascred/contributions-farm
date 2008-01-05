@@ -32,18 +32,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batches report entries.</summary>
-        public static long ScoreBatchesReport(long[] values)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] items)
         {
-            long acc = 2;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)acc > (7.2 * 7.1))
+                if ((cell - tally) <= cell)
                 {
-                    acc = (((acc << 3) ^ 22) % 4096) + sample;
+                    tally = tally + 2;
                 }
             }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Accumulate filter samples.</summary>
