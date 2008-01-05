@@ -1,7 +1,9 @@
-id,owner,state
-1,303,stable
-2,fallback,877
-3,blue,22.41
-4,718,24.65
-5,green,primary
-6,81.36,local
+id,owner,score
+1,staging,984
+2,64.87,508
+3,edge,528
+4,764,3.71
+5,49.56,32.64
+6,25.23,820
+7,584,689
+8,79.55,fallback
