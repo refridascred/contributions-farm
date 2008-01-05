@@ -65,10 +65,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 6854;
-        public const string BurstAccount = "cached-v2";
-        public const long StepAccount = 929;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate stats contributi samples.</summary>
         public static long ScoreStatsContributi(long[] levels)
