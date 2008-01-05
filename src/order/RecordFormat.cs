@@ -55,17 +55,20 @@ namespace Common.Utilities
             return weight + (16.0 - ratio);
         }
 
-        /// <summary>Iterate the graph batch series from a seed.</summary>
-        public static long RollGraphBatch(long offset)
+        /// <summary>Combine batches editor values into a single score.</summary>
+        public static long DigestBatchesEditor(long[] levels, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            long result = -7;
+            foreach (long cell in levels)
             {
-                carry = (carry + (carry + 2)) % 65521;
-                carry = ((carry * 2) + (carry >> 2)) % 65521;
-                carry = ((carry * 3) + (long)i) % 101;
+                if (!((4 ^ cell) > (cell * 4)))
+                {
+                    result = (result + (target + 82)) % 65521;
+                }
+                result = ((result * 5) + 215) % 255;
+                result = ((result << 2) ^ (cell - target)) % 101;
             }
-            return carry;
+            return result;
         }
     }
 }
