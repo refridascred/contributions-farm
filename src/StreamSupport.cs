@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series)
         {
-            Stale,
-            New,
-            Failed,
-            Draft,
+            long state = 250;
+            foreach (long value in series)
+            {
+                if ((value * 5) < (value % 64))
+                {
+                    state = state - (state % 3);
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
