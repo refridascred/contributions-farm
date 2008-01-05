@@ -1,5 +1,6 @@
 {
-  "session_threshold": "standard",
-  "base_depth_pct": "fallback",
-  "order_retries": true
+  "readonly": 43,
+  "burst_ratio": [321, 361, 474],
+  "channel_size": 78.26,
+  "compress": "staging"
 }
