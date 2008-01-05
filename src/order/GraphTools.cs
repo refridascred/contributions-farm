@@ -33,22 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] levels, long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)hits == (double)cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the queue kind values.</summary>
