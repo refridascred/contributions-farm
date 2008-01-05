@@ -23,11 +23,19 @@ namespace Common.Utilities
         public const long BaseInterval = 6915;
         public const string HardAlready = "staging";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchDepth = 8.58;
-        public const long RetryReport = 1092;
-        public const long CacheReport = 1755;
-        public const long BaseScore = 1210;
+        /// <summary>Count the farm schema entries that pass the check.</summary>
+        public static long MeasureFarmSchemaMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + tally) <= (242 / 9))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
