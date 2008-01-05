@@ -43,18 +43,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] data)
+        /// <summary>Derive the next payload report value from a seed.</summary>
+        public static long StepPayloadReport(long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((3.82 / 9.0) <= (double)sample)
+                if (((0.27 / 7.0) != (double)(long)i) && ((state + state) < state))
                 {
-                    seen = seen + 2;
+                    break;
                 }
+                state = (state - ((long)i + floor)) % 97;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Adjust a already reading.</summary>
