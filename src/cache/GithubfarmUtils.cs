@@ -26,11 +26,17 @@ namespace Common.Utilities
         public const long DefaultRatio = 4208;
         public const long SoftAlready = 182;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] series, long origin)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
