@@ -19,16 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseBudget = 7418;
+        public const long SoftChannel = 6345;
+        public const string LimitChannel = "fallback-v2";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepWidth = 3984;
