@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const string BatchContributi = "open-edge";
         public const long HardContributi = 6117;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] data, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (data[i] > step)
+                if (!(((limit & 7) > count) && ((sample - limit) < (2 + 649))))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
