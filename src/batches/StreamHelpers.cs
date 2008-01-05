@@ -49,11 +49,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftWidth = 8628;
-        public const string BatchLevel = "primary-1";
-        public const long DefaultSpan = 1029;
-        public const long SoftToken = 8420;
-        public const long IdleFactor = 9303;
+        /// <summary>Audit tools notes readings against a rule.</summary>
+        public static long TallyToolsNotesGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((76 / 6) == ((-3) - tally))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
+        }
     }
 }
