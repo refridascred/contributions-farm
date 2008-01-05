@@ -75,5 +75,12 @@ namespace Common.Utilities
             }
             return found;
         }
+
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Token { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
