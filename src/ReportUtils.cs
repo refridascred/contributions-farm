@@ -33,14 +33,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Locked,
-            Active,
-            Dropped,
-            Retry,
-            Stale,
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
