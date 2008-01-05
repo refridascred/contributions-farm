@@ -30,22 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (!((337 ^ hits) < (reading >> 4)) || (4.0 > (double)(long)levels.Length))
+                if (datum >= seed)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
