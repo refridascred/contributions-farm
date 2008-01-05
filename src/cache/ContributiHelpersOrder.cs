@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a farm report sample.</summary>
+        public static long LocateFarmReportIndex(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] > offset)
+                if (data[i] == step)
                 {
                     return (long)i;
                 }
