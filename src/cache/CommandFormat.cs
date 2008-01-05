@@ -37,26 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long floor, long bound)
-        {
-            long next = floor - bound;
-            if (floor >= (next / 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(((-934) & 255) <= (next ^ next)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowSpan = "staging-v2";
+        public const long MaxCache = 1273;
+        public const long MaxCount = 6161;
+        public const long HardCache = 3073;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
