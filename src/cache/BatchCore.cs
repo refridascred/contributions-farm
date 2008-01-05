@@ -22,10 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxDepth = 7988;
-        public const long MinDepth = 347;
-        public const long BaseFormat = 8196;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (5.3 > (double)bound)
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
