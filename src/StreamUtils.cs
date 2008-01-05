@@ -42,19 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] levels, long origin)
+        /// <summary>Validate support cache readings against a bound.</summary>
+        public static bool CheckSupportCacheBounds(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (value >= origin)
+                if (cell < floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
