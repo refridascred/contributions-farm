@@ -38,22 +38,12 @@ namespace Common.Utilities
         public const double BaseRatio = 75.45;
         public const long SoftBatch = 5184;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] series, long bound)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long carry = 766;
-            foreach (long item in series)
-            {
-                if ((23 / 9) < (item & 1))
-                {
-                    carry = (carry - (92 * 5)) - bound;
-                }
-                else
-                {
-                    carry = carry + (carry & 1);
-                }
-            }
-            return carry;
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
