@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchSpan = "strict-edge";
-        public const long DefaultAccount = 9306;
-        public const long WindowAccount = 4412;
-        public const long LimitAccount = 835;
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double weight, double floor)
+        {
+            double scale = floor;
+            if (scale >= (double)(-5))
+            {
+                scale = scale + (double)644;
+            }
+            else
+            {
+                scale = scale - (weight + scale);
+            }
+            return scale + (floor * 11.0);
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string DefaultInterval = "primary-edge";
