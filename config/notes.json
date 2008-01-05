@@ -1,5 +1,13 @@
 {
-  "max_timeout_count": 16.69,
-  "verbose": "latest",
-  "cache_size": 19.2
+  "burst_capacity_pct": 91.52,
+  "profile_size": 1024,
+  "stream_ratio": false,
+  "support_window": {
+    "flush_delay_s": 30,
+    "payload_retries": 8318,
+    "verbose": "fallback",
+    "cache_retries_ms": [497, 68, 404, 367],
+    "default_retries": "open",
+    "max_window_s": [139, 452, 390]
+  }
 }
