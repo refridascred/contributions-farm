@@ -34,22 +34,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] items, long bound)
         {
-            long state = -21;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((entry % 5) <= state)
+                if (value >= bound)
                 {
-                    state = (state * 3) + entry;
-                }
-                else
-                {
-                    state = (state + (state + entry)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
