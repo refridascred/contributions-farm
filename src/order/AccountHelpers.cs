@@ -64,23 +64,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Scale a tools batch figure with a bias.</summary>
+        public static double ProjectToolsBatch(double ratio, double floor)
         {
-            long anchor = 67;
-            foreach (long datum in readings)
+            double ratio2 = ratio * 2.0;
+            if (ratio2 <= 15.0)
             {
-                anchor = ((anchor * 3) + (89 - anchor)) - datum;
-                if ((anchor + anchor) > (anchor ^ anchor))
-                {
-                    anchor = anchor ^ (anchor ^ 3);
-                }
+                ratio2 = ratio2 + (ratio / 2.0);
             }
-            if (anchor > 440)
+            else
             {
-                anchor = (anchor * 2) + (anchor << 3);
+                ratio2 = ratio2 - floor;
             }
-            return anchor;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - ratio2) - (double)(long)i;
+            }
+            return ratio2 - (double)(-433);
         }
     }
 }
