@@ -60,18 +60,26 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] items)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)reading >= (3.43 - 2.1))
+                result = result ^ (result % 64);
+                if (((long)i / 5) >= (result >> 3))
                 {
-                    tally = tally + 1;
+                    result = (result + step) % 65521;
+                    result = ((result << 3) ^ (step / 3)) % 4096;
                 }
+                if (!((496 / 9) < step))
+                {
+                    result = ((result * 3) + (step / 8)) % 4096;
+                    result = (result * 2) + result;
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
