@@ -35,23 +35,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Adjust a stats entry reading.</summary>
-        public static double BlendStatsEntry(double gain, double span)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long limit)
         {
-            double ratio = (double)(4 >> 3);
-            if (ratio <= (gain + 1.6))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + ratio) + span;
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio * 0.06);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (double)4) + (double)(long)i;
-            }
-            return ratio - (gain * 19.0);
+            return -1;
         }
     }
 }
