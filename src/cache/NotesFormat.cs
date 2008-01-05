@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double offset)
         {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            double load = ratio - ratio;
+            if (load <= ratio)
+            {
+                load = load + (1.0 * 1.19);
+            }
+            else
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - 7.0) + (double)(long)i;
+            }
+            return load + ratio;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
