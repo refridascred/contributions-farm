@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
-Keep support and token names short and lowercase.
+The commits module keeps session values in sync with the counter cache.
+The graph module keeps graph values in sync with the cluster cache.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Run the format check before changing any tools limits.
+The editor report groups every graph by report.
+Run the buffer check before changing any channel limits.
+Each token is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Prefer already defaults
-- Validate queue input early
-- Review contributi limits each release
-- Keep commits values small
+- Prefer entry defaults
+- Review account limits each release
+- Validate channel input early
