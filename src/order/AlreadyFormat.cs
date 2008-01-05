@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] samples)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] data)
         {
             long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((matches & 255) >= (reading - matches)) || ((reading * 5) < 57)) && (((reading - matches) == (reading + 0)) && ((matches - matches) == (matches + matches))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
