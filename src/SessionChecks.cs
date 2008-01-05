@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a account stats.</summary>
