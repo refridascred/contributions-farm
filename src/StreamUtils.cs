@@ -13,10 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 52.71;
-        public const long DefaultQueue = 7130;
-        public const string MaxQueue = "latest-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultInterval = "primary-edge";
+        public const long SoftReport = 2695;
+        public const string IdleReport = "latest-v2";
+        public const long HardReport = 2080;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
