@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] series, long limit)
         {
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            long anchor = 55;
+            foreach (long cell in series)
+            {
+                if (limit < cell)
+                {
+                    anchor = (anchor ^ (96 << 3)) % 1000;
+                }
+            }
+            if (anchor < 332)
+            {
+                anchor = (anchor ^ (limit - 12)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a account stats.</summary>
