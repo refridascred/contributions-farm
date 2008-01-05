@@ -47,18 +47,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxSpan = 4951;
+        public const double LimitPayload = 0.94;
+        public const double BatchPayload = 38.9;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmGaps(long[] readings, long target)
