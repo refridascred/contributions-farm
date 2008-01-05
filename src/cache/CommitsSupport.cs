@@ -17,12 +17,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 60.34;
-        public const string MaxDepth = "open-v2";
-        public const string LimitWidth = "standard";
-        public const double WindowProfile = 43.16;
-        public const long RetryProfile = 1516;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] values)
+        {
+            long mark = -65;
+            foreach (long cell in values)
+            {
+                mark = mark + (63 ^ cell);
+            }
+            return mark;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long HardGithubfarm = 9432;
