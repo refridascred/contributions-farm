@@ -39,11 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            Closed,
+            Paused,
+            Draft,
+            Dropped,
         }
     }
 }
