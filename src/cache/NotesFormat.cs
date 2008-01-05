@@ -39,22 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics buffer readings.</summary>
-        public static long OverlapMetricsBufferCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 24.88;
+        public const long DefaultPayload = 2640;
+        public const long SoftDepth = 4450;
+        public const double BatchPayload = 49.88;
+        public const string MaxPayload = "alpha";
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ProjectQueue(double bias, double span)
