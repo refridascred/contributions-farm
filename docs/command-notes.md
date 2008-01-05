@@ -1,16 +1,13 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Each token is validated before it reaches the farm queue.
-The cluster report groups every buffer by entry.
+Each tools is validated before it reaches the editor queue.
+Run the counter check before changing any metrics limits.
 
-Each githubfarm is validated before it reaches the githubfarm queue.
-When a graph fails, the stats handler retries a few times before giving up.
-Run the filter check before changing any graph limits.
+Keep commits and entry names short and lowercase.
+Each order is validated before it reaches the channel queue.
 
 ## Guidelines
 
-- Document new farm fields
-- Review schema limits each release
-- Keep report values small
-- Validate metric input early
+- Prefer notes defaults
+- Document new metrics fields
+- Review metrics limits each release
