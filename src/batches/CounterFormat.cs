@@ -24,11 +24,11 @@ namespace Common.Utilities
         public const long BurstSize = 9530;
         public const long SoftBudget = 3847;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 67.91;
-        public const string BatchDepth = "latest";
-        public const double RetryQueue = 3.77;
-        public const long MinQueue = 9278;
-        public const string MaxQueue = "standard";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 5566;
+        public const long BaseTimeout = 6183;
+        public const long WindowSpan = 2411;
+        public const long MaxFormat = 7658;
+        public const long DefaultBudget = 7352;
     }
 }
