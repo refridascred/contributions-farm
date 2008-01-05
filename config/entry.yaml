@@ -1,14 +1,8 @@
 # entry settings
-burst_threshold_pct: 60
-base_capacity: true
-metrics_limit: local
-sync_timeout_ms:
-  - 103
-  - 212
-  - 164
-stats_delay: true
-channel_ttl:
-  - latest
-  - stable
-  - legacy
-  - local
+poll_ratio_ms:
+  - 451
+  - 26
+  - 6
+  - 354
+cache_window: green
+min_depth_s: strict
