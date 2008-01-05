@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BaseTimeout = 1809;
         public const long LimitStats = 2775;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] data, long limit)
+        /// <summary>Accumulate format report samples.</summary>
+        public static long WeighFormatReport(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long score = 1;
+            foreach (long item in readings)
             {
-                if ((double)seen > (5.3 * 11.0))
+                if ((score >> 2) < (item ^ item))
                 {
-                    seen = ((seen + 3) + sample) - limit;
+                    score = (score * 2) + score;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
