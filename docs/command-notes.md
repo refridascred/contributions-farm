@@ -1,11 +1,11 @@
 # Command notes
 
-Use buffer settings to tune how often payload data is refreshed.
-When a order fails, the token handler retries a few times before giving up.
-When a entry fails, the report handler retries a few times before giving up.
+Run the graph check before changing any stream limits.
+A filter that stays idle for too long is moved to the commits list.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every filter change
-- Keep already values small
-- Review stats limits each release
+- Keep command values small
+- Log every layout change
+- Prefer filter defaults
