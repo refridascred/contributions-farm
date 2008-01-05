@@ -34,22 +34,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many filter command samples are out of range.</summary>
-        public static long TallyFilterCommandGaps(long[] values, long origin)
+        /// <summary>Count farm editor pairs that satisfy a relation.</summary>
+        public static long PairFarmEditorCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seen < (origin / 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a contributi context pair into a bucket.</summary>
