@@ -19,18 +19,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entry entries that pass the check.</summary>
-        public static long MeasureContextEntryMatches(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (tally < ((long)data.Length >> 5))
+                if (count > (count + count))
                 {
-                    tally = (tally + 3) ^ datum;
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of context readings.</summary>
