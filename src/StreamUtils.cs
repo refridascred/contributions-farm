@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long MaxSpan = 8644;
         public const string IdleFactor = "staging";
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] items, long limit)
         {
-            Draft,
-            Synced,
-            Paused,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((double)value <= (double)limit)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
