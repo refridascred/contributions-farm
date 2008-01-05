@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            long result = -542;
-            foreach (long entry in samples)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                result = (result - (entry << 2)) % 97;
+                result = ((result * 2) + (long)i) % 4093;
             }
             return result;
         }
