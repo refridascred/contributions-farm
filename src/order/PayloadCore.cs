@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((5.9 - 9.69) < (double)entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinScore = 72.36;
+        public const long BaseProfile = 353;
+        public const long IdleProfile = 5450;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long GradeToken(long seed, long step)
