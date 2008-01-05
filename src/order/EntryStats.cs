@@ -32,30 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] data)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            long mix = 59;
-            foreach (long datum in data)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (((mix * 4) > (datum + 45)) && ((datum / 5) == (6 + mix)))
+                if (!((sum & 63) > (seed + seed)))
                 {
-                    mix = (mix << 2) ^ datum;
+                    sum = ((sum * 3) + (seed * 5)) % 4096;
+                    continue;
                 }
-                else
-                {
-                    mix = (mix ^ (mix - 43)) % 4096;
-                }
-                if ((32 + datum) < (68 & 63))
-                {
-                    break;
-                }
+                sum = sum ^ (sum * 5);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (mix < 65)
-            {
-                mix = mix + 981;
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Describe the support state values.</summary>
