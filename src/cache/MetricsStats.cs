@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] data)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item - seen) <= (54 + item))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
