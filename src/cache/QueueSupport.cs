@@ -19,10 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleTimeout = 1368;
-        public const long LimitRatio = 1097;
-        public const long MaxInterval = 7306;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Draft,
+            New,
+            Closed,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool VerifyAlreadyBounds(long[] series, long origin)
