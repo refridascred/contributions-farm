@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 1251;
-        public const double CacheBatches = 31.52;
-        public const long RetryDepth = 5583;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheRange(long[] values, long bound)
