@@ -46,10 +46,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxLevel = 5919;
-        public const long BatchGithubfarm = 6775;
-        public const double BurstSpan = 77.31;
-        public const long BurstLevel = 152;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data)
+        {
+            long sum = 8;
+            foreach (long entry in data)
+            {
+                if ((entry + entry) > 652)
+                {
+                    sum = sum - (sum & 63);
+                    sum = (sum ^ sum) % 1000;
+                }
+                sum = (sum ^ (entry - entry)) % 4096;
+            }
+            return sum;
+        }
     }
 }
