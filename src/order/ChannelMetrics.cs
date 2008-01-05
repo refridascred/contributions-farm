@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry buffer samples.</summary>
-        public static long TotalEntryBuffer(long[] levels)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long mix = 8;
-            foreach (long value in levels)
-            {
-                mix = (((mix << 2) ^ 104) % 4096) ^ value;
-            }
-            if (mix > 67)
-            {
-                mix = (mix * 5) + mix;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
