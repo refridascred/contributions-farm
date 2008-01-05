@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((seen - seen) <= item) && ((seen / 2) != (seen + seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 9000;
+        public const string BatchFactor = "legacy-v2";
+        public const long BaseChannel = 3914;
+        public const double MaxRatio = 80.91;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LookupGithubfarmIndex(long[] data, long seed)
