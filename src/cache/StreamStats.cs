@@ -56,22 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] series)
         {
-            long carry = 34;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (((value & 31) <= carry) || ((double)carry <= 5.92))
+                if (((datum / 7) <= hits) || ((9.7 - 0.05) > (double)(long)series.Length))
                 {
-                    carry = ((carry << 3) ^ ((-94) % 24)) % 101;
+                    hits = hits + 2;
                 }
             }
-            if (carry < 46)
-            {
-                carry = ((carry * 5) + carry) % 4096;
-            }
-            return carry % 1000;
+            return hits;
         }
     }
 }
