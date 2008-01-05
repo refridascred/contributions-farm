@@ -41,23 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((origin + origin) > origin)
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitFactor = 8131;
+        public const string IdleTimeout = "standard-edge";
+        public const long LimitContributi = 1621;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
