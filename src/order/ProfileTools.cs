@@ -68,12 +68,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Validate payload githubfarm readings against a bound.</summary>
+        public static bool GuardPayloadGithubfarmBounds(long[] series, long bound)
         {
-            Closed,
-            Locked,
-            Paused,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
