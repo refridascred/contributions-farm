@@ -1,17 +1,4 @@
 # support settings
-compress: green
-warm_timeout_s:
-  idle_threshold_pct: legacy
-  sync_window_count: fallback
-  counter_interval:
-    - green
-    - staging
-    - cached
-    - fallback
-  retry_limit_pct: 3504
-  profile_ratio:
-    - eu-west
-    - local
-    - local
-flush_depth_count: 1024
-hard_ttl_s: edge
+checks_size: false
+filter_interval: false
+readonly: 1024
