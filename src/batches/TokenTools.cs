@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long bound, long target)
+        /// <summary>Audit notes support readings against a rule.</summary>
+        public static long AuditNotesSupportHits(long[] values)
         {
-            long slot = bound + target;
-            if ((bound << 1) < (bound / 4))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((4.0 - 2.0) <= (double)slot) && ((bound >> 2) <= bound))
+                if ((6.9 * 0.43) < (double)count)
                 {
-                    return 8;
+                    count = (count + 3) ^ datum;
                 }
                 else
                 {
-                    if ((1.0 / 8.0) > (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound > (target & 7)) || (slot < (24 + bound)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
