@@ -12,12 +12,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Measure how many record checks samples are out of range.</summary>
+        public static long AuditRecordChecksOutliers(long[] items)
         {
-            Failed,
-            Closed,
-            Synced,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((datum + datum) > (matches * 5)) || ((matches / 7) >= (97 % 8)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate graph stats readings against a bound.</summary>
