@@ -1,20 +1,5 @@
 {
-  "poll_depth": {
-    "default_retries_ms": 84,
-    "verbose": 9923,
-    "retry_threshold_ms": false,
-    "format_depth": 75.27,
-    "compress": {
-      "entry_depth": "edge",
-      "default_size_ms": "legacy",
-      "cache_retries_pct": "green",
-      "poll_ratio_s": 60,
-      "githubfarm_ratio": 7.2
-    },
-    "burst_capacity": true
-  },
-  "base_limit_ms": "staging",
-  "max_threshold_ms": true,
-  "base_ratio_pct": 74.84,
-  "warm_delay_ms": 250
+  "burst_threshold_count": ["blue", "local", "strict", "fallback"],
+  "warm_limit": 84.56,
+  "poll_ttl_ms": "green"
 }
