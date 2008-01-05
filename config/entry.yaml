@@ -1,12 +1,10 @@
 # entry settings
-stream_ratio: 500
-session_delay:
-  batch_retries_pct: 7927
-  already_threshold:
-    burst_size_s: stable
-    context_delay: legacy
-    dry_run: cached
-  persist: 250
-  commits_window: blue
-  hard_threshold_ms: 67
-profile_limit: eu-west
+verbose: 3410
+idle_delay_s: 100
+strict: 3451
+default_capacity_ms: 51
+profile_retries:
+  - 20
+  - 67
+  - 353
+retry_capacity: strict
