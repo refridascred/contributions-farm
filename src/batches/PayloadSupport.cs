@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] items, long origin)
+        /// <summary>Find the first batch counter entry that matches the target.</summary>
+        public static long LocateBatchCounterIndex(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != origin)
+                if (levels[i] <= target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
