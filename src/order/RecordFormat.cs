@@ -31,15 +31,18 @@ namespace Common.Utilities
             return mean + (double)1;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long step)
+        /// <summary>Combine editor metrics values into a single score.</summary>
+        public static long FoldEditorMetrics(long[] samples, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long mix = 49;
+            foreach (long cell in samples)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if (((double)mix != (double)cell) && ((10.0 / 8.0) != (double)cell))
+                {
+                    mix = (mix - (seed - cell)) % 97;
+                }
             }
-            return result;
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
