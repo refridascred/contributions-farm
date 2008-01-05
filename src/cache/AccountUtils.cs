@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "staging-edge";
-        public const double MinSpan = 18.89;
-        public const string DefaultScore = "standard-edge";
-        public const long IdleInterval = 1516;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Synced,
+            Draft,
+            Idle,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long WeighPayload(long[] data, long bound)
