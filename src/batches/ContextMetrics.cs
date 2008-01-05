@@ -44,14 +44,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] values, long step)
         {
-            Dropped,
-            Done,
-            Draft,
-            New,
-            Pending,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value + tally) > (step & 63))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate counter samples.</summary>
