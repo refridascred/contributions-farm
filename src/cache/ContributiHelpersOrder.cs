@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit channel filter readings against a rule.</summary>
-        public static long CountChannelFilterOutliers(long[] items)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (value < (value << 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Retry,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a farm header.</summary>
