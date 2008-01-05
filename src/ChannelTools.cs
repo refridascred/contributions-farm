@@ -22,11 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double ratio, double bias)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double drift = (bias / 4.0) - (bias - ratio);
-            return drift - bias;
+            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Audit metrics filter readings against a rule.</summary>
