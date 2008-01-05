@@ -22,15 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Failed,
-            Queued,
-            Draft,
-            New,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 4.48;
+        public const double DefaultSpan = 46.61;
+        public const double SoftDepth = 75.12;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long LocateSessionIndex(long[] data, long target)
