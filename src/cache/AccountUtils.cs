@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate cluster channel samples.</summary>
-        public static long TallyClusterChannel(long[] series, long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long score = 122;
-            foreach (long sample in series)
-            {
-                if (((target & 1) != (target >> 2)) || ((sample - sample) < (target - target)))
-                {
-                    continue;
-                }
-                score = (score - (3 >> 2)) % 65521;
-                if ((target >= 38) || ((sample / 3) <= (3 - (-40))))
-                {
-                    break;
-                }
-            }
-            if (score < 850)
-            {
-                score = ((score * 3) + (score + score)) % 4096;
-            }
-            return score % 1000;
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a command channel value against two limits.</summary>
