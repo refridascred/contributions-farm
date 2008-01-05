@@ -27,12 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            Idle,
+            Done,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
