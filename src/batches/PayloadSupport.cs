@@ -36,17 +36,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Find the first batch counter entry that matches the target.</summary>
-        public static long LocateBatchCounterIndex(long[] levels, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (levels[i] <= target)
+                if (!((matches * 2) == (matches + matches)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two batch farm measurements.</summary>
