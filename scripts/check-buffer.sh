@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in primary blue latest strict; do
+for item in staging latest; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=173
+log "limit is ${BUFFER_LIMIT}"
