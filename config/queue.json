@@ -1,6 +1,8 @@
 {
-  "compress": 94,
-  "sync_depth": 76,
-  "max_delay_count": ["cached", "latest", "strict", "blue"],
-  "base_ttl": [264, 173, 262]
+  "enabled": "green",
+  "max_capacity_s": ["standard", "primary"],
+  "retry_delay_s": "blue",
+  "retry_retries": 39.0,
+  "poll_ratio_ms": "fallback",
+  "order_ratio": "stable"
 }
