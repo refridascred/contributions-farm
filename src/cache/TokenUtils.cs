@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
