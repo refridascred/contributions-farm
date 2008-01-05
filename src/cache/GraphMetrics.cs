@@ -41,25 +41,18 @@ namespace Common.Utilities
         public const long BatchLevel = 9146;
         public const double WindowStream = 23.28;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long origin, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] items, long target)
         {
-            long span = origin + seed;
-            if (6.6 < (double)seed)
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((span % 3) > 65)
+                if ((11.0 - 10.0) > (double)matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    matches = ((matches + 1) ^ item) + target;
                 }
             }
+            return matches;
         }
     }
 }
