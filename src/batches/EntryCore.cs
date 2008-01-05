@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine farm batch values into a single score.</summary>
-        public static long TotalFarmBatch(long[] data, long floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] samples, long bound)
         {
-            long mark = 343;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if (samples[i] >= bound)
                 {
-                    mark = ((mark << 3) ^ (floor * 3)) + (long)i;
-                    mark = (mark << 2) ^ mark;
+                    return (long)i;
                 }
-                mark = mark - (entry << 2);
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
