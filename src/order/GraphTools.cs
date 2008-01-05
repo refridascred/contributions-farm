@@ -16,21 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of filter editor readings.</summary>
-        public static long MatchFilterEditorCount(long[] series)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the graph status values.</summary>
