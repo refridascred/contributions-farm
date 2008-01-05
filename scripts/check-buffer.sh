@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge standard legacy stable; do
+for item in strict staging; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
+mode="${1:-latest}"
 case "${mode}" in
-    staging)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=178
-log "limit is ${BUFFER_LIMIT}"
