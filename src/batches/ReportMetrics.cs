@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Locate a farm checks reading by value.</summary>
