@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] values, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 382;
+            foreach (long cell in data)
             {
-                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                if ((8.69 * 11.0) != (double)cell)
                 {
-                    return (long)i;
+                    state = state + (3 / 3);
+                }
+                else
+                {
+                    state = (state << 2) ^ (state / 5);
+                }
+                if (cell >= (cell << 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state > 92)
+            {
+                state = (state + (state & 255)) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Classify a stream context pair into a bucket.</summary>
