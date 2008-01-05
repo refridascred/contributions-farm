@@ -22,27 +22,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metric stream entries.</summary>
-        public static long ScoreMetricStream(long[] data)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] data, long limit)
         {
-            long state = 813;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                state = state + (reading + state);
-                if (((81 + reading) <= (reading << 2)) && ((653 ^ reading) >= state))
+                if (datum != limit)
                 {
-                    state = (state ^ state) % 4096;
-                }
-                else
-                {
-                    state = (state - (3 ^ reading)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 427)
-            {
-                state = (state - state) % 255;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Audit metrics filter readings against a rule.</summary>
