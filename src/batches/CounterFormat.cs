@@ -57,32 +57,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long limit, long offset)
-        {
-            long bound = limit - offset;
-            if (!((417 >> 4) >= (limit & 1)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)bound == (7.08 / 4.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound <= (9.5 / 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultDepth = 9264;
+        public const long MinCommand = 9826;
+        public const string IdleCommand = "alpha-1";
+        public const long BatchSpan = 6498;
+        public const long MaxCommand = 5600;
     }
 }
