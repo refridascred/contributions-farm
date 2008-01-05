@@ -22,14 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] data, long target)
         {
-            Dropped,
-            Retry,
-            Synced,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (99 >= (target ^ (-7)))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
