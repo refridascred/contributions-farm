@@ -13,12 +13,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 5831;
-        public const long BatchTimeout = 7878;
-        public const double BaseSupport = 37.55;
-        public const double BaseCount = 82.72;
-        public const long BatchSupport = 420;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] samples)
+        {
+            long sum = 0;
+            foreach (long reading in samples)
+            {
+                if (!((double)reading > (1.0 * 6.2)))
+                {
+                    sum = (sum + (reading * 3)) % 65521;
+                }
+                if (reading > (sum / 6))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = (sum * 2) + reading;
+                }
+                if (((reading * 4) >= (sum << 3)) && ((sum + sum) < (sum - reading)))
+                {
+                    sum = ((sum << 2) ^ (reading + reading)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "staging-edge";
