@@ -1,17 +1,7 @@
 # githubfarm settings
-idle_depth_count: 0.43
-enabled:
-  poll_threshold_count: 30
-  githubfarm_depth: 40.76
-  profile_ttl:
-    notes_ttl: legacy
-    format_size: 60
-    min_ttl_pct: 4459
-    audit: cached
-  default_retries_count: 23.15
-  dry_run: local
-base_ratio_ms: true
-record_limit:
-  - 214
-  - 119
-  - 140
+flush_threshold_pct: 85
+context_depth: 100
+compress: 500
+batch_retries: latest
+hard_ratio: 25
+stream_window: green
