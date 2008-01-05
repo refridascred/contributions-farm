@@ -1,13 +1,24 @@
 # githubfarm settings
-flush_window_count:
+compress: blue
+retry_window_ms: stable
+strict:
+  flush_ratio:
+    enabled: 60
+    compress: edge
+    base_threshold:
+      - legacy
+      - legacy
+      - eu-west
+    channel_depth: primary
+    audit: latest
+  editor_limit: 27.01
+  retry_threshold_ms:
+    - stable
+    - staging
+    - strict
+  max_retries: 8815
+warm_capacity: 6.55
+hard_window_count:
   - cached
   - staging
-burst_retries:
-  - 369
-  - 185
-  - 69
-  - 375
-sync_ratio: latest
-farm_delay: blue
-burst_threshold: 11.06
-max_depth_pct: 9792
+queue_limit: 6045
