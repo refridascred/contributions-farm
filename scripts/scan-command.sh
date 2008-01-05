@@ -6,11 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-stable}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-COMMAND_LIMIT=452
-log "limit is ${COMMAND_LIMIT}"
