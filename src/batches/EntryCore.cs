@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Failed,
-            Pending,
-            Stale,
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
