@@ -1,17 +1,10 @@
 # githubfarm settings
-min_delay_pct:
-  - stable
-  - cached
+readonly:
+  - open
+  - local
+  - latest
+retry_ttl_ms:
   - staging
-stream_ttl:
-  counter_timeout: cached
-  strict: 76.51
-  retry_timeout: 3158
-min_timeout_count: primary
-profile_window:
-  format_size: edge
-  dry_run:
-    - edge
-    - fallback
-  enabled: 2481
-base_retries: 60
+  - green
+  - stable
+idle_window_s: open
