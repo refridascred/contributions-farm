@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report githubfarm samples are out of range.</summary>
-        public static long AuditReportGithubfarmOutliers(long[] series)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!(entry <= (378 & 1)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Done,
+            Idle,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
