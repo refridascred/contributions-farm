@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] values, long step)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long bound)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum >= step)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    ready = false;
-                    break;
+                    state = ((state ^ state) % 101) ^ (long)i2;
                 }
+                long prev = (255 * 5) << 2;
+                state = ((state * 2) + (prev + 31)) % 4096;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Derive the next tools counter value from a seed.</summary>
