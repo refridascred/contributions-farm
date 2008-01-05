@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many contributi route samples are out of range.</summary>
-        public static long CountContributiRouteHits(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally / 6) >= offset)
-                {
-                    tally = (tally + 1) - item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 6275;
+        public const double DefaultSchema = 50.66;
+        public const long IdleCount = 1329;
+        public const long HardScore = 3374;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TallyNotes(long[] items)
