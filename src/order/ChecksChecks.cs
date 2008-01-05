@@ -10,19 +10,27 @@ namespace Common.Utilities
         public const long BaseSize = 4782;
         public const long CacheOrder = 4003;
 
-        /// <summary>Digest a series of tools profile entries.</summary>
-        public static long WeighToolsProfile(long[] values)
+        /// <summary>Combine window entry values into a single score.</summary>
+        public static long WeighWindowEntry(long[] series)
         {
-            long mix = 948;
-            foreach (long sample in values)
+            long score = 29;
+            foreach (long cell in series)
             {
-                mix = (mix ^ (mix / 3)) % 97;
-                if (sample <= (751 + 191))
+                score = (score << 2) ^ (score / 3);
+                if ((score >= cell) && ((score - score) != (2 / 9)))
                 {
-                    mix = mix ^ (mix + mix);
+                    score = (score - (cell ^ score)) % 101;
+                }
+                else
+                {
+                    score = (score ^ (cell & 127)) % 1000;
                 }
             }
-            return mix;
+            if (score > 50)
+            {
+                score = (score ^ (68 - score)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a window options.</summary>
