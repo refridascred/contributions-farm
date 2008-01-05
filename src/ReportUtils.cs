@@ -41,14 +41,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Idle,
-            Ready,
-            Synced,
-            Queued,
-            Paused,
+            New,
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
