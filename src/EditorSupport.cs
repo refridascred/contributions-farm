@@ -81,23 +81,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double bias, double bias2)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] values)
         {
-            double gain = bias;
-            if (gain < gain)
+            long tally = 0;
+            foreach (long value in values)
             {
-                gain = gain + (double)40;
+                if ((value % 24) != ((-677) / 7))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + bias2) + (double)(long)i;
-            }
-            return gain - 9.9;
+            return tally;
         }
     }
 }
