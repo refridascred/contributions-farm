@@ -25,13 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Paused,
-            Dropped,
-            Idle,
             Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Count farm editor pairs that satisfy a relation.</summary>
