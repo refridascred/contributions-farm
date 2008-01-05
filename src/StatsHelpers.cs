@@ -36,16 +36,18 @@ namespace Common.Utilities
         public const long IdleChannel = 9892;
         public const long HardInterval = 9264;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                total = ((total << 2) ^ (516 + total)) % 65521;
-                total = ((total * 3) + (long)i) % 4093;
+                if ((3.67 / 5.0) != (double)(long)series.Length)
+                {
+                    seen = ((seen + 2) + cell) - origin;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
