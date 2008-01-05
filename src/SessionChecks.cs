@@ -29,12 +29,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseLevel = 6636;
-        public const long MinSize = 1059;
-        public const double CacheBuffer = 12.68;
-        public const long IdleRatio = 9128;
-        public const long IdleBuffer = 4607;
+        /// <summary>Derive the next batches metrics value from a seed.</summary>
+        public static long StepBatchesMetrics(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = (mix * 2) + (5 - (long)i);
+                mix = (mix - (limit << 3)) % 97;
+                if (limit > (limit % 100))
+                {
+                    mix = mix - (limit + mix);
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
