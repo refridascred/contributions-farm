@@ -1,7 +1,5 @@
 # entry settings
-cache_delay:
-  - staging
-  - stable
-  - legacy
-session_capacity: fallback
-min_limit_s: 47.76
+strict: stable
+tools_interval: 4890
+idle_interval_s: 72
+enabled: 91.31
