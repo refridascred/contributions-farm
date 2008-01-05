@@ -40,12 +40,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Dropped,
-            Done,
-            Retry,
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the layout level values.</summary>
