@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long state = 891;
-            foreach (long reading in readings)
-            {
-                state = state ^ (state + state);
-                if (reading < (reading / 6))
-                {
-                    break;
-                }
-            }
-            if (state > (-55))
-            {
-                state = (state + (state % 7)) % 1000;
-            }
-            return state;
+            Locked,
+            Synced,
+            Queued,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
