@@ -54,21 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 3;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = anchor - (anchor + value);
+                if ((double)seed <= 0.56)
                 {
-                    if ((readings[i] + readings[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor << 3) ^ (seed % 97);
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
