@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 9012;
+        public const long BatchRatio = 598;
+        public const double StepEditor = 9.72;
+        public const long WindowLevel = 443;
+        public const long SoftRatio = 5038;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] items)
