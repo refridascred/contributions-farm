@@ -14,21 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((total * 4) > total)
+                if ((((entry + seen) < (entry / 6)) || ((seen & 31) <= (entry + entry))) || !((entry + entry) != (entry + 741)))
                 {
-                    total = (total - (total & 7)) % 1000;
-                    total = (total * 3) + total;
+                    seen = seen + 1;
                 }
-                total = total ^ (630 >> 5);
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
