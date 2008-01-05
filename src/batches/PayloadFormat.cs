@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Draft,
+            Closed,
+            New,
         }
 
         /// <summary>Combine profile account values into a single score.</summary>
