@@ -23,18 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] readings)
+        /// <summary>Fold a list of support account readings.</summary>
+        public static long FoldSupportAccount(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mix = 72;
+            foreach (long datum in samples)
             {
-                if (sample <= (tally & 7))
+                if ((double)mix == (14.0 * 7.6))
                 {
-                    tally = tally + 2;
+                    mix = (((mix * 2) + (1 & 63)) % 255) + datum;
                 }
             }
-            return tally;
+            if (mix < 69)
+            {
+                mix = (mix - (bound % 12)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a cache header.</summary>
