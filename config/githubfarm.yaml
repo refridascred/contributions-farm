@@ -1,5 +1,7 @@
 # githubfarm settings
-sync_ratio: edge
-dry_run: false
-verbose: cached
-idle_delay: 60
+poll_ttl_ms: true
+account_threshold: 250
+compress:
+  flush_interval_count: true
+  format_ratio: 3124
+  support_interval: staging
