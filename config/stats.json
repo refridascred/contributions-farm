@@ -1,5 +1,7 @@
 {
-  "base_delay_ms": "eu-west",
-  "strict": 3301,
-  "compress": "standard"
+  "batch_ratio": 68,
+  "sync_retries": 57,
+  "max_window_count": "fallback",
+  "warm_window_ms": 40.62,
+  "cache_ratio_s": 30.27
 }
