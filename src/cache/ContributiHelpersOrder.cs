@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Active,
-            Retry,
-            Queued,
-            Paused,
+            Failed,
             Ready,
+            Closed,
         }
 
         /// <summary>Hold a farm header.</summary>
