@@ -24,12 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            Failed,
-            Synced,
-            Retry,
+            long total = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a commits stats.</summary>
