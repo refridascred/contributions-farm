@@ -53,13 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long offset)
         {
-            Draft,
-            Stale,
-            Retry,
-            Closed,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
