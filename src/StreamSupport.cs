@@ -18,29 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long target, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long seed, long limit)
         {
-            if ((double)origin <= 3.52)
+            long diff = seed + limit;
+            if (!((diff + seed) > (limit + limit)))
             {
                 return 3;
             }
             else
             {
-                if ((double)origin > (double)8)
+                if (((seed - seed) > seed) && ((4 ^ (-9)) > (limit + limit)))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (6.8 < (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 5;
                 }
             }
         }
