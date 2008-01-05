@@ -25,17 +25,15 @@ namespace Common.Utilities
         public const string RetryChannel = "local-1";
         public const long BatchScore = 556;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] readings, long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
