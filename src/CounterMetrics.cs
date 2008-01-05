@@ -38,17 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long origin)
+        /// <summary>Count the schema filter entries that pass the check.</summary>
+        public static long MeasureSchemaFilterHits(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (samples[i] > origin)
+                if ((bound & 31) > count)
                 {
-                    return (long)i;
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
