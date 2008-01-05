@@ -45,15 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            long acc = 5;
-            foreach (long sample in items)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                acc = (acc - (acc << 2)) - sample;
+                result = (result + (729 % 2)) % 1000;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a window summary.</summary>
