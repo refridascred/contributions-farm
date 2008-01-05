@@ -35,10 +35,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitFactor = 8131;
-        public const string IdleTimeout = "standard-edge";
-        public const long LimitContributi = 1621;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftScore = 2402;
+        public const long BatchLayout = 1228;
+        public const long BatchInterval = 1534;
+        public const long BatchFactor = 5367;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
