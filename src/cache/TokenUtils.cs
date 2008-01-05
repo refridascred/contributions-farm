@@ -19,17 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
