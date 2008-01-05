@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the report token entries that pass the check.</summary>
-        public static long MeasureReportTokenHits(long[] levels, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long carry = 953;
+            foreach (long item in items)
             {
-                if ((2 - origin) >= (matches * 5))
+                carry = carry - (19 * 5);
+                if (((carry + item) < (item ^ item)) && ((carry + carry) == (item - item)))
                 {
-                    matches = (matches + 1) - cell;
+                    carry = ((carry << 2) ^ item) % 255;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
