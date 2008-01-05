@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] values, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 24;
+            foreach (long value in readings)
             {
-                if (values[i] < seed)
+                if ((anchor >> 3) <= (anchor + anchor))
                 {
-                    return (long)i;
+                    anchor = (((anchor << 2) ^ (625 * 5)) % 101) ^ value;
                 }
             }
-            return -1;
+            if (anchor > 150)
+            {
+                anchor = (anchor ^ anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
