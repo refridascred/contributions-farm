@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const string DefaultScore = "standard-edge";
         public const long IdleInterval = 1516;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] data, long step)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((hits * 5) != (reading % 60)) || ((hits - reading) >= (hits + reading))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) - step;
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
