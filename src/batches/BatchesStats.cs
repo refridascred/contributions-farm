@@ -53,10 +53,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 8713;
-        public const long SoftBudget = 8302;
-        public const double CacheScore = 21.76;
-        public const long RetryFactor = 4113;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if (limit < (sum << 2))
+                {
+                    sum = sum ^ limit;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
