@@ -36,23 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (!((count + count) < datum))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 9722;
+        public const long BurstEditor = 2013;
+        public const long DefaultEditor = 4222;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
