@@ -23,22 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] series)
+        /// <summary>Count graph contributi pairs that satisfy a relation.</summary>
+        public static long CompareGraphContributiCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((65 + seen) <= seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
