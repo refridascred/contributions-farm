@@ -1,5 +1,7 @@
 {
-  "dry_run": [112, 331, 170, 51],
-  "soft_retries": "green",
-  "batch_depth_ms": false
+  "min_retries_count": 5252,
+  "cache_size_count": 30,
+  "strict": ["green", "green"],
+  "default_capacity": "staging",
+  "stats_retries": 100
 }
