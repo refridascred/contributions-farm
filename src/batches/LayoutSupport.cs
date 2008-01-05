@@ -52,12 +52,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
             Idle,
-            Pending,
-            Active,
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the report mode values.</summary>
