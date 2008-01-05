@@ -13,14 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] series, long step)
         {
-            Retry,
-            Active,
-            Draft,
-            Failed,
-            Closed,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank token stats input into a small class.</summary>
