@@ -51,38 +51,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a farm graph pair into a bucket.</summary>
-        public static long BucketFarmGraph(long origin, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] series, long bound)
         {
-            if (323 > (origin % 3))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-702) ^ 54) <= origin)
+                if (reading > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset < (10.0 * 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin + offset) != (3 + offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of record entries.</summary>
