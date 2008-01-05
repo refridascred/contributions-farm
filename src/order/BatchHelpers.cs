@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long origin, long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            if (((double)origin > (8.68 + 19.0)) || (origin >= (origin * 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ origin) < origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Locked,
+            Draft,
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Describe the stats level values.</summary>
