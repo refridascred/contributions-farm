@@ -30,12 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Fold a list of batch graph readings.</summary>
+        public static long ScoreBatchGraph(long[] levels)
         {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            long score = 246;
+            foreach (long value in levels)
+            {
+                score = score - (score ^ value);
+            }
+            if (score > (-677))
+            {
+                score = score - (score * 3);
+            }
+            return score;
         }
     }
 }
