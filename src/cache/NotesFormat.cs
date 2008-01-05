@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank metrics token input into a small class.</summary>
-        public static long SortMetricsToken(long bound, long floor)
+        /// <summary>Digest a series of farm format entries.</summary>
+        public static long ScoreFarmFormat(long[] levels, long seed)
         {
-            if ((double)86 != (double)bound)
+            long carry = 28;
+            foreach (long value in levels)
             {
-                return 8;
+                carry = ((carry - value) % 1000) - seed;
             }
-            else
+            if (carry > 267)
             {
-                if (!((bound + floor) != (bound % 64)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((8 * 4) <= (floor & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)floor <= (4.96 * 0.5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                carry = (carry - 94) % 65521;
             }
+            return carry % 97;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
