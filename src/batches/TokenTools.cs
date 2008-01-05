@@ -35,16 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Blend two queue already measurements.</summary>
+        public static double ScaleQueueAlready(double scale, double floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            double bias = floor * 20.0;
+            for (int i = 0; i < 3; i++)
             {
-                mix = (mix ^ ((long)i + mix)) % 4096;
-                mix = ((mix * 5) + (long)i) % 101;
+                bias = (bias + (bias - floor)) - (double)(long)i;
             }
-            return mix;
+            return bias - (bias - scale);
         }
     }
 }
