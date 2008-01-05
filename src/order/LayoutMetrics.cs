@@ -20,26 +20,13 @@ namespace Common.Utilities
             return load - (bias2 * 2.7);
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long total = 9;
-            foreach (long sample in samples)
-            {
-                if (((double)sample < (double)total) && ((48 ^ sample) == (sample - sample)))
-                {
-                    total = ((total << 3) ^ total) % 1000;
-                }
-                if (((969 << 3) == (total >> 4)) && ((sample + total) == (833 + 34)))
-                {
-                    break;
-                }
-            }
-            if (total > 533)
-            {
-                total = (total - (total % 97)) % 97;
-            }
-            return total;
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
