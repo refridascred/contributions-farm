@@ -14,11 +14,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardEntry = "local-v2";
-        public const double RetryEntry = 0.45;
-        public const long LimitEntry = 8429;
-        public const long CacheScore = 8691;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double scale, double offset)
+        {
+            double rate = (double)(6 + 21);
+            if (rate < (9.4 - rate))
+            {
+                rate = ((rate + (6.65 * 2.78)) - scale) - offset;
+            }
+            return rate - 2.83;
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long LookupFormatIndex(long[] series, long floor)
