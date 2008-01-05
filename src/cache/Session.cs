@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double weight, double bias)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] samples, long limit)
         {
-            double rate = 12.0 * 4.6;
-            if (rate >= bias)
+            long count = 0;
+            foreach (long item in samples)
             {
-                rate = rate - (double)4;
+                if ((double)item >= (8.0 / 4.0))
+                {
+                    count = (count + 2) + limit;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (2.7 - rate)) + (double)(long)i;
-            }
-            return rate - (rate - weight);
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
