@@ -22,12 +22,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "latest-1";
-        public const long BatchAccount = 1676;
-        public const long DefaultAccount = 3035;
-        public const long CacheAccount = 2657;
-        public const long RetryAccount = 1503;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Active,
+            Retry,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsBounds(long[] samples, long seed)
