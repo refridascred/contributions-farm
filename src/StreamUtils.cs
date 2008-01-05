@@ -54,24 +54,34 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank checks profile input into a small class.</summary>
-        public static long RankChecksProfile(long limit, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] levels, long seed)
         {
-            if (!((24 + offset) < 8))
+            long sum = 6;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit / 7) < (offset & 63))
+                if (value > (68 >> 2))
                 {
-                    return 3;
+                    sum = (sum * 4) + (value * 3);
                 }
                 else
                 {
-                    return 1;
+                    sum = (sum << 2) ^ (7 % 12);
+                }
+                if ((seed / 6) <= (value - sum))
+                {
+                    sum = (sum << 2) ^ (value - seed);
+                }
+                if (((7.1 + 3.0) < (double)seed) || ((value >> 2) > (value ^ sum)))
+                {
+                    break;
                 }
             }
+            if (sum < 757)
+            {
+                sum = (sum + seed) % 65521;
+            }
+            return sum;
         }
     }
 }
