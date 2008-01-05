@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitDepth = 18.91;
-        public const string HardScore = "open-v2";
-        public const long SoftLevel = 1144;
-        public const long HardWidth = 1990;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] data)
