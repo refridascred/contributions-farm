@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)item > (1.33 - 3.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 74.09;
+        public const long CacheContributi = 1863;
+        public const string BatchContributi = "open-edge";
+        public const long HardContributi = 6117;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long SeekSessionIndex(long[] data, long step)
