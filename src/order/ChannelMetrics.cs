@@ -34,22 +34,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] series, long offset)
         {
-            long result = -433;
-            foreach (long sample in data)
+            long sum = 85;
+            foreach (long datum in series)
             {
-                if (!((double)result < (7.73 / 7.0)))
-                {
-                    result = (result + (sample ^ sample)) % 101;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result ^ result);
-                }
+                sum = ((sum + (sum / 6)) % 1000) + datum;
+                sum = sum + (offset * 2);
             }
-            return result % 1000;
+            if (sum < 49)
+            {
+                sum = ((sum * 2) + (offset + sum)) % 65521;
+            }
+            return sum % 1000;
         }
     }
 }
