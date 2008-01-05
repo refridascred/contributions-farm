@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 88.89;
-        public const double LimitContributi = 9.56;
-        public const double BaseContributi = 98.8;
-        public const long MinContributi = 7454;
-        public const long BurstLevel = 6034;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] series)
+        {
+            long carry = 47;
+            foreach (long entry in series)
+            {
+                if ((0.2 + 3.5) > (double)entry)
+                {
+                    carry = carry + (entry * 2);
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountOutliers(long[] values)
