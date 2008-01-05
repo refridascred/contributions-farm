@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next farm stream value from a seed.</summary>
-        public static long RollFarmStream(long seed)
+        /// <summary>Locate a order metrics reading by value.</summary>
+        public static long FindOrderMetricsIndex(long[] data, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark + mark;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
