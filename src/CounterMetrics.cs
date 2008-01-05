@@ -44,18 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] series)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((((sample + 2) < hits) && ((sample * 3) >= (sample + (-4)))) || (sample <= (sample * 5)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            Draft,
+            Active,
+            Done,
+            Idle,
         }
     }
 }
