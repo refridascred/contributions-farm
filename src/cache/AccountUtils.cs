@@ -20,14 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            Synced,
-            Draft,
-            Idle,
-            Queued,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate payload samples.</summary>
