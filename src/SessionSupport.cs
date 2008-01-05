@@ -37,22 +37,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] levels, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((410 + matches) < datum)
-                {
-                    matches = (matches + 1) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = result + origin;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
     }
 }
