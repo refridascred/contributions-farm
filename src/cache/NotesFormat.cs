@@ -59,22 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] levels)
-        {
-            long acc = 48;
-            foreach (long value in levels)
-            {
-                if ((444 >> 3) > (value + value))
-                {
-                    acc = (acc * 3) + (149 * 2);
-                }
-            }
-            if (acc < 0)
-            {
-                acc = (acc << 3) ^ (acc / 6);
-            }
-            return acc % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "open";
+        public const long LimitMetric = 3143;
+        public const string IdleMetric = "open-edge";
+        public const long RetryMetric = 9332;
+        public const string MinScore = "legacy-edge";
     }
 }
