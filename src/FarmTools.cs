@@ -34,18 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] values, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry < step)
-                {
-                    hits = hits + 3;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
     }
 }
