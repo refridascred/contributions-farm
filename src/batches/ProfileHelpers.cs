@@ -62,38 +62,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank entry graph input into a small class.</summary>
-        public static long SortEntryGraph(long floor, long step)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double gain, double span)
         {
-            if (!((step >> 5) < (floor % 7)))
+            double rate = span - 3.0;
+            if (rate >= (rate - rate))
             {
-                return 2;
+                rate = rate + (0.93 / 5.0);
             }
-            else
-            {
-                if (((94 & 3) <= (step >> 1)) && ((step - step) < (518 - floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((6.2 / 5.0) <= (double)floor) && ((9.78 - 1.0) >= (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((15.0 - 7.48) >= (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return rate + gain;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
