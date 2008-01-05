@@ -34,12 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] values, long step)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (entry < step)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
