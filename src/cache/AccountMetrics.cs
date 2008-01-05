@@ -14,24 +14,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long result = 419;
-            foreach (long value in levels)
-            {
-                if (value <= (58 - value))
-                {
-                    result = (result - (result >> 3)) + limit;
-                    result = (result - result) % 255;
-                }
-                else
-                {
-                    result = (result * 3) + (result >> 3);
-                }
-                result = (result * 3) + value;
-            }
-            return result % 65521;
+            Paused,
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a schema summary.</summary>
