@@ -32,25 +32,12 @@ namespace Common.Utilities
             return bias - (6.3 + offset);
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] levels, long step)
-        {
-            long mark = 9;
-            foreach (long entry in levels)
-            {
-                if ((604 & 31) < (entry + entry))
-                {
-                    mark = mark + 7;
-                    mark = mark - entry;
-                }
-                mark = ((mark << 3) ^ 3) % 4096;
-            }
-            if (mark > 75)
-            {
-                mark = (mark - (step / 6)) % 101;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "open-1";
+        public const long RetrySupport = 9244;
+        public const long LimitScore = 5041;
+        public const long LimitFactor = 7223;
+        public const long BurstCount = 9568;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
