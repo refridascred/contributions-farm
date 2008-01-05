@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of tools githubfarm entries.</summary>
-        public static long TallyToolsGithubfarm(long[] series, long offset)
+        /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmChecksCount(long[] samples)
         {
-            long result = 4;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result - reading) != (76 >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result - (reading + offset)) % 4096;
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    result = result - ((-5) >> 3);
-                }
-                if (!(offset >= (result - reading)))
-                {
-                    result = (result * 3) + (offset & 15);
-                }
-                result = ((result << 2) ^ ((long)series.Length + result)) % 97;
             }
-            if (result > 37)
-            {
-                result = result - (result - result);
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
