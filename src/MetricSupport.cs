@@ -27,11 +27,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double rate, double offset)
-        {
-            double gain = offset;
-            return gain - rate;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseFactor = 79.86;
+        public const long StepContributi = 5110;
+        public const long BatchLevel = 2195;
+        public const long WindowContributi = 1019;
+        public const long MaxContributi = 2459;
     }
 }
