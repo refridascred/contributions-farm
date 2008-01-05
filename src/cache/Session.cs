@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const double BaseRatio = 75.45;
         public const long SoftBatch = 5184;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 71.13;
-        public const long HardWidth = 4237;
-        public const long MaxInterval = 8512;
-        public const long MinFilter = 5580;
-        public const long BatchLevel = 5926;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] items, long target)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
