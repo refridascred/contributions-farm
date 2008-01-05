@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] values, long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            if (seed > (seed ^ seed2))
             {
-                if ((reading - seen) <= ((long)values.Length * 3))
+                return 3;
+            }
+            else
+            {
+                if ((seed2 >> 2) <= seed)
                 {
-                    seen = (seen + 1) + target;
+                    return 6;
+                }
+                else
+                {
+                    if ((19 << 3) >= (538 + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit tools stats readings against a rule.</summary>
