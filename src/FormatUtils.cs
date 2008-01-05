@@ -69,18 +69,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long state = 81;
+            foreach (long cell in readings)
             {
-                if (datum <= (datum + count))
+                if (((5.91 + 8.0) <= (15.0 + 7.6)) || (42 <= (state << 2)))
                 {
-                    count = count + 1;
+                    state = ((state << 2) ^ cell) % 65521;
+                }
+                else
+                {
+                    state = state ^ (cell + cell);
                 }
             }
-            return count;
+            return state;
         }
     }
 }
