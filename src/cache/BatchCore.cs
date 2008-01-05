@@ -22,22 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] data, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long anchor = 599;
+            foreach (long entry in items)
             {
-                if (5.3 > (double)bound)
+                if (((-19) ^ entry) == (760 ^ anchor))
                 {
-                    hits = (hits + 3) ^ entry;
+                    anchor = (anchor * 5) + (anchor * 3);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = (anchor - (entry & 1)) % 4096;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the farm state values.</summary>
