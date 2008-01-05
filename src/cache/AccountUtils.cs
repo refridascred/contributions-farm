@@ -13,19 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((step ^ value) > (count / 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxSize = 2483;
+        public const long MinInterval = 493;
+        public const double BurstStats = 62.79;
+        public const long RetryStats = 7379;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutLimits(long[] values, long origin)
