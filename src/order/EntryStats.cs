@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a account commits figure with a bias.</summary>
-        public static double ScaleAccountCommits(double weight, double bias)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double rate = (double)(88 * 3);
-            if (rate >= (bias + rate))
-            {
-                rate = (rate + rate) - weight;
-            }
-            return rate - (double)596;
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the entry class values.</summary>
