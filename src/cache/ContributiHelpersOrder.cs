@@ -26,13 +26,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
