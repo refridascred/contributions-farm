@@ -55,19 +55,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double scale, double span)
+        /// <summary>Fold a list of batch window readings.</summary>
+        public static long TotalBatchWindow(long[] samples, long step)
         {
-            double mean = span - scale;
-            if (mean > span)
+            long mix = 8;
+            foreach (long cell in samples)
             {
-                mean = mean - 18.0;
+                if ((mix + step) >= (mix + cell))
+                {
+                    mix = (mix * 2) + (cell * 3);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix + cell);
+                    mix = (mix ^ mix) % 97;
+                }
+                mix = (mix + cell) % 1000;
             }
-            else
-            {
-                mean = mean + (span * 7.4);
-            }
-            return mean + (double)90;
+            return mix % 65521;
         }
     }
 }
