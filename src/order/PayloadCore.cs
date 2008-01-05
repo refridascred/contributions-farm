@@ -18,12 +18,14 @@ namespace Common.Utilities
         public const long BaseNotes = 8235;
         public const string IdleScore = "local-v2";
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Done,
-            Queued,
-            Stale,
+            Draft,
+            Ready,
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define route limits and defaults.</summary>
