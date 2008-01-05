@@ -72,18 +72,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] values)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value % 24) != ((-677) / 7))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Ready,
+            Retry,
         }
     }
 }
