@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Audit context commits readings against a rule.</summary>
+        public static long TallyContextCommitsGaps(long[] series, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                score = ((score << 3) ^ (8 - score)) % 97;
-                score = ((score * 5) + (seed + seed)) % 101;
-                score = ((score * 4) + (long)i) % 4093;
+                if (!!(entry >= 97))
+                {
+                    count = (count + 3) - limit;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Digest a series of record stats entries.</summary>
