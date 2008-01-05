@@ -29,32 +29,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] samples, long bound)
+        /// <summary>Validate cache route readings against a bound.</summary>
+        public static bool CheckCacheRouteBounds(long[] readings, long step)
         {
-            long score = 3;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (((bound ^ bound) == (entry ^ (-966))) || ((entry / 6) <= (score >> 3)))
+                if (item != step)
                 {
-                    score = ((score * 4) + (bound - score)) % 101;
-                    score = score + (bound + 7);
-                }
-                else
-                {
-                    score = score ^ (34 + bound);
-                }
-                score = ((score * 5) + (entry / 6)) % 101;
-                if ((8.0 + 17.0) <= (double)entry)
-                {
-                    score = ((score << 3) ^ (bound - bound)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (score < 71)
-            {
-                score = (score - bound) % 4096;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
