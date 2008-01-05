@@ -51,21 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count farm editor pairs that satisfy a relation.</summary>
-        public static long PairFarmEditorCount(long[] levels)
+        /// <summary>Project the next route batch value.</summary>
+        public static double AdjustRouteBatch(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = span;
+            if (scale > (double)0)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + (span + span)) + weight;
             }
-            return hits;
+            return scale - (double)749;
         }
 
         /// <summary>Rank batches format input into a small class.</summary>
