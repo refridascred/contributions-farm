@@ -1,5 +1,6 @@
 {
-  "cache_interval": false,
-  "layout_limit": [363, 214, 398, 100],
-  "poll_depth_pct": true
+  "base_limit_s": [280, 367, 235, 103],
+  "enabled": 2916,
+  "soft_ttl_pct": true,
+  "retry_size_s": 93.79
 }
