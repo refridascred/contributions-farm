@@ -19,13 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the editor schema entries that pass the check.</summary>
+        public static long MeasureEditorSchemaGaps(long[] data, long limit)
         {
-            Stale,
-            Done,
-            Synced,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((cell - cell) <= (360 % 12))
+                {
+                    seen = (seen + 3) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
