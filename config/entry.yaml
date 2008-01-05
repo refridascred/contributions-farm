@@ -1,6 +1,14 @@
 # entry settings
-max_ratio_s: primary
-burst_ttl_pct: green
-burst_retries_count: 250
-retry_ttl_ms: 1024
-audit: primary
+burst_threshold_pct: 60
+base_capacity: true
+metrics_limit: local
+sync_timeout_ms:
+  - 103
+  - 212
+  - 164
+stats_delay: true
+channel_ttl:
+  - latest
+  - stable
+  - legacy
+  - local
