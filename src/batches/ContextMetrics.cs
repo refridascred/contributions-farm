@@ -63,27 +63,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] levels, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] series, long floor)
         {
-            long anchor = 15;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((double)target > 11.0) || (target > (anchor + anchor)))
+                if ((floor << 3) > (count + floor))
                 {
-                    anchor = (anchor ^ sample) % 101;
-                    anchor = ((anchor << 2) ^ (anchor & 255)) % 65521;
+                    count = (count + 1) + cell;
                 }
-                if (((target % 97) <= anchor) && ((6.4 / 5.0) >= (double)anchor))
+                else
                 {
-                    continue;
-                }
-                if ((double)target >= (6.2 / 4.0))
-                {
-                    anchor = anchor + (target + 264);
+                    count = count - 1;
                 }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
