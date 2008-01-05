@@ -27,18 +27,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many batch stream samples are out of range.</summary>
-        public static long CountBatchStreamHits(long[] data)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (sample >= ((long)data.Length + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
