@@ -49,23 +49,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] data, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] items, long offset)
         {
-            long acc = 976;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                acc = ((acc * 2) + (8 & 15)) % 97;
-                if (((bound << 3) > (value ^ (-75))) && ((double)value == (double)bound))
+                if (sample < offset)
                 {
-                    acc = (acc - (bound + 27)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 259)
-            {
-                acc = ((acc * 3) + bound) % 1000;
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Audit tools notes readings against a rule.</summary>
