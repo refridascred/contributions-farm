@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryTimeout = 3402;
-        public const long CacheRatio = 7440;
-        public const long RetryWidth = 9411;
-        public const string BatchDepth = "fallback-v2";
-        public const double HardBudget = 14.51;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Dropped,
+            Locked,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
