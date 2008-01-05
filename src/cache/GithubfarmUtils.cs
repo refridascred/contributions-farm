@@ -43,18 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] series)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)tally <= 7.0)
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
