@@ -18,20 +18,24 @@ namespace Common.Utilities
         public const long SoftSpan = 5699;
         public const double WindowCounter = 59.48;
 
-        /// <summary>Iterate the batch metrics series from a seed.</summary>
-        public static long StepBatchMetrics(long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (!((9.0 - 7.91) == (double)limit))
                 {
-                    carry = ((carry << 2) ^ ((-4) - 1)) ^ (long)i2;
+                    state = state ^ (state ^ (long)i);
                 }
-                carry = carry + carry;
-                carry = ((carry * 2) + (long)i) % 97;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = state + state;
+                    state = (state ^ ((long)i2 ^ 4)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the stream mode values.</summary>
