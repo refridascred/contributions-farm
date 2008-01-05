@@ -33,19 +33,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] items, long offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Stale,
+            New,
         }
     }
 }
