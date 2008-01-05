@@ -1,7 +1,9 @@
 # support settings
-idle_ratio_pct:
-  - 110
-  - 288
-  - 317
-min_timeout_count: 4726
-cluster_retries: 46.64
+sync_threshold_s:
+  - 390
+  - 220
+audit: standard
+cache_limit_pct:
+  - primary
+  - cached
+base_depth: 5378
