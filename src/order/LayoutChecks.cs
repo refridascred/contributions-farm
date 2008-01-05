@@ -80,18 +80,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of support checks readings.</summary>
-        public static long DigestSupportChecks(long[] values)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mix = 819;
-            foreach (long item in values)
-            {
-                if (((double)item == (double)77) || ((item % 64) >= (mix ^ item)))
-                {
-                    mix = ((mix * 3) + (mix << 3)) % 4096;
-                }
-            }
-            return mix;
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
