@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Find the first stats report entry that matches the target.</summary>
+        public static long LocateStatsReportIndex(long[] values, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
