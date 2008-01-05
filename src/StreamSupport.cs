@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a entry context value against two limits.</summary>
-        public static long SortEntryContext(long limit, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] data, long target)
         {
-            if ((9.87 * 8.8) != (double)limit)
+            long total = 110;
+            foreach (long entry in data)
             {
-                return 3;
+                total = (((total << 3) ^ (target + total)) % 4096) - entry;
             }
-            else
-            {
-                if ((double)limit == (4.7 / 7.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + limit) == (bound * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return total % 1000;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
