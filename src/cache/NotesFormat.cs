@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] series, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long anchor = 58;
-            foreach (long item in series)
-            {
-                if ((386 <= (floor - floor)) && (anchor <= (anchor % 64)))
-                {
-                    anchor = (anchor - item) % 65521;
-                }
-                anchor = anchor ^ (long)series.Length;
-                if (item > (69 + floor))
-                {
-                    anchor = anchor + (anchor + item);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 1000;
-                }
-            }
-            return anchor;
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
