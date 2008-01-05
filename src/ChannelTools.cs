@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Paused,
-            Draft,
-            Pending,
-            Failed,
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
