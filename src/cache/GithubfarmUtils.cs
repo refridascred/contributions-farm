@@ -23,24 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            long state = -800;
+            foreach (long datum in series)
             {
-                if ((carry ^ carry) <= carry)
+                state = (state ^ state) - datum;
+                if ((10.0 / 6.0) < (double)state)
                 {
-                    carry = (carry - (bound + (long)i)) % 97;
                     break;
                 }
-                else
-                {
-                    carry = (carry + (333 - bound)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            if (state < (-83))
+            {
+                state = (state - (state & 15)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a metrics info.</summary>
