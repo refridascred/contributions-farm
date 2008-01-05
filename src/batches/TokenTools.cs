@@ -23,18 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] items)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (tally > (datum << 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Draft,
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
