@@ -63,18 +63,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] series, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((floor - 151) < (item * 5))
+                if (!(((double)cell <= (8.0 + 0.4)) || ((451 + 31) > (cell / 4))))
                 {
-                    tally = tally + 3;
+                    count = (count + 1) + offset;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
