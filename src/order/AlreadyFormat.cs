@@ -30,18 +30,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many farm buffer samples are out of range.</summary>
-        public static long TallyFarmBufferHits(long[] series, long step)
+        /// <summary>Classify a commits metric pair into a bucket.</summary>
+        public static long RankCommitsMetric(long limit, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long delta = limit + floor;
+            if ((double)limit == (6.8 - 9.0))
             {
-                if ((step + count) >= ((long)series.Length + 480))
+                return 0;
+            }
+            else
+            {
+                if ((floor + 279) > delta)
                 {
-                    count = (count + 2) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit >> 4) >= (15 & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)delta > (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
