@@ -16,13 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Idle,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 36.66;
+        public const long BaseChecks = 8235;
+        public const long DefaultChecks = 5691;
 
         /// <summary>Project the next session value.</summary>
         public static double BlendSession(double ratio, double floor)
