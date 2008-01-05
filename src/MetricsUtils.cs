@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long MaxScore = 4068;
         public const long HardProfile = 956;
 
-        /// <summary>Count payload cache pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCacheCount(long[] readings)
+        /// <summary>Locate a route commits reading by value.</summary>
+        public static long SeekRouteCommitsIndex(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (series[i] <= step)
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
