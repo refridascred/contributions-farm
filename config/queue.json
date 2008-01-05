@@ -1,8 +1,6 @@
 {
-  "max_depth_count": "primary",
-  "soft_window_count": 94.16,
-  "min_interval": true,
-  "warm_delay_count": 34,
-  "audit": 60,
-  "base_ttl_s": "primary"
+  "compress": 94,
+  "sync_depth": 76,
+  "max_delay_count": ["cached", "latest", "strict", "blue"],
+  "base_ttl": [264, 173, 262]
 }
