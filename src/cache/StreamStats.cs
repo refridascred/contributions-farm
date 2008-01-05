@@ -24,20 +24,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the counter editor series from a seed.</summary>
-        public static long SeriesCounterEditor(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (mark > (mark + mark))
-                {
-                    mark = ((mark * 5) + (target + target)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchDepth = 8.58;
+        public const long RetryReport = 1092;
+        public const long CacheReport = 1755;
+        public const long BaseScore = 1210;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
