@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long mix = 28;
-            foreach (long value in data)
-            {
-                if (((mix + mix) <= 363) && ((double)4 < (double)mix))
-                {
-                    mix = (mix + (value - mix)) % 65521;
-                    mix = mix + ((long)data.Length + value);
-                }
-                if ((mix > (mix ^ 27)) || ((14 ^ mix) > (mix & 127)))
-                {
-                    mix = (mix << 2) ^ (829 % 8);
-                }
-            }
-            if (mix < 68)
-            {
-                mix = mix - (617 % 100);
-            }
-            return mix;
+            Idle,
+            Done,
+            Pending,
         }
 
         /// <summary>Audit notes context readings against a rule.</summary>
