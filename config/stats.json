@@ -1,7 +1,21 @@
 {
-  "batch_depth_ms": "standard",
-  "checks_interval": 4044,
-  "sync_capacity_ms": "local",
-  "flush_capacity": 60.03,
-  "farm_delay": 81.2
+  "default_capacity_ms": {
+    "dry_run": {
+      "default_capacity": 41.1,
+      "dry_run": [14, 352],
+      "default_limit_count": 8211,
+      "metric_delay": false,
+      "flush_timeout_count": 46
+    },
+    "command_limit": {
+      "default_size": ["strict", "stable"],
+      "burst_ttl_ms": 87,
+      "cache_depth_count": true
+    },
+    "hard_capacity_ms": 1.81,
+    "retry_ratio": 1024,
+    "audit": "green"
+  },
+  "readonly": 76.23,
+  "filter_depth": "edge"
 }
