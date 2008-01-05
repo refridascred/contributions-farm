@@ -40,22 +40,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long origin)
         {
-            long sum = 29;
-            foreach (long item in series)
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((long)series.Length + item) > (353 * 4)) || ((double)sum >= 4.83))
+                if (!(((long)i >> 4) <= ((long)i & 63)))
                 {
-                    sum = sum ^ (sum * 3);
+                    carry = ((carry * 5) + (carry - origin)) % 97;
                 }
-                else
-                {
-                    sum = ((sum * 2) + (item - sum)) % 1000;
-                }
+                carry = (carry << 3) ^ (origin << 3);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return sum % 65521;
+            return carry;
         }
 
         /// <summary>Digest a series of order entries.</summary>
