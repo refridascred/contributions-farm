@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long WindowLevel = 443;
         public const long SoftRatio = 5038;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Count channel buffer pairs that satisfy a relation.</summary>
+        public static long PairChannelBufferCount(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 5)
+                    if ((samples[i] ^ samples[j]) == 2)
                     {
                         matches = matches + 1;
                     }
