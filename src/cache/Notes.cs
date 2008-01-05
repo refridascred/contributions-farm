@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 4170;
-        public const double CacheRoute = 88.96;
-        public const double HardSpan = 15.51;
-        public const long DefaultRoute = 8763;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the support record entries that pass the check.</summary>
         public static long CountSupportRecordOutliers(long[] values, long seed)
