@@ -28,11 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardInterval = 8901;
-        public const double StepBuffer = 35.67;
-        public const long DefaultBuffer = 7154;
-        public const long BaseSpan = 1827;
-        public const long RetryBuffer = 3155;
+        /// <summary>Check that every batch queue entry stays within the limit.</summary>
+        public static bool VerifyBatchQueueBounds(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
