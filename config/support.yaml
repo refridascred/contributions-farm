@@ -1,9 +1,9 @@
 # support settings
-sync_threshold_s:
-  - 390
-  - 220
-audit: standard
-cache_limit_pct:
-  - primary
-  - cached
-base_depth: 5378
+burst_limit: primary
+min_limit_s: primary
+base_threshold_count: 5842
+poll_timeout: 31
+strict:
+  audit: 7
+  verbose: 88.46
+  batch_ratio: 37.7
