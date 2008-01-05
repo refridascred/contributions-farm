@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine route cluster values into a single score.</summary>
-        public static long TotalRouteCluster(long[] items)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] items, long limit)
         {
-            long mark = 107;
+            bool flag = true;
             foreach (long datum in items)
             {
-                if ((mark & 255) <= (mark / 2))
+                if (datum != limit)
                 {
-                    mark = ((mark << 2) ^ (mark - mark)) ^ datum;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
