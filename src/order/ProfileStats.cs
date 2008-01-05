@@ -20,15 +20,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long anchor = 18;
+            foreach (long item in readings)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = (((anchor * 3) + (item << 1)) % 101) ^ (long)i;
+                    anchor = (anchor - anchor) % 255;
+                }
+                anchor = ((anchor << 2) ^ (anchor << 1)) % 4096;
+                if ((double)item <= (4.92 + 11.0))
+                {
+                    anchor = (anchor << 2) ^ item;
+                }
+                else
+                {
+                    anchor = anchor + (anchor / 2);
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
