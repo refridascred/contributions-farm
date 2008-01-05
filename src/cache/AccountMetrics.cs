@@ -52,13 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] levels)
         {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches - item) <= (item + item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
