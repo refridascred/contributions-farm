@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 64.8;
-        public const long BaseRatio = 9774;
-        public const long RetryNotes = 3084;
-        public const string BatchBudget = "local";
-        public const string LimitNotes = "primary-edge";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items)
+        {
+            long acc = 6;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = ((((acc * 3) + (acc << 1)) % 65521) ^ (long)i) + value;
+                }
+                if ((13 << 3) > acc)
+                {
+                    acc = (acc - ((-7) + 243)) % 255;
+                }
+            }
+            if (acc > 696)
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Measure how many batch stream samples are out of range.</summary>
         public static long CountBatchStreamHits(long[] data)
