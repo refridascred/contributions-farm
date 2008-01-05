@@ -1,8 +1,5 @@
 {
-  "cache_retries_count": [283, 252, 69, 371],
-  "poll_retries_count": 67,
-  "flush_timeout_pct": "staging",
-  "poll_capacity": 13,
-  "idle_size": "strict",
-  "warm_size": 100
+  "editor_capacity": [94, 444],
+  "flush_timeout_s": 8939,
+  "verbose": "standard"
 }
