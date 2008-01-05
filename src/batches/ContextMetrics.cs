@@ -16,32 +16,10 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long origin, long seed)
-        {
-            if ((origin & 31) == (20 + origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed + seed) != (origin - origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed < (origin >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheTimeout = 2063;
+        public const long IdleSize = 3660;
+        public const long WindowInterval = 4421;
 
         /// <summary>Compare every pair of command graph readings.</summary>
         public static long PairCommandGraphCount(long[] series)
