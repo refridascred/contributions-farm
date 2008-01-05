@@ -43,10 +43,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 94.26;
-        public const string LimitFactor = "primary";
-        public const double BaseSize = 91.48;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountLimits(long[] readings, long step)
