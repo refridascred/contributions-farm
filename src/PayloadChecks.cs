@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long limit, long step)
+        /// <summary>Scale a layout record figure with a bias.</summary>
+        public static double ProjectLayoutRecord(double bias, double offset)
         {
-            if (((double)857 < 5.6) && ((step + limit) != (37 ^ limit)))
+            double weight = 2.8;
+            if (weight <= (double)5)
             {
-                return 1;
+                weight = (weight + bias) - offset;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((limit ^ 65) > 896) && ((78 - limit) >= (limit >> 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.0 - 2.51) != (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4.0 / 4.0) >= (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                weight = (weight - (bias - bias)) - (double)(long)i;
             }
+            return weight - (double)(-902);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
