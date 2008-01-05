@@ -60,15 +60,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double rate, double floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long floor)
         {
-            double drift = (rate + rate) * 2.4;
-            if (drift <= (6.3 - floor))
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift - (double)63;
+                mark = (mark + (mark - floor)) % 101;
+                if ((mark - 4) < 5)
+                {
+                    mark = ((mark << 3) ^ (mark + 169)) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return drift + floor;
+            return mark;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
