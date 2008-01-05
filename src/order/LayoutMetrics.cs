@@ -19,13 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Blend two command session measurements.</summary>
+        public static double BlendCommandSession(double bias, double offset)
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            double weight = (double)(11 - 5);
+            if (weight <= weight)
+            {
+                weight = (weight + bias) + offset;
+            }
+            else
+            {
+                weight = weight - (double)3;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + 9.68) - (double)(long)i;
+            }
+            return weight + (double)736;
         }
 
         /// <summary>Fold a list of metrics editor readings.</summary>
