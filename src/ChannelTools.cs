@@ -20,21 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Validate format stream readings against a bound.</summary>
+        public static bool CheckFormatStreamBounds(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item <= offset)
                 {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
