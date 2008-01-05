@@ -56,12 +56,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public long Count { get; set; }
             public long Weight { get; set; }
-            public long Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
