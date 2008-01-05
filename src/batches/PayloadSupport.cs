@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the farm batch entries that pass the check.</summary>
+        public static long MeasureFarmBatchOutliers(long[] levels)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!(((39 + cell) == (long)levels.Length) || ((seen * 4) >= (cell / 5))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
