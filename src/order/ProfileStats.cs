@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheDepth = "stable-edge";
-        public const string IdleCommand = "stable-edge";
-        public const long MaxCommand = 8998;
-        public const long RetryBudget = 7437;
+        /// <summary>Validate stats buffer readings against a bound.</summary>
+        public static bool VerifyStatsBufferBounds(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] data)
