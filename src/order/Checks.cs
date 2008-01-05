@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] values, long floor)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            double rate2 = (double)((-2) + 263);
+            if (rate2 < (double)4)
             {
-                if (datum <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                rate2 = (rate2 + rate) - bias;
             }
-            return ready;
+            return rate2 + (rate2 / 3.0);
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
