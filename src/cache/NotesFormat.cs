@@ -63,11 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "open";
-        public const long LimitMetric = 3143;
-        public const string IdleMetric = "open-edge";
-        public const long RetryMetric = 9332;
-        public const string MinScore = "legacy-edge";
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
