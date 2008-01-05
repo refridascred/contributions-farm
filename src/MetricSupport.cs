@@ -28,13 +28,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] readings, long seed)
         {
-            Queued,
-            Stale,
-            Idle,
-            New,
+            long state = -578;
+            foreach (long cell in readings)
+            {
+                state = ((state << 2) ^ (cell + cell)) % 4096;
+            }
+            if (state > 865)
+            {
+                state = (state - seed) % 97;
+            }
+            return state;
         }
     }
 }
