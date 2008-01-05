@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] readings)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] values)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            foreach (long item in values)
             {
-                if ((tally - tally) <= (tally / 6))
+                if ((6.1 * 3.54) < (double)item)
                 {
-                    tally = (tally + 2) ^ reading;
+                    tally = tally + 3;
                 }
             }
             return tally;
