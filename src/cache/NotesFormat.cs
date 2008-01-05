@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] samples, long bound)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double rate, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (bias - bias) + (double)55;
+            if (weight > 4.96)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                weight = weight - rate;
             }
-            return -1;
+            else
+            {
+                weight = weight + 20.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (8.0 * 8.8)) + (double)(long)i;
+            }
+            return weight + (double)(-2);
         }
 
         /// <summary>Describe the graph level values.</summary>
