@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double weight, double offset)
-        {
-            double gain = (double)(918 / 2);
-            if (gain <= (double)457)
-            {
-                gain = gain - (offset - offset);
-            }
-            return gain - weight;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryScore = 8617;
+        public const string RetryFilter = "staging-v2";
+        public const long LimitFilter = 5584;
+        public const double DefaultFilter = 35.01;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TallyCommand(long[] data)
