@@ -63,11 +63,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] items, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
