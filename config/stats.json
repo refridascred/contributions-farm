@@ -1,8 +1,11 @@
 {
-  "cluster_interval": 6766,
-  "retry_depth_s": false,
-  "graph_timeout": 100,
-  "hard_window_ms": 30,
-  "batch_timeout_pct": "green",
-  "sync_threshold_s": false
+  "tools_limit": "staging",
+  "warm_delay": [350, 244, 127],
+  "payload_delay": "latest",
+  "order_interval": 1024,
+  "poll_ttl": {
+    "support_ttl": false,
+    "sync_limit_pct": [213, 305, 299],
+    "max_depth_pct": 5940
+  }
 }
