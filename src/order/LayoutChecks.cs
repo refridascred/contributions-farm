@@ -80,11 +80,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
+            Ready,
+            Pending,
+            Stale,
+            Closed,
         }
     }
 }
