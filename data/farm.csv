@@ -1,7 +1,10 @@
-id,ratio,weight,label,active
-1,standard,89.73,eu-west,860
-2,879,legacy,707,30.1
-3,55.69,3.67,577,15
-4,68.04,39,52.43,7.42
-5,883,52.76,open,157
-6,897,354,148,41.2
+id,owner,active,rank
+1,local,582,536
+2,cached,968,282
+3,legacy,open,72
+4,51.77,239,37.16
+5,primary,874,681
+6,50.6,936,71.04
+7,31.06,staging,primary
+8,latest,legacy,827
+9,local,6,cached
