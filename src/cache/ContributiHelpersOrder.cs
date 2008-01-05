@@ -20,13 +20,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double rate, double offset)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
+            double weight = 7.8 - rate;
+            if (weight > (weight - 4.2))
+            {
+                weight = weight + (double)94;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + offset;
         }
     }
 }
