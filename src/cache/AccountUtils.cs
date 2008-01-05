@@ -56,38 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster buffer value against two limits.</summary>
-        public static long SortClusterBuffer(long limit, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] samples)
         {
-            if (!((offset / 4) == (limit ^ 225)))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit > (5.8 - 5.0))
+                if ((reading + seen) == (seen + reading))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset * 4) > (limit + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit >= (offset % 16))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
