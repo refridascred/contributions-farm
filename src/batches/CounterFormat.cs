@@ -15,23 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double rate, double floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double weight = floor;
-            if (weight < 5.0)
-            {
-                weight = (weight - (double)1) + rate;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - weight;
+            Stale,
+            Failed,
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
