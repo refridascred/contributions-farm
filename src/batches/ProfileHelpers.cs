@@ -19,19 +19,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] values, long floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
