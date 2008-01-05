@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next route metric value from a seed.</summary>
-        public static long DeriveRouteMetric(long seed)
+        /// <summary>Roll a filter queue counter forward.</summary>
+        public static long DeriveFilterQueue(long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                score = (score ^ (score ^ (long)i)) % 65521;
-                score = ((score * 4) + (long)i) % 101;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Combine command values into a single score.</summary>
