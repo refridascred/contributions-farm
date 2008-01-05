@@ -64,13 +64,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            Dropped,
-            Draft,
-            Active,
-            Locked,
+            long mark = 9;
+            foreach (long datum in samples)
+            {
+                long matches = (mark % 100) - (mark << 1);
+                if (!((matches % 24) >= (mark % 8)))
+                {
+                    mark = (mark + (mark ^ datum)) % 255;
+                }
+                else
+                {
+                    matches = ((matches << 3) ^ 703) % 4096;
+                }
+                if ((double)datum < (2.0 * 6.87))
+                {
+                    mark = (mark ^ datum) % 4096;
+                }
+            }
+            if (mark < 896)
+            {
+                mark = (mark + (mark - mark)) % 97;
+            }
+            return mark % 1000;
         }
     }
 }
