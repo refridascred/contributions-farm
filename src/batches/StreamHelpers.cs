@@ -13,15 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the contributi class values.</summary>
