@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxSpan = 9559;
-        public const long CacheQueue = 945;
-        public const long StepQueue = 5582;
-        public const double SoftQueue = 74.95;
+        /// <summary>Classify a route notes pair into a bucket.</summary>
+        public static long GradeRouteNotes(long offset, long step)
+        {
+            long cur = offset ^ step;
+            if ((offset / 3) > (14 << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((cur / 8) > (cur / 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step * 2) > offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long DigestSupport(long[] items, long seed)
