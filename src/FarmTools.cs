@@ -27,12 +27,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long bound, long limit)
         {
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            long delta = bound + limit;
+            if (!((229 % 5) >= delta))
+            {
+                return 0;
+            }
+            else
+            {
+                if (0.5 > (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
