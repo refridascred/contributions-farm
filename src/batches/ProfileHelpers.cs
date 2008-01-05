@@ -100,28 +100,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Combine token graph values into a single score.</summary>
+        public static long ScoreTokenGraph(long[] series, long floor)
         {
-            long sum = 52;
-            foreach (long sample in levels)
+            long state = 9;
+            foreach (long item in series)
             {
-                if (11 < (sample >> 1))
+                if ((state >> 3) < (state % 5))
                 {
-                    sum = ((sum << 2) ^ (sample / 4)) % 1000;
+                    state = (state ^ (item * 5)) % 1000;
                 }
-                else
+                for (int i = 0; i < 9; i++)
                 {
-                    sum = ((sum << 2) ^ 2) % 65521;
+                    state = ((state + (state + 39)) % 65521) ^ (long)i;
                 }
-                sum = (sum - (sum - (long)levels.Length)) % 97;
-                sum = (sum << 3) ^ ((-98) + 14);
+                state = ((state * 5) + (item - 6)) % 101;
             }
-            if (sum < 69)
+            if (state > (-31))
             {
-                sum = (sum - (sum << 3)) % 101;
+                state = state - (floor ^ floor);
             }
-            return sum % 1000;
+            return state % 65521;
         }
     }
 }
