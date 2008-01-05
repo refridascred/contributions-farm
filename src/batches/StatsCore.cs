@@ -57,11 +57,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] series)
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long acc = 315;
+            foreach (long datum in series)
+            {
+                if (datum > (acc + datum))
+                {
+                    acc = (acc * 5) + (66 * 5);
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = ((acc + 443) % 65521) + (long)i;
+                }
+                if (datum >= 742)
+                {
+                    acc = ((acc * 5) + (acc + datum)) % 101;
+                }
+            }
+            if (acc > 7)
+            {
+                acc = acc ^ (acc ^ acc);
+            }
+            return acc % 65521;
         }
     }
 }
