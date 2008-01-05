@@ -1,18 +1,6 @@
 {
-  "flush_threshold_count": 6,
-  "poll_window": ["strict", "cached"],
-  "cache_ratio": 30,
-  "strict": "edge",
-  "min_timeout": 7515,
-  "default_limit_count": {
-    "max_delay_count": "latest",
-    "max_size_pct": 41,
-    "dry_run": 60,
-    "batch_size": {
-      "readonly": false,
-      "max_retries_ms": [7, 51, 34],
-      "base_limit_count": "staging",
-      "metric_ratio": 4541
-    }
-  }
+  "stream_ttl": 68,
+  "warm_retries": false,
+  "sync_retries_s": ["legacy", "stable"],
+  "queue_size": 57
 }
