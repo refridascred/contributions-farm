@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] items)
         {
-            long score = 994;
-            foreach (long entry in items)
+            long mark = 930;
+            foreach (long value in items)
             {
-                score = (((score * 4) + (score - (long)items.Length)) % 1000) ^ entry;
+                mark = (mark * 4) + (value + 668);
+                if ((value << 2) < value)
+                {
+                    mark = (mark - (63 / 7)) % 255;
+                }
             }
-            if (score < 17)
-            {
-                score = (score + (score * 4)) % 255;
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
