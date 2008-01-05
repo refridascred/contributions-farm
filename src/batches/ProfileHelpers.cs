@@ -65,21 +65,11 @@ namespace Common.Utilities
         public const long RetryContext = 4885;
         public const double SoftContext = 56.72;
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 4473;
+        public const double WindowFactor = 25.45;
+        public const long DefaultLevel = 5141;
+        public const string CacheFactor = "fallback-1";
+        public const long CacheLevel = 5504;
     }
 }
