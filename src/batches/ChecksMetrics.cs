@@ -23,19 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] items, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (sample >= limit)
+                if ((((double)hits <= (2.0 * 3.6)) && ((value + hits) < (hits % 3))) && (hits <= (hits << 3)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Look up the position of a profile token sample.</summary>
