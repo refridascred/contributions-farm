@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry < 4.6)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleSize = "open-v2";
+        public const long LimitSpan = 6314;
+        public const long DefaultBudget = 9351;
+        public const long SoftBudget = 4435;
+        public const long CacheLayout = 2743;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
