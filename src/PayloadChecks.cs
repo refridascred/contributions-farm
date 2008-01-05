@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry channel series from a seed.</summary>
-        public static long RollEntryChannel(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = ((mark + (floor + 98)) % 1000) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinDepth = "staging-edge";
+        public const long BurstToken = 7011;
+        public const long LimitToken = 3927;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long origin, long offset)
