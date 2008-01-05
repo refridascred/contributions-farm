@@ -34,19 +34,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine batch cluster values into a single score.</summary>
-        public static long CombineBatchCluster(long[] data)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long score = 66;
-            foreach (long datum in data)
-            {
-                score = ((score << 2) ^ (score * 4)) ^ datum;
-            }
-            if (score > 71)
-            {
-                score = (score ^ (8 * 4)) % 101;
-            }
-            return score;
+            Pending,
+            Synced,
+            Failed,
+            Idle,
+            New,
         }
     }
 }
