@@ -30,14 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] samples, long origin)
         {
-            Done,
-            Stale,
-            New,
-            Closed,
-            Draft,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((origin - count) == (cell / 6))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of already account readings.</summary>
