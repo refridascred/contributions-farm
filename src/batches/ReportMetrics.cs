@@ -20,17 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] items, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long step, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = step - seed;
+            if (((bound >> 1) > (step + bound)) && ((seed % 2) <= ((-6) % 10)))
             {
-                if ((items[i] > seed) && ((items[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if (!((double)seed > 1.6))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 / 4.0) <= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the commits class values.</summary>
