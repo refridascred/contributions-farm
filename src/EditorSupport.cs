@@ -57,13 +57,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels, long origin)
         {
-            Ready,
-            Stale,
-            Done,
-            Failed,
+            long mix = 0;
+            foreach (long item in levels)
+            {
+                if ((double)origin >= (4.04 - 3.8))
+                {
+                    mix = ((mix * 2) + (item - mix)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (origin * 5)) % 255;
+                }
+            }
+            if (mix < 0)
+            {
+                mix = (mix + (mix >> 4)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
