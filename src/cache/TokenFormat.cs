@@ -31,18 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] items, long origin)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double bias2 = bias + (double)137;
+            if (bias2 < (double)651)
             {
-                if ((matches ^ 854) >= 97)
-                {
-                    matches = ((matches + 1) ^ reading) + origin;
-                }
+                bias2 = bias2 - rate;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - (double)43;
+            }
+            return bias2 - bias;
         }
     }
 }
