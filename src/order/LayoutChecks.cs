@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] data, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long mix = 866;
+            foreach (long entry in items)
             {
-                if (reading < limit)
+                mix = (mix << 2) ^ (821 >> 2);
+                if (entry < mix)
                 {
-                    ready = false;
-                    break;
+                    mix = (mix * 2) + (offset * 4);
                 }
             }
-            return ready;
+            if (mix > 237)
+            {
+                mix = mix ^ offset;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
