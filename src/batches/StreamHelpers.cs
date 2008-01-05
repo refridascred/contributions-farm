@@ -17,19 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] samples, long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
