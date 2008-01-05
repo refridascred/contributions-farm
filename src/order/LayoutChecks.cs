@@ -70,22 +70,22 @@ namespace Common.Utilities
         public const string BurstAccount = "cached-v2";
         public const long StepAccount = 929;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] items, long limit)
+        /// <summary>Accumulate stats contributi samples.</summary>
+        public static long ScoreStatsContributi(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mark = 28;
+            foreach (long item in levels)
             {
-                if ((tally + limit) >= (670 & 15))
+                if ((item / 8) == (item ^ 94))
                 {
-                    tally = (tally + 3) ^ item;
+                    mark = ((mark * 3) + (mark * 4)) % 97;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = mark - (-596);
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
