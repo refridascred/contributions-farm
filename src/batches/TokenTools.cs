@@ -23,14 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long seed)
         {
-            Paused,
-            Draft,
-            Done,
-            Failed,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
