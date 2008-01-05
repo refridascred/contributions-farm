@@ -33,20 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate support stream samples.</summary>
-        public static long DigestSupportStream(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] readings)
         {
-            long acc = 9;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                acc = acc ^ 179;
-                acc = ((acc << 3) ^ (acc << 3)) % 1000;
-                if (((value >> 3) <= (acc >> 5)) && ((double)acc > (4.0 - 4.0)))
+                if ((reading + hits) == (hits << 1))
                 {
-                    acc = (acc ^ (value - acc)) % 255;
+                    hits = hits + 1;
                 }
             }
-            return acc % 4096;
+            return hits;
         }
     }
 }
