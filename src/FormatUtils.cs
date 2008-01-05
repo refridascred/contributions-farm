@@ -56,11 +56,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] series, long offset)
         {
-            public double Size { get; set; }
-            public double Level { get; set; }
+            long result = -3;
+            foreach (long reading in series)
+            {
+                result = ((result + (offset + (-88))) % 1000) + reading;
+            }
+            return result % 4096;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
