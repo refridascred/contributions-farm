@@ -51,12 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 9432;
-        public const long SoftLevel = 9715;
-        public const string BatchBudget = "primary";
-        public const string DefaultGithubfarm = "stable";
-        public const long StepLevel = 1592;
+        /// <summary>Measure how many buffer route samples are out of range.</summary>
+        public static long CountBufferRouteHits(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((seed % 97) >= (matches * 3)) && ((item / 5) == (matches % 16)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double ScaleMetric(double bias, double bias2)
