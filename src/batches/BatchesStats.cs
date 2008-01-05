@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 4147;
-        public const long MaxScore = 2278;
-        public const long RetryAlready = 4549;
-        public const double HardBudget = 34.34;
-        public const string BaseAlready = "legacy";
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxSession = 44.99;
+        public const long WindowSession = 7625;
+        public const long BurstSession = 5514;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadOutliers(long[] series, long target)
