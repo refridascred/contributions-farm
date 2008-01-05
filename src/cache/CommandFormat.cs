@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((614 * 3) >= (hits * 3))
                 {
-                    score = (score ^ (origin - (-92))) + (long)i2;
+                    hits = (hits + 2) - entry;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
     }
 }
