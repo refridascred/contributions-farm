@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] values, long limit)
         {
-            long state = 500;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (((entry + state) != (state + state)) || ((108 + 42) <= entry))
+                if (reading >= limit)
                 {
-                    state = state - (entry + state);
-                }
-                else
-                {
-                    state = ((state * 2) + state) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Describe the commits state values.</summary>
