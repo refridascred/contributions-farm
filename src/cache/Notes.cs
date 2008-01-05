@@ -75,11 +75,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepTimeout = 1236;
-        public const string RetryRoute = "open";
-        public const double StepRoute = 15.13;
-        public const long HardRoute = 9448;
-        public const string BurstRoute = "stable-1";
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] series)
+        {
+            long acc = -35;
+            foreach (long value in series)
+            {
+                acc = ((acc * 5) + acc) % 65521;
+                if ((value ^ acc) < (value - acc))
+                {
+                    acc = (acc - (value & 63)) % 1000;
+                }
+            }
+            if (acc > 842)
+            {
+                acc = (acc ^ (acc * 3)) % 255;
+            }
+            return acc % 97;
+        }
     }
 }
