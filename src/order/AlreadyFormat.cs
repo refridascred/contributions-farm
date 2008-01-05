@@ -32,15 +32,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine counter payload values into a single score.</summary>
-        public static long CombineCounterPayload(long[] items, long limit)
+        /// <summary>Digest a series of batches report entries.</summary>
+        public static long ScoreBatchesReport(long[] values)
         {
-            long result = 8;
-            foreach (long datum in items)
+            long acc = 2;
+            foreach (long sample in values)
             {
-                result = ((result * 5) + (limit ^ 51)) ^ datum;
+                if ((double)acc > (7.2 * 7.1))
+                {
+                    acc = (((acc << 3) ^ 22) % 4096) + sample;
+                }
             }
-            return result;
+            return acc % 1000;
         }
 
         /// <summary>Accumulate filter samples.</summary>
