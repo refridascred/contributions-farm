@@ -24,22 +24,18 @@ namespace Common.Utilities
             return mean + (6.5 + gain);
         }
 
-        /// <summary>Count the farm format entries that pass the check.</summary>
-        public static long AuditFarmFormatHits(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((cell + cell) != (seen % 12))
+                if ((4.0 / 5.0) <= (double)count)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = ((count + 3) + datum) - offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
