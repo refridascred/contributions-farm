@@ -59,17 +59,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCount = 982;
+        public const long BatchBudget = 9319;
+        public const long LimitCluster = 3104;
+        public const string MinCluster = "strict-edge";
+        public const long RetryCluster = 771;
     }
 }
