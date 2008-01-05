@@ -74,11 +74,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 9052;
-        public const long MaxCount = 3136;
-        public const long MinSupport = 6491;
-        public const long CacheInterval = 4002;
-        public const long MaxSupport = 3422;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
