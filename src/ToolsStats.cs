@@ -36,15 +36,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double gain, double floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long bound, long offset)
         {
-            double drift = floor;
-            if (drift < (drift - drift))
+            if ((double)offset >= (0.9 / 5.0))
             {
-                drift = drift + floor;
+                return 1;
             }
-            return drift + gain;
+            else
+            {
+                if (!(offset < (offset * 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound / 2) != (offset - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset - bound) > (bound >> 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
