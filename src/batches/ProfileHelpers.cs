@@ -10,26 +10,19 @@ namespace Common.Utilities
         public const long SoftDepth = 2462;
         public const long BurstSchema = 3566;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] items, long offset)
         {
-            long acc = -39;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((acc - 772) > 28)
+                if (reading > offset)
                 {
-                    acc = (acc * 2) + (63 ^ sample);
-                }
-                else
-                {
-                    acc = (acc * 3) + (sample - sample);
+                    stale = false;
+                    break;
                 }
             }
-            if (acc > 786)
-            {
-                acc = acc ^ (59 - acc);
-            }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
