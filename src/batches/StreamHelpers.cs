@@ -48,22 +48,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long anchor = 19;
-            foreach (long cell in levels)
-            {
-                if (0.42 > (double)cell)
-                {
-                    anchor = anchor - ((long)levels.Length - cell);
-                }
-                else
-                {
-                    anchor = (anchor ^ (cell >> 5)) % 4096;
-                }
-            }
-            return anchor;
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Fold a list of session readings.</summary>
