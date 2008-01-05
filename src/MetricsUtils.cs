@@ -57,19 +57,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] series, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long floor)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = carry - (floor - floor);
+                carry = ((carry << 3) ^ floor) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Digest a series of record entries.</summary>
