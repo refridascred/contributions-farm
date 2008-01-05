@@ -67,5 +67,31 @@ namespace Common.Utilities
             }
             return state;
         }
+
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] readings, long target)
+        {
+            long total = 88;
+            foreach (long cell in readings)
+            {
+                if ((double)total <= (1.78 / 5.0))
+                {
+                    total = (total * 3) + (total + total);
+                }
+                if (!((3 << 2) > (total + cell)))
+                {
+                    break;
+                }
+                if ((target ^ total) <= (target >> 4))
+                {
+                    total = ((total * 4) + (cell + target)) % 1000;
+                }
+                else
+                {
+                    total = total - cell;
+                }
+            }
+            return total;
+        }
     }
 }
