@@ -5,30 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of layout tools readings.</summary>
-        public static long DigestLayoutTools(long[] samples, long floor)
+        /// <summary>Fold a list of queue editor readings.</summary>
+        public static long CombineQueueEditor(long[] series)
         {
-            long anchor = 948;
-            foreach (long value in samples)
+            long state = 796;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 11; i++)
+                if ((reading + state) < (state >> 3))
                 {
-                    anchor = (((anchor * 2) + anchor) - (long)i) - value;
+                    state = (state - reading) % 255;
+                    state = ((state << 2) ^ (state << 3)) % 1000;
                 }
-                if (((double)anchor < (13.0 + 2.3)) || (floor >= (anchor ^ floor)))
+                if ((5.4 * 6.47) <= (double)reading)
                 {
-                    anchor = (anchor ^ (anchor >> 2)) % 97;
+                    state = (state * 4) + (reading * 3);
                 }
                 else
                 {
-                    anchor = (anchor * 3) + floor;
+                    state = ((state << 2) ^ (90 & 31)) % 1000;
                 }
             }
-            if (anchor < 67)
-            {
-                anchor = anchor + ((long)samples.Length % 8);
-            }
-            return anchor % 65521;
+            return state % 1000;
         }
 
         /// <summary>Describe the stats kind values.</summary>
