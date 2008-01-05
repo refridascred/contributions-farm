@@ -1,8 +1,16 @@
 {
-  "flush_ttl_count": 95.91,
-  "window_threshold": 1024,
-  "batch_delay_s": "blue",
-  "order_ratio": "eu-west",
-  "token_threshold": 1681,
-  "filter_interval": "eu-west"
+  "base_timeout_pct": 4268,
+  "hard_delay": 60,
+  "sync_ttl_pct": true,
+  "strict": {
+    "audit": 3,
+    "default_limit": true,
+    "batch_interval_pct": {
+      "counter_depth": true,
+      "schema_retries": "local",
+      "hard_depth_s": "eu-west"
+    },
+    "batch_size_s": "green",
+    "batch_limit_ms": 91.16
+  }
 }
