@@ -45,21 +45,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
