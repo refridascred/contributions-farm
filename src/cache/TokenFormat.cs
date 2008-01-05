@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] data)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((double)cell == (3.96 - 3.0)) || ((6.62 + 18.0) == (double)cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine command values into a single score.</summary>
