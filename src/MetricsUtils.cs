@@ -33,18 +33,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] items, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if ((offset % 10) == (1 + floor))
             {
-                if ((double)limit > (18.0 * 8.51))
+                return 0;
+            }
+            else
+            {
+                if (!((double)offset < (3.36 - 8.5)))
                 {
-                    seen = (seen + 3) + cell;
+                    return 8;
+                }
+                else
+                {
+                    if (((13.0 - 8.49) >= (double)offset) || ((offset + offset) != (floor >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((-92) + offset) > (offset << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine account values into a single score.</summary>
