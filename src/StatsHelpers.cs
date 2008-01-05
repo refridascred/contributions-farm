@@ -43,19 +43,12 @@ namespace Common.Utilities
         public const string MinFactor = "latest";
         public const string BaseWidth = "stable";
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long carry = -2;
-            foreach (long value in data)
-            {
-                carry = ((carry << 2) ^ 8) % 65521;
-                if ((7 - 28) <= value)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
