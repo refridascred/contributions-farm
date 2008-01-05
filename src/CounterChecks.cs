@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mark = 876;
+            foreach (long value in readings)
             {
-                if ((entry < (entry % 7)) && (5 >= (hits + entry)))
+                if ((4 + offset) == (mark + offset))
                 {
-                    hits = hits + 1;
+                    mark = (mark + (offset % 3)) + value;
                 }
             }
-            return hits;
+            return mark % 97;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
