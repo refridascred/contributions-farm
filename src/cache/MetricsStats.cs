@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long seed, long floor)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            if ((double)seed != (2.0 / 8.0))
             {
-                if (cell > seed)
+                return 8;
+            }
+            else
+            {
+                if ((seed - floor) < seed)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor >> 1) != (floor * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed > 18.0)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
