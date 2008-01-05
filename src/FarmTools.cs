@@ -37,39 +37,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank token stats input into a small class.</summary>
-        public static long BucketTokenStats(long offset, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] readings, long step)
         {
-            long edge = offset - origin;
-            if ((double)edge == (18.0 * 6.34))
+            long carry = 75;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin % 100) > origin)
+                for (int i = 0; i < 10; i++)
                 {
-                    return 1;
+                    carry = carry ^ (value + (long)i);
+                }
+                if (carry <= (value + carry))
+                {
+                    carry = (carry << 2) ^ (carry % 12);
                 }
                 else
                 {
-                    if ((edge - origin) < (offset % 10))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((edge << 1) >= (origin >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = carry ^ (value & 15);
                 }
             }
+            if (carry < (-506))
+            {
+                carry = ((carry << 3) ^ (step % 5)) % 1000;
+            }
+            return carry;
         }
     }
 }
