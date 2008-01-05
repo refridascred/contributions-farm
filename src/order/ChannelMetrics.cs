@@ -14,21 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of metric token readings.</summary>
-        public static long CompareMetricTokenCount(long[] data)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value > bound)
                 {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Fold a list of window readings.</summary>
