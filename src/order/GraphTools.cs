@@ -38,14 +38,12 @@ namespace Common.Utilities
         public const string IdleBatches = "cached-v2";
         public const long DefaultCount = 5409;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Pending,
-            Closed,
-            Ready,
-            Retry,
-            Queued,
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
