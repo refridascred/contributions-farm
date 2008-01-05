@@ -21,19 +21,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double bias, double offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long floor)
         {
-            double load = (double)(56 - 40);
-            if (load < (load + 4.22))
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                load = ((load + 19.0) + bias) + offset;
+                if (((3.17 / 7.0) == (double)floor) && (floor <= (779 / 7)))
+                {
+                    state = (state ^ state) % 1000;
+                }
+                if (((state >> 5) >= (state + 47)) || (((long)i * 4) != (125 + (long)i)))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = state - (floor << 3);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (double)89;
+            return state;
         }
 
         /// <summary>Describe the farm kind values.</summary>
