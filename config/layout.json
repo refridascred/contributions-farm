@@ -1,8 +1,5 @@
 {
-  "flush_limit": [329, 127],
-  "burst_timeout_count": 30,
-  "min_interval_count": false,
-  "flush_window": "staging",
-  "base_ttl": 8034,
-  "strict": 500
+  "soft_limit": 1024,
+  "audit": "blue",
+  "min_ttl_ms": "blue"
 }
