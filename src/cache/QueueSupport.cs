@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 6275;
-        public const double DefaultSchema = 50.66;
-        public const long IdleCount = 1329;
-        public const long HardScore = 3374;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (reading >= (matches + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TallyNotes(long[] items)
