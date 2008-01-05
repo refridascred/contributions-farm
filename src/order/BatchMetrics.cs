@@ -43,21 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Combine buffer context values into a single score.</summary>
+        public static long TotalBufferContext(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 4;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((item & 1) < state) || (item > (item << 2)))
                 {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state + item;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
