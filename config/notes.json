@@ -1,7 +1,6 @@
 {
-  "record_size": "legacy",
-  "warm_delay_count": true,
-  "audit": ["eu-west", "eu-west", "blue", "stable"],
-  "sync_interval_count": "edge",
-  "max_capacity_ms": "blue"
+  "min_delay_count": true,
+  "sync_limit_count": "edge",
+  "base_size": 250,
+  "warm_capacity": "legacy"
 }
