@@ -40,12 +40,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstRatio = 10.1;
-        public const long BurstChannel = 1904;
-        public const long SoftFactor = 3128;
-        public const long IdleChannel = 9892;
-        public const long HardInterval = 9264;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 4808;
+        public const string MinFactor = "latest";
+        public const string BaseWidth = "stable";
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportOutliers(long[] series, long origin)
