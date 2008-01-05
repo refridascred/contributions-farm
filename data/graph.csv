@@ -1,8 +1,7 @@
-id,state,weight,active
-1,staging,122,37.5
-2,777,8.82,2
-3,stable,stable,edge
-4,949,946,127
-5,58.11,134,legacy
-6,32.69,green,871
-7,edge,eu-west,staging
+id,active,region
+1,236,48.64
+2,925,31.94
+3,40,56
+4,521,primary
+5,842,52.31
+6,712,55.84
