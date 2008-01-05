@@ -17,10 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 9396;
-        public const long BatchLevel = 7908;
-        public const long SoftSize = 2834;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Closed,
+            Draft,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long WeighNotes(long[] values)
