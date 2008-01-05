@@ -1,5 +1,6 @@
 {
-  "editor_capacity": [94, 444],
-  "flush_timeout_s": 8939,
-  "verbose": "standard"
+  "editor_capacity": 500,
+  "hard_capacity_count": "standard",
+  "retry_ttl_s": 6521,
+  "default_timeout_pct": "open"
 }
