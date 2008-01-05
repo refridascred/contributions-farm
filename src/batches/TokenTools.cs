@@ -23,15 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if (tally > (datum << 3))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the tools state values.</summary>
