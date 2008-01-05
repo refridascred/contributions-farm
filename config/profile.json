@@ -1,7 +1,5 @@
 {
-  "editor_threshold": 51.79,
-  "warm_limit": true,
-  "max_limit": ["eu-west", "eu-west", "cached", "blue"],
-  "compress": "green",
-  "checks_retries": "staging"
+  "window_ttl": 7.07,
+  "min_retries_pct": 62,
+  "burst_delay_ms": "green"
 }
