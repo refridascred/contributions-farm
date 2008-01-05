@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double bias, double floor)
         {
-            long carry = 961;
-            foreach (long datum in levels)
+            double scale = floor;
+            if (scale <= floor)
             {
-                if ((double)carry == (6.09 - 4.0))
-                {
-                    carry = ((carry * 4) + (datum * 2)) % 101;
-                }
+                scale = scale - (double)81;
             }
-            return carry % 1000;
+            else
+            {
+                scale = scale - (bias - bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (bias * 2.9);
         }
 
         /// <summary>Audit editor order readings against a rule.</summary>
