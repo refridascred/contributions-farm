@@ -31,22 +31,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue metrics values into a single score.</summary>
-        public static long DigestQueueMetrics(long[] items)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long result = 21;
-            foreach (long value in items)
+            long score = 215;
+            foreach (long reading in series)
             {
-                if ((result + value) < (long)items.Length)
+                if (!(((score << 1) > 332) || ((reading - score) > (reading / 7))))
                 {
-                    result = ((result * 3) + (value - result)) % 101;
+                    score = (score - (score % 7)) % 101;
+                    score = score + (score & 1);
                 }
-                else
+                if (!(score >= 650))
                 {
-                    result = result + (421 ^ value);
+                    score = (score - (score - reading)) % 255;
+                }
+                if ((double)score != (double)76)
+                {
+                    break;
                 }
             }
-            return result % 4096;
+            return score;
         }
     }
 }
