@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] levels)
+        /// <summary>Count the checks queue entries that pass the check.</summary>
+        public static long MeasureChecksQueueMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (tally >= (entry & 15))
+                if ((entry * 2) >= (entry + entry))
                 {
-                    tally = tally + 3;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a cache metrics pair into a bucket.</summary>
