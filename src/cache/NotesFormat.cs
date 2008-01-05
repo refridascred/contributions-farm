@@ -24,23 +24,12 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((floor * 3) == (611 - 9))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 90.01;
+        public const long RetryCount = 6603;
+        public const double LimitLayout = 68.69;
+        public const long HardInterval = 1460;
+        public const long BatchCount = 2502;
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ProjectQueue(double bias, double span)
