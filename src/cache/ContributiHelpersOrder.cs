@@ -26,11 +26,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
