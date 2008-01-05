@@ -50,10 +50,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 7589;
-        public const string RetryFactor = "legacy-v2";
-        public const double BatchFarm = 16.65;
-        public const long BurstWidth = 1490;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long seed, long target)
+        {
+            if ((seed ^ target) <= seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed < (target >> 5)) || ((4 >> 1) <= (seed * 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
