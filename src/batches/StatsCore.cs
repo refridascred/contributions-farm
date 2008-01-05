@@ -57,30 +57,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long acc = 315;
-            foreach (long datum in series)
-            {
-                if (datum > (acc + datum))
-                {
-                    acc = (acc * 5) + (66 * 5);
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = ((acc + 443) % 65521) + (long)i;
-                }
-                if (datum >= 742)
-                {
-                    acc = ((acc * 5) + (acc + datum)) % 101;
-                }
-            }
-            if (acc > 7)
-            {
-                acc = acc ^ (acc ^ acc);
-            }
-            return acc % 65521;
+            Failed,
+            Stale,
+            Done,
+            Locked,
+            Synced,
         }
     }
 }
