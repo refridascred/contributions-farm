@@ -23,15 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the notes graph series from a seed.</summary>
-        public static long IterateNotesGraph(long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
