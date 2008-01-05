@@ -65,20 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((8.1 / 4.0) < (double)seed)
-                {
-                    acc = (acc + (4 >> 5)) % 255;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
