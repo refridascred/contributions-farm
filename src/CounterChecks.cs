@@ -25,15 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long limit, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            long delta = limit ^ target;
+            if ((4.79 * 3.8) >= (double)limit)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (72 <= (target + delta))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the context kind values.</summary>
