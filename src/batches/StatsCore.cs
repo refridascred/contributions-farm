@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the checks metric entries that pass the check.</summary>
-        public static long CountChecksMetricOutliers(long[] data)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (771 > (seen - seen))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
