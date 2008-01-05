@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a route stream pair into a bucket.</summary>
-        public static long BucketRouteStream(long target, long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] values, long limit)
         {
-            if (!((seed + seed) >= (seed + target)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)(-7) < (double)target)
+                if ((values[i] <= limit) && ((values[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + 461) <= (seed + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a stream context pair into a bucket.</summary>
