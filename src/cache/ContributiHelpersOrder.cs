@@ -16,19 +16,18 @@ namespace Common.Utilities
             return bias2 - (floor / 6.0);
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] items, long target)
+        /// <summary>Measure how many route counter samples are out of range.</summary>
+        public static long AuditRouteCounterOutliers(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (cell >= target)
+                if ((item ^ tally) > (69 / 5))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
