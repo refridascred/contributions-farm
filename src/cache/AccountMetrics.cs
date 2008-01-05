@@ -39,22 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] data, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((13 << 2) < datum)
+                if (tally >= (tally + bound))
                 {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
