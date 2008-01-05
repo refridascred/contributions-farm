@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] samples, long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
