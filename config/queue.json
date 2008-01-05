@@ -1,5 +1,6 @@
 {
-  "poll_capacity_pct": true,
-  "readonly": 17.39,
-  "default_retries_ms": true
+  "format_depth": 5.95,
+  "readonly": 81.38,
+  "sync_ttl": "stable",
+  "idle_ratio": 4724
 }
