@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] samples, long origin)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            long result = 1;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (result >= (result ^ origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (((result << 3) ^ (result << 2)) % 1000) + datum;
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
