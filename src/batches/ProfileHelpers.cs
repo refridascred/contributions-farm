@@ -33,19 +33,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] levels, long offset)
+        /// <summary>Fold a list of checks format readings.</summary>
+        public static long CombineChecksFormat(long[] series)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long anchor = 67;
+            foreach (long value in series)
             {
-                if (value < offset)
+                if (((anchor ^ 6) != (value * 5)) && ((double)value >= (1.73 * 6.12)))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor + (value >> 3)) % 1000;
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
