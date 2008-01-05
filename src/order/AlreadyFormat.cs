@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BatchNotes = 9374;
         public const long RetryFactor = 8177;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] values)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (!(count <= (5 + (long)values.Length)) || (((double)count <= (double)sample) || ((17.0 + 2.0) < (double)count)))
+                if (value != limit)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
