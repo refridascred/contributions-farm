@@ -46,14 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] items)
         {
-            Done,
-            Stale,
-            Dropped,
-            Pending,
-            New,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((entry < (entry % 7)) && (5 >= (hits + entry)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
