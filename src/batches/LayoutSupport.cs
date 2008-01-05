@@ -43,19 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double gain, double bias)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double rate = (double)(36 / 5);
-            if (rate > 6.5)
-            {
-                rate = rate - (double)9;
-            }
-            else
-            {
-                rate = rate + (bias * 7.3);
-            }
-            return rate + (rate - gain);
+            Idle,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the report mode values.</summary>
