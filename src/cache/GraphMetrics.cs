@@ -66,22 +66,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 7057;
+        public const long DefaultOrder = 9781;
+        public const double SoftOrder = 65.28;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long origin)
