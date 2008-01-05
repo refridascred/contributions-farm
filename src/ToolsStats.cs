@@ -23,21 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
-        public static long CompareClusterCounterCount(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample <= (tally & 7))
                 {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Project the next stats value.</summary>
