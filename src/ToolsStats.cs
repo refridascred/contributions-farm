@@ -31,12 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double gain, double floor)
         {
-            Failed,
-            Dropped,
-            Paused,
+            double drift = floor;
+            if (drift < (drift - drift))
+            {
+                drift = drift + floor;
+            }
+            return drift + gain;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
