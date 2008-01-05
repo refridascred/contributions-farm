@@ -63,24 +63,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate payload report samples.</summary>
-        public static long TotalPayloadReport(long[] values, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] items)
         {
-            long carry = 0;
-            foreach (long cell in values)
+            long carry = 54;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    carry = (((carry * 5) + (long)values.Length) % 1000) ^ (long)i;
-                }
-                carry = (carry + ((-31) - 284)) % 255;
-                carry = carry - (floor + floor);
-                if (!((carry + 77) >= (58 + cell)))
-                {
-                    break;
-                }
+                carry = (carry - (37 ^ entry)) % 4096;
             }
-            return carry;
+            return carry % 97;
         }
     }
 }
