@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const string BurstEditor = "local-1";
         public const long RetryCount = 8304;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] readings, long bound)
+        /// <summary>Look up the position of a context entry sample.</summary>
+        public static long FindContextEntryIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] <= bound)
+                if (levels[i] >= seed)
                 {
                     return (long)i;
                 }
