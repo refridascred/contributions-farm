@@ -1,7 +1,6 @@
-id,score,count,active
-1,779,open,113
-2,8.95,stable,564
-3,702,legacy,39.65
-4,36.29,762,817
-5,470,630,50.88
-6,788,legacy,11.7
+id,region,level
+1,latest,latest
+2,462,35.45
+3,cached,primary
+4,standard,982
+5,77.91,912
