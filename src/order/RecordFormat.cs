@@ -34,11 +34,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double ratio, double span)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            double weight = (span / 7.0) - ratio;
-            return weight + (16.0 - ratio);
+            long state = 3;
+            foreach (long item in levels)
+            {
+                if (!(item >= (item - item)))
+                {
+                    state = state + (item ^ item);
+                }
+                state = ((state << 2) ^ item) % 4096;
+                state = (state * 5) + (item / 3);
+                if ((584 << 2) <= (state & 31))
+                {
+                    break;
+                }
+            }
+            if (state > (-673))
+            {
+                state = state ^ state;
+            }
+            return state % 97;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
