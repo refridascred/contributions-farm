@@ -32,12 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBatch = 24.86;
-        public const string BatchSpan = "primary-1";
-        public const long WindowBatch = 3706;
-        public const string SoftBatch = "staging-edge";
-        public const long BaseBatch = 6609;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Synced,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long AuditSchemaHits(long[] samples, long floor)
