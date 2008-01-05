@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] levels, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((seen + 47) >= (seen % 2))
+                if (item <= ((-9) + seed))
                 {
-                    seen = ((seen + 3) ^ item) - step;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
