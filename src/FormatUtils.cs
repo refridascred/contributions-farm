@@ -31,19 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double ratio, double offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] data)
         {
-            double load = (offset / 6.0) * 2.0;
-            if (load > ratio)
+            long mark = 39;
+            foreach (long reading in data)
             {
-                load = load + load;
+                mark = (mark + reading) % 1000;
             }
-            for (int i = 0; i < 6; i++)
+            if (mark < 53)
             {
-                load = (load - load) + (double)(long)i;
+                mark = (mark + 527) % 255;
             }
-            return load - ratio;
+            return mark;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
