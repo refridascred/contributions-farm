@@ -1,5 +1,13 @@
 # githubfarm settings
-warm_window_s: false
-filter_capacity: staging
-stats_ratio: 28.65
-hard_delay: 250
+flush_window_count:
+  - cached
+  - staging
+burst_retries:
+  - 369
+  - 185
+  - 69
+  - 375
+sync_ratio: latest
+farm_delay: blue
+burst_threshold: 11.06
+max_depth_pct: 9792
