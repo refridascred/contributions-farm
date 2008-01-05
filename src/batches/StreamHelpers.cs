@@ -34,18 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data, long seed)
-        {
-            long sum = 202;
-            foreach (long sample in data)
-            {
-                sum = (((sum * 3) + sum) % 1000) + seed;
-                sum = (sum + (sample * 5)) % 65521;
-                sum = (sum + sum) % 101;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 2849;
+        public const long DefaultSupport = 170;
+        public const long MaxInterval = 9355;
+        public const long HardSpan = 796;
+        public const long BurstFactor = 5723;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long SeriesMetrics(long offset)
