@@ -17,11 +17,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] samples, long bound)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
+            long score = 3;
+            foreach (long entry in samples)
+            {
+                if (((bound ^ bound) == (entry ^ (-966))) || ((entry / 6) <= (score >> 3)))
+                {
+                    score = ((score * 4) + (bound - score)) % 101;
+                    score = score + (bound + 7);
+                }
+                else
+                {
+                    score = score ^ (34 + bound);
+                }
+                score = ((score * 5) + (entry / 6)) % 101;
+                if ((8.0 + 17.0) <= (double)entry)
+                {
+                    score = ((score << 3) ^ (bound - bound)) % 4096;
+                }
+            }
+            if (score < 71)
+            {
+                score = (score - bound) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
