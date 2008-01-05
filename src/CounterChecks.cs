@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double bias, double bias2)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] data, long limit)
         {
-            double mean = bias;
-            if (mean < 1.0)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + (bias2 + 9.22);
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
