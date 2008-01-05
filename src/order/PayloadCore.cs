@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Count the metric contributi entries that pass the check.</summary>
+        public static long TallyMetricContributiMatches(long[] levels, long seed)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((9 % 16) == (value & 127))
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
