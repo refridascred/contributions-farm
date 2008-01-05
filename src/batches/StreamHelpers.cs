@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const double BaseStream = 31.06;
         public const string LimitWidth = "legacy";
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] items, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (sample < offset)
+                if ((item - tally) != (tally - tally))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Audit tools notes readings against a rule.</summary>
