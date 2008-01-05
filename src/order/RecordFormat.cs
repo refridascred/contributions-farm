@@ -48,14 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double ratio, double span)
         {
-            Active,
-            Dropped,
-            Queued,
-            Stale,
-            Synced,
+            double weight = (span / 7.0) - ratio;
+            return weight + (16.0 - ratio);
         }
 
         /// <summary>Iterate the graph batch series from a seed.</summary>
