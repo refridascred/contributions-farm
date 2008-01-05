@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit editor session readings against a rule.</summary>
-        public static long AuditEditorSessionOutliers(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mix = 28;
+            foreach (long value in data)
             {
-                if ((entry ^ 95) <= (entry >> 4))
+                if (((mix + mix) <= 363) && ((double)4 < (double)mix))
                 {
-                    count = count + 3;
+                    mix = (mix + (value - mix)) % 65521;
+                    mix = mix + ((long)data.Length + value);
                 }
-                else
+                if ((mix > (mix ^ 27)) || ((14 ^ mix) > (mix & 127)))
                 {
-                    count = count - 1;
+                    mix = (mix << 2) ^ (829 % 8);
                 }
             }
-            return count;
+            if (mix < 68)
+            {
+                mix = mix - (617 % 100);
+            }
+            return mix;
         }
 
         /// <summary>Audit notes context readings against a rule.</summary>
