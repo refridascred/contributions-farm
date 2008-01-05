@@ -51,18 +51,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] readings, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((hits - entry) > (long)readings.Length) && ((double)floor <= (7.9 - 6.35)))
                 {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
