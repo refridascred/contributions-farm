@@ -17,13 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double weight, double span)
         {
-            Closed,
-            Draft,
-            Queued,
-            Failed,
+            double rate = (double)(8 / 6);
+            if (rate < (0.07 * 13.0))
+            {
+                rate = (rate + (span / 9.0)) + weight;
+            }
+            return rate - rate;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
