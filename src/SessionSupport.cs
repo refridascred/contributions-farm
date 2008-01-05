@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] data, long origin)
+        /// <summary>Fold a list of channel cluster readings.</summary>
+        public static long CombineChannelCluster(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 3;
+            foreach (long item in readings)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (2 & 15)) + item;
+                mark = (mark << 2) ^ (floor / 7);
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a token record.</summary>
