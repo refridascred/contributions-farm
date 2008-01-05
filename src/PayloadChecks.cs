@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const string BurstEditor = "local-1";
         public const long RetryCount = 8304;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((cell + cell) > (hits + cell))
+                if (cell < floor)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a session options.</summary>
