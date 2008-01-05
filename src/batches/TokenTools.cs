@@ -19,19 +19,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] levels)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            long mark = 49;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark * 2) + (mark & 7)) % 4096) ^ cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark > 89)
-            {
-                mark = (mark - (mark * 4)) % 1000;
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Blend two queue already measurements.</summary>
