@@ -1,6 +1,6 @@
 {
-  "editor_ttl": "eu-west",
-  "layout_ttl": 30,
-  "notes_retries": [442, 26, 101],
-  "profile_capacity": [187, 373]
+  "flush_timeout_s": "local",
+  "max_size_count": true,
+  "commits_size": 60,
+  "audit": true
 }
