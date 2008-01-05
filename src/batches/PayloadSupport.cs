@@ -30,32 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long floor, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long bound = floor ^ step;
-            if ((floor & 1) <= (step >> 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound - step) >= ((-36) << 2)) || ((bound + bound) > step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (7.55 < (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
