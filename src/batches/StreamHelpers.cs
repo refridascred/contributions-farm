@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Queued,
-            New,
+            Closed,
             Synced,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a token summary.</summary>
