@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every command batches entry stays within the limit.</summary>
-        public static bool GuardCommandBatchesLimits(long[] values, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long anchor = 43;
+            foreach (long reading in levels)
             {
-                if (reading <= step)
+                if (anchor >= (anchor % 8))
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (anchor - anchor)) - reading;
                 }
+                anchor = ((anchor << 2) ^ (anchor / 7)) % 1000;
+                anchor = (anchor + (anchor << 1)) % 101;
             }
-            return flag;
+            return anchor % 4096;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
