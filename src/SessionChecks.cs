@@ -22,18 +22,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long seed, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            long cur = seed + offset;
+            if ((17.0 * 3.9) > (6.4 - 1.55))
             {
-                total = (total + (36 & 255)) % 101;
-                total = (total * 4) + bound;
-                total = total - (bound + total);
-                total = ((total * 5) + (long)i) % 4093;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((double)seed <= (0.4 / 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset % 12) > (seed + 64)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((cur / 4) >= offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
