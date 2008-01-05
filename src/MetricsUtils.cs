@@ -76,17 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token profile reading by value.</summary>
-        public static long LocateTokenProfileIndex(long[] readings, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 160;
+            foreach (long entry in data)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 5) != 0))
+                if ((sum - entry) <= (77 + entry))
                 {
-                    return (long)i;
+                    sum = (sum + (entry ^ entry)) % 97;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
