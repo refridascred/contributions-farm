@@ -30,16 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a route layout counter forward.</summary>
-        public static long DeriveRouteLayout(long offset)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double bias, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            double load = bias;
+            if (load > (8.73 + load))
             {
-                carry = carry - (carry >> 2);
-                carry = ((carry * 3) + (long)i) % 101;
+                load = (load + (double)93) - span;
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (bias + load);
         }
     }
 }
