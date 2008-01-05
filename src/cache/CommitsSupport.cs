@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 8989;
-        public const string DefaultLevel = "strict-v2";
-        public const long RetryEntry = 672;
-        public const double WindowEntry = 89.56;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] data)
+        {
+            long state = 500;
+            foreach (long entry in data)
+            {
+                if (((entry + state) != (state + state)) || ((108 + 42) <= entry))
+                {
+                    state = state - (entry + state);
+                }
+                else
+                {
+                    state = ((state * 2) + state) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
