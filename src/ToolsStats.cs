@@ -76,12 +76,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            Dropped,
-            Locked,
-            Active,
+            long state = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state << 3) ^ (state * 2)) % 1000;
+                state = (state ^ (state - state)) % 255;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
