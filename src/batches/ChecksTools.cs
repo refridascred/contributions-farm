@@ -36,11 +36,24 @@ namespace Common.Utilities
         public const long StepFactor = 5637;
         public const string MaxWidth = "latest-v2";
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long origin, long floor)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            if ((origin >> 5) <= origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor / 3) > (origin >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
