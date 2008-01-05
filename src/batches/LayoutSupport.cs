@@ -44,22 +44,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many graph channel samples are out of range.</summary>
-        public static long AuditGraphChannelHits(long[] data)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((value + 2) >= (501 - 2)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    count = count + 3;
+                    score = ((score + (51 - score)) % 4096) + (long)i2;
                 }
-                else
+                if (!(((17 / 3) < (long)i) && ((double)score >= (12.0 * 14.0))))
                 {
-                    count = count - 1;
+                    score = (score * 5) + ((long)i << 1);
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
