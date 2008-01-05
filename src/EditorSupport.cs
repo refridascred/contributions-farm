@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 8013;
+        public const long MinInterval = 320;
+        public const long SoftFactor = 4625;
+        public const long DefaultGraph = 7055;
+        public const long WindowGraph = 9269;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] items, long floor)
