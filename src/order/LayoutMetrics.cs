@@ -40,25 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long limit, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] data)
         {
-            long span = limit ^ seed;
-            if (!(623 <= limit))
+            long mix = 78;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((span + limit) > (limit - 369))
+                if (2 > item)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    mix = ((mix << 2) ^ (item << 1)) % 255;
                 }
             }
+            if (mix > 14)
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix;
         }
     }
 }
