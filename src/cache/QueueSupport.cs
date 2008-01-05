@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a filter queue counter forward.</summary>
-        public static long DeriveFilterQueue(long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = (((sum << 2) ^ sum) % 4096) - (long)i2;
+                }
+                if ((sum - sum) == (sum + (long)i))
+                {
+                    sum = (sum - limit) % 255;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Measure how many contributi route samples are out of range.</summary>
