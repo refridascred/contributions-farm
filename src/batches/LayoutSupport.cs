@@ -12,17 +12,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Find the first githubfarm contributi entry that matches the target.</summary>
-        public static long LookupGithubfarmContributiIndex(long[] readings, long target)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Validate graph stats readings against a bound.</summary>
