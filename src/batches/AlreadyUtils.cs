@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] levels)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (value >= (value ^ matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
