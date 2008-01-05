@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Ready,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchSpan = "strict-edge";
+        public const long DefaultAccount = 9306;
+        public const long WindowAccount = 4412;
+        public const long LimitAccount = 835;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string DefaultInterval = "primary-edge";
