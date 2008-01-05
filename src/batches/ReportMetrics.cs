@@ -30,15 +30,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] levels, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long floor)
         {
-            long total = 67;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total << 3) ^ (0 / 7)) - sample) - seed;
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
     }
 }
