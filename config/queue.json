@@ -1,10 +1,5 @@
 {
-  "warm_size_ms": "fallback",
-  "window_window": true,
-  "audit": {
-    "warm_ratio_count": 24.12,
-    "enabled": 19.87,
-    "warm_depth_s": 94.68,
-    "batch_delay": "open"
-  }
+  "poll_capacity_pct": true,
+  "readonly": 17.39,
+  "default_retries_ms": true
 }
