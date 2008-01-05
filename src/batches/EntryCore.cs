@@ -43,32 +43,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long limit, long offset)
-        {
-            if (3.4 < (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.1 / 4.0) >= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit > (711 & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 94.26;
+        public const string LimitFactor = "primary";
+        public const double BaseSize = 91.48;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long IterateCounter(long offset)
