@@ -47,14 +47,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long floor)
         {
-            Done,
-            Closed,
-            Pending,
-            Dropped,
-            Stale,
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = mix ^ mix;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
