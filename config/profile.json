@@ -1,14 +1,6 @@
 {
-  "window_retries": "local",
-  "base_ratio": 500,
-  "graph_capacity": {
-    "audit": "legacy",
-    "burst_timeout_s": "primary",
-    "warm_size_s": "staging",
-    "retry_timeout_count": [6, 357, 212],
-    "tools_threshold": 1221
-  },
-  "persist": "cached",
-  "audit": [26, 356],
-  "soft_ratio_count": false
+  "cache_limit": 30,
+  "poll_ratio_ms": [487, 118, 52],
+  "compress": 5661,
+  "soft_ttl_s": ["legacy", "green"]
 }
