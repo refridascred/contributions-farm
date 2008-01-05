@@ -84,18 +84,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Locate a contributi report reading by value.</summary>
+        public static long FindContributiReportIndex(long[] values, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score ^ score) % 4096;
-                score = score - ((long)i % 7);
-                score = score - (score >> 2);
-                score = ((score * 3) + (long)i) % 65521;
+                if ((values[i] == step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
