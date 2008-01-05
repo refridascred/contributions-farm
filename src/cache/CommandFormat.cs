@@ -27,19 +27,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    score = ((score * 3) + ((long)i3 ^ 95)) % 97;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Done,
+            Stale,
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
