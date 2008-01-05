@@ -49,19 +49,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double floor)
         {
-            long anchor = 10;
-            foreach (long value in series)
+            double mean = floor - floor;
+            if (mean > (mean + floor))
             {
-                anchor = (anchor + (9 >> 1)) % 65521;
-                if ((9.56 - 2.0) <= (double)value)
-                {
-                    break;
-                }
+                mean = mean + ratio;
             }
-            return anchor % 97;
+            return mean + (4.0 + floor);
         }
     }
 }
