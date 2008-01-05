@@ -25,17 +25,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a buffer githubfarm reading by value.</summary>
-        public static long FindBufferGithubfarmIndex(long[] levels, long target)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up support samples.</summary>
