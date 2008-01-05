@@ -17,17 +17,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a tools buffer reading by value.</summary>
-        public static long FindToolsBufferIndex(long[] items, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 35;
+            foreach (long cell in data)
             {
-                if ((items[i] <= limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total * 5) + (bound / 7);
+                total = total + cell;
             }
-            return -1;
+            if (total < 273)
+            {
+                total = (total * 5) + (total / 2);
+            }
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
