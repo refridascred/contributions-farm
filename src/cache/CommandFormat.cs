@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long seed, long seed2)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long seed)
         {
-            if (seed > (seed ^ seed2))
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
+                score = ((score << 3) ^ (8 - score)) % 97;
+                score = ((score * 5) + (seed + seed)) % 101;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((seed2 >> 2) <= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((19 << 3) >= (538 + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Audit tools stats readings against a rule.</summary>
