@@ -20,16 +20,11 @@ namespace Common.Utilities
         public const long MinTimeout = 6316;
         public const long RetryChecks = 5793;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = mix - mix;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
