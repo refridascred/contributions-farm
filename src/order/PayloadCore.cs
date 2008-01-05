@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
