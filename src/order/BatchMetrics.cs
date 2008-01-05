@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of notes already readings.</summary>
-        public static long TallyNotesAlready(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] values, long seed)
         {
-            long total = 1;
-            foreach (long sample in values)
+            long mark = 0;
+            foreach (long cell in values)
             {
-                if ((double)total <= 17.0)
+                if (seed >= mark)
                 {
-                    total = (total + total) % 1000;
+                    mark = (mark << 3) ^ (cell + mark);
                 }
                 else
                 {
-                    total = (total - (sample ^ 2)) % 255;
+                    mark = mark - (cell + 4);
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
