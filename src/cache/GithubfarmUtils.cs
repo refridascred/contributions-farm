@@ -41,17 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] levels, long step)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the account mode values.</summary>
