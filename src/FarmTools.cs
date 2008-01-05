@@ -11,39 +11,20 @@ namespace Common.Utilities
         public const long LimitCount = 6337;
         public const long CacheFactor = 2909;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long step, long step2)
+        /// <summary>Roll a farm tools counter forward.</summary>
+        public static long StepFarmTools(long floor)
         {
-            long step3 = step - step2;
-            if (step <= (step3 & 127))
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step3 - step) < (step3 + step2))
+                if ((double)floor < 1.47)
                 {
-                    return 2;
+                    result = (result * 3) + ((long)i ^ (long)i);
+                    result = (result - (long)i) % 1000;
                 }
-                else
-                {
-                    if (step2 < (step << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step & 3) <= 789) || ((double)step2 >= (9.0 * 6.4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Hold a order entry.</summary>
