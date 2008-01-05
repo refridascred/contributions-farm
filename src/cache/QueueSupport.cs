@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] series, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long floor)
         {
-            bool found = true;
-            foreach (long value in series)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 4) + (mix / 7)) % 65521;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
