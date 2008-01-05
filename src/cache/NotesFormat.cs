@@ -5,20 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the session window series from a seed.</summary>
-        public static long IterateSessionWindow(long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] series, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long anchor = 58;
+            foreach (long item in series)
             {
-                total = total + total;
-                if (!((double)total != (6.2 + 1.9)))
+                if ((386 <= (floor - floor)) && (anchor <= (anchor % 64)))
                 {
-                    total = (total << 2) ^ target;
+                    anchor = (anchor - item) % 65521;
                 }
-                total = ((total * 5) + (long)i) % 1000;
+                anchor = anchor ^ (long)series.Length;
+                if (item > (69 + floor))
+                {
+                    anchor = anchor + (anchor + item);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                }
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
