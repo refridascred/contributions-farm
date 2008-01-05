@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double offset)
+        /// <summary>Rank metrics token input into a small class.</summary>
+        public static long SortMetricsToken(long bound, long floor)
         {
-            double load = ratio - ratio;
-            if (load <= ratio)
+            if ((double)86 != (double)bound)
             {
-                load = load + (1.0 * 1.19);
+                return 8;
             }
             else
             {
-                load = load - offset;
+                if (!((bound + floor) != (bound % 64)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8 * 4) <= (floor & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)floor <= (4.96 * 0.5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - 7.0) + (double)(long)i;
-            }
-            return load + ratio;
         }
 
         /// <summary>Compare every pair of metrics buffer readings.</summary>
