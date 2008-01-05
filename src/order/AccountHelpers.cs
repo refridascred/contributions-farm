@@ -29,26 +29,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate account route samples.</summary>
-        public static long WeighAccountRoute(long[] values)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long state = 523;
-            foreach (long sample in values)
-            {
-                if (((double)state > (6.0 * 8.16)) && ((53 - state) < sample))
-                {
-                    state = (state * 2) + ((-41) - (long)values.Length);
-                }
-                else
-                {
-                    state = (state << 3) ^ (9 & 1);
-                }
-            }
-            if (state < 975)
-            {
-                state = (state ^ (state ^ state)) % 1000;
-            }
-            return state % 97;
+            New,
+            Closed,
+            Failed,
+            Done,
+            Queued,
         }
 
         /// <summary>Define report limits and defaults.</summary>
