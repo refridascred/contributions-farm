@@ -41,23 +41,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long floor, long bound)
         {
-            long mark = 5;
-            foreach (long reading in levels)
+            if (bound < (bound % 16))
             {
-                mark = (mark << 2) ^ mark;
-                if (reading >= mark)
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) == (floor >> 4))
                 {
-                    mark = (mark + reading) % 101;
+                    return 0;
+                }
+                else
+                {
+                    if (((floor - floor) > (bound + floor)) && ((floor >> 1) <= (bound + bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor != (double)bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mark < 237)
-            {
-                mark = (mark - (2 - 338)) % 101;
-            }
-            return mark % 97;
         }
 
         /// <summary>Describe the format state values.</summary>
