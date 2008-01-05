@@ -1,18 +1,7 @@
 # entry settings
-batch_interval_ms:
-  soft_ratio_count: local
-  default_threshold_s: true
-  warm_size: true
-  report_ttl: 76
-  persist:
-    cache_interval: false
-    batch_depth: eu-west
-    poll_ttl: 93.84
-    hard_capacity:
-      - cached
-      - blue
-      - standard
-    warm_interval_pct: false
-    tools_interval: 82
-readonly: cached
-warm_timeout_count: false
+soft_size_s: true
+default_capacity: true
+editor_capacity:
+  compress: strict
+  dry_run: false
+  max_delay_pct: 14
