@@ -20,13 +20,24 @@ namespace Common.Utilities
             return load - (bias2 * 2.7);
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long limit, long floor)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
+            if ((floor + floor) >= (floor - limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)floor != (4.31 + 7.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
