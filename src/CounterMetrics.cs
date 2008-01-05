@@ -20,23 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double ratio, double floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long target, long floor)
         {
-            double scale = floor;
-            if (scale > ratio)
+            long prev = target ^ floor;
+            if (((double)floor < (3.0 + 2.1)) || ((floor - 357) > target))
             {
-                scale = scale + floor;
+                return 1;
             }
             else
             {
-                scale = scale - (double)4;
+                if (((double)floor <= (7.0 + 5.8)) && ((prev + floor) <= (prev >> 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + ratio) - (double)(long)i;
-            }
-            return scale + floor;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
