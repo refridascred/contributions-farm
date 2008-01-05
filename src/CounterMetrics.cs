@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] samples, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score + (score % 12);
-                if (bound >= (score - score))
+                if (samples[i] >= limit)
                 {
-                    score = score - (score >> 1);
-                    score = ((score << 3) ^ (long)i) % 97;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the cache class values.</summary>
