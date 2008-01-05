@@ -1,7 +1,6 @@
-id,token,label,rank
-1,55.24,45.3,538
-2,strict,cached,704
-3,88.26,staging,standard
-4,50.47,875,91.7
-5,latest,548,95.03
-6,strict,91.24,242
+id,owner,state
+1,4.4,331
+2,793,87.21
+3,58.05,legacy
+4,standard,eu-west
+5,30.93,352
