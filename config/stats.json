@@ -1,7 +1,8 @@
 {
-  "burst_delay_pct": false,
-  "strict": 100,
-  "enabled": "cached",
-  "contributi_ttl": 36.86,
-  "idle_interval_count": ["open", "green", "local"]
+  "cache_retries_count": [283, 252, 69, 371],
+  "poll_retries_count": 67,
+  "flush_timeout_pct": "staging",
+  "poll_capacity": 13,
+  "idle_size": "strict",
+  "warm_size": 100
 }
