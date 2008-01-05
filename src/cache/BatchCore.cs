@@ -29,18 +29,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] levels, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double floor)
         {
-            long carry = 1;
-            foreach (long value in levels)
+            double rate = weight * 18.0;
+            if (rate >= 0.58)
             {
-                if (carry >= (carry << 3))
-                {
-                    carry = ((carry ^ (62 >> 4)) + value) + seed;
-                }
+                rate = (rate + 4.86) - floor;
             }
-            return carry % 65521;
+            return rate - rate;
         }
 
         /// <summary>Define session limits and defaults.</summary>
