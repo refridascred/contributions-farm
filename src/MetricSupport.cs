@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] levels)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (hits > (872 + reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the entry state values.</summary>
