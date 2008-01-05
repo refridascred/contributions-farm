@@ -25,12 +25,24 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long floor, long origin)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            if (origin > (origin + floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin != (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Match up support samples.</summary>
