@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] items, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (130 <= seen)
+                {
+                    seen = ((seen + 1) + cell) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
