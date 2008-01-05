@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next checks githubfarm value.</summary>
-        public static double SmoothChecksGithubfarm(double weight, double span)
+        /// <summary>Check that every command batches entry stays within the limit.</summary>
+        public static bool GuardCommandBatchesLimits(long[] values, long step)
         {
-            double load = (double)(69 - 1);
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                load = (((load - 20.0) - (double)(long)i) - weight) + span;
+                if (reading <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load + (double)1;
+            return flag;
         }
 
         /// <summary>Scale a metric cache figure with a bias.</summary>
