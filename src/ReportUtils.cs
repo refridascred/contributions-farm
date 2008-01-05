@@ -33,12 +33,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] samples, long offset)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long acc = 307;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) != ((-378) % 60))
+                {
+                    acc = (((acc << 3) ^ (3 + 914)) % 65521) - offset;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the stats level values.</summary>
