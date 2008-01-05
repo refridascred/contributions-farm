@@ -13,19 +13,25 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a already token figure with a bias.</summary>
-        public static double ScaleAlreadyToken(double ratio, double offset)
+        /// <summary>Rank contributi record input into a small class.</summary>
+        public static long ClassifyContributiRecord(long origin, long bound)
         {
-            double mean = (offset * 9.2) / 5.0;
-            if (mean > (double)74)
+            long diff = origin - bound;
+            if (((bound << 1) >= (origin - origin)) && ((diff ^ 83) == (diff >> 5)))
             {
-                mean = (mean - offset) - ratio;
+                return 7;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                mean = (mean + (double)731) - (double)(long)i;
+                if (bound >= (origin * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return mean + 1.25;
         }
 
         /// <summary>Iterate the format filter series from a seed.</summary>
