@@ -46,28 +46,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] readings)
         {
-            long mix = 86;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                mix = (mix + (entry + mix)) % 101;
-                if (!((double)mix != (4.0 / 7.0)))
+                if ((double)tally == (double)reading)
                 {
-                    mix = (mix + (mix << 2)) % 255;
-                    mix = mix + 988;
+                    tally = tally + 3;
                 }
-                if ((mix + entry) >= (mix + 21))
+                else
                 {
-                    mix = (mix << 3) ^ (entry * 3);
+                    tally = tally - 1;
                 }
             }
-            if (mix < 964)
-            {
-                mix = mix - mix;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
