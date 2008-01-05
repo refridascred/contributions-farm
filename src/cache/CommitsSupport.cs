@@ -20,16 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double ratio, double bias)
-        {
-            double bias2 = bias * 8.2;
-            if (bias2 < bias2)
-            {
-                bias2 = (bias2 + (bias2 + 4.0)) - ratio;
-            }
-            return bias2 + bias2;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 9396;
+        public const long BatchLevel = 7908;
+        public const long SoftSize = 2834;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long WeighNotes(long[] values)
