@@ -12,31 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Classify a stream context pair into a bucket.</summary>
-        public static long SortStreamContext(long offset, long target)
+        /// <summary>Scale a farm graph figure with a bias.</summary>
+        public static double BlendFarmGraph(double gain, double offset)
         {
-            if ((((-67) - target) >= (offset * 2)) && ((0.07 + 2.2) > (double)target))
+            double drift = (double)88 - (offset / 2.0);
+            if (drift > (double)186)
             {
-                return 6;
+                drift = (drift + (double)535) + gain;
             }
             else
             {
-                if (offset >= (target << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - offset) > offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                drift = drift + drift;
             }
+            return drift - (drift * 7.9);
         }
 
         /// <summary>Count stream farm pairs that satisfy a relation.</summary>
