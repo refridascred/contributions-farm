@@ -1,6 +1,5 @@
 {
-  "checks_size": 3204,
-  "order_timeout": "standard",
-  "metric_threshold": "open",
-  "token_timeout": 53.8
+  "cache_threshold_s": 100,
+  "poll_threshold": "primary",
+  "hard_ttl": 70.19
 }
