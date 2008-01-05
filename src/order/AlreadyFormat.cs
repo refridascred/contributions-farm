@@ -37,18 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] items)
+        /// <summary>Measure how many farm buffer samples are out of range.</summary>
+        public static long TallyFarmBufferHits(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((cell - tally) <= cell)
+                if ((step + count) >= ((long)series.Length + 480))
                 {
-                    tally = tally + 2;
+                    count = (count + 2) + reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
