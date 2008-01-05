@@ -24,21 +24,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((20 - offset) != (offset & 3))
                 {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
