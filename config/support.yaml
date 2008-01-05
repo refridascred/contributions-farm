@@ -1,23 +1,5 @@
 # support settings
-readonly:
-  - local
-  - standard
-  - green
-  - fallback
-enabled: stable
-filter_window:
-  - 425
-  - 483
-  - 393
-  - 421
-format_delay:
-  payload_ttl: 65
-  readonly:
-    flush_window_s: 18.19
-    warm_ttl_s: primary
-    max_limit_pct: true
-    profile_threshold: 3693
-    min_retries_count: 5.42
-  burst_timeout: 1024
-  batch_ttl_pct: 37
-  commits_retries: eu-west
+flush_timeout_count: 1024
+readonly: standard
+account_depth: staging
+idle_ratio: open
