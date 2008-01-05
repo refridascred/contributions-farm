@@ -26,21 +26,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count tools filter pairs that satisfy a relation.</summary>
-        public static long OverlapToolsFilterCount(long[] values)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)tally <= (double)item)
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
