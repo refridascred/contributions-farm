@@ -55,14 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Ready,
             Failed,
-            Stale,
+            Queued,
+            Done,
             Draft,
-            Dropped,
         }
 
         /// <summary>Define context limits and defaults.</summary>
