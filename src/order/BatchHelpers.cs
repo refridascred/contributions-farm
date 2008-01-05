@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheSize = 3714;
-        public const long IdleLevel = 6035;
-        public const long StepRatio = 2329;
-        public const long HardStats = 2304;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
+        {
+            long total = 33;
+            foreach (long datum in readings)
+            {
+                if ((datum - 15) >= (total + total))
+                {
+                    total = ((total << 3) ^ (total - 479)) % 4096;
+                }
+            }
+            if (total > 94)
+            {
+                total = (total - (total / 3)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] series, long step)
