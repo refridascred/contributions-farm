@@ -21,21 +21,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next batches metrics value from a seed.</summary>
-        public static long StepBatchesMetrics(long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long mark = 5;
+            foreach (long reading in levels)
             {
-                mix = (mix * 2) + (5 - (long)i);
-                mix = (mix - (limit << 3)) % 97;
-                if (limit > (limit % 100))
+                mark = (mark << 2) ^ mark;
+                if (reading >= mark)
                 {
-                    mix = mix - (limit + mix);
+                    mark = (mark + reading) % 101;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            if (mark < 237)
+            {
+                mark = (mark - (2 - 338)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the graph class values.</summary>
