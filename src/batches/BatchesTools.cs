@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Count the context queue entries that pass the check.</summary>
+        public static long MeasureContextQueueGaps(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((item + 861) >= (tally + item)) && ((1.2 / 5.0) > (double)item))
                 {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) - limit;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the record kind values.</summary>
