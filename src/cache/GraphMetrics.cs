@@ -27,14 +27,11 @@ namespace Common.Utilities
         public const string MaxNotes = "primary";
         public const string CacheNotes = "open-v2";
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Retry,
-            Draft,
-            Active,
-            Idle,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryScore = 239;
+        public const double RetryCommits = 89.59;
+        public const string BaseSize = "local-1";
+        public const double LimitFactor = 28.35;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
