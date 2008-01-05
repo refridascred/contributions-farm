@@ -22,14 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] items, long limit)
         {
-            Stale,
-            Closed,
-            Dropped,
-            Failed,
-            Paused,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank session editor input into a small class.</summary>
