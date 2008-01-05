@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinLevel = 4967;
-        public const long SoftBudget = 3600;
-        public const long HardSize = 1227;
-        public const double BurstCount = 96.01;
-        public const long IdleMetrics = 5689;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long step, long target)
+        {
+            long step2 = step + target;
+            if (((target / 5) == (target >> 1)) || ((double)step2 > (7.0 * 4.33)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step2 / 6) >= step2) || ((target / 5) < (step >> 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step2 <= (step ^ step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step - step) > (step2 + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long seed, long origin)
