@@ -47,10 +47,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstFactor = 7642;
-        public const string WindowPayload = "cached-1";
-        public const long DefaultRatio = 9868;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 9636;
+        public const string StepTimeout = "alpha";
+        public const double IdleLayout = 57.58;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterOutliers(long[] samples)
