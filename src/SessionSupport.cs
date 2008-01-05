@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 8784;
+        public const long WindowTools = 9036;
+        public const string MinRatio = "primary";
+        public const double IdleBudget = 68.52;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] values)
