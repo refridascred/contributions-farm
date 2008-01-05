@@ -45,16 +45,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum + 5) % 101;
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (((long)i * 2) < (mix * 5))
+                {
+                    mix = ((mix << 3) ^ (mix * 5)) % 97;
+                    continue;
+                }
+                else
+                {
+                    mix = (mix * 3) + (bound + bound);
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return sum;
+            return mix;
         }
     }
 }
