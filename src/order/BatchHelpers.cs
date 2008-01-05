@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long StepRatio = 2329;
         public const long HardStats = 2304;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] data)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((seen / 9) >= ((-633) * 2)))
+                if (series[i] <= step)
                 {
-                    seen = (seen + 2) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
