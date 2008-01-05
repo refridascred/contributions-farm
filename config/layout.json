@@ -1,8 +1,12 @@
 {
-  "hard_interval_s": true,
-  "verbose": "local",
-  "sync_window_pct": "eu-west",
-  "batch_capacity_s": 1871,
-  "batch_timeout_s": "standard",
-  "order_ttl": "staging"
+  "burst_retries_s": 16,
+  "strict": 57,
+  "poll_retries_s": [445, 14],
+  "batch_ttl": {
+    "min_ttl_pct": "latest",
+    "max_interval": 37.59,
+    "warm_ttl": 57,
+    "poll_size_count": 33,
+    "cluster_interval": 50
+  }
 }
