@@ -19,14 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Draft,
-            Ready,
+            Queued,
+            Retry,
             Synced,
             Idle,
-            Pending,
         }
 
         /// <summary>Describe the farm state values.</summary>
