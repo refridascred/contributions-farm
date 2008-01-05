@@ -65,17 +65,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] series, long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
+                score = score - ((long)i + floor);
+                score = (score + (floor - floor)) % 255;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
