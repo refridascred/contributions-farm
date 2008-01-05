@@ -44,31 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] series, long limit)
         {
-            if ((limit + limit) <= 6)
+            long anchor = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step >= (2.3 + 5.14))
+                anchor = (anchor ^ (limit + reading)) % 1000;
+                if ((limit - anchor) <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(limit > (limit ^ limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (anchor << 2) ^ anchor;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
