@@ -26,15 +26,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] values, long origin)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long mark = 732;
-            foreach (long entry in values)
-            {
-                mark = (((mark - ((long)values.Length + 7)) % 101) ^ entry) - origin;
-            }
-            return mark;
+            Synced,
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
