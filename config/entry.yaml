@@ -1,21 +1,5 @@
 # entry settings
-burst_limit_ms:
-  - 171
-  - 327
-  - 213
-  - 420
-max_ratio:
-  dry_run: 12.26
-  batch_capacity:
-    burst_interval_count: fallback
-    verbose: 60
-    soft_timeout: 1693
-    default_delay_ms: local
-    queue_limit:
-      - cached
-      - legacy
-  batches_delay:
-    - 100
-    - 76
-    - 233
-cache_timeout_pct: 60
+default_limit_s: false
+strict: primary
+base_ratio: 9480
+verbose: false
