@@ -23,26 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] readings, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] samples)
         {
-            long sum = 110;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((sum >> 1) >= sum)
+                if ((571 << 1) >= (matches - matches))
                 {
-                    sum = (sum ^ (value / 7)) % 101;
+                    matches = (matches + 2) ^ value;
                 }
-                if ((bound % 100) == (value - bound))
+                else
                 {
-                    sum = ((sum << 3) ^ (value >> 5)) % 1000;
+                    matches = matches - 1;
                 }
             }
-            if (sum > 645)
-            {
-                sum = (sum ^ (2 >> 1)) % 255;
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
