@@ -61,31 +61,17 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long bound, long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long step)
         {
-            if (((bound >> 5) > bound) && ((bound + bound) == (88 - bound)))
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
+                carry = (carry << 3) ^ (138 - step);
+                carry = ((carry << 3) ^ (step - 1)) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((bound << 3) > (bound + 23))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound < (1.7 * 1.55))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
