@@ -31,18 +31,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit metrics record readings against a rule.</summary>
-        public static long MeasureMetricsRecordGaps(long[] samples, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((seen * 2) != (seed >> 1))
+                if (value > offset)
                 {
-                    seen = (seen + 1) - reading;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
