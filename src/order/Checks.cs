@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] values, long seed)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < seed)
+                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
