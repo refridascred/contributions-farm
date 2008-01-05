@@ -42,22 +42,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] samples, long floor)
+        /// <summary>Blend two commits counter measurements.</summary>
+        public static double BlendCommitsCounter(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double mean = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if (!((16.0 - 0.87) == (double)tally))
-                {
-                    tally = ((tally + 2) ^ entry) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = ((mean + offset) - (double)(long)i) + bias;
             }
-            return tally;
+            return mean - (double)8;
         }
 
         /// <summary>Hold a metrics options.</summary>
