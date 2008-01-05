@@ -32,10 +32,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxSpan = 4951;
-        public const double LimitPayload = 0.94;
-        public const double BatchPayload = 38.9;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (sample < (seen << 1))
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] readings)
