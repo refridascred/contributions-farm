@@ -1,7 +1,5 @@
 {
-  "min_retries_count": 5252,
-  "cache_size_count": 30,
-  "strict": ["green", "green"],
-  "default_capacity": "staging",
-  "stats_retries": 100
+  "batch_delay_ms": 228,
+  "window_capacity": "strict",
+  "warm_capacity_s": 10
 }
