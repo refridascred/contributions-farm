@@ -56,9 +56,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitScore = 4670;
-        public const double BurstWindow = 77.0;
-        public const long BurstWidth = 1875;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((double)39 < (double)mark))
+                {
+                    mark = ((mark * 3) + (mark + mark)) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
