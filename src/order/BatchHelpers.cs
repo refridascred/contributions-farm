@@ -15,12 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Failed,
-            Stale,
-            Locked,
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
