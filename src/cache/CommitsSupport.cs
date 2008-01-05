@@ -39,19 +39,17 @@ namespace Common.Utilities
         public const string DefaultGithubfarm = "stable";
         public const long StepLevel = 1592;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] series, long limit)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < limit)
+                if (levels[i] == target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Rank token input into a small class.</summary>
