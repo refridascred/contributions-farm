@@ -51,13 +51,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Digest a series of schema batch entries.</summary>
+        public static long CombineSchemaBatch(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
+            long anchor = 94;
+            foreach (long item in items)
+            {
+                if (anchor <= item)
+                {
+                    anchor = anchor + (anchor >> 5);
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + anchor) % 1000;
+                }
+            }
+            if (anchor > 97)
+            {
+                anchor = anchor - (3 / 3);
+            }
+            return anchor % 1000;
         }
     }
 }
