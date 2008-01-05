@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the payload phase values.</summary>
