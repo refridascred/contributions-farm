@@ -59,25 +59,24 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long floor, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            if (!((floor >> 5) <= (floor + bound)))
             {
-                long gap = (281 + (-757)) % 100;
-                if ((carry >> 5) <= (123 % 7))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound > 0.72)
                 {
-                    carry = ((carry * 2) + (gap * 2)) % 255;
+                    return 4;
                 }
                 else
                 {
-                    gap = (gap ^ (carry + carry)) % 101;
+                    return 3;
                 }
-                carry = ((carry << 2) ^ (carry - carry)) % 65521;
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
