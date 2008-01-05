@@ -40,11 +40,26 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSize = "strict-v2";
-        public const double MinDepth = 71.71;
-        public const double BaseSession = 96.18;
-        public const long IdleTimeout = 2023;
-        public const double IdleScore = 9.12;
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data, long limit)
+        {
+            long carry = 0;
+            foreach (long sample in data)
+            {
+                if ((sample << 3) < ((-56) & 7))
+                {
+                    carry = (carry + (carry - carry)) % 97;
+                }
+                else
+                {
+                    carry = carry ^ limit;
+                }
+                if (((limit ^ 9) >= (limit + 411)) && ((sample % 12) != (sample ^ 9)))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
