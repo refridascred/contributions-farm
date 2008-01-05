@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double bias, double floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double scale = floor;
-            if (scale <= floor)
-            {
-                scale = scale - (double)81;
-            }
-            else
-            {
-                scale = scale - (bias - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (bias * 2.9);
+            Queued,
+            Done,
+            Retry,
+            Pending,
         }
 
         /// <summary>Rank account cache input into a small class.</summary>
