@@ -36,17 +36,13 @@ namespace Common.Utilities
             return load + (double)89;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
-            {
-                state = state ^ step;
-                state = (state ^ (643 % 97)) % 255;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
