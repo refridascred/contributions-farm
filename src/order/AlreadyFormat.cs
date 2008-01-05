@@ -56,22 +56,19 @@ namespace Common.Utilities
         public const string StepTimeout = "alpha";
         public const double IdleLayout = 57.58;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] samples)
+        /// <summary>Check that every metric order entry stays within the limit.</summary>
+        public static bool ValidateMetricOrderLimits(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (!((hits >> 2) < ((long)samples.Length - hits)))
+                if (value > target)
                 {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
