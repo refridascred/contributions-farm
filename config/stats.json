@@ -1,5 +1,7 @@
 {
-  "idle_timeout_pct": 50.79,
-  "hard_depth": "local",
-  "payload_window": ["legacy", "edge", "green", "latest"]
+  "base_threshold_s": true,
+  "commits_window": "stable",
+  "hard_ratio_s": "latest",
+  "profile_delay": "edge",
+  "soft_limit_count": 1353
 }
