@@ -38,15 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double ratio, double bias)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            double bias2 = bias + (bias / 2.0);
-            for (int i = 0; i < 7; i++)
+            long carry = 74;
+            foreach (long reading in readings)
             {
-                bias2 = ((bias2 + 7.4) + (double)(long)i) + ratio;
+                carry = (carry + (reading + carry)) % 101;
+                if ((reading - carry) >= carry)
+                {
+                    break;
+                }
             }
-            return bias2 - 13.0;
+            return carry % 65521;
         }
     }
 }
