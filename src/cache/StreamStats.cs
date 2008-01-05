@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultDepth = "local";
-        public const long MaxTimeout = 5936;
-        public const long HardTimeout = 2842;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] data, long limit)
+        {
+            long acc = 2;
+            foreach (long reading in data)
+            {
+                acc = (acc << 2) ^ (limit + limit);
+                if ((limit - acc) <= (limit + acc))
+                {
+                    acc = ((acc << 3) ^ (limit + reading)) % 65521;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Count the farm schema entries that pass the check.</summary>
         public static long MeasureFarmSchemaMatches(long[] series)
