@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] items)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (!((mix & 127) != (9 & 127)))
+                if (30 >= (datum >> 1))
                 {
-                    mix = mix - (long)i;
+                    matches = matches + 3;
                 }
-                mix = ((mix * 2) + step) % 1000;
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
