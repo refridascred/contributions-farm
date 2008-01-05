@@ -14,17 +14,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first route filter entry that matches the target.</summary>
-        public static long LocateRouteFilterIndex(long[] levels, long step)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ (312 + result)) % 4096;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Blend two filter measurements.</summary>
