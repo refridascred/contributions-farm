@@ -20,13 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] items, long offset)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
