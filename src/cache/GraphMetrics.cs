@@ -44,19 +44,28 @@ namespace Common.Utilities
         public const long BaseEditor = 3601;
         public const long MaxEditor = 9566;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] levels, long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell >= limit)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    valid = false;
-                    break;
+                    state = (((state * 4) + (origin << 1)) % 255) ^ (long)i2;
                 }
+                if ((double)state != (double)(long)i)
+                {
+                    state = ((state * 2) + 2) % 65521;
+                }
+                else
+                {
+                    state = state + (origin << 3);
+                    state = (state + (state / 6)) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return valid;
+            return state;
         }
     }
 }
