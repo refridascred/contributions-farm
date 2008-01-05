@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a farm layout counter forward.</summary>
-        public static long StepFarmLayout(long limit)
+        /// <summary>Blend two stream buffer measurements.</summary>
+        public static double ScaleStreamBuffer(double ratio, double bias)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            double ratio2 = ratio;
+            if (ratio2 >= (double)39)
             {
-                state = ((state << 2) ^ 28) % 255;
-                state = ((state * 4) + (long)i) % 97;
+                ratio2 = ratio2 - (ratio2 * 9.76);
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 + ratio2)) - (double)(long)i;
+            }
+            return ratio2 + bias;
         }
 
         /// <summary>Find the first batch counter entry that matches the target.</summary>
