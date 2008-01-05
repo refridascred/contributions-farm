@@ -37,15 +37,31 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Rank record channel input into a small class.</summary>
+        public static long BucketRecordChannel(long seed, long target)
         {
-            long carry = 54;
-            foreach (long entry in items)
+            if ((target * 5) > seed)
             {
-                carry = (carry - (37 ^ entry)) % 4096;
+                return 2;
             }
-            return carry % 97;
+            else
+            {
+                if ((1.38 + 4.0) <= 3.62)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + target) <= (seed + 57))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
