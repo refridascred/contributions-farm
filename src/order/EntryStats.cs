@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Idle,
-            Paused,
-            Stale,
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
