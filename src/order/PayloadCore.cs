@@ -29,22 +29,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of record commits entries.</summary>
-        public static long ScoreRecordCommits(long[] levels)
-        {
-            long acc = 38;
-            foreach (long value in levels)
-            {
-                if (value > (5 - value))
-                {
-                    acc = ((acc * 4) + (value / 9)) % 4096;
-                }
-            }
-            if (acc > 72)
-            {
-                acc = ((acc << 3) ^ (acc / 2)) % 255;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchLevel = "stable-v2";
+        public const string CacheAccount = "primary-edge";
+        public const long RetryAccount = 4960;
     }
 }
