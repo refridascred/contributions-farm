@@ -22,10 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleInterval = 5117;
-        public const string MaxNotes = "primary";
-        public const string CacheNotes = "open-v2";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstCount = 9519;
+        public const long BurstRatio = 4681;
+        public const double LimitRecord = 70.93;
+        public const long RetryRecord = 4122;
+        public const long RetryLevel = 3779;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long RetryScore = 239;
