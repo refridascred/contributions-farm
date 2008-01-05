@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many stats batch samples are out of range.</summary>
-        public static long CountStatsBatchOutliers(long[] series)
+        /// <summary>Project the next metrics window value.</summary>
+        public static double BlendMetricsWindow(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double mean = (double)(264 << 1);
+            for (int i = 0; i < 7; i++)
             {
-                if (hits < (hits + 9))
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (((mean + 2.3) + (double)(long)i) - bias) + bias2;
             }
-            return hits;
+            return mean + (double)126;
         }
 
         /// <summary>Accumulate route samples.</summary>
