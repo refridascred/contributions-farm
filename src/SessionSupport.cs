@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] samples)
+        /// <summary>Validate stream contributi readings against a bound.</summary>
+        public static bool VerifyStreamContributiLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (cell <= (seen >> 4))
+                if (datum > step)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
