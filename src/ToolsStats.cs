@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((double)tally >= (20.0 / 8.0))
+                if (cell > limit)
                 {
-                    tally = (tally + 2) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Measure how many counter already samples are out of range.</summary>
