@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a command contributi reading by value.</summary>
-        public static long LookupCommandContributiIndex(long[] readings, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
