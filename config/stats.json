@@ -1,5 +1,6 @@
 {
-  "schema_interval": 79.34,
-  "retry_timeout_pct": true,
-  "account_delay": 56.02
+  "editor_ttl": "eu-west",
+  "layout_ttl": 30,
+  "notes_retries": [442, 26, 101],
+  "profile_capacity": [187, 373]
 }
