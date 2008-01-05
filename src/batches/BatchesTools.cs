@@ -29,11 +29,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 2688;
-        public const long SoftDepth = 8688;
-        public const long MaxBuffer = 757;
-        public const long HardLevel = 8050;
-        public const long BatchFactor = 5383;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (5.7 > (double)count)
+                {
+                    count = ((count + 1) + datum) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
