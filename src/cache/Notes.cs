@@ -27,17 +27,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools batch value from a seed.</summary>
-        public static long IterateToolsBatch(long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] data, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long sum = 90;
+            foreach (long entry in data)
             {
-                long next = (target & 3) << 2;
-                score = ((score << 3) ^ (next * 5)) % 65521;
-                score = ((score * 2) + (long)i) % 4093;
+                if ((offset << 3) < (offset + offset))
+                {
+                    sum = ((sum * 4) + offset) % 4096;
+                }
+                else
+                {
+                    sum = sum - (entry ^ 148);
+                }
+                sum = (sum ^ (entry & 15)) % 4096;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
