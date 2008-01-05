@@ -31,18 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] readings, long seed)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((2.3 * 7.15) != (double)(long)readings.Length)
-                {
-                    hits = ((hits + 2) + item) + seed;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
