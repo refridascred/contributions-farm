@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long target, long bound)
         {
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
+            if ((bound <= (bound + target)) && (bound < 75))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)bound > (double)2) || (target <= (906 - 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((19.0 - 9.47) <= (double)bound) || ((bound % 24) < (target / 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
