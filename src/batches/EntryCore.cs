@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] data, long step)
         {
-            long acc = 585;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((cell >> 5) <= acc)
+                if (datum >= step)
                 {
-                    acc = ((acc * 3) + (cell ^ 332)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
