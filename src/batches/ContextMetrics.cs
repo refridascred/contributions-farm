@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 8291;
-        public const double BurstSize = 19.45;
-        public const double BurstStats = 7.81;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Done,
+            New,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long origin, long seed)
