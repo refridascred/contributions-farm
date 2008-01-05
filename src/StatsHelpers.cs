@@ -30,19 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] readings, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
