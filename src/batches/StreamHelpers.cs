@@ -38,12 +38,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
