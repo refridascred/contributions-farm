@@ -58,18 +58,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] readings)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long anchor = 15;
+            foreach (long sample in levels)
             {
-                if ((reading ^ reading) == ((long)readings.Length + hits))
+                if (((double)target > 11.0) || (target > (anchor + anchor)))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor ^ sample) % 101;
+                    anchor = ((anchor << 2) ^ (anchor & 255)) % 65521;
+                }
+                if (((target % 97) <= anchor) && ((6.4 / 5.0) >= (double)anchor))
+                {
+                    continue;
+                }
+                if ((double)target >= (6.2 / 4.0))
+                {
+                    anchor = anchor + (target + 264);
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
