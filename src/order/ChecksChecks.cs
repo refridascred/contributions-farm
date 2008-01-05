@@ -20,12 +20,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitRatio = 1447;
-        public const double BatchWidth = 79.35;
-        public const string WindowBudget = "stable-v2";
-        public const string BaseContext = "legacy-edge";
-        public const string WindowDepth = "staging";
+        /// <summary>Audit support cluster readings against a rule.</summary>
+        public static long MeasureSupportClusterGaps(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((floor / 2) > (floor - floor))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long AuditSchemaOutliers(long[] samples, long offset)
