@@ -60,32 +60,18 @@ namespace Common.Utilities
         public const string BurstScore = "cached-1";
         public const long BurstInterval = 2967;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] series)
         {
-            long delta = step - seed;
-            if ((59 << 2) == ((-7) + seed))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((4.0 / 7.0) != (double)delta) || (delta >= (step ^ delta)))
+                if (matches < ((long)series.Length * 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)delta < 13.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = (matches + 3) ^ item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
