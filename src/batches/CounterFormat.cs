@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Failed,
+            Ready,
             Idle,
-            Closed,
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
