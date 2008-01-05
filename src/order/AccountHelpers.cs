@@ -14,14 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            Failed,
-            Closed,
-            Synced,
-            Pending,
-            Retry,
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total << 2) ^ (total + (long)i);
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
