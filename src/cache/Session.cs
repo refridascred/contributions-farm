@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] data, long floor)
         {
-            Retry,
-            Queued,
-            Synced,
-            Dropped,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((double)entry == (double)floor) || (((67 + floor) == (entry - 160)) || (((long)data.Length * 3) < floor)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
