@@ -14,14 +14,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] readings, long origin)
         {
-            Queued,
-            Failed,
-            Dropped,
-            New,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first entry format entry that matches the target.</summary>
