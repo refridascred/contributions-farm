@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const string RetryChannel = "local-1";
         public const long BatchScore = 556;
 
-        /// <summary>Audit stats queue readings against a rule.</summary>
-        public static long CountStatsQueueGaps(long[] readings, long seed)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + seed) >= (42 - seed))
+                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
