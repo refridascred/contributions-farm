@@ -19,22 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 4170;
+        public const double CacheRoute = 88.96;
+        public const double HardSpan = 15.51;
+        public const long DefaultRoute = 8763;
 
         /// <summary>Count the support record entries that pass the check.</summary>
         public static long CountSupportRecordOutliers(long[] values, long seed)
