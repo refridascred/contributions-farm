@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] readings, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ entry) != (bound - 193))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count stream farm pairs that satisfy a relation.</summary>
