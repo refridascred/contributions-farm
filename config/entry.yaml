@@ -1,16 +1,5 @@
 # entry settings
-token_retries: 245
-default_window: 500
-warm_window_count:
-  format_delay: true
-  graph_depth:
-    tools_delay: eu-west
-    verbose: 51.09
-    audit:
-      - 229
-      - 347
-      - 103
-      - 451
-  batch_interval_pct: 250
-  default_interval_s: 5278
-max_timeout_count: 90.35
+command_timeout: 6338
+burst_timeout_s: green
+notes_ratio: 52
+cache_capacity_count: standard
