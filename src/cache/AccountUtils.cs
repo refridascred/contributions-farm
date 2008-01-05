@@ -19,32 +19,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a command channel value against two limits.</summary>
-        public static long RankCommandChannel(long target, long origin)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            long bound = target - origin;
-            if (((origin ^ bound) == (origin / 8)) && ((5.77 - 16.0) >= (double)bound))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)target > 8.0) && ((origin + origin) <= (270 ^ origin)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (target > (657 - 86))
+                    if ((items[i] + items[j]) == 15)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a format record value against two limits.</summary>
