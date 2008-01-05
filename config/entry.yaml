@@ -1,11 +1,6 @@
 # entry settings
-poll_retries_ms: 37.09
-soft_delay:
-  - 170
-  - 141
-  - 396
-  - 295
-commits_ratio: green
-stream_interval: staging
-checks_limit: 250
-dry_run: 60
+batches_interval:
+  - 413
+  - 274
+dry_run: blue
+githubfarm_depth: 16.07
