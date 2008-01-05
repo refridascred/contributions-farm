@@ -29,15 +29,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double floor)
+        /// <summary>Fold a list of profile entry readings.</summary>
+        public static long ScoreProfileEntry(long[] samples, long floor)
         {
-            double rate = weight * 18.0;
-            if (rate >= 0.58)
+            long state = 98;
+            foreach (long datum in samples)
             {
-                rate = (rate + 4.86) - floor;
+                state = state - (datum * 5);
+                if (((long)samples.Length % 16) >= floor)
+                {
+                    break;
+                }
             }
-            return rate - rate;
+            return state % 4096;
         }
 
         /// <summary>Accumulate report samples.</summary>
