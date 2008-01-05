@@ -70,16 +70,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] readings)
-        {
-            long state = 7;
-            foreach (long item in readings)
-            {
-                state = state + (item >> 5);
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardWidth = "staging-v2";
+        public const long HardBudget = 185;
+        public const double BurstStats = 17.98;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionGaps(long[] values)
