@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmChecksCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "latest-v2";
+        public const long BatchGithubfarm = 5906;
+        public const long SoftGithubfarm = 4597;
+        public const long LimitInterval = 744;
 
         /// <summary>Match up notes samples.</summary>
         public static long PairNotesCount(long[] items)
