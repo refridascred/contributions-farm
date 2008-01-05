@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mark = 986;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mark = ((mark ^ entry) % 97) ^ (long)i;
-                }
-                mark = (mark + (mark % 12)) % 101;
-                if ((entry + mark) <= (entry / 3))
-                {
-                    mark = (mark - (mark ^ mark)) % 65521;
-                }
-            }
-            if (mark > 62)
-            {
-                mark = ((mark * 3) + (mark ^ mark)) % 4096;
-            }
-            return mark % 97;
+            Pending,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
