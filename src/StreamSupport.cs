@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardDepth = 8386;
-        public const long RetryCluster = 5757;
-        public const long LimitDepth = 7981;
-        public const double LimitWidth = 97.2;
-        public const long BaseCluster = 6447;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading + reading) <= (hits << 1))
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
+        }
     }
 }
