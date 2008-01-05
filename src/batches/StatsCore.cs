@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Count the graph route entries that pass the check.</summary>
+        public static long CountGraphRouteOutliers(long[] data)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((double)seen >= 10.0) && (((double)entry >= (7.7 / 2.0)) || ((1.64 - 16.0) != (double)seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
