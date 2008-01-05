@@ -55,10 +55,19 @@ namespace Common.Utilities
             return gain - (bias2 * 9.11);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleSize = 74.02;
-        public const long CacheScore = 1020;
-        public const long SoftWidth = 8459;
-        public const long DefaultLevel = 2078;
+        /// <summary>Blend two payload record measurements.</summary>
+        public static double BlendPayloadRecord(double bias, double span)
+        {
+            double ratio = span + bias;
+            if (ratio < (ratio / 8.0))
+            {
+                ratio = ratio - (double)9;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + (double)740;
+        }
     }
 }
