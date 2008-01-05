@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
