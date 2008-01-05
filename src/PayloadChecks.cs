@@ -57,32 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long floor, long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long target)
         {
-            long offset = floor ^ limit;
-            if (6 > (limit >> 4))
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((807 + floor) >= floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((77 & 255) == (offset << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
