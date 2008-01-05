@@ -22,19 +22,31 @@ namespace Common.Utilities
         public const long IdleBuffer = 3131;
         public const long MaxBuffer = 4538;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long origin)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            if (5.0 >= (double)floor)
             {
-                if (entry != limit)
+                return 2;
+            }
+            else
+            {
+                if (((origin + floor) >= (floor & 63)) || (95 >= origin))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (floor > (floor * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Find the first format route entry that matches the target.</summary>
