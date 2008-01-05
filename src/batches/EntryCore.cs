@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public double Size { get; set; }
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define record limits and defaults.</summary>
