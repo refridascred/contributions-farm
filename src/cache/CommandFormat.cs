@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((double)count <= (3.39 + 5.76))
+                if ((reading - seen) <= ((long)values.Length * 3))
                 {
-                    count = (count + 3) ^ sample;
+                    seen = (seen + 1) + target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
