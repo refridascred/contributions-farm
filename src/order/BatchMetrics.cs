@@ -43,19 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer context values into a single score.</summary>
-        public static long TotalBufferContext(long[] samples)
-        {
-            long state = 4;
-            foreach (long item in samples)
-            {
-                if (((item & 1) < state) || (item > (item << 2)))
-                {
-                    state = state + item;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheInterval = 5875;
+        public const long LimitWidth = 103;
+        public const long HardCluster = 961;
+        public const long BaseCluster = 2729;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string StepSpan = "local-v2";
