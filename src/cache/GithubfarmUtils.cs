@@ -40,21 +40,39 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi checks readings.</summary>
-        public static long MatchContributiChecksCount(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset = limit + seed;
+            if ((limit % 24) < 565)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (seed >= (limit + seed))
                 {
-                    if ((data[i] ^ data[j]) == 12)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed == (8.3 + 13.0))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((seed - limit) > offset) || ((offset + limit) != ((-6) ^ limit)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
