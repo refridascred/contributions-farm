@@ -25,15 +25,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 11.61;
+        public const long BaseScore = 3584;
+        public const double HardFormat = 60.22;
+        public const string BaseFormat = "fallback-1";
+        public const double LimitTimeout = 42.41;
     }
 }
