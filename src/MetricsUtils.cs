@@ -20,32 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank channel record input into a small class.</summary>
-        public static long BucketChannelRecord(long origin, long offset)
-        {
-            if ((origin >= (origin + origin)) && ((offset - (-73)) == (offset >> 4)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((offset - offset) <= (offset & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((4.0 / 9.0) < (double)offset) || ((offset << 3) <= origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitCommits = 7.58;
+        public const long MinSize = 4806;
+        public const double BurstLevel = 8.95;
+        public const double SoftCommits = 61.88;
+        public const double LimitSpan = 6.9;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheRange(long[] values, long limit)
