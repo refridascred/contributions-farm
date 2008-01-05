@@ -19,11 +19,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstDepth = 1546;
-        public const long LimitFactor = 7485;
-        public const long MaxContext = 3899;
-        public const string WindowContext = "standard-v2";
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] series, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] items, long target)
