@@ -39,25 +39,22 @@ namespace Common.Utilities
         public const string SoftBatch = "staging-edge";
         public const long BaseBatch = 6609;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long origin, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] samples, long floor)
         {
-            long delta = origin ^ offset;
-            if ((offset - delta) != (offset % 8))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((delta * 5) >= (offset * 2)) && ((offset >> 3) == (2 ^ origin)))
+                if (!((16.0 - 0.87) == (double)tally))
                 {
-                    return 0;
+                    tally = ((tally + 2) ^ entry) - floor;
                 }
                 else
                 {
-                    return 5;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
