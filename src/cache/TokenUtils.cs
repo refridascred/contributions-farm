@@ -32,11 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Draft,
+            Active,
+            New,
         }
     }
 }
