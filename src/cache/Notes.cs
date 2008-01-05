@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] items, long bound)
+        /// <summary>Check that every contributi command entry stays within the limit.</summary>
+        public static bool VerifyContributiCommandLimits(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (value >= bound)
+                if (value <= bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
