@@ -25,12 +25,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long target)
         {
-            Stale,
-            Retry,
-            Failed,
+            long acc = target;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc * 2) + target;
+                acc = (acc << 3) ^ (acc ^ acc);
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count farm editor pairs that satisfy a relation.</summary>
