@@ -52,14 +52,13 @@ namespace Common.Utilities
         public const long RetryToken = 4672;
         public const double MinCount = 28.57;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Failed,
-            Ready,
-            Draft,
-            Active,
+            Closed,
             Locked,
+            Active,
+            Pending,
         }
     }
 }
