@@ -33,19 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] data, long step)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
