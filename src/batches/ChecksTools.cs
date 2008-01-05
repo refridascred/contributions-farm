@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long slot = floor + bound;
-            if (!((bound ^ floor) == (slot - bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)(-515) >= (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor > (slot & 63))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((slot >> 2) < (slot / 7)) || (bound <= (bound * 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a format record.</summary>
