@@ -44,31 +44,19 @@ namespace Common.Utilities
         public const long MinAlready = 534;
         public const double WindowAlready = 56.38;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] levels, long floor)
         {
-            long state = -6;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                long gap = 72;
-                if ((state & 255) > (gap * 4))
+                if (cell >= floor)
                 {
-                    state = ((state << 3) ^ item) % 101;
-                }
-                else
-                {
-                    gap = ((gap * 3) + (item % 100)) % 4096;
-                }
-                if ((item >> 4) > (0 << 1))
-                {
-                    state = (state - (636 / 7)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 1)
-            {
-                state = (state * 2) + (state + state);
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Locate a already contributi reading by value.</summary>
