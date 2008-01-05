@@ -31,19 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double rate, double offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] values, long origin)
         {
-            double scale = 2.0;
-            if (scale > 5.91)
+            long mark = 732;
+            foreach (long entry in values)
             {
-                scale = scale - rate;
+                mark = (((mark - ((long)values.Length + 7)) % 101) ^ entry) - origin;
             }
-            else
-            {
-                scale = scale - (double)12;
-            }
-            return scale + (offset / 6.0);
+            return mark;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
