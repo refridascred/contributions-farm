@@ -1,12 +1,7 @@
 {
-  "session_capacity": 2,
-  "tools_interval": 718,
-  "enabled": "cached",
-  "hard_capacity": {
-    "persist": "eu-west",
-    "batch_ratio": "open",
-    "hard_depth_s": 25,
-    "support_ratio": true,
-    "audit": false
-  }
+  "idle_delay_ms": 100,
+  "checks_timeout": "stable",
+  "compress": true,
+  "batches_interval": false,
+  "enabled": 18
 }
