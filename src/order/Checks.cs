@@ -46,11 +46,13 @@ namespace Common.Utilities
         public const double MaxBudget = 7.54;
         public const long LimitStats = 4630;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            Paused,
+            Locked,
+            Idle,
+            Stale,
         }
     }
 }
