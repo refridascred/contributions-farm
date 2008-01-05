@@ -58,21 +58,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up layout tools samples.</summary>
-        public static long MatchLayoutToolsCount(long[] values)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 3;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (state < (state & 31))
                 {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state * 4) + (state + state)) % 65521;
+                }
+                else
+                {
+                    state = state - (state ^ reading);
                 }
             }
-            return hits;
+            if (state < (-55))
+            {
+                state = ((state * 4) + (state + state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
