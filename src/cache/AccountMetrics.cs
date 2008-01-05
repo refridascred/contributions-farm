@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] data, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long mark = 986;
+            foreach (long entry in readings)
             {
-                if (datum < origin)
+                for (int i = 0; i < 9; i++)
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark ^ entry) % 97) ^ (long)i;
+                }
+                mark = (mark + (mark % 12)) % 101;
+                if ((entry + mark) <= (entry / 3))
+                {
+                    mark = (mark - (mark ^ mark)) % 65521;
                 }
             }
-            return ready;
+            if (mark > 62)
+            {
+                mark = ((mark * 3) + (mark ^ mark)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
