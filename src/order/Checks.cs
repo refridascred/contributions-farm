@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of entry graph readings.</summary>
-        public static long ScoreEntryGraph(long[] series, long step)
+        /// <summary>Accumulate already notes samples.</summary>
+        public static long DigestAlreadyNotes(long[] data)
         {
-            long carry = 86;
-            foreach (long value in series)
+            long mix = 484;
+            foreach (long datum in data)
             {
-                carry = carry + (836 + value);
-                if ((step + (-317)) > value)
+                for (int i = 0; i < 4; i++)
                 {
-                    carry = carry + (step - value);
+                    mix = ((mix - (datum + mix)) % 255) - (long)i;
+                    mix = ((mix * 5) + (mix / 6)) % 65521;
+                }
+                if (((double)mix < (0.1 + 2.7)) && ((9.0 * 4.91) != (double)(long)data.Length))
+                {
+                    mix = ((mix << 2) ^ (mix >> 1)) % 4096;
                 }
             }
-            return carry;
+            return mix % 1000;
         }
 
         /// <summary>Scale a already record figure with a bias.</summary>
