@@ -26,22 +26,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] levels, long bound)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((bound + bound) > (7 - bound))
-                {
-                    tally = (tally + 1) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Failed,
+            Queued,
+            Draft,
         }
     }
 }
