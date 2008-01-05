@@ -53,39 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel queue input into a small class.</summary>
-        public static long BucketChannelQueue(long target, long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long edge = target ^ offset;
-            if (!((target + target) <= (offset * 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4.0 - 6.01) == (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((edge * 5) >= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + edge) != (offset / 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Queued,
+            New,
+            Draft,
         }
 
         /// <summary>Rank window input into a small class.</summary>
