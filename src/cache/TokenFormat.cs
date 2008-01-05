@@ -31,22 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi tools values into a single score.</summary>
-        public static long TotalContributiTools(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] items, long origin)
         {
-            long state = 152;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((item + 38) == (item << 1))
+                if ((matches ^ 854) >= 97)
                 {
-                    state = (state - (state >> 2)) % 65521;
-                }
-                else
-                {
-                    state = (state + (item + item)) % 101;
+                    matches = ((matches + 1) ^ reading) + origin;
                 }
             }
-            return state % 65521;
+            return matches;
         }
     }
 }
