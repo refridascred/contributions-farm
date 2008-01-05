@@ -75,14 +75,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long step, long step2)
         {
-            Locked,
-            Dropped,
-            Ready,
-            Done,
-            New,
+            if ((double)step > (13.0 - 8.89))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step & 15) >= (step2 << 2)) || ((step2 - step) == (step * 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
