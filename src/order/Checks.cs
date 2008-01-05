@@ -17,24 +17,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long limit, long origin)
+        /// <summary>Validate filter report readings against a bound.</summary>
+        public static bool CheckFilterReportLimits(long[] samples, long target)
         {
-            if (!(origin >= (origin + origin)))
+            bool flag = true;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)(-36) < (double)origin)
+                if (value <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Blend two filter measurements.</summary>
