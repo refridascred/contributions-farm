@@ -24,13 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double scale, double span)
         {
-            Ready,
-            Paused,
-            New,
-            Failed,
+            double mean = span;
+            if (mean < mean)
+            {
+                mean = (mean + span) - scale;
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            return mean + span;
         }
 
         /// <summary>Count cache context pairs that satisfy a relation.</summary>
