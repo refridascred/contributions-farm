@@ -1,10 +1,7 @@
-id,region,level
-1,147,legacy
-2,115,705
-3,local,95.14
-4,929,eu-west
-5,78.02,26.96
-6,edge,72.75
-7,33,edge
-8,blue,17
-9,16.51,993
+id,state,active,ratio,owner
+1,954,651,primary,674
+2,286,eu-west,33.54,open
+3,47.25,blue,345,legacy
+4,standard,685,edge,cached
+5,68.99,867,181,legacy
+6,120,eu-west,59,eu-west
