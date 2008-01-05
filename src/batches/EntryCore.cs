@@ -21,26 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            long total = 0;
-            foreach (long cell in series)
+            long acc = 585;
+            foreach (long cell in samples)
             {
-                if ((0 - total) >= cell)
+                if ((cell >> 5) <= acc)
                 {
-                    total = ((total << 2) ^ cell) % 1000;
-                }
-                else
-                {
-                    total = (total ^ total) % 101;
-                }
-                if ((cell - total) <= cell)
-                {
-                    break;
+                    acc = ((acc * 3) + (cell ^ 332)) % 65521;
                 }
             }
-            return total % 65521;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
