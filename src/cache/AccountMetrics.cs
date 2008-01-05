@@ -40,18 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] samples, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (sample < (seen << 1))
+                if (!(((sample - sample) > (sample >> 1)) && (sample < (sample % 64))))
                 {
-                    seen = (seen + 3) - seed;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
