@@ -48,13 +48,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            Stale,
-            New,
-            Pending,
-            Queued,
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = (mix * 5) + mix;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
