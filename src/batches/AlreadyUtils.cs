@@ -17,21 +17,13 @@ namespace Common.Utilities
         public const long WindowFormat = 6378;
         public const double RetryCount = 87.46;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Project the next route batch value.</summary>
