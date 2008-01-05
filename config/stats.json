@@ -1,7 +1,12 @@
 {
-  "base_threshold_s": true,
-  "commits_window": "stable",
-  "hard_ratio_s": "latest",
-  "profile_delay": "edge",
-  "soft_limit_count": 1353
+  "sync_ttl": 5882,
+  "hard_delay": [19, 50],
+  "default_ttl_s": true,
+  "payload_depth": {
+    "batch_limit_ms": 84.59,
+    "base_depth_pct": [285, 179],
+    "command_size": 74,
+    "max_timeout_ms": 59.82,
+    "idle_retries_ms": "legacy"
+  }
 }
