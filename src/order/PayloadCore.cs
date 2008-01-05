@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine counter metric values into a single score.</summary>
-        public static long TotalCounterMetric(long[] readings, long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] readings, long bound)
         {
-            long mark = 294;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                mark = mark - (938 % 97);
-                mark = (mark ^ origin) % 65521;
-                if (((double)origin <= (double)cell) && ((double)1 < (double)(long)readings.Length))
+                if (reading >= bound)
                 {
-                    mark = (mark + (3 + cell)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark < 62)
-            {
-                mark = ((mark << 3) ^ (origin - 53)) % 1000;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Hold a route snapshot.</summary>
