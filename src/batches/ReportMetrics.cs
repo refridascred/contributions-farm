@@ -41,19 +41,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate batches session readings against a bound.</summary>
-        public static bool ValidateBatchesSessionRange(long[] data, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (datum > seed)
+                if ((reading + reading) < reading)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
