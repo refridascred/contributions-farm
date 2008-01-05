@@ -19,24 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long seed, long seed2)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            if ((4.0 + 20.0) == (double)seed2)
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed >= (seed / 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Accumulate layout samples.</summary>
