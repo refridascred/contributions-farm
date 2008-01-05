@@ -49,9 +49,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 9608;
-        public const long StepProfile = 4329;
-        public const long HardProfile = 906;
+        /// <summary>Blend two batch farm measurements.</summary>
+        public static double SmoothBatchFarm(double weight, double span)
+        {
+            double gain = 9.4 * 9.8;
+            if (gain <= (3.06 - 9.3))
+            {
+                gain = (gain + gain) - span;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (weight - 5.9)) + (double)(long)i;
+            }
+            return gain - gain;
+        }
     }
 }
