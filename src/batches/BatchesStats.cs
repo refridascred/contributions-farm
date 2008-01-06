@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] readings, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((seed & 7) <= seed)
+                if ((count - (-6)) < 79)
                 {
-                    matches = (matches + 2) ^ entry;
+                    count = ((count + 2) + cell) + target;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the record level values.</summary>
