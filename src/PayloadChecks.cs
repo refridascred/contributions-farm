@@ -80,19 +80,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a filter cache reading.</summary>
-        public static double ProjectFilterCache(double weight, double floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            double ratio = (weight / 8.0) - weight;
-            if (ratio <= floor)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + (double)78;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (floor / 3.0)) + (double)(long)i;
-            }
-            return ratio - (ratio + 4.0);
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
