@@ -32,16 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of metric farm entries.</summary>
-        public static long CombineMetricFarm(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] levels, long offset)
         {
-            long acc = 10;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 4) + (value % 60)) % 255;
-                acc = ((acc << 2) ^ (acc * 3)) % 4096;
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return flag;
         }
     }
 }
