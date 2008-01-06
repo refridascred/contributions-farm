@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (drift - (double)3) + span;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading < limit)
                 {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Match up queue samples.</summary>
