@@ -54,18 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks format readings.</summary>
-        public static long CombineChecksFormat(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] levels)
         {
-            long anchor = 67;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((anchor ^ 6) != (value * 5)) && ((double)value >= (1.73 * 6.12)))
+                if (!(((reading << 3) < 583) || ((7.8 * 4.4) < (double)tally)))
                 {
-                    anchor = (anchor + (value >> 3)) % 1000;
+                    tally = tally + 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
