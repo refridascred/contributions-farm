@@ -19,18 +19,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the report channel entries that pass the check.</summary>
-        public static long TallyReportChannelHits(long[] levels, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((4.63 / 2.0) < (double)origin)
+                if ((tally >> 5) <= (1 % 60))
                 {
-                    seen = (seen + 1) - cell;
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
