@@ -49,18 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + cell) > (seen % 24))
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBuffer = 96.22;
+        public const double BaseBudget = 75.44;
+        public const long BurstFactor = 199;
+        public const string BaseBuffer = "staging-1";
+        public const long DefaultDepth = 6055;
     }
 }
