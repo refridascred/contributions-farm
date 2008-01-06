@@ -49,11 +49,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long target, long step)
         {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
+            long step2 = target + step;
+            if ((19.0 / 5.0) == (double)step2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target + step) <= step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-6) + step2) > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step2 + target) < (target ^ step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context filter samples are out of range.</summary>
