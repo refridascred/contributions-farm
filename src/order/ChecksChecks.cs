@@ -28,17 +28,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a commits editor sample.</summary>
-        public static long SeekCommitsEditorIndex(long[] readings, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
