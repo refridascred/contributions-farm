@@ -33,13 +33,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            Retry,
-            New,
-            Paused,
-            Stale,
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = anchor ^ ((long)i2 ^ limit);
+                    anchor = (anchor - (long)i) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of editor window readings.</summary>
