@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] readings, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mark = -25;
+            foreach (long reading in data)
             {
-                if (944 <= (long)readings.Length)
+                if (!((4 + 738) == (reading + reading)))
                 {
-                    tally = ((tally + 3) + sample) + limit;
+                    mark = (mark - (mark + reading)) % 65521;
                 }
+                mark = (mark ^ mark) % 4096;
+                mark = (mark * 5) + (reading ^ reading);
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
