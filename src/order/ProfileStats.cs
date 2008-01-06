@@ -34,25 +34,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next stream contributi value from a seed.</summary>
-        public static long IterateStreamContributi(long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long result = 640;
+            foreach (long reading in levels)
             {
-                score = (score ^ seed) % 101;
-                if (!((seed + seed) <= ((long)i * 5)))
+                if ((double)result <= (double)22)
                 {
-                    score = score - (score % 97);
-                    break;
+                    result = ((result ^ (long)levels.Length) + reading) + target;
                 }
-                else
-                {
-                    score = (score << 3) ^ (540 >> 1);
-                }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            if (result < 16)
+            {
+                result = result ^ (618 % 10);
+            }
+            return result;
         }
     }
 }
