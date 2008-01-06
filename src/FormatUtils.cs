@@ -75,38 +75,19 @@ namespace Common.Utilities
         public const double BurstScore = 47.84;
         public const double LimitProfile = 34.9;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long step, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] readings, long origin)
         {
-            if ((step - seed) < (seed << 2))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 1) > (seed - seed))
+                if (entry >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((13.0 - 4.92) < (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed < (seed ^ step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
