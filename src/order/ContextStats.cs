@@ -57,21 +57,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up command metric samples.</summary>
-        public static long PairCommandMetricCount(long[] series)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((mix - floor) < mix) && (((-519) - (-646)) <= (floor ^ (long)i))))
                 {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ (floor + floor)) % 1000;
                 }
+                mix = mix ^ (5 * 2);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Compare every pair of buffer session readings.</summary>
