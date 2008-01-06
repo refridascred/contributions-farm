@@ -1,5 +1,5 @@
 {
-  "verbose": 76,
-  "metrics_delay": false,
-  "enabled": 1024
+  "persist": 86.09,
+  "schema_size": false,
+  "hard_delay_ms": 90.39
 }
