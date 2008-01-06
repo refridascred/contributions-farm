@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultLevel = 7293;
-        public const long BaseCluster = 7425;
-        public const long WindowCluster = 1531;
-        public const long BurstCluster = 7125;
-        public const long SoftCluster = 5744;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] levels, long limit)
