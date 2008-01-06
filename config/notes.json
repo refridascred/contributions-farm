@@ -1,13 +1,6 @@
 {
-  "compress": 18.61,
-  "entry_threshold": {
-    "dry_run": "eu-west",
-    "burst_ttl_count": 58.03,
-    "max_delay": 79,
-    "counter_depth": false,
-    "burst_size": 62.72,
-    "batch_window_s": ["strict", "edge", "standard"]
-  },
-  "contributi_interval": 250,
-  "order_capacity": "fallback"
+  "idle_limit_ms": 13.77,
+  "audit": "open",
+  "soft_limit": "fallback",
+  "warm_ratio_s": 2577
 }
