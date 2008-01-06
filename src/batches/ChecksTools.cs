@@ -38,12 +38,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] values, long limit)
         {
-            Paused,
-            Done,
-            Retry,
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
