@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double scale, double span)
-        {
-            double load = 0.58;
-            return (load - (scale / 3.0)) + span;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "fallback-v2";
+        public const long IdleLevel = 8875;
+        public const string StepAlready = "local-1";
 
         /// <summary>Fold a list of token readings.</summary>
         public static long FoldToken(long[] readings, long offset)
