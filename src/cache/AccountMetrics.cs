@@ -48,14 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Synced,
-            Paused,
-            Active,
-            Idle,
-            Draft,
+            Ready,
+            New,
+            Locked,
+            Retry,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
