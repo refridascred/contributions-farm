@@ -1,11 +1,12 @@
 # Command notes
 
-The session module keeps profile values in sync with the profile cache.
-The support report groups every support by filter.
+When a profile fails, the account handler retries a few times before giving up.
+The batch report groups every cluster by stats.
+A layout that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Keep buffer values small
-- Review contributi limits each release
-- Log every route change
+- Log every entry change
+- Prefer context defaults
+- Keep report values small
+- Validate profile input early
