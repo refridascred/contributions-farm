@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepDepth = 9491;
+        public const long WindowCount = 7692;
+        public const long DefaultDepth = 213;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutBounds(long[] items, long origin)
