@@ -1,5 +1,8 @@
 {
-  "readonly": 9954,
-  "batch_interval_s": [166, 192, 386, 313],
-  "burst_timeout_count": false
+  "persist": 18.03,
+  "poll_delay": 6.95,
+  "soft_threshold_ms": 19,
+  "warm_capacity_pct": 31.43,
+  "max_capacity": 100,
+  "order_threshold": 250
 }
