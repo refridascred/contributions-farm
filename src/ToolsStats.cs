@@ -94,21 +94,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Roll a commits session counter forward.</summary>
+        public static long StepCommitsSession(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor ^ (long)i) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
     }
 }
