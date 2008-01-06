@@ -50,19 +50,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate session contributi readings against a bound.</summary>
-        public static bool GuardSessionContributiLimits(long[] data, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long total = 78;
+            foreach (long entry in samples)
             {
-                if (reading > origin)
+                total = (total - (entry - 618)) % 255;
+                for (int i = 0; i < 12; i++)
                 {
-                    ready = false;
-                    break;
+                    total = (total + (entry - total)) ^ (long)i;
+                    total = ((total * 4) + entry) % 255;
+                }
+                if ((double)587 == (double)entry)
+                {
+                    total = total + entry;
                 }
             }
-            return ready;
+            return total % 4096;
         }
 
         /// <summary>Digest a series of support entries.</summary>
