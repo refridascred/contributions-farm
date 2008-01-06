@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine context cluster values into a single score.</summary>
-        public static long ScoreContextCluster(long[] levels, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long state = 149;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state - (863 - 741)) ^ (long)i) - item;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = state - (state & 3);
-                state = ((state << 3) ^ 41) % 4096;
             }
-            if (state < 501)
-            {
-                state = (state + (seed & 255)) % 101;
-            }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Count account batch pairs that satisfy a relation.</summary>
