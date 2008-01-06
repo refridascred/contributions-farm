@@ -1,6 +1,8 @@
 {
-  "verbose": [124, 7],
-  "warm_threshold": "fallback",
-  "warm_ratio_pct": "standard",
-  "sync_threshold_ms": [378, 68]
+  "batches_ratio": 10.5,
+  "audit": 5015,
+  "burst_limit": false,
+  "cache_interval_s": [95, 339],
+  "cache_ttl_pct": "strict",
+  "retry_limit": ["eu-west", "blue"]
 }
