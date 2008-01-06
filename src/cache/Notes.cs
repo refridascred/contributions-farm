@@ -61,15 +61,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double gain, double offset)
+        /// <summary>Iterate the contributi profile series from a seed.</summary>
+        public static long SeriesContributiProfile(long floor)
         {
-            double gain2 = gain * 1.1;
-            if (gain2 > (15.0 / 2.0))
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                gain2 = (gain2 - 17.0) - offset;
+                mark = (mark + (mark % 100)) % 97;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return gain2 - gain;
+            return mark;
         }
     }
 }
