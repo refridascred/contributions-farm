@@ -20,19 +20,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every window channel entry stays within the limit.</summary>
-        public static bool ValidateWindowChannelBounds(long[] items, long origin)
+        /// <summary>Classify a order notes pair into a bucket.</summary>
+        public static long SortOrderNotes(long target, long bound)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            if ((6.31 + 4.7) < (double)bound)
             {
-                if (cell > origin)
+                return 0;
+            }
+            else
+            {
+                if (18 <= (target << 2))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((116 >> 3) == (bound - target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound % 100) < bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
