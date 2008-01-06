@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Pending,
-            Ready,
-            Draft,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleCount = "fallback-v2";
+        public const long BatchAccount = 4559;
+        public const string WindowTimeout = "primary-edge";
+        public const long BaseDepth = 2113;
+        public const string DefaultAccount = "open";
 
         /// <summary>Rank window input into a small class.</summary>
         public static long GradeWindow(long step, long bound)
