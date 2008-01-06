@@ -53,13 +53,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long offset, long bound)
         {
-            Done,
-            Dropped,
-            Pending,
-            New,
+            if (2 > (bound - offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound >> 4) <= offset) && ((4.1 / 7.0) > (double)bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound & 1) <= (6 + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset & 7) != (bound * 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
