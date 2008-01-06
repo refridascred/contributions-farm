@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] samples, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long score = 85;
-            foreach (long reading in samples)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                score = (((score - score) % 101) ^ reading) - step;
+                long prev = 5;
+                mix = (mix << 2) ^ (prev % 8);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return score % 97;
+            return mix;
         }
 
         /// <summary>Hold a already entry.</summary>
