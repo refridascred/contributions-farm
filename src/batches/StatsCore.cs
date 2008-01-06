@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Failed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Accumulate counter samples.</summary>
