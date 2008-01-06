@@ -52,12 +52,12 @@ namespace Common.Utilities
             return rate - (rate * 20.0);
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > bound)
+                if ((values[i] < limit) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
