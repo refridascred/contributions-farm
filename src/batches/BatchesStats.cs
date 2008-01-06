@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long RetryCount = 4275;
         public const long LimitBudget = 5327;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings, long step)
         {
-            Pending,
-            Active,
-            Dropped,
-            New,
+            long mix = 78;
+            foreach (long item in readings)
+            {
+                mix = ((mix + (item + item)) % 1000) - step;
+            }
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
