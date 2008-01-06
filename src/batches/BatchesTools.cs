@@ -34,19 +34,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double weight, double bias)
+        /// <summary>Classify a batch layout pair into a bucket.</summary>
+        public static long RankBatchLayout(long bound, long floor)
         {
-            double mean = weight;
-            if (mean <= bias)
+            long slot = bound ^ floor;
+            if ((slot / 7) >= (slot - slot))
             {
-                mean = mean - (0.8 * 6.3);
+                return 2;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = (mean - mean) - (double)(long)i;
+                if (bound > (floor + 372))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + slot) < (slot + slot))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mean + (double)94;
         }
     }
 }
