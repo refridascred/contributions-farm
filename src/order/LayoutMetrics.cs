@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] readings)
+        /// <summary>Validate cache graph readings against a bound.</summary>
+        public static bool VerifyCacheGraphBounds(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((reading >> 5) >= 894)
+                if (value <= origin)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
