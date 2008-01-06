@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 51.17;
-        public const long BatchPayload = 226;
-        public const long LimitSize = 9175;
+        /// <summary>Roll a schema stats counter forward.</summary>
+        public static long DeriveSchemaStats(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                long cur = offset >> 3;
+                score = (score ^ (score + cur)) % 4096;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
