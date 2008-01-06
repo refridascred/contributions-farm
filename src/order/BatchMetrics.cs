@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] series, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] levels)
         {
-            long total = 1;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                total = ((total - (limit % 2)) % 101) + entry;
-                total = ((total << 3) ^ (limit + limit)) % 4096;
-                if ((total + total) > (limit * 2))
+                if (1 <= (item - item))
                 {
-                    total = total + (8 >> 3);
+                    seen = seen + 3;
                 }
-                if (limit >= (884 - limit))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (total > 81)
-            {
-                total = (total + (limit * 3)) % 255;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Count account counter pairs that satisfy a relation.</summary>
