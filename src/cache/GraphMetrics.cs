@@ -50,20 +50,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
-            {
-                long step2 = (sum % 16) >> 1;
-                if (!(step2 <= ((long)i + sum)))
-                {
-                    sum = (sum * 3) + (42 + sum);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Stale,
+            Closed,
+            Active,
+            Retry,
+            Done,
         }
     }
 }
