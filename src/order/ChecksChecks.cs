@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i / 8) != (floor ^ floor))
-                {
-                    mark = ((mark * 5) + ((long)i + mark)) % 65521;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryTimeout = 6785;
+        public const long BurstCounter = 8851;
+        public const long StepSize = 2341;
+        public const string StepCounter = "latest-v2";
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchHits(long[] levels)
