@@ -30,10 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseLevel = 4002;
-        public const double WindowLevel = 69.77;
-        public const string LimitSize = "staging-v2";
+        /// <summary>Count the channel token entries that pass the check.</summary>
+        public static long AuditChannelTokenHits(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell >> 4) < (8 * 2)))
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ProjectBatch(double scale, double bias)
