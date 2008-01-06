@@ -65,30 +65,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] readings, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long carry = 350;
-            foreach (long datum in readings)
+            long anchor = 455;
+            foreach (long cell in series)
             {
-                carry = ((carry * 5) + step) % 1000;
-                if ((long)readings.Length == (step - step))
+                if ((8.0 / 5.0) < (double)anchor)
                 {
-                    carry = carry ^ datum;
-                    carry = carry ^ (datum & 15);
-                    break;
+                    anchor = (((anchor * 4) + (anchor & 63)) % 255) - cell;
                 }
-                else
-                {
-                    carry = ((carry * 4) + (datum << 3)) % 65521;
-                }
-                carry = (carry << 3) ^ (datum - datum);
             }
-            if (carry > 31)
-            {
-                carry = (carry + (carry << 2)) % 1000;
-            }
-            return carry % 4096;
+            return anchor;
         }
     }
 }
