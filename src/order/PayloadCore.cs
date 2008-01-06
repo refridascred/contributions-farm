@@ -36,18 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] levels)
+        /// <summary>Accumulate farm notes samples.</summary>
+        public static long WeighFarmNotes(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long anchor = -706;
+            foreach (long sample in items)
             {
-                if ((tally - 908) <= 9)
+                anchor = anchor - sample;
+                if ((double)anchor < (6.0 - 7.3))
                 {
-                    tally = (tally + 1) + cell;
+                    break;
                 }
             }
-            return tally;
+            if (anchor > 53)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 97;
+            }
+            return anchor % 1000;
         }
     }
 }
