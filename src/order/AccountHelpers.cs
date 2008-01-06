@@ -25,19 +25,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every support format entry stays within the limit.</summary>
-        public static bool CheckSupportFormatBounds(long[] series, long step)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            double mean = (double)((-5) / 3);
+            if (mean > rate)
             {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean + mean) + bias;
             }
-            return valid;
+            return mean + (double)29;
         }
 
         /// <summary>Accumulate window editor samples.</summary>
