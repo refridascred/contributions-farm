@@ -22,31 +22,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long offset, long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            if (step < (777 + step))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 3) < (step >> 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (2 < (step / 7))
+                    if ((readings[i] + readings[j]) < 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
