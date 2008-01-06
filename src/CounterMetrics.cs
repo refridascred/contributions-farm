@@ -40,25 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long offset, long bound)
+        /// <summary>Locate a profile window reading by value.</summary>
+        public static long SeekProfileWindowIndex(long[] readings, long bound)
         {
-            long lane = offset - bound;
-            if ((lane + offset) == ((-778) / 9))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.3 + 0.1) <= (double)lane)
+                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
