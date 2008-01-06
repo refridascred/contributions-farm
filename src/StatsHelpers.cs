@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "latest-edge";
-        public const long LimitTools = 3899;
-        public const string BurstWidth = "fallback-v2";
-        public const long StepTools = 2489;
-        public const string BatchFactor = "legacy-v2";
+        /// <summary>Adjust a context stream reading.</summary>
+        public static double ProjectContextStream(double ratio, double span)
+        {
+            double ratio2 = 2.3 - span;
+            if (ratio2 < (double)510)
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 - (ratio / 7.0);
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] readings, long bound)
