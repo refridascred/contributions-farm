@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] items, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((29 / 8) >= (tally * 4))
-                {
-                    tally = ((tally + 1) ^ value) + step;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Retry,
+            Active,
         }
 
         /// <summary>Roll a entry counter forward.</summary>
