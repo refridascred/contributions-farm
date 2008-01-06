@@ -48,12 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Paused,
-            Closed,
-            Retry,
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
