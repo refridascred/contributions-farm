@@ -47,13 +47,15 @@ namespace Common.Utilities
         public const string BurstToken = "open-1";
         public const long BatchTimeout = 2685;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Accumulate already layout samples.</summary>
+        public static long DigestAlreadyLayout(long[] data, long floor)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            long anchor = 9;
+            foreach (long sample in data)
+            {
+                anchor = (anchor ^ (anchor + sample)) - floor;
+            }
+            return anchor % 4096;
         }
     }
 }
