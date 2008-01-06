@@ -1,8 +1,12 @@
 # githubfarm settings
-persist: 7162
-soft_ttl:
-  - 192
-  - 298
-  - 390
-  - 451
-default_capacity_s: local
+batch_retries:
+  - 277
+  - 213
+  - 346
+  - 153
+notes_depth: 36
+burst_limit: 1118
+filter_capacity: false
+default_capacity_s:
+  - stable
+  - fallback
