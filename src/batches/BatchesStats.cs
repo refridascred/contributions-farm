@@ -19,14 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Idle,
-            Dropped,
-            Done,
+            Paused,
             Retry,
-            Active,
+            Dropped,
+            Synced,
+            Done,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
