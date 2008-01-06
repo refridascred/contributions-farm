@@ -40,12 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public double Token { get; set; }
-            public double Region { get; set; }
-            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
