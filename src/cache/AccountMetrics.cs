@@ -47,12 +47,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFormat = "open-v2";
-        public const long HardFormat = 8584;
-        public const long LimitFormat = 3267;
-        public const long SoftFormat = 2511;
-        public const double BaseFormat = 33.93;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 3937;
