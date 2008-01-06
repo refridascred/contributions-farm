@@ -43,11 +43,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double weight, double floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] levels, long offset)
         {
-            double rate = weight;
-            return rate - floor;
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next queue value.</summary>
