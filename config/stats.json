@@ -1,7 +1,5 @@
 {
-  "flush_delay_count": "open",
-  "retry_timeout": true,
-  "hard_depth_s": "fallback",
-  "audit": 76.76,
-  "readonly": false
+  "hard_capacity_s": "legacy",
+  "report_retries": "primary",
+  "audit": "open"
 }
