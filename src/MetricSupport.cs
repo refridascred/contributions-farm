@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many report tools samples are out of range.</summary>
-        public static long AuditReportToolsOutliers(long[] readings, long floor)
+        /// <summary>Combine commits editor values into a single score.</summary>
+        public static long TotalCommitsEditor(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long acc = 6;
+            foreach (long reading in readings)
             {
-                if ((tally & 3) != (tally & 31))
+                if (!((reading + seed) >= acc))
                 {
-                    tally = ((tally + 2) - value) - floor;
+                    acc = ((acc * 2) + (acc - acc)) % 97;
                 }
             }
-            return tally;
+            if (acc < 37)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
