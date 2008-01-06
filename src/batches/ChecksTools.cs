@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] levels, long limit)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            long result = 58;
-            foreach (long reading in levels)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((reading << 2) < (12 - reading))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    result = ((result << 2) ^ (403 & 31)) + limit;
+                    sum = (sum - (sum - target)) - (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return result % 65521;
+            return sum;
         }
 
         /// <summary>Look up the position of a cluster notes sample.</summary>
