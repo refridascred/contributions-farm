@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheRecord = "strict-edge";
-        public const long SoftRecord = 5776;
-        public const string SoftFactor = "fallback-v2";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values, long target)
+        {
+            long score = 562;
+            foreach (long sample in values)
+            {
+                if ((target + target) == (target >> 1))
+                {
+                    score = ((score + (target * 3)) % 97) + sample;
+                }
+            }
+            if (score > 7)
+            {
+                score = ((score * 2) + (score - target)) % 255;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double BlendBuffer(double weight, double bias)
