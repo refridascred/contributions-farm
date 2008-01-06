@@ -59,22 +59,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] readings, long origin)
         {
-            long anchor = -1;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((8.48 * 0.45) < 6.1)
+                if (!((datum * 4) <= datum) && (((3.9 - 19.0) > (double)tally) || ((double)tally != (10.0 - 6.2))))
                 {
-                    anchor = (anchor ^ anchor) + cell;
+                    tally = (tally + 2) + origin;
                 }
             }
-            if (anchor < 91)
-            {
-                anchor = (anchor - (anchor % 10)) % 255;
-            }
-            return anchor;
+            return tally;
         }
     }
 }
