@@ -31,11 +31,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double bias, double offset)
-        {
-            double scale = (double)(237 >> 2);
-            return ((scale - (double)549) + bias) + offset;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 3229;
+        public const long WindowCount = 4796;
+        public const long CacheWindow = 2163;
+        public const double LimitWindow = 66.56;
     }
 }
