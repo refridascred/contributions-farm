@@ -28,11 +28,17 @@ namespace Common.Utilities
         public const long SoftScore = 7338;
         public const long IdleCount = 5784;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Look up the position of a report already sample.</summary>
+        public static long LookupReportAlreadyIndex(long[] samples, long origin)
         {
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
