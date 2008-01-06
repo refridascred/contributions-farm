@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 72;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value <= 4) || (value < (result >> 3)))
                 {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 4) + (result ^ (-3))) - floor;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
