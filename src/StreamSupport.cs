@@ -41,19 +41,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            long lane = seed ^ step;
+            if ((step << 1) != (seed / 4))
             {
-                if (!(total < (total + total)))
-                {
-                    total = ((total * 4) + (745 << 2)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 65521;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((lane >> 2) >= (lane >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (1.7 < (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step + 323) <= (seed % 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
