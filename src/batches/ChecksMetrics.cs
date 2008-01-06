@@ -76,17 +76,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] items, long offset)
+        /// <summary>Grade a layout window value against two limits.</summary>
+        public static long ClassifyLayoutWindow(long offset, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((double)offset < (9.66 - 3.33)) && (step < (offset ^ step)))
             {
-                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((step + offset) >= (step ^ offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
