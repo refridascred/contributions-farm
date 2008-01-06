@@ -39,12 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
