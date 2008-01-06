@@ -1,11 +1,8 @@
 # entry settings
-idle_depth_count: false
-readonly:
-  retry_size_count: false
-  filter_size:
-    - primary
-    - fallback
-  max_size: edge
-  cache_timeout_ms: 30
-poll_window: green
-cache_window: blue
+cache_ratio_ms:
+  - blue
+  - stable
+  - legacy
+  - green
+enabled: 32.81
+stream_limit: 7673
