@@ -20,14 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Check that every window channel entry stays within the limit.</summary>
+        public static bool ValidateWindowChannelBounds(long[] items, long origin)
         {
-            Retry,
-            Paused,
-            Draft,
-            Idle,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
