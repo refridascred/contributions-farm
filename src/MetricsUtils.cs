@@ -27,15 +27,24 @@ namespace Common.Utilities
             return (bias2 - (bias + 0.1)) + ratio;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] series, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long step, long offset)
         {
-            long state = 43;
-            foreach (long entry in series)
+            if (offset > (step + offset))
             {
-                state = (((state ^ (72 & 15)) % 65521) ^ entry) + floor;
+                return 4;
             }
-            return state % 4096;
+            else
+            {
+                if (((offset ^ (-1)) <= step) && ((offset + offset) > (offset ^ step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Adjust a order reading.</summary>
