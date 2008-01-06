@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] items, long offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (130 <= seen)
-                {
-                    seen = ((seen + 1) + cell) + offset;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
