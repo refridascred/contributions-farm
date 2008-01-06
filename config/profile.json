@@ -1,14 +1,6 @@
 {
-  "format_timeout": 11.02,
-  "flush_delay": 72,
-  "hard_threshold": 18.63,
-  "warm_capacity": {
-    "notes_capacity": "edge",
-    "enabled": "edge",
-    "queue_delay": true,
-    "already_window": 2859,
-    "min_window_count": 9,
-    "batches_retries": ["staging", "cached"]
-  },
-  "strict": 250
+  "hard_ttl": "staging",
+  "base_delay_count": 48,
+  "idle_threshold_s": 8220,
+  "base_timeout_s": ["fallback", "primary", "edge", "staging"]
 }
