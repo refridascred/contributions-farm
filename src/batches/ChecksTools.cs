@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 1518;
-        public const double IdleCounter = 68.37;
-        public const long HardWidth = 8780;
-        public const long BaseCounter = 7403;
-        public const string MaxDepth = "staging-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardScore = 8983;
+        public const long SoftEditor = 7957;
+        public const double IdleEditor = 13.7;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] readings)
