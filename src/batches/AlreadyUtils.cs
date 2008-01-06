@@ -48,15 +48,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next route batch value.</summary>
-        public static double AdjustRouteBatch(double weight, double span)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long target)
         {
-            double scale = span;
-            if (scale > (double)0)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                scale = (scale + (span + span)) + weight;
+                if (cell <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale - (double)749;
+            return valid;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
