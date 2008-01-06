@@ -13,10 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 4397;
-        public const double BurstAccount = 47.93;
-        public const long BurstDepth = 1531;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long BucketSupport(long offset, long bound)
