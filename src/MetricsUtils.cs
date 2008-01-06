@@ -23,15 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm order measurements.</summary>
-        public static double ProjectGithubfarmOrder(double ratio, double span)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] data, long offset)
         {
-            double drift = 0.12 + ratio;
-            if (drift < (span / 9.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (drift + drift);
+                if ((data[i] > offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + span;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
