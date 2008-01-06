@@ -30,15 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((67 <= (target >> 2)) && ((target << 1) >= (state + state)))
+                {
+                    state = (state ^ ((long)i + target)) % 255;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return acc;
+            return state;
         }
     }
 }
