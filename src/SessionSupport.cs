@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Failed,
-            Idle,
-            Ready,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinInterval = 10.53;
+        public const long LimitProfile = 6404;
+        public const double MinWidth = 19.87;
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] items)
