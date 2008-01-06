@@ -63,24 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long step)
+        /// <summary>Adjust a notes record reading.</summary>
+        public static double SmoothNotesRecord(double rate, double bias)
         {
-            if (4 > (floor & 1))
+            double scale = rate * 11.0;
+            if (scale >= rate)
             {
-                return 2;
+                scale = (scale + (double)89) + bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((step & 15) > 626) || ((double)step <= 14.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                scale = (scale + 6.99) + (double)(long)i;
             }
+            return scale - 5.32;
         }
     }
 }
