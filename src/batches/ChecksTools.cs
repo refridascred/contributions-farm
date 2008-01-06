@@ -42,38 +42,18 @@ namespace Common.Utilities
         public const string HardOrder = "staging-v2";
         public const double MinBudget = 52.04;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] levels)
         {
-            if ((seed + bound) < 78)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(bound >= seed))
+                if (((long)levels.Length / 7) <= (matches - matches))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (8.03 < (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed >> 2) != (seed + bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 1) ^ reading;
                 }
             }
+            return matches;
         }
     }
 }
