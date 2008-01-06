@@ -1,29 +1,6 @@
 # support settings
-soft_timeout_count: strict
-report_delay: 100
-warm_depth_s:
-  strict:
-    max_capacity_count:
-      - legacy
-      - eu-west
-      - latest
-      - staging
-    min_ratio: 17.5
-    strict: 5176
-    cache_retries: cached
-    hard_limit: 65.75
-  warm_timeout_pct: edge
-  compress: 19.68
-  hard_capacity_pct: true
-  persist: 30
-  session_threshold:
-    retry_retries: 2
-    burst_retries_ms: false
-    idle_capacity:
-      - 149
-      - 467
-      - 14
-    max_depth: latest
-    min_depth_pct: blue
-    burst_retries_count: 4196
-cache_retries: latest
+retry_timeout_ms: 7681
+base_size: edge
+report_ratio: 48
+warm_ratio_s: standard
+soft_delay_s: false
