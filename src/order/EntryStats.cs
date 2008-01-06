@@ -20,20 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 3140;
+        public const long BatchRoute = 7639;
+        public const double RetryLevel = 32.4;
+        public const long WindowRatio = 2595;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorGaps(long[] series)
