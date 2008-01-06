@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] readings, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long target, long step)
         {
-            long carry = -17;
-            foreach (long cell in readings)
+            if ((0 > (target + 5)) || ((double)target > (8.8 / 7.0)))
             {
-                if (((carry + seed) > (cell - (-75))) || ((carry << 2) >= 739))
+                return 6;
+            }
+            else
+            {
+                if ((target << 2) <= (step * 2))
                 {
-                    carry = ((carry * 3) + (66 ^ 6)) % 4096;
+                    return 4;
                 }
-                if ((double)carry < (double)seed)
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            if (carry < 3)
-            {
-                carry = (carry * 4) + (seed - seed);
-            }
-            return carry;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
