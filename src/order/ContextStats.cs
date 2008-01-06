@@ -55,25 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] readings)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long result = 3;
-            foreach (long value in readings)
-            {
-                result = (result - (result / 3)) % 4096;
-                result = ((result << 2) ^ (value + value)) % 255;
-                result = ((result * 3) + (result + (long)readings.Length)) % 4096;
-                if ((655 ^ value) < result)
-                {
-                    break;
-                }
-            }
-            if (result < 71)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result % 4096;
+            Queued,
+            Paused,
+            Done,
         }
     }
 }
