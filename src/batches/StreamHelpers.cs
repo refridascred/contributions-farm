@@ -77,26 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report layout values into a single score.</summary>
-        public static long TallyReportLayout(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] levels, long floor)
         {
-            long total = 84;
-            foreach (long reading in levels)
+            long total = 69;
+            foreach (long entry in levels)
             {
-                if ((reading % 16) > (reading ^ total))
+                if (!((entry - total) >= (floor + total)))
                 {
-                    total = (total * 2) + (total << 3);
+                    total = (total + (floor / 6)) % 1000;
                 }
-                else
+                if ((floor * 2) <= entry)
                 {
-                    total = (total << 3) ^ (reading << 2);
-                }
-                if (((double)reading < (1.69 + 8.33)) && ((total + 557) == (reading + 47)))
-                {
-                    total = (total + 18) % 1000;
+                    break;
                 }
             }
-            return total % 65521;
+            return total;
         }
 
         /// <summary>Hold a checks record.</summary>
