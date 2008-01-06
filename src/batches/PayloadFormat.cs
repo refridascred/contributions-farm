@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] readings, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long acc = 811;
+            foreach (long item in series)
             {
-                if (!!(sample <= seen))
+                if ((item / 6) < (offset % 5))
                 {
-                    seen = (seen + 1) + bound;
+                    acc = acc ^ item;
                 }
             }
-            return seen;
+            if (acc < 72)
+            {
+                acc = (acc ^ (offset + offset)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
