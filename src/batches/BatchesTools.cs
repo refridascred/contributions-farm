@@ -28,21 +28,16 @@ namespace Common.Utilities
         public const string BatchTools = "strict-v2";
         public const string MaxSpan = "strict-v2";
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state - offset) % 101;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
     }
 }
