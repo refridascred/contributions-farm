@@ -37,14 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long floor)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Retry,
-            Stale,
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = sum - (8 & 127);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
