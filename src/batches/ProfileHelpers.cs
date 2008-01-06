@@ -51,20 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the tools farm series from a seed.</summary>
-        public static long DeriveToolsFarm(long step)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                score = (score - ((long)i + (long)i)) % 4096;
-                if ((score < (score + score)) || ((7.0 + 2.0) >= (double)score))
-                {
-                    score = ((score << 2) ^ (score << 1)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
